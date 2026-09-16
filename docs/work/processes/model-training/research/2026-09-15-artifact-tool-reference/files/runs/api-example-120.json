@@ -1,0 +1,10 @@
+{
+  "index": 120,
+  "name": "range.dataValidation",
+  "summary": "Create a list validation rule",
+  "originalCode": "const range = sheet.getRange('B2:B6');\nrange.dataValidation = {\n  allowBlank: true,\n  list: { inCellDropDown: true, source: ['Run', 'Bike', 'Rest'] },\n};",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

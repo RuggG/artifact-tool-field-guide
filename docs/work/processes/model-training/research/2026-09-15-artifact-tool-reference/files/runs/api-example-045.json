@@ -1,0 +1,10 @@
+{
+  "index": 45,
+  "name": "workbook.export",
+  "summary": "Export an editable workbook",
+  "originalCode": "const xlsx = await workbook.export({ format: 'xlsx' });",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

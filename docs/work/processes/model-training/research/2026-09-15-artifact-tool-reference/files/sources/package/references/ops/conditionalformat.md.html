@@ -1,0 +1,44 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>conditionalformat ops · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="conditionalformat.md">Raw file</a> · <a data-public-raw download href="conditionalformat.md">Download</a></p><article><h1 id="conditionalformat-ops">conditionalformat ops</h1>
+<p>Ops in the <code>conditionalformat.*</code> namespace for <code>Workbook.apply</code>.</p>
+<h2 id="ops-index">Ops index</h2>
+<ul>
+<li><code>conditionalformat.add</code>: Add a conditional formatting rule to a range.</li>
+</ul>
+<h2 id="conditionalformatadd"><code>conditionalformat.add</code></h2>
+<p>Add a conditional formatting rule to a range.</p>
+<p><strong>Required fields</strong>
+- <code>op</code>
+- <code>props</code>
+- <code>target</code>
+- <code>props.rule</code></p>
+<p><strong>Optional fields</strong>
+- (none)</p>
+<p><strong>Enums</strong>
+- <code>props.rule.format.fill.color.value</code>: See <a href="../enums.md">enums</a>.
+- <code>props.rule.format.fill.gradientKind</code>: See <a href="../enums.md">enums</a>.
+- <code>props.rule.format.fill.pattern.type</code>: See <a href="../enums.md">enums</a>.
+- <code>props.rule.operator</code>: See <a href="../enums.md">enums</a>.
+- <code>props.rule.thresholds[].type</code>: See <a href="../enums.md">enums</a>.</p>
+<p><strong>Examples</strong></p>
+<pre><code class="language-json">{
+  "op": "conditionalformat.add",
+  "target": {
+    "sheet": "CF",
+    "range": "A1:A3"
+  },
+  "props": {
+    "rule": {
+      "type": "cellIs",
+      "operator": "greaterThan",
+      "formula": 3,
+      "format": {
+        "fill": "accent2",
+        "font": {
+          "bold": true,
+          "color": "accent3"
+        }
+      }
+    }
+  }
+}
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

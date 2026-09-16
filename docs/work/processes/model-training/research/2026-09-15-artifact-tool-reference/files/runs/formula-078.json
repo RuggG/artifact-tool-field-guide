@@ -1,0 +1,37 @@
+{
+  "name": "fx.WEEKNUM",
+  "category": "date-time",
+  "examples": [
+    {
+      "formula": "=WEEKNUM(10, A1)",
+      "value": 2,
+      "projection": [
+        [
+          2,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 8
+    }
+  ]
+}

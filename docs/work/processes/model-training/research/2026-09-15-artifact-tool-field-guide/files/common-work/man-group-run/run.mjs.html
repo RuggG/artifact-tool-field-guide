@@ -1,0 +1,102 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>run.mjs · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="run.mjs">Raw file</a> · <a data-public-raw download href="run.mjs">Download</a></p><article><h1>run.mjs</h1><pre class="public-code"><code>import fs from &#x27;node:fs/promises&#x27;;
+import { FileBlob, SpreadsheetFile } from &#x27;@oai/artifact-tool&#x27;;
+import { fileURLToPath } from &#x27;node:url&#x27;;
+import path from &#x27;node:path&#x27;;
+
+const dir = path.dirname(fileURLToPath(import.meta.url));
+const wb = await SpreadsheetFile.importXlsx(await FileBlob.load(path.join(dir,&#x27;source.xlsx&#x27;)));
+const records = [];
+async function capture(id, input) {
+  const start = performance.now();
+  let result, error;
+  try { result = await eval(&#x27;(async () =&gt; {&#x27; + input + &#x27;\n})()&#x27;); }
+  catch(e) { error = String(e.stack || e); }
+  if(result &amp;&amp; typeof result.ndjson === &#x27;string&#x27;) result = {ndjson:result.ndjson, recordCount:result.recordCount, truncated:result.truncated, metadata:result.metadata};
+  const record = {id, input, elapsedMs: Math.round(performance.now()-start), result: result === undefined ? {javascriptReturn:&#x27;undefined&#x27;} : result};
+  if(error) record.error = error;
+  records.push(record);
+  await fs.writeFile(path.join(dir,id+&#x27;.json&#x27;),JSON.stringify(record,null,2));
+  console.log(JSON.stringify({id,elapsedMs:record.elapsedMs,error:error||null,saved:id+&#x27;.json&#x27;}));
+  return result;
+}
+
+await capture(&#x27;overview&#x27;, `return await wb.inspect({
+  kind: &quot;workbook,sheet,table&quot;, maxChars: 14000,
+  tableMaxRows: 4, tableMaxCols: 6, tableMaxCellChars: 80
+});`);
+await capture(&#x27;sheets&#x27;, `return await wb.inspect({kind: &quot;sheet&quot;, include: &quot;id,name&quot;});`);
+await capture(&#x27;literal&#x27;, `return await wb.inspect({
+  kind: &quot;match&quot;, searchTerm: &quot;profit&quot;, maxChars: 12000,
+  options: {useRegex: false, maxResults: 30}
+});`);
+await capture(&#x27;regex&#x27;, `return await wb.inspect({
+  kind: &quot;match&quot;, searchTerm: &quot;management.*fee|fee.*margin&quot;, maxChars: 12000,
+  options: {useRegex: true, maxResults: 30}
+});`);
+await capture(&#x27;regions&#x27;, `return await wb.inspect({
+  kind: &quot;region&quot;, sheetId: &quot;Summary&quot;, range: &quot;C7:M28&quot;,
+  maxChars: 10000, tableMaxRows: 8, tableMaxCols: 6
+});`);
+await capture(&#x27;ranges&#x27;, `const range = wb.worksheets.getItem(&quot;Summary&quot;).getRange(&quot;K13:M20&quot;);
+return {sheet: &quot;Summary&quot;, range: &quot;K13:M20&quot;, values: range.values, formulas: range.formulas};`);
+await capture(&#x27;trace&#x27;, `return await wb.trace(&quot;Fee engine!R27&quot;);`);
+await capture(&#x27;render&#x27;, `const image = await wb.render({sheetName: &quot;Summary&quot;, range: &quot;C7:M28&quot;, scale: 1.5, format: &quot;png&quot;});
+const bytes = new Uint8Array(await image.arrayBuffer());
+await fs.writeFile(path.join(dir, &quot;summary-before.png&quot;), bytes);
+return {saved: &quot;summary-before.png&quot;, mimeType: &quot;image/png&quot;, bytes: bytes.length};`);
+await capture(&#x27;edit-context&#x27;, `const a = wb.worksheets.getItem(&quot;Assumptions&quot;);
+const f = wb.worksheets.getItem(&quot;Fee engine&quot;);
+return {
+  assumptions: {range:&quot;R25:W29&quot;, values:a.getRange(&quot;R25:W29&quot;).values, formulas:a.getRange(&quot;R25:W29&quot;).formulas},
+  fees: {range:&quot;R26:W28&quot;, values:f.getRange(&quot;R26:W28&quot;).values, formulas:f.getRange(&quot;R26:W28&quot;).formulas},
+  output: {range:&quot;K13:M14&quot;, values:wb.worksheets.getItem(&quot;Summary&quot;).getRange(&quot;K13:M14&quot;).values}
+};`);
+
+function readState() {
+  const a=wb.worksheets.getItem(&#x27;Assumptions&#x27;), f=wb.worksheets.getItem(&#x27;Fee engine&#x27;), s=wb.worksheets.getItem(&#x27;Summary&#x27;);
+  return Object.fromEntries([
+    [&#x27;baseFeeMargin&#x27;,a,&#x27;W26&#x27;], [&#x27;activeFeeMargin&#x27;,a,&#x27;W25&#x27;],
+    [&#x27;q4AverageAum&#x27;,f,&#x27;W18&#x27;], [&#x27;q4ManagementFees&#x27;,f,&#x27;W27&#x27;],
+    [&#x27;fy2027ManagementFees&#x27;,s,&#x27;M13&#x27;], [&#x27;fy2027OperatingProfit&#x27;,s,&#x27;M20&#x27;]
+  ].map(([label,sheet,cell]) =&gt; [label,{sheet:sheet.name,cell,value:sheet.getRange(cell).values[0][0],formula:sheet.getRange(cell).formulas[0][0]}]));
+}
+await capture(&#x27;value-edit&#x27;, `const before = readState();
+wb.worksheets.getItem(&quot;Assumptions&quot;).getRange(&quot;W26&quot;).values = [[51]];
+return {before, after: readState()};`);
+await capture(&#x27;recalculate&#x27;, `const before = readState();
+const nativeReturn = wb.recalculate();
+return {nativeReturn: nativeReturn === undefined ? &quot;undefined&quot; : nativeReturn, before, after: readState()};`);
+await capture(&#x27;formula-edit&#x27;, `const before = readState();
+wb.worksheets.getItem(&quot;Assumptions&quot;).getRange(&quot;W25&quot;).formulas = [[
+  &quot;=IF(CHOOSE($D$4,ISBLANK(W26),ISBLANK(W27),ISBLANK(W28),ISBLANK(W29)),NA(),CHOOSE($D$4,W26,W27,W28,W29))&quot;
+]];
+return {before, after: readState()};`);
+await capture(&#x27;fill&#x27;, `const sheet = wb.worksheets.getItem(&quot;Assumptions&quot;);
+const range = sheet.getRange(&quot;R25:W25&quot;);
+const before = {values: range.values, formulas: range.formulas};
+range.fillRight();
+return {sheet: &quot;Assumptions&quot;, range: &quot;R25:W25&quot;, before, after: {values: range.values, formulas: range.formulas}};`);
+await capture(&#x27;copy&#x27;, `const sheet = wb.worksheets.getItem(&quot;Assumptions&quot;);
+const before = readState();
+sheet.getRange(&quot;W26&quot;).copyFrom(sheet.getRange(&quot;R26&quot;), &quot;formulas&quot;);
+return {source: &quot;Assumptions!R26&quot;, destination: &quot;Assumptions!W26&quot;, before, after: readState()};`);
+await capture(&#x27;final-recalculation&#x27;, `wb.recalculate();
+return {restoredBase: readState(), summary: {
+  range: &quot;K13:M20&quot;, values: wb.worksheets.getItem(&quot;Summary&quot;).getRange(&quot;K13:M20&quot;).values,
+  formulas: wb.worksheets.getItem(&quot;Summary&quot;).getRange(&quot;K13:M20&quot;).formulas
+}};`);
+await capture(&#x27;error-scan&#x27;, `return await wb.inspect({
+  kind: &quot;match&quot;, searchTerm: &quot;#REF!|#DIV/0!|#VALUE!|#NAME\\\\?|#NUM!|#NULL!|#SPILL!|#CALC!&quot;, maxChars: 3000,
+  options: {useRegex: true, maxResults: 30}
+});`);
+await capture(&#x27;render-after&#x27;, `const image = await wb.render({sheetName: &quot;Summary&quot;, range: &quot;C7:M28&quot;, scale: 1.5, format: &quot;png&quot;});
+const bytes = new Uint8Array(await image.arrayBuffer());
+await fs.writeFile(path.join(dir, &quot;summary-after.png&quot;), bytes);
+return {saved: &quot;summary-after.png&quot;, mimeType: &quot;image/png&quot;, bytes: bytes.length};`);
+await capture(&#x27;export&#x27;, `const output = await SpreadsheetFile.exportXlsx(wb);
+const nativeReturn = await output.save(path.join(dir, &quot;man-group-demo.xlsx&quot;));
+const stats = await fs.stat(path.join(dir, &quot;man-group-demo.xlsx&quot;));
+return {saveReturn: nativeReturn === undefined ? &quot;undefined&quot; : nativeReturn,
+  saved: &quot;man-group-demo.xlsx&quot;, bytes: stats.size};`);
+await fs.writeFile(path.join(dir,&#x27;records.json&#x27;), JSON.stringify(records,null,2));
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

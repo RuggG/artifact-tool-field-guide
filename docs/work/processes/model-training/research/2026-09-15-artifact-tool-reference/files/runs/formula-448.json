@@ -1,0 +1,37 @@
+{
+  "name": "fx.BINOM.DIST.RANGE",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=BINOM.DIST.RANGE(A1, A1, 10)",
+      "value": "#NUM!",
+      "projection": [
+        [
+          "#NUM!",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 13
+    }
+  ]
+}

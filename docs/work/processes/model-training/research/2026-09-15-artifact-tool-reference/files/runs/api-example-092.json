@@ -1,0 +1,10 @@
+{
+  "index": 92,
+  "name": "range.format.rowHeight",
+  "summary": "Set row height to 18pt",
+  "originalCode": "sheet.getRange('A1:D10').format.rowHeight = 18;",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

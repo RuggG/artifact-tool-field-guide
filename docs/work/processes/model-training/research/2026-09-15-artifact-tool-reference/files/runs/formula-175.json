@@ -1,0 +1,37 @@
+{
+  "name": "fx.COUPDAYBS",
+  "category": "financial",
+  "examples": [
+    {
+      "formula": "=COUPDAYBS(A1, A1, A1)",
+      "value": "#NUM!",
+      "projection": [
+        [
+          "#NUM!",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 9
+    }
+  ]
+}

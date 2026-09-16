@@ -1,0 +1,10 @@
+{
+  "index": 25,
+  "name": "chart series",
+  "summary": "Create a series and set categories/values (one-liners)",
+  "originalCode": "chart.categories = ['A', 'B', 'C'];\nconst series = chart.series.add('S1'); series.categories = chart.categories; series.values = [1, 2, 3];",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

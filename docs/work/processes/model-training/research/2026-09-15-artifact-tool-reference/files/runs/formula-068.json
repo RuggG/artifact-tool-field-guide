@@ -1,0 +1,37 @@
+{
+  "name": "fx.MINUTE",
+  "category": "date-time",
+  "examples": [
+    {
+      "formula": "=MINUTE(10)",
+      "value": 0,
+      "projection": [
+        [
+          0,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 6
+    }
+  ]
+}

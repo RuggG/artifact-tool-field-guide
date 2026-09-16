@@ -1,0 +1,10 @@
+{
+  "index": 113,
+  "name": "range.clear",
+  "summary": "Clear contents and formats",
+  "originalCode": "sheet.getRange('A1:C10').clear({ applyTo: 'all' });",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

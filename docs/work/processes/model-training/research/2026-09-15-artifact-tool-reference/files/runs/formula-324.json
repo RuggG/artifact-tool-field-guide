@@ -1,0 +1,37 @@
+{
+  "name": "fx.QUOTIENT",
+  "category": "math-trig",
+  "examples": [
+    {
+      "formula": "=QUOTIENT(A1, A1)",
+      "value": 1,
+      "projection": [
+        [
+          1,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 12
+    }
+  ]
+}

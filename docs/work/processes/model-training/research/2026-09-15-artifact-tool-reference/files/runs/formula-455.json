@@ -1,0 +1,37 @@
+{
+  "name": "fx.MINIFS",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=MINIFS(B2:B20, A2:A20, \"North\", C2:C20, \">0\")",
+      "value": 0,
+      "projection": [
+        [
+          0,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 14
+    }
+  ]
+}

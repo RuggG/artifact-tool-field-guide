@@ -1,0 +1,10 @@
+{
+  "index": 18,
+  "name": "chart.xAxis",
+  "summary": "Make x-axis labels visible",
+  "originalCode": "chart.xAxis = { visible: true, tickLabelPosition: 'nextToAxis' };",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

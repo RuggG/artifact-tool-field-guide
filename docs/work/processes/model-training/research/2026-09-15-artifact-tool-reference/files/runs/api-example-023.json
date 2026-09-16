@@ -1,0 +1,10 @@
+{
+  "index": 23,
+  "name": "chart series",
+  "summary": "Series styling via worksheet.charts.add config",
+  "originalCode": "const chart = worksheet.charts.add('bar', { categories: ['Q1','Q2'], series: [{ name: '2025', values: [18, 14], line: { fill: '#7c3aed', style: 'solid', width: 2 }, fill: { type: 'solid', color: '#ede9fe', pattern: { type: 'smallCheck', color: '#8b5cf6' } } }, { name: '2026', values: [21, 17], line: { fill: '#d97706', style: 'solid', width: 2 }, fill: { type: 'solid', color: '#fef3c7', pattern: { type: 'dottedDiamond', color: '#f59e0b' } } }] });",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

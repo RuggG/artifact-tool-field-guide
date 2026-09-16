@@ -1,0 +1,610 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>explore.mjs · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="explore.mjs">Raw file</a> · <a data-public-raw download href="explore.mjs">Download</a></p><article><h1>explore.mjs</h1><pre class="public-code"><code>import fs from &#x27;node:fs/promises&#x27;;
+import path from &#x27;node:path&#x27;;
+import assert from &#x27;node:assert/strict&#x27;;
+import {fileURLToPath} from &#x27;node:url&#x27;;
+import {Workbook,SpreadsheetFile,FileBlob} from &#x27;@oai/artifact-tool&#x27;;
+const root=path.dirname(fileURLToPath(import.meta.url));
+const out=path.join(root,&#x27;files&#x27;,&#x27;runs&#x27;);
+await fs.mkdir(out,{recursive:true});
+const mode=process.argv[2]||&#x27;core&#x27;;
+const runName=mode+(process.env.RUN_LABEL?&#x27;-&#x27;+process.env.RUN_LABEL:&#x27;&#x27;);
+const receipts=[];
+const eq=(a,b)=&gt;assert.deepEqual(a,b);
+const close=(a,b,tol=1e-9)=&gt;assert.ok(typeof a===&#x27;number&#x27;&amp;&amp;Math.abs(a-b)&lt;=tol, `${a} != ${b}`);
+const val=(s,a)=&gt;s.getRange(a).values[0]?.[0];
+function fresh(name=&#x27;Data&#x27;){const w=Workbook.create();return [w,w.worksheets.add(name)];}
+async function save(name,value){await fs.writeFile(path.join(out,name),typeof value===&#x27;string&#x27;?value:JSON.stringify(value,(_,v)=&gt;typeof v===&#x27;bigint&#x27;?v.toString():v,2));}
+async function test(id,description,fn){if(process.env.PROBE_FILTER&amp;&amp;!new RegExp(process.env.PROBE_FILTER).test(id))return;const start=Date.now();try{const detail=await fn();receipts.push({id,description,status:&#x27;pass&#x27;,ms:Date.now()-start,detail});}catch(e){receipts.push({id,description,status:&#x27;fail&#x27;,ms:Date.now()-start,error:String(e),stack:e.stack?.split(&#x27;\n&#x27;).slice(0,5)});}await save(runName+&#x27;.json&#x27;,receipts);console.log(JSON.stringify(receipts.at(-1)));}
+async function xlsx(w,name){w.recalculate();const f=await SpreadsheetFile.exportXlsx(w);await f.save(path.join(out,name+&#x27;.xlsx&#x27;));return f;}
+
+if(mode===&#x27;formula-worker&#x27;){
+ const records=(await fs.readFile(path.join(out,&#x27;formula-help.ndjson&#x27;),&#x27;utf8&#x27;)).trim().split(&#x27;\n&#x27;).map(JSON.parse);
+ const entry=records[Number(process.argv[3])],results=[];
+ for(const formula of entry.examples||[]){
+  const start=Date.now();
+  try{
+   const [w,s]=fresh(&#x27;Sheet1&#x27;);const data=w.worksheets.add(&#x27;Data&#x27;);
+   // Shared synthetic fixture; examples are not rewritten. Errors may be caused
+   // by an example&#x27;s missing context and do not prove lack of function support.
+   const grid=Array.from({length:20},(_,i)=&gt;[i+1,(i+1)*2,(i+1)*3,(i+1)*4,(i+1)*5]);
+   s.getRange(&#x27;A1:E20&#x27;).values=grid;data.getRange(&#x27;A1:E20&#x27;).values=grid;
+   s.getRange(&#x27;Z100&#x27;).formulas=[[formula]];w.recalculate();
+   results.push({formula,value:val(s,&#x27;Z100&#x27;),projection:s.getRange(&#x27;Z100:AC103&#x27;).values,ms:Date.now()-start});
+  }catch(e){results.push({formula,error:String(e),ms:Date.now()-start});}
+ }
+ await save(&#x27;formula-&#x27;+String(process.argv[3]).padStart(3,&#x27;0&#x27;)+&#x27;.json&#x27;,{name:entry.name,category:entry.category,examples:results});
+ process.exit(0);
+}
+
+if(mode===&#x27;api-worker&#x27;){
+ const entries=(await fs.readFile(path.join(out,&#x27;api-help.ndjson&#x27;),&#x27;utf8&#x27;)).trim().split(&#x27;\n&#x27;).map(JSON.parse).filter(x=&gt;x.kind===&#x27;api&#x27;).flatMap(x=&gt;(x.examples||[]).map(example=&gt;({name:x.name,...example})));
+ const index=Number(process.argv[3]),entry=entries[index],folder=path.join(out,&#x27;api-examples&#x27;,String(index).padStart(3,&#x27;0&#x27;));
+ await fs.mkdir(folder,{recursive:true});process.chdir(folder);
+ const [w,s]=fresh(&#x27;Sheet1&#x27;);const d=w.worksheets.add(&#x27;Data&#x27;);s.getRange(&#x27;A1:C6&#x27;).values=[[&#x27;Name&#x27;,&#x27;Value&#x27;,&#x27;Other&#x27;],[&#x27;Alpha&#x27;,1,2],[&#x27;Beta&#x27;,3,4],[&#x27;Gamma&#x27;,5,6],[&#x27;Delta&#x27;,7,8],[&#x27;Epsilon&#x27;,9,10]];d.getRange(&#x27;A1:C6&#x27;).copyFrom(s.getRange(&#x27;A1:C6&#x27;));
+ for(const name of [&#x27;Charts&#x27;,&#x27;Summary&#x27;,&#x27;Shapes&#x27;,&#x27;Revenue&#x27;]){const extra=w.worksheets.add(name);extra.getRange(&#x27;A1:C6&#x27;).copyFrom(s.getRange(&#x27;A1:C6&#x27;));}
+ const c=s.charts.add(&#x27;line&#x27;,s.getRange(&#x27;A1:C6&#x27;));c.setPosition(&#x27;F1&#x27;,&#x27;N15&#x27;);
+ const logs=[];const quiet={log:(...v)=&gt;logs.push(v.map(x=&gt;typeof x===&#x27;string&#x27;?x:JSON.stringify(x)).join(&#x27; &#x27;)),error:(...v)=&gt;logs.push(v.map(String).join(&#x27; &#x27;))};
+ const result={index,name:entry.name,summary:entry.summary,originalCode:entry.code};
+ // The help catalogue mixes JavaScript and TypeScript&#x27;s non-null assertion.
+ let rawCode=entry.code;
+ const conversion=[];
+ if(!rawCode){
+  const options=Object.fromEntries(Object.entries(entry).filter(([k,v])=&gt;![&#x27;name&#x27;,&#x27;summary&#x27;].includes(k)&amp;&amp;v!==null));
+  if(entry.name===&#x27;workbook.help&#x27;){const {query,...rest}=options;rawCode=&#x27;console.log(workbook.help(&#x27;+JSON.stringify(query)+&#x27;,&#x27;+JSON.stringify(rest)+&#x27;));&#x27;;}
+  if(entry.name===&#x27;workbook.inspect&#x27;){if(options.target?.id===&#x27;ws/&lt;sheetId&gt;&#x27;)options.target.id=&#x27;ws/&#x27;+s.id;rawCode=&#x27;console.log(await workbook.inspect(&#x27;+JSON.stringify(options)+&#x27;));&#x27;;}
+  if(entry.name===&#x27;workbook.resolve&#x27;){w.comments.setSelf({displayName:&#x27;Ruggero Gargiulo&#x27;});const th=w.comments.addThread({cell:s.getRange(&#x27;A1&#x27;)},&#x27;Probe&#x27;);const id=entry.id.startsWith(&#x27;ws/&#x27;)?&#x27;ws/&#x27;+s.id:entry.id.startsWith(&#x27;th/&#x27;)?&#x27;th/&#x27;+th.id:&#x27;ch/&#x27;+c.id;rawCode=&#x27;console.log(workbook.resolve(&#x27;+JSON.stringify(id)+&#x27;).id);&#x27;;}
+  conversion.push(&#x27;Mapped structured example fields to the corresponding public method; replaced placeholder anchors with actual fixture IDs.&#x27;);
+ }
+ if(index===49){rawCode=&quot;workbook.help(&#x27;*&#x27;,{search:&#x27;trendline|trendlines&#x27;,include:[&#x27;index&#x27;,&#x27;examples&#x27;]});&quot;;conversion.push(&#x27;Repaired malformed trailing dot and used the documented query/options signature.&#x27;);}
+ const code=rawCode.replace(/\]!(?=[.;,\)\[])/g,&#x27;]&#x27;);
+ result.adaptations=[...conversion,...(code===rawCode?[]:[&#x27;Removed TypeScript non-null assertion after array access.&#x27;])];
+ try{
+ const AsyncFunction=Object.getPrototypeOf(async function(){}).constructor;
+ await new AsyncFunction(&#x27;Workbook&#x27;,&#x27;SpreadsheetFile&#x27;,&#x27;FileBlob&#x27;,&#x27;workbook&#x27;,&#x27;wb&#x27;,&#x27;worksheet&#x27;,&#x27;sheet&#x27;,&#x27;range&#x27;,&#x27;chart&#x27;,&#x27;series&#x27;,&#x27;fs&#x27;,&#x27;outputDir&#x27;,&#x27;sourceRange&#x27;,&#x27;targetRange&#x27;,&#x27;console&#x27;,&#x27;{\n&#x27;+code+&#x27;\n}&#x27;)(Workbook,SpreadsheetFile,FileBlob,w,w,s,s,s.getRange(&#x27;A1:C6&#x27;),c,c.series.items[0],fs,folder,s.getRange(&#x27;A1:B2&#x27;),s.getRange(&#x27;A1:B6&#x27;),quiet);
+ result.execution=&#x27;completed&#x27;;try{await xlsx(w,&#x27;api-example-&#x27;+String(index).padStart(3,&#x27;0&#x27;));result.export=&#x27;completed&#x27;;}catch(e){result.exportError=String(e);}
+ }catch(e){result.executionError=String(e);}result.logs=logs;
+ await save(&#x27;api-example-&#x27;+String(index).padStart(3,&#x27;0&#x27;)+&#x27;.json&#x27;,result);process.exit(0);
+}
+
+if(mode===&#x27;discover&#x27;){
+ const [w]=fresh();
+ for(const [name,query,opts] of [
+   [&#x27;api-help&#x27;,&#x27;*&#x27;,{include:&#x27;index,examples,notes&#x27;,maxChars:2000000}],
+   [&#x27;formula-help&#x27;,&#x27;fx.*&#x27;,{include:&#x27;index,examples,notes&#x27;,maxChars:2000000}],
+   [&#x27;enums-help&#x27;,&#x27;enum.*&#x27;,{include:&#x27;index,examples,notes&#x27;,maxChars:1000000}],
+ ]){const r=w.help(query,opts);await save(name+&#x27;.json&#x27;,r);await save(name+&#x27;.ndjson&#x27;,r.ndjson);console.log(name,JSON.stringify({count:r.recordCount,truncated:r.truncated,keys:Object.keys(r),chars:r.ndjson.length,first:r.ndjson.split(&#x27;\n&#x27;)[0]}));}
+}
+
+if(mode===&#x27;surface&#x27;){
+ const [w,s]=fresh();s.getRange(&#x27;A1:C3&#x27;).values=[[&#x27;Name&#x27;,&#x27;Qty&#x27;,&#x27;Price&#x27;],[&#x27;A&#x27;,1,2],[&#x27;B&#x27;,3,4]];
+ const table=s.tables.add(&#x27;A1:C3&#x27;,true,&#x27;DataTable&#x27;),chart=s.charts.add(&#x27;bar&#x27;,s.getRange(&#x27;A1:C3&#x27;));
+ const objects={workbook:w,worksheets:w.worksheets,worksheet:s,range:s.getRange(&#x27;A1:B2&#x27;),format:s.getRange(&#x27;A1&#x27;).format,
+ tables:s.tables,table,tableRows:table.rows,tableColumns:table.columns,
+ notes:w.notes,comments:w.comments,names:w.names,pivotTables:s.pivotTables,slicers:s.slicers,
+ awareness:w.awareness,charts:s.charts,chart,series:chart.series,seriesItem:chart.series.items[0],
+ shapes:s.shapes,images:s.images,sparklines:s.sparklineGroups,dataTables:s.dataTables,dataValidations:s.dataValidations,
+ conditionalFormats:s.getRange(&#x27;B2:B3&#x27;).conditionalFormats,freezePanes:s.freezePanes};
+ const surface={};for(const [name,obj] of Object.entries(objects)){if(!obj){surface[name]=null;continue;}const desc=Object.getOwnPropertyDescriptors(Object.getPrototypeOf(obj));
+ surface[name]=Object.entries(desc).filter(([k])=&gt;k!==&#x27;constructor&#x27;).map(([key,d])=&gt;({key,kind:typeof d.value===&#x27;function&#x27;?&#x27;method&#x27;:d.get?&#x27;getter&#x27;:&#x27;property&#x27;,set:!!d.set,arity:typeof d.value===&#x27;function&#x27;?d.value.length:undefined}));
+ }
+ await save(&#x27;public-surface.json&#x27;,surface);
+ const selected={};for(const [name,obj] of Object.entries(objects)){if(![&#x27;notes&#x27;,&#x27;comments&#x27;,&#x27;pivotTables&#x27;,&#x27;slicers&#x27;,&#x27;awareness&#x27;,&#x27;tableRows&#x27;,&#x27;tableColumns&#x27;,&#x27;dataTables&#x27;].includes(name)||!obj)continue;
+ for(const prop of surface[name])if(prop.kind===&#x27;method&#x27;)selected[name+&#x27;.&#x27;+prop.key]=obj[prop.key].toString();}
+ await save(&#x27;targeted-public-methods.json&#x27;,selected);
+ console.log(JSON.stringify(surface));
+}
+
+if(mode===&#x27;core&#x27;){
+await test(&#x27;C01&#x27;,&#x27;Workbook create, aliases, worksheet collection lifecycle&#x27;,async()=&gt;{
+ const w=Workbook.create();eq(w.worksheets.getSheetCount(),0);
+ const [a,b]=w.worksheets.add([&#x27;Alpha&#x27;,&#x27;Beta&#x27;]);eq(w.sheets,w.worksheets);
+ eq(w.worksheets.getItem(&#x27;Alpha&#x27;).id,a.id);eq(w.worksheets.getItemAt(1).id,b.id);
+ w.worksheets.setActiveWorksheet(&#x27;Beta&#x27;);eq(w.worksheets.getActiveWorksheet().name,&#x27;Beta&#x27;);
+ a.name=&#x27;Renamed&#x27;;a.index=1;a.showGridLines=false;a.tabColor=&#x27;#123456&#x27;;
+ const detail={count:w.worksheets.getSheetCount(),index:w.worksheets.getSheetIndex(&#x27;Renamed&#x27;),first:w.worksheets.getFirst().name,nameAt0:w.worksheets.getSheetNameByIndex(0),id:a.id,sheetId:a.sheetId,tabColor:a.tabColor};
+ b.delete();eq(w.worksheets.getSheetCount(),1);return detail;
+});
+await test(&#x27;C02&#x27;,&#x27;Worksheet duplicate and missing lookups&#x27;,()=&gt;{
+ const [w,s]=fresh();const duplicate=w.worksheets.add(&#x27;Data&#x27;);
+ return {sameId:duplicate.id===s.id,count:w.worksheets.getSheetCount(),missing:w.worksheets.getItemOrNullObject(&#x27;Missing&#x27;)};
+});
+await test(&#x27;C03&#x27;,&#x27;Typed matrices, one-dimensional rows/columns, dates, literal formula text&#x27;,()=&gt;{
+ const [w,s]=fresh();s.getRange(&#x27;A1:C2&#x27;).values=[[12,true,null],[new Date(&#x27;2026-01-01T00:00:00Z&#x27;),&#x27;=2+3&#x27;,&quot;&#x27;=2+3&quot;]];
+ s.getRange(&#x27;E1:G1&#x27;).values=[1,2,3];s.getRange(&#x27;E2:E4&#x27;).values=[4,5,6];w.recalculate();
+ eq(val(s,&#x27;B2&#x27;),5);eq(val(s,&#x27;C2&#x27;),&#x27;=2+3&#x27;);eq(s.getRange(&#x27;E1:G1&#x27;).values,[[1,2,3]]);
+ return {values:s.getRange(&#x27;A1:C2&#x27;).values,formulas:s.getRange(&#x27;A1:C2&#x27;).formulas,rows:s.getRange(&#x27;E1:G4&#x27;).values};
+});
+await test(&#x27;C04&#x27;,&#x27;Broadcast values versus formula assignment&#x27;,()=&gt;{
+ const [w,s]=fresh();s.getRange(&#x27;A1:B2&#x27;).values=[[7]];eq(s.getRange(&#x27;A1:B2&#x27;).values,[[7,7],[7,7]]);
+ let formulaError;try{s.getRange(&#x27;D1:E2&#x27;).formulas=[[&#x27;=1+1&#x27;]];}catch(e){formulaError=String(e);}
+ return {formulaError,formulas:s.getRange(&#x27;D1:E2&#x27;).formulas,values:s.getRange(&#x27;D1:E2&#x27;).values};
+});
+await test(&#x27;C05&#x27;,&#x27;Single-cell expansion and write resizing&#x27;,()=&gt;{
+ const [w,s]=fresh();s.getRange(&#x27;A1&#x27;).values=[[1,2],[3,4]];eq(s.getRange(&#x27;A1:B2&#x27;).values,[[1,2],[3,4]]);
+ s.getRange(&#x27;D1&#x27;).write([[5,6],[7,8]]);s.getRange(&#x27;G1&#x27;).write({formulas:[[&#x27;=SUM(A1:B2)&#x27;]]});eq(val(s,&#x27;G1&#x27;),10);
+ let rejected=false;try{s.getRange(&#x27;A1&#x27;).write([[9]],{overwrite:&#x27;error&#x27;});}catch(e){rejected=String(e);}
+ assert.ok(rejected);eq(val(s,&#x27;A1&#x27;),1);return {rejected,expanded:s.getRange(&#x27;D1:E2&#x27;).values};
+});
+await test(&#x27;C06&#x27;,&#x27;Write clear and resize:none boundary&#x27;,()=&gt;{
+ const [w,s]=fresh();s.getRange(&#x27;A1:B2&#x27;).values=[[1,2],[3,4]];s.getRange(&#x27;A1:B2&#x27;).format.fill=&#x27;#ff0000&#x27;;
+ let err;try{s.getRange(&#x27;D1:E2&#x27;).write([[1,2,3]],{resize:&#x27;none&#x27;});}catch(e){err=String(e);}
+ s.getRange(&#x27;A1:B2&#x27;).write({values:[[9]]},{clear:&#x27;all&#x27;});return {err,values:s.getRange(&#x27;A1:B2&#x27;).values};
+});
+await test(&#x27;C07&#x27;,&#x27;Index/address/navigation conventions&#x27;,()=&gt;{
+ const [w,s]=fresh();const r=s.getRange(&#x27;C3:E5&#x27;);r.values=[[1,2,3],[4,5,6],[7,8,9]];
+ eq(s.getCell(2,2).values,[[1]]);eq(r.getCell(1,1).values,[[5]]);eq(r.getRow(1).values,[[4,5,6]]);eq(r.getColumn(1).values,[[2],[5],[8]]);
+ return {address:r.address,getAddress:r.getAddress(),rowIndex:r.rowIndex,columnIndex:r.columnIndex,rowCount:r.rowCount,columnCount:r.columnCount,
+ relativeA1:r.getRange(&#x27;A1&#x27;).address,byIndex:r.getRangeByIndexes(1,1,1,1).address,
+ offset:r.offset(1,2).address,offsetAlias:r.getOffsetRange(1,2).address,resize:r.resize(2,2).address,
+ resized:r.getResizedRange(1,1).address,resizeAlias:r.getResizeRange(2,2).address,current:r.getCurrentRegion().address,used:s.getUsedRange(true).address};
+});
+await test(&#x27;C08&#x27;,&#x27;Fill down/right shifts relative and preserves anchored references&#x27;,()=&gt;{
+ const [w,s]=fresh();s.getRange(&#x27;A1:C3&#x27;).values=[[1,2,3],[4,5,6],[7,8,9]];
+ s.getRange(&#x27;D1&#x27;).formulas=[[&#x27;=A1+$B$1+C$1&#x27;]];s.getRange(&#x27;D1:D3&#x27;).fillDown();
+ eq(s.getRange(&#x27;D1:D3&#x27;).formulas,[[&#x27;=A1+$B$1+C$1&#x27;],[&#x27;=A2+$B$1+C$1&#x27;],[&#x27;=A3+$B$1+C$1&#x27;]]);
+ s.getRange(&#x27;A5&#x27;).formulas=[[&#x27;=A1*2&#x27;]];s.getRange(&#x27;A5:C5&#x27;).fillRight();eq(s.getRange(&#x27;A5:C5&#x27;).values,[[2,4,6]]);
+ return {down:s.getRange(&#x27;D1:D3&#x27;).values,right:s.getRange(&#x27;A5:C5&#x27;).formulas};
+});
+await test(&#x27;C09&#x27;,&#x27;R1C1, copy all/values/formulas, fillFrom&#x27;,()=&gt;{
+ const [w,s]=fresh();s.getRange(&#x27;A1:B2&#x27;).values=[[2,3],[4,5]];s.getRange(&#x27;C1:C2&#x27;).formulasR1C1=[[&#x27;=RC[-2]+RC[-1]&#x27;],[&#x27;=RC[-2]+RC[-1]&#x27;]];eq(s.getRange(&#x27;C1:C2&#x27;).values,[[5],[9]]);
+ s.getRange(&#x27;D1:D2&#x27;).copyFrom(s.getRange(&#x27;C1:C2&#x27;),&#x27;values&#x27;);eq(s.getRange(&#x27;D1:D2&#x27;).values,[[5],[9]]);
+ s.getRange(&#x27;C1:C2&#x27;).copyTo(s.getRange(&#x27;E1:E2&#x27;),&#x27;formulas&#x27;);
+ s.getRange(&#x27;A4:B5&#x27;).copyFrom(s.getRange(&#x27;A1:B2&#x27;),&#x27;all&#x27;);s.getRange(&#x27;G1:G2&#x27;).fillFrom(s.getRange(&#x27;C1:C2&#x27;));
+ return {r1c1:s.getRange(&#x27;C1:C2&#x27;).formulasR1C1,copiedFormulas:s.getRange(&#x27;E1:E2&#x27;).formulas,fillFrom:s.getRange(&#x27;G1:G2&#x27;).formulas};
+});
+await test(&#x27;C10&#x27;,&#x27;Clear modes retain appropriate contents/styles; null removes values&#x27;,()=&gt;{
+ const [w,s]=fresh();const r=s.getRange(&#x27;A1:B2&#x27;);r.values=[[1,2],[3,4]];r.format.fill=&#x27;#ff0000&#x27;;r.clear({applyTo:&#x27;formats&#x27;});eq(val(s,&#x27;A1&#x27;),1);
+ r.format.fill=&#x27;#00ff00&#x27;;r.clear({applyTo:&#x27;contents&#x27;});eq(val(s,&#x27;A1&#x27;),null);r.values=[[true]];r.values=null;eq(val(s,&#x27;A1&#x27;),null);
+ r.clear({applyTo:&#x27;all&#x27;});return {values:r.values};
+});
+await test(&#x27;C11&#x27;,&#x27;Merge, across merge, worksheet merge aliases&#x27;,async()=&gt;{
+ const [w,s]=fresh();s.getRange(&#x27;A1:C1&#x27;).merge();s.getRange(&#x27;A1&#x27;).values=[[&#x27;Merged&#x27;]];s.getRange(&#x27;A3:C4&#x27;).merge(true);s.mergeCells(&#x27;E1:F2&#x27;);s.unmergeCells(&#x27;E1:F2&#x27;);s.getRange(&#x27;A3:C4&#x27;).unmerge();await xlsx(w,&#x27;merges&#x27;);return {protoMerges:w.toProto().sheets?.[0]?.merges};
+});
+await test(&#x27;C12&#x27;,&#x27;Formatting, theme, sizing, autofit and format matrices&#x27;,async()=&gt;{
+ const [w,s]=fresh();s.getRange(&#x27;A1:C4&#x27;).values=[[&#x27;Metric&#x27;,&#x27;Value&#x27;,&#x27;Rate&#x27;],[&#x27;Alpha&#x27;,1234.56,0.12],[&#x27;Beta&#x27;,-123,0],[&#x27;Date&#x27;,new Date(&#x27;2026-01-01&#x27;),null]];
+ w.setColorScheme({name:&#x27;Probe&#x27;,themeColors:{accent1:&#x27;#123456&#x27;,accent2:&#x27;#007755&#x27;,bg1:&#x27;#ffffff&#x27;,tx1:&#x27;#000000&#x27;}});
+ s.getRange(&#x27;A1:C4&#x27;).format={font:{name:&#x27;Arial&#x27;,size:11},verticalAlignment:&#x27;center&#x27;,rowHeight:20,columnWidth:18};
+ s.getRange(&#x27;A1:C1&#x27;).format={fill:&#x27;accent1&#x27;,font:{bold:true,color:&#x27;#ffffff&#x27;},horizontalAlignment:&#x27;center&#x27;};
+ s.getRange(&#x27;B2:B3&#x27;).setNumberFormat(&#x27;#,##0.00;(#,##0.00)&#x27;);s.getRange(&#x27;C2:C3&#x27;).format.numberFormat=[[&#x27;0.0%&#x27;],[&#x27;0%&#x27;]];s.getRange(&#x27;B4&#x27;).setNumberFormat(&#x27;yyyy-mm-dd&#x27;);
+ s.getRange(&#x27;A1:C4&#x27;).format.borders={preset:&#x27;outside&#x27;,style:&#x27;thin&#x27;,color:&#x27;#999999&#x27;};
+ s.getRange(&#x27;A1:C4&#x27;).format.autofitColumns();s.getRange(&#x27;A1:C4&#x27;).format.autofitRows();
+ s.getRange(&#x27;A1:A4&#x27;).format.columnWidthPx=130;s.getRange(&#x27;A1:C1&#x27;).format.rowHeightPx=30;
+ s.showGridLines=false;await xlsx(w,&#x27;formatting&#x27;);const layout=await w.export({sheetName:&#x27;Data&#x27;,range:&#x27;A1:C4&#x27;,format:&#x27;layout&#x27;});await save(&#x27;formatting-layout.json&#x27;,await layout.text());
+ const png=await w.render({sheetName:&#x27;Data&#x27;,range:&#x27;A1:C4&#x27;,scale:2});await fs.writeFile(path.join(out,&#x27;formatting.png&#x27;),new Uint8Array(await png.arrayBuffer()));
+ return {rowHeight:s.getRange(&#x27;A1&#x27;).format.rowHeight,columnWidth:s.getRange(&#x27;A1&#x27;).format.columnWidth,numberFormat:s.getRange(&#x27;B2:C3&#x27;).format.numberFormat,theme:w.theme};
+});
+await test(&#x27;C13&#x27;,&#x27;Theme/RGB transformed colors, gradient fills, borders and alignments&#x27;,async()=&gt;{
+ const [w,s]=fresh();s.getRange(&#x27;A1:F4&#x27;).values=[[&#x27;Solid&#x27;,&#x27;Theme&#x27;,&#x27;Gradient&#x27;,&#x27;Borders&#x27;,&#x27;Wrapped&#x27;,&#x27;Centered&#x27;],[1,2,3,4,&#x27;long text wraps here&#x27;,6],[2,3,4,5,6,7],[3,4,5,6,7,8]];
+ s.getRange(&#x27;A2:A4&#x27;).format.fill={type:&#x27;solid&#x27;,color:{type:&#x27;rgb&#x27;,value:&#x27;#ff0000&#x27;,transform:{opacity:0.5}}};
+ s.getRange(&#x27;B2:B4&#x27;).format.fill={type:&#x27;theme&#x27;,value:&#x27;accent1&#x27;,transform:{lighten:0.3}};
+ s.getRange(&#x27;C2:C4&#x27;).format.fill={type:&#x27;gradient&#x27;,stops:[{offset:0,color:&#x27;#ffffff&#x27;},{offset:1,color:&#x27;#2563eb&#x27;}],angleDeg:45};
+ s.getRange(&#x27;D2:D4&#x27;).format.borders={top:{style:&#x27;thick&#x27;,color:&#x27;#000000&#x27;},bottom:{style:&#x27;dashed&#x27;},insideHorizontal:{style:&#x27;dotted&#x27;}};
+ s.getRange(&#x27;E2&#x27;).format.wrapText=true;s.getRange(&#x27;F2:G2&#x27;).format.horizontalAlignment=&#x27;centerAcrossSelection&#x27;;await xlsx(w,&#x27;fills&#x27;);return {accepted:true};
+});
+await test(&#x27;C14&#x27;,&#x27;Freeze rows and columns, unfreeze, worksheet reset&#x27;,async()=&gt;{
+ const [w,s]=fresh();s.getRange(&#x27;A1:B2&#x27;).values=[[1,2],[3,4]];s.freezePanes.freezeRows(1);s.freezePanes.freezeColumns(1);await xlsx(w,&#x27;freeze&#x27;);
+ s.freezePanes.unfreeze();s.reset({clear:&#x27;used&#x27;,applyTo:&#x27;all&#x27;,deleteTables:true,deleteCharts:true,deleteDrawings:true,deleteSparklines:true});eq(val(s,&#x27;A1&#x27;),null);return {reset:true};
+});
+await test(&#x27;C15&#x27;,&#x27;Named range calculation, scopes and deletion&#x27;,async()=&gt;{
+ const [w,s]=fresh();s.getRange(&#x27;A1:A3&#x27;).values=[[1],[2],[3]];const n=w.names.addRange(&#x27;SalesRange&#x27;,&#x27;Data!$A$1:$A$3&#x27;,{description:&#x27;Synthetic sales&#x27;});
+ s.names.addRange(&#x27;LocalRange&#x27;,&#x27;Data!$A$2:$A$3&#x27;);s.getRange(&#x27;B1:B2&#x27;).formulas=[[&#x27;=SUM(SalesRange)&#x27;],[&#x27;=SUM(LocalRange)&#x27;]];eq(s.getRange(&#x27;B1:B2&#x27;).values,[[6],[5]]);
+ eq(w.definedNames,w.names);const address=w.names.getItem(&#x27;SalesRange&#x27;).getRange().address;await xlsx(w,&#x27;names&#x27;);w.names.getItem(&#x27;SalesRange&#x27;).delete();return {address};
+});
+await test(&#x27;C16&#x27;,&#x27;Named LAMBDA functions and prefixed variables&#x27;,async()=&gt;{
+ const [w,s]=fresh();w.names.addFunction(&#x27;AddTax&#x27;,{formula:&#x27;=_xlfn.LAMBDA(_xlpm.amount,_xlpm.amount*1.1)&#x27;,description:&#x27;Add synthetic tax&#x27;});s.getRange(&#x27;A1&#x27;).formulas=[[&#x27;=AddTax(100)&#x27;]];w.recalculate();await xlsx(w,&#x27;named-function&#x27;);return {value:val(s,&#x27;A1&#x27;),names:(await w.inspect({kind:&#x27;definedName&#x27;})).ndjson};
+});
+await test(&#x27;C17&#x27;,&#x27;Threaded cell/range comments, reply, reactions and state&#x27;,async()=&gt;{
+ const [w,s]=fresh();s.getRange(&#x27;A1:B2&#x27;).values=[[1,2],[3,4]];w.comments.setSelf({displayName:&#x27;Ruggero Gargiulo&#x27;,initials:&#x27;RG&#x27;});
+ const th=w.comments.addThread({cell:s.getRange(&#x27;A1&#x27;)},&#x27;Synthetic review&#x27;);const reply=th.addReply(&#x27;Checked&#x27;);reply.toggleReaction(&#x27;👍&#x27;);th.resolve();th.reopen();
+ w.comments.addThread({range:s.getRange(&#x27;A2:B2&#x27;)},&#x27;Range review&#x27;);const ins=await w.inspect({kind:&#x27;thread&#x27;,maxChars:10000});await save(&#x27;comments-inspect.json&#x27;,ins);await xlsx(w,&#x27;comments&#x27;);return {inspect:ins.ndjson};
+});
+await test(&#x27;C18&#x27;,&#x27;Tables create, append, style, header/totals and delete&#x27;,async()=&gt;{
+ const [w,s]=fresh();s.getRange(&#x27;A1:C3&#x27;).values=[[&#x27;SKU&#x27;,&#x27;Qty&#x27;,&#x27;Price&#x27;],[&#x27;A&#x27;,2,10],[&#x27;B&#x27;,3,20]];const t=s.tables.add(&#x27;A1:C3&#x27;,true,&#x27;Inventory&#x27;);
+ t.rows.add(null,[[&#x27;C&#x27;,4,30]]);eq(t.getDataRows().length,3);t.name=&#x27;Stock&#x27;;t.style=&#x27;TableStyleMedium2&#x27;;t.showTotals=true;t.showBandedColumns=true;t.showFilterButton=true;
+ s.getRange(&#x27;E1&#x27;).formulas=[[&#x27;=SUM(Stock[Qty])&#x27;]];w.recalculate();close(val(s,&#x27;E1&#x27;),9);await xlsx(w,&#x27;table&#x27;);
+ const detail={address:t.address,headers:t.getHeaderRowRange().values,data:t.getDataRows(),formula:val(s,&#x27;E1&#x27;)};t.delete();eq(s.tables.items.length,0);return detail;
+});
+await test(&#x27;C19&#x27;,&#x27;Headerless table and overlap acceptance boundary&#x27;,async()=&gt;{
+ const [w,s]=fresh();s.getRange(&#x27;A1:C3&#x27;).values=[[&#x27;A&#x27;,1,2],[&#x27;B&#x27;,3,4],[&#x27;C&#x27;,5,6]];const t=s.tables.add(&#x27;A1:B3&#x27;,false,&#x27;Headerless&#x27;);let overlap;
+ try{s.tables.add(&#x27;B1:C3&#x27;,false,&#x27;Overlap&#x27;);overlap=&#x27;accepted&#x27;;}catch(e){overlap=String(e);}return {headerless:t.getRange().values,overlap};
+});
+await test(&#x27;C20&#x27;,&#x27;CSV quote/newline parsing and string typing&#x27;,async()=&gt;{
+ const w=await Workbook.fromCSV(&#x27;Name,Qty,Note\n&quot;North, Ltd&quot;,2,&quot;Line 1\nLine 2&quot;\nSouth,03,plain&#x27;,{sheetName:&#x27;CSV&#x27;});const s=w.worksheets.getItemAt(0);
+ eq(val(s,&#x27;B2&#x27;),&#x27;2&#x27;);eq(val(s,&#x27;A2&#x27;),&#x27;North, Ltd&#x27;);const before=s.getRange(&#x27;A1:C3&#x27;).values;s.getRange(&#x27;B2:B3&#x27;).values=s.getRange(&#x27;B2:B3&#x27;).values.map(r=&gt;[Number(r[0])]);s.getRange(&#x27;E1&#x27;).formulas=[[&#x27;=SUM(B2:B3)&#x27;]];close(val(s,&#x27;E1&#x27;),5);
+ let append;try{await w.fromCSV(&#x27;A,B\n1,2&#x27;,{sheetName:&#x27;Second&#x27;});append=&#x27;accepted&#x27;;}catch(e){append=String(e);}return {before,converted:val(s,&#x27;E1&#x27;),append};
+});
+await test(&#x27;C21&#x27;,&#x27;Instance CSV and Markdown import&#x27;,async()=&gt;{
+ const w=Workbook.create();const r=await w.fromCSV(&#x27;A,B\n1,2&#x27;,{sheetName:&#x27;CSV&#x27;});const md=await Workbook.fromMarkdown(&#x27;| Name | Value |\n| --- | ---: |\n| Alpha | 10 |\n| Beta | 20 |&#x27;,{sheetName:&#x27;MD&#x27;,format:true});
+ await xlsx(md,&#x27;markdown-import&#x27;);return {instanceRange:r.range?.address,instanceSheet:r.sheet?.name,markdown:md.worksheets.getItemAt(0).getUsedRange().values,tableCount:md.worksheets.getItemAt(0).tables.items.length};
+});
+await test(&#x27;C22&#x27;,&#x27;HTML copy/paste values versus formulas&#x27;,async()=&gt;{
+ const [w,s]=fresh();s.getRange(&#x27;A1:B2&#x27;).values=[[&#x27;Qty&#x27;,&#x27;Double&#x27;],[5,&#x27;=A2*2&#x27;]];s.getRange(&#x27;A1:B1&#x27;).format.font.bold=true;
+ const html=w.toHTML(0,&#x27;A1:B2&#x27;,{formulas:true});await save(&#x27;copy-with-formulas.html&#x27;,html);const [target,t]=fresh(&#x27;Target&#x27;);const result=target.fromHTML(0,html,&#x27;C3&#x27;);
+ target.recalculate();return {result,values:t.getRange(&#x27;C3:D4&#x27;).values,formulas:t.getRange(&#x27;C3:D4&#x27;).formulas,htmlLength:html.length};
+});
+await test(&#x27;C23&#x27;,&#x27;Serialize/load, validated load, constructor and utilities&#x27;,()=&gt;{
+ const [w,s]=fresh();s.getRange(&#x27;A1:B1&#x27;).values=[[3,&#x27;=A1*4&#x27;]];const proto=w.toProto();const loaded=Workbook.load(proto,{validate:true});eq(val(loaded.worksheets.getItem(&#x27;Data&#x27;),&#x27;B1&#x27;),12);
+ const constructed=new Workbook(proto);eq(val(constructed.worksheets.getItem(&#x27;Data&#x27;),&#x27;A1&#x27;),3);
+ eq(w.utils.columnToLetter(27),&#x27;AA&#x27;);eq(w.utils.letterToColumn(&#x27;AA&#x27;),27);return {protoKeys:Object.keys(proto),address:w.utils.toA1String(1,1,3,2),fillRight:w.utils.fillRight([[1]],3),fillDown:w.utils.fillDown([[1]],3)};
+});
+await test(&#x27;C24&#x27;,&#x27;Cross-sheet dependencies, recalculation, trace and stats&#x27;,async()=&gt;{
+ const [w,s]=fresh(&#x27;Input&#x27;);const model=w.worksheets.add(&#x27;Build&#x27;);s.getRange(&#x27;A1:B2&#x27;).values=[[&#x27;Base&#x27;,100],[&#x27;Growth&#x27;,0.1]];model.getRange(&#x27;A1&#x27;).formulas=[[&quot;=&#x27;Input&#x27;!B1*(1+&#x27;Input&#x27;!B2)&quot;]];close(val(model,&#x27;A1&#x27;),110);
+ s.getRange(&#x27;B2&#x27;).values=[[0.2]];w.recalculate();close(val(model,&#x27;A1&#x27;),120);const trace=w.trace(&#x27;Build!A1&#x27;);await save(&#x27;trace.json&#x27;,trace);return {trace,stats:w.collectFormulaUsageStats(),badTrace:w.trace(&#x27;Missing!A1&#x27;)};
+});
+await test(&#x27;C25&#x27;,&#x27;Dynamic arrays, spill descriptors and obstruction&#x27;,async()=&gt;{
+ const [w,s]=fresh();s.getRange(&#x27;A1&#x27;).formulas=[[&#x27;=SEQUENCE(3,2)&#x27;]];w.recalculate();eq(s.getRange(&#x27;A1:B3&#x27;).values,[[1,2],[3,4],[5,6]]);
+ const before={formulas:s.getRange(&#x27;A1:B3&#x27;).formulas,display:s.getRange(&#x27;A1:B3&#x27;).displayFormulas,infos:s.getRange(&#x27;A1:B3&#x27;).formulaInfos};
+ let childEdit;try{s.getRange(&#x27;B2&#x27;).values=[[99]];childEdit=&#x27;accepted&#x27;;}catch(e){childEdit=String(e);}
+ s.getRange(&#x27;E2&#x27;).values=[[42]];s.getRange(&#x27;D1&#x27;).formulas=[[&#x27;=SEQUENCE(3,2)&#x27;]];w.recalculate();return {before,childEdit,blocked:s.getRange(&#x27;D1:E3&#x27;).values};
+});
+await test(&#x27;C26&#x27;,&#x27;Inspection kind families, bounding, regex error search and resolve&#x27;,async()=&gt;{
+ const [w,s]=fresh();s.getRange(&#x27;A1:B3&#x27;).values=[[&#x27;Key&#x27;,&#x27;Value&#x27;],[&#x27;East&#x27;,5],[&#x27;West&#x27;,&#x27;=1/0&#x27;]];s.tables.add(&#x27;A1:B3&#x27;,true,&#x27;Regions&#x27;);
+ const snapshots={};for(const kind of [&#x27;workbook&#x27;,&#x27;sheet&#x27;,&#x27;table&#x27;,&#x27;region&#x27;,&#x27;formula&#x27;,&#x27;computedStyle&#x27;,&#x27;match&#x27;,&#x27;drawing&#x27;,&#x27;definedName&#x27;,&#x27;thread&#x27;]){
+ const opts={kind,sheetId:&#x27;Data&#x27;,range:&#x27;A1:B3&#x27;,maxChars:2500,tableMaxRows:3,tableMaxCols:2};
+ if(kind===&#x27;match&#x27;)Object.assign(opts,{searchTerm:&#x27;#DIV/0!&#x27;,options:{maxResults:5}});
+ snapshots[kind]=await w.inspect(opts);}
+ const index=await w.inspect({kind:&#x27;sheet&#x27;,include:&#x27;id,name&#x27;});const records=index.ndjson.split(&#x27;\n&#x27;).filter(Boolean).map(JSON.parse);const anchor=records.find(r=&gt;r.id)?.id;assert.ok(anchor);eq(w.resolve(anchor).name,&#x27;Data&#x27;);
+ const find=w.findCells({searchTerm:&#x27;East&#x27;,sheetId:&#x27;Data&#x27;,options:{maxResults:2,matchFormulas:true}});
+ await save(&#x27;inspect-kinds.json&#x27;,snapshots);return {sheet:index.ndjson,find,errorMatch:snapshots.match.ndjson};
+});
+await test(&#x27;C27&#x27;,&#x27;Error scan versus missing-data and full-column boundaries&#x27;,()=&gt;{
+ const [w,s]=fresh();s.getRange(&#x27;A1:A4&#x27;).values=[[&#x27;x&#x27;],[&#x27;x&#x27;],[null],[&#x27;x&#x27;]];s.getRange(&#x27;B1:B2&#x27;).values=[[1],[2]];
+ const formulas=[&#x27;=COUNTIF(A1:A4,&quot;&quot;)&#x27;,&#x27;=COUNTIFS(A1:A4,&quot;&quot;)&#x27;,&#x27;=COUNTBLANK(A1:A4)&#x27;,&#x27;=SUMIFS(B:B,A:A,&quot;x&quot;)&#x27;,&#x27;=SUMIFS(B1:B4,A1:A4,&quot;x&quot;)&#x27;,&#x27;=ROWS(A:A)&#x27;,&#x27;=1/0&#x27;,&#x27;=NA()&#x27;,&#x27;=MISSINGFUNCTION(1)&#x27;];
+ s.getRange(&#x27;D1:D9&#x27;).formulas=formulas.map(x=&gt;[x]);w.recalculate();return formulas.map((formula,i)=&gt;({formula,value:val(s,&#x27;D&#x27;+(i+1))}));
+});
+await test(&#x27;C28&#x27;,&#x27;Recorded patch/replay and patch input envelope&#x27;,async()=&gt;{
+ const [w,s]=fresh();s.getRange(&#x27;A1&#x27;).values=[[1]];const clone=Workbook.load(w.toProto());
+ const {result,patch,idMap,crdtUpdateV2}=w.record(()=&gt;{s.getRange(&#x27;A1&#x27;).values=[[2]];s.getRange(&#x27;B1&#x27;).formulas=[[&#x27;=A1*3&#x27;]];return &#x27;done&#x27;;});
+ await save(&#x27;recorded-patch.json&#x27;,patch);const applied=clone.apply(patch);close(val(clone.worksheets.getItem(&#x27;Data&#x27;),&#x27;B1&#x27;),6);
+ return {result,patch,idMap,crdtBytes:crdtUpdateV2?.length,applied};
+});
+await test(&#x27;C29&#x27;,&#x27;Collaborative state, CRDT subscription and replica application&#x27;,async()=&gt;{
+ const [w,s]=fresh();s.getRange(&#x27;A1&#x27;).values=[[1]];w.hydrateCrdtFromProto();const replica=Workbook.load(w.toProto());replica.hydrateCrdtFromProto();let updates=[];
+ const unsubscribe=w.onCrdtUpdateV2((update,origin)=&gt;updates.push({update,origin:String(origin)}));
+ const recorded=w.record(()=&gt;{s.getRange(&#x27;A1&#x27;).values=[[99]];});unsubscribe();
+ if(recorded.crdtUpdateV2)replica.applyCrdtUpdateV2(recorded.crdtUpdateV2,{recalculate:true});
+ return {ready:w.isCollaborativeStateReady(),updates:updates.map(x=&gt;({bytes:x.update.length,origin:x.origin})),recordedBytes:recorded.crdtUpdateV2?.length,replicaValue:val(replica.worksheets.getItem(&#x27;Data&#x27;),&#x27;A1&#x27;)};
+});
+await test(&#x27;C30&#x27;,&#x27;Native export and import preserve values, formulas and update behavior&#x27;,async()=&gt;{
+ const [w,s]=fresh();s.getRange(&#x27;A1:C3&#x27;).values=[[&#x27;Qty&#x27;,&#x27;Rate&#x27;,&#x27;Value&#x27;],[3,4,&#x27;=A2*B2&#x27;],[5,6,&#x27;=A3*B3&#x27;]];await xlsx(w,&#x27;roundtrip&#x27;);
+ const imported=await SpreadsheetFile.importXlsx(await FileBlob.load(path.join(out,&#x27;roundtrip.xlsx&#x27;)));const t=imported.worksheets.getItem(&#x27;Data&#x27;);eq(val(t,&#x27;C2&#x27;),12);t.getRange(&#x27;A2&#x27;).values=[[10]];imported.recalculate();eq(val(t,&#x27;C2&#x27;),40);return {formulas:t.getRange(&#x27;C2:C3&#x27;).formulas,values:t.getRange(&#x27;C2:C3&#x27;).values};
+});
+}
+
+if(mode===&#x27;features&#x27;){
+const cfRules=[
+ [&#x27;cellIs&#x27;,{operator:&#x27;greaterThan&#x27;,formula:2}],[&#x27;CellValue&#x27;,{operator:&#x27;between&#x27;,formula:[2,4]}],
+ [&#x27;Custom&#x27;,{formula:&#x27;=A2&gt;2&#x27;}],[&#x27;expression&#x27;,{formula:&#x27;=A2&gt;2&#x27;}],
+ [&#x27;colorScale&#x27;,{colors:[&#x27;#ffffff&#x27;,&#x27;#2563eb&#x27;],thresholds:[&#x27;min&#x27;,&#x27;max&#x27;]}],
+ [&#x27;dataBar&#x27;,{color:&#x27;#2563eb&#x27;,gradient:true}],[&#x27;iconSet&#x27;,{iconSet:&#x27;3Arrows&#x27;,showValue:true,reverse:false}],
+ ...[&#x27;containsText&#x27;,&#x27;notContainsText&#x27;,&#x27;beginsWith&#x27;,&#x27;endsWith&#x27;].map(t=&gt;[t,{text:&#x27;a&#x27;}]),
+ ...[&#x27;containsBlanks&#x27;,&#x27;notContainsBlanks&#x27;,&#x27;containsErrors&#x27;,&#x27;notContainsErrors&#x27;,&#x27;duplicateValues&#x27;,&#x27;uniqueValues&#x27;].map(t=&gt;[t,{}]),
+ [&#x27;timePeriod&#x27;,{timePeriod:&#x27;today&#x27;}],[&#x27;top10&#x27;,{rank:2,bottom:false,percent:false}],
+ [&#x27;aboveAverage&#x27;,{aboveAverage:true,equalAverage:true,stdDev:0}],
+];
+await test(&#x27;F01&#x27;,&#x27;All conditional-format rule families; serialize, render and clear&#x27;,async()=&gt;{
+ const [w,s]=fresh(&#x27;CF&#x27;);const details=[];
+ for(let i=0;i&lt;cfRules.length;i++){
+ const [type,config]=cfRules[i],col=w.utils.columnToLetter(i+1);
+ s.getRange(col+&#x27;1&#x27;).values=[[type]];s.getRange(col+&#x27;2:&#x27;+col+&#x27;8&#x27;).values=[[1],[2],[3],[4],[null],[&#x27;a&#x27;],[&#x27;=1/0&#x27;]];
+ try{s.getRange(col+&#x27;2:&#x27;+col+&#x27;8&#x27;).conditionalFormats.add(type,{...config,...(![&#x27;colorScale&#x27;,&#x27;dataBar&#x27;,&#x27;iconSet&#x27;].includes(type)?{format:{fill:&#x27;#fee2e2&#x27;,font:{color:&#x27;#991b1b&#x27;}}}:{})});details.push({type,accepted:true});}catch(e){details.push({type,error:String(e)});}
+ }
+ s.getRange(&#x27;A1:T8&#x27;).format.columnWidth=18;s.getRange(&#x27;A1:T1&#x27;).format.wrapText=true;
+ s.getRange(&#x27;V2:V5&#x27;).values=[[1],[2],[3],[4]];s.getRange(&#x27;V2:V5&#x27;).conditionalFormats.addCustom(&#x27;=V2&gt;2&#x27;,{fill:&#x27;#ff0000&#x27;});
+ await xlsx(w,&#x27;conditional-formats&#x27;);await save(&#x27;conditional-formats-cache.json&#x27;,w.getConditionalFormattingRenderCache(&#x27;CF&#x27;));
+ const png=await w.render({sheetName:&#x27;CF&#x27;,range:&#x27;A1:J8&#x27;,scale:1});await fs.writeFile(path.join(out,&#x27;conditional-formats.png&#x27;),new Uint8Array(await png.arrayBuffer()));
+ s.getRange(&#x27;V2:V5&#x27;).conditionalFormats.clear();s.getRange(&#x27;A2:A8&#x27;).conditionalFormats.deleteAll();return details;
+});
+await test(&#x27;F02&#x27;,&#x27;All validation types, settings, collection and Office-style assignment&#x27;,async()=&gt;{
+ const [w,s]=fresh(&#x27;Validation&#x27;);const rules=[
+ {type:&#x27;none&#x27;},{type:&#x27;whole&#x27;,operator:&#x27;between&#x27;,formula1:1,formula2:10},{type:&#x27;decimal&#x27;,operator:&#x27;greaterThan&#x27;,formula1:0},
+ {type:&#x27;list&#x27;,values:[&#x27;Open&#x27;,&#x27;Closed&#x27;]},{type:&#x27;date&#x27;,operator:&#x27;between&#x27;,formula1:&#x27;DATE(2026,1,1)&#x27;,formula2:&#x27;DATE(2026,12,31)&#x27;},
+ {type:&#x27;time&#x27;,operator:&#x27;lessThan&#x27;,formula1:0.5},{type:&#x27;textLength&#x27;,operator:&#x27;lessThanOrEqual&#x27;,formula1:10},{type:&#x27;custom&#x27;,formula1:&#x27;A2&gt;0&#x27;}];
+ for(let i=0;i&lt;rules.length;i++){const col=w.utils.columnToLetter(i+1);s.getRange(col+&#x27;1&#x27;).values=[[rules[i].type]];s.getRange(col+&#x27;2:&#x27;+col+&#x27;5&#x27;).dataValidation={rule:rules[i],prompt:{title:&#x27;Input&#x27;,message:&#x27;Synthetic test&#x27;,show:true},errorAlert:{title:&#x27;Invalid&#x27;,message:&#x27;Check input&#x27;,style:[&#x27;stop&#x27;,&#x27;warning&#x27;,&#x27;information&#x27;][i%3],show:true},ignoreBlanks:true,inCellDropDown:true};}
+ s.getRange(&#x27;J2:J5&#x27;).dataValidation={list:{source:[&#x27;Yes&#x27;,&#x27;No&#x27;],inCellDropDown:true},allowBlank:true};
+ s.dataValidations.add({range:&#x27;L2:L5&#x27;,rule:{type:&#x27;list&#x27;,formula1:&#x27;Validation!$D$2:$D$3&#x27;}});
+ s.getRange(&#x27;B2&#x27;).values=[[999]];eq(val(s,&#x27;B2&#x27;),999);await xlsx(w,&#x27;validations&#x27;);return {types:rules.map(r=&gt;r.type),invalidProgrammaticWriteAccepted:true};
+});
+await test(&#x27;F03&#x27;,&#x27;All sparkline types, range alias, markers, axes and export&#x27;,async()=&gt;{
+ const [w,s]=fresh(&#x27;Sparklines&#x27;);s.getRange(&#x27;A1:D4&#x27;).values=[[&#x27;Q1&#x27;,&#x27;Q2&#x27;,&#x27;Q3&#x27;,&#x27;Q4&#x27;],[1,2,-1,4],[3,2,4,5],[4,null,2,3]];
+ const groups=[];for(const [i,type]of [&#x27;line&#x27;,&#x27;column&#x27;,&#x27;stacked&#x27;].entries()){
+ const col=w.utils.columnToLetter(i+6);const g=s.sparklineGroups.add({type,targetRange:col+&#x27;2:&#x27;+col+&#x27;4&#x27;,sourceData:&#x27;A2:D4&#x27;,seriesColor:&#x27;#2563eb&#x27;,negativeColor:&#x27;#ff0000&#x27;,lineWeight:2,displayHidden:true,markers:{show:true,high:true,low:true,first:true,last:true,negative:true},axis:{showAxis:true,rightToLeft:false}});groups.push(g);}
+ const extra=s.getRange(&#x27;J2:J4&#x27;).sparklines.add(&#x27;line&#x27;,s.getRange(&#x27;A2:D4&#x27;),{seriesColor:&#x27;#00aa00&#x27;});extra.delete();
+ groups[0].markers.high=true;groups[0].axis.showAxis=true;groups[0].seriesColor=&#x27;#007755&#x27;;await xlsx(w,&#x27;sparklines&#x27;);
+ const png=await w.render({sheetName:&#x27;Sparklines&#x27;,range:&#x27;A1:I5&#x27;,scale:2});await fs.writeFile(path.join(out,&#x27;sparklines.png&#x27;),new Uint8Array(await png.arrayBuffer()));
+ s.sparklineGroups.delete(groups[0]);s.sparklineGroups.deleteAll();return {types:[&#x27;line&#x27;,&#x27;column&#x27;,&#x27;stacked&#x27;]};
+});
+await test(&#x27;F04&#x27;,&#x27;Data table full-range convention and independent two-variable results&#x27;,async()=&gt;{
+ const [w,s]=fresh(&#x27;Sensitivity&#x27;);s.getRange(&#x27;B2:B3&#x27;).values=[[2],[3]];s.getRange(&#x27;B5&#x27;).formulas=[[&#x27;=B2*10+B3&#x27;]];
+ s.getRange(&#x27;E4&#x27;).formulas=[[&#x27;=B5&#x27;]];s.getRange(&#x27;F4:H4&#x27;).values=[[1,2,3]];s.getRange(&#x27;E5:E7&#x27;).values=[[10],[20],[30]];
+ const result=s.dataTables.add(&#x27;E4:H7&#x27;,{rowInput:&#x27;B2&#x27;,columnInput:&#x27;B3&#x27;});w.recalculate();
+ const actual=s.getRange(&#x27;F5:H7&#x27;).values;eq(actual,[[20,30,40],[30,40,50],[40,50,60]]);eq(s.getRange(&#x27;B2:B3&#x27;).values,[[2],[3]]);
+ await xlsx(w,&#x27;data-table&#x27;);return {resultType:typeof result,actual,formulas:s.getRange(&#x27;F5:H7&#x27;).formulas,display:s.getRange(&#x27;F5:H7&#x27;).displayFormulas,infos:s.getRange(&#x27;F5&#x27;).formulaInfos};
+});
+await test(&#x27;F05&#x27;,&#x27;Data table older body-only and one-variable documentation&#x27;,()=&gt;{
+ const [w,s]=fresh();s.getRange(&#x27;B2:B3&#x27;).values=[[2],[3]];s.getRange(&#x27;E4&#x27;).formulas=[[&#x27;=B2*10+B3&#x27;]];s.getRange(&#x27;F4:H4&#x27;).values=[[1,2,3]];s.getRange(&#x27;E5:E7&#x27;).values=[[10],[20],[30]];
+ let body,one;try{s.dataTables.add(&#x27;F5:H7&#x27;,{rowInput:&#x27;B2&#x27;,columnInput:&#x27;B3&#x27;});w.recalculate();body=s.getRange(&#x27;E4:H7&#x27;).values;}catch(e){body=String(e);}
+ const [x,t]=fresh();t.getRange(&#x27;B2&#x27;).values=[[2]];t.getRange(&#x27;E4&#x27;).formulas=[[&#x27;=B2*10&#x27;]];t.getRange(&#x27;F4:H4&#x27;).values=[[1,2,3]];
+ try{t.dataTables.add(&#x27;E4:H5&#x27;,{rowInput:&#x27;B2&#x27;});x.recalculate();one=t.getRange(&#x27;E4:H5&#x27;).values;}catch(e){one=String(e);}return {body,one};
+});
+await test(&#x27;F06&#x27;,&#x27;Drawing images by SVG, bytes, data URL, path; replace and delete&#x27;,async()=&gt;{
+ const [w,s]=fresh(&#x27;Images&#x27;);const svg=&#x27;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;80&quot; height=&quot;40&quot;&gt;&lt;rect width=&quot;80&quot; height=&quot;40&quot; fill=&quot;#2563eb&quot;/&gt;&lt;text x=&quot;8&quot; y=&quot;26&quot; fill=&quot;white&quot;&gt;Probe&lt;/text&gt;&lt;/svg&gt;&#x27;;
+ const anchor={from:{row:1,col:1},extent:{widthPx:160,heightPx:80}};const im=s.images.add({svg,anchor,alt:&#x27;Synthetic blue label&#x27;});
+ const bytes=await fs.readFile(path.join(out,&#x27;formatting.png&#x27;));
+ const fromBytes=s.images.add({blob:bytes.buffer.slice(bytes.byteOffset,bytes.byteOffset+bytes.byteLength),contentType:&#x27;image/png&#x27;,anchor:{...anchor,from:{row:7,col:1}}});
+ const fromURL=s.images.add({dataUrl:&#x27;data:image/png;base64,&#x27;+bytes.toString(&#x27;base64&#x27;),anchor:{...anchor,from:{row:13,col:1}}});
+ const fromPath=s.images.add({path:path.join(out,&#x27;formatting.png&#x27;),anchor:{...anchor,from:{row:19,col:1}}});
+ im.alt=&#x27;Updated label&#x27;;im.anchor={...anchor,from:{row:1,col:4}};fromPath.replace({svg});await xlsx(w,&#x27;images&#x27;);
+ const result=w.fromImage(0,{bytes,contentType:&#x27;image/png&#x27;},&#x27;J1:L8&#x27;);const png=await w.render({sheetName:&#x27;Images&#x27;,range:&#x27;A1:L16&#x27;,scale:1});await fs.writeFile(path.join(out,&#x27;images.png&#x27;),new Uint8Array(await png.arrayBuffer()));
+ const detail={count:s.images.items.length,bytes:fromBytes.bytes?.length,contentType:fromBytes.contentType,fromImage:result};fromURL.delete();return detail;
+});
+await test(&#x27;F07&#x27;,&#x27;Shapes, text, drawing layout directions and deleteAllDrawings&#x27;,async()=&gt;{
+ const [w,s]=fresh(&#x27;Shapes&#x27;);for(const [i,geometry]of [&#x27;rect&#x27;,&#x27;roundRect&#x27;,&#x27;ellipse&#x27;,&#x27;textbox&#x27;].entries()){const sh=s.shapes.add({geometry,name:&#x27;Shape&#x27;+i,anchor:{from:{row:1+i*5,col:1},extent:{widthPx:180,heightPx:65}},fill:&#x27;#e0e7ff&#x27;,line:{fill:&#x27;#334155&#x27;,width:1,style:&#x27;dashed&#x27;}});sh.text=geometry;}
+ const layouts=[];for(const direction of [&#x27;vertical&#x27;,&#x27;horizontal&#x27;,&#x27;grid&#x27;]){s.autoLayoutDrawings(s.shapes.items,{direction,align:&#x27;center&#x27;,columns:2,frame:{startCell:&#x27;B2&#x27;,width:600,height:400},gap:16,padding:20});layouts.push({direction,count:s.shapes.items.length});}
+ await xlsx(w,&#x27;shapes&#x27;);const png=await w.render({sheetName:&#x27;Shapes&#x27;,autoCrop:&#x27;all&#x27;,scale:1});await fs.writeFile(path.join(out,&#x27;shapes.png&#x27;),new Uint8Array(await png.arrayBuffer()));s.deleteAllDrawings();eq(s.shapes.items.length,0);return layouts;
+});
+const enumRecords=(await fs.readFile(path.join(out,&#x27;enums-help.ndjson&#x27;),&#x27;utf8&#x27;)).trim().split(&#x27;\n&#x27;).map(JSON.parse);
+const types=enumRecords.find(x=&gt;x.name===&#x27;enum.ChartType&#x27;).values;
+for(const type of types)await test(&#x27;CH-&#x27;+type,&#x27;Chart type acceptance, export and render: &#x27;+type,async()=&gt;{
+ const [w,s]=fresh(&#x27;Chart&#x27;);s.getRange(&#x27;A1:D5&#x27;).values=[[&#x27;Category&#x27;,&#x27;Series A&#x27;,&#x27;Series B&#x27;,&#x27;Size&#x27;],[&#x27;Alpha&#x27;,10,12,5],[&#x27;Beta&#x27;,20,18,8],[&#x27;Gamma&#x27;,15,22,10],[&#x27;Delta&#x27;,25,27,12]];
+ const c=s.charts.add(type,s.getRange(&#x27;A1:C5&#x27;));c.title=type;c.setPosition(&#x27;F2&#x27;,&#x27;N16&#x27;);
+ c.titleTextStyle.typeface=&#x27;Arial&#x27;;c.titleTextStyle.fontSize=16;c.legend={position:&#x27;bottom&#x27;,textStyle:{typeface:&#x27;Arial&#x27;,fontSize:11}};
+ c.xAxis={textStyle:{typeface:&#x27;Arial&#x27;,fontSize:10}};c.yAxis={min:0,numberFormatCode:&#x27;0&#x27;,numberFormatSourceLinked:false,textStyle:{typeface:&#x27;Arial&#x27;,fontSize:10}};
+ await xlsx(w,&#x27;chart-&#x27;+type);let render;try{const png=await w.render({sheetName:&#x27;Chart&#x27;,range:&#x27;F2:N16&#x27;,scale:1});await fs.writeFile(path.join(out,&#x27;chart-&#x27;+type+&#x27;.png&#x27;),new Uint8Array(await png.arrayBuffer()));render={bytes:png.size};}catch(e){render={error:String(e)};}
+ return {type:c.type,series:c.series.items.map(x=&gt;({name:x.name,formula:x.formula,categoryFormula:x.categoryFormula})),render};
+});
+await test(&#x27;F08&#x27;,&#x27;Charts range/nonadjacent/row binding, setData, axes, labels, legend, line and data table&#x27;,async()=&gt;{
+ const [w,s]=fresh(&#x27;Charts&#x27;);s.getRange(&#x27;A1:D4&#x27;).values=[[&#x27;Month&#x27;,&#x27;Revenue&#x27;,&#x27;Profit&#x27;,&#x27;Cost&#x27;],[&#x27;Jan&#x27;,100,10,90],[&#x27;Feb&#x27;,120,20,100],[&#x27;Mar&#x27;,150,30,120]];
+ const c=s.charts.add(&#x27;line&#x27;,[s.getRange(&#x27;A1:A4&#x27;),s.getRange(&#x27;B1:B4&#x27;),s.getRange(&#x27;C1:C4&#x27;)]);c.title=&#x27;Revenue and profit&#x27;;c.setPosition(&#x27;F2&#x27;,&#x27;O18&#x27;);
+ c.legend={position:&#x27;top&#x27;,overlay:false,textStyle:{typeface:&#x27;Arial&#x27;,fontSize:12}};c.titleTextStyle.typeface=&#x27;Arial&#x27;;c.titleTextStyle.fontSize=16;
+ c.xAxis={axisType:&#x27;textAxis&#x27;,title:{text:&#x27;Month&#x27;},textStyle:{typeface:&#x27;Arial&#x27;,fontSize:11}};
+ c.yAxis={min:0,max:200,majorUnit:50,title:{text:&#x27;USD&#x27;},numberFormatCode:&#x27;$0&#x27;,numberFormatSourceLinked:false,textStyle:{typeface:&#x27;Arial&#x27;,fontSize:11}};
+ c.dataLabels={showValue:true,position:&#x27;outEnd&#x27;};c.dataTable={visible:true,showLegendKey:true};
+ c.setData(s.getRange(&#x27;A1:C4&#x27;));c.series.items[0].line={fill:&#x27;#2563eb&#x27;,style:&#x27;solid&#x27;,width:2};c.series.items[1].line={fill:&#x27;#ff0000&#x27;,style:&#x27;dashed&#x27;,width:2};
+ s.getRange(&#x27;B2&#x27;).values=[[200]];w.recalculate();const before=c.series.items.map(x=&gt;({formula:x.formula,values:x.values}));
+ await xlsx(w,&#x27;chart-settings&#x27;);const png=await w.render({sheetName:&#x27;Charts&#x27;,range:&#x27;A1:O18&#x27;,scale:1});await fs.writeFile(path.join(out,&#x27;chart-settings.png&#x27;),new Uint8Array(await png.arrayBuffer()));
+ let image;try{image=await w.chartToImage(0,c.id);await save(&#x27;chart-to-image.json&#x27;,image);}catch(e){image=String(e);}
+ return {title:c.title.text,before,chartImage:image&amp;&amp;typeof image===&#x27;object&#x27;?Object.keys(image):image};
+});
+await test(&#x27;F09&#x27;,&#x27;Raster export selection and output variants&#x27;,async()=&gt;{
+ const [w,s]=fresh();s.getRange(&#x27;A1:C3&#x27;).values=[[&#x27;Label&#x27;,&#x27;Value&#x27;,&#x27;Double&#x27;],[&#x27;A&#x27;,2,&#x27;=B2*2&#x27;],[&#x27;B&#x27;,4,&#x27;=B3*2&#x27;]];
+ const outputs=[];for(const [name,options]of [
+ [&#x27;png-index&#x27;,{sheetIndex:0,range:&#x27;A1:C3&#x27;,headers:true,format:&#x27;png&#x27;,scale:2}],
+ [&#x27;jpeg-center&#x27;,{sheet:s,center:&#x27;B2&#x27;,width:400,height:200,format:&#x27;jpeg&#x27;,quality:0.8}],
+ [&#x27;layout&#x27;,{sheet:0,range:&#x27;A1:C3&#x27;,format:&#x27;layout&#x27;}],
+ [&#x27;xlsx&#x27;,{format:&#x27;xlsx&#x27;}]
+ ]){const blob=await w.export(options);const bytes=new Uint8Array(await blob.arrayBuffer());await fs.writeFile(path.join(out,&#x27;export-&#x27;+name+(name===&#x27;layout&#x27;?&#x27;.json&#x27;:name===&#x27;xlsx&#x27;?&#x27;.xlsx&#x27;:name.startsWith(&#x27;jpeg&#x27;)?&#x27;.jpg&#x27;:&#x27;.png&#x27;)),bytes);outputs.push({name,type:blob.type,size:bytes.length});}return outputs;
+});
+}
+
+if(mode===&#x27;ops&#x27;){
+ const entries=(await fs.readFile(path.join(out,&#x27;api-help.ndjson&#x27;),&#x27;utf8&#x27;)).trim().split(&#x27;\n&#x27;).map(JSON.parse).filter(x=&gt;x.kind===&#x27;op&#x27;);
+ const imageBytes=await fs.readFile(path.join(out,&#x27;formatting.png&#x27;)),dataUrl=&#x27;data:image/png;base64,&#x27;+imageBytes.toString(&#x27;base64&#x27;);
+ for(const entry of entries)for(const [ix,example]of entry.examples.entries())await test(&#x27;OP-&#x27;+entry.op+&#x27;-&#x27;+ix,entry.summary,async()=&gt;{
+  const w=Workbook.create();for(const name of [&#x27;Sheet1&#x27;,&#x27;Inventory&#x27;,&#x27;Scratch&#x27;,&#x27;Report&#x27;,&#x27;Scorecard&#x27;,&#x27;CF&#x27;,&#x27;KPIs&#x27;,&#x27;Validation&#x27;,&#x27;Charts&#x27;,&#x27;Shapes&#x27;,&#x27;Images&#x27;,&#x27;Data&#x27;]){
+  const s=w.worksheets.add(name);s.getRange(&#x27;A1:C4&#x27;).values=[[&#x27;Name&#x27;,&#x27;Qty&#x27;,&#x27;Stock&#x27;],[&#x27;Alpha&#x27;,2,10],[&#x27;Beta&#x27;,3,20],[&#x27;Gamma&#x27;,4,30]];}
+  w.comments.setSelf({displayName:&#x27;Ruggero Gargiulo&#x27;});const op=structuredClone(example);const adaptations=[];
+  if(/^table\.(rows.add|set|remove)$/.test(op.op))w.worksheets.getItem(&#x27;Inventory&#x27;).tables.add(&#x27;A1:C3&#x27;,true,&#x27;InventoryTable&#x27;);
+  if(op.op===&#x27;range.unmerge&#x27;)w.worksheets.getItem(&#x27;Report&#x27;).getRange(&#x27;A1:D1&#x27;).merge();
+  if(op.op===&#x27;range.format.clear&#x27;)w.worksheets.getItem(&#x27;Scorecard&#x27;).getRange(&#x27;A2:C8&#x27;).format.fill=&#x27;#ff0000&#x27;;
+  if(op.op===&#x27;conditionalformat.clear&#x27;)w.worksheets.getItem(&#x27;CF&#x27;).getRange(&#x27;A1:A3&#x27;).conditionalFormats.add(&#x27;cellIs&#x27;,{operator:&#x27;greaterThan&#x27;,formula:1,format:{fill:&#x27;#ff0000&#x27;}});
+  if(op.op===&#x27;datavalidation.clear&#x27;)w.worksheets.getItem(&#x27;Validation&#x27;).getRange(&#x27;B2:B10&#x27;).dataValidation={rule:{type:&#x27;whole&#x27;,formula1:1,operator:&#x27;greaterThan&#x27;}};
+  if(/^sparkline\.(set|remove)$/.test(op.op))w.apply([entries.find(x=&gt;x.op===&#x27;sparkline.add&#x27;).examples[0]]);
+  if(/^chart\.(set|remove)$/.test(op.op)){const c=w.worksheets.getItem(&#x27;Charts&#x27;).charts.add(&#x27;line&#x27;,{from:{row:1,col:1},extent:{widthPx:300,heightPx:200}});c.title=&#x27;Updated chart&#x27;;c.categories=[&#x27;A&#x27;,&#x27;B&#x27;];const se=c.series.add(&#x27;Values&#x27;);se.values=[1,2];se.categories=[&#x27;A&#x27;,&#x27;B&#x27;];}
+  if(/^shape\.(set|remove)$/.test(op.op))w.worksheets.getItem(&#x27;Shapes&#x27;).shapes.add({geometry:&#x27;rect&#x27;,anchor:{from:{row:1,col:1},extent:{widthPx:50,heightPx:50}},fill:&#x27;#ff0000&#x27;});
+  if(op.op===&#x27;image.add&#x27;){op.props.dataUrl=dataUrl;adaptations.push(&#x27;Replaced placeholder data URL with local synthetic PNG.&#x27;);}
+  if(/^image\.(set|remove)$/.test(op.op)){const image=w.worksheets.getItem(&#x27;Images&#x27;).images.add({dataUrl,anchor:op.target.anchor});op.target.imageId=image.imageId??w.toProto().images[0]?.id;adaptations.push(&#x27;Resolved actual image asset ID.&#x27;);}
+  if(op.op===&#x27;names.remove&#x27;){if(op.sheet)w.worksheets.getItem(op.sheet).names.addRange(op.name,op.sheet+&#x27;!A1:A3&#x27;);else w.names.addRange(op.name,&#x27;Data!A1:A3&#x27;);}
+  if(/^thread\.(reply|resolve|reopen|remove)$/.test(op.op)){const th=w.comments.addThread({cell:w.worksheets.getItem(&#x27;Sheet1&#x27;).getRange(&#x27;F5&#x27;)},&#x27;Original&#x27;);if(op.op===&#x27;thread.reopen&#x27;)th.resolve();op.target=op.op===&#x27;thread.remove&#x27;?&#x27;th/&#x27;+th.id:th.id;adaptations.push(&#x27;Resolved actual thread ID.&#x27;);}
+  const before=JSON.stringify(w.toProto());const result=await w.apply([op]);w.recalculate();const changed=before!==JSON.stringify(w.toProto());
+  await save(&#x27;op-&#x27;+entry.op+&#x27;-&#x27;+ix+&#x27;.json&#x27;,{input:op,adaptations,result,changed,after:w.toProto()});
+  return {input:op,adaptations,result,changed};
+ });
+ await test(&#x27;OP-invalid&#x27;,&#x27;Unknown action handling and mutation atomicity&#x27;,()=&gt;{
+ const [w,s]=fresh();s.getRange(&#x27;A1&#x27;).values=[[1]];let error;try{w.apply([{op:&#x27;range.values.set&#x27;,target:{sheet:&#x27;Data&#x27;,range:&#x27;A1&#x27;},values:[[2]]},{op:&#x27;invalid.action&#x27;}]);}catch(e){error=String(e);}return {error,valueAfterFailure:val(s,&#x27;A1&#x27;)};
+ });
+}
+
+if(mode===&#x27;oracles&#x27;){
+ const checks=[
+ [&#x27;SUM&#x27;,&#x27;=SUM(A1:A5)&#x27;,15],[&#x27;PRODUCT&#x27;,&#x27;=PRODUCT(A1:A5)&#x27;,120],[&#x27;SUMPRODUCT&#x27;,&#x27;=SUMPRODUCT(A1:A5,B1:B5)&#x27;,550],
+ [&#x27;SUMIFS&#x27;,&#x27;=SUMIFS(B1:B5,A1:A5,&quot;&gt;2&quot;)&#x27;,120],[&#x27;COUNTIFS&#x27;,&#x27;=COUNTIFS(A1:A5,&quot;&gt;2&quot;)&#x27;,3],[&#x27;AVERAGEIFS&#x27;,&#x27;=AVERAGEIFS(B1:B5,A1:A5,&quot;&gt;2&quot;)&#x27;,40],
+ [&#x27;ROUND&#x27;,&#x27;=ROUND(12.345,2)&#x27;,12.35],[&#x27;MOD&#x27;,&#x27;=MOD(17,5)&#x27;,2],[&#x27;POWER&#x27;,&#x27;=POWER(2,8)&#x27;,256],[&#x27;SQRT&#x27;,&#x27;=SQRT(81)&#x27;,9],
+ [&#x27;CEILING.MATH&#x27;,&#x27;=CEILING.MATH(4.2)&#x27;,5],[&#x27;FLOOR.MATH&#x27;,&#x27;=FLOOR.MATH(4.8)&#x27;,4],[&#x27;ABS&#x27;,&#x27;=ABS(-4)&#x27;,4],
+ [&#x27;AVERAGE&#x27;,&#x27;=AVERAGE(A1:A5)&#x27;,3],[&#x27;MEDIAN&#x27;,&#x27;=MEDIAN(A1:A5)&#x27;,3],[&#x27;MIN&#x27;,&#x27;=MIN(A1:A5)&#x27;,1],[&#x27;MAX&#x27;,&#x27;=MAX(A1:A5)&#x27;,5],
+ [&#x27;STDEV.S&#x27;,&#x27;=STDEV.S(A1:A5)&#x27;,Math.sqrt(2.5)],[&#x27;VAR.P&#x27;,&#x27;=VAR.P(A1:A5)&#x27;,2],[&#x27;CORREL&#x27;,&#x27;=CORREL(A1:A5,B1:B5)&#x27;,1],
+ [&#x27;NORM.DIST&#x27;,&#x27;=NORM.DIST(0,0,1,TRUE)&#x27;,0.5],[&#x27;PERCENTILE.INC&#x27;,&#x27;=PERCENTILE.INC(A1:A5,0.5)&#x27;,3],
+ [&#x27;IF&#x27;,&#x27;=IF(A1=1,&quot;yes&quot;,&quot;no&quot;)&#x27;,&#x27;yes&#x27;],[&#x27;AND&#x27;,&#x27;=AND(A1=1,A2=2)&#x27;,true],[&#x27;OR&#x27;,&#x27;=OR(FALSE,TRUE)&#x27;,true],
+ [&#x27;IFERROR&#x27;,&#x27;=IFERROR(1/0,99)&#x27;,99],[&#x27;IFNA&#x27;,&#x27;=IFNA(NA(),99)&#x27;,99],[&#x27;CHOOSE&#x27;,&#x27;=CHOOSE(2,10,20,30)&#x27;,20],
+ [&#x27;SWITCH&#x27;,&#x27;=SWITCH(2,1,10,2,20,0)&#x27;,20],[&#x27;IFS-prefixed&#x27;,&#x27;=_xlfn.IFS(A1=1,10,TRUE,20)&#x27;,10],
+ [&#x27;INDEX&#x27;,&#x27;=INDEX(B1:B5,3)&#x27;,30],[&#x27;MATCH&#x27;,&#x27;=MATCH(3,A1:A5,0)&#x27;,3],[&#x27;VLOOKUP&#x27;,&#x27;=VLOOKUP(3,A1:B5,2,FALSE)&#x27;,30],
+ [&#x27;XLOOKUP&#x27;,&#x27;=XLOOKUP(3,A1:A5,B1:B5)&#x27;,30],[&#x27;XLOOKUP-prefixed&#x27;,&#x27;=_xlfn.XLOOKUP(3,A1:A5,B1:B5)&#x27;,30],
+ [&#x27;OFFSET&#x27;,&#x27;=OFFSET(A1,1,1)&#x27;,20],[&#x27;INDIRECT&#x27;,&#x27;=INDIRECT(&quot;B3&quot;)&#x27;,30],[&#x27;ADDRESS&#x27;,&#x27;=ADDRESS(3,2)&#x27;,&#x27;$B$3&#x27;],
+ [&#x27;FORMULATEXT&#x27;,&#x27;=FORMULATEXT(H1)&#x27;,&#x27;=A1*2&#x27;],[&#x27;ISFORMULA&#x27;,&#x27;=ISFORMULA(H1)&#x27;,true],[&#x27;ISNUMBER&#x27;,&#x27;=ISNUMBER(B1)&#x27;,true],
+ [&#x27;ISBLANK&#x27;,&#x27;=ISBLANK(J1)&#x27;,true],[&#x27;ISERROR&#x27;,&#x27;=ISERROR(1/0)&#x27;,true],[&#x27;TYPE&#x27;,&#x27;=TYPE(&quot;x&quot;)&#x27;,2],
+ [&#x27;LEN&#x27;,&#x27;=LEN(&quot;hello&quot;)&#x27;,5],[&#x27;LEFT&#x27;,&#x27;=LEFT(&quot;hello&quot;,2)&#x27;,&#x27;he&#x27;],[&#x27;MID&#x27;,&#x27;=MID(&quot;hello&quot;,2,3)&#x27;,&#x27;ell&#x27;],
+ [&#x27;TRIM&#x27;,&#x27;=TRIM(&quot;  a  b  &quot;)&#x27;,&#x27;a b&#x27;],[&#x27;SUBSTITUTE&#x27;,&#x27;=SUBSTITUTE(&quot;a-b&quot;,&quot;-&quot;,&quot;/&quot;)&#x27;,&#x27;a/b&#x27;],
+ [&#x27;TEXTJOIN-prefixed&#x27;,&#x27;=_xlfn.TEXTJOIN(&quot;, &quot;,TRUE,&quot;a&quot;,&quot;b&quot;)&#x27;,&#x27;a, b&#x27;],[&#x27;TEXT&#x27;,&#x27;=TEXT(0.125,&quot;0.0%&quot;)&#x27;,&#x27;12.5%&#x27;],
+ [&#x27;DATE&#x27;,&#x27;=DATE(2026,1,1)&#x27;,46023],[&#x27;YEAR&#x27;,&#x27;=YEAR(DATE(2026,1,1))&#x27;,2026],[&#x27;MONTH&#x27;,&#x27;=MONTH(DATE(2026,9,15))&#x27;,9],
+ [&#x27;EOMONTH&#x27;,&#x27;=DAY(EOMONTH(DATE(2026,2,2),0))&#x27;,28],[&#x27;EDATE&#x27;,&#x27;=MONTH(EDATE(DATE(2026,1,1),2))&#x27;,3],
+ [&#x27;NETWORKDAYS&#x27;,&#x27;=NETWORKDAYS(DATE(2026,9,14),DATE(2026,9,18))&#x27;,5],[&#x27;DAYS&#x27;,&#x27;=DAYS(DATE(2026,2,1),DATE(2026,1,1))&#x27;,31],
+ [&#x27;PMT&#x27;,&#x27;=PMT(0,10,1000)&#x27;,-100],[&#x27;PV&#x27;,&#x27;=PV(0,10,-100)&#x27;,1000],[&#x27;FV&#x27;,&#x27;=FV(0,10,-100)&#x27;,1000],
+ [&#x27;NPV&#x27;,&#x27;=NPV(0.1,100,100)&#x27;,100/1.1+100/1.1**2],[&#x27;IRR&#x27;,&#x27;=IRR({-100,110})&#x27;,0.1],
+ [&#x27;XIRR&#x27;,&#x27;=XIRR({-100,110},{DATE(2025,1,1),DATE(2026,1,1)})&#x27;,0.1],
+ [&#x27;RATE&#x27;,&#x27;=RATE(1,0,-100,110)&#x27;,0.1],[&#x27;NPER&#x27;,&#x27;=NPER(0,-10,100)&#x27;,10],[&#x27;SLN&#x27;,&#x27;=SLN(100,10,9)&#x27;,10],
+ [&#x27;CONVERT&#x27;,&#x27;=CONVERT(1,&quot;m&quot;,&quot;cm&quot;)&#x27;,100],[&#x27;DEC2BIN&#x27;,&#x27;=DEC2BIN(10)&#x27;,&#x27;1010&#x27;],[&#x27;BIN2DEC&#x27;,&#x27;=BIN2DEC(&quot;1010&quot;)&#x27;,10],
+ [&#x27;IMABS&#x27;,&#x27;=IMABS(&quot;3+4i&quot;)&#x27;,5],[&#x27;IMSUM&#x27;,&#x27;=IMSUM(&quot;1+2i&quot;,&quot;3+4i&quot;)&#x27;,&#x27;4+6i&#x27;],
+ [&#x27;LET&#x27;,&#x27;=LET(x,2,x*3)&#x27;,6],[&#x27;LET-prefixed&#x27;,&#x27;=_xlfn.LET(_xlpm.x,2,_xlpm.x*3)&#x27;,6],
+ [&#x27;LAMBDA-call&#x27;,&#x27;=_xlfn.LAMBDA(_xlpm.x,_xlpm.x*3)(2)&#x27;,6],
+ [&#x27;COUNTBLANK&#x27;,&#x27;=COUNTBLANK(J1:J5)&#x27;,5],[&#x27;COUNTIF-blanks&#x27;,&#x27;=COUNTIF(J1:J5,&quot;&quot;)&#x27;,5],
+ ];
+ const [w,s]=fresh(&#x27;Oracle&#x27;);s.getRange(&#x27;A1:B5&#x27;).values=[[1,10],[2,20],[3,30],[4,40],[5,50]];s.getRange(&#x27;H1&#x27;).formulas=[[&#x27;=A1*2&#x27;]];
+ s.getRange(&#x27;L1:O1&#x27;).values=[[&#x27;Function&#x27;,&#x27;Calculated&#x27;,&#x27;Expected&#x27;,&#x27;Probe&#x27;]];
+ for(const [i,[name,formula,expected]]of checks.entries())await test(&#x27;FX-&#x27;+name,&#x27;Independent fixture: &#x27;+formula,()=&gt;{
+  const r=i+2;s.getRange(&#x27;L&#x27;+r).values=[[name]];s.getRange(&#x27;M&#x27;+r).formulas=[[formula]];s.getRange(&#x27;N&#x27;+r).values=[[expected]];w.recalculate();
+  const actual=val(s,&#x27;M&#x27;+r);s.getRange(&#x27;O&#x27;+r).values=[[typeof actual===typeof expected&amp;&amp;(typeof expected===&#x27;number&#x27;?Math.abs(actual-expected)&lt;1e-7:actual===expected)?&#x27;MATCH&#x27;:&#x27;DIFFERENCE&#x27;]];
+  return {formula,expected,actual,matches:val(s,&#x27;O&#x27;+r)===&#x27;MATCH&#x27;};
+ });
+ await xlsx(w,&#x27;formula-oracles&#x27;);
+}
+
+if(mode===&#x27;followup&#x27;){
+await test(&#x27;R01&#x27;,&#x27;FillFrom correct adjacent extension and table totals boundary&#x27;,async()=&gt;{
+ const [w,s]=fresh();s.getRange(&#x27;A1:B3&#x27;).values=[[1,2],[3,4],[5,6]];s.getRange(&#x27;C1&#x27;).formulas=[[&#x27;=A1+B1&#x27;]];s.getRange(&#x27;C1:C3&#x27;).fillFrom(s.getRange(&#x27;C1&#x27;));eq(s.getRange(&#x27;C1:C3&#x27;).values,[[3],[7],[11]]);
+ const t=s.tables.add(&#x27;E1:F3&#x27;,true,&#x27;Stock&#x27;);s.getRange(&#x27;E1:F3&#x27;).values=[[&#x27;Item&#x27;,&#x27;Qty&#x27;],[&#x27;A&#x27;,2],[&#x27;B&#x27;,3]];t.rows.add(null,[[&#x27;C&#x27;,4]]);
+ const before={range:t.address,rows:t.getDataRows()};t.showTotals=true;const after={range:t.address,rows:t.getDataRows(),grid:t.getRange().values};
+ let insertError;try{t.rows.add(1,[[&#x27;Inserted&#x27;,5]]);}catch(e){insertError=String(e);}
+ await xlsx(w,&#x27;table-totals-boundary&#x27;);return {fill:s.getRange(&#x27;C1:C3&#x27;).formulas,before,after,insertError,columnsAPI:typeof t.columns,filterAPI:typeof t.autoFilter};
+});
+await test(&#x27;R02&#x27;,&#x27;Named function formula-versus-lambda configuration&#x27;,async()=&gt;{
+ const [w,s]=fresh();const variants=[
+ [&#x27;Plain&#x27;,{lambda:&#x27;LAMBDA(amount,amount*1.1)&#x27;}],
+ [&#x27;Prefixed&#x27;,{lambda:&#x27;_xlfn.LAMBDA(_xlpm.amount,_xlpm.amount*1.1)&#x27;}],
+ [&#x27;Equals&#x27;,{lambda:&#x27;=_xlfn.LAMBDA(_xlpm.amount,_xlpm.amount*1.1)&#x27;}]];
+ const results=[];for(const [i,[name,config]]of variants.entries()){w.names.addFunction(name,config);s.getCell(i,0).formulas=[[&#x27;=&#x27;+name+&#x27;(100)&#x27;]];w.recalculate();results.push({name,config,value:val(s,&#x27;A&#x27;+(i+1))});}await xlsx(w,&#x27;named-function-variants&#x27;);return results;
+});
+await test(&#x27;R03&#x27;,&#x27;CSV instance import on populated workbook preserves or replaces data&#x27;,async()=&gt;{
+ const [w,s]=fresh(&#x27;Original&#x27;);s.getRange(&#x27;A1&#x27;).values=[[&#x27;Keep&#x27;]];const result=await w.fromCSV(&#x27;A,B\n1,2&#x27;,{sheetName:&#x27;Added&#x27;});return {sheets:w.worksheets.items.map(x=&gt;x.name),originalExists:!w.worksheets.getItemOrNullObject(&#x27;Original&#x27;).isNullObject,originalCell:val(s,&#x27;A1&#x27;),resultSheet:result.sheet.name};
+});
+await test(&#x27;R04&#x27;,&#x27;One-variable row and column data tables; export and roundtrip&#x27;,async()=&gt;{
+ const [w,s]=fresh(&#x27;OneVariable&#x27;);s.getRange(&#x27;B2&#x27;).values=[[2]];s.getRange(&#x27;E4&#x27;).formulas=[[&#x27;=B2*10&#x27;]];s.getRange(&#x27;F4:H4&#x27;).values=[[1,2,3]];s.dataTables.add(&#x27;E4:H5&#x27;,{rowInput:&#x27;B2&#x27;});
+ s.getRange(&#x27;E8&#x27;).formulas=[[&#x27;=B2*10&#x27;]];s.getRange(&#x27;E9:E11&#x27;).values=[[1],[2],[3]];s.dataTables.add(&#x27;E8:F11&#x27;,{columnInput:&#x27;B2&#x27;});w.recalculate();
+ eq(s.getRange(&#x27;F5:H5&#x27;).values,[[10,20,30]]);eq(s.getRange(&#x27;F9:F11&#x27;).values,[[10],[20],[30]]);await xlsx(w,&#x27;one-variable-data-tables&#x27;);
+ const round=await SpreadsheetFile.importXlsx(await FileBlob.load(path.join(out,&#x27;one-variable-data-tables.xlsx&#x27;)));round.recalculate();return {row:s.getRange(&#x27;F5:H5&#x27;).values,column:s.getRange(&#x27;F9:F11&#x27;).values,reimport:round.worksheets.getItemAt(0).getRange(&#x27;E4:H5&#x27;).values};
+});
+await test(&#x27;R05&#x27;,&#x27;Sparklines supported delete route and export preservation&#x27;,async()=&gt;{
+ const [w,s]=fresh();s.getRange(&#x27;A1:D4&#x27;).values=[[&#x27;Q1&#x27;,&#x27;Q2&#x27;,&#x27;Q3&#x27;,&#x27;Q4&#x27;],[1,2,-1,4],[3,2,4,5],[4,null,2,3]];
+ const groups=[];for(const [i,type]of [&#x27;line&#x27;,&#x27;column&#x27;,&#x27;stacked&#x27;].entries()){const col=w.utils.columnToLetter(i+6);groups.push(s.sparklineGroups.add({type,targetRange:col+&#x27;2:&#x27;+col+&#x27;4&#x27;,sourceData:&#x27;A2:D4&#x27;,dateAxisRange:&#x27;A1:D1&#x27;,axis:{manualMin:-5,manualMax:10,showAxis:true},markers:{show:true,high:true,low:true,negative:true},seriesColor:&#x27;#2563eb&#x27;}));}
+ const tmp=s.getRange(&#x27;J2:J4&#x27;).sparklines.add(&#x27;line&#x27;,s.getRange(&#x27;A2:D4&#x27;));s.sparklineGroups.delete(tmp);await xlsx(w,&#x27;sparklines&#x27;);const png=await w.render({sheetName:&#x27;Data&#x27;,range:&#x27;A1:I5&#x27;,scale:2});await fs.writeFile(path.join(out,&#x27;sparklines.png&#x27;),new Uint8Array(await png.arrayBuffer()));return {count:s.sparklineGroups.getAll().length};
+});
+await test(&#x27;R06&#x27;,&#x27;Image sources and config replacement without overwriting facade anchor&#x27;,async()=&gt;{
+ const [w,s]=fresh(&#x27;Images&#x27;);const bytes=await fs.readFile(path.join(out,&#x27;formatting.png&#x27;));const svg=&#x27;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;80&quot; height=&quot;40&quot;&gt;&lt;rect width=&quot;80&quot; height=&quot;40&quot; fill=&quot;#2563eb&quot;/&gt;&lt;/svg&gt;&#x27;;
+ const configs=[{svg},{blob:bytes.buffer.slice(bytes.byteOffset,bytes.byteOffset+bytes.byteLength),contentType:&#x27;image/png&#x27;},{dataUrl:&#x27;data:image/png;base64,&#x27;+bytes.toString(&#x27;base64&#x27;)},{path:path.join(out,&#x27;formatting.png&#x27;)}];
+ for(const [i,config]of configs.entries()){const im=s.images.add({...config,anchor:{from:{row:i*5,col:1},extent:{widthPx:160,heightPx:80}},alt:&#x27;Source &#x27;+i});if(i===3)im.replace({svg});}
+ const imageResult=w.fromImage(0,{bytes,contentType:&#x27;image/png&#x27;},&#x27;F1:H7&#x27;);await xlsx(w,&#x27;images&#x27;);
+ const png=await w.render({sheetName:&#x27;Images&#x27;,range:&#x27;A1:I21&#x27;,scale:1});await fs.writeFile(path.join(out,&#x27;images.png&#x27;),new Uint8Array(await png.arrayBuffer()));
+ return {count:s.images.items.length,fromImage:imageResult,types:s.images.items.map(i=&gt;i.contentType)};
+});
+await test(&#x27;R07&#x27;,&#x27;Chart configuration at creation, mutable facade settings and analytics&#x27;,async()=&gt;{
+ const [w,s]=fresh(&#x27;Charts&#x27;);s.getRange(&#x27;A1:C5&#x27;).values=[[&#x27;Month&#x27;,&#x27;Revenue&#x27;,&#x27;Profit&#x27;],[&#x27;Jan&#x27;,100,10],[&#x27;Feb&#x27;,120,20],[&#x27;Mar&#x27;,150,30],[&#x27;Apr&#x27;,170,35]];
+ const c=s.charts.add(&#x27;line&#x27;,s.getRange(&#x27;A1:C5&#x27;));c.title=&#x27;Synthetic revenue and profit&#x27;;c.setPosition(&#x27;E2&#x27;,&#x27;N19&#x27;);
+ c.titleTextStyle.typeface=&#x27;Arial&#x27;;c.titleTextStyle.fontSize=16;c.legend={position:&#x27;top&#x27;,textStyle:{typeface:&#x27;Arial&#x27;,fontSize:12}};
+ c.xAxis={title:&#x27;Month&#x27;,textStyle:{typeface:&#x27;Arial&#x27;,fontSize:10}};c.yAxis={min:0,max:250,majorUnit:50,title:&#x27;USD&#x27;,numberFormatCode:&#x27;$0&#x27;,numberFormatSourceLinked:false,textStyle:{typeface:&#x27;Arial&#x27;,fontSize:10}};
+ c.dataLabels.showValue=true;c.dataLabels.position=&#x27;outEnd&#x27;;c.dataTable.visible=true;c.dataTable.showLegendKey=true;
+ const se=c.series.items[0];se.line={fill:&#x27;#2563eb&#x27;,style:&#x27;solid&#x27;,width:2};se.valuesFormatCode=&#x27;$0&#x27;;
+ se.errorBars={type:&#x27;percentage&#x27;,value:5};se.trendlines.add(&#x27;linear&#x27;,{displayEquation:true,displayRSquared:true,forecastForward:1,line:{fill:&#x27;#999999&#x27;,style:&#x27;dashed&#x27;,width:1}});
+ se.dataLabelOverrides.add(0).showValue=true;c.series.items[1].line={fill:&#x27;#ff0000&#x27;,style:&#x27;dashed&#x27;,width:2};
+ s.getRange(&#x27;B2&#x27;).values=[[200]];w.recalculate();eq(se.resolveValues()[0],200);await xlsx(w,&#x27;chart-settings&#x27;);
+ const png=await w.render({sheetName:&#x27;Charts&#x27;,range:&#x27;A1:N19&#x27;,scale:1});await fs.writeFile(path.join(out,&#x27;chart-settings.png&#x27;),new Uint8Array(await png.arrayBuffer()));
+ const converted=await w.chartToImage(0,c.id);await save(&#x27;chart-to-image.json&#x27;,converted);return {values:se.resolveValues(),imageResult:converted,formula:se.formula};
+});
+await test(&#x27;R08&#x27;,&#x27;Chart dataLabels and dataTable config-first API&#x27;,async()=&gt;{
+ const [w,s]=fresh();const c=s.charts.add(&#x27;bar&#x27;,{from:{row:1,col:1},extent:{widthPx:400,heightPx:240},categories:[&#x27;A&#x27;,&#x27;B&#x27;],series:[{name:&#x27;Value&#x27;,values:[10,20]}],dataLabels:{showValue:true},dataTable:{visible:true,showLegendKey:true}});
+ c.barOptions.direction=&#x27;column&#x27;;c.barOptions.grouping=&#x27;stacked&#x27;;c.barOptions.gapWidth=120;c.barOptions.overlap=0;await xlsx(w,&#x27;chart-config-first&#x27;);return {labels:c.dataLabels.showValue,dataTable:c.dataTable.visible};
+});
+await test(&#x27;R09&#x27;,&#x27;Pivots and slicers, hierarchy operations and native export&#x27;,async()=&gt;{
+ const [w,s]=fresh(&#x27;Data&#x27;);const summary=w.worksheets.add(&#x27;Pivot&#x27;);s.getRange(&#x27;A1:C5&#x27;).values=[[&#x27;Region&#x27;,&#x27;Product&#x27;,&#x27;Sales&#x27;],[&#x27;North&#x27;,&#x27;A&#x27;,10],[&#x27;South&#x27;,&#x27;A&#x27;,20],[&#x27;North&#x27;,&#x27;B&#x27;,30],[&#x27;South&#x27;,&#x27;B&#x27;,40]];
+ const p=summary.pivotTables.add(&#x27;SalesPivot&#x27;,s.getRange(&#x27;A1:C5&#x27;),summary.getRange(&#x27;A1&#x27;));const hier=p.hierarchies.items.map(x=&gt;x.name);
+ p.rowHierarchies.add(p.hierarchies.getItem(&#x27;Region&#x27;));p.columnHierarchies.add(p.hierarchies.getItem(&#x27;Product&#x27;));p.dataHierarchies.add(p.hierarchies.getItem(&#x27;Sales&#x27;));w.recalculate();
+ const slicer=summary.slicers.add(&#x27;SalesPivot&#x27;,&#x27;Region&#x27;);await save(&#x27;pivot-proto.json&#x27;,w.toProto());await xlsx(w,&#x27;pivot-slicer&#x27;);
+ return {hier,grid:summary.getRange(&#x27;A1:E6&#x27;).values,pivotKeys:Object.keys(p),slicerKeys:Object.keys(slicer),slicerProperties:Object.getOwnPropertyNames(Object.getPrototypeOf(slicer))};
+});
+await test(&#x27;R10&#x27;,&#x27;Notes operation route and low-level note persistence&#x27;,async()=&gt;{
+ const [w,s]=fresh();s.getRange(&#x27;A1&#x27;).values=[[1]];w.comments.setSelf({displayName:&#x27;Ruggero Gargiulo&#x27;});
+ let applyError;try{w.apply([{op:&#x27;note.add&#x27;,target:{cell:{sheet:&#x27;Data&#x27;,address:&#x27;A1&#x27;}},body:&#x27;Synthetic note&#x27;}]);}catch(e){applyError=String(e);}
+ const note=w.notes.add({id:&#x27;probe-note&#x27;,sheetId:s.sheetId,ref:&#x27;A1&#x27;,text:&#x27;Synthetic note&#x27;});await save(&#x27;note-proto.json&#x27;,w.toProto());let exported;
+ try{await xlsx(w,&#x27;notes&#x27;);exported=true;}catch(e){exported=String(e);}note.delete();return {applyError,exported};
+});
+await test(&#x27;R11&#x27;,&#x27;Undo/redo, recordAsync and awareness selections&#x27;,async()=&gt;{
+ const [w,s]=fresh();s.getRange(&#x27;A1&#x27;).values=[[1]];w.hydrateCrdtFromProto();const recorded=await w.recordAsync(async()=&gt;{s.getRange(&#x27;A1&#x27;).values=[[2]];await Promise.resolve();s.getRange(&#x27;B1&#x27;).formulas=[[&#x27;=A1*2&#x27;]];return 7;});
+ const before={canUndo:w.canUndo(),canRedo:w.canRedo(),value:val(s,&#x27;A1&#x27;)};w.undo();const undone={canRedo:w.canRedo(),value:val(s,&#x27;A1&#x27;)};w.redo();const redone=val(s,&#x27;A1&#x27;);
+ w.awareness.setPresenceSelections(&#x27;synthetic-reviewer&#x27;,[{sheetName:&#x27;Data&#x27;,range:&#x27;A1:B2&#x27;}],{kind:&#x27;collaborator&#x27;});const selections=w.awareness.getSelectionsForSheet(&#x27;Data&#x27;);w.awareness.clearPresenceSelections(&#x27;synthetic-reviewer&#x27;);
+ return {result:recorded.result,patch:recorded.patch,before,undone,redone,selections};
+});
+}
+
+if(mode===&#x27;advanced&#x27;){
+await test(&#x27;A01&#x27;,&#x27;Pivot root collection, native serialization and slicer fields&#x27;,async()=&gt;{
+ const [w,s]=fresh(&#x27;Data&#x27;);const summary=w.worksheets.add(&#x27;Pivot&#x27;);s.getRange(&#x27;A1:C5&#x27;).values=[[&#x27;Region&#x27;,&#x27;Product&#x27;,&#x27;Sales&#x27;],[&#x27;North&#x27;,&#x27;A&#x27;,10],[&#x27;South&#x27;,&#x27;A&#x27;,20],[&#x27;North&#x27;,&#x27;B&#x27;,30],[&#x27;South&#x27;,&#x27;B&#x27;,40]];
+ const p=w.pivotTables.add(&#x27;SalesPivot&#x27;,s.getRange(&#x27;A1:C5&#x27;),summary.getRange(&#x27;A1&#x27;));
+ p.rowHierarchies.add(p.hierarchies.getItem(&#x27;Region&#x27;));p.columnHierarchies.add(p.hierarchies.getItem(&#x27;Product&#x27;));p.dataHierarchies.add(p.hierarchies.getItem(&#x27;Sales&#x27;));w.recalculate();
+ const detail={grid:summary.getRange(&#x27;A1:E7&#x27;).values,hierarchies:p.hierarchies.items.map(x=&gt;x.name),methods:Object.getOwnPropertyNames(Object.getPrototypeOf(p))};
+ await save(&#x27;pivot-proto.json&#x27;,w.toProto());try{await xlsx(w,&#x27;pivot-only&#x27;);detail.pivotExport=&#x27;completed&#x27;;}catch(e){detail.pivotExportError=String(e);}
+ try{const sl=summary.slicers.add(&#x27;SalesPivot&#x27;,&#x27;Region&#x27;);detail.slicerMethods=Object.getOwnPropertyNames(Object.getPrototypeOf(sl));detail.slicerItems=sl.slicerItems?.items;await xlsx(w,&#x27;pivot-slicer&#x27;);detail.slicerExport=&#x27;completed&#x27;;}catch(e){detail.slicerError=String(e);}
+ await save(&#x27;pivot-details.json&#x27;,detail);return detail;
+});
+await test(&#x27;A02&#x27;,&#x27;Chart analytics and mutable label/table objects&#x27;,async()=&gt;{
+ const [w,s]=fresh(&#x27;Charts&#x27;);s.getRange(&#x27;A1:C5&#x27;).values=[[&#x27;Month&#x27;,&#x27;Revenue&#x27;,&#x27;Profit&#x27;],[&#x27;Jan&#x27;,100,10],[&#x27;Feb&#x27;,120,20],[&#x27;Mar&#x27;,150,30],[&#x27;Apr&#x27;,170,35]];
+ const c=s.charts.add(&#x27;line&#x27;,s.getRange(&#x27;A1:C5&#x27;));c.title=&#x27;Synthetic revenue and profit&#x27;;c.setPosition(&#x27;E2&#x27;,&#x27;N19&#x27;);
+ c.titleTextStyle.typeface=&#x27;Arial&#x27;;c.titleTextStyle.fontSize=16;c.legend={position:&#x27;top&#x27;,textStyle:{typeface:&#x27;Arial&#x27;,fontSize:12}};
+ c.xAxis={title:&#x27;Month&#x27;,textStyle:{typeface:&#x27;Arial&#x27;,fontSize:10}};c.yAxis={min:0,max:250,majorUnit:50,title:&#x27;USD&#x27;,numberFormatCode:&#x27;$0&#x27;,numberFormatSourceLinked:false,textStyle:{typeface:&#x27;Arial&#x27;,fontSize:10}};
+ c.dataLabels.showValue=true;c.dataLabels.position=&#x27;outEnd&#x27;;c.dataTable.visible=true;c.dataTable.showLegendKey=true;
+ const se=c.series.items[0];se.line={fill:&#x27;#2563eb&#x27;,style:&#x27;solid&#x27;,width:2};se.errorBars={type:&#x27;percentage&#x27;,value:5};
+ se.trendlines.add(&#x27;linear&#x27;,{displayEquation:true,displayRSquared:true,forecastForward:1,line:{fill:&#x27;#999999&#x27;,style:&#x27;dashed&#x27;,width:1}});
+ se.dataLabelOverrides.add(0).showValue=true;c.series.items[1].line={fill:&#x27;#ff0000&#x27;,style:&#x27;dashed&#x27;,width:2};s.getRange(&#x27;B2&#x27;).values=[[200]];w.recalculate();
+ const detail={resolvedValues:await se.resolveValues(),formula:se.formula,dataTable:c.dataTable.visible,chartCount:s.charts.items.length};
+ await xlsx(w,&#x27;chart-settings&#x27;);const png=await w.render({sheetName:&#x27;Charts&#x27;,range:&#x27;A1:N19&#x27;,scale:1});await fs.writeFile(path.join(out,&#x27;chart-settings.png&#x27;),new Uint8Array(await png.arrayBuffer()));
+ try{detail.converted=await w.chartToImage(0,c.id);detail.chartCountAfter=s.charts.items.length;detail.imageCountAfter=s.images.items.length;}catch(e){detail.convertError=String(e);}return detail;
+});
+await test(&#x27;A03&#x27;,&#x27;Native note through operation API and note delete&#x27;,async()=&gt;{
+ const [w,s]=fresh();s.getRange(&#x27;A1&#x27;).values=[[1]];w.comments.setSelf({displayName:&#x27;Ruggero Gargiulo&#x27;});
+ w.apply([{op:&#x27;note.add&#x27;,target:{cell:{sheet:&#x27;Data&#x27;,address:&#x27;A1&#x27;}},body:&#x27;Synthetic cell note&#x27;}]);
+ const note=w.notes.items[0];const proto=note.proto;await xlsx(w,&#x27;native-note&#x27;);note.delete();eq(w.notes.items.length,0);return proto;
+});
+await test(&#x27;A04&#x27;,&#x27;Awareness operation families and correct presence rectangle&#x27;,async()=&gt;{
+ const [w,s]=fresh();const result=w.apply([{op:&#x27;presence.selection.set&#x27;,presenceId:&#x27;probe&#x27;,selections:[{sheetName:&#x27;Data&#x27;,range:&#x27;A1:B2&#x27;}]}]);const selected=w.awareness.getSelectionsForSheet(&#x27;Data&#x27;);
+ w.apply([{op:&#x27;presence.selection.clear&#x27;,presenceId:&#x27;probe&#x27;}]);w.comments.setSelf({displayName:&#x27;Ruggero Gargiulo&#x27;});const th=w.comments.addThread({cell:s.getRange(&#x27;A1&#x27;)},&#x27;Probe&#x27;);
+ const reaction=w.apply([{op:&#x27;thread.reaction.toggle&#x27;,target:th.id,reaction:&#x27;👍&#x27;}]);return {result,selected,reaction};
+});
+await test(&#x27;A05&#x27;,&#x27;Workbook static session API and common CRDT initialization&#x27;,async()=&gt;{
+ const statics=Object.getOwnPropertyNames(Workbook.session??{});const methods={};for(const key of statics)if(typeof Workbook.session[key]===&#x27;function&#x27;)methods[key]=Workbook.session[key].toString();
+ const [w,s]=fresh();return {statics,methods,crdt:{loadInitial:w.loadInitialCrdtStateV2.toString(),subscribe:w.onCrdtUpdateV2.toString(),getDoc:w.getCrdtDoc.toString()}};
+});
+await test(&#x27;A06&#x27;,&#x27;Database formula family with valid database and criteria&#x27;,async()=&gt;{
+ const [w,s]=fresh();s.getRange(&#x27;A1:C5&#x27;).values=[[&#x27;Region&#x27;,&#x27;Product&#x27;,&#x27;Sales&#x27;],[&#x27;North&#x27;,&#x27;A&#x27;,10],[&#x27;South&#x27;,&#x27;A&#x27;,20],[&#x27;North&#x27;,&#x27;B&#x27;,30],[&#x27;South&#x27;,&#x27;B&#x27;,40]];s.getRange(&#x27;E1:E2&#x27;).values=[[&#x27;Region&#x27;],[&#x27;North&#x27;]];
+ const cases=[[&#x27;DSUM&#x27;,40],[&#x27;DCOUNT&#x27;,2],[&#x27;DCOUNTA&#x27;,2],[&#x27;DAVERAGE&#x27;,20],[&#x27;DMIN&#x27;,10],[&#x27;DMAX&#x27;,30],[&#x27;DPRODUCT&#x27;,300],[&#x27;DSTDEV&#x27;,Math.sqrt(200)],[&#x27;DVAR&#x27;,200],[&#x27;DSTDEVP&#x27;,10],[&#x27;DVARP&#x27;,100],[&#x27;DGET&#x27;,&#x27;#NUM!&#x27;]];
+ const data=[];for(const [i,[fn,expected]]of cases.entries()){const formula=&#x27;=&#x27;+fn+&#x27;(A1:C5,&quot;Sales&quot;,E1:E2)&#x27;;s.getCell(i,6).formulas=[[formula]];w.recalculate();data.push({formula,expected,actual:val(s,&#x27;G&#x27;+(i+1))});}return data;
+});
+await test(&#x27;A07&#x27;,&#x27;Table total reserve and recalculation before/after flag&#x27;,async()=&gt;{
+ const [w,s]=fresh();s.getRange(&#x27;A1:B4&#x27;).values=[[&#x27;Item&#x27;,&#x27;Qty&#x27;],[&#x27;A&#x27;,2],[&#x27;B&#x27;,3],[&#x27;C&#x27;,4]];const t=s.tables.add(&#x27;A1:B4&#x27;,true,&#x27;Stock&#x27;);
+ s.getRange(&#x27;D1&#x27;).formulas=[[&#x27;=SUM(Stock[Qty])&#x27;]];const before=val(s,&#x27;D1&#x27;);t.showTotals=true;w.recalculate();const after=val(s,&#x27;D1&#x27;);
+ const [x,u]=fresh();u.getRange(&#x27;A1:B5&#x27;).values=[[&#x27;Item&#x27;,&#x27;Qty&#x27;],[&#x27;A&#x27;,2],[&#x27;B&#x27;,3],[&#x27;C&#x27;,4],[&#x27;Total&#x27;,null]];const safe=u.tables.add(&#x27;A1:B5&#x27;,true,&#x27;Reserved&#x27;);safe.showTotals=true;u.getRange(&#x27;D1&#x27;).formulas=[[&#x27;=SUM(Reserved[Qty])&#x27;]];x.recalculate();
+ return {before,after,withReservedTotalsRow:val(u,&#x27;D1&#x27;)};
+});
+}
+
+if(mode===&#x27;recovery&#x27;){
+await test(&#x27;V01&#x27;,&#x27;Replicated CRDT edits from a shared initialization update&#x27;,async()=&gt;{
+ const [w,s]=fresh();s.getRange(&#x27;A1&#x27;).values=[[1]];const baseline=[];const off=w.onCrdtUpdateV2(u=&gt;baseline.push(u));w.hydrateCrdtFromProto();off();
+ const clone=Workbook.create();for(const update of baseline)clone.applyCrdtUpdateV2(update,{recalculate:true});
+ const change=w.record(()=&gt;{s.getRange(&#x27;A1&#x27;).values=[[99]];});clone.applyCrdtUpdateV2(change.crdtUpdateV2,{recalculate:true});
+ const target=clone.worksheets.getItemOrNullObject(&#x27;Data&#x27;);return {baselineUpdates:baseline.map(u=&gt;u.length),sheets:clone.worksheets.items.map(x=&gt;x.name),value:target.isNullObject?null:val(target,&#x27;A1&#x27;)};
+});
+await test(&#x27;V02&#x27;,&#x27;Correct raw-note config and Excel note preservation&#x27;,async()=&gt;{
+ const [w,s]=fresh();s.getRange(&#x27;A1&#x27;).values=[[1]];w.comments.setSelf({displayName:&#x27;Ruggero Gargiulo&#x27;});
+ const note=w.notes.add({id:&#x27;synthetic-note&#x27;,target:{cell:{sheetName:s.name,sheetId:s.sheetId,address:&#x27;A1&#x27;}},authorId:w.comments.self.id,createdAt:new Date().toISOString(),body:{plainText:&#x27;Synthetic cell note&#x27;}});
+ await xlsx(w,&#x27;native-note&#x27;);const proto=note.proto;note.delete();eq(w.notes.items.length,0);return proto;
+});
+await test(&#x27;V03&#x27;,&#x27;Unsupported operations return warnings; batches retain earlier changes&#x27;,()=&gt;{
+ const [w,s]=fresh();s.getRange(&#x27;A1&#x27;).values=[[1]];const result=w.apply([{op:&#x27;range.values.set&#x27;,target:{sheet:&#x27;Data&#x27;,range:&#x27;A1&#x27;},values:[[2]]},{op:&#x27;invalid.action&#x27;},{op:&#x27;note.add&#x27;,body:&#x27;Probe&#x27;,target:{cell:{sheet:&#x27;Data&#x27;,address:&#x27;A1&#x27;}}}]);return {result,value:val(s,&#x27;A1&#x27;),notes:w.notes.items.length};
+});
+await test(&#x27;V04&#x27;,&#x27;Fresh structured formula after table totals flag and saved-file reload&#x27;,async()=&gt;{
+ const [w,s]=fresh();s.getRange(&#x27;A1:B4&#x27;).values=[[&#x27;Item&#x27;,&#x27;Qty&#x27;],[&#x27;A&#x27;,2],[&#x27;B&#x27;,3],[&#x27;C&#x27;,4]];const t=s.tables.add(&#x27;A1:B4&#x27;,true,&#x27;Stock&#x27;);
+ s.getRange(&#x27;D1&#x27;).formulas=[[&#x27;=SUM(Stock[Qty])&#x27;]];const before=val(s,&#x27;D1&#x27;);t.showTotals=true;s.getRange(&#x27;D2&#x27;).formulas=[[&#x27;=SUM(Stock[Qty])+0&#x27;]];w.recalculate();const after=s.getRange(&#x27;D1:D2&#x27;).values;await xlsx(w,&#x27;table-total-fresh-formula&#x27;);
+ const x=await SpreadsheetFile.importXlsx(await FileBlob.load(path.join(out,&#x27;table-total-fresh-formula.xlsx&#x27;)));x.recalculate();return {before,after,reimport:x.worksheets.getItemAt(0).getRange(&#x27;D1:D2&#x27;).values};
+});
+await test(&#x27;V05&#x27;,&#x27;Slicer select/clear, pivot refresh, layout and export&#x27;,async()=&gt;{
+ const [w,s]=fresh(&#x27;Data&#x27;);const t=w.worksheets.add(&#x27;Pivot&#x27;);s.getRange(&#x27;A1:B5&#x27;).values=[[&#x27;Region&#x27;,&#x27;Sales&#x27;],[&#x27;North&#x27;,10],[&#x27;South&#x27;,20],[&#x27;North&#x27;,30],[&#x27;South&#x27;,40]];
+ const p=w.pivotTables.add(&#x27;Regional&#x27;,s.getRange(&#x27;A1:B5&#x27;),t.getRange(&#x27;A1&#x27;));p.rowHierarchies.add(p.hierarchies.getItem(&#x27;Region&#x27;));p.dataHierarchies.add(p.hierarchies.getItem(&#x27;Sales&#x27;));
+ const sl=t.slicers.add(&#x27;Regional&#x27;,&#x27;Region&#x27;);sl.name=&#x27;RegionSelector&#x27;;sl.caption=&#x27;Region&#x27;;sl.left=320;sl.top=20;sl.width=180;sl.height=180;
+ const before=t.getRange(&#x27;A1:C5&#x27;).values;sl.selectItems([&#x27;North&#x27;]);w.recalculate();const selected=t.getRange(&#x27;A1:C5&#x27;).values;sl.clearFilters();s.getRange(&#x27;B2&#x27;).values=[[100]];p.rebuildCache();w.recalculate();const refreshed=t.getRange(&#x27;A1:C5&#x27;).values;
+ await xlsx(w,&#x27;slicer-filter&#x27;);return {before,selected,refreshed,layout:p.layout.layoutType};
+});
+await test(&#x27;V06&#x27;,&#x27;Read-only public static session wrapper types and file APIs&#x27;,()=&gt;{
+ const getters={};for(const key of Object.getOwnPropertyNames(Workbook)){if([&#x27;prototype&#x27;,&#x27;length&#x27;,&#x27;name&#x27;].includes(key))continue;getters[key]={type:typeof Workbook[key],source:typeof Workbook[key]===&#x27;function&#x27;?Workbook[key].toString().slice(0,5000):undefined};}
+ return {Workbook:getters,SpreadsheetFile:Object.getOwnPropertyNames(SpreadsheetFile),FileBlob:Object.getOwnPropertyNames(FileBlob)};
+});
+}
+
+await save(runName+&#x27;.json&#x27;,receipts);
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

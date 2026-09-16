@@ -1,0 +1,147 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>prepare_inspection.py · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="prepare_inspection.py">Raw file</a> · <a data-public-raw download href="prepare_inspection.py">Download</a></p><article><h1>prepare_inspection.py</h1><pre class="public-code"><code>&quot;&quot;&quot;Derive coverage from saved returns and check it against separate direct reads.&quot;&quot;&quot;
+import hashlib
+import json
+import re
+from collections import Counter
+from pathlib import Path
+
+HOME = Path(__file__).resolve().parents[1]
+raw = json.loads((HOME / &#x27;files/inspection/captures.json&#x27;).read_text())
+baseline = {s[&#x27;sheet&#x27;]: s for s in raw[&#x27;baseline&#x27;]}
+checks = []
+
+
+def check(name, condition):
+    assert condition, name
+    checks.append(name)
+
+
+def position(address):
+    address = address.split(&#x27;!&#x27;)[-1].replace(&#x27;$&#x27;, &#x27;&#x27;).split(&#x27;:&#x27;)[0]
+    col, row = re.fullmatch(r&#x27;([A-Z]+)(\d+)&#x27;, address).groups()
+    n = 0
+    for c in col:
+        n = n * 26 + ord(c) - 64
+    return int(row) - 1, n - 1
+
+
+def source_value(sheet, address, row=0, col=0, field=&#x27;values&#x27;):
+    r, c = position(address)
+    sr, sc = position(baseline[sheet][&#x27;address&#x27;])
+    rows = baseline[sheet][field]
+    return rows[r - sr + row][c - sc + col]
+
+
+def letters(col):
+    value = &#x27;&#x27;
+    while col &gt;= 0:
+        value = chr(65 + col % 26) + value
+        col = col // 26 - 1
+    return value
+
+
+def records(case):
+    r = case[&#x27;response&#x27;]
+    if case[&#x27;method&#x27;] == &#x27;range&#x27;:
+        return [dict(kind=&#x27;directRange&#x27;, sheet=&#x27;Fee engine&#x27;, address=&#x27;C4:H12&#x27;, **r)]
+    return [json.loads(line) for line in r[&#x27;ndjson&#x27;].splitlines() if line] if &#x27;ndjson&#x27; in r else r[&#x27;matches&#x27;]
+
+
+byid = {c[&#x27;id&#x27;]: c for c in raw[&#x27;cases&#x27;]}
+full = records(byid[&#x27;table-workbook-150000&#x27;])
+extents = {r[&#x27;sheet&#x27;]: r[&#x27;address&#x27;] for r in full}
+cases = []
+for case in raw[&#x27;cases&#x27;]:
+    result = case[&#x27;response&#x27;]
+    rows = records(case)
+    if &#x27;ndjson&#x27; in result:
+        check(case[&#x27;id&#x27;] + &#x27;: record count&#x27;, len(rows) == result[&#x27;recordCount&#x27;])
+    coverage = []
+    truncated_text = 0
+    for name, base in baseline.items():
+        found = [r for r in rows if r.get(&#x27;sheet&#x27;, r.get(&#x27;name&#x27;)) == name]
+        entry = dict(sheet=name, extent=extents[name], structure=any(r[&#x27;kind&#x27;] == &#x27;sheet&#x27; for r in found),
+                     grids=[], previews=[], formulas=[], matches=[], valueCells=0, previewCells=0)
+        for r in found:
+            kind = r[&#x27;kind&#x27;]
+            if kind == &#x27;directRange&#x27;:
+                rr, cc = position(r[&#x27;address&#x27;])
+                entry[&#x27;formulas&#x27;] += [letters(cc + ci) + str(rr + ri + 1) for ri, row in enumerate(r[&#x27;formulas&#x27;]) for ci, f in enumerate(row) if f]
+            if kind in (&#x27;table&#x27;, &#x27;directRange&#x27;) and &#x27;values&#x27; in r:
+                values = r[&#x27;values&#x27;]
+                address = r.get(&#x27;valuesPreviewAddress&#x27;, r[&#x27;address&#x27;])
+                count = sum(map(len, values))
+                entry[&#x27;valueCells&#x27;] += count
+                entry[&#x27;grids&#x27;].append(dict(address=address, described=r[&#x27;address&#x27;], rows=len(values),
+                                           cols=max(map(len, values), default=0), cells=count,
+                                           isPreview=r.get(&#x27;valuesTruncated&#x27;, False)))
+                for ri, rr in enumerate(values):
+                    for ci, value in enumerate(rr):
+                        actual = source_value(name, address, ri, ci)
+                        if value != actual:
+                            check(case[&#x27;id&#x27;] + &#x27;: clipped text matches source&#x27;, isinstance(value, str) and isinstance(actual, str)
+                                  and value.endswith(&#x27;...&#x27;) and actual.startswith(value[:-3]))
+                            truncated_text += 1
+                check(case[&#x27;id&#x27;] + &#x27;: grid agrees with direct read&#x27;, all(
+                    value == source_value(name, address, ri, ci) or
+                    (isinstance(value, str) and isinstance(source_value(name, address, ri, ci), str) and value.endswith(&#x27;...&#x27;)
+                     and source_value(name, address, ri, ci).startswith(value[:-3]))
+                    for ri, rr in enumerate(values) for ci, value in enumerate(rr)))
+            if kind == &#x27;region&#x27; and &#x27;preview&#x27; in r:
+                values = r[&#x27;preview&#x27;]; address = r[&#x27;previewAddress&#x27;]
+                entry[&#x27;previewCells&#x27;] += sum(map(len, values))
+                entry[&#x27;previews&#x27;].append(dict(address=address, described=r[&#x27;address&#x27;], rows=len(values), cols=max(map(len, values), default=0)))
+                check(case[&#x27;id&#x27;] + &#x27;: preview dimensions&#x27;, r[&#x27;previewRows&#x27;] == len(values) and r[&#x27;previewCols&#x27;] == max(map(len, values)))
+                for ri, rr in enumerate(values):
+                    for ci, value in enumerate(rr):
+                        actual = source_value(name, address, ri, ci)
+                        if isinstance(actual, str) and value != actual:
+                            check(case[&#x27;id&#x27;] + &#x27;: region text prefix&#x27;, value.endswith(&#x27;...&#x27;) and actual.startswith(value[:-3]))
+                            truncated_text += 1
+            if kind == &#x27;formula&#x27;:
+                entry[&#x27;formulas&#x27;].append(r[&#x27;address&#x27;])
+                check(case[&#x27;id&#x27;] + &#x27;: formula &#x27; + r[&#x27;address&#x27;], r[&#x27;formula&#x27;] == source_value(name, r[&#x27;address&#x27;], field=&#x27;formulas&#x27;))
+            if kind == &#x27;match&#x27;:
+                entry[&#x27;matches&#x27;].append(r[&#x27;address&#x27;])
+                actual = source_value(name, r[&#x27;address&#x27;])
+                matches = r[&#x27;value&#x27;] == actual
+                if isinstance(actual, (int, float)) and isinstance(r[&#x27;value&#x27;], str):
+                    matches = float(r[&#x27;value&#x27;]) == actual
+                check(case[&#x27;id&#x27;] + &#x27;: match &#x27; + r[&#x27;address&#x27;], matches)
+        coverage.append(entry)
+    notices = list(result.get(&#x27;metadata&#x27;, {}).get(&#x27;notices&#x27;, result.get(&#x27;notices&#x27;, [])))
+    notices += [r[&#x27;message&#x27;] for r in rows if r[&#x27;kind&#x27;] == &#x27;notice&#x27;]
+    stats = dict(recordTypes=dict(Counter(r[&#x27;kind&#x27;] for r in rows)), recordCount=len(rows),
+                 characters=len(result.get(&#x27;ndjson&#x27;, json.dumps(result, ensure_ascii=False))),
+                 valueCells=sum(s[&#x27;valueCells&#x27;] for s in coverage), previewCells=sum(s[&#x27;previewCells&#x27;] for s in coverage),
+                 formulaCells=sum(len(s[&#x27;formulas&#x27;]) for s in coverage), matchCells=sum(len(s[&#x27;matches&#x27;]) for s in coverage),
+                 previewGrids=sum(g[&#x27;isPreview&#x27;] for s in coverage for g in s[&#x27;grids&#x27;]), shortenedTextCells=truncated_text,
+                 omittedRecords=result.get(&#x27;truncated&#x27;, False) if case[&#x27;method&#x27;] == &#x27;inspect&#x27; else None,
+                 notices=notices)
+    case = {k: v for k, v in case.items() if k != &#x27;elapsedMs&#x27;}
+    case.update(analysis=dict(coverage=coverage, **stats))
+    cases.append(case)
+
+
+def rec(id):
+    return records(byid[id])
+
+
+check(&#x27;Source SHA-256 unchanged&#x27;, hashlib.sha256((HOME / raw[&#x27;receipt&#x27;][&#x27;source&#x27;]).read_bytes()).hexdigest() == raw[&#x27;receipt&#x27;][&#x27;sourceSha256&#x27;])
+check(&#x27;No native Excel Tables in fixture&#x27;, all(s[&#x27;nativeTables&#x27;] == 0 for s in baseline.values()))
+check(&#x27;Large allowance ignores 1x1 fallback&#x27;, len(rec(&#x27;table-sheet-150000&#x27;)[0][&#x27;values&#x27;]) == 109 and len(rec(&#x27;table-sheet-150000&#x27;)[0][&#x27;values&#x27;][0]) == 23)
+check(&#x27;Small allowance returns one blank cell&#x27;, rec(&#x27;table-sheet-1000&#x27;)[0][&#x27;values&#x27;] == [[None]])
+check(&#x27;Preview and outer omission are distinct&#x27;, rec(&#x27;table-sheet-1000&#x27;)[0][&#x27;valuesTruncated&#x27;] and not byid[&#x27;table-sheet-1000&#x27;][&#x27;response&#x27;][&#x27;truncated&#x27;])
+check(&#x27;A narrow range fits small allowance&#x27;, rec(&#x27;table-range-1000&#x27;) == rec(&#x27;table-range-150000&#x27;))
+check(&#x27;Full grid unaffected by preview dimensions&#x27;, rec(&#x27;table-sheet-150000&#x27;) == rec(&#x27;table-sheet-wide-150000&#x27;))
+check(&#x27;Formula maxResults ignored in tested range&#x27;, rec(&#x27;formulas-range-3&#x27;) == rec(&#x27;formulas-range-300&#x27;) and len(rec(&#x27;formulas-range-3&#x27;)) == 13)
+check(&#x27;Formula maxChars does omit records&#x27;, byid[&#x27;formulas-small-budget&#x27;][&#x27;response&#x27;][&#x27;truncated&#x27;])
+check(&#x27;include formulas does not add formula records&#x27;, rec(&#x27;project-values&#x27;) == rec(&#x27;table-range-150000&#x27;))
+check(&#x27;Search offset skips first three matches&#x27;, rec(&#x27;match-offset&#x27;)[:3] == rec(&#x27;match-all&#x27;)[3:6])
+check(&#x27;findCells retains total and limit&#x27;, byid[&#x27;find-cells&#x27;][&#x27;response&#x27;][&#x27;total&#x27;] == 28 and byid[&#x27;find-cells&#x27;][&#x27;response&#x27;][&#x27;truncated&#x27;])
+check(&#x27;Inspect match limit has its own notice&#x27;, not byid[&#x27;match-limit&#x27;][&#x27;response&#x27;][&#x27;truncated&#x27;] and any(&#x27;Cell search truncated&#x27; in r.get(&#x27;message&#x27;, &#x27;&#x27;) for r in rec(&#x27;match-limit&#x27;)))
+data = dict(receipt=raw[&#x27;receipt&#x27;], sheets=[dict(sheet=s, extent=extents[s], directReadExtent=b[&#x27;address&#x27;], nativeTables=b[&#x27;nativeTables&#x27;]) for s,b in baseline.items()], cases=cases)
+(HOME / &#x27;data/inspection.json&#x27;).write_text(json.dumps(data, ensure_ascii=False, separators=(&#x27;,&#x27;, &#x27;:&#x27;)))
+(HOME / &#x27;data/inspection-checks.json&#x27;).write_text(json.dumps(dict(passed=len(checks), checks=checks, sourceSha256=raw[&#x27;receipt&#x27;][&#x27;sourceSha256&#x27;], captureSha256=hashlib.sha256((HOME/&#x27;files/inspection/captures.json&#x27;).read_bytes()).hexdigest()), indent=2))
+print(json.dumps(dict(cases=len(cases), checks=len(checks), gridCells=sum(r[&#x27;rows&#x27;]*r[&#x27;cols&#x27;] for r in full), formulaRecords=len(rec(&#x27;formulas-sheet-3&#x27;)))))
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

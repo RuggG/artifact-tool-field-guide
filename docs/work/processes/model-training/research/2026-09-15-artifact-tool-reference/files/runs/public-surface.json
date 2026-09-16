@@ -1,0 +1,2713 @@
+{
+  "workbook": [
+    {
+      "key": "session",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "attachSessionController",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "attachArtifactSessionOutputSink",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "useExternalImageAssetStorage",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "fromCSV",
+      "kind": "method",
+      "set": false,
+      "arity": 2
+    },
+    {
+      "key": "pivotTables",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "fontFamilies",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "sheets",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "slicers",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "worksheets",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "getStyleRegistry",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "getSpreadsheetRenderAssets",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "__registerCollaborativeStyle",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "__getOrCreateStyleIdForStyleIndex",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "__resolveStyleIndexForStyleId",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "__subscribeToCollaborativeStyles",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "hydrateCrdtFromProto",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "loadInitialCrdtStateV2",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "getCrdtDoc",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "isCollaborativeStateReady",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "__flushPendingCollaborativePublishes",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "getCollabOrigins",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "queueWorkbookCollabPublish",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "queueWorksheetCollabPublish",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "runLocalCollabTransaction",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "batchCellInputWrites",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "undo",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "redo",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "canUndo",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "canRedo",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "getConditionalFormattingRenderCache",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "invalidateConditionalFormattingCache",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "__getOrCreateCheckboxFeaturePropertyBagIndex",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "__isCheckboxStyleIndex",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "__resolveCheckboxStyleIndex",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "__removeCheckboxStyleIndex",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "createImageAsset",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "createImageAssetModel",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "getImageAssetItems",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "getPendingImageHydrationRequests",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "hydrateImageAssets",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "images",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "resolveImageAsset",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "notes",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "names",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "definedNames",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "utils",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "__getWorksheetByName",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "__getWorksheetBySheetId",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "__getNamesFacadeForSheet",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "theme",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "setColorScheme",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "recalculate",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "trace",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "collectFormulaUsageStats",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "__getDisplayFormulaForCell",
+      "kind": "method",
+      "set": false,
+      "arity": 3
+    },
+    {
+      "key": "__getFormulaPresenceForCell",
+      "kind": "method",
+      "set": false,
+      "arity": 3
+    },
+    {
+      "key": "toProto",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "inspect",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "findCells",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "help",
+      "kind": "method",
+      "set": false,
+      "arity": 2
+    },
+    {
+      "key": "resolve",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "apply",
+      "kind": "method",
+      "set": false,
+      "arity": 2
+    },
+    {
+      "key": "configureGoogleSheets",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "applyCrdtUpdateV2",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "onCrdtUpdateV2",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "record",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "recordAsync",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "getRecorder",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "__reloadPivotCollectionsFromCollab",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "__reloadSlicerCollectionsFromCollab",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "__refreshSparklineRenderContextsFromCollab",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "__invalidateCalcStateFromCollab",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "googleSheets",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "render",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "export",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "toHTML",
+      "kind": "method",
+      "set": false,
+      "arity": 3
+    },
+    {
+      "key": "fromHTML",
+      "kind": "method",
+      "set": false,
+      "arity": 4
+    },
+    {
+      "key": "chartToImage",
+      "kind": "method",
+      "set": false,
+      "arity": 2
+    },
+    {
+      "key": "fromImage",
+      "kind": "method",
+      "set": false,
+      "arity": 4
+    },
+    {
+      "key": "__handleCellFormulaChanged",
+      "kind": "method",
+      "set": false,
+      "arity": 3
+    },
+    {
+      "key": "__handleCellValueChanged",
+      "kind": "method",
+      "set": false,
+      "arity": 2
+    },
+    {
+      "key": "__getVolatileChain",
+      "kind": "method",
+      "set": false,
+      "arity": 2
+    },
+    {
+      "key": "__formatRawValueForDisplay",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    }
+  ],
+  "worksheets": [
+    {
+      "key": "getSheetCount",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "getSheetIndex",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "getSheetNameByIndex",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "getItemAt",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "getFirst",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "getOrAdd",
+      "kind": "method",
+      "set": false,
+      "arity": 2
+    },
+    {
+      "key": "add",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "getItem",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "getItemOrNullObject",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "getItemBySheetId",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "getTopologyEntries",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "syncTopology",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "items",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "getActiveWorksheet",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "getActive",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "setActiveWorksheet",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "toProto",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    }
+  ],
+  "worksheet": [
+    {
+      "key": "workbook",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "names",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "id",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "name",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "isNullObject",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "index",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "sheetId",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "tabColor",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "showGridLines",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "defaultRowHeight",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "defaultColWidth",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "baseColWidth",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "innerXml",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "outerXml",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "writeName",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "writeIndex",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "getRange",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "getRangeByIndexes",
+      "kind": "method",
+      "set": false,
+      "arity": 4
+    },
+    {
+      "key": "getCell",
+      "kind": "method",
+      "set": false,
+      "arity": 2
+    },
+    {
+      "key": "getUsedRange",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "reset",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "mergeCells",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "unmergeCells",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "pivotTables",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "slicers",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "sparklineGroups",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "charts",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "shapes",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "images",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "deleteAllDrawings",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "autoLayoutDrawings",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "conditionalFormattings",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "dataValidations",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "freezePanes",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "sparklines",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "tables",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "dataTables",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "cells",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "__getWorksheetByName",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "__refreshSparklineRenderContext",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "__queueCollaborativePublish",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "flushCollaborativeState",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "__invalidateViewportLayout",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "__getViewportLayout",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "delete",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "toProto",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "__notifyCellFormulaChanged",
+      "kind": "method",
+      "set": false,
+      "arity": 2
+    },
+    {
+      "key": "__notifyCellValueChanged",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "writeCellInputToYjs",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "hydrateCellInputToYjs",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "__getRows",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "__getColumns",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "__getMergedCells",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "__getMergedRangeIndex",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "__getSharedFormulas",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "__getDrawings",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "__getConditionalFormattings",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "__getDataValidations",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "__getTables",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "__getSpreadsheetRenderMetadata",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "__getDataTables",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "__getPivotTables",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "__getSlicers",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "__setLogicalStyleIndex",
+      "kind": "method",
+      "set": false,
+      "arity": 3
+    },
+    {
+      "key": "__getLogicalStyleIndex",
+      "kind": "method",
+      "set": false,
+      "arity": 2
+    },
+    {
+      "key": "__setCellStyleRef",
+      "kind": "method",
+      "set": false,
+      "arity": 3
+    },
+    {
+      "key": "__getCellStyleRef",
+      "kind": "method",
+      "set": false,
+      "arity": 2
+    },
+    {
+      "key": "__getOrCreateRow",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "__getOrCreateSingleColumn",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "__getRow",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "__syncRowSizeRef",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "__syncColumnSizeRef",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "__getOrCreateCell",
+      "kind": "method",
+      "set": false,
+      "arity": 2
+    },
+    {
+      "key": "__getCell",
+      "kind": "method",
+      "set": false,
+      "arity": 2
+    },
+    {
+      "key": "__setRawValue",
+      "kind": "method",
+      "set": false,
+      "arity": 3
+    },
+    {
+      "key": "__getRawValue",
+      "kind": "method",
+      "set": false,
+      "arity": 2
+    },
+    {
+      "key": "__getDisplayFormula",
+      "kind": "method",
+      "set": false,
+      "arity": 2
+    },
+    {
+      "key": "__getFormulaPresence",
+      "kind": "method",
+      "set": false,
+      "arity": 2
+    },
+    {
+      "key": "__clearRawValue",
+      "kind": "method",
+      "set": false,
+      "arity": 2
+    },
+    {
+      "key": "__setExcelRawValue",
+      "kind": "method",
+      "set": false,
+      "arity": 3
+    },
+    {
+      "key": "__getExcelRawValue",
+      "kind": "method",
+      "set": false,
+      "arity": 2
+    },
+    {
+      "key": "__hasExcelRawValue",
+      "kind": "method",
+      "set": false,
+      "arity": 2
+    },
+    {
+      "key": "hydrateCollaborativeRefsFromProto",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "__getColumnExtent",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "__getRowExtent",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "__createCellIterator",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "__removePivotTable",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "__removeSlicer",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "__getOrCreateChartsState",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "__getChartsState",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    }
+  ],
+  "range": [
+    {
+      "key": "address",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "getAddress",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "write",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "rowCount",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "getRowCount",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "columnCount",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "getColumnCount",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "format",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "rowIndex",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "columnIndex",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "getRowIndex",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "getColumnIndex",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "getRange",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "setNumberFormat",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "sparklines",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "conditionalFormats",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "dataValidation",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "getCell",
+      "kind": "method",
+      "set": false,
+      "arity": 2
+    },
+    {
+      "key": "getRow",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "getColumn",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "getRangeByIndexes",
+      "kind": "method",
+      "set": false,
+      "arity": 4
+    },
+    {
+      "key": "getOffsetRange",
+      "kind": "method",
+      "set": false,
+      "arity": 4
+    },
+    {
+      "key": "getResizedRange",
+      "kind": "method",
+      "set": false,
+      "arity": 2
+    },
+    {
+      "key": "getResizeRange",
+      "kind": "method",
+      "set": false,
+      "arity": 2
+    },
+    {
+      "key": "offset",
+      "kind": "method",
+      "set": false,
+      "arity": 4
+    },
+    {
+      "key": "resize",
+      "kind": "method",
+      "set": false,
+      "arity": 2
+    },
+    {
+      "key": "getCurrentRegion",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "__getWorksheet",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "formulas",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "formulasR1C1",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "values",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "displayFormula",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "displayFormulas",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "formulaInfo",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "formulaInfos",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "rawValues",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "writeValues",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "getLastRow",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "load",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "calculate",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "clear",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "merge",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "unmerge",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "fillDown",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "fillRight",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "fillFrom",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "copyFrom",
+      "kind": "method",
+      "set": false,
+      "arity": 4
+    },
+    {
+      "key": "copyTo",
+      "kind": "method",
+      "set": false,
+      "arity": 4
+    },
+    {
+      "key": "getBoundingBox",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    }
+  ],
+  "format": [
+    {
+      "key": "reset",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "font",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "setFont",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "borders",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "fill",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "numberFormat",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "wrapText",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "horizontalAlignment",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "verticalAlignment",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "rowHeight",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "rowHeightPx",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "columnWidth",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "columnWidthPx",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "styleId",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "autofitColumns",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "autofitRows",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "applyBorderBlueprint",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "updateBorders",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "getBorderBlueprintSnapshot",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    }
+  ],
+  "tables": [
+    {
+      "key": "add",
+      "kind": "method",
+      "set": false,
+      "arity": 3
+    },
+    {
+      "key": "getItem",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "getItemOrNullObject",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "getItemAt",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "items",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "replaceFromProto",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "deleteAll",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    }
+  ],
+  "table": [
+    {
+      "key": "isNullObject",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "worksheet",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "hasHeaders",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "showHeaders",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "writeShowHeaders",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "name",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "writeName",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "address",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "style",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "writeStyle",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "showTotals",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "writeShowTotals",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "showBandedRows",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "writeShowBandedRows",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "highlightFirstColumn",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "writeHighlightFirstColumn",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "highlightLastColumn",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "writeHighlightLastColumn",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "showBandedColumns",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "writeShowBandedColumns",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "showFilterButton",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "writeShowFilterButton",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "getRange",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "getHeaderRowRange",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "rows",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "delete",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "appendRows",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "getDataRows",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "refreshBounds",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "syncColumnsFromSheet",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    }
+  ],
+  "tableRows": [
+    {
+      "key": "add",
+      "kind": "method",
+      "set": false,
+      "arity": 2
+    },
+    {
+      "key": "items",
+      "kind": "getter",
+      "set": false
+    }
+  ],
+  "tableColumns": null,
+  "notes": [
+    {
+      "key": "add",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "items",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "proto",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "replace",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    }
+  ],
+  "comments": [
+    {
+      "key": "self",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "setSelf",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "clearSelf",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "addThread",
+      "kind": "method",
+      "set": false,
+      "arity": 2
+    },
+    {
+      "key": "__addThreadForApply",
+      "kind": "method",
+      "set": false,
+      "arity": 2
+    },
+    {
+      "key": "getThread",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "toProto",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "replaceFromProto",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    }
+  ],
+  "names": [
+    {
+      "key": "__defineGetter__",
+      "kind": "method",
+      "set": false,
+      "arity": 2
+    },
+    {
+      "key": "__defineSetter__",
+      "kind": "method",
+      "set": false,
+      "arity": 2
+    },
+    {
+      "key": "hasOwnProperty",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "__lookupGetter__",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "__lookupSetter__",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "isPrototypeOf",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "propertyIsEnumerable",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "toString",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "valueOf",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "__proto__",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "toLocaleString",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    }
+  ],
+  "pivotTables": [
+    {
+      "key": "add",
+      "kind": "method",
+      "set": false,
+      "arity": 3
+    },
+    {
+      "key": "getItem",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "getItemOrNullObject",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "items",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "reload",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "_registerShared",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "hydrateLayouts",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    }
+  ],
+  "slicers": [
+    {
+      "key": "add",
+      "kind": "method",
+      "set": false,
+      "arity": 2
+    },
+    {
+      "key": "getItem",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "getItemAt",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "items",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "reload",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "synthesizeCaches",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "_registerShared",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    }
+  ],
+  "awareness": [
+    {
+      "key": "getSheetState",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "setActiveSheetName",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "renameSheet",
+      "kind": "method",
+      "set": false,
+      "arity": 2
+    },
+    {
+      "key": "forgetSheet",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "setDialog",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "setPresenceSelections",
+      "kind": "method",
+      "set": false,
+      "arity": 2
+    },
+    {
+      "key": "clearPresenceSelections",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "getSelectionsForSheet",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "recordMissingAction",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "pushUndoEntry",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "popUndoEntry",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "pushRedoEntry",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "popRedoEntry",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "clearHistory",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    }
+  ],
+  "charts": [
+    {
+      "key": "items",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "getItem",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "getItemAt",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "getItemOrNullObject",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "deleteAll",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "clear",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "add",
+      "kind": "method",
+      "set": false,
+      "arity": 3
+    },
+    {
+      "key": "__addForApply",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "toProto",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "hydrateFromFallbackState",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    }
+  ],
+  "chart": [
+    {
+      "key": "aid",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "type",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "titleText",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "title",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "categories",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "legend",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "axes",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "plotArea",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "chartArea",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "isNullObject",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "width",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "height",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "setPosition",
+      "kind": "method",
+      "set": false,
+      "arity": 2
+    },
+    {
+      "key": "setData",
+      "kind": "method",
+      "set": false,
+      "arity": 2
+    },
+    {
+      "key": "delete",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "resolveBoundsPx",
+      "kind": "method",
+      "set": false,
+      "arity": 2
+    },
+    {
+      "key": "captureAnchorSnapshot",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "restoreAnchorSnapshot",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "setPreviewBoundsPx",
+      "kind": "method",
+      "set": false,
+      "arity": 3
+    },
+    {
+      "key": "clearPreviewBounds",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "applyBoundsPx",
+      "kind": "method",
+      "set": false,
+      "arity": 3
+    },
+    {
+      "key": "toDrawingProto",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    }
+  ],
+  "series": [
+    {
+      "key": "add",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "setChangeHandler",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "getItemAt",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "deleteAt",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "items",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "clear",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "deleteAll",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "toProto",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "length",
+      "kind": "getter",
+      "set": false
+    }
+  ],
+  "seriesItem": [
+    {
+      "key": "setChangeHandler",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "name",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "values",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "resolveValues",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "categories",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "resolveCategories",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "xValues",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "xFormula",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "categoryPaths",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "marker",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "bubbleSizes",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "valuesFormatCode",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "xValuesFormatCode",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "fill",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "format",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "explosion",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "smooth",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "stroke",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "line",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "setCategoryNormalizer",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "dataLabelOverrides",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "dataLabels",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "trendlines",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "errorBars",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "points",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "formula",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "categoryFormula",
+      "kind": "getter",
+      "set": true
+    },
+    {
+      "key": "isNullObject",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "delete",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "__isDeleted",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "toProto",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    }
+  ],
+  "shapes": [
+    {
+      "key": "items",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "deleteAll",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "add",
+      "kind": "method",
+      "set": false,
+      "arity": 2
+    },
+    {
+      "key": "__addForApply",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "toProto",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "replace",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    }
+  ],
+  "images": [
+    {
+      "key": "items",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "deleteAll",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "add",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "toProto",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "replace",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    }
+  ],
+  "sparklines": [
+    {
+      "key": "add",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "__addForApply",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "getAll",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "getGroupForCell",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "clear",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "deleteAll",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "delete",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "toProto",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "renderContext",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "__refreshRenderContext",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "replaceFromProto",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    }
+  ],
+  "dataTables": [
+    {
+      "key": "add",
+      "kind": "method",
+      "set": false,
+      "arity": 2
+    },
+    {
+      "key": "__getDefinitions",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "__hydrateFromProto",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    }
+  ],
+  "dataValidations": [
+    {
+      "key": "items",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "getForAddress",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "add",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "clear",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    }
+  ],
+  "conditionalFormats": [
+    {
+      "key": "addColorScale",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "addDataBar",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "addIconSet",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "addExpression",
+      "kind": "method",
+      "set": false,
+      "arity": 2
+    },
+    {
+      "key": "addCustom",
+      "kind": "method",
+      "set": false,
+      "arity": 2
+    },
+    {
+      "key": "addCellIs",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "add",
+      "kind": "method",
+      "set": false,
+      "arity": 2
+    },
+    {
+      "key": "items",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "getItemAt",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "clearAll",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "deleteAll",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    },
+    {
+      "key": "clear",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    }
+  ],
+  "freezePanes": [
+    {
+      "key": "state",
+      "kind": "getter",
+      "set": false
+    },
+    {
+      "key": "freezeRows",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "freezeColumns",
+      "kind": "method",
+      "set": false,
+      "arity": 1
+    },
+    {
+      "key": "unfreeze",
+      "kind": "method",
+      "set": false,
+      "arity": 0
+    }
+  ]
+}

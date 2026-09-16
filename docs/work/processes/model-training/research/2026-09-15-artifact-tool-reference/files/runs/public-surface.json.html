@@ -1,0 +1,2713 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>public-surface.json · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="public-surface.json">Raw file</a> · <a data-public-raw download href="public-surface.json">Download</a></p><article><h1>public-surface.json</h1><pre class="public-code"><code>{
+  &quot;workbook&quot;: [
+    {
+      &quot;key&quot;: &quot;session&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;attachSessionController&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;attachArtifactSessionOutputSink&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;useExternalImageAssetStorage&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;fromCSV&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;pivotTables&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;fontFamilies&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;sheets&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;slicers&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;worksheets&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;getStyleRegistry&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;getSpreadsheetRenderAssets&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;__registerCollaborativeStyle&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;__getOrCreateStyleIdForStyleIndex&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;__resolveStyleIndexForStyleId&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;__subscribeToCollaborativeStyles&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;hydrateCrdtFromProto&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;loadInitialCrdtStateV2&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;getCrdtDoc&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;isCollaborativeStateReady&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;__flushPendingCollaborativePublishes&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;getCollabOrigins&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;queueWorkbookCollabPublish&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;queueWorksheetCollabPublish&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;runLocalCollabTransaction&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;batchCellInputWrites&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;undo&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;redo&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;canUndo&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;canRedo&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;getConditionalFormattingRenderCache&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;invalidateConditionalFormattingCache&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;__getOrCreateCheckboxFeaturePropertyBagIndex&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;__isCheckboxStyleIndex&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;__resolveCheckboxStyleIndex&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;__removeCheckboxStyleIndex&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;createImageAsset&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;createImageAssetModel&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;getImageAssetItems&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;getPendingImageHydrationRequests&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;hydrateImageAssets&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;images&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;resolveImageAsset&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;notes&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;names&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;definedNames&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;utils&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;__getWorksheetByName&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;__getWorksheetBySheetId&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;__getNamesFacadeForSheet&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;theme&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;setColorScheme&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;recalculate&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;trace&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;collectFormulaUsageStats&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;__getDisplayFormulaForCell&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 3
+    },
+    {
+      &quot;key&quot;: &quot;__getFormulaPresenceForCell&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 3
+    },
+    {
+      &quot;key&quot;: &quot;toProto&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;inspect&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;findCells&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;help&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;resolve&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;apply&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;configureGoogleSheets&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;applyCrdtUpdateV2&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;onCrdtUpdateV2&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;record&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;recordAsync&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;getRecorder&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;__reloadPivotCollectionsFromCollab&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;__reloadSlicerCollectionsFromCollab&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;__refreshSparklineRenderContextsFromCollab&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;__invalidateCalcStateFromCollab&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;googleSheets&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;render&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;export&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;toHTML&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 3
+    },
+    {
+      &quot;key&quot;: &quot;fromHTML&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 4
+    },
+    {
+      &quot;key&quot;: &quot;chartToImage&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;fromImage&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 4
+    },
+    {
+      &quot;key&quot;: &quot;__handleCellFormulaChanged&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 3
+    },
+    {
+      &quot;key&quot;: &quot;__handleCellValueChanged&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;__getVolatileChain&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;__formatRawValueForDisplay&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    }
+  ],
+  &quot;worksheets&quot;: [
+    {
+      &quot;key&quot;: &quot;getSheetCount&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;getSheetIndex&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;getSheetNameByIndex&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;getItemAt&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;getFirst&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;getOrAdd&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;add&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;getItem&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;getItemOrNullObject&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;getItemBySheetId&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;getTopologyEntries&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;syncTopology&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;items&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;getActiveWorksheet&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;getActive&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;setActiveWorksheet&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;toProto&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    }
+  ],
+  &quot;worksheet&quot;: [
+    {
+      &quot;key&quot;: &quot;workbook&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;names&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;id&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;name&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;isNullObject&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;index&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;sheetId&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;tabColor&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;showGridLines&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;defaultRowHeight&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;defaultColWidth&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;baseColWidth&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;innerXml&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;outerXml&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;writeName&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;writeIndex&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;getRange&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;getRangeByIndexes&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 4
+    },
+    {
+      &quot;key&quot;: &quot;getCell&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;getUsedRange&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;reset&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;mergeCells&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;unmergeCells&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;pivotTables&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;slicers&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;sparklineGroups&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;charts&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;shapes&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;images&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;deleteAllDrawings&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;autoLayoutDrawings&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;conditionalFormattings&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;dataValidations&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;freezePanes&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;sparklines&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;tables&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;dataTables&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;cells&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;__getWorksheetByName&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;__refreshSparklineRenderContext&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;__queueCollaborativePublish&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;flushCollaborativeState&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;__invalidateViewportLayout&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;__getViewportLayout&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;delete&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;toProto&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;__notifyCellFormulaChanged&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;__notifyCellValueChanged&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;writeCellInputToYjs&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;hydrateCellInputToYjs&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;__getRows&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;__getColumns&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;__getMergedCells&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;__getMergedRangeIndex&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;__getSharedFormulas&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;__getDrawings&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;__getConditionalFormattings&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;__getDataValidations&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;__getTables&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;__getSpreadsheetRenderMetadata&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;__getDataTables&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;__getPivotTables&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;__getSlicers&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;__setLogicalStyleIndex&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 3
+    },
+    {
+      &quot;key&quot;: &quot;__getLogicalStyleIndex&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;__setCellStyleRef&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 3
+    },
+    {
+      &quot;key&quot;: &quot;__getCellStyleRef&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;__getOrCreateRow&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;__getOrCreateSingleColumn&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;__getRow&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;__syncRowSizeRef&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;__syncColumnSizeRef&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;__getOrCreateCell&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;__getCell&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;__setRawValue&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 3
+    },
+    {
+      &quot;key&quot;: &quot;__getRawValue&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;__getDisplayFormula&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;__getFormulaPresence&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;__clearRawValue&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;__setExcelRawValue&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 3
+    },
+    {
+      &quot;key&quot;: &quot;__getExcelRawValue&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;__hasExcelRawValue&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;hydrateCollaborativeRefsFromProto&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;__getColumnExtent&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;__getRowExtent&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;__createCellIterator&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;__removePivotTable&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;__removeSlicer&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;__getOrCreateChartsState&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;__getChartsState&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    }
+  ],
+  &quot;range&quot;: [
+    {
+      &quot;key&quot;: &quot;address&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;getAddress&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;write&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;rowCount&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;getRowCount&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;columnCount&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;getColumnCount&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;format&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;rowIndex&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;columnIndex&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;getRowIndex&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;getColumnIndex&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;getRange&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;setNumberFormat&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;sparklines&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;conditionalFormats&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;dataValidation&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;getCell&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;getRow&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;getColumn&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;getRangeByIndexes&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 4
+    },
+    {
+      &quot;key&quot;: &quot;getOffsetRange&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 4
+    },
+    {
+      &quot;key&quot;: &quot;getResizedRange&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;getResizeRange&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;offset&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 4
+    },
+    {
+      &quot;key&quot;: &quot;resize&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;getCurrentRegion&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;__getWorksheet&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;formulas&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;formulasR1C1&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;values&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;displayFormula&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;displayFormulas&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;formulaInfo&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;formulaInfos&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;rawValues&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;writeValues&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;getLastRow&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;load&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;calculate&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;clear&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;merge&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;unmerge&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;fillDown&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;fillRight&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;fillFrom&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;copyFrom&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 4
+    },
+    {
+      &quot;key&quot;: &quot;copyTo&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 4
+    },
+    {
+      &quot;key&quot;: &quot;getBoundingBox&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    }
+  ],
+  &quot;format&quot;: [
+    {
+      &quot;key&quot;: &quot;reset&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;font&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;setFont&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;borders&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;fill&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;numberFormat&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;wrapText&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;horizontalAlignment&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;verticalAlignment&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;rowHeight&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;rowHeightPx&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;columnWidth&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;columnWidthPx&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;styleId&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;autofitColumns&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;autofitRows&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;applyBorderBlueprint&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;updateBorders&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;getBorderBlueprintSnapshot&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    }
+  ],
+  &quot;tables&quot;: [
+    {
+      &quot;key&quot;: &quot;add&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 3
+    },
+    {
+      &quot;key&quot;: &quot;getItem&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;getItemOrNullObject&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;getItemAt&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;items&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;replaceFromProto&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;deleteAll&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    }
+  ],
+  &quot;table&quot;: [
+    {
+      &quot;key&quot;: &quot;isNullObject&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;worksheet&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;hasHeaders&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;showHeaders&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;writeShowHeaders&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;name&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;writeName&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;address&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;style&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;writeStyle&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;showTotals&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;writeShowTotals&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;showBandedRows&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;writeShowBandedRows&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;highlightFirstColumn&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;writeHighlightFirstColumn&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;highlightLastColumn&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;writeHighlightLastColumn&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;showBandedColumns&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;writeShowBandedColumns&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;showFilterButton&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;writeShowFilterButton&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;getRange&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;getHeaderRowRange&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;rows&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;delete&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;appendRows&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;getDataRows&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;refreshBounds&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;syncColumnsFromSheet&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    }
+  ],
+  &quot;tableRows&quot;: [
+    {
+      &quot;key&quot;: &quot;add&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;items&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    }
+  ],
+  &quot;tableColumns&quot;: null,
+  &quot;notes&quot;: [
+    {
+      &quot;key&quot;: &quot;add&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;items&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;proto&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;replace&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    }
+  ],
+  &quot;comments&quot;: [
+    {
+      &quot;key&quot;: &quot;self&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;setSelf&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;clearSelf&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;addThread&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;__addThreadForApply&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;getThread&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;toProto&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;replaceFromProto&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    }
+  ],
+  &quot;names&quot;: [
+    {
+      &quot;key&quot;: &quot;__defineGetter__&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;__defineSetter__&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;hasOwnProperty&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;__lookupGetter__&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;__lookupSetter__&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;isPrototypeOf&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;propertyIsEnumerable&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;toString&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;valueOf&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;__proto__&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;toLocaleString&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    }
+  ],
+  &quot;pivotTables&quot;: [
+    {
+      &quot;key&quot;: &quot;add&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 3
+    },
+    {
+      &quot;key&quot;: &quot;getItem&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;getItemOrNullObject&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;items&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;reload&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;_registerShared&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;hydrateLayouts&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    }
+  ],
+  &quot;slicers&quot;: [
+    {
+      &quot;key&quot;: &quot;add&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;getItem&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;getItemAt&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;items&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;reload&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;synthesizeCaches&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;_registerShared&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    }
+  ],
+  &quot;awareness&quot;: [
+    {
+      &quot;key&quot;: &quot;getSheetState&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;setActiveSheetName&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;renameSheet&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;forgetSheet&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;setDialog&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;setPresenceSelections&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;clearPresenceSelections&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;getSelectionsForSheet&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;recordMissingAction&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;pushUndoEntry&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;popUndoEntry&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;pushRedoEntry&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;popRedoEntry&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;clearHistory&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    }
+  ],
+  &quot;charts&quot;: [
+    {
+      &quot;key&quot;: &quot;items&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;getItem&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;getItemAt&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;getItemOrNullObject&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;deleteAll&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;clear&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;add&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 3
+    },
+    {
+      &quot;key&quot;: &quot;__addForApply&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;toProto&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;hydrateFromFallbackState&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    }
+  ],
+  &quot;chart&quot;: [
+    {
+      &quot;key&quot;: &quot;aid&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;type&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;titleText&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;title&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;categories&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;legend&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;axes&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;plotArea&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;chartArea&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;isNullObject&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;width&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;height&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;setPosition&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;setData&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;delete&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;resolveBoundsPx&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;captureAnchorSnapshot&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;restoreAnchorSnapshot&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;setPreviewBoundsPx&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 3
+    },
+    {
+      &quot;key&quot;: &quot;clearPreviewBounds&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;applyBoundsPx&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 3
+    },
+    {
+      &quot;key&quot;: &quot;toDrawingProto&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    }
+  ],
+  &quot;series&quot;: [
+    {
+      &quot;key&quot;: &quot;add&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;setChangeHandler&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;getItemAt&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;deleteAt&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;items&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;clear&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;deleteAll&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;toProto&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;length&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    }
+  ],
+  &quot;seriesItem&quot;: [
+    {
+      &quot;key&quot;: &quot;setChangeHandler&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;name&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;values&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;resolveValues&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;categories&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;resolveCategories&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;xValues&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;xFormula&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;categoryPaths&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;marker&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;bubbleSizes&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;valuesFormatCode&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;xValuesFormatCode&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;fill&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;format&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;explosion&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;smooth&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;stroke&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;line&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;setCategoryNormalizer&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;dataLabelOverrides&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;dataLabels&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;trendlines&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;errorBars&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;points&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;formula&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;categoryFormula&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;isNullObject&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;delete&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;__isDeleted&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;toProto&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    }
+  ],
+  &quot;shapes&quot;: [
+    {
+      &quot;key&quot;: &quot;items&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;deleteAll&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;add&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;__addForApply&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;toProto&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;replace&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    }
+  ],
+  &quot;images&quot;: [
+    {
+      &quot;key&quot;: &quot;items&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;deleteAll&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;add&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;toProto&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;replace&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    }
+  ],
+  &quot;sparklines&quot;: [
+    {
+      &quot;key&quot;: &quot;add&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;__addForApply&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;getAll&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;getGroupForCell&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;clear&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;deleteAll&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;delete&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;toProto&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;renderContext&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;__refreshRenderContext&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;replaceFromProto&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    }
+  ],
+  &quot;dataTables&quot;: [
+    {
+      &quot;key&quot;: &quot;add&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;__getDefinitions&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;__hydrateFromProto&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    }
+  ],
+  &quot;dataValidations&quot;: [
+    {
+      &quot;key&quot;: &quot;items&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;getForAddress&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;add&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;clear&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    }
+  ],
+  &quot;conditionalFormats&quot;: [
+    {
+      &quot;key&quot;: &quot;addColorScale&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;addDataBar&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;addIconSet&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;addExpression&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;addCustom&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;addCellIs&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;add&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;items&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;getItemAt&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;clearAll&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;deleteAll&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    },
+    {
+      &quot;key&quot;: &quot;clear&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    }
+  ],
+  &quot;freezePanes&quot;: [
+    {
+      &quot;key&quot;: &quot;state&quot;,
+      &quot;kind&quot;: &quot;getter&quot;,
+      &quot;set&quot;: false
+    },
+    {
+      &quot;key&quot;: &quot;freezeRows&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;freezeColumns&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;unfreeze&quot;,
+      &quot;kind&quot;: &quot;method&quot;,
+      &quot;set&quot;: false,
+      &quot;arity&quot;: 0
+    }
+  ]
+}</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

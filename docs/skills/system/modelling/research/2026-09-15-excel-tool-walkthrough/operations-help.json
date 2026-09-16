@@ -1,0 +1,18 @@
+{
+  "ndjson": "{\"kind\":\"api\",\"name\":\"worksheet.deleteAllDrawings\",\"summary\":\"Remove all charts, shapes, and images from a worksheet.\",\"tags\":[\"worksheet.deleteAllDrawings\"],\"examples\":[{\"code\":\"sheet.deleteAllDrawings();\",\"summary\":\"Clear drawings before rebuilding a dashboard\"}]}\n{\"kind\":\"api\",\"name\":\"tables\",\"summary\":\"Excel table objects on a worksheet.\",\"tags\":[\"tables\",\"table\",\"worksheet.tables\",\"tables.add\",\"tables add\",\"table add\"],\"notes\":[\"Use worksheet.tables.add('A1:D10', true) (or worksheet.getRange('A1:D10')) to create a table.\",\"Use worksheet.tables.getItem(name) to access an existing table.\",\"Use worksheet.tables.getItemAt(index) to access tables by position.\",\"Use worksheet.tables.getItemOrNullObject(name) when the table may not exist; check table.isNullObject before using it.\",\"Use table.delete() to remove a single table, or worksheet.tables.deleteAll() to remove all tables.\"]}\n{\"kind\":\"api\",\"name\":\"data-tables\",\"summary\":\"What-if data tables for formulas.\",\"tags\":[\"tables\",\"table\",\"worksheet.tables\",\"tables.add\",\"data tables add\",\"data_tables.add\",\"data-tables\"],\"notes\":[\"Use worksheet.dataTables.add('C2:E5', { rowInput, columnInput }) with the formula in the top-left cell of the range.\",\"Data tables require at least a rowInput or columnInput.\"]}",
+  "truncated": false,
+  "metadata": {
+    "revision": "i0wmkm",
+    "query": "*",
+    "include": {
+      "requested": "index,notes,examples",
+      "tokens": [
+        "index",
+        "notes",
+        "examples"
+      ]
+    },
+    "search": "worksheet\\.(delete|name)|range\\.(insert|delete)|tables\\.add|table\\.(resize|delete)",
+    "notices": []
+  }
+}

@@ -1,0 +1,4435 @@
+{
+  "packageVersion": "2.8.59",
+  "capturedAt": "2026-09-15T19:16:22.104Z",
+  "kind": "actual package executions with synthetic inputs",
+  "runs": [
+    {
+      "quantity": 2,
+      "steps": [
+        {
+          "id": "create",
+          "label": "Create",
+          "intent": "A workbook is the container. A worksheet gives cells a place to live.",
+          "code": "const workbook = Workbook.create();\nconst sheet = workbook.worksheets.add('Sales');",
+          "input": {
+            "worksheet": "Sales"
+          },
+          "returned": {
+            "worksheetCount": 1
+          },
+          "before": {
+            "worksheets": []
+          },
+          "after": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ]
+                ],
+                "tables": [],
+                "charts": []
+              }
+            ]
+          }
+        },
+        {
+          "id": "write",
+          "label": "Write",
+          "intent": "Put the source facts in cells. Revenue is still empty because it is a calculation.",
+          "code": "sheet.getRange('A1:D3').values = input.values;",
+          "input": {
+            "range": "A1:D3",
+            "values": [
+              [
+                "Product",
+                "Quantity",
+                "Price",
+                "Revenue"
+              ],
+              [
+                "Standard",
+                2,
+                10,
+                null
+              ],
+              [
+                "Premium",
+                3,
+                20,
+                null
+              ]
+            ]
+          },
+          "returned": {
+            "writtenRange": "A1:D3"
+          },
+          "before": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ]
+                ],
+                "tables": [],
+                "charts": []
+              }
+            ]
+          },
+          "after": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    "Product",
+                    "Quantity",
+                    "Price",
+                    "Revenue"
+                  ],
+                  [
+                    "Standard",
+                    2,
+                    10,
+                    null
+                  ],
+                  [
+                    "Premium",
+                    3,
+                    20,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ]
+                ],
+                "tables": [],
+                "charts": []
+              }
+            ]
+          }
+        },
+        {
+          "id": "calculate",
+          "label": "Calculate",
+          "intent": "Store the rule once, fill it down, and calculate the result from the inputs.",
+          "code": "sheet.getRange('D2').formulas = [['=B2*C2']];\nsheet.getRange('D2:D3').fillDown();\nsheet.getRange('C5').values = [['Total']];\nsheet.getRange('D5').formulas = [['=SUM(D2:D3)']];\nworkbook.recalculate();",
+          "input": {
+            "formula": "=B2*C2",
+            "fill": "D2:D3",
+            "total": "=SUM(D2:D3)"
+          },
+          "returned": {
+            "total": 80
+          },
+          "before": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    "Product",
+                    "Quantity",
+                    "Price",
+                    "Revenue"
+                  ],
+                  [
+                    "Standard",
+                    2,
+                    10,
+                    null
+                  ],
+                  [
+                    "Premium",
+                    3,
+                    20,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ]
+                ],
+                "tables": [],
+                "charts": []
+              }
+            ]
+          },
+          "after": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    "Product",
+                    "Quantity",
+                    "Price",
+                    "Revenue"
+                  ],
+                  [
+                    "Standard",
+                    2,
+                    10,
+                    20
+                  ],
+                  [
+                    "Premium",
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    "Total",
+                    80
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B2*C2"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B3*C3"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=SUM(D2:D3)"
+                  ]
+                ],
+                "tables": [],
+                "charts": []
+              }
+            ]
+          }
+        },
+        {
+          "id": "format",
+          "label": "Organize",
+          "intent": "A named Excel Table adds structure. Formatting helps the reader distinguish inputs and calculated results.",
+          "code": "sheet.tables.add('A1:D3', true, 'SalesData');\nsheet.getRange('C2:D5').setNumberFormat('$#,##0');\nsheet.getRange('A1:D1').format = { fill:'#155e63', font:{bold:true,color:'#ffffff'} };",
+          "input": {
+            "table": "SalesData",
+            "hasHeaders": true,
+            "numberFormat": "$#,##0"
+          },
+          "returned": {
+            "tables": 1,
+            "format": "currency"
+          },
+          "before": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    "Product",
+                    "Quantity",
+                    "Price",
+                    "Revenue"
+                  ],
+                  [
+                    "Standard",
+                    2,
+                    10,
+                    20
+                  ],
+                  [
+                    "Premium",
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    "Total",
+                    80
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B2*C2"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B3*C3"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=SUM(D2:D3)"
+                  ]
+                ],
+                "tables": [],
+                "charts": []
+              }
+            ]
+          },
+          "after": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    "Product",
+                    "Quantity",
+                    "Price",
+                    "Revenue"
+                  ],
+                  [
+                    "Standard",
+                    2,
+                    10,
+                    20
+                  ],
+                  [
+                    "Premium",
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    "Total",
+                    80
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B2*C2"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B3*C3"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=SUM(D2:D3)"
+                  ]
+                ],
+                "tables": [
+                  {
+                    "name": "SalesData",
+                    "range": "A1:D3"
+                  }
+                ],
+                "charts": []
+              }
+            ]
+          }
+        },
+        {
+          "id": "chart",
+          "label": "Visualize",
+          "intent": "The chart points at worksheet ranges. Its stored references explain where the picture gets its values.",
+          "code": "const chart = sheet.charts.add('bar', [sheet.getRange('A1:A3'),sheet.getRange('D1:D3')]);\nchart.setPosition('A8','F19');\nchart.title.text = 'Revenue by product';",
+          "input": {
+            "type": "bar",
+            "categories": "A1:A3",
+            "values": "D1:D3"
+          },
+          "returned": {
+            "charts": 1,
+            "source": [
+              "'Sales'!$D$2:$D$3"
+            ]
+          },
+          "before": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    "Product",
+                    "Quantity",
+                    "Price",
+                    "Revenue"
+                  ],
+                  [
+                    "Standard",
+                    2,
+                    10,
+                    20
+                  ],
+                  [
+                    "Premium",
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    "Total",
+                    80
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B2*C2"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B3*C3"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=SUM(D2:D3)"
+                  ]
+                ],
+                "tables": [
+                  {
+                    "name": "SalesData",
+                    "range": "A1:D3"
+                  }
+                ],
+                "charts": []
+              }
+            ]
+          },
+          "after": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    "Product",
+                    "Quantity",
+                    "Price",
+                    "Revenue"
+                  ],
+                  [
+                    "Standard",
+                    2,
+                    10,
+                    20
+                  ],
+                  [
+                    "Premium",
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    "Total",
+                    80
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B2*C2"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B3*C3"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=SUM(D2:D3)"
+                  ]
+                ],
+                "tables": [
+                  {
+                    "name": "SalesData",
+                    "range": "A1:D3"
+                  }
+                ],
+                "charts": [
+                  {
+                    "type": "bar",
+                    "title": "Revenue by product",
+                    "series": [
+                      {
+                        "name": "Revenue",
+                        "formula": "'Sales'!$D$2:$D$3",
+                        "categoryFormula": "'Sales'!$A$2:$A$3"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "inspect",
+          "label": "Inspect",
+          "intent": "Inspect gives a compact account of the model. Trace follows a result back to the cells that feed it.",
+          "code": "const inspection = await workbook.inspect({kind:'sheet,table,formula,chart'});\nconst trace = workbook.trace('Sales!D5');",
+          "input": {
+            "kind": "sheet,table,formula,chart",
+            "trace": "Sales!D5"
+          },
+          "returned": {
+            "inspection": {
+              "recordCount": 5,
+              "truncated": false,
+              "metadata": {
+                "revision": "0llezd",
+                "target": {
+                  "id": "wb/7p6tlo",
+                  "beforeLines": 0,
+                  "afterLines": 0
+                },
+                "kind": {
+                  "requested": "sheet,table,formula,chart",
+                  "tokens": [
+                    "sheet",
+                    "table",
+                    "formula"
+                  ]
+                },
+                "include": {
+                  "tokens": []
+                },
+                "exclude": {
+                  "tokens": []
+                },
+                "notices": [
+                  "Unknown kind tokens: chart"
+                ]
+              }
+            },
+            "trace": {
+              "cell": "Sales!D5",
+              "sheetName": "Sales",
+              "address": "D5",
+              "formula": "=SUM(D2:D3)",
+              "value": 80,
+              "params": [
+                {
+                  "cell": "Sales!D2",
+                  "sheetName": "Sales",
+                  "address": "D2",
+                  "formula": "=B2*C2",
+                  "value": 20,
+                  "params": [
+                    {
+                      "cell": "Sales!B2",
+                      "sheetName": "Sales",
+                      "address": "B2",
+                      "formula": null,
+                      "value": 2,
+                      "params": []
+                    },
+                    {
+                      "cell": "Sales!C2",
+                      "sheetName": "Sales",
+                      "address": "C2",
+                      "formula": null,
+                      "value": 10,
+                      "params": []
+                    }
+                  ]
+                },
+                {
+                  "cell": "Sales!D3",
+                  "sheetName": "Sales",
+                  "address": "D3",
+                  "formula": "=B3*C3",
+                  "value": 60,
+                  "params": [
+                    {
+                      "cell": "Sales!B3",
+                      "sheetName": "Sales",
+                      "address": "B3",
+                      "formula": null,
+                      "value": 3,
+                      "params": []
+                    },
+                    {
+                      "cell": "Sales!C3",
+                      "sheetName": "Sales",
+                      "address": "C3",
+                      "formula": null,
+                      "value": 20,
+                      "params": []
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "before": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    "Product",
+                    "Quantity",
+                    "Price",
+                    "Revenue"
+                  ],
+                  [
+                    "Standard",
+                    2,
+                    10,
+                    20
+                  ],
+                  [
+                    "Premium",
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    "Total",
+                    80
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B2*C2"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B3*C3"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=SUM(D2:D3)"
+                  ]
+                ],
+                "tables": [
+                  {
+                    "name": "SalesData",
+                    "range": "A1:D3"
+                  }
+                ],
+                "charts": [
+                  {
+                    "type": "bar",
+                    "title": "Revenue by product",
+                    "series": [
+                      {
+                        "name": "Revenue",
+                        "formula": "'Sales'!$D$2:$D$3",
+                        "categoryFormula": "'Sales'!$A$2:$A$3"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "after": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    "Product",
+                    "Quantity",
+                    "Price",
+                    "Revenue"
+                  ],
+                  [
+                    "Standard",
+                    2,
+                    10,
+                    20
+                  ],
+                  [
+                    "Premium",
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    "Total",
+                    80
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B2*C2"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B3*C3"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=SUM(D2:D3)"
+                  ]
+                ],
+                "tables": [
+                  {
+                    "name": "SalesData",
+                    "range": "A1:D3"
+                  }
+                ],
+                "charts": [
+                  {
+                    "type": "bar",
+                    "title": "Revenue by product",
+                    "series": [
+                      {
+                        "name": "Revenue",
+                        "formula": "'Sales'!$D$2:$D$3",
+                        "categoryFormula": "'Sales'!$A$2:$A$3"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "export",
+          "label": "Export",
+          "intent": "A picture and an Excel workbook are different deliverables. Save both, then check the workbook itself.",
+          "code": "const file = await SpreadsheetFile.exportXlsx(workbook);\nawait file.save('sales.xlsx');\nconst image = await workbook.render({sheetName:'Sales',range:'A1:F19',scale:1.5});",
+          "input": {
+            "formats": [
+              "xlsx",
+              "png"
+            ]
+          },
+          "returned": {
+            "xlsx": "files/sales-2.xlsx",
+            "png": "files/sales-2.png",
+            "total": 80
+          },
+          "before": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    "Product",
+                    "Quantity",
+                    "Price",
+                    "Revenue"
+                  ],
+                  [
+                    "Standard",
+                    2,
+                    10,
+                    20
+                  ],
+                  [
+                    "Premium",
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    "Total",
+                    80
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B2*C2"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B3*C3"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=SUM(D2:D3)"
+                  ]
+                ],
+                "tables": [
+                  {
+                    "name": "SalesData",
+                    "range": "A1:D3"
+                  }
+                ],
+                "charts": [
+                  {
+                    "type": "bar",
+                    "title": "Revenue by product",
+                    "series": [
+                      {
+                        "name": "Revenue",
+                        "formula": "'Sales'!$D$2:$D$3",
+                        "categoryFormula": "'Sales'!$A$2:$A$3"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "after": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    "Product",
+                    "Quantity",
+                    "Price",
+                    "Revenue"
+                  ],
+                  [
+                    "Standard",
+                    2,
+                    10,
+                    20
+                  ],
+                  [
+                    "Premium",
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    "Total",
+                    80
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B2*C2"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B3*C3"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=SUM(D2:D3)"
+                  ]
+                ],
+                "tables": [
+                  {
+                    "name": "SalesData",
+                    "range": "A1:D3"
+                  }
+                ],
+                "charts": [
+                  {
+                    "type": "bar",
+                    "title": "Revenue by product",
+                    "series": [
+                      {
+                        "name": "Revenue",
+                        "formula": "'Sales'!$D$2:$D$3",
+                        "categoryFormula": "'Sales'!$A$2:$A$3"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "reopen",
+          "label": "Reopen",
+          "intent": "A saved file deserves its own check. Here the total, formulas, native table and chart survive re-import.",
+          "code": "const reopened = await SpreadsheetFile.importXlsx(await FileBlob.load('sales.xlsx'));\nreopened.recalculate();",
+          "input": {
+            "file": "sales.xlsx"
+          },
+          "returned": {
+            "total": 80,
+            "formulas": [
+              [
+                "=B2*C2"
+              ],
+              [
+                "=B3*C3"
+              ]
+            ],
+            "tables": 1,
+            "charts": 1
+          },
+          "before": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    "Product",
+                    "Quantity",
+                    "Price",
+                    "Revenue"
+                  ],
+                  [
+                    "Standard",
+                    2,
+                    10,
+                    20
+                  ],
+                  [
+                    "Premium",
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    "Total",
+                    80
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B2*C2"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B3*C3"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=SUM(D2:D3)"
+                  ]
+                ],
+                "tables": [
+                  {
+                    "name": "SalesData",
+                    "range": "A1:D3"
+                  }
+                ],
+                "charts": [
+                  {
+                    "type": "bar",
+                    "title": "Revenue by product",
+                    "series": [
+                      {
+                        "name": "Revenue",
+                        "formula": "'Sales'!$D$2:$D$3",
+                        "categoryFormula": "'Sales'!$A$2:$A$3"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "after": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    "Product",
+                    "Quantity",
+                    "Price",
+                    "Revenue"
+                  ],
+                  [
+                    "Standard",
+                    2,
+                    10,
+                    20
+                  ],
+                  [
+                    "Premium",
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    "Total",
+                    80
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B2*C2"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B3*C3"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=SUM(D2:D3)"
+                  ]
+                ],
+                "tables": [
+                  {
+                    "name": "SalesData",
+                    "range": "A1:D3"
+                  }
+                ],
+                "charts": [
+                  {
+                    "type": "bar",
+                    "title": "Revenue by product",
+                    "series": [
+                      {
+                        "name": "Revenue",
+                        "formula": "'Sales'!$D$2:$D$3",
+                        "categoryFormula": "'Sales'!$A$2:$A$3"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "quantity": 5,
+      "steps": [
+        {
+          "id": "create",
+          "label": "Create",
+          "intent": "A workbook is the container. A worksheet gives cells a place to live.",
+          "code": "const workbook = Workbook.create();\nconst sheet = workbook.worksheets.add('Sales');",
+          "input": {
+            "worksheet": "Sales"
+          },
+          "returned": {
+            "worksheetCount": 1
+          },
+          "before": {
+            "worksheets": []
+          },
+          "after": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ]
+                ],
+                "tables": [],
+                "charts": []
+              }
+            ]
+          }
+        },
+        {
+          "id": "write",
+          "label": "Write",
+          "intent": "Put the source facts in cells. Revenue is still empty because it is a calculation.",
+          "code": "sheet.getRange('A1:D3').values = input.values;",
+          "input": {
+            "range": "A1:D3",
+            "values": [
+              [
+                "Product",
+                "Quantity",
+                "Price",
+                "Revenue"
+              ],
+              [
+                "Standard",
+                5,
+                10,
+                null
+              ],
+              [
+                "Premium",
+                3,
+                20,
+                null
+              ]
+            ]
+          },
+          "returned": {
+            "writtenRange": "A1:D3"
+          },
+          "before": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ]
+                ],
+                "tables": [],
+                "charts": []
+              }
+            ]
+          },
+          "after": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    "Product",
+                    "Quantity",
+                    "Price",
+                    "Revenue"
+                  ],
+                  [
+                    "Standard",
+                    5,
+                    10,
+                    null
+                  ],
+                  [
+                    "Premium",
+                    3,
+                    20,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ]
+                ],
+                "tables": [],
+                "charts": []
+              }
+            ]
+          }
+        },
+        {
+          "id": "calculate",
+          "label": "Calculate",
+          "intent": "Store the rule once, fill it down, and calculate the result from the inputs.",
+          "code": "sheet.getRange('D2').formulas = [['=B2*C2']];\nsheet.getRange('D2:D3').fillDown();\nsheet.getRange('C5').values = [['Total']];\nsheet.getRange('D5').formulas = [['=SUM(D2:D3)']];\nworkbook.recalculate();",
+          "input": {
+            "formula": "=B2*C2",
+            "fill": "D2:D3",
+            "total": "=SUM(D2:D3)"
+          },
+          "returned": {
+            "total": 110
+          },
+          "before": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    "Product",
+                    "Quantity",
+                    "Price",
+                    "Revenue"
+                  ],
+                  [
+                    "Standard",
+                    5,
+                    10,
+                    null
+                  ],
+                  [
+                    "Premium",
+                    3,
+                    20,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ]
+                ],
+                "tables": [],
+                "charts": []
+              }
+            ]
+          },
+          "after": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    "Product",
+                    "Quantity",
+                    "Price",
+                    "Revenue"
+                  ],
+                  [
+                    "Standard",
+                    5,
+                    10,
+                    50
+                  ],
+                  [
+                    "Premium",
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    "Total",
+                    110
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B2*C2"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B3*C3"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=SUM(D2:D3)"
+                  ]
+                ],
+                "tables": [],
+                "charts": []
+              }
+            ]
+          }
+        },
+        {
+          "id": "format",
+          "label": "Organize",
+          "intent": "A named Excel Table adds structure. Formatting helps the reader distinguish inputs and calculated results.",
+          "code": "sheet.tables.add('A1:D3', true, 'SalesData');\nsheet.getRange('C2:D5').setNumberFormat('$#,##0');\nsheet.getRange('A1:D1').format = { fill:'#155e63', font:{bold:true,color:'#ffffff'} };",
+          "input": {
+            "table": "SalesData",
+            "hasHeaders": true,
+            "numberFormat": "$#,##0"
+          },
+          "returned": {
+            "tables": 1,
+            "format": "currency"
+          },
+          "before": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    "Product",
+                    "Quantity",
+                    "Price",
+                    "Revenue"
+                  ],
+                  [
+                    "Standard",
+                    5,
+                    10,
+                    50
+                  ],
+                  [
+                    "Premium",
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    "Total",
+                    110
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B2*C2"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B3*C3"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=SUM(D2:D3)"
+                  ]
+                ],
+                "tables": [],
+                "charts": []
+              }
+            ]
+          },
+          "after": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    "Product",
+                    "Quantity",
+                    "Price",
+                    "Revenue"
+                  ],
+                  [
+                    "Standard",
+                    5,
+                    10,
+                    50
+                  ],
+                  [
+                    "Premium",
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    "Total",
+                    110
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B2*C2"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B3*C3"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=SUM(D2:D3)"
+                  ]
+                ],
+                "tables": [
+                  {
+                    "name": "SalesData",
+                    "range": "A1:D3"
+                  }
+                ],
+                "charts": []
+              }
+            ]
+          }
+        },
+        {
+          "id": "chart",
+          "label": "Visualize",
+          "intent": "The chart points at worksheet ranges. Its stored references explain where the picture gets its values.",
+          "code": "const chart = sheet.charts.add('bar', [sheet.getRange('A1:A3'),sheet.getRange('D1:D3')]);\nchart.setPosition('A8','F19');\nchart.title.text = 'Revenue by product';",
+          "input": {
+            "type": "bar",
+            "categories": "A1:A3",
+            "values": "D1:D3"
+          },
+          "returned": {
+            "charts": 1,
+            "source": [
+              "'Sales'!$D$2:$D$3"
+            ]
+          },
+          "before": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    "Product",
+                    "Quantity",
+                    "Price",
+                    "Revenue"
+                  ],
+                  [
+                    "Standard",
+                    5,
+                    10,
+                    50
+                  ],
+                  [
+                    "Premium",
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    "Total",
+                    110
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B2*C2"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B3*C3"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=SUM(D2:D3)"
+                  ]
+                ],
+                "tables": [
+                  {
+                    "name": "SalesData",
+                    "range": "A1:D3"
+                  }
+                ],
+                "charts": []
+              }
+            ]
+          },
+          "after": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    "Product",
+                    "Quantity",
+                    "Price",
+                    "Revenue"
+                  ],
+                  [
+                    "Standard",
+                    5,
+                    10,
+                    50
+                  ],
+                  [
+                    "Premium",
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    "Total",
+                    110
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B2*C2"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B3*C3"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=SUM(D2:D3)"
+                  ]
+                ],
+                "tables": [
+                  {
+                    "name": "SalesData",
+                    "range": "A1:D3"
+                  }
+                ],
+                "charts": [
+                  {
+                    "type": "bar",
+                    "title": "Revenue by product",
+                    "series": [
+                      {
+                        "name": "Revenue",
+                        "formula": "'Sales'!$D$2:$D$3",
+                        "categoryFormula": "'Sales'!$A$2:$A$3"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "inspect",
+          "label": "Inspect",
+          "intent": "Inspect gives a compact account of the model. Trace follows a result back to the cells that feed it.",
+          "code": "const inspection = await workbook.inspect({kind:'sheet,table,formula,chart'});\nconst trace = workbook.trace('Sales!D5');",
+          "input": {
+            "kind": "sheet,table,formula,chart",
+            "trace": "Sales!D5"
+          },
+          "returned": {
+            "inspection": {
+              "recordCount": 5,
+              "truncated": false,
+              "metadata": {
+                "revision": "8xbikb",
+                "target": {
+                  "id": "wb/gtsz48",
+                  "beforeLines": 0,
+                  "afterLines": 0
+                },
+                "kind": {
+                  "requested": "sheet,table,formula,chart",
+                  "tokens": [
+                    "sheet",
+                    "table",
+                    "formula"
+                  ]
+                },
+                "include": {
+                  "tokens": []
+                },
+                "exclude": {
+                  "tokens": []
+                },
+                "notices": [
+                  "Unknown kind tokens: chart"
+                ]
+              }
+            },
+            "trace": {
+              "cell": "Sales!D5",
+              "sheetName": "Sales",
+              "address": "D5",
+              "formula": "=SUM(D2:D3)",
+              "value": 110,
+              "params": [
+                {
+                  "cell": "Sales!D2",
+                  "sheetName": "Sales",
+                  "address": "D2",
+                  "formula": "=B2*C2",
+                  "value": 50,
+                  "params": [
+                    {
+                      "cell": "Sales!B2",
+                      "sheetName": "Sales",
+                      "address": "B2",
+                      "formula": null,
+                      "value": 5,
+                      "params": []
+                    },
+                    {
+                      "cell": "Sales!C2",
+                      "sheetName": "Sales",
+                      "address": "C2",
+                      "formula": null,
+                      "value": 10,
+                      "params": []
+                    }
+                  ]
+                },
+                {
+                  "cell": "Sales!D3",
+                  "sheetName": "Sales",
+                  "address": "D3",
+                  "formula": "=B3*C3",
+                  "value": 60,
+                  "params": [
+                    {
+                      "cell": "Sales!B3",
+                      "sheetName": "Sales",
+                      "address": "B3",
+                      "formula": null,
+                      "value": 3,
+                      "params": []
+                    },
+                    {
+                      "cell": "Sales!C3",
+                      "sheetName": "Sales",
+                      "address": "C3",
+                      "formula": null,
+                      "value": 20,
+                      "params": []
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "before": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    "Product",
+                    "Quantity",
+                    "Price",
+                    "Revenue"
+                  ],
+                  [
+                    "Standard",
+                    5,
+                    10,
+                    50
+                  ],
+                  [
+                    "Premium",
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    "Total",
+                    110
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B2*C2"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B3*C3"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=SUM(D2:D3)"
+                  ]
+                ],
+                "tables": [
+                  {
+                    "name": "SalesData",
+                    "range": "A1:D3"
+                  }
+                ],
+                "charts": [
+                  {
+                    "type": "bar",
+                    "title": "Revenue by product",
+                    "series": [
+                      {
+                        "name": "Revenue",
+                        "formula": "'Sales'!$D$2:$D$3",
+                        "categoryFormula": "'Sales'!$A$2:$A$3"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "after": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    "Product",
+                    "Quantity",
+                    "Price",
+                    "Revenue"
+                  ],
+                  [
+                    "Standard",
+                    5,
+                    10,
+                    50
+                  ],
+                  [
+                    "Premium",
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    "Total",
+                    110
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B2*C2"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B3*C3"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=SUM(D2:D3)"
+                  ]
+                ],
+                "tables": [
+                  {
+                    "name": "SalesData",
+                    "range": "A1:D3"
+                  }
+                ],
+                "charts": [
+                  {
+                    "type": "bar",
+                    "title": "Revenue by product",
+                    "series": [
+                      {
+                        "name": "Revenue",
+                        "formula": "'Sales'!$D$2:$D$3",
+                        "categoryFormula": "'Sales'!$A$2:$A$3"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "export",
+          "label": "Export",
+          "intent": "A picture and an Excel workbook are different deliverables. Save both, then check the workbook itself.",
+          "code": "const file = await SpreadsheetFile.exportXlsx(workbook);\nawait file.save('sales.xlsx');\nconst image = await workbook.render({sheetName:'Sales',range:'A1:F19',scale:1.5});",
+          "input": {
+            "formats": [
+              "xlsx",
+              "png"
+            ]
+          },
+          "returned": {
+            "xlsx": "files/sales-5.xlsx",
+            "png": "files/sales-5.png",
+            "total": 110
+          },
+          "before": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    "Product",
+                    "Quantity",
+                    "Price",
+                    "Revenue"
+                  ],
+                  [
+                    "Standard",
+                    5,
+                    10,
+                    50
+                  ],
+                  [
+                    "Premium",
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    "Total",
+                    110
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B2*C2"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B3*C3"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=SUM(D2:D3)"
+                  ]
+                ],
+                "tables": [
+                  {
+                    "name": "SalesData",
+                    "range": "A1:D3"
+                  }
+                ],
+                "charts": [
+                  {
+                    "type": "bar",
+                    "title": "Revenue by product",
+                    "series": [
+                      {
+                        "name": "Revenue",
+                        "formula": "'Sales'!$D$2:$D$3",
+                        "categoryFormula": "'Sales'!$A$2:$A$3"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "after": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    "Product",
+                    "Quantity",
+                    "Price",
+                    "Revenue"
+                  ],
+                  [
+                    "Standard",
+                    5,
+                    10,
+                    50
+                  ],
+                  [
+                    "Premium",
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    "Total",
+                    110
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B2*C2"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B3*C3"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=SUM(D2:D3)"
+                  ]
+                ],
+                "tables": [
+                  {
+                    "name": "SalesData",
+                    "range": "A1:D3"
+                  }
+                ],
+                "charts": [
+                  {
+                    "type": "bar",
+                    "title": "Revenue by product",
+                    "series": [
+                      {
+                        "name": "Revenue",
+                        "formula": "'Sales'!$D$2:$D$3",
+                        "categoryFormula": "'Sales'!$A$2:$A$3"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "reopen",
+          "label": "Reopen",
+          "intent": "A saved file deserves its own check. Here the total, formulas, native table and chart survive re-import.",
+          "code": "const reopened = await SpreadsheetFile.importXlsx(await FileBlob.load('sales.xlsx'));\nreopened.recalculate();",
+          "input": {
+            "file": "sales.xlsx"
+          },
+          "returned": {
+            "total": 110,
+            "formulas": [
+              [
+                "=B2*C2"
+              ],
+              [
+                "=B3*C3"
+              ]
+            ],
+            "tables": 1,
+            "charts": 1
+          },
+          "before": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    "Product",
+                    "Quantity",
+                    "Price",
+                    "Revenue"
+                  ],
+                  [
+                    "Standard",
+                    5,
+                    10,
+                    50
+                  ],
+                  [
+                    "Premium",
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    "Total",
+                    110
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B2*C2"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B3*C3"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=SUM(D2:D3)"
+                  ]
+                ],
+                "tables": [
+                  {
+                    "name": "SalesData",
+                    "range": "A1:D3"
+                  }
+                ],
+                "charts": [
+                  {
+                    "type": "bar",
+                    "title": "Revenue by product",
+                    "series": [
+                      {
+                        "name": "Revenue",
+                        "formula": "'Sales'!$D$2:$D$3",
+                        "categoryFormula": "'Sales'!$A$2:$A$3"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "after": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    "Product",
+                    "Quantity",
+                    "Price",
+                    "Revenue"
+                  ],
+                  [
+                    "Standard",
+                    5,
+                    10,
+                    50
+                  ],
+                  [
+                    "Premium",
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    "Total",
+                    110
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B2*C2"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B3*C3"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=SUM(D2:D3)"
+                  ]
+                ],
+                "tables": [
+                  {
+                    "name": "SalesData",
+                    "range": "A1:D3"
+                  }
+                ],
+                "charts": [
+                  {
+                    "type": "bar",
+                    "title": "Revenue by product",
+                    "series": [
+                      {
+                        "name": "Revenue",
+                        "formula": "'Sales'!$D$2:$D$3",
+                        "categoryFormula": "'Sales'!$A$2:$A$3"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "quantity": 10,
+      "steps": [
+        {
+          "id": "create",
+          "label": "Create",
+          "intent": "A workbook is the container. A worksheet gives cells a place to live.",
+          "code": "const workbook = Workbook.create();\nconst sheet = workbook.worksheets.add('Sales');",
+          "input": {
+            "worksheet": "Sales"
+          },
+          "returned": {
+            "worksheetCount": 1
+          },
+          "before": {
+            "worksheets": []
+          },
+          "after": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ]
+                ],
+                "tables": [],
+                "charts": []
+              }
+            ]
+          }
+        },
+        {
+          "id": "write",
+          "label": "Write",
+          "intent": "Put the source facts in cells. Revenue is still empty because it is a calculation.",
+          "code": "sheet.getRange('A1:D3').values = input.values;",
+          "input": {
+            "range": "A1:D3",
+            "values": [
+              [
+                "Product",
+                "Quantity",
+                "Price",
+                "Revenue"
+              ],
+              [
+                "Standard",
+                10,
+                10,
+                null
+              ],
+              [
+                "Premium",
+                3,
+                20,
+                null
+              ]
+            ]
+          },
+          "returned": {
+            "writtenRange": "A1:D3"
+          },
+          "before": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ]
+                ],
+                "tables": [],
+                "charts": []
+              }
+            ]
+          },
+          "after": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    "Product",
+                    "Quantity",
+                    "Price",
+                    "Revenue"
+                  ],
+                  [
+                    "Standard",
+                    10,
+                    10,
+                    null
+                  ],
+                  [
+                    "Premium",
+                    3,
+                    20,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ]
+                ],
+                "tables": [],
+                "charts": []
+              }
+            ]
+          }
+        },
+        {
+          "id": "calculate",
+          "label": "Calculate",
+          "intent": "Store the rule once, fill it down, and calculate the result from the inputs.",
+          "code": "sheet.getRange('D2').formulas = [['=B2*C2']];\nsheet.getRange('D2:D3').fillDown();\nsheet.getRange('C5').values = [['Total']];\nsheet.getRange('D5').formulas = [['=SUM(D2:D3)']];\nworkbook.recalculate();",
+          "input": {
+            "formula": "=B2*C2",
+            "fill": "D2:D3",
+            "total": "=SUM(D2:D3)"
+          },
+          "returned": {
+            "total": 160
+          },
+          "before": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    "Product",
+                    "Quantity",
+                    "Price",
+                    "Revenue"
+                  ],
+                  [
+                    "Standard",
+                    10,
+                    10,
+                    null
+                  ],
+                  [
+                    "Premium",
+                    3,
+                    20,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ]
+                ],
+                "tables": [],
+                "charts": []
+              }
+            ]
+          },
+          "after": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    "Product",
+                    "Quantity",
+                    "Price",
+                    "Revenue"
+                  ],
+                  [
+                    "Standard",
+                    10,
+                    10,
+                    100
+                  ],
+                  [
+                    "Premium",
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    "Total",
+                    160
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B2*C2"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B3*C3"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=SUM(D2:D3)"
+                  ]
+                ],
+                "tables": [],
+                "charts": []
+              }
+            ]
+          }
+        },
+        {
+          "id": "format",
+          "label": "Organize",
+          "intent": "A named Excel Table adds structure. Formatting helps the reader distinguish inputs and calculated results.",
+          "code": "sheet.tables.add('A1:D3', true, 'SalesData');\nsheet.getRange('C2:D5').setNumberFormat('$#,##0');\nsheet.getRange('A1:D1').format = { fill:'#155e63', font:{bold:true,color:'#ffffff'} };",
+          "input": {
+            "table": "SalesData",
+            "hasHeaders": true,
+            "numberFormat": "$#,##0"
+          },
+          "returned": {
+            "tables": 1,
+            "format": "currency"
+          },
+          "before": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    "Product",
+                    "Quantity",
+                    "Price",
+                    "Revenue"
+                  ],
+                  [
+                    "Standard",
+                    10,
+                    10,
+                    100
+                  ],
+                  [
+                    "Premium",
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    "Total",
+                    160
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B2*C2"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B3*C3"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=SUM(D2:D3)"
+                  ]
+                ],
+                "tables": [],
+                "charts": []
+              }
+            ]
+          },
+          "after": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    "Product",
+                    "Quantity",
+                    "Price",
+                    "Revenue"
+                  ],
+                  [
+                    "Standard",
+                    10,
+                    10,
+                    100
+                  ],
+                  [
+                    "Premium",
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    "Total",
+                    160
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B2*C2"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B3*C3"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=SUM(D2:D3)"
+                  ]
+                ],
+                "tables": [
+                  {
+                    "name": "SalesData",
+                    "range": "A1:D3"
+                  }
+                ],
+                "charts": []
+              }
+            ]
+          }
+        },
+        {
+          "id": "chart",
+          "label": "Visualize",
+          "intent": "The chart points at worksheet ranges. Its stored references explain where the picture gets its values.",
+          "code": "const chart = sheet.charts.add('bar', [sheet.getRange('A1:A3'),sheet.getRange('D1:D3')]);\nchart.setPosition('A8','F19');\nchart.title.text = 'Revenue by product';",
+          "input": {
+            "type": "bar",
+            "categories": "A1:A3",
+            "values": "D1:D3"
+          },
+          "returned": {
+            "charts": 1,
+            "source": [
+              "'Sales'!$D$2:$D$3"
+            ]
+          },
+          "before": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    "Product",
+                    "Quantity",
+                    "Price",
+                    "Revenue"
+                  ],
+                  [
+                    "Standard",
+                    10,
+                    10,
+                    100
+                  ],
+                  [
+                    "Premium",
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    "Total",
+                    160
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B2*C2"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B3*C3"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=SUM(D2:D3)"
+                  ]
+                ],
+                "tables": [
+                  {
+                    "name": "SalesData",
+                    "range": "A1:D3"
+                  }
+                ],
+                "charts": []
+              }
+            ]
+          },
+          "after": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    "Product",
+                    "Quantity",
+                    "Price",
+                    "Revenue"
+                  ],
+                  [
+                    "Standard",
+                    10,
+                    10,
+                    100
+                  ],
+                  [
+                    "Premium",
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    "Total",
+                    160
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B2*C2"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B3*C3"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=SUM(D2:D3)"
+                  ]
+                ],
+                "tables": [
+                  {
+                    "name": "SalesData",
+                    "range": "A1:D3"
+                  }
+                ],
+                "charts": [
+                  {
+                    "type": "bar",
+                    "title": "Revenue by product",
+                    "series": [
+                      {
+                        "name": "Revenue",
+                        "formula": "'Sales'!$D$2:$D$3",
+                        "categoryFormula": "'Sales'!$A$2:$A$3"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "inspect",
+          "label": "Inspect",
+          "intent": "Inspect gives a compact account of the model. Trace follows a result back to the cells that feed it.",
+          "code": "const inspection = await workbook.inspect({kind:'sheet,table,formula,chart'});\nconst trace = workbook.trace('Sales!D5');",
+          "input": {
+            "kind": "sheet,table,formula,chart",
+            "trace": "Sales!D5"
+          },
+          "returned": {
+            "inspection": {
+              "recordCount": 5,
+              "truncated": false,
+              "metadata": {
+                "revision": "y20fre",
+                "target": {
+                  "id": "wb/a0fuv1",
+                  "beforeLines": 0,
+                  "afterLines": 0
+                },
+                "kind": {
+                  "requested": "sheet,table,formula,chart",
+                  "tokens": [
+                    "sheet",
+                    "table",
+                    "formula"
+                  ]
+                },
+                "include": {
+                  "tokens": []
+                },
+                "exclude": {
+                  "tokens": []
+                },
+                "notices": [
+                  "Unknown kind tokens: chart"
+                ]
+              }
+            },
+            "trace": {
+              "cell": "Sales!D5",
+              "sheetName": "Sales",
+              "address": "D5",
+              "formula": "=SUM(D2:D3)",
+              "value": 160,
+              "params": [
+                {
+                  "cell": "Sales!D2",
+                  "sheetName": "Sales",
+                  "address": "D2",
+                  "formula": "=B2*C2",
+                  "value": 100,
+                  "params": [
+                    {
+                      "cell": "Sales!B2",
+                      "sheetName": "Sales",
+                      "address": "B2",
+                      "formula": null,
+                      "value": 10,
+                      "params": []
+                    },
+                    {
+                      "cell": "Sales!C2",
+                      "sheetName": "Sales",
+                      "address": "C2",
+                      "formula": null,
+                      "value": 10,
+                      "params": []
+                    }
+                  ]
+                },
+                {
+                  "cell": "Sales!D3",
+                  "sheetName": "Sales",
+                  "address": "D3",
+                  "formula": "=B3*C3",
+                  "value": 60,
+                  "params": [
+                    {
+                      "cell": "Sales!B3",
+                      "sheetName": "Sales",
+                      "address": "B3",
+                      "formula": null,
+                      "value": 3,
+                      "params": []
+                    },
+                    {
+                      "cell": "Sales!C3",
+                      "sheetName": "Sales",
+                      "address": "C3",
+                      "formula": null,
+                      "value": 20,
+                      "params": []
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "before": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    "Product",
+                    "Quantity",
+                    "Price",
+                    "Revenue"
+                  ],
+                  [
+                    "Standard",
+                    10,
+                    10,
+                    100
+                  ],
+                  [
+                    "Premium",
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    "Total",
+                    160
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B2*C2"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B3*C3"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=SUM(D2:D3)"
+                  ]
+                ],
+                "tables": [
+                  {
+                    "name": "SalesData",
+                    "range": "A1:D3"
+                  }
+                ],
+                "charts": [
+                  {
+                    "type": "bar",
+                    "title": "Revenue by product",
+                    "series": [
+                      {
+                        "name": "Revenue",
+                        "formula": "'Sales'!$D$2:$D$3",
+                        "categoryFormula": "'Sales'!$A$2:$A$3"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "after": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    "Product",
+                    "Quantity",
+                    "Price",
+                    "Revenue"
+                  ],
+                  [
+                    "Standard",
+                    10,
+                    10,
+                    100
+                  ],
+                  [
+                    "Premium",
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    "Total",
+                    160
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B2*C2"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B3*C3"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=SUM(D2:D3)"
+                  ]
+                ],
+                "tables": [
+                  {
+                    "name": "SalesData",
+                    "range": "A1:D3"
+                  }
+                ],
+                "charts": [
+                  {
+                    "type": "bar",
+                    "title": "Revenue by product",
+                    "series": [
+                      {
+                        "name": "Revenue",
+                        "formula": "'Sales'!$D$2:$D$3",
+                        "categoryFormula": "'Sales'!$A$2:$A$3"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "export",
+          "label": "Export",
+          "intent": "A picture and an Excel workbook are different deliverables. Save both, then check the workbook itself.",
+          "code": "const file = await SpreadsheetFile.exportXlsx(workbook);\nawait file.save('sales.xlsx');\nconst image = await workbook.render({sheetName:'Sales',range:'A1:F19',scale:1.5});",
+          "input": {
+            "formats": [
+              "xlsx",
+              "png"
+            ]
+          },
+          "returned": {
+            "xlsx": "files/sales-10.xlsx",
+            "png": "files/sales-10.png",
+            "total": 160
+          },
+          "before": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    "Product",
+                    "Quantity",
+                    "Price",
+                    "Revenue"
+                  ],
+                  [
+                    "Standard",
+                    10,
+                    10,
+                    100
+                  ],
+                  [
+                    "Premium",
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    "Total",
+                    160
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B2*C2"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B3*C3"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=SUM(D2:D3)"
+                  ]
+                ],
+                "tables": [
+                  {
+                    "name": "SalesData",
+                    "range": "A1:D3"
+                  }
+                ],
+                "charts": [
+                  {
+                    "type": "bar",
+                    "title": "Revenue by product",
+                    "series": [
+                      {
+                        "name": "Revenue",
+                        "formula": "'Sales'!$D$2:$D$3",
+                        "categoryFormula": "'Sales'!$A$2:$A$3"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "after": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    "Product",
+                    "Quantity",
+                    "Price",
+                    "Revenue"
+                  ],
+                  [
+                    "Standard",
+                    10,
+                    10,
+                    100
+                  ],
+                  [
+                    "Premium",
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    "Total",
+                    160
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B2*C2"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B3*C3"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=SUM(D2:D3)"
+                  ]
+                ],
+                "tables": [
+                  {
+                    "name": "SalesData",
+                    "range": "A1:D3"
+                  }
+                ],
+                "charts": [
+                  {
+                    "type": "bar",
+                    "title": "Revenue by product",
+                    "series": [
+                      {
+                        "name": "Revenue",
+                        "formula": "'Sales'!$D$2:$D$3",
+                        "categoryFormula": "'Sales'!$A$2:$A$3"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "reopen",
+          "label": "Reopen",
+          "intent": "A saved file deserves its own check. Here the total, formulas, native table and chart survive re-import.",
+          "code": "const reopened = await SpreadsheetFile.importXlsx(await FileBlob.load('sales.xlsx'));\nreopened.recalculate();",
+          "input": {
+            "file": "sales.xlsx"
+          },
+          "returned": {
+            "total": 160,
+            "formulas": [
+              [
+                "=B2*C2"
+              ],
+              [
+                "=B3*C3"
+              ]
+            ],
+            "tables": 1,
+            "charts": 1
+          },
+          "before": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    "Product",
+                    "Quantity",
+                    "Price",
+                    "Revenue"
+                  ],
+                  [
+                    "Standard",
+                    10,
+                    10,
+                    100
+                  ],
+                  [
+                    "Premium",
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    "Total",
+                    160
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B2*C2"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B3*C3"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=SUM(D2:D3)"
+                  ]
+                ],
+                "tables": [
+                  {
+                    "name": "SalesData",
+                    "range": "A1:D3"
+                  }
+                ],
+                "charts": [
+                  {
+                    "type": "bar",
+                    "title": "Revenue by product",
+                    "series": [
+                      {
+                        "name": "Revenue",
+                        "formula": "'Sales'!$D$2:$D$3",
+                        "categoryFormula": "'Sales'!$A$2:$A$3"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "after": {
+            "worksheets": [
+              {
+                "name": "Sales",
+                "range": "A1:D5",
+                "values": [
+                  [
+                    "Product",
+                    "Quantity",
+                    "Price",
+                    "Revenue"
+                  ],
+                  [
+                    "Standard",
+                    10,
+                    10,
+                    100
+                  ],
+                  [
+                    "Premium",
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    "Total",
+                    160
+                  ]
+                ],
+                "formulas": [
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B2*C2"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=B3*C3"
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  [
+                    "",
+                    "",
+                    "",
+                    "=SUM(D2:D3)"
+                  ]
+                ],
+                "tables": [
+                  {
+                    "name": "SalesData",
+                    "range": "A1:D3"
+                  }
+                ],
+                "charts": [
+                  {
+                    "type": "bar",
+                    "title": "Revenue by product",
+                    "series": [
+                      {
+                        "name": "Revenue",
+                        "formula": "'Sales'!$D$2:$D$3",
+                        "categoryFormula": "'Sales'!$A$2:$A$3"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

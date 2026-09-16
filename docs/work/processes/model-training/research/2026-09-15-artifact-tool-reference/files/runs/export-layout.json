@@ -1,0 +1,237 @@
+{
+  "schema": "openai.workbook.layout/v1",
+  "unit": "px",
+  "sheet": {
+    "id": "wo72fc",
+    "name": "Data",
+    "index": 0
+  },
+  "range": {
+    "ref": "A1:C3",
+    "scrollX": 0,
+    "scrollY": 0,
+    "width": 227.61,
+    "height": 60
+  },
+  "columns": [
+    {
+      "index": 0,
+      "label": "A",
+      "left": 0,
+      "width": 75.87
+    },
+    {
+      "index": 1,
+      "label": "B",
+      "left": 75.87,
+      "width": 75.87
+    },
+    {
+      "index": 2,
+      "label": "C",
+      "left": 151.74,
+      "width": 75.87
+    }
+  ],
+  "rows": [
+    {
+      "index": 0,
+      "top": 0,
+      "height": 20
+    },
+    {
+      "index": 1,
+      "top": 20,
+      "height": 20
+    },
+    {
+      "index": 2,
+      "top": 40,
+      "height": 20
+    }
+  ],
+  "cells": [
+    {
+      "address": "A1",
+      "row": 0,
+      "column": 0,
+      "frame": [
+        0,
+        0,
+        75.87,
+        20
+      ],
+      "styleId": "style-1",
+      "value": "Label"
+    },
+    {
+      "address": "B1",
+      "row": 0,
+      "column": 1,
+      "frame": [
+        75.87,
+        0,
+        75.87,
+        20
+      ],
+      "styleId": "style-1",
+      "value": "Value"
+    },
+    {
+      "address": "C1",
+      "row": 0,
+      "column": 2,
+      "frame": [
+        151.74,
+        0,
+        75.87,
+        20
+      ],
+      "styleId": "style-1",
+      "value": "Double"
+    },
+    {
+      "address": "A2",
+      "row": 1,
+      "column": 0,
+      "frame": [
+        0,
+        20,
+        75.87,
+        20
+      ],
+      "styleId": "style-1",
+      "value": "A"
+    },
+    {
+      "address": "B2",
+      "row": 1,
+      "column": 1,
+      "frame": [
+        75.87,
+        20,
+        75.87,
+        20
+      ],
+      "styleId": "style-1",
+      "value": 2
+    },
+    {
+      "address": "C2",
+      "row": 1,
+      "column": 2,
+      "frame": [
+        151.74,
+        20,
+        75.87,
+        20
+      ],
+      "styleId": "style-1",
+      "value": 4,
+      "formula": "=B2*2"
+    },
+    {
+      "address": "A3",
+      "row": 2,
+      "column": 0,
+      "frame": [
+        0,
+        40,
+        75.87,
+        20
+      ],
+      "styleId": "style-1",
+      "value": "B"
+    },
+    {
+      "address": "B3",
+      "row": 2,
+      "column": 1,
+      "frame": [
+        75.87,
+        40,
+        75.87,
+        20
+      ],
+      "styleId": "style-1",
+      "value": 4
+    },
+    {
+      "address": "C3",
+      "row": 2,
+      "column": 2,
+      "frame": [
+        151.74,
+        40,
+        75.87,
+        20
+      ],
+      "styleId": "style-1",
+      "value": 8,
+      "formula": "=B3*2"
+    }
+  ],
+  "styles": [
+    {
+      "id": "style-1",
+      "style": {
+        "fill": {
+          "type": 3,
+          "gradientStops": [],
+          "pattern": {
+            "patternType": 1
+          },
+          "pictureEffects": []
+        },
+        "font": {
+          "fontSize": 11,
+          "typeface": "Carlito"
+        },
+        "border": {},
+        "wrapText": false,
+        "horizontalAlignment": "general",
+        "styleId": 0
+      },
+      "computedStyle": {
+        "font": {
+          "size": 14.666666666666666,
+          "family": "Carlito"
+        },
+        "numberFormatId": 0,
+        "numberFormat": "General",
+        "borders": {},
+        "borderStyles": {}
+      }
+    }
+  ],
+  "styleRegions": [
+    {
+      "startAddress": "A1",
+      "endAddress": "C3",
+      "ref": "A1:C3",
+      "frame": [
+        0,
+        0,
+        227.61,
+        60
+      ],
+      "styleId": "style-1",
+      "computedStyle": {
+        "font": {
+          "size": 14.666666666666666,
+          "family": "Carlito"
+        },
+        "numberFormatId": 0,
+        "numberFormat": "General",
+        "borders": {},
+        "borderStyles": {}
+      },
+      "cellCount": 9,
+      "containsValues": true
+    }
+  ],
+  "mergedCells": [],
+  "validations": [],
+  "definedNames": [],
+  "drawings": []
+}

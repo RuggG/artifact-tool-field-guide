@@ -1,0 +1,37 @@
+{
+  "name": "fx.ODDLPRICE",
+  "category": "financial",
+  "examples": [
+    {
+      "formula": "=ODDLPRICE(A1, A1, A1, A1)",
+      "value": "ODDLPRICE is not implemented. settlement=1, maturity=1, lastInterest=1, rate=1, yld=undefined, redemption=undefined, frequency=undefined, basis=undefined",
+      "projection": [
+        [
+          "ODDLPRICE is not implemented. settlement=1, maturity=1, lastInterest=1, rate=1, yld=undefined, redemption=undefined, frequency=undefined, basis=undefined",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 7
+    }
+  ]
+}

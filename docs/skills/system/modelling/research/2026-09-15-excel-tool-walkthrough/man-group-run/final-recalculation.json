@@ -1,0 +1,132 @@
+{
+  "id": "final-recalculation",
+  "input": "wb.recalculate();\nreturn {restoredBase: readState(), summary: {\n  range: \"K13:M20\", values: wb.worksheets.getItem(\"Summary\").getRange(\"K13:M20\").values,\n  formulas: wb.worksheets.getItem(\"Summary\").getRange(\"K13:M20\").formulas\n}};",
+  "elapsedMs": 0,
+  "result": {
+    "restoredBase": {
+      "baseFeeMargin": {
+        "sheet": "Assumptions",
+        "cell": "W26",
+        "value": 56,
+        "formula": "=$D$50"
+      },
+      "activeFeeMargin": {
+        "sheet": "Assumptions",
+        "cell": "W25",
+        "value": 56,
+        "formula": "=IF(CHOOSE($D$4,ISBLANK(W26),ISBLANK(W27),ISBLANK(W28),ISBLANK(W29)),NA(),CHOOSE($D$4,W26,W27,W28,W29))"
+      },
+      "q4AverageAum": {
+        "sheet": "Fee engine",
+        "cell": "W18",
+        "value": 290.5116868239257,
+        "formula": ""
+      },
+      "q4ManagementFees": {
+        "sheet": "Fee engine",
+        "cell": "W27",
+        "value": 406.716361553496,
+        "formula": "=W18*Assumptions!$D$49*W26/Assumptions!$D$60*Assumptions!$D$48"
+      },
+      "fy2027ManagementFees": {
+        "sheet": "Summary",
+        "cell": "M13",
+        "value": 1568.3078736933392,
+        "formula": "='Fee engine'!M95"
+      },
+      "fy2027OperatingProfit": {
+        "sheet": "Summary",
+        "cell": "M20",
+        "value": 792.7541060612962,
+        "formula": "='Fee engine'!M101"
+      }
+    },
+    "summary": {
+      "range": "K13:M20",
+      "values": [
+        [
+          1354.9429499999997,
+          764.7950618437496,
+          1568.3078736933392
+        ],
+        [
+          421,
+          67,
+          281
+        ],
+        [
+          37,
+          19,
+          38
+        ],
+        [
+          2,
+          1,
+          2
+        ],
+        [
+          1814.9429499999997,
+          851.7950618437496,
+          1889.307873693339
+        ],
+        [
+          null,
+          null,
+          null
+        ],
+        [
+          -1124.404322034071,
+          -498.5594068245066,
+          -1096.553767632043
+        ],
+        [
+          690.5386279659288,
+          353.2356550192431,
+          792.7541060612962
+        ]
+      ],
+      "formulas": [
+        [
+          "='Fee engine'!K95",
+          "='Fee engine'!L95",
+          "='Fee engine'!M95"
+        ],
+        [
+          "='Fee engine'!K96",
+          "='Fee engine'!L96",
+          "='Fee engine'!M96"
+        ],
+        [
+          "='Fee engine'!K97",
+          "='Fee engine'!L97",
+          "='Fee engine'!M97"
+        ],
+        [
+          "='Fee engine'!K98",
+          "='Fee engine'!L98",
+          "='Fee engine'!M98"
+        ],
+        [
+          "='Fee engine'!K99",
+          "='Fee engine'!L99",
+          "='Fee engine'!M99"
+        ],
+        [
+          "",
+          "",
+          ""
+        ],
+        [
+          "='Fee engine'!K100",
+          "='Fee engine'!L100",
+          "='Fee engine'!M100"
+        ],
+        [
+          "='Fee engine'!K101",
+          "='Fee engine'!L101",
+          "='Fee engine'!M101"
+        ]
+      ]
+    }
+  }
+}

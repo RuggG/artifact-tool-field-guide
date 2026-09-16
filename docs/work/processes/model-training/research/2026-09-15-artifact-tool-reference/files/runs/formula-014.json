@@ -1,0 +1,37 @@
+{
+  "name": "fx.FINV",
+  "category": "compatibility",
+  "examples": [
+    {
+      "formula": "=FINV(A1, A1, A1)",
+      "value": "#NUM!",
+      "projection": [
+        [
+          "#NUM!",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 9
+    }
+  ]
+}

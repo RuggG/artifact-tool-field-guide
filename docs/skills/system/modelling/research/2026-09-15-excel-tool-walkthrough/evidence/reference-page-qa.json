@@ -1,0 +1,1436 @@
+{
+  "page": "/Users/ruggerogargiulo/repos/lynott-hub/tmp/excel-tool-walkthrough-20260915/walkthrough.html",
+  "status": "pass",
+  "browser_ran": true,
+  "notes": [
+    "desktop 1280px: both scroll edges reachable in 2 table(s)",
+    "exercised 0 chart construction(s); 0 failed",
+    "fold opens",
+    "bespoke nominees: 5 (2 changed since last pack) \u2014 every nominee needs a disposal line in the attestation",
+    "  nom 1 \u00b7 svg \u00b7 11x11px \u00b7 unchanged (auto-disposed) \u00b7 hand-rolled svg (no chartkit fingerprint)",
+    "  nom 2 \u00b7 svg \u00b7 12x12px \u00b7 unchanged (auto-disposed) \u00b7 hand-rolled svg (no chartkit fingerprint)",
+    "  nom 3 \u00b7 svg \u00b7 15x15px \u00b7 unchanged (auto-disposed) \u00b7 hand-rolled svg (no chartkit fingerprint)",
+    "  nom 4 \u00b7 styled \u00b7 281x299px \u00b7 CHANGED \u00b7 element styled by a page-local style block (.tk)",
+    "  nom 5 \u00b7 styled \u00b7 740x1012px \u00b7 CHANGED \u00b7 element styled by a page-local style block (.oref)",
+    "mobile: no horizontal overflow",
+    "mobile 390px: both scroll edges reachable in 2 table(s)",
+    "mobile: Version history opens without page overflow"
+  ],
+  "problems": [],
+  "images": [
+    "desktop-top.png",
+    "desktop-middle.png",
+    "desktop-bottom.png",
+    "desktop-fold-open.png",
+    "state-operations-reference-map.png",
+    "state-operations-reference-reference-create.png",
+    "state-operations-reference-reference-import.png",
+    "state-operations-reference-reference-save.png",
+    "state-operations-reference-reference-runner.png",
+    "state-operations-reference-reference-map.png",
+    "state-operations-reference-reference-grids.png",
+    "state-operations-reference-reference-regions.png",
+    "state-operations-reference-reference-search.png",
+    "state-operations-reference-reference-ranges.png",
+    "state-operations-reference-reference-trace.png",
+    "state-operations-reference-reference-recalculate.png",
+    "state-operations-reference-reference-sheet.png",
+    "state-operations-reference-reference-values.png",
+    "state-operations-reference-reference-formulas.png",
+    "state-operations-reference-reference-fill.png",
+    "state-operations-reference-reference-format.png",
+    "state-operations-reference-reference-clear.png",
+    "state-operations-reference-reference-table.png",
+    "state-operations-reference-reference-table-row.png",
+    "state-operations-reference-reference-table-delete.png",
+    "state-operations-reference-reference-chart.png",
+    "state-operations-reference-reference-chart-delete.png",
+    "state-operations-reference-reference-render.png",
+    "state-operations-reference-example-create-op-new-workbook.png",
+    "state-operations-reference-example-import-op-reopen-and-edit.png",
+    "state-operations-reference-example-import-op-import-add-sheet.png",
+    "state-operations-reference-example-save-op-final-save.png",
+    "state-operations-reference-example-save-op-checkpoint-save.png",
+    "state-operations-reference-example-save-op-edit-without-saving.png",
+    "state-operations-reference-example-save-old-export.png",
+    "state-operations-reference-example-runner-old-runner.png",
+    "state-operations-reference-example-map-lab-map.png",
+    "state-operations-reference-example-map-old-sheets.png",
+    "state-operations-reference-example-grids-lab-tab-full.png",
+    "state-operations-reference-example-grids-lab-tab-small.png",
+    "state-operations-reference-example-grids-lab-broad.png",
+    "state-operations-reference-example-grids-lab-all.png",
+    "state-operations-reference-example-regions-lab-blocks-small.png",
+    "state-operations-reference-example-regions-lab-blocks-large.png",
+    "state-operations-reference-example-regions-old-regions.png",
+    "state-operations-reference-example-search-lab-search-text.png",
+    "state-operations-reference-example-search-lab-search-pattern.png",
+    "state-operations-reference-example-ranges-old-ranges.png",
+    "state-operations-reference-example-trace-old-trace.png",
+    "state-operations-reference-example-recalculate-op-new-recalculation.png",
+    "state-operations-reference-example-recalculate-old-recalculate.png",
+    "state-operations-reference-example-sheet-op-import-add-sheet.png",
+    "state-operations-reference-example-sheet-op-add-linked-build.png",
+    "state-operations-reference-example-values-op-edit-without-saving.png",
+    "state-operations-reference-example-values-op-zero-input.png",
+    "state-operations-reference-example-values-op-restore-valid-input.png",
+    "state-operations-reference-example-values-old-value-edit.png",
+    "state-operations-reference-example-formulas-op-new-formula.png",
+    "state-operations-reference-example-formulas-op-add-linked-build.png",
+    "state-operations-reference-example-formulas-op-guard-missing-input.png",
+    "state-operations-reference-example-formulas-old-formula-edit.png",
+    "state-operations-reference-example-fill-op-rebuild-formulas.png",
+    "state-operations-reference-example-fill-old-fill.png",
+    "state-operations-reference-example-fill-old-copy.png",
+    "state-operations-reference-example-format-op-format-cells.png",
+    "state-operations-reference-example-clear-op-clear-formulas.png",
+    "state-operations-reference-example-clear-op-blank-input.png",
+    "state-operations-reference-example-table-op-add-table.png",
+    "state-operations-reference-example-table-op-recreate-table.png",
+    "state-operations-reference-example-table-op-overlap-table.png",
+    "state-operations-reference-example-table-row-op-append-table-row.png",
+    "state-operations-reference-example-table-delete-op-delete-table.png",
+    "state-operations-reference-example-chart-op-add-chart.png",
+    "state-operations-reference-example-chart-op-chart-input-change.png",
+    "state-operations-reference-example-chart-op-recreate-chart.png",
+    "state-operations-reference-example-chart-delete-op-delete-chart.png",
+    "state-operations-reference-example-render-op-render-before.png",
+    "state-operations-reference-example-render-op-render-after.png",
+    "state-operations-reference-example-render-old-render.png",
+    "state-operations-reference-exact-input.png",
+    "state-operations-reference-output-tree.png",
+    "state-operations-reference-exact-output.png",
+    "state-operations-reference-checks-readable.png",
+    "state-operations-reference-checks-code.png",
+    "state-operations-reference-checks-tree.png",
+    "mobile-version-open.png",
+    "mobile-top.png",
+    "mobile-middle.png",
+    "mobile-bottom.png",
+    "contact-sheet.png"
+  ],
+  "visual_review_required": true,
+  "nominees": [
+    {
+      "n": 1,
+      "kind": "svg",
+      "why": "hand-rolled svg (no chartkit fingerprint)",
+      "hash": "626cd3e8",
+      "w": 11,
+      "h2": 11,
+      "changed": false
+    },
+    {
+      "n": 2,
+      "kind": "svg",
+      "why": "hand-rolled svg (no chartkit fingerprint)",
+      "hash": "b31c3869",
+      "w": 12,
+      "h2": 12,
+      "changed": false
+    },
+    {
+      "n": 3,
+      "kind": "svg",
+      "why": "hand-rolled svg (no chartkit fingerprint)",
+      "hash": "3cb9cea",
+      "w": 15,
+      "h2": 15,
+      "changed": false
+    },
+    {
+      "n": 4,
+      "kind": "styled",
+      "why": "element styled by a page-local style block (.tk)",
+      "hash": "3dccd19a",
+      "w": 281,
+      "h2": 299,
+      "changed": true
+    },
+    {
+      "n": 5,
+      "kind": "styled",
+      "why": "element styled by a page-local style block (.oref)",
+      "hash": "5412e0f2",
+      "w": 740,
+      "h2": 1012,
+      "changed": true
+    }
+  ],
+  "exhibits": [],
+  "state_coverage": [
+    {
+      "exhibit": "operations-reference",
+      "state": "map",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": false,
+      "rendered_text": "Open and save\nCreate a workbook\nOpen an existing file\nExport and save\nRun the script\nInspect and locate\nList workbook and tabs\nRead broad value grids\nFind populated blocks\nSearch labels and text\nRead and calculate\nRead values and formulas\nTrace dependencies\nRecalculate\nEdit cells and sheets\nAdd a sheet\nWrite or replace values\nWrite formulas\nFill, copy or rebuild formulas\nFormat cells\nClear cell contents\nWork with Tables\nCreate a formal Table\nAppend a Table row\nRemove a Table\nCharts and images\nCreate or update a chart\nRemove charts\nRender an image\n\nOPERATION REFERENCE\n\nList workbook and tabs\nwb.inspect({kind: \"workbook,sheet\", \u2026})\n\nGet a structural map without reading all cell contents.\n\nYou supply\nThe record types and response allowance; optionally request sheet records alone.\nWhat it returns\nWorkbook counts plus sheet names, IDs and occupied ranges. No cell-value grids for this kind selection.\nAgent still decides / checks\nChoose which sheet or area to read next. This is an inventory, not a written explanation of the financial model.\n\ninspect is one function with several output choices. \u201ckind\u201d selects the type of records; the adjacent operations use other settings of the same function.\n\nRecorded examples 2\n\u2191 All operations",
+      "bounds": {
+        "x": 298,
+        "y": 523.578125,
+        "w": 740,
+        "h": 1774.234375
+      },
+      "image": "state-operations-reference-map.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "reference-create",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "OPERATION REFERENCE\n\nCreate a workbook\nWorkbook.create()\n\nStart a new workbook in memory; add sheets and cells to build it out.\n\nYou supply\nNo existing file is needed. Give each new sheet a name.\nWhat it returns\nA workbook object. Adding a sheet returns a worksheet object that later calls can use.\nAgent still decides / checks\nChoose the layout, financial rules and content; export and save when a file is needed.\n\nA workbook is the whole spreadsheet document. A sheet, worksheet or tab is one page of cells inside it.\n\nRecorded examples 1\n\u2191 All operations",
+      "bounds": {
+        "x": 298,
+        "y": 1006.328125,
+        "w": 740,
+        "h": 924.8125
+      },
+      "image": "state-operations-reference-reference-create.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "reference-import",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "OPERATION REFERENCE\n\nOpen an existing file\nSpreadsheetFile.importXlsx(...)\n\nLoad an .xlsx file into a workbook object that the library can read and edit.\n\nYou supply\nThe file bytes, loaded with FileBlob.load(path).\nWhat it returns\nA workbook object in memory, separate from the source file and any Microsoft Excel window.\nAgent still decides / checks\nCheck that the imported formulas and features needed for the task survived. Save changes explicitly.\n\nThe examples combine import with a subsequent action. Their final return reflects that whole code block. Reopening a saved file starts another in-memory working copy.\n\nRecorded examples 2\n\u2191 All operations",
+      "bounds": {
+        "x": 298,
+        "y": 1006.328125,
+        "w": 740,
+        "h": 1108.21875
+      },
+      "image": "state-operations-reference-reference-import.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "reference-save",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "OPERATION REFERENCE\n\nExport and save\nSpreadsheetFile.exportXlsx(wb) \u2192 file.save(path)\n\nTurn the current workbook into an Excel file and write it to disk.\n\nYou supply\nThe workbook object and a destination path.\nWhat it returns\nExport creates a file object. Saving writes it; the tested save call returns undefined, with no verification report.\nAgent still decides / checks\nChoose when and where to save; separately reopen or compare the output if assurance is needed.\n\nEdits in memory do not update a previously saved file. An already-open Excel window does not show this working copy live.\n\nRecorded examples 4\n\u2191 All operations",
+      "bounds": {
+        "x": 298,
+        "y": 1006.328125,
+        "w": 740,
+        "h": 1139.15625
+      },
+      "image": "state-operations-reference-reference-save.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "reference-runner",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "OPERATION REFERENCE\n\nRun the script\nCodex command tool \u2192 Node.js\n\nExecute a program that calls the spreadsheet library. This is the outer tool, rather than a spreadsheet operation.\n\nYou supply\nA command, working directory and wait/output allowances.\nWhat it returns\nProcess status, printed output and an exit code; a running process may first return a session ID for later polling.\nAgent still decides / checks\nWrite the program and decide what to print or save. A successful process exit is not proof of a correct model.\n\nThe library functions on this page are JavaScript calls, not individual Excel MCP tools. The agent can put many operations in one script.\n\nRecorded examples 1\n\u2191 All operations",
+      "bounds": {
+        "x": 298,
+        "y": 1006.328125,
+        "w": 740,
+        "h": 1648.078125
+      },
+      "image": "state-operations-reference-reference-runner.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "reference-map",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "OPERATION REFERENCE\n\nList workbook and tabs\nwb.inspect({kind: \"workbook,sheet\", \u2026})\n\nGet a structural map without reading all cell contents.\n\nYou supply\nThe record types and response allowance; optionally request sheet records alone.\nWhat it returns\nWorkbook counts plus sheet names, IDs and occupied ranges. No cell-value grids for this kind selection.\nAgent still decides / checks\nChoose which sheet or area to read next. This is an inventory, not a written explanation of the financial model.\n\ninspect is one function with several output choices. \u201ckind\u201d selects the type of records; the adjacent operations use other settings of the same function.\n\nRecorded examples 2\n\u2191 All operations",
+      "bounds": {
+        "x": 298,
+        "y": 1006.328125,
+        "w": 740,
+        "h": 1206.59375
+      },
+      "image": "state-operations-reference-reference-map.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "reference-grids",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "OPERATION REFERENCE\n\nRead broad value grids\nwb.inspect({kind: \"table\", \u2026})\n\nRequest cell values for a sheet or combine value grids with a workbook inventory.\n\nYou supply\nkind, optional sheet/range, maxChars and fallback preview sizes.\nWhat it returns\nGrid dimensions and cell values; possibly full occupied rectangles, sampled values, or omitted records when the response is too large. These are values, not formula text.\nAgent still decides / checks\nNotice truncation, narrow the request when useful, and interpret the numbers.\n\nHere \u201ctable\u201d means an inspection grid, not a named Excel Table. tableMaxRows/Cols are fallback preview limits in the tested runtime: a grid that fits may be returned in full. valuesTruncated means sampled values; outer truncated means omitted records.\n\nRecorded examples 4\n\u2191 All operations",
+      "bounds": {
+        "x": 298,
+        "y": 1006.328125,
+        "w": 987,
+        "h": 36042.96875
+      },
+      "image": "state-operations-reference-reference-grids.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "reference-regions",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "OPERATION REFERENCE\n\nFind populated blocks\nwb.inspect({kind: \"region\", \u2026})\n\nLocate populated blocks within an area and preview their contents.\n\nYou supply\nA sheet, a search rectangle and preview dimensions.\nWhat it returns\nBlock addresses, sizes, population counts and sample cell values.\nAgent still decides / checks\nJudge what each block represents and choose a tighter read when needed.\n\nA range is any chosen rectangle of cells, such as A1:D10. A region is a block identified by inspection; it is not another tab. The two Fee engine examples change only preview size.\n\nRecorded examples 3\n\u2191 All operations",
+      "bounds": {
+        "x": 298,
+        "y": 1006.328125,
+        "w": 987,
+        "h": 1328.015625
+      },
+      "image": "state-operations-reference-reference-regions.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "reference-search",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "OPERATION REFERENCE\n\nSearch labels and text\nwb.inspect({kind: \"match\", \u2026})\n\nFind candidate cells by literal text or a regular-expression pattern.\n\nYou supply\nSearch text/pattern, where to look, match count and response allowance.\nWhat it returns\nMatching cell addresses and content, plus a limit notice when applicable.\nAgent still decides / checks\nInterpret the match in context. The agent must decide whether \u201coperating result\u201d answers a request about \u201cprofit\u201d.\n\nThis is text matching, not a demonstrated semantic index of the model. A regex is a pattern: management.*fee means \u201cmanagement\u201d, then any characters, then \u201cfee\u201d.\n\nRecorded examples 2\n\u2191 All operations",
+      "bounds": {
+        "x": 298,
+        "y": 1006.328125,
+        "w": 740,
+        "h": 3432.28125
+      },
+      "image": "state-operations-reference-reference-search.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "reference-ranges",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "OPERATION REFERENCE\n\nRead values and formulas\nrange.values \u00b7 range.formulas\n\nRead an exact cell or rectangle, including the formula text behind its results.\n\nYou supply\nA sheet and cell address or rectangle.\nWhat it returns\nAligned two-dimensional arrays: one for values, another for formula strings. A one-cell read is still a small grid.\nAgent still decides / checks\nChoose the addresses; add labels, compare results or assemble a report if needed.\n\nA value is the cell\u2019s result; a formula is its calculation rule, such as =SUM(A1:A3). The example script packages both getters together and adds the sheet/range labels.\n\nRecorded examples 1\n\u2191 All operations",
+      "bounds": {
+        "x": 298,
+        "y": 1006.328125,
+        "w": 740,
+        "h": 1338.859375
+      },
+      "image": "state-operations-reference-reference-ranges.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "reference-trace",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "OPERATION REFERENCE\n\nTrace dependencies\nwb.trace(cell)\n\nFollow a result upstream through the cells used in its calculation.\n\nYou supply\nThe starting cell, including its sheet.\nWhat it returns\nA nested tree of cells, values, formulas and their input branches.\nAgent still decides / checks\nInterpret the chain and check missing or unexpected branches. A tree is evidence about the imported calculation graph, not an all-model audit.\n\nA dependency is a cell used by another cell\u2019s formula. This traces inputs upstream; it is not a report that every downstream output recalculated successfully.\n\nRecorded examples 1\n\u2191 All operations",
+      "bounds": {
+        "x": 298,
+        "y": 1006.328125,
+        "w": 740,
+        "h": 1500.59375
+      },
+      "image": "state-operations-reference-reference-trace.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "reference-recalculate",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "OPERATION REFERENCE\n\nRecalculate\nwb.recalculate()\n\nAsk the library\u2019s calculation engine to update the workbook.\n\nYou supply\nThe in-memory workbook; no extra parameters in the tested call.\nWhat it returns\nUndefined in this run: no automatic list of changed cells or dependency-success report.\nAgent still decides / checks\nRead the relevant outputs, compare with expectations, and check errors separately.\n\nFresh formulas updated automatically after an input edit in our small example. An explicit recalculation does not repair dependencies missing during import. This is the library\u2019s engine, not native Microsoft Excel.\n\nRecorded examples 2\n\u2191 All operations",
+      "bounds": {
+        "x": 298,
+        "y": 1006.328125,
+        "w": 740,
+        "h": 1074.0625
+      },
+      "image": "state-operations-reference-reference-recalculate.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "reference-sheet",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "OPERATION REFERENCE\n\nAdd a sheet\nwb.worksheets.add(name)\n\nAdd a tab to the workbook and use it as a new working area.\n\nYou supply\nA sheet name, followed by whichever cells and formatting to populate.\nWhat it returns\nA worksheet object for subsequent range, table and chart operations.\nAgent still decides / checks\nChoose where the new work belongs and link it to the existing model if needed.\n\nAdding a tab does not automatically populate it. The Fee lab example was deliberately created as an illustrative schedule alongside the six original sheets.\n\nRecorded examples 2\n\u2191 All operations",
+      "bounds": {
+        "x": 298,
+        "y": 1006.328125,
+        "w": 740,
+        "h": 1157.828125
+      },
+      "image": "state-operations-reference-reference-sheet.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "reference-values",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "OPERATION REFERENCE\n\nWrite or replace values\nrange.values = [[\u2026]]\n\nPut literal numbers, text or blanks into chosen cells.\n\nYou supply\nThe destination range and a matching grid of values.\nWhat it returns\nThe cells change. The assignment does not provide a model-health report or a before/after comparison.\nAgent still decides / checks\nChoose the right cells and units; read affected results and decide whether the change behaved as intended.\n\nWriting a value can replace an existing formula. The examples distinguish an unsaved edit, a deliberate zero and a change that exposed an imported dependency problem.\n\nRecorded examples 4\n\u2191 All operations",
+      "bounds": {
+        "x": 298,
+        "y": 1006.328125,
+        "w": 740,
+        "h": 1114.46875
+      },
+      "image": "state-operations-reference-reference-values.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "reference-formulas",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "OPERATION REFERENCE\n\nWrite formulas\nrange.formulas = [[\"=\u2026\"]]\n\nCreate a calculation, link sheets, or replace an existing formula.\n\nYou supply\nDestination cells and formula strings with the intended references.\nWhat it returns\nFormulas are stored and calculated. Read values/formulas separately to see the result.\nAgent still decides / checks\nSupply the financial logic, reference rules and missing-input behavior; test representative inputs.\n\nBlank-versus-zero handling comes from the formula the agent writes. In the example, an explicit IF/ISBLANK guard makes missing data #N/A while accepting a deliberate zero.\n\nRecorded examples 4\n\u2191 All operations",
+      "bounds": {
+        "x": 298,
+        "y": 1006.328125,
+        "w": 740,
+        "h": 1015.40625
+      },
+      "image": "state-operations-reference-reference-formulas.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "reference-fill",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "OPERATION REFERENCE\n\nFill, copy or rebuild formulas\nrange.fillDown() \u00b7 fillRight() \u00b7 copyFrom(...)\n\nExtend formulas to nearby cells or copy selected content from another range.\n\nYou supply\nSource/destination ranges, fill direction or copy mode.\nWhat it returns\nThe destination changes; later getters show the resulting formulas and values.\nAgent still decides / checks\nCheck relative versus fixed references and whether the selected range is appropriate.\n\nRelative references move when copied; $-fixed references stay anchored. Rebuilding cleared formulas is a new instruction sequence, not a demonstrated Undo operation.\n\nRecorded examples 3\n\u2191 All operations",
+      "bounds": {
+        "x": 298,
+        "y": 1006.328125,
+        "w": 740,
+        "h": 1056.484375
+      },
+      "image": "state-operations-reference-reference-fill.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "reference-format",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "OPERATION REFERENCE\n\nFormat cells\nrange.format \u00b7 range.setNumberFormat(...)\n\nSet fonts, fills, sizes, number formats and other presentation properties.\n\nYou supply\nThe range and desired formatting properties.\nWhat it returns\nFormatting changes on the workbook object. Property assignments do not return a visual-quality judgment.\nAgent still decides / checks\nRender the relevant area and inspect readability, clipping and units.\n\nNumber formatting controls how a value looks; it does not change the underlying calculation. A cell may display two decimals while retaining more precision.\n\nRecorded examples 1\n\u2191 All operations",
+      "bounds": {
+        "x": 298,
+        "y": 1006.328125,
+        "w": 740,
+        "h": 1025.0625
+      },
+      "image": "state-operations-reference-reference-format.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "reference-clear",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "OPERATION REFERENCE\n\nClear cell contents\nrange.clear({\u2026})\n\nRemove values or formulas from a selected range.\n\nYou supply\nThe range and the clear option; these examples clear contents.\nWhat it returns\nCell contents disappear. With contents-only clearing, formatting remains.\nAgent still decides / checks\nCheck dependent outputs and whether blank now means missing, zero or something else in the formulas.\n\nClearing cells does not delete a worksheet or remove the rows themselves. In this example, clearing the quarterly formulas makes their SUM total zero: a plausible-looking result can still be incomplete.\n\nRecorded examples 2\n\u2191 All operations",
+      "bounds": {
+        "x": 298,
+        "y": 1006.328125,
+        "w": 740,
+        "h": 1056.484375
+      },
+      "image": "state-operations-reference-reference-clear.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "reference-table",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "OPERATION REFERENCE\n\nCreate a formal Table\nsheet.tables.add(range, hasHeaders, name)\n\nDefine a named Excel Table over an existing block of cells.\n\nYou supply\nThe rectangle, whether it includes headers, and the Table name.\nWhat it returns\nA Table object. Its values, range and row count can be inspected separately.\nAgent still decides / checks\nChoose the correct rectangle and check it does not overlap an existing Table.\n\nA formal Excel Table is a named spreadsheet feature inside a tab. It is different from the \u201ctable\u201d records returned by inspect. The API accepted an overlapping Table in our unsaved probe, so the documented overlap check is agent work.\n\nRecorded examples 3\n\u2191 All operations",
+      "bounds": {
+        "x": 298,
+        "y": 1006.328125,
+        "w": 740,
+        "h": 1034.078125
+      },
+      "image": "state-operations-reference-reference-table.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "reference-table-row",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "OPERATION REFERENCE\n\nAppend a Table row\ntable.rows.add(...)\n\nAdd a row of data to a formal Excel Table.\n\nYou supply\nThe insertion position or append choice and the row\u2019s values.\nWhat it returns\nThe Table expands. The tested call returned undefined; a separate read shows the new row.\nAgent still decides / checks\nCheck the values landed in the intended columns and that any related calculations use them.\n\nAppending a Table row is distinct from writing into arbitrary cells below a block. This example adds the Stress scenario to FeeScenarioInputs.\n\nRecorded examples 1\n\u2191 All operations",
+      "bounds": {
+        "x": 298,
+        "y": 1006.328125,
+        "w": 740,
+        "h": 1059.21875
+      },
+      "image": "state-operations-reference-reference-table-row.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "reference-table-delete",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "OPERATION REFERENCE\n\nRemove a Table\ntable.delete()\n\nRemove the formal Table object from the sheet.\n\nYou supply\nThe Table to delete.\nWhat it returns\nThe Table is removed; in the tested case its underlying cell values remain.\nAgent still decides / checks\nDecide whether the cells also need clearing and check references that relied on the Table.\n\nDeleting a Table is not the same as deleting its data. Recreating it means calling tables.add again over the retained cells.\n\nRecorded examples 1\n\u2191 All operations",
+      "bounds": {
+        "x": 298,
+        "y": 1006.328125,
+        "w": 740,
+        "h": 957.359375
+      },
+      "image": "state-operations-reference-reference-table-delete.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "reference-chart",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "OPERATION REFERENCE\n\nCreate or update a chart\nsheet.charts.add(...) \u00b7 chart properties\n\nCreate a chart with cell references for its categories and series; configure its appearance.\n\nYou supply\nChart type, source ranges, title, styling and placement.\nWhat it returns\nA chart object. Source-cell changes can then change what the chart displays.\nAgent still decides / checks\nChoose a useful chart and valid source ranges; render and judge the result.\n\nA cell-bound chart follows its referenced values. The before/after experiment changes the fee assumption while leaving those series references unchanged.\n\nRecorded examples 3\n\u2191 All operations",
+      "bounds": {
+        "x": 298,
+        "y": 1006.328125,
+        "w": 740,
+        "h": 948.078125
+      },
+      "image": "state-operations-reference-reference-chart.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "reference-chart-delete",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "OPERATION REFERENCE\n\nRemove charts\nsheet.charts.deleteAll()\n\nRemove charts from a selected sheet.\n\nYou supply\nThe sheet whose chart collection should be cleared.\nWhat it returns\nThe chart objects disappear. Their source calculations remain in this example.\nAgent still decides / checks\nConfirm the intended charts were removed; rebuild by creating them again if wanted.\n\nThis demonstrated call deletes all charts on the chosen sheet. It does not erase the cells that supplied their data.\n\nRecorded examples 1\n\u2191 All operations",
+      "bounds": {
+        "x": 298,
+        "y": 1006.328125,
+        "w": 740,
+        "h": 899.078125
+      },
+      "image": "state-operations-reference-reference-chart-delete.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "reference-render",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "OPERATION REFERENCE\n\nRender an image\nwb.render({sheetName, range, \u2026})\n\nGenerate a picture of a selected workbook area.\n\nYou supply\nA sheet, cell range and image settings such as scale and PNG format.\nWhat it returns\nAn image blob. Writing the bytes to a PNG and opening that image are separate actions.\nAgent still decides / checks\nLook at the image and judge labels, layout and charts. Producing pixels does not itself perform that review.\n\nRendering reads the in-memory workbook. It does not take a screenshot of a live Excel window and does not save an .xlsx file.\n\nRecorded examples 3\n\u2191 All operations",
+      "bounds": {
+        "x": 298,
+        "y": 1006.328125,
+        "w": 740,
+        "h": 1028.296875
+      },
+      "image": "state-operations-reference-reference-render.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-create-op-new-workbook",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Create an empty workbook and add its first worksheet.\n\nEXECUTED INPUT\nReadable\nExact code\n\nCreate an empty workbook and add its first worksheet.\n\nOPERATION RETURN\nReadable\nObject tree\nExact output\n\nReturned: Worksheet object. This is our label for the live object, not a complete serialization of its contents.\n\nAgent-written checks and what they found\nObserved in this example\n\nWorkbook.create() plus worksheets.add() gives a workbook with one tab, Fee calculation. No XLSX has been written yet.\n\nThe tab inventory is a separate read. Creating a workbook is not itself file export.\n\nExecution record \u00b7 Full script",
+      "bounds": {
+        "x": 323,
+        "y": 1523,
+        "w": 690,
+        "h": 408.140625
+      },
+      "image": "state-operations-reference-example-create-op-new-workbook.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-import-op-reopen-and-edit",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Import the saved output and change the fee margin to 55bp in that new working copy.\n\nEXECUTED INPUT\nReadable\nExact code\n\nImport the saved output and change the fee margin to 55bp in that new working copy.\n\nOPERATION RETURN\nReadable\nObject tree\nExact output\n\nNo returned report (JavaScript undefined). This is the return of the recorded code block; the workbook can still have changed.\n\nAgent-written checks and what they found\nObserved in this example\n\nQuarter-one fees recalculate to $399.45m, matching a separate arithmetic calculation. The disk copy stays at 60bp because this last experiment is not saved.\n\nReopening a file starts another in-memory workbook. It does not connect the script to a live Excel window.\n\nExecution record \u00b7 Full script",
+      "bounds": {
+        "x": 323,
+        "y": 1594.40625,
+        "w": 690,
+        "h": 520.140625
+      },
+      "image": "state-operations-reference-example-import-op-reopen-and-edit.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-import-op-import-add-sheet",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Import the supplied file and append a Fee lab worksheet.\n\nEXECUTED INPUT\nReadable\nExact code\n\nImport the supplied file and append a Fee lab worksheet.\n\nOPERATION RETURN\nReadable\nObject tree\nExact output\n\nReturned: Worksheet object. This is our label for the live object, not a complete serialization of its contents.\n\nAgent-written checks and what they found\nObserved in this example\n\nThe six existing tabs remain and a seventh tab is added. The Downloads original is unchanged.\n\nThis is an authorised demonstration extension, rather than a rewrite of the original company model.\n\nExecution record \u00b7 Full script",
+      "bounds": {
+        "x": 323,
+        "y": 1594.40625,
+        "w": 690,
+        "h": 593.765625
+      },
+      "image": "state-operations-reference-example-import-op-import-add-sheet.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-save-op-final-save",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Save the completed laboratory and load the saved file again.\n\nEXECUTED INPUT\nReadable\nExact code\n\nSave the completed laboratory and load the saved file again.\n\nOPERATION RETURN\nReadable\nObject tree\nExact output\n\nNo returned report (JavaScript undefined). This is the return of the recorded code block; the workbook can still have changed.\n\nAgent-written checks and what they found\nObserved in this example\n\nThe saved file now has the final 60bp input, working formula text and the added formal table. An independent file reader also checks the output.\n\nExport success is one observation. Reading the file back and comparing its contents are extra verification.\n\nExecution record \u00b7 Full script",
+      "bounds": {
+        "x": 323,
+        "y": 1594.40625,
+        "w": 690,
+        "h": 551.078125
+      },
+      "image": "state-operations-reference-example-save-op-final-save.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-save-op-checkpoint-save",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Write the current workbook to disk.\n\nEXECUTED INPUT\nReadable\nExact code\n\nWrite the current workbook to disk.\n\nOPERATION RETURN\nReadable\nObject tree\nExact output\n\nNo returned report (JavaScript undefined). This is the return of the recorded code block; the workbook can still have changed.\n\nAgent-written checks and what they found\nObserved in this example\n\nThe saved copy has a 56bp fee margin. save() returns undefined; the hash and re-imported value are checks added by the script.\n\nExport creates a file object; save writes its bytes. No application window is involved.\n\nExecution record \u00b7 Full script",
+      "bounds": {
+        "x": 323,
+        "y": 1594.40625,
+        "w": 690,
+        "h": 458.265625
+      },
+      "image": "state-operations-reference-example-save-op-checkpoint-save.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-save-op-edit-without-saving",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Change the working fee margin from 56bp to 51bp.\n\nEXECUTED INPUT\nReadable\nExact code\n\nChange the working fee margin from 56bp to 51bp.\n\nOPERATION RETURN\nReadable\nObject tree\nExact output\n\nNo returned report (JavaScript undefined). This is the return of the recorded code block; the workbook can still have changed.\n\nAgent-written checks and what they found\nObserved in this example\n\nMemory changes to 51bp and total fees fall to $1,526.65m. The on-disk copy still says 56bp and its SHA-256 is unchanged.\n\nChanging the workbook object does not save the file. The agent decides when to export.\n\nExecution record \u00b7 Full script",
+      "bounds": {
+        "x": 323,
+        "y": 1594.40625,
+        "w": 690,
+        "h": 526.390625
+      },
+      "image": "state-operations-reference-example-save-op-edit-without-saving.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-save-old-export",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Produce a file that can be downloaded and opened after the in-memory inspection and edits.\n\nEXECUTED INPUT\nReadable\nExact code\n\nConvert the in-memory workbook to an Excel file and save it locally.\n\nSource\nThe workbook after the preceding demonstration steps\nFormat\nExcel .xlsx\nSave as\nman-group-demo.xlsx, in the experiment folder\nRecord\nThe save call\u2019s return value, filename and file size in bytes\n\nPlain-English reading of the actual input. Switch to Exact input for the executed code or tool arguments.\n\nSCRIPT OUTPUT \u2014 INCLUDES ADDED READS/CHECKS\nReadable\nObject tree\nExact output\nFile result\tObserved\nSaved file\tman-group-demo.xlsx\nSize\t106,380 bytes\nFormula/literal differences\t0\nCached values outside tolerance\t0\nAnnotations\t270 before / 270 after\nOriginal download\tSHA-256 unchanged\nNative Excel opening\tNot tested in this run\nObserved in this example\n\nThe saved demo is 106,380 bytes. Independent readback confirms the original sheet order, formulas, cell values and 270 annotations remain, after the temporary assumption change was reversed.\n\nThe exact input includes the agent\u2019s wrapper. The displayed report is assembled by that script; it is not automatically returned by the edit, calculation or export. The workbook still has the broader shared-formula import limitation described above. This export is a demonstration copy, not a claimed complete repair. Verification compared formula text and literal cells, cached numbers within 1e-8 absolute / 1e-10 relative tolerance, sheet order and annotation count. Native Excel was not opened for this run.\n\nFull captured record \u00b7 Executed JavaScript \u00b7 Download demonstration XLSX \u00b7 Independent file checks",
+      "bounds": {
+        "x": 323,
+        "y": 1594.40625,
+        "w": 690,
+        "h": 722.21875
+      },
+      "image": "state-operations-reference-example-save-old-export.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-runner-old-runner",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Start the JavaScript program that imports the Man Group file and makes the spreadsheet calls below.\n\nEXECUTED INPUT\nReadable\nExact code\n\nRun the saved experiment script with the bundled JavaScript runtime.\n\nProgram\nNode.js \u2192 run.mjs\nWorking folder\nman-group-run, alongside the copied source.xlsx\nInitial wait\nUp to 1,000 milliseconds before returning control if the process is still running\nOutput allowance\nRequest up to 1,000 tokens of command output in this call\n\nPlain-English reading of the actual input. Switch to Exact input for the executed code or tool arguments.\n\nCOMMAND-TOOL RESULT\nReadable\nObject tree\nExact output\nStage\tWhat came back\nInitial call\tStill running \u00b7 session 22618\nLater poll\tCompleted \u00b7 exit code 0\nRead all printed output\nObserved in this example\n\nThe first call returned session 22618. A later poll returned exit code 0 and the script\u2019s record-saving messages. Each JSON record was saved separately and read back for this page.\n\nThe messages such as \u201csaved: overview.json\u201d were printed by our recording helper. They are not independent guarantees from Excel. The program runs in Node. No Excel window or connected add-in session is involved in these calls.\n\nActual command and tool results \u00b7 Executed script",
+      "bounds": {
+        "x": 323,
+        "y": 1570.15625,
+        "w": 690,
+        "h": 1084.25
+      },
+      "image": "state-operations-reference-example-runner-old-runner.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-map-lab-map",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "kind selects workbook and sheet descriptions only.\n\nEXECUTED INPUT\nReadable\nExact code\nWhat to return \u00b7 kind\nworkbook,sheet\nWhere to look\nAll six sheets\nResponse allowance \u00b7 maxChars\n14,000 characters\nLIBRARY RESPONSE\nReadable\nObject tree\nExact output\nTab\tDescription: occupied range\tCell values returned\nSummary\tA1:M57\tNot requested\nAssumptions\tA1:W67\tNot requested\nFee engine\tA1:W109\tNot requested\nDisclosures\tA1:Q125\tNot requested\nChecks\tA1:W59\tNot requested\nReadme\tA1:D28\tNot requested\n\nAll six tab names are shown for orientation. \u201cNot returned\u201d means absent from this captured response.\n\nObserved in this example\n\nAll six tabs, with names and occupied ranges. No cell values.\n\nSize of the returned NDJSON text: 642 characters; approximately 248 tokens using o200k_base. This is not a billing count or the size of the whole outer tool response. NDJSON means one JSON record per line.\n\nExecution record",
+      "bounds": {
+        "x": 323,
+        "y": 1594.40625,
+        "w": 690,
+        "h": 618.515625
+      },
+      "image": "state-operations-reference-example-map-lab-map.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-map-old-sheets",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Choose the relevant tab. For this task, Summary shows the answer, Assumptions owns the drivers and Fee engine does the calculations.\n\nEXECUTED INPUT\nReadable\nExact code\n\nList the sheets so the agent can choose where to look next.\n\nScope\nThe whole workbook\nRecord type\nSheet\nFields requested\nInternal ID and name\n\nPlain-English reading of the actual input. Switch to Exact input for the executed code or tool arguments.\n\nLIBRARY RESPONSE\nReadable\nObject tree\nExact output\nPosition\tSheet\tUsed range\tInternal ID\n1\tSummary\tA1:M57\tws/martey\n2\tAssumptions\tA1:W67\tws/0tplml\n3\tFee engine\tA1:W109\tws/dvxktf\n4\tDisclosures\tA1:Q125\tws/yfu5pm\n5\tChecks\tA1:W59\tws/yd9na3\n6\tReadme\tA1:D28\tws/alxc6k\nObserved in this example\n\nAll six tabs are returned: Summary, Assumptions, Fee engine, Disclosures, Checks and Readme.\n\nThe used rectangle can include empty cells and layout space. It is not a count of populated cells. Although the request says include id,name, this runtime also returns index, range and address.\n\nFull captured record \u00b7 Executed JavaScript",
+      "bounds": {
+        "x": 323,
+        "y": 1594.40625,
+        "w": 690,
+        "h": 630.75
+      },
+      "image": "state-operations-reference-example-map-old-sheets.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-grids-lab-tab-full",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "The table fits within this allowance, so the 1 \u00d7 1 fallback preview is not used.\n\nEXECUTED INPUT\nReadable\nExact code\nWhat to return \u00b7 kind\ntable\nWhere to look\nFee engine\nResponse allowance \u00b7 maxChars\n150,000 characters\nPreview rows \u00d7 columns\n1 \u00d7 1\nText per preview cell\n1 characters\nWhen preview sizes apply\nFallback when table values are too large\nLIBRARY RESPONSE\nReadable\nObject tree\nExact output\nWhat the size refers to\tActual size\nSheet area described\tA1:W109 \u00b7 109 rows \u00d7 23 columns\nCell values actually returned\t109 \u00d7 23 grid\nValues cut to a preview?\tfalse\n\nEvery returned value matched a direct read of Fee engine!A1:W109. Formulas, formatting and comments are not included in this value grid.\n\nRead returned values \u00b7 Fee engine \u00b7 109 \u00d7 23\nObserved in this example\n\nFee engine returns its entire 109 \u00d7 23 value grid.\n\nSize of the returned NDJSON text: 24,242 characters; approximately 9,533 tokens using o200k_base. This is not a billing count or the size of the whole outer tool response. NDJSON means one JSON record per line.\n\nExecution record",
+      "bounds": {
+        "x": 323,
+        "y": 1631.171875,
+        "w": 962,
+        "h": 35418.125
+      },
+      "image": "state-operations-reference-example-grids-lab-tab-full.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-grids-lab-tab-small",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Only maxChars changes. The full table is too large for this allowance, so the preview settings take effect.\n\nEXECUTED INPUT\nReadable\nExact code\nWhat to return \u00b7 kind\ntable\nWhere to look\nFee engine\nResponse allowance \u00b7 maxChars\n1,000 characters\nPreview rows \u00d7 columns\n1 \u00d7 1\nText per preview cell\n1 characters\nWhen preview sizes apply\nFallback when table values are too large\nLIBRARY RESPONSE\nReadable\nObject tree\nExact output\nWhat the size refers to\tActual size\nSheet area described\tA1:W109 \u00b7 109 rows \u00d7 23 columns\nCell values actually returned\t1 \u00d7 1 grid\nValues cut to a preview?\ttrue\n\nA1 is blank. The returned values are [[null]]. The 109 \u00d7 23 dimensions still describe the whole area; they do not say that all those values were returned.\n\nRead returned values \u00b7 Fee engine \u00b7 1 \u00d7 1\nObserved in this example\n\nOnly cell A1 arrives as a 1 \u00d7 1 preview. It is blank.\n\nSize of the returned NDJSON text: 191 characters; approximately 57 tokens using o200k_base. This is not a billing count or the size of the whole outer tool response. NDJSON means one JSON record per line.\n\nExecution record",
+      "bounds": {
+        "x": 323,
+        "y": 1631.171875,
+        "w": 962,
+        "h": 633.078125
+      },
+      "image": "state-operations-reference-example-grids-lab-tab-small.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-grids-lab-broad",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Adding table requests cell grids as well. The 14,000-character allowance cuts this response short.\n\nEXECUTED INPUT\nReadable\nExact code\nWhat to return \u00b7 kind\nworkbook,sheet,table\nWhere to look\nAll six sheets\nResponse allowance \u00b7 maxChars\n14,000 characters\nPreview rows \u00d7 columns\n4 \u00d7 6\nText per preview cell\n80 characters\nWhen preview sizes apply\nFallback when table values are too large\nLIBRARY RESPONSE\nReadable\nObject tree\nExact output\nTab\tDescription: occupied range\tCell values returned\nSummary\tA1:M57\tFull 57 \u00d7 13 grid\nAssumptions\tA1:W67\tNot returned\nFee engine\tNot returned\tNot returned\nDisclosures\tNot returned\tNot returned\nChecks\tNot returned\tNot returned\nReadme\tNot returned\tNot returned\n\nAll six tab names are shown for orientation. \u201cNot returned\u201d means absent from this captured response.\n\nWhy it stops here: Summary\u2019s grid is 6,602 characters; Assumptions\u2019 is 10,062. Each fits below 14,000 alone, but both together exceed the response allowance. The saved answer stops before Assumptions\u2019 values and reports nine omitted records.\n\nRead returned values \u00b7 Summary \u00b7 57 \u00d7 13\n\nTruncated: omitted 9 lines. Increase maxChars, narrow range, or use tableMaxRows/tableMaxCols/tableMaxCellChars.\n\nObserved in this example\n\nSummary values arrive in full, then the response stops after the Assumptions description.\n\nSize of the returned NDJSON text: 7,024 characters; approximately 2,261 tokens using o200k_base. This is not a billing count or the size of the whole outer tool response. NDJSON means one JSON record per line.\n\nExecution record",
+      "bounds": {
+        "x": 323,
+        "y": 1631.171875,
+        "w": 962,
+        "h": 4351.5
+      },
+      "image": "state-operations-reference-example-grids-lab-broad.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-grids-lab-all",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Compared with the previous option, only maxChars changes: 14,000 \u2192 150,000. The requested 4 \u00d7 6 preview is unchanged.\n\nEXECUTED INPUT\nReadable\nExact code\nWhat to return \u00b7 kind\nworkbook,sheet,table\nWhere to look\nAll six sheets\nResponse allowance \u00b7 maxChars\n150,000 characters\nPreview rows \u00d7 columns\n4 \u00d7 6\nText per preview cell\n80 characters\nWhen preview sizes apply\nFallback when table values are too large\nLIBRARY RESPONSE\nReadable\nObject tree\nExact output\nTab\tDescription: occupied range\tCell values returned\nSummary\tA1:M57\tFull 57 \u00d7 13 grid\nAssumptions\tA1:W67\tFull 67 \u00d7 23 grid\nFee engine\tA1:W109\tFull 109 \u00d7 23 grid\nDisclosures\tA1:Q125\tFull 125 \u00d7 17 grid\nChecks\tA1:W59\tFull 59 \u00d7 23 grid\nReadme\tA1:D28\tFull 28 \u00d7 4 grid\n\nAll six tab names are shown for orientation. \u201cNot returned\u201d means absent from this captured response.\n\nRead returned values \u00b7 Summary \u00b7 57 \u00d7 13\nRead returned values \u00b7 Assumptions \u00b7 67 \u00d7 23\nRead returned values \u00b7 Fee engine \u00b7 109 \u00d7 23\nRead returned values \u00b7 Disclosures \u00b7 125 \u00d7 17\nRead returned values \u00b7 Checks \u00b7 59 \u00d7 23\nRead returned values \u00b7 Readme \u00b7 28 \u00d7 4\nObserved in this example\n\nAll six tabs and all six value grids arrive.\n\nSize of the returned NDJSON text: 70,074 characters; approximately 22,430 tokens using o200k_base. This is not a billing count or the size of the whole outer tool response. NDJSON means one JSON record per line.\n\nExecution record",
+      "bounds": {
+        "x": 323,
+        "y": 1631.171875,
+        "w": 962,
+        "h": 35626.984375
+      },
+      "image": "state-operations-reference-example-grids-lab-all.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-regions-lab-blocks-small",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "kind: region asks for blocks and samples of their cells, rather than one full sheet grid.\n\nEXECUTED INPUT\nReadable\nExact code\nWhat to return \u00b7 kind\nregion\nWhere to look\nFee engine\nSelected area \u00b7 range\nA1:W109\nResponse allowance \u00b7 maxChars\n40,000 characters\nPreview rows \u00d7 columns\n2 \u00d7 3\nText per preview cell\n20 characters\nWhen preview sizes apply\nTo each region\u2019s returned preview\nLIBRARY RESPONSE\nReadable\nObject tree\nExact output\nBlock found\tFull size\tPreview returned\nC62:W82\t21 \u00d7 21\tC62:E63\nC4:W20\t17 \u00d7 21\tC4:E5\nC46:W60\t15 \u00d7 21\tC46:E47\nC85:W109\t25 \u00d7 21\tC85:E86\nC33:W44\t12 \u00d7 21\tC33:E34\nC23:W31\t9 \u00d7 21\tC23:E24\n\nThe same six blocks are returned in both settings. Preview size changes how much of each block\u2019s content you see.\n\nRead preview \u00b7 C62:E63\nRead preview \u00b7 C4:E5\nRead preview \u00b7 C46:E47\nRead preview \u00b7 C85:E86\nRead preview \u00b7 C33:E34\nRead preview \u00b7 C23:E24\nObserved in this example\n\nSix blocks are identified, each with a 2-row \u00d7 3-column preview.\n\nSize of the returned NDJSON text: 1,707 characters; approximately 559 tokens using o200k_base. This is not a billing count or the size of the whole outer tool response. NDJSON means one JSON record per line.\n\nExecution record",
+      "bounds": {
+        "x": 323,
+        "y": 1570.390625,
+        "w": 962,
+        "h": 763.953125
+      },
+      "image": "state-operations-reference-example-regions-lab-blocks-small.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-regions-lab-blocks-large",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Only tableMaxRows and tableMaxCols change. The sheet, selected area and character allowance stay the same.\n\nEXECUTED INPUT\nReadable\nExact code\nWhat to return \u00b7 kind\nregion\nWhere to look\nFee engine\nSelected area \u00b7 range\nA1:W109\nResponse allowance \u00b7 maxChars\n40,000 characters\nPreview rows \u00d7 columns\n4 \u00d7 6\nText per preview cell\n20 characters\nWhen preview sizes apply\nTo each region\u2019s returned preview\nLIBRARY RESPONSE\nReadable\nObject tree\nExact output\nBlock found\tFull size\tPreview returned\nC62:W82\t21 \u00d7 21\tC62:H65\nC4:W20\t17 \u00d7 21\tC4:H7\nC46:W60\t15 \u00d7 21\tC46:H49\nC85:W109\t25 \u00d7 21\tC85:H88\nC33:W44\t12 \u00d7 21\tC33:H36\nC23:W31\t9 \u00d7 21\tC23:H26\n\nThe same six blocks are returned in both settings. Preview size changes how much of each block\u2019s content you see.\n\nRead preview \u00b7 C62:H65\nRead preview \u00b7 C4:H7\nRead preview \u00b7 C46:H49\nRead preview \u00b7 C85:H88\nRead preview \u00b7 C33:H36\nRead preview \u00b7 C23:H26\nObserved in this example\n\nThe same six blocks, now with larger 4-row \u00d7 6-column previews.\n\nSize of the returned NDJSON text: 3,075 characters; approximately 1,101 tokens using o200k_base. This is not a billing count or the size of the whole outer tool response. NDJSON means one JSON record per line.\n\nExecution record",
+      "bounds": {
+        "x": 323,
+        "y": 1570.390625,
+        "w": 962,
+        "h": 927.671875
+      },
+      "image": "state-operations-reference-example-regions-lab-blocks-large.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-regions-old-regions",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Break a known section into manageable blocks so the agent can inspect the relevant part next.\n\nEXECUTED INPUT\nReadable\nExact code\n\nIdentify populated regions and request small previews within a selected part of Summary.\n\nSheet\nSummary\nSearch area\nC7:M28\nRecord type\nRegion\nPreview caps requested\n8 rows \u00d7 6 columns\nResponse cap requested\n10,000 characters\n\nPlain-English reading of the actual input. Requested limits describe the request, not a guarantee of what the library returns.\n\nLIBRARY RESPONSE\nReadable\nObject tree\nExact output\nC22:M287 \u00d7 11 \u00b7 77 populated\nC13:M175 \u00d7 11 \u00b7 55 populated\nC7:M115 \u00d7 11 \u00b7 53 populated\nC19:M202 \u00d7 11 \u00b7 22 populated\nObserved in this example\n\nWithin C7:M28 it finds four blocks: headers/AUM, revenue, operating costs/profit, and the PBT-to-EPS bridge. Previews stop at column H even though each region extends to M.\n\nThe returned text counts include numeric cells rendered as text in this inspection view. They do not prove those cells are stored as text in Excel.\n\nFull captured record \u00b7 Executed JavaScript",
+      "bounds": {
+        "x": 323,
+        "y": 1570.390625,
+        "w": 690,
+        "h": 936.1875
+      },
+      "image": "state-operations-reference-example-regions-old-regions.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-search-lab-search-text",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "kind: match searches cells. Here useRegex is false, so profit is treated as ordinary text.\n\nEXECUTED INPUT\nReadable\nExact code\nWhat to return \u00b7 kind\nmatch\nWhere to look\nAll six sheets\nResponse allowance \u00b7 maxChars\n12,000 characters\nSearch term\nprofit\nRegular expression\nfalse\nMatch limit\n30\nLIBRARY RESPONSE\nReadable\nObject tree\nExact output\n\n28 matching cells. These are candidate locations, not an answer to a financial question.\n\nTab\tCell\tMatched content\nSummary\tC20\tCore operating profit, USD m\nSummary\tC26\tCore profit after tax, USD m\nAssumptions\tC66\tPF third-party profit share / fee revenue\nFee engine\tC43\tCore operating profit before seed gains\nFee engine\tC44\tCore operating profit including seed gains\nFee engine\tC46\tPROFIT | FUNDING, TAX AND DILUTED SHARES\nFee engine\tC49\tThird-party profit share: management\nFee engine\tC50\tThird-party profit share: performance\nFee engine\tC51\tCore management-fee profit before tax\nFee engine\tC52\tCore performance / seed profit before tax\nFee engine\tC53\tCore total profit before tax\nFee engine\tC55\tCore profit after tax\nFee engine\tC101\tCore operating profit including seed gains\nFee engine\tC102\tCore management-fee profit before tax\nFee engine\tC103\tCore performance / seed profit before tax\nFee engine\tC104\tCore total profit before tax\nFee engine\tC106\tCore profit after tax\nDisclosures\tC34\tThird-party profit share: management\nDisclosures\tC35\tThird-party profit share: performance\nDisclosures\tC40\tCore profit after tax\nDisclosures\tC43\tStatutory profit after tax\nChecks\tC23\tCore profit after tax\nReadme\tD9\tCore (company-adjusted) earnings remove non-core acquisition, restructuring and other adjustments, and eliminate consolidation gross-ups. Statutory profit and EPS are retained as historical memo inputs, not mixed into the forecast.\nReadme\tD20\tSeed investment gains and rental income stay at 2025 annual totals / 4. Management and seed financing remain $7m / 4 and $11m / 4. Management third-party profit share stays $2m / 4; performance share scales at $1m / $281m of fee revenue.\nReadme\tC21\tOperating profit\nReadme\tD21\tModel-defined core operating profit equals net revenue less core operating costs, including D&A and other employment costs. It is before net finance expense and third-party profit allocations. A separate operating-profit line excludes seed gains. Core PBT reconciles to the company.\nReadme\tD22\tForecast tax is the unrounded 2025 ratio $86m / $407m. Forecast shares are 1,164.877368m. H1 actuals retain their reported rates and shares. Annual shares are day-weighted, and EPS equals total profit / weighted diluted shares; quarterly EPS is never added to make FY EPS.\nReadme\tD26\tAUM reconciles quarterly to source; fees, cost components, both PBT streams, tax, profit and weighted shares reconcile to H1/FY controls. EPS differences within 0.10 US cents reflect rounded published dollar profits and share counts. Allocation identities are labelled separately from source tie-outs.\nObserved in this example\n\nCandidate cells containing profit, including several different profit measures.\n\nSize of the returned NDJSON text: 4,729 characters; approximately 1,145 tokens using o200k_base. This is not a billing count or the size of the whole outer tool response. NDJSON means one JSON record per line.\n\nExecution record",
+      "bounds": {
+        "x": 323,
+        "y": 1573.609375,
+        "w": 690,
+        "h": 2865
+      },
+      "image": "state-operations-reference-example-search-lab-search-text.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-search-lab-search-pattern",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "The search term becomes a pattern, and useRegex is set to true. The agent still has to interpret the matches.\n\nEXECUTED INPUT\nReadable\nExact code\nWhat to return \u00b7 kind\nmatch\nWhere to look\nAll six sheets\nResponse allowance \u00b7 maxChars\n12,000 characters\nSearch term\nmanagement.*fee|fee.*margin\nRegular expression\ntrue\nMatch limit\n30\nLIBRARY RESPONSE\nReadable\nObject tree\nExact output\n\n30 matching cells. These are candidate locations, not an answer to a financial question.\n\nTab\tCell\tMatched content\nSummary\tC11\tImplied net fee margin, annual bp\nSummary\tC13\tNet management fees, USD m\nSummary\tC22\tManagement-fee PBT, USD m\nSummary\tC33\tFee margin\nSummary\tF41\tFee margin, bp\nAssumptions\tC24\tNet management-fee margin\nAssumptions\tC50\tFY2025 published average fee margin\nFee engine\tC24\tGross management fees: historical memo\nFee engine\tC26\tNet management-fee margin, annual bp\nFee engine\tC27\tNet management fees\nFee engine\tC47\tManagement-fee finance expense\nFee engine\tC51\tCore management-fee profit before tax\nFee engine\tC65\tHalf-year net management fees\nFee engine\tC95\tNet management fees\nFee engine\tC102\tCore management-fee profit before tax\nFee engine\tC109\tNet management-fee margin, annual bp\nDisclosures\tC20\tGross management and other fees\nDisclosures\tC22\tCore net management fees\nDisclosures\tC28\tManagement-fee compensation\nDisclosures\tC32\tManagement-fee net finance expense\nDisclosures\tC36\tCore management-fee PBT\nDisclosures\tC45\tPublished average fee margin, bp\nDisclosures\tC59\t2025 MIX | AUM STOCK VS MANAGEMENT-FEE FLOW\nChecks\tC15\tNet management fees\nChecks\tC19\tManagement-fee PBT\nChecks\tC49\tFee-margin assumption\nReadme\tC12\tManagement fees\nReadme\tD12\tModel net management fees after distribution costs. Forecast applies 56bp, the reported 2025 average, to midpoint AUM with a quarter-year factor. Immaterial service income is absorbed in this blended rate. Historical gross fees and distribution costs are shown separately as memo lines.\nReadme\tC13\tFee margin limitation\nReadme\tD17\tAll fixed compensation belongs to the recurring management-fee business. Forecast fixed compensation is $274m / 4 and other fixed costs including D&A $215m / 4. No inflation or incremental cost savings are assumed. Other employment expense stays $7m / 4.\n\nCell search truncated: returned 30 matches. Increase options.maxResults or narrow the range.\n\nObserved in this example\n\nCells matching management\u2026fee OR fee\u2026margin. A notice reports the match limit.\n\nSize of the returned NDJSON text: 4,267 characters; approximately 1,060 tokens using o200k_base. This is not a billing count or the size of the whole outer tool response. NDJSON means one JSON record per line.\n\nExecution record",
+      "bounds": {
+        "x": 323,
+        "y": 1573.609375,
+        "w": 690,
+        "h": 2804.234375
+      },
+      "image": "state-operations-reference-example-search-lab-search-pattern.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-ranges-old-ranges",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Inspect the forecast revenue and operating-profit section after locating it.\n\nEXECUTED INPUT\nReadable\nExact code\n\nRead the values and formula text from one exact rectangle.\n\nSheet\nSummary\nCells\nK13:M20 \u00b7 8 rows \u00d7 3 columns\nFinancial context\nFY2026, H1 2027 and FY2027; management fees through operating profit\nRead\nTwo grids: values and formulas. Also return the sheet name and cell range.\n\nPlain-English reading of the actual input. Switch to Exact input for the executed code or tool arguments.\n\nSCRIPT OUTPUT \u2014 INCLUDES ADDED READS/CHECKS\nReadable\nObject tree\nExact output\nMetric\tK \u00b7 FY2026\tL \u00b7 H1 2027\tM \u00b7 FY2027\n13 \u00b7 Net management fees\t1,354.9429\nFormula\n\t764.7951\nFormula\n\t1,568.3079\nFormula\n\n14 \u00b7 Performance fees\t421\nFormula\n\t67\nFormula\n\t281\nFormula\n\n15 \u00b7 Seed gains\t37\nFormula\n\t19\nFormula\n\t38\nFormula\n\n16 \u00b7 Other income\t2\nFormula\n\t1\nFormula\n\t2\nFormula\n\n17 \u00b7 Core net revenue\t1,814.9429\nFormula\n\t851.7951\nFormula\n\t1,889.3079\nFormula\n\n18 \u00b7 Blank row\t\u2014\t\u2014\t\u2014\n19 \u00b7 Operating costs\t-1,124.4043\nFormula\n\t-498.5594\nFormula\n\t-1,096.5538\nFormula\n\n20 \u00b7 Operating profit\t690.5386\nFormula\n\t353.2357\nFormula\n\t792.7541\nFormula\n\nUSD millions. Click Formula beneath a value to inspect its calculation.\n\nObserved in this example\n\nK13:M20 covers FY2026, H1 2027 and FY2027. The read shows the displayed numbers and the Fee engine references behind them.\n\nThe exact input includes the agent\u2019s wrapper. The displayed report is assembled by that script; it is not automatically returned by the edit, calculation or export. Row labels and period captions in the readable grid are added from the same workbook for orientation; the exact rectangular call returns neither automatically. Numbers in the readable display are rounded. The tree and raw JSON retain their full captured precision.\n\nFull captured record \u00b7 Executed JavaScript",
+      "bounds": {
+        "x": 323,
+        "y": 1542.1875,
+        "w": 690,
+        "h": 803
+      },
+      "image": "state-operations-reference-example-ranges-old-ranges.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-trace-old-trace",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Explain how Q3 2026 management fees were calculated and which assumptions they depend on.\n\nEXECUTED INPUT\nReadable\nExact code\n\nAsk the library to follow the calculation dependencies of one cell.\n\nStarting cell\nFee engine!R27\nFinancial context\nQ3 2026 net management fees\nRequest\nReturn the dependency tree from this cell\n\nPlain-English reading of the actual input. Switch to Exact input for the executed code or tool arguments.\n\nLIBRARY RESPONSE\nReadable\nObject tree\nExact output\nFee engine!R27359.4785 dependencies\n=R18*Assumptions!$D$49*R26/Assumptions!$D$60*Assumptions!$D$48\nFee engine!R18256.77\nFormula not returned \u00b7 may be an input or an import limitation\nAssumptions!D491000\nFormula not returned \u00b7 may be an input or an import limitation\nFee engine!R26561 dependencies\nAssumptions!D6010000\nFormula not returned \u00b7 may be an input or an import limitation\nAssumptions!D480.25\nFormula not returned \u00b7 may be an input or an import limitation\nObserved in this example\n\nFee engine!R27 is $359.478m: $256.77bn average AUM \u00d7 1,000 \u00d7 56 / 10,000 \u00d7 0.25. The fee-rate branch reaches the selected case and source margin.\n\nThe average-AUM node R18 returns formula: null and no children, although a formula exists in the file. That branch is incomplete because this cell is a shared-formula follower. The first attempt used Excel-style quotes around the sheet name and returned null. The successful trace call uses Fee engine!R27 without those quotes. The failed attempt is retained in the evidence folder.\n\nFull captured record \u00b7 Executed JavaScript",
+      "bounds": {
+        "x": 323,
+        "y": 1524.609375,
+        "w": 690,
+        "h": 982.3125
+      },
+      "image": "state-operations-reference-example-trace-old-trace.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-recalculate-op-new-recalculation",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Change the annual fee margin from 50bp to 60bp.\n\nEXECUTED INPUT\nReadable\nExact code\n\nChange the annual fee margin from 50bp to 60bp.\n\nOPERATION RETURN\nReadable\nObject tree\nExact output\n\nNo returned report (JavaScript undefined). This is the return of the recorded code block; the workbook can still have changed.\n\nAgent-written checks and what they found\nObserved in this example\n\nQuarterly fees change from $125m to $150m without an explicit recalculate() call.\n\nAutomatic calculation is engine behaviour; reading C5 and comparing it with 150 is agent-written verification.\n\nExecution record \u00b7 Full script",
+      "bounds": {
+        "x": 323,
+        "y": 1591.1875,
+        "w": 690,
+        "h": 489.203125
+      },
+      "image": "state-operations-reference-example-recalculate-op-new-recalculation.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-recalculate-old-recalculate",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Check whether an explicit recalculation resolves the unchanged result after the assumption edit.\n\nEXECUTED INPUT\nReadable\nExact code\n\nAsk the imported workbook to recalculate, then compare the same cells again.\n\nScope\nThe workbook object in memory\nCalculation call\nwb.recalculate(), with no additional parameters\nAgent-written check\nI chose six cells and wrote readState() to read them before and after. recalculate() does not return this comparison.\nRecord\nThe calculation call\u2019s return value as well as those readings; undefined is saved as the text \u201cundefined\u201d\n\nWhy six? I selected these particular cells for this experiment. Six is not a tool setting or an automatically discovered dependency count.\n\nThe six cells I selected\n\nPlain-English reading of the actual input. Switch to Exact input for the executed code or tool arguments.\n\nSCRIPT OUTPUT \u2014 INCLUDES ADDED READS/CHECKS\nReadable\nObject tree\nExact output\nReadback\tBefore\tAfter\nBase fee margin \u00b7 bp\nAssumptions!W26\n\t51\t51\nActive fee margin \u00b7 bp\nAssumptions!W25\n\t56\t56\nQ4 2027 average AUM \u00b7 $bn\nFee engine!W18\n\t290.5117\t290.5117\nQ4 2027 management fees \u00b7 $m\nFee engine!W27\n\t406.7164\t406.7164\nFY2027 management fees \u00b7 $m\nSummary!M13\n\t1,568.3079\t1,568.3079\nFY2027 operating profit \u00b7 $m\nSummary!M20\n\t792.7541\t792.7541\n\nHighlighted numbers changed. Expand the object tree for the exact formula returned at each stage.\n\nObserved in this example\n\nIt makes no difference here: the input is 51bp, the active assumption remains 56bp and fees are unchanged. Recalculation cannot follow a dependency missing from the imported calculation graph.\n\nThe exact input includes the agent\u2019s wrapper. The displayed report is assembled by that script; it is not automatically returned by the edit, calculation or export. This is Artifact Tool recalculation, not Microsoft Excel\u2019s native calculation engine. A second recalculation was run after restoring the original assumption, before the final checks and export.\n\nFull captured record \u00b7 Executed JavaScript",
+      "bounds": {
+        "x": 323,
+        "y": 1591.1875,
+        "w": 690,
+        "h": 802.34375
+      },
+      "image": "state-operations-reference-example-recalculate-old-recalculate.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-sheet-op-import-add-sheet",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Import the supplied file and append a Fee lab worksheet.\n\nEXECUTED INPUT\nReadable\nExact code\n\nImport the supplied file and append a Fee lab worksheet.\n\nOPERATION RETURN\nReadable\nObject tree\nExact output\n\nReturned: Worksheet object. This is our label for the live object, not a complete serialization of its contents.\n\nAgent-written checks and what they found\nObserved in this example\n\nThe six existing tabs remain and a seventh tab is added. The Downloads original is unchanged.\n\nThis is an authorised demonstration extension, rather than a rewrite of the original company model.\n\nExecution record \u00b7 Full script",
+      "bounds": {
+        "x": 323,
+        "y": 1570.390625,
+        "w": 690,
+        "h": 593.765625
+      },
+      "image": "state-operations-reference-example-sheet-op-import-add-sheet.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-sheet-op-add-linked-build",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Build four illustrative quarters, starting from the original Fee engine AUM cell.\n\nEXECUTED INPUT\nReadable\nExact code\n\nBuild four illustrative quarters, starting from the original Fee engine AUM cell.\n\nOPERATION RETURN\nReadable\nObject tree\nExact output\n\nNo returned report (JavaScript undefined). This is the return of the recorded code block; the workbook can still have changed.\n\nAgent-written checks and what they found\nObserved in this example\n\nNew formulas link to Fee engine!W18, grow AUM by 2% per quarter and calculate fees. At 56bp, the four-quarter total is $1,676.33m.\n\nThe agent chooses the assumptions, financial logic and cell references. These illustrative quarters are not investment forecasts.\n\nExecution record \u00b7 Full script",
+      "bounds": {
+        "x": 323,
+        "y": 1570.390625,
+        "w": 690,
+        "h": 489.203125
+      },
+      "image": "state-operations-reference-example-sheet-op-add-linked-build.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-values-op-edit-without-saving",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Change the working fee margin from 56bp to 51bp.\n\nEXECUTED INPUT\nReadable\nExact code\n\nChange the working fee margin from 56bp to 51bp.\n\nOPERATION RETURN\nReadable\nObject tree\nExact output\n\nNo returned report (JavaScript undefined). This is the return of the recorded code block; the workbook can still have changed.\n\nAgent-written checks and what they found\nObserved in this example\n\nMemory changes to 51bp and total fees fall to $1,526.65m. The on-disk copy still says 56bp and its SHA-256 is unchanged.\n\nChanging the workbook object does not save the file. The agent decides when to export.\n\nExecution record \u00b7 Full script",
+      "bounds": {
+        "x": 323,
+        "y": 1594.40625,
+        "w": 690,
+        "h": 526.390625
+      },
+      "image": "state-operations-reference-example-values-op-edit-without-saving.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-values-op-zero-input",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Enter an explicit zero fee margin.\n\nEXECUTED INPUT\nReadable\nExact code\n\nEnter an explicit zero fee margin.\n\nOPERATION RETURN\nReadable\nObject tree\nExact output\n\nNo returned report (JavaScript undefined). This is the return of the recorded code block; the workbook can still have changed.\n\nAgent-written checks and what they found\nObserved in this example\n\nThe guarded formulas calculate zero fees, distinguishing zero from the missing-input case.\n\nThe skill calls for blank-versus-zero tests. The particular cells and expected result are agent choices.\n\nExecution record \u00b7 Full script",
+      "bounds": {
+        "x": 323,
+        "y": 1594.40625,
+        "w": 690,
+        "h": 489.203125
+      },
+      "image": "state-operations-reference-example-values-op-zero-input.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-values-op-restore-valid-input",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Set the fee margin to 51bp.\n\nEXECUTED INPUT\nReadable\nExact code\n\nSet the fee margin to 51bp.\n\nOPERATION RETURN\nReadable\nObject tree\nExact output\n\nNo returned report (JavaScript undefined). This is the return of the recorded code block; the workbook can still have changed.\n\nAgent-written checks and what they found\nObserved in this example\n\nThe fees and total return to their earlier values.\n\nTemporary testing must be restored or clearly delivered as an intentional example.\n\nExecution record \u00b7 Full script",
+      "bounds": {
+        "x": 323,
+        "y": 1594.40625,
+        "w": 690,
+        "h": 489.203125
+      },
+      "image": "state-operations-reference-example-values-op-restore-valid-input.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-values-old-value-edit",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Test whether lowering the Q4 2027 base fee margin reaches the model\u2019s earnings outputs.\n\nEXECUTED INPUT\nReadable\nExact code\n\nReplace a single forecast assumption with the number 51.\n\nTarget\nAssumptions!W26\nFinancial meaning\nQ4 2027 base management-fee margin, in basis points\nWrite\n51 as a cell value, replacing the existing cell content\nAgent-written check\nI chose six cells and wrote readState() to read them before and after. The edit does not return them automatically.\n\nWhy six? I selected these particular cells for this experiment. Six is not a tool setting or an automatically discovered dependency count.\n\nThe six cells I selected\n\nPlain-English reading of the actual input. Switch to Exact input for the executed code or tool arguments.\n\nSCRIPT OUTPUT \u2014 INCLUDES ADDED READS/CHECKS\nReadable\nObject tree\nExact output\nReadback\tBefore\tAfter\nBase fee margin \u00b7 bp\nAssumptions!W26\n\t56\t51\nActive fee margin \u00b7 bp\nAssumptions!W25\n\t56\t56\nQ4 2027 average AUM \u00b7 $bn\nFee engine!W18\n\t290.5117\t290.5117\nQ4 2027 management fees \u00b7 $m\nFee engine!W27\n\t406.7164\t406.7164\nFY2027 management fees \u00b7 $m\nSummary!M13\n\t1,568.3079\t1,568.3079\nFY2027 operating profit \u00b7 $m\nSummary!M20\n\t792.7541\t792.7541\n\nHighlighted numbers changed. Expand the object tree for the exact formula returned at each stage.\n\nObserved in this example\n\nAssumptions!W26 changes to 51, but W25 stays at 56 and Q4 fees remain $406.716m. The missing shared-formula dependency prevents the change from flowing through.\n\nThe exact input includes the agent\u2019s wrapper. The displayed report is assembled by that script; it is not automatically returned by the edit, calculation or export. The edit is confined to a disposable copy. The original Downloads file remains byte-for-byte unchanged. readState is our helper that reads these six cells; its full definition is available below the code and in the executed script.\n\nFull captured record \u00b7 Executed JavaScript",
+      "bounds": {
+        "x": 323,
+        "y": 1594.40625,
+        "w": 690,
+        "h": 819.9375
+      },
+      "image": "state-operations-reference-example-values-old-value-edit.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-formulas-op-new-formula",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Write three inputs and a formula for quarterly fees.\n\nEXECUTED INPUT\nReadable\nExact code\n\nWrite three inputs and a formula for quarterly fees.\n\nOPERATION RETURN\nReadable\nObject tree\nExact output\n\nNo returned report (JavaScript undefined). This is the return of the recorded code block; the workbook can still have changed.\n\nAgent-written checks and what they found\nObserved in this example\n\n100bn AUM \u00d7 50bp annually \u00d7 a quarter produces $125m. The script separately calculates the same expected answer.\n\nThe agent supplies the formula and units. The engine executes that formula.\n\nExecution record \u00b7 Full script",
+      "bounds": {
+        "x": 323,
+        "y": 1594.40625,
+        "w": 690,
+        "h": 427.328125
+      },
+      "image": "state-operations-reference-example-formulas-op-new-formula.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-formulas-op-add-linked-build",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Build four illustrative quarters, starting from the original Fee engine AUM cell.\n\nEXECUTED INPUT\nReadable\nExact code\n\nBuild four illustrative quarters, starting from the original Fee engine AUM cell.\n\nOPERATION RETURN\nReadable\nObject tree\nExact output\n\nNo returned report (JavaScript undefined). This is the return of the recorded code block; the workbook can still have changed.\n\nAgent-written checks and what they found\nObserved in this example\n\nNew formulas link to Fee engine!W18, grow AUM by 2% per quarter and calculate fees. At 56bp, the four-quarter total is $1,676.33m.\n\nThe agent chooses the assumptions, financial logic and cell references. These illustrative quarters are not investment forecasts.\n\nExecution record \u00b7 Full script",
+      "bounds": {
+        "x": 323,
+        "y": 1594.40625,
+        "w": 690,
+        "h": 489.203125
+      },
+      "image": "state-operations-reference-example-formulas-op-add-linked-build.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-formulas-op-guard-missing-input",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Add IF(ISBLANK(...),NA(),...) to the fee formula and fill it down.\n\nEXECUTED INPUT\nReadable\nExact code\n\nAdd IF(ISBLANK(...),NA(),...) to the fee formula and fill it down.\n\nOPERATION RETURN\nReadable\nObject tree\nExact output\n\nNo returned report (JavaScript undefined). This is the return of the recorded code block; the workbook can still have changed.\n\nAgent-written checks and what they found\nObserved in this example\n\nWith the margin still blank, quarterly fees and the total become #N/A.\n\nThis is a model rule supplied by the agent. The error marker is deliberate here, so an error scan must be interpreted.\n\nExecution record \u00b7 Full script",
+      "bounds": {
+        "x": 323,
+        "y": 1594.40625,
+        "w": 690,
+        "h": 489.203125
+      },
+      "image": "state-operations-reference-example-formulas-op-guard-missing-input.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-formulas-old-formula-edit",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Test whether giving the importer the missing formula explicitly restores the connection from the scenario input.\n\nEXECUTED INPUT\nReadable\nExact code\n\nWrite the existing scenario-selection rule explicitly into the active fee-margin cell.\n\nTarget\nAssumptions!W25\nScenario selector\nAssumptions!D4 chooses the first, second, third or fourth scenario\nScenario inputs\nW26, W27, W28 and W29, in that order\nFormula rule\nReturn the selected input. If that selected input is blank, return #N/A.\nAgent-written check\nI chose six cells and wrote readState() to read them before and after. The formula edit does not choose or return them.\n\nWhy six? I selected these particular cells for this experiment. Six is not a tool setting or an automatically discovered dependency count.\n\nThe six cells I selected\n\nPlain-English reading of the actual input. Switch to Exact input for the executed code or tool arguments.\n\nSCRIPT OUTPUT \u2014 INCLUDES ADDED READS/CHECKS\nReadable\nObject tree\nExact output\nReadback\tBefore\tAfter\nBase fee margin \u00b7 bp\nAssumptions!W26\n\t51\t51\nActive fee margin \u00b7 bp\nAssumptions!W25\n\t56\t51\nQ4 2027 average AUM \u00b7 $bn\nFee engine!W18\n\t290.5117\t290.5117\nQ4 2027 management fees \u00b7 $m\nFee engine!W27\n\t406.7164\t370.4024\nFY2027 management fees \u00b7 $m\nSummary!M13\n\t1,568.3079\t1,531.9939\nFY2027 operating profit \u00b7 $m\nSummary!M20\n\t792.7541\t792.7541\n\nHighlighted numbers changed. Expand the object tree for the exact formula returned at each stage.\n\nObserved in this example\n\nThe active margin becomes 51bp. Q4 management fees fall to $370.402m and FY2027 fees to $1,531.994m. Operating profit remains $792.754m, so restoring this one formula does not fix the whole dependency chain.\n\nThe exact input includes the agent\u2019s wrapper. The displayed report is assembled by that script; it is not automatically returned by the edit, calculation or export. The formula is the existing scenario-selection rule translated to W25, not a new financial assumption or a hardcoded result. This is a targeted demonstration of the import issue, not a complete repair of the model.\n\nFull captured record \u00b7 Executed JavaScript",
+      "bounds": {
+        "x": 323,
+        "y": 1594.40625,
+        "w": 690,
+        "h": 890.796875
+      },
+      "image": "state-operations-reference-example-formulas-old-formula-edit.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-fill-op-rebuild-formulas",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Write the first formula again and fill it down through all four quarters.\n\nEXECUTED INPUT\nReadable\nExact code\n\nWrite the first formula again and fill it down through all four quarters.\n\nOPERATION RETURN\nReadable\nObject tree\nExact output\n\nNo returned report (JavaScript undefined). This is the return of the recorded code block; the workbook can still have changed.\n\nAgent-written checks and what they found\nObserved in this example\n\nThe quarterly calculations and $1,526.65m total return. Relative row references advance; the common assumption remains fixed.\n\nThis is an explicit rebuild written by the agent, not an automatic undo command.\n\nExecution record \u00b7 Full script",
+      "bounds": {
+        "x": 323,
+        "y": 1573.609375,
+        "w": 690,
+        "h": 489.203125
+      },
+      "image": "state-operations-reference-example-fill-op-rebuild-formulas.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-fill-old-fill",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Show how the script copies a formula pattern from R25 across to W25 while adjusting relative references.\n\nEXECUTED INPUT\nReadable\nExact code\n\nFill the active fee-margin formula to the right across six cells.\n\nSheet\nAssumptions\nRange\nR25:W25\nSource\nThe leftmost cell, R25\nCopy behaviour\nExtend the formula across the range, adjusting relative references while keeping $D$4 fixed\nCheck\nRead values and formula text for all six cells before and after\n\nPlain-English reading of the actual input. Switch to Exact input for the executed code or tool arguments.\n\nSCRIPT OUTPUT \u2014 INCLUDES ADDED READS/CHECKS\nReadable\nObject tree\nExact output\nCell\tValue after\tBefore\tAfter\nR25\t56\tFormula present\t\nRead copied formula\n\nS25\t56\tNo formula returned\t\nRead copied formula\n\nT25\t56\tNo formula returned\t\nRead copied formula\n\nU25\t56\tNo formula returned\t\nRead copied formula\n\nV25\t56\tNo formula returned\t\nRead copied formula\n\nW25\t51\tFormula present\t\nRead copied formula\nObserved in this example\n\nAll six quarterly active-assumption cells now expose formulas. R26 becomes S26, T26 and so on; the absolute case selector $D$4 stays fixed.\n\nThe exact input includes the agent\u2019s wrapper. The displayed report is assembled by that script; it is not automatically returned by the edit, calculation or export. The values remain 56, 56, 56, 56, 56 and 51. This operation restores the imported formulas for the row; it does not change the scenario rules.\n\nFull captured record \u00b7 Executed JavaScript",
+      "bounds": {
+        "x": 323,
+        "y": 1573.609375,
+        "w": 690,
+        "h": 764.40625
+      },
+      "image": "state-operations-reference-example-fill-old-fill.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-fill-old-copy",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Restore the original assumption after the temporary 51bp test, while demonstrating a precise formula-only copy.\n\nEXECUTED INPUT\nReadable\nExact code\n\nCopy the original base fee-margin formula back into the edited assumption cell.\n\nSource\nAssumptions!R26\nDestination\nAssumptions!W26\nCopy mode\nFormulas\nSource formula\n=$D$50 \u2014 its absolute reference stays fixed when copied\nAgent-written check\nI chose six cells and wrote readState() to read them before and after. These are additional reads.\n\nWhy six? I selected these particular cells for this experiment. Six is not a tool setting or an automatically discovered dependency count.\n\nThe six cells I selected\n\nPlain-English reading of the actual input. Switch to Exact input for the executed code or tool arguments.\n\nSCRIPT OUTPUT \u2014 INCLUDES ADDED READS/CHECKS\nReadable\nObject tree\nExact output\nReadback\tBefore\tAfter\nBase fee margin \u00b7 bp\nAssumptions!W26\n\t51\t56\nActive fee margin \u00b7 bp\nAssumptions!W25\n\t51\t56\nQ4 2027 average AUM \u00b7 $bn\nFee engine!W18\n\t290.5117\t290.5117\nQ4 2027 management fees \u00b7 $m\nFee engine!W27\n\t370.4024\t406.7164\nFY2027 management fees \u00b7 $m\nSummary!M13\n\t1,531.9939\t1,568.3079\nFY2027 operating profit \u00b7 $m\nSummary!M20\n\t792.7541\t792.7541\n\nHighlighted numbers changed. Expand the object tree for the exact formula returned at each stage.\n\nObserved in this example\n\nW26 becomes =$D$50 and returns to 56bp. Q4 and FY2027 management fees return to their original values.\n\nThe exact input includes the agent\u2019s wrapper. The displayed report is assembled by that script; it is not automatically returned by the edit, calculation or export. The \u201cformulas\u201d option copies the calculation rule, not a frozen value or the source formatting.\n\nFull captured record \u00b7 Executed JavaScript",
+      "bounds": {
+        "x": 323,
+        "y": 1573.609375,
+        "w": 690,
+        "h": 852.421875
+      },
+      "image": "state-operations-reference-example-fill-old-copy.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-format-op-format-cells",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Set fonts, widths, number formats and input/header colours.\n\nEXECUTED INPUT\nReadable\nExact code\n\nSet fonts, widths, number formats and input/header colours.\n\nOPERATION RETURN\nReadable\nObject tree\nExact output\n\nNo returned report (JavaScript undefined). This is the return of the recorded code block; the workbook can still have changed.\n\nAgent-written checks and what they found\nObserved in this example\n\nThe numbers and formulas stay unchanged. Formatting is a separate set of operations, checked with a style read and later images.\n\nThe skill recommends readable, consistent formatting. The agent must choose and apply the settings.\n\nExecution record \u00b7 Full script",
+      "bounds": {
+        "x": 323,
+        "y": 1542.1875,
+        "w": 690,
+        "h": 489.203125
+      },
+      "image": "state-operations-reference-example-format-op-format-cells.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-clear-op-clear-formulas",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Clear contents in the four quarterly fee cells, preserving formatting.\n\nEXECUTED INPUT\nReadable\nExact code\n\nClear contents in the four quarterly fee cells, preserving formatting.\n\nOPERATION RETURN\nReadable\nObject tree\nExact output\n\nNo returned report (JavaScript undefined). This is the return of the recorded code block; the workbook can still have changed.\n\nAgent-written checks and what they found\nObserved in this example\n\nThe four formulas disappear and the total becomes zero because SUM now reads empty cells.\n\nClearing cells is different from deleting an entire row or tab. A zero total does not prove a model is healthy.\n\nExecution record \u00b7 Full script",
+      "bounds": {
+        "x": 323,
+        "y": 1573.609375,
+        "w": 690,
+        "h": 489.203125
+      },
+      "image": "state-operations-reference-example-clear-op-clear-formulas.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-clear-op-blank-input",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Remove the fee-margin input while keeping the fee formulas.\n\nEXECUTED INPUT\nReadable\nExact code\n\nRemove the fee-margin input while keeping the fee formulas.\n\nOPERATION RETURN\nReadable\nObject tree\nExact output\n\nNo returned report (JavaScript undefined). This is the return of the recorded code block; the workbook can still have changed.\n\nAgent-written checks and what they found\nObserved in this example\n\nThe unguarded calculation treats the missing input as zero and returns zero fees.\n\nThe library cannot infer whether a blank means missing, not applicable, or deliberately zero.\n\nExecution record \u00b7 Full script",
+      "bounds": {
+        "x": 323,
+        "y": 1573.609375,
+        "w": 690,
+        "h": 489.203125
+      },
+      "image": "state-operations-reference-example-clear-op-blank-input.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-table-op-add-table",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Wrap a separate scenario-input rectangle in a named Excel Table.\n\nEXECUTED INPUT\nReadable\nExact code\n\nWrap a separate scenario-input rectangle in a named Excel Table.\n\nOPERATION RETURN\nReadable\nObject tree\nExact output\n\nReturned: Excel Table object. This is our label for the live object, not a complete serialization of its contents.\n\nAgent-written checks and what they found\nObserved in this example\n\nFeeScenarioInputs is a real native table object, unlike the table-shaped records in the original broad inspect response.\n\nThe cells, headers, table name and range are supplied by the agent. This table is separate from the calculation above it.\n\nExecution record \u00b7 Full script",
+      "bounds": {
+        "x": 323,
+        "y": 1570.390625,
+        "w": 690,
+        "h": 470.015625
+      },
+      "image": "state-operations-reference-example-table-op-add-table.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-table-op-recreate-table",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Create a named Table again over B20:D24.\n\nEXECUTED INPUT\nReadable\nExact code\n\nCreate a named Table again over B20:D24.\n\nOPERATION RETURN\nReadable\nObject tree\nExact output\n\nReturned: Excel Table object. This is our label for the live object, not a complete serialization of its contents.\n\nAgent-written checks and what they found\nObserved in this example\n\nOne formal Table is present again, now including the appended Stress row.\n\nThe agent specifies what to rebuild. There is no automatic restore hidden in this step.\n\nExecution record \u00b7 Full script",
+      "bounds": {
+        "x": 323,
+        "y": 1570.390625,
+        "w": 690,
+        "h": 538.140625
+      },
+      "image": "state-operations-reference-example-table-op-recreate-table.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-table-op-overlap-table",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "In a disposable new import, request another Table over D22:F25, overlapping the existing B20:D24 Table.\n\nEXECUTED INPUT\nReadable\nExact code\n\nIn a disposable new import, request another Table over D22:F25, overlapping the existing B20:D24 Table.\n\nOPERATION RETURN\nReadable\nObject tree\nExact output\n\nReturned: Excel Table object. This is our label for the live object, not a complete serialization of its contents.\n\nAgent-written checks and what they found\nObserved in this example\n\nThe API accepts it and the table-name read returns both FeeScenarioInputs and OverlapProbe. No file is saved.\n\nThe guide explicitly says to check for overlaps because the API does not reject them. Acceptance in memory does not establish that this is a valid Excel file.\n\nExecution record \u00b7 Full script",
+      "bounds": {
+        "x": 323,
+        "y": 1570.390625,
+        "w": 690,
+        "h": 531.890625
+      },
+      "image": "state-operations-reference-example-table-op-overlap-table.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-table-row-op-append-table-row",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Add a fourth scenario to the formal Table.\n\nEXECUTED INPUT\nReadable\nExact code\n\nAdd a fourth scenario to the formal Table.\n\nOPERATION RETURN\nReadable\nObject tree\nExact output\n\nNo returned report (JavaScript undefined). This is the return of the recorded code block; the workbook can still have changed.\n\nAgent-written checks and what they found\nObserved in this example\n\nStress, 45bp and 0.8 appear in B24:D24.\n\nThe append operation adds data. Our explicit range read establishes where it landed.\n\nExecution record \u00b7 Full script",
+      "bounds": {
+        "x": 323,
+        "y": 1545.40625,
+        "w": 690,
+        "h": 520.140625
+      },
+      "image": "state-operations-reference-example-table-row-op-append-table-row.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-table-delete-op-delete-table",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Remove the formal Table while watching its cells.\n\nEXECUTED INPUT\nReadable\nExact code\n\nRemove the formal Table while watching its cells.\n\nOPERATION RETURN\nReadable\nObject tree\nExact output\n\nNo returned report (JavaScript undefined). This is the return of the recorded code block; the workbook can still have changed.\n\nAgent-written checks and what they found\nObserved in this example\n\nThe table count falls from one to zero, but all headers and scenario values remain.\n\nDeleting the Table wrapper is not the same thing as clearing the cells underneath it.\n\nExecution record \u00b7 Full script",
+      "bounds": {
+        "x": 323,
+        "y": 1505.421875,
+        "w": 690,
+        "h": 458.265625
+      },
+      "image": "state-operations-reference-example-table-delete-op-delete-table.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-chart-op-add-chart",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Create a line chart whose series refers to the quarterly fee cells.\n\nEXECUTED INPUT\nReadable\nExact code\n\nCreate a line chart whose series refers to the quarterly fee cells.\n\nOPERATION RETURN\nReadable\nObject tree\nExact output\n\nReturned: Chart object. This is our label for the live object, not a complete serialization of its contents.\n\nAgent-written checks and what they found\nObserved in this example\n\nIts series stores cell references to F9:F12 and categories from B9:B12.\n\nA chart object is not a screenshot. The agent explicitly binds source cells and sets its position and appearance.\n\nExecution record \u00b7 Full script",
+      "bounds": {
+        "x": 323,
+        "y": 1570.390625,
+        "w": 690,
+        "h": 384.015625
+      },
+      "image": "state-operations-reference-example-chart-op-add-chart.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-chart-op-chart-input-change",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Change the fee-margin input from 51bp to 60bp.\n\nEXECUTED INPUT\nReadable\nExact code\n\nChange the fee-margin input from 51bp to 60bp.\n\nOPERATION RETURN\nReadable\nObject tree\nExact output\n\nNo returned report (JavaScript undefined). This is the return of the recorded code block; the workbook can still have changed.\n\nAgent-written checks and what they found\nObserved in this example\n\nThe source fees increase to $435.77m\u2013$462.44m while the chart keeps the same range references.\n\nThe following image checks what was drawn. Reading the bindings alone is not a visual check.\n\nExecution record \u00b7 Full script",
+      "bounds": {
+        "x": 323,
+        "y": 1570.390625,
+        "w": 690,
+        "h": 403.203125
+      },
+      "image": "state-operations-reference-example-chart-op-chart-input-change.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-chart-op-recreate-chart",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Build the chart again against the existing source range.\n\nEXECUTED INPUT\nReadable\nExact code\n\nBuild the chart again against the existing source range.\n\nOPERATION RETURN\nReadable\nObject tree\nExact output\n\nReturned: Chart object. This is our label for the live object, not a complete serialization of its contents.\n\nAgent-written checks and what they found\nObserved in this example\n\nThe new chart binds to the same cells and is included in the final saved XLSX.\n\nThe agent restates the source range and formatting. Export preservation is checked separately.\n\nExecution record \u00b7 Full script",
+      "bounds": {
+        "x": 323,
+        "y": 1570.390625,
+        "w": 690,
+        "h": 384.015625
+      },
+      "image": "state-operations-reference-example-chart-op-recreate-chart.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-chart-delete-op-delete-chart",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Remove the drawings in the new sheet\u2019s chart collection.\n\nEXECUTED INPUT\nReadable\nExact code\n\nRemove the drawings in the new sheet\u2019s chart collection.\n\nOPERATION RETURN\nReadable\nObject tree\nExact output\n\nNo returned report (JavaScript undefined). This is the return of the recorded code block; the workbook can still have changed.\n\nAgent-written checks and what they found\nObserved in this example\n\nA drawing inspection finds no matching drawings in Fee lab, while the source cells remain intact.\n\nDeleting presentation does not remove the calculations it was displaying.\n\nExecution record \u00b7 Full script",
+      "bounds": {
+        "x": 323,
+        "y": 1502.203125,
+        "w": 690,
+        "h": 403.203125
+      },
+      "image": "state-operations-reference-example-chart-delete-op-delete-chart.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-render-op-render-before",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Render the new sheet and save the returned image.\n\nEXECUTED INPUT\nReadable\nExact code\n\nRender the new sheet and save the returned image.\n\nOPERATION RETURN\nReadable\nObject tree\nExact output\n\nReturned: Image Blob. This is our label for the live object, not a complete serialization of its contents.\n\nAgent-written checks and what they found\nObserved in this example\n\nThe chart and table show quarterly fees of $370.40m to $393.07m.\n\nrender returns an image blob. Saving its bytes and viewing the PNG are separate steps performed by the agent.\n\nSaved image returned by rendering; click for full size.\n\nExecution record \u00b7 Full script",
+      "bounds": {
+        "x": 323,
+        "y": 1594.40625,
+        "w": 690,
+        "h": 640.53125
+      },
+      "image": "state-operations-reference-example-render-op-render-before.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-render-op-render-after",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Render the same area again after the input change.\n\nEXECUTED INPUT\nReadable\nExact code\n\nRender the same area again after the input change.\n\nOPERATION RETURN\nReadable\nObject tree\nExact output\n\nReturned: Image Blob. This is our label for the live object, not a complete serialization of its contents.\n\nAgent-written checks and what they found\nObserved in this example\n\nThe plotted line and axis now reflect the larger fee values. Both actual images are available below.\n\nVisual review is recommended in the skill; the library does not itself judge whether the image is readable or financially sensible.\n\nSaved image returned by rendering; click for full size.\n\nExecution record \u00b7 Full script",
+      "bounds": {
+        "x": 323,
+        "y": 1594.40625,
+        "w": 690,
+        "h": 658.125
+      },
+      "image": "state-operations-reference-example-render-op-render-after.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "example-render-old-render",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Let the agent check the model visually: layout, formatting, clipping and whether the numbers are readable.\n\nEXECUTED INPUT\nReadable\nExact code\n\nRender part of the workbook as a PNG and save the resulting image bytes.\n\nSheet and area\nSummary!C7:M28\nImage settings\nPNG, at scale 1.5\nSave as\nsummary-before.png, in the experiment folder\nRecord\nThe saved filename, PNG media type and byte count\nThen view\nA separate tools.view_image call opens that saved PNG for Codex to see\n\nPlain-English reading of the actual input. Switch to Exact input for the executed code or tool arguments.\n\nSCRIPT OUTPUT \u2014 INCLUDES ADDED READS/CHECKS\nReadable\nObject tree\nExact output\nSaved image\tSize\nsummary-before.png\t254,344 bytes\n\nThe actual pixels are shown below. Saving a PNG and viewing it are separate operations.\n\nObserved in this example\n\nThis is the actual Summary C7:M28 image rendered from your Man Group workbook before edits.\n\nThe exact input includes the agent\u2019s wrapper. The displayed report is assembled by that script; it is not automatically returned by the edit, calculation or export. The file name and byte count are printed by our wrapper after saving the blob. They are not the image itself. The screenshot shows the current values. A plausible-looking image does not establish that every formula recalculates correctly.\n\nSaved image returned by rendering; click for full size.\n\nFull captured record \u00b7 Executed JavaScript",
+      "bounds": {
+        "x": 323,
+        "y": 1594.40625,
+        "w": 690,
+        "h": 1019.34375
+      },
+      "image": "state-operations-reference-example-render-old-render.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "exact-input",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Inspect the forecast revenue and operating-profit section after locating it.\n\nEXECUTED INPUT\nReadable\nExact code\nconst range = wb.worksheets.getItem(\"Summary\").getRange(\"K13:M20\");\nreturn {sheet: \"Summary\", range: \"K13:M20\", values: range.values, formulas: range.formulas};\nSCRIPT OUTPUT \u2014 INCLUDES ADDED READS/CHECKS\nReadable\nObject tree\nExact output\nMetric\tK \u00b7 FY2026\tL \u00b7 H1 2027\tM \u00b7 FY2027\n13 \u00b7 Net management fees\t1,354.9429\nFormula\n\t764.7951\nFormula\n\t1,568.3079\nFormula\n\n14 \u00b7 Performance fees\t421\nFormula\n\t67\nFormula\n\t281\nFormula\n\n15 \u00b7 Seed gains\t37\nFormula\n\t19\nFormula\n\t38\nFormula\n\n16 \u00b7 Other income\t2\nFormula\n\t1\nFormula\n\t2\nFormula\n\n17 \u00b7 Core net revenue\t1,814.9429\nFormula\n\t851.7951\nFormula\n\t1,889.3079\nFormula\n\n18 \u00b7 Blank row\t\u2014\t\u2014\t\u2014\n19 \u00b7 Operating costs\t-1,124.4043\nFormula\n\t-498.5594\nFormula\n\t-1,096.5538\nFormula\n\n20 \u00b7 Operating profit\t690.5386\nFormula\n\t353.2357\nFormula\n\t792.7541\nFormula\n\nUSD millions. Click Formula beneath a value to inspect its calculation.\n\nObserved in this example\n\nK13:M20 covers FY2026, H1 2027 and FY2027. The read shows the displayed numbers and the Fee engine references behind them.\n\nThe exact input includes the agent\u2019s wrapper. The displayed report is assembled by that script; it is not automatically returned by the edit, calculation or export. Row labels and period captions in the readable grid are added from the same workbook for orientation; the exact rectangular call returns neither automatically. Numbers in the readable display are rounded. The tree and raw JSON retain their full captured precision.\n\nFull captured record \u00b7 Executed JavaScript",
+      "bounds": {
+        "x": 323,
+        "y": 1542.1875,
+        "w": 690,
+        "h": 803
+      },
+      "image": "state-operations-reference-exact-input.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "output-tree",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Inspect the forecast revenue and operating-profit section after locating it.\n\nEXECUTED INPUT\nReadable\nExact code\n\nRead the values and formula text from one exact rectangle.\n\nSheet\nSummary\nCells\nK13:M20 \u00b7 8 rows \u00d7 3 columns\nFinancial context\nFY2026, H1 2027 and FY2027; management fees through operating profit\nRead\nTwo grids: values and formulas. Also return the sheet name and cell range.\n\nPlain-English reading of the actual input. Switch to Exact input for the executed code or tool arguments.\n\nSCRIPT OUTPUT \u2014 INCLUDES ADDED READS/CHECKS\nReadable\nObject tree\nExact output\nResponse 4 fields\nsheet\n\"Summary\"\nrange\n\"K13:M20\"\nvalues 8 items\nformulas 8 items\nObserved in this example\n\nK13:M20 covers FY2026, H1 2027 and FY2027. The read shows the displayed numbers and the Fee engine references behind them.\n\nThe exact input includes the agent\u2019s wrapper. The displayed report is assembled by that script; it is not automatically returned by the edit, calculation or export. Row labels and period captions in the readable grid are added from the same workbook for orientation; the exact rectangular call returns neither automatically. Numbers in the readable display are rounded. The tree and raw JSON retain their full captured precision.\n\nFull captured record \u00b7 Executed JavaScript",
+      "bounds": {
+        "x": 323,
+        "y": 1542.1875,
+        "w": 690,
+        "h": 723.8125
+      },
+      "image": "state-operations-reference-output-tree.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "exact-output",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Inspect the forecast revenue and operating-profit section after locating it.\n\nEXECUTED INPUT\nReadable\nExact code\n\nRead the values and formula text from one exact rectangle.\n\nSheet\nSummary\nCells\nK13:M20 \u00b7 8 rows \u00d7 3 columns\nFinancial context\nFY2026, H1 2027 and FY2027; management fees through operating profit\nRead\nTwo grids: values and formulas. Also return the sheet name and cell range.\n\nPlain-English reading of the actual input. Switch to Exact input for the executed code or tool arguments.\n\nSCRIPT OUTPUT \u2014 INCLUDES ADDED READS/CHECKS\nReadable\nObject tree\nExact output\n{\n  \"sheet\": \"Summary\",\n  \"range\": \"K13:M20\",\n  \"values\": [\n    [\n      1354.9429499999997,\n      764.7950618437496,\n      1568.3078736933392\n    ],\n    [\n      421,\n      67,\n      281\n    ],\n    [\n      37,\n      19,\n      38\n    ],\n    [\n      2,\n      1,\n      2\n    ],\n    [\n      1814.9429499999997,\n      851.7950618437496,\n      1889.307873693339\n    ],\n    [\n      null,\n      null,\n      null\n    ],\n    [\n      -1124.404322034071,\n      -498.5594068245066,\n      -1096.553767632043\n    ],\n    [\n      690.5386279659288,\n      353.2356550192431,\n      792.7541060612962\n    ]\n  ],\n  \"formulas\": [\n    [\n      \"='Fee engine'!K95\",\n      \"='Fee engine'!L95\",\n      \"='Fee engine'!M95\"\n    ],\n    [\n      \"='Fee engine'!K96\",\n      \"='Fee engine'!L96\",\n      \"='Fee engine'!M96\"\n    ],\n    [\n      \"='Fee engine'!K97\",\n      \"='Fee engine'!L97\",\n      \"='Fee engine'!M97\"\n    ],\n    [\n      \"='Fee engine'!K98\",\n      \"='Fee engine'!L98\",\n      \"='Fee engine'!M98\"\n    ],\n    [\n      \"='Fee engine'!K99\",\n      \"='Fee engine'!L99\",\n      \"='Fee engine'!M99\"\n    ],\n    [\n      \"\",\n      \"\",\n      \"\"\n    ],\n    [\n      \"='Fee engine'!K100\",\n      \"='Fee engine'!L100\",\n      \"='Fee engine'!M100\"\n    ],\n    [\n      \"='Fee engine'!K101\",\n      \"='Fee engine'!L101\",\n      \"='Fee engine'!M101\"\n    ]\n  ]\n}\nObserved in this example\n\nK13:M20 covers FY2026, H1 2027 and FY2027. The read shows the displayed numbers and the Fee engine references behind them.\n\nThe exact input includes the agent\u2019s wrapper. The displayed report is assembled by that script; it is not automatically returned by the edit, calculation or export. Row labels and period captions in the readable grid are added from the same workbook for orientation; the exact rectangular call returns neither automatically. Numbers in the readable display are rounded. The tree and raw JSON retain their full captured precision.\n\nFull captured record \u00b7 Executed JavaScript",
+      "bounds": {
+        "x": 323,
+        "y": 1542.1875,
+        "w": 690,
+        "h": 1673.84375
+      },
+      "image": "state-operations-reference-exact-output.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "checks-readable",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Change the working fee margin from 56bp to 51bp.\n\nEXECUTED INPUT\nReadable\nExact code\n\nChange the working fee margin from 56bp to 51bp.\n\nOPERATION RETURN\nReadable\nObject tree\nExact output\n\nNo returned report (JavaScript undefined). This is the return of the recorded code block; the workbook can still have changed.\n\nAgent-written checks and what they found\nObserved in this example\n\nMemory changes to 51bp and total fees fall to $1,526.65m. The on-disk copy still says 56bp and its SHA-256 is unchanged.\n\nChanging the workbook object does not save the file. The agent decides when to export.\n\nExecution record \u00b7 Full script",
+      "bounds": {
+        "x": 323,
+        "y": 1594.40625,
+        "w": 690,
+        "h": 526.390625
+      },
+      "image": "state-operations-reference-checks-readable.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "checks-code",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Change the working fee margin from 56bp to 51bp.\n\nEXECUTED INPUT\nReadable\nExact code\n\nChange the working fee margin from 56bp to 51bp.\n\nOPERATION RETURN\nReadable\nObject tree\nExact output\n\nNo returned report (JavaScript undefined). This is the return of the recorded code block; the workbook can still have changed.\n\nAgent-written checks and what they found\n\nThese are extra reads and comparisons chosen by the agent. The operation does not automatically return them.\n\nReadable\nObject tree\nExact code\n// Before\nreturn {diskSha256:await sha(out),memory:labRead()};\n\n// After\nreturn {diskSha256:await sha(out),memory:labRead(),onDisk:cell((await SpreadsheetFile.importXlsx(await FileBlob.load(out))).worksheets.getItem(\"Fee lab\"),\"C4\")};\n\n// Helper definitions used by the checks\nconst cell=(sheet,address)=>({address,value:sheet.getRange(address).values[0][0],formula:sheet.getRange(address).formulas[0][0]});\nconst grid=(sheet,address)=>({address,values:sheet.getRange(address).values,formulas:sheet.getRange(address).formulas});\nconst labRead=()=>({margin:cell(lab,'C4'),growth:cell(lab,'C5'),quarters:grid(lab,'B9:F12'),annual:cell(lab,'C15')});\nconst inspect=async (book,args)=>{const r=await book.inspect(args);return {ndjson:r.ndjson,recordCount:r.recordCount,truncated:r.truncated,metadata:r.metadata};};\nconst names=async book=>await inspect(book,{kind:'sheet',include:'id,name',maxChars:5000});\n\n// sha() and lastHandle are defined in the full executed script.\nObserved in this example\n\nMemory changes to 51bp and total fees fall to $1,526.65m. The on-disk copy still says 56bp and its SHA-256 is unchanged.\n\nChanging the workbook object does not save the file. The agent decides when to export.\n\nExecution record \u00b7 Full script",
+      "bounds": {
+        "x": 323,
+        "y": 1594.40625,
+        "w": 690,
+        "h": 926.453125
+      },
+      "image": "state-operations-reference-checks-code.png"
+    },
+    {
+      "exhibit": "operations-reference",
+      "state": "checks-tree",
+      "status": "seen",
+      "reason": "Declared actions executed; rendered capture follows",
+      "dom_changed": true,
+      "rendered_text": "Change the working fee margin from 56bp to 51bp.\n\nEXECUTED INPUT\nReadable\nExact code\n\nChange the working fee margin from 56bp to 51bp.\n\nOPERATION RETURN\nReadable\nObject tree\nExact output\n\nNo returned report (JavaScript undefined). This is the return of the recorded code block; the workbook can still have changed.\n\nAgent-written checks and what they found\n\nThese are extra reads and comparisons chosen by the agent. The operation does not automatically return them.\n\nReadable\nObject tree\nExact code\nResponse 2 fields\nbefore 2 fields\nafter 3 fields\nObserved in this example\n\nMemory changes to 51bp and total fees fall to $1,526.65m. The on-disk copy still says 56bp and its SHA-256 is unchanged.\n\nChanging the workbook object does not save the file. The agent decides when to export.\n\nExecution record \u00b7 Full script",
+      "bounds": {
+        "x": 323,
+        "y": 1594.40625,
+        "w": 690,
+        "h": 634.484375
+      },
+      "image": "state-operations-reference-checks-tree.png"
+    }
+  ],
+  "component_inventory": {
+    "components": [
+      {
+        "dependencies": [
+          "operations-reference-css",
+          "operations-reference-js"
+        ],
+        "exhibit_ids": [
+          "operations-reference"
+        ],
+        "fingerprints": {
+          "body": "52367a6622b19f08825e915fad80c542ad4f4c34dbcebad9f5007994b3e39208",
+          "html": "fc9872a6076ae8e1be4d62c0d04a54ef8edb5eae707557954cabad30a5d6435e",
+          "payload": "97e383ba54627993a4bdb4bedc5ce0060496872808d04193678630bb28d35a2f",
+          "payload_file": "8c44aa4a72aecf05092e317621064d36ed2a8e92ef415293f907d22b22358bd3",
+          "renderer": "604655eb761581982f473ebcda94b4cd8feedad0cec0283dfa7fe222881ac22f"
+        },
+        "id": "operations-reference",
+        "inputs": [
+          {
+            "hash_basis": "utf8-lf",
+            "path": "tmp/excel-tool-walkthrough-20260915/operations_reference.py",
+            "path_basis": "repository",
+            "sha256": "604655eb761581982f473ebcda94b4cd8feedad0cec0283dfa7fe222881ac22f"
+          },
+          {
+            "hash_basis": "utf8-lf",
+            "path": "tmp/excel-tool-walkthrough-20260915/evidence/operations-reference.json",
+            "path_basis": "repository",
+            "sha256": "8c44aa4a72aecf05092e317621064d36ed2a8e92ef415293f907d22b22358bd3"
+          }
+        ],
+        "reading": {
+          "reason": "Only registered exhibits are declared; the component wrapper establishes no further coverage.",
+          "status": "declared"
+        },
+        "renderer": "tmp/excel-tool-walkthrough-20260915/operations_reference.py",
+        "selector": "#operations-reference",
+        "source_line": 25
+      }
+    ],
+    "dependencies": [
+      {
+        "id": "operations-reference-css",
+        "kind": "css",
+        "sha256": "f5023fbb12c9dfbddda22fe00ea0023430829a18c720bee40658a51e88ca006c"
+      },
+      {
+        "id": "operations-reference-js",
+        "kind": "js",
+        "sha256": "e702a491bc0cc23637223eb539aafa8b50aff5600d0bc4aeb056e9ba0e0221c2"
+      }
+    ],
+    "missing": []
+  },
+  "scope": "full-page",
+  "requested_areas": [],
+  "area_coverage": []
+}

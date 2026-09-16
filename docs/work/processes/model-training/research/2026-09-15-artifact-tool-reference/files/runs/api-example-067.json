@@ -1,0 +1,10 @@
+{
+  "index": 67,
+  "name": "worksheet.shapes.add",
+  "summary": "Create a rectangle with an explicit extent anchor",
+  "originalCode": "const sheet = workbook.worksheets.getItem('Shapes');\nsheet.shapes.add({\n  geometry: 'rect',\n  anchor: {\n    from: { row: 2, col: 3 },\n    extent: { widthPx: 260, heightPx: 140 },\n  },\n  fill: 'accent1',\n  line: { style: 'dashed', fill: 'accent4', width: 1 },\n});",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

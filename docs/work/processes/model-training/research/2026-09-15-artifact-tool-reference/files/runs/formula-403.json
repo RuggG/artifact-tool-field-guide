@@ -1,0 +1,37 @@
+{
+  "name": "fx.GAMMA.DIST",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=GAMMA.DIST(A1, A1, A1, A1)",
+      "value": 0.6321205588285578,
+      "projection": [
+        [
+          0.6321205588285578,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 13
+    }
+  ]
+}

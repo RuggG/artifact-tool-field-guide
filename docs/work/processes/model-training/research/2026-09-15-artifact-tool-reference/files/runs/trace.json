@@ -1,0 +1,25 @@
+{
+  "cell": "Build!A1",
+  "sheetName": "Build",
+  "address": "A1",
+  "formula": "='Input'!B1*(1+'Input'!B2)",
+  "value": 120,
+  "params": [
+    {
+      "cell": "Input!B1",
+      "sheetName": "Input",
+      "address": "B1",
+      "formula": null,
+      "value": 100,
+      "params": []
+    },
+    {
+      "cell": "Input!B2",
+      "sheetName": "Input",
+      "address": "B2",
+      "formula": null,
+      "value": 0.2,
+      "params": []
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "name": "fx.AMORLINC",
+  "category": "financial",
+  "examples": [
+    {
+      "formula": "=AMORLINC(A1, DATE(2024, 1, 1), A1, A1)",
+      "value": "AMORLINC is not implemented. cost=1, datePurchased=45292, firstPeriod=1, salvage=1, period=undefined, rate=undefined, basis=undefined",
+      "projection": [
+        [
+          "AMORLINC is not implemented. cost=1, datePurchased=45292, firstPeriod=1, salvage=1, period=undefined, rate=undefined, basis=undefined",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 11
+    }
+  ]
+}

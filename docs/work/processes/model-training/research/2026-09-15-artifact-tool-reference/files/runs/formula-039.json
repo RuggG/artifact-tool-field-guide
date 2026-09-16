@@ -1,0 +1,37 @@
+{
+  "name": "fx.MODE",
+  "category": "compatibility",
+  "examples": [
+    {
+      "formula": "=MODE(10, C1:C5, 20, C1:C5)",
+      "value": "MODE is not implemented. number1=10, number2=3,6,9,12,15, rest.length=2",
+      "projection": [
+        [
+          "MODE is not implemented. number1=10, number2=3,6,9,12,15, rest.length=2",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 12
+    }
+  ]
+}

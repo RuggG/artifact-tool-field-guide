@@ -1,0 +1,37 @@
+{
+  "name": "fx.CUBESET",
+  "category": "cube",
+  "examples": [
+    {
+      "formula": "=CUBESET(A1, A1, A1)",
+      "value": "CUBESET is not implemented. connection=1, setExpression=1, caption=1, sortOrder=undefined, sortBy=undefined",
+      "projection": [
+        [
+          "CUBESET is not implemented. connection=1, setExpression=1, caption=1, sortOrder=undefined, sortBy=undefined",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 8
+    }
+  ]
+}

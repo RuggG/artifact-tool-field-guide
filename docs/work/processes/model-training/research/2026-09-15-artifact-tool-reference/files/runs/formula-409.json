@@ -1,0 +1,37 @@
+{
+  "name": "fx.PERCENTILE.EXC",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=PERCENTILE.EXC({1,2;3,4}, A1)",
+      "value": "#NUM!",
+      "projection": [
+        [
+          "#NUM!",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 15
+    }
+  ]
+}

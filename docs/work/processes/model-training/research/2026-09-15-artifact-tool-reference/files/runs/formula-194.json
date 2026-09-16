@@ -1,0 +1,37 @@
+{
+  "name": "fx.ISNA",
+  "category": "information",
+  "examples": [
+    {
+      "formula": "=ISNA(A1:A5)",
+      "value": false,
+      "projection": [
+        [
+          false,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 7
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "name": "fx.TEXT",
+  "category": "text",
+  "examples": [
+    {
+      "formula": "=TEXT(A1:A5, \"#,##0.00\")",
+      "value": "1.00",
+      "projection": [
+        [
+          "1.00",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 12
+    }
+  ]
+}

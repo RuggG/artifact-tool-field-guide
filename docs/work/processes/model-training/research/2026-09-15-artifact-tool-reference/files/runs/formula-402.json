@@ -1,0 +1,37 @@
+{
+  "name": "fx.EXPON.DIST",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=EXPON.DIST(A1, A1, A1)",
+      "value": 0.6321205588285577,
+      "projection": [
+        [
+          0.6321205588285577,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 11
+    }
+  ]
+}

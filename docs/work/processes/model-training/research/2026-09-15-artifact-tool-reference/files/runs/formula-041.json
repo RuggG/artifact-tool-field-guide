@@ -1,0 +1,37 @@
+{
+  "name": "fx.CONCATENATE",
+  "category": "compatibility",
+  "examples": [
+    {
+      "formula": "=CONCATENATE(\"text1\", C1:C5, \"text2\", C1:C5)",
+      "value": "text13691215text23691215",
+      "projection": [
+        [
+          "text13691215text23691215",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 10
+    }
+  ]
+}

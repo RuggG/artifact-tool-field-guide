@@ -1,0 +1,37 @@
+{
+  "name": "fx.POISSON.DIST",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=POISSON.DIST(A1, A1, A1)",
+      "value": 0.7357588823428847,
+      "projection": [
+        [
+          0.7357588823428847,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 13
+    }
+  ]
+}

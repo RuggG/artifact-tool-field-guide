@@ -1,0 +1,10 @@
+{
+  "index": 33,
+  "name": "range.conditionalFormats",
+  "summary": "Add a color scale rule",
+  "originalCode": "const range = sheet.getRange('B2:B6');\nrange.conditionalFormats.add('colorScale', {\n  colors: ['#FCA5A5', '#DC2626'],\n});",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

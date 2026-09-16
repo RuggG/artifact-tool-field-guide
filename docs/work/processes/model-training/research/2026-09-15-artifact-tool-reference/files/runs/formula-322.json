@@ -1,0 +1,37 @@
+{
+  "name": "fx.FACTDOUBLE",
+  "category": "math-trig",
+  "examples": [
+    {
+      "formula": "=FACTDOUBLE(10)",
+      "value": 3840,
+      "projection": [
+        [
+          3840,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 14
+    }
+  ]
+}

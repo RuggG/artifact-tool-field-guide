@@ -1,0 +1,93 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Inspect, Resolve, Find Cells, And Help · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="inspect-help.md">Raw file</a> · <a data-public-raw download href="inspect-help.md">Download</a></p><article><h1 id="inspect-resolve-find-cells-and-help">Inspect, Resolve, Find Cells, And Help</h1>
+<p>Use <code>inspect</code>, <code>resolve</code>, <code>findCells</code>, and <code>help</code> to edit imported workbooks
+without guessing object identities.</p>
+<h2 id="inspect">Inspect</h2>
+<pre><code class="language-ts">const result = await workbook.inspect({
+  kind: "sheet,table,formula,chart,thread",
+  include: "id,text",
+  exclude: "status",
+  search: "Revenue",
+  maxChars: 8000,
+});
+
+console.log(result.ndjson);
+</code></pre>
+<p><code>inspect</code> returns bounded NDJSON records and metadata for parsed options,
+unknown tokens, search filters, truncation, and target context.</p>
+<h2 id="targeted-inspect">Targeted Inspect</h2>
+<pre><code class="language-ts">const focused = await workbook.inspect({
+  target: { id: sheetAnchorId, beforeLines: 1, afterLines: 6 },
+  kind: "sheet,table",
+});
+</code></pre>
+<h2 id="resolve">Resolve</h2>
+<pre><code class="language-ts">const workbookTarget = workbook.resolve("wb/&lt;id&gt;");
+const sheet = workbook.resolve("ws/&lt;sheet-id-or-name&gt;");
+const thread = workbook.resolve("th/&lt;thread-id&gt;");
+const chart = workbook.resolve("ch/&lt;chart-id&gt;");
+</code></pre>
+<p><code>resolve</code> maps inspect anchors to editable facades.</p>
+<h2 id="find-cells">Find Cells</h2>
+<pre><code class="language-ts">const matches = workbook.findCells({
+  searchTerm: "East",
+  sheetId: "Revenue",
+  options: {
+    maxResults: 10,
+    matchFormulas: true,
+  },
+});
+</code></pre>
+<p>Result matches include sheet, address, value/formula match metadata, and total
+count.</p>
+<h2 id="help">Help</h2>
+<pre><code class="language-ts">const result = workbook.help("*", {
+  search: "setColorScheme|worksheet.charts.add",
+  include: ["index", "examples", "notes"],
+  maxChars: 12000,
+});
+console.log(result.ndjson);
+</code></pre>
+<p>Common queries:</p>
+<pre><code class="language-text">*, workbook.setColorScheme, worksheet.charts.add, formulas, enum.ChartType
+</code></pre>
+<h2 id="createedit-loop">Create/Edit Loop</h2>
+<pre><code class="language-ts">const before = await workbook.inspect({
+  kind: "sheet,table,formula,thread,chart",
+  search: "Status",
+  maxChars: 8000,
+});
+
+const sheet = workbook.resolve(sheetAnchorId);
+sheet.getRange("B2").values = [["Closed"]];
+
+const after = await workbook.inspect({
+  target: { id: sheetAnchorId, beforeLines: 1, afterLines: 6 },
+  kind: "sheet,table",
+  search: "Closed",
+});
+</code></pre>
+<h2 id="inline-types">Inline Types</h2>
+<pre><code class="language-ts">type WorkbookInspectOptions = {
+  fileName?: string | null;
+  target?: { id: string; beforeLines?: number; afterLines?: number };
+  kind?: string;
+  include?: string;
+  exclude?: string;
+  search?: string;
+  maxChars?: number;
+};
+
+type WorkbookInspectResult = {
+  readonly records: readonly WorkbookInspectRecord[];
+  readonly recordCount: number;
+  ndjson: string;
+  truncated: boolean;
+  metadata: WorkbookInspectMetadata;
+};
+
+type WorkbookHelpOptions = {
+  include?: string[] | string;
+  search?: string;
+  maxChars?: number;
+};
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

@@ -1,0 +1,37 @@
+{
+  "name": "fx.ROMAN",
+  "category": "math-trig",
+  "examples": [
+    {
+      "formula": "=ROMAN(10, A1)",
+      "value": "X",
+      "projection": [
+        [
+          "X",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 8
+    }
+  ]
+}

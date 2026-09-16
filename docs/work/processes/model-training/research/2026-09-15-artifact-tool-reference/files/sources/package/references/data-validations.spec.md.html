@@ -1,0 +1,59 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Data Validations · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="data-validations.spec.md">Raw file</a> · <a data-public-raw download href="data-validations.spec.md">Download</a></p><article><h1 id="data-validations">Data Validations</h1>
+<p>Use range-level or worksheet-level data validation config.</p>
+<h2 id="range-assignment">Range Assignment</h2>
+<pre><code class="language-ts">range.dataValidation = validationConfig;
+</code></pre>
+<h2 id="rule-config">Rule Config</h2>
+<pre><code class="language-ts">range.dataValidation.rule = {
+  type,
+  formula1,
+  formula2,
+  values,
+  operator,
+};
+range.dataValidation.prompt = promptConfig;
+range.dataValidation.errorAlert = errorAlertConfig;
+range.dataValidation.ignoreBlanks = ignoreBlanks;
+range.dataValidation.inCellDropDown = inCellDropDown;
+</code></pre>
+<h2 id="validation-inline-types">Validation Inline Types</h2>
+<pre><code class="language-ts">type DataValidationRule = {
+  type: "none" | "whole" | "decimal" | "list" | "date" | "time" | "textLength" | "custom";
+  operator?:
+    | "between"
+    | "notBetween"
+    | "equal"
+    | "notEqual"
+    | "lessThan"
+    | "lessThanOrEqual"
+    | "greaterThan"
+    | "greaterThanOrEqual";
+  formula1?: string | number;
+  formula2?: string | number;
+  values?: string[];
+};
+
+type ValidationConfig = {
+  rule?: DataValidationRule | null;
+  prompt?: { title?: string; message?: string; show?: boolean } | null;
+  errorAlert?: {
+    title?: string;
+    message?: string;
+    style?: "stop" | "warning" | "information";
+    show?: boolean;
+  } | null;
+  ignoreBlanks?: boolean;
+  inCellDropDown?: boolean;
+};
+</code></pre>
+<h2 id="collection-add">Collection Add</h2>
+<pre><code class="language-ts">sheet.dataValidations.add({
+  range,
+  rule,
+  prompt,
+  errorAlert,
+  ignoreBlanks,
+  inCellDropDown,
+});
+</code></pre>
+<p>Validation type, operator, and error style values are the strings listed above.</p></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

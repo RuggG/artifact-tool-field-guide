@@ -1,0 +1,37 @@
+{
+  "name": "fx.SECH",
+  "category": "math-trig",
+  "examples": [
+    {
+      "formula": "=SECH(10)",
+      "value": 0.00009079985933781724,
+      "projection": [
+        [
+          0.00009079985933781724,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 9
+    }
+  ]
+}

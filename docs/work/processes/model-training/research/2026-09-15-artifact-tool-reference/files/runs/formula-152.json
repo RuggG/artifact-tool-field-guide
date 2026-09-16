@@ -1,0 +1,37 @@
+{
+  "name": "fx.VDB",
+  "category": "financial",
+  "examples": [
+    {
+      "formula": "=VDB(A1, A1, A1, A1)",
+      "value": "VDB is not implemented. cost=1, salvage=1, life=1, startPeriod=1, endPeriod=undefined, factor=undefined, noSwitch=undefined",
+      "projection": [
+        [
+          "VDB is not implemented. cost=1, salvage=1, life=1, startPeriod=1, endPeriod=undefined, factor=undefined, noSwitch=undefined",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 10
+    }
+  ]
+}

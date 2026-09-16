@@ -1,0 +1,37 @@
+{
+  "name": "fx.AVERAGEIFS",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=AVERAGEIFS(B2:B10, A2:A10, \"=West\", C2:C10, \">0\")",
+      "value": "#DIV/0!",
+      "projection": [
+        [
+          "#DIV/0!",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 12
+    }
+  ]
+}

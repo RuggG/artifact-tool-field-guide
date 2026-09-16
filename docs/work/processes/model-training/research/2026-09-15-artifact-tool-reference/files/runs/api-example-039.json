@@ -1,0 +1,10 @@
+{
+  "index": 39,
+  "name": "range.conditionalFormats",
+  "summary": "Highlight text cells that contain a substring",
+  "originalCode": "const range = sheet.getRange('E2:E8');\nrange.conditionalFormats.add('containsText', {\n  text: 'late',\n  format: { fill: '#FDE68A', font: { color: '#92400E', bold: true } },\n});",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

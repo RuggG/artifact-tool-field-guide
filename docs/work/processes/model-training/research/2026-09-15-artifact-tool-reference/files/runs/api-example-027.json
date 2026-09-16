@@ -1,0 +1,12 @@
+{
+  "index": 27,
+  "name": "chart series",
+  "summary": "Error bars",
+  "originalCode": "const series = chart.series.items[0]!;\nseries.errorBars = { type: 'standardError', line: { fill: 'accent1', style: 'solid', width: 1 } };\nseries.errorBars = { type: 'percentage', value: 5 };\nseries.errorBars = { type: 'standardDeviation' };",
+  "adaptations": [
+    "Removed TypeScript non-null assertion after array access."
+  ],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

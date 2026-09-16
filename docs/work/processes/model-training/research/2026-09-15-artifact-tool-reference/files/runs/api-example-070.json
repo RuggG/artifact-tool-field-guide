@@ -1,0 +1,10 @@
+{
+  "index": 70,
+  "name": "images",
+  "summary": "Place inline SVG without base64 encoding",
+  "originalCode": "worksheet.images.add({\n  svg: '<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"10\" fill=\"#2563eb\"/></svg>',\n  anchor: { from: { row: 1, col: 1 }, extent: { widthPx: 48, heightPx: 48 } },\n});",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

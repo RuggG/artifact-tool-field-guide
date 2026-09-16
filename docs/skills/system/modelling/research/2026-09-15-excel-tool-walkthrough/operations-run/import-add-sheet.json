@@ -1,0 +1,50 @@
+{
+  "id": "import-add-sheet",
+  "operation": "wb = await SpreadsheetFile.importXlsx(await FileBlob.load(source));\nlab = wb.worksheets.add(\"Fee lab\");\nreturn lab;",
+  "checkInput": {
+    "before": "",
+    "after": "return await names(wb);"
+  },
+  "startedAt": "2026-09-15T16:55:17.760Z",
+  "libraryReturn": {
+    "type": "Worksheet object",
+    "representation": "Object contents are read separately in the agent checks."
+  },
+  "elapsedMs": 1626,
+  "after": {
+    "ndjson": "{\"kind\":\"sheet\",\"id\":\"ws/j5k7g5\",\"name\":\"Summary\",\"index\":0,\"range\":\"A1:M57\",\"address\":\"A1:M57\"}\n{\"kind\":\"sheet\",\"id\":\"ws/exq3xp\",\"name\":\"Assumptions\",\"index\":1,\"range\":\"A1:W67\",\"address\":\"A1:W67\"}\n{\"kind\":\"sheet\",\"id\":\"ws/tt0pm0\",\"name\":\"Fee engine\",\"index\":2,\"range\":\"A1:W109\",\"address\":\"A1:W109\"}\n{\"kind\":\"sheet\",\"id\":\"ws/dzbig4\",\"name\":\"Disclosures\",\"index\":3,\"range\":\"A1:Q125\",\"address\":\"A1:Q125\"}\n{\"kind\":\"sheet\",\"id\":\"ws/mrgo2u\",\"name\":\"Checks\",\"index\":4,\"range\":\"A1:W59\",\"address\":\"A1:W59\"}\n{\"kind\":\"sheet\",\"id\":\"ws/507vey\",\"name\":\"Readme\",\"index\":5,\"range\":\"A1:D28\",\"address\":\"A1:D28\"}\n{\"kind\":\"sheet\",\"id\":\"ws/6fycx2\",\"name\":\"Fee lab\",\"index\":6}",
+    "recordCount": 7,
+    "truncated": false,
+    "metadata": {
+      "revision": "fm3iw7",
+      "target": {
+        "id": "wb/ss4xkv",
+        "beforeLines": 0,
+        "afterLines": 0
+      },
+      "kind": {
+        "requested": "sheet",
+        "tokens": [
+          "sheet"
+        ]
+      },
+      "include": {
+        "requested": "id,name",
+        "tokens": [
+          "id",
+          "name"
+        ]
+      },
+      "exclude": {
+        "requested": {
+          "javascriptType": "undefined"
+        },
+        "tokens": []
+      },
+      "search": {
+        "javascriptType": "undefined"
+      },
+      "notices": []
+    }
+  }
+}

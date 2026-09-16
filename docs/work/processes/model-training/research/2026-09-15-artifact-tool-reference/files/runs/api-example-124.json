@@ -1,0 +1,10 @@
+{
+  "index": 124,
+  "name": "worksheet.getUsedRange",
+  "summary": "Clear the used range",
+  "originalCode": "const sheet = workbook.worksheets.getItem('Sheet1');\nconst used = sheet.getUsedRange();\nused.clear({ applyTo: 'all' });",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

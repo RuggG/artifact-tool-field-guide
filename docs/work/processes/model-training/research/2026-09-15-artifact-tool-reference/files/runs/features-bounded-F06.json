@@ -1,0 +1,16 @@
+[
+  {
+    "id": "F06",
+    "description": "Drawing images by SVG, bytes, data URL, path; replace and delete",
+    "status": "fail",
+    "ms": 53,
+    "error": "TypeError: this.anchor.toProtoFields is not a function",
+    "stack": [
+      "TypeError: this.anchor.toProtoFields is not a function",
+      "    at n7.toDrawingProto (file:///Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/dist/artifact_tool.mjs:3122:186809)",
+      "    at file:///Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/dist/artifact_tool.mjs:3122:187930",
+      "    at Array.map (<anonymous>)",
+      "    at G0t.toProto (file:///Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/dist/artifact_tool.mjs:3122:187921)"
+    ]
+  }
+]

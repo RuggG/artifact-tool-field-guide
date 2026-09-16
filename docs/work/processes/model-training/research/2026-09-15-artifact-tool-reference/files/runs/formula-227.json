@@ -1,0 +1,37 @@
+{
+  "name": "fx.MAP",
+  "category": "logical",
+  "examples": [
+    {
+      "formula": "=MAP({1,2;3,4}, {1,2;3,4}, C1:C5, C1:C5)",
+      "value": "MAP is not implemented. array=1,2,3,4, lambdaOrArray2=1,2,3,4, rest.length=2",
+      "projection": [
+        [
+          "MAP is not implemented. array=1,2,3,4, lambdaOrArray2=1,2,3,4, rest.length=2",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 14
+    }
+  ]
+}

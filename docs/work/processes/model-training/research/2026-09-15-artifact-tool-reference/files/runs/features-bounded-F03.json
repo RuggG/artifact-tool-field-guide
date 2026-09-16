@@ -1,0 +1,15 @@
+[
+  {
+    "id": "F03",
+    "description": "All sparkline types, range alias, markers, axes and export",
+    "status": "fail",
+    "ms": 8,
+    "error": "TypeError: extra.delete is not a function",
+    "stack": [
+      "TypeError: extra.delete is not a function",
+      "    at file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:312:113",
+      "    at test (file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:17:169)",
+      "    at file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:308:7"
+    ]
+  }
+]

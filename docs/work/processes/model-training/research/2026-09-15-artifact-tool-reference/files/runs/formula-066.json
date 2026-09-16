@@ -1,0 +1,37 @@
+{
+  "name": "fx.WEEKDAY",
+  "category": "date-time",
+  "examples": [
+    {
+      "formula": "=WEEKDAY(10, A1)",
+      "value": 4,
+      "projection": [
+        [
+          4,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 12
+    }
+  ]
+}

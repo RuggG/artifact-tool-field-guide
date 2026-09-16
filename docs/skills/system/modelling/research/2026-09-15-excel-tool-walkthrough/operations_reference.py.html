@@ -1,0 +1,86 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>operations_reference.py · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="operations_reference.py">Raw file</a> · <a data-public-raw download href="operations_reference.py">Download</a></p><article><h1>operations_reference.py</h1><pre class="public-code"><code>&quot;&quot;&quot;Capability-first reference; recorded examples are supporting, lazily displayed evidence.&quot;&quot;&quot;
+from html import escape as e
+from pathlib import Path
+import json,sys
+sys.path.insert(0,str(Path(__file__).parent))
+from pagekit_components import ComponentResult
+from man_group_walkthrough import readable as old_readable, readable_input, code
+from operations_explorer import observed
+from inspect_explainer import readable as inspect_readable, settings
+H=Path(__file__).parent
+
+def load(name):return json.loads((H/&#x27;evidence&#x27;/name).read_text())
+
+def examples():
+ out={};opdata=load(&#x27;operations-cards.json&#x27;)
+ for c in opdata[&#x27;cards&#x27;]:
+  native=c[&#x27;libraryReturn&#x27;]
+  if native=={&#x27;javascriptType&#x27;:&#x27;undefined&#x27;}:
+   ret=&#x27;No returned report (JavaScript undefined). This is the return of the recorded code block; the workbook can still have changed.&#x27;
+  elif &#x27;type&#x27; in native:
+   ret=&#x27;Returned: &#x27;+native[&#x27;type&#x27;]+&#x27;. This is our label for the live object, not a complete serialization of its contents.&#x27;
+  else:ret=json.dumps(native,ensure_ascii=False)
+  id=&#x27;op:&#x27;+c[&#x27;id&#x27;];image=&#x27;&#x27;
+  if c[&#x27;id&#x27;] in (&#x27;render-before&#x27;,&#x27;render-after&#x27;):
+   image=&#x27;operations-run/fee-lab-&#x27;+(&#x27;before&#x27; if c[&#x27;id&#x27;]==&#x27;render-before&#x27; else &#x27;after&#x27;)+&#x27;.png&#x27;
+  out[id]=dict(id=id,label=c[&#x27;label&#x27;],intent=c[&#x27;intent&#x27;],finding=c[&#x27;outcome&#x27;],
+   inputReadable=&#x27;&lt;p&gt;&#x27;+e(c[&#x27;intent&#x27;])+&#x27;&lt;/p&gt;&#x27;,input=c[&#x27;operation&#x27;],outputLabel=&#x27;Operation return&#x27;,
+   outputReadable=&#x27;&lt;p&gt;&#x27;+e(ret)+&#x27;&lt;/p&gt;&#x27;,output=native,
+   checkReadable=observed(c),checkCode=&#x27;// Before\n&#x27;+(c[&#x27;checkInput&#x27;][&#x27;before&#x27;] or &#x27;// No check requested&#x27;)+&#x27;\n\n// After\n&#x27;+(c[&#x27;checkInput&#x27;][&#x27;after&#x27;] or &#x27;// No check requested&#x27;),
+   checks={k:c[k] for k in (&#x27;before&#x27;,&#x27;after&#x27;) if k in c},checkHelpers=opdata[&#x27;helpers&#x27;],
+   note=c[&#x27;lesson&#x27;],image=image,
+   links=[[&#x27;Execution record&#x27;,&#x27;operations-run/&#x27;+c[&#x27;id&#x27;]+&#x27;.json?raw&#x27;],[&#x27;Full script&#x27;,&#x27;overlap-probe.mjs&#x27; if c[&#x27;id&#x27;]==&#x27;overlap-table&#x27; else &#x27;operations-run.mjs&#x27;]])
+ old=load(&#x27;man-group-cards.json&#x27;)
+ for c in old[&#x27;cards&#x27;]:
+  wrapped=c[&#x27;id&#x27;] in (&#x27;value-edit&#x27;,&#x27;formula-edit&#x27;,&#x27;recalculate&#x27;,&#x27;fill&#x27;,&#x27;copy&#x27;,&#x27;export&#x27;,&#x27;render&#x27;,&#x27;ranges&#x27;)
+  label=&#x27;Script output — includes added reads/checks&#x27; if wrapped else (&#x27;Command-tool result&#x27; if c[&#x27;id&#x27;]==&#x27;runner&#x27; else &#x27;Library response&#x27;)
+  checknote=&#x27;The exact input includes the agent’s wrapper. The displayed report is assembled by that script; it is not automatically returned by the edit, calculation or export.&#x27; if wrapped else &#x27;&#x27;
+  if c[&#x27;id&#x27;]==&#x27;ranges&#x27;:
+   label=&#x27;Cell getters, packaged by the script&#x27;
+   checknote=&#x27;The values and formulas come from native getters. The script bundles them together; the readable grid adds metric and period captions for orientation.&#x27;
+  if c[&#x27;id&#x27;]==&#x27;render&#x27;:
+   label=&#x27;Script output after saving the image&#x27;
+   checknote=&#x27;Rendering returns an image blob. The script saves its bytes and assembles the filename/size report shown here.&#x27;
+  if c[&#x27;id&#x27;]==&#x27;export&#x27;:
+   label=&#x27;Script output and independent file checks&#x27;
+   checknote=&#x27;The save returns no report. The script records the filename and size; separate file-reading checks supply the comparison in the readable display.&#x27;
+  out[&#x27;old:&#x27;+c[&#x27;id&#x27;]]=dict(id=&#x27;old:&#x27;+c[&#x27;id&#x27;],label=c[&#x27;label&#x27;]+&#x27; · original model&#x27;,intent=c[&#x27;purpose&#x27;],finding=c[&#x27;finding&#x27;],inputReadable=readable_input(c),input=c[&#x27;input&#x27;],outputLabel=label,outputReadable=old_readable(c),output=c[&#x27;result&#x27;],checkReadable=&#x27;&#x27;,checks=None,checkCode=&#x27;&#x27;,checkHelpers=c.get(&#x27;helper&#x27;,&#x27;&#x27;),note=checknote+&#x27; &#x27;+(&#x27; &#x27;.join(c[&#x27;notes&#x27;])),image=(&#x27;man-group-run/summary-before.png&#x27; if c[&#x27;id&#x27;]==&#x27;render&#x27; else &#x27;&#x27;),links=[[x[&#x27;label&#x27;],x[&#x27;href&#x27;]] for x in c[&#x27;links&#x27;]])
+ lab=load(&#x27;inspect-lab.json&#x27;)
+ for c in lab[&#x27;presets&#x27;]:
+  out[&#x27;lab:&#x27;+c[&#x27;id&#x27;]]=dict(id=&#x27;lab:&#x27;+c[&#x27;id&#x27;],label=c[&#x27;label&#x27;],intent=c[&#x27;change&#x27;],finding=c[&#x27;outcome&#x27;],inputReadable=settings(c),input=&#x27;await wb.inspect(&#x27;+json.dumps(c[&#x27;input&#x27;],indent=2)+&#x27;);&#x27;,outputLabel=&#x27;Library response&#x27;,outputReadable=inspect_readable(c,lab[&#x27;sheets&#x27;]),output=c[&#x27;result&#x27;],checks=None,checkCode=&#x27;&#x27;,checkReadable=&#x27;&#x27;,checkHelpers=&#x27;&#x27;,note=&#x27;Size of the returned NDJSON text: &#x27;+f&quot;{c[&#x27;characters&#x27;]:,}&quot;+&#x27; characters; approximately &#x27;+f&quot;{c[&#x27;tokens&#x27;]:,}&quot;+&#x27; tokens using o200k_base. This is not a billing count or the size of the whole outer tool response. NDJSON means one JSON record per line.&#x27;,image=&#x27;&#x27;,links=[[&#x27;Execution record&#x27;,c[&#x27;file&#x27;]+&#x27;?raw&#x27;]])
+ return out
+
+def render(payload,*,body,context):
+ cards=examples();used={x for op in payload[&#x27;operations&#x27;] for x in op[&#x27;examples&#x27;]}
+ for id in used:assert id in cards,id
+ aliases={}
+ for op in payload[&#x27;operations&#x27;]:
+  for id in op[&#x27;examples&#x27;]:
+   prefix,key=id.split(&#x27;:&#x27;);aliases.setdefault((&#x27;xio-&#x27; if prefix==&#x27;old&#x27; else &#x27;op-&#x27; if prefix==&#x27;op&#x27; else &#x27;lab-&#x27;)+key,[op[&#x27;id&#x27;],id])
+ aliases.update({&#x27;xio-overview&#x27;:[&#x27;grids&#x27;,&#x27;lab:broad&#x27;],&#x27;xio-literal&#x27;:[&#x27;search&#x27;,&#x27;lab:search-text&#x27;],&#x27;xio-regex&#x27;:[&#x27;search&#x27;,&#x27;lab:search-pattern&#x27;],&#x27;inspection-settings&#x27;:[&#x27;map&#x27;,None],&#x27;calls&#x27;:[&#x27;map&#x27;,None],&#x27;operations&#x27;:[&#x27;map&#x27;,None],&#x27;layers&#x27;:[&#x27;map&#x27;,None]})
+ h=&#x27;&lt;div id=&quot;operations-reference&quot; class=&quot;oref&quot;&gt;&lt;div class=&quot;oref-map&quot; aria-label=&quot;Operations catalogue&quot;&gt;&#x27;
+ for id,label in payload[&#x27;groups&#x27;]:
+  h+=&#x27;&lt;section class=&quot;oref-family&quot;&gt;&lt;h3&gt;&#x27;+e(label)+&#x27;&lt;/h3&gt;&lt;div&gt;&#x27;
+  for op in payload[&#x27;operations&#x27;]:
+   if op[&#x27;group&#x27;]==id:h+=&#x27;&lt;button type=&quot;button&quot; data-operation=&quot;&#x27;+op[&#x27;id&#x27;]+&#x27;&quot; aria-pressed=&quot;&#x27;+str(op[&#x27;id&#x27;]==&#x27;map&#x27;).lower()+&#x27;&quot;&gt;&#x27;+e(op[&#x27;label&#x27;])+&#x27;&lt;/button&gt;&#x27;
+  h+=&#x27;&lt;/div&gt;&lt;/section&gt;&#x27;
+ h+=&#x27;&lt;/div&gt;&#x27;+&#x27;&#x27;.join(&#x27;&lt;span id=&quot;ref-&#x27;+op[&#x27;id&#x27;]+&#x27;&quot; class=&quot;oref-anchor&quot;&gt;&lt;/span&gt;&#x27;+&#x27;&#x27;.join(&#x27;&lt;span id=&quot;ref-&#x27;+op[&#x27;id&#x27;]+&#x27;~&#x27;+x.replace(&#x27;:&#x27;,&#x27;-&#x27;)+&#x27;&quot; class=&quot;oref-anchor&quot;&gt;&lt;/span&gt;&#x27; for x in op[&#x27;examples&#x27;]) for op in payload[&#x27;operations&#x27;])+&#x27;&lt;article id=&quot;operation-detail&quot; class=&quot;oref-detail&quot; aria-label=&quot;Selected operation&quot;&gt;&lt;/article&gt;&#x27;
+ data=dict(operations=payload[&#x27;operations&#x27;],examples={k:v for k,v in cards.items() if k in used},aliases=aliases)
+ h+=&#x27;&lt;script id=&quot;operations-reference-data&quot; type=&quot;application/json&quot;&gt;&#x27;+json.dumps(data,ensure_ascii=False).replace(&#x27;&lt;&#x27;,&#x27;\\u003c&#x27;)+&#x27;&lt;/script&gt;&lt;/div&gt;&#x27;
+ states=[dict(id=&#x27;map&#x27;,label=&#x27;Catalogue and default operation&#x27;,status=&#x27;supported&#x27;,actions=[])]
+ for op in payload[&#x27;operations&#x27;]:
+  states.append(dict(id=&#x27;reference-&#x27;+op[&#x27;id&#x27;],label=op[&#x27;label&#x27;],status=&#x27;supported&#x27;,actions=[dict(action=&#x27;click&#x27;,selector=&#x27;[data-operation=&quot;&#x27;+op[&#x27;id&#x27;]+&#x27;&quot;]&#x27;)],selector=&#x27;#operation-detail&#x27;))
+ # All recorded examples use one UI. Exercise each example once, then representative input/output/check modes.
+ for op in payload[&#x27;operations&#x27;]:
+  for example in op[&#x27;examples&#x27;]:
+   actions=[dict(action=&#x27;click&#x27;,selector=&#x27;[data-operation=&quot;&#x27;+op[&#x27;id&#x27;]+&#x27;&quot;]&#x27;),dict(action=&#x27;click&#x27;,selector=&#x27;#recorded-examples &gt; summary&#x27;)]
+   if len(op[&#x27;examples&#x27;])&gt;1:actions.append(dict(action=&#x27;select&#x27;,selector=&#x27;#example-choice&#x27;,value=example))
+   states.append(dict(id=&#x27;example-&#x27;+op[&#x27;id&#x27;]+&#x27;-&#x27;+example.replace(&#x27;:&#x27;,&#x27;-&#x27;),label=op[&#x27;label&#x27;]+&#x27; / &#x27;+cards[example][&#x27;label&#x27;],status=&#x27;supported&#x27;,actions=actions,selector=&#x27;#example-detail&#x27;))
+ for name,button in [(&#x27;exact-input&#x27;,&#x27;[data-side=&quot;input&quot;] [data-mode=&quot;code&quot;]&#x27;),(&#x27;output-tree&#x27;,&#x27;[data-side=&quot;output&quot;] [data-mode=&quot;tree&quot;]&#x27;),(&#x27;exact-output&#x27;,&#x27;[data-side=&quot;output&quot;] [data-mode=&quot;code&quot;]&#x27;)]:
+  states.append(dict(id=name,label=name,status=&#x27;supported&#x27;,actions=[dict(action=&#x27;click&#x27;,selector=&#x27;[data-operation=&quot;ranges&quot;]&#x27;),dict(action=&#x27;click&#x27;,selector=&#x27;#recorded-examples &gt; summary&#x27;),dict(action=&#x27;click&#x27;,selector=button)],selector=&#x27;#example-detail&#x27;))
+ for name,button in [(&#x27;checks-readable&#x27;,None),(&#x27;checks-code&#x27;,&#x27;[data-side=&quot;checks&quot;] [data-mode=&quot;code&quot;]&#x27;),(&#x27;checks-tree&#x27;,&#x27;[data-side=&quot;checks&quot;] [data-mode=&quot;tree&quot;]&#x27;)]:
+  actions=[dict(action=&#x27;click&#x27;,selector=&#x27;[data-operation=&quot;values&quot;]&#x27;),dict(action=&#x27;click&#x27;,selector=&#x27;#recorded-examples &gt; summary&#x27;),dict(action=&#x27;click&#x27;,selector=&#x27;#agent-checks &gt; summary&#x27;)]
+  if button:actions.append(dict(action=&#x27;click&#x27;,selector=button))
+  states.append(dict(id=name,label=name,status=&#x27;supported&#x27;,actions=actions,selector=&#x27;#example-detail&#x27;))
+ return ComponentResult(h,dependencies=[dict(id=&#x27;operations-reference-css&#x27;,kind=&#x27;css&#x27;,content=(H/&#x27;operations-reference.css&#x27;).read_text()),dict(id=&#x27;operations-reference-js&#x27;,kind=&#x27;js&#x27;,content=(H/&#x27;operations-reference.js&#x27;).read_text())],exhibits=[dict(id=&#x27;operations-reference&#x27;,kind=&#x27;capability-reference&#x27;,label=&#x27;Excel file operations&#x27;,evidence=dict(format=&#x27;json&#x27;,data=payload),states=states)])
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

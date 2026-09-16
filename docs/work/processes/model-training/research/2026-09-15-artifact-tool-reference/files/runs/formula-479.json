@@ -1,0 +1,37 @@
+{
+  "name": "fx.UNICHAR",
+  "category": "text",
+  "examples": [
+    {
+      "formula": "=UNICHAR(10)",
+      "value": "\n",
+      "projection": [
+        [
+          "\n",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 10
+    }
+  ]
+}

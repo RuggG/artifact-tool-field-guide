@@ -1,0 +1,37 @@
+{
+  "name": "fx.LOG10",
+  "category": "math-trig",
+  "examples": [
+    {
+      "formula": "=LOG10(10)",
+      "value": 1,
+      "projection": [
+        [
+          1,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 12
+    }
+  ]
+}

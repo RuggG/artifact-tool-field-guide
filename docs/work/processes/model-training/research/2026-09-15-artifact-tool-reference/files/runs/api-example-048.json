@@ -1,0 +1,10 @@
+{
+  "index": 48,
+  "name": "workbook.help",
+  "summary": "Get help for multiple enums",
+  "originalCode": "workbook.help(\n  'enum.*',\n  { search: 'ShapeGeometry|LineStyle', include: ['index'] },\n)",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

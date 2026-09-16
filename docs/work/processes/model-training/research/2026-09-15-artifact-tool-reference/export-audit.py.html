@@ -1,0 +1,70 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>export-audit.py · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="export-audit.py">Raw file</a> · <a data-public-raw download href="export-audit.py">Download</a></p><article><h1>export-audit.py</h1><pre class="public-code"><code>&quot;&quot;&quot;Read-only OOXML audit. Uses the standard library; never authors workbooks.&quot;&quot;&quot;
+import hashlib
+import json
+from pathlib import Path
+import re
+import xml.etree.ElementTree as ET
+import zipfile
+
+ROOT = Path(__file__).resolve().parent
+RUNS = ROOT / &quot;files&quot; / &quot;runs&quot;
+NS = {&quot;s&quot;: &quot;http://schemas.openxmlformats.org/spreadsheetml/2006/main&quot;,
+      &quot;c&quot;: &quot;http://schemas.openxmlformats.org/drawingml/2006/chart&quot;}
+results = []
+for file in sorted((ROOT / &quot;files&quot;).rglob(&quot;*.xlsx&quot;)):
+    record = {&quot;file&quot;: str(file.relative_to(ROOT)), &quot;bytes&quot;: file.stat().st_size,
+              &quot;sha256&quot;: hashlib.sha256(file.read_bytes()).hexdigest()}
+    try:
+        with zipfile.ZipFile(file) as z:
+            names = z.namelist()
+            xml = {}
+            parse_errors = []
+            for name in names:
+                if name.endswith((&quot;.xml&quot;, &quot;.rels&quot;)):
+                    try:
+                        xml[name] = ET.fromstring(z.read(name))
+                    except Exception as exc:
+                        parse_errors.append({&quot;part&quot;: name, &quot;error&quot;: str(exc)})
+            charts = []
+            for name, tree in xml.items():
+                if re.fullmatch(r&quot;xl/(?:drawings/)?charts/chart\d+\.xml&quot;, name):
+                    charts.append({&quot;part&quot;: name, &quot;types&quot;: [n.tag.split(&quot;}&quot;)[-1] for n in tree.iter()
+                        if n.tag.split(&quot;}&quot;)[-1].endswith(&quot;Chart&quot;)],
+                        &quot;series&quot;: len(tree.findall(&quot;.//c:ser&quot;, NS)),
+                        &quot;formulas&quot;: [n.text for n in tree.findall(&quot;.//c:f&quot;, NS)],
+                        &quot;trendlines&quot;: len(tree.findall(&quot;.//c:trendline&quot;, NS)),
+                        &quot;errorBars&quot;: len(tree.findall(&quot;.//c:errBars&quot;, NS)),
+                        &quot;dataTables&quot;: len(tree.findall(&quot;.//c:dTable&quot;, NS))})
+            sheets = []
+            for name, tree in xml.items():
+                if re.fullmatch(r&quot;xl/worksheets/sheet\d+\.xml&quot;, name):
+                    sheets.append({&quot;part&quot;: name,
+                        &quot;cells&quot;: len(tree.findall(&quot;.//s:sheetData/s:row/s:c&quot;, NS)),
+                        &quot;formulas&quot;: [{&quot;cell&quot;: c.attrib.get(&quot;r&quot;), &quot;text&quot;: f.text, &quot;attributes&quot;: f.attrib,
+                                      &quot;cached&quot;: c.findtext(&quot;s:v&quot;, namespaces=NS)}
+                                     for c in tree.findall(&quot;.//s:sheetData/s:row/s:c&quot;, NS)
+                                     for f in c.findall(&quot;s:f&quot;, NS)],
+                        &quot;merges&quot;: [n.attrib for n in tree.findall(&quot;.//s:mergeCell&quot;, NS)],
+                        &quot;panes&quot;: [n.attrib for n in tree.findall(&quot;.//s:pane&quot;, NS)],
+                        &quot;conditionalFormats&quot;: [n.attrib for n in tree.findall(&quot;.//s:cfRule&quot;, NS)],
+                        &quot;validations&quot;: [dict(n.attrib, formulas=[(c.tag.split(&#x27;}&#x27;)[-1],c.text) for c in n])
+                                        for n in tree.findall(&quot;.//s:dataValidation&quot;, NS)],
+                        &quot;sparklineGroups&quot;: sum(n.tag.split(&#x27;}&#x27;)[-1]==&#x27;sparklineGroup&#x27; for n in tree.iter()),
+                        &quot;images&quot;: sum(n.tag.split(&#x27;}&#x27;)[-1]==&#x27;pic&#x27; for n in tree.iter()),
+                        &quot;errors&quot;: [(c.attrib.get(&#x27;r&#x27;),c.findtext(&#x27;s:v&#x27;,namespaces=NS))
+                                   for c in tree.findall(&quot;.//s:c[@t=&#x27;e&#x27;]&quot;,NS)]})
+            record.update({&quot;xmlParseErrors&quot;: parse_errors, &quot;parts&quot;: names, &quot;charts&quot;: charts,
+                &quot;worksheets&quot;: sheets,
+                &quot;tableParts&quot;: [n for n in names if re.fullmatch(r&quot;xl/tables/table\d+\.xml&quot;,n)],
+                &quot;pivotParts&quot;: [n for n in names if &#x27;pivot&#x27; in n.lower()],
+                &quot;slicerParts&quot;: [n for n in names if &#x27;slicer&#x27; in n.lower()],
+                &quot;commentParts&quot;: [n for n in names if &#x27;comment&#x27; in n.lower() or &#x27;person&#x27; in n.lower()],
+                &quot;mediaParts&quot;: [n for n in names if n.startswith(&#x27;xl/media/&#x27;)],
+                &quot;names&quot;: [dict(n.attrib,formula=n.text) for n in xml.get(&#x27;xl/workbook.xml&#x27;,ET.Element(&#x27;none&#x27;)).findall(&#x27;.//s:definedName&#x27;,NS)]})
+    except Exception as exc:
+        record[&quot;error&quot;] = str(exc)
+    results.append(record)
+(RUNS / &quot;export-audit.json&quot;).write_text(json.dumps(results, indent=2))
+print(json.dumps({&quot;workbooks&quot;:len(results),&quot;parseFailures&quot;:sum(bool(x.get(&quot;error&quot;) or x.get(&quot;xmlParseErrors&quot;)) for x in results),
+    &quot;charts&quot;: {Path(x[&quot;file&quot;]).stem:[t for c in x.get(&quot;charts&quot;,[]) for t in c[&quot;types&quot;]] for x in results if Path(x[&quot;file&quot;]).name.startswith(&#x27;chart-&#x27;)}},indent=2))
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

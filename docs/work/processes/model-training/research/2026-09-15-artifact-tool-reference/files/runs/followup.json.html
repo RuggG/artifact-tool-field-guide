@@ -1,0 +1,297 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>followup.json · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="followup.json">Raw file</a> · <a data-public-raw download href="followup.json">Download</a></p><article><h1>followup.json</h1><pre class="public-code"><code>[
+  {
+    &quot;id&quot;: &quot;R01&quot;,
+    &quot;description&quot;: &quot;FillFrom correct adjacent extension and table totals boundary&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 289,
+    &quot;detail&quot;: {
+      &quot;fill&quot;: [
+        [
+          &quot;=A1+B1&quot;
+        ],
+        [
+          &quot;=A2+B2&quot;
+        ],
+        [
+          &quot;=A3+B3&quot;
+        ]
+      ],
+      &quot;before&quot;: {
+        &quot;range&quot;: &quot;E1:F4&quot;,
+        &quot;rows&quot;: [
+          [
+            &quot;A&quot;,
+            2
+          ],
+          [
+            &quot;B&quot;,
+            3
+          ],
+          [
+            &quot;C&quot;,
+            4
+          ]
+        ]
+      },
+      &quot;after&quot;: {
+        &quot;range&quot;: &quot;E1:F4&quot;,
+        &quot;rows&quot;: [
+          [
+            &quot;A&quot;,
+            2
+          ],
+          [
+            &quot;B&quot;,
+            3
+          ],
+          [
+            &quot;C&quot;,
+            4
+          ]
+        ],
+        &quot;grid&quot;: [
+          [
+            &quot;Item&quot;,
+            &quot;Qty&quot;
+          ],
+          [
+            &quot;A&quot;,
+            2
+          ],
+          [
+            &quot;B&quot;,
+            3
+          ],
+          [
+            &quot;C&quot;,
+            4
+          ]
+        ]
+      },
+      &quot;insertError&quot;: &quot;Error: Inserting table rows at a specific index is not supported yet&quot;,
+      &quot;columnsAPI&quot;: &quot;undefined&quot;,
+      &quot;filterAPI&quot;: &quot;undefined&quot;
+    }
+  },
+  {
+    &quot;id&quot;: &quot;R02&quot;,
+    &quot;description&quot;: &quot;Named function formula-versus-lambda configuration&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 34,
+    &quot;detail&quot;: [
+      {
+        &quot;name&quot;: &quot;Plain&quot;,
+        &quot;config&quot;: {
+          &quot;lambda&quot;: &quot;LAMBDA(amount,amount*1.1)&quot;
+        },
+        &quot;value&quot;: 110.00000000000001
+      },
+      {
+        &quot;name&quot;: &quot;Prefixed&quot;,
+        &quot;config&quot;: {
+          &quot;lambda&quot;: &quot;_xlfn.LAMBDA(_xlpm.amount,_xlpm.amount*1.1)&quot;
+        },
+        &quot;value&quot;: 110.00000000000001
+      },
+      {
+        &quot;name&quot;: &quot;Equals&quot;,
+        &quot;config&quot;: {
+          &quot;lambda&quot;: &quot;=_xlfn.LAMBDA(_xlpm.amount,_xlpm.amount*1.1)&quot;
+        },
+        &quot;value&quot;: 110.00000000000001
+      }
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;R03&quot;,
+    &quot;description&quot;: &quot;CSV instance import on populated workbook preserves or replaces data&quot;,
+    &quot;status&quot;: &quot;fail&quot;,
+    &quot;ms&quot;: 2,
+    &quot;error&quot;: &quot;Error: hydrateCrdtFromProto requires an empty collaborative document.&quot;,
+    &quot;stack&quot;: [
+      &quot;Error: hydrateCrdtFromProto requires an empty collaborative document.&quot;,
+      &quot;    at #lt (file:///Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/dist/artifact_tool.mjs:3124:60227)&quot;,
+      &quot;    at e.hydrateCrdtFromProto (file:///Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/dist/artifact_tool.mjs:3124:21041)&quot;,
+      &quot;    at e.record (file:///Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/dist/artifact_tool.mjs:3124:32369)&quot;,
+      &quot;    at e.fromCSV (file:///Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/dist/artifact_tool.mjs:3124:19839)&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;R04&quot;,
+    &quot;description&quot;: &quot;One-variable row and column data tables; export and roundtrip&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 168,
+    &quot;detail&quot;: {
+      &quot;row&quot;: [
+        [
+          10,
+          20,
+          30
+        ]
+      ],
+      &quot;column&quot;: [
+        [
+          10
+        ],
+        [
+          20
+        ],
+        [
+          30
+        ]
+      ],
+      &quot;reimport&quot;: [
+        [
+          20,
+          1,
+          2,
+          3
+        ],
+        [
+          null,
+          10,
+          20,
+          30
+        ]
+      ]
+    }
+  },
+  {
+    &quot;id&quot;: &quot;R05&quot;,
+    &quot;description&quot;: &quot;Sparklines supported delete route and export preservation&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 135,
+    &quot;detail&quot;: {
+      &quot;count&quot;: 3
+    }
+  },
+  {
+    &quot;id&quot;: &quot;R06&quot;,
+    &quot;description&quot;: &quot;Image sources and config replacement without overwriting facade anchor&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 1149,
+    &quot;detail&quot;: {
+      &quot;count&quot;: 5,
+      &quot;fromImage&quot;: {
+        &quot;range&quot;: &quot;F1&quot;,
+        &quot;selectionRect&quot;: {
+          &quot;r1&quot;: 0,
+          &quot;c1&quot;: 5,
+          &quot;r2&quot;: 0,
+          &quot;c2&quot;: 5
+        },
+        &quot;imageId&quot;: &quot;e1efc9ba-80e5-45e0-9c31-b52a6e1732d5&quot;,
+        &quot;widthPx&quot;: 590,
+        &quot;heightPx&quot;: 220
+      },
+      &quot;types&quot;: [
+        &quot;image/svg+xml&quot;,
+        &quot;image/png&quot;,
+        &quot;image/png&quot;,
+        &quot;image/svg+xml&quot;,
+        &quot;image/png&quot;
+      ]
+    }
+  },
+  {
+    &quot;id&quot;: &quot;R07&quot;,
+    &quot;description&quot;: &quot;Chart configuration at creation, mutable facade settings and analytics&quot;,
+    &quot;status&quot;: &quot;fail&quot;,
+    &quot;ms&quot;: 3,
+    &quot;error&quot;: &quot;AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n\nundefined !== 200\n&quot;,
+    &quot;stack&quot;: [
+      &quot;AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:&quot;,
+      &quot;&quot;,
+      &quot;undefined !== 200&quot;,
+      &quot;&quot;,
+      &quot;    at eq (file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:12:24)&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;R08&quot;,
+    &quot;description&quot;: &quot;Chart dataLabels and dataTable config-first API&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 49,
+    &quot;detail&quot;: {
+      &quot;labels&quot;: true,
+      &quot;dataTable&quot;: false
+    }
+  },
+  {
+    &quot;id&quot;: &quot;R09&quot;,
+    &quot;description&quot;: &quot;Pivots and slicers, hierarchy operations and native export&quot;,
+    &quot;status&quot;: &quot;fail&quot;,
+    &quot;ms&quot;: 7,
+    &quot;error&quot;: &quot;Error: PivotTable SalesPivot not found&quot;,
+    &quot;stack&quot;: [
+      &quot;Error: PivotTable SalesPivot not found&quot;,
+      &quot;    at NY.getItem (file:///Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/dist/artifact_tool.mjs:3122:87660)&quot;,
+      &quot;    at zY.add (file:///Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/dist/artifact_tool.mjs:3122:101698)&quot;,
+      &quot;    at file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:479:31&quot;,
+      &quot;    at test (file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:17:169)&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;R10&quot;,
+    &quot;description&quot;: &quot;Notes operation route and low-level note persistence&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 26,
+    &quot;detail&quot;: {
+      &quot;exported&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;R11&quot;,
+    &quot;description&quot;: &quot;Undo/redo, recordAsync and awareness selections&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 3,
+    &quot;detail&quot;: {
+      &quot;result&quot;: 7,
+      &quot;patch&quot;: [
+        {
+          &quot;op&quot;: &quot;range.values.set&quot;,
+          &quot;target&quot;: {
+            &quot;sheet&quot;: &quot;Data&quot;,
+            &quot;range&quot;: &quot;A1&quot;
+          },
+          &quot;values&quot;: [
+            [
+              2
+            ]
+          ]
+        },
+        {
+          &quot;op&quot;: &quot;range.formulas.set&quot;,
+          &quot;target&quot;: {
+            &quot;sheet&quot;: &quot;Data&quot;,
+            &quot;range&quot;: &quot;B1&quot;
+          },
+          &quot;formulas&quot;: [
+            [
+              &quot;=A1*2&quot;
+            ]
+          ]
+        }
+      ],
+      &quot;before&quot;: {
+        &quot;canUndo&quot;: true,
+        &quot;canRedo&quot;: false,
+        &quot;value&quot;: 2
+      },
+      &quot;undone&quot;: {
+        &quot;canRedo&quot;: true,
+        &quot;value&quot;: 1
+      },
+      &quot;redone&quot;: 2,
+      &quot;selections&quot;: [
+        {
+          &quot;presenceId&quot;: &quot;synthetic-reviewer&quot;,
+          &quot;kind&quot;: &quot;collaborator&quot;,
+          &quot;sheetName&quot;: &quot;Data&quot;,
+          &quot;rect&quot;: {},
+          &quot;selectedElementIds&quot;: []
+        }
+      ]
+    }
+  }
+]</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

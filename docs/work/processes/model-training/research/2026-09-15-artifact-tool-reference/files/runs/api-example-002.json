@@ -1,0 +1,10 @@
+{
+  "index": 2,
+  "name": "chart data table",
+  "summary": "Data table with optional legend keys",
+  "originalCode": "chart.dataTable = { visible: true, showLegendKey: true, textStyle: { fontSize: 10 } };\nchart.dataTable = { visible: true, showLegendKey: false };",
+  "adaptations": [],
+  "execution": "completed",
+  "exportError": "TypeError: this[#C].toProto is not a function",
+  "logs": []
+}

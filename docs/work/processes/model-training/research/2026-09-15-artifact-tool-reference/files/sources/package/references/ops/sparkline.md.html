@@ -1,0 +1,61 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>sparkline ops · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="sparkline.md">Raw file</a> · <a data-public-raw download href="sparkline.md">Download</a></p><article><h1 id="sparkline-ops">sparkline ops</h1>
+<p>Ops in the <code>sparkline.*</code> namespace for <code>Workbook.apply</code>.</p>
+<h2 id="ops-index">Ops index</h2>
+<ul>
+<li><code>sparkline.add</code>: Create a sparkline group backed by source data.</li>
+</ul>
+<h2 id="sparklineadd"><code>sparkline.add</code></h2>
+<p>Create a sparkline group backed by source data.</p>
+<p><strong>Required fields</strong>
+- <code>op</code>
+- <code>props</code>
+- <code>props.sourceData</code>
+- <code>props.targetRange</code>
+- <code>props.type</code></p>
+<p><strong>Optional fields</strong>
+- <code>props.axis</code>
+- <code>props.axisColor</code>
+- <code>props.dateAxisRange</code>
+- <code>props.displayEmptyCellsAs</code>
+- <code>props.displayHidden</code>
+- <code>props.firstMarkerColor</code>
+- <code>props.highMarkerColor</code>
+- <code>props.lastMarkerColor</code>
+- <code>props.lineWeight</code>
+- <code>props.lowMarkerColor</code>
+- <code>props.markers</code>
+- <code>props.markersColor</code>
+- <code>props.negativeColor</code>
+- <code>props.seriesColor</code></p>
+<p><strong>Enums</strong>
+- <code>props.axis.maxMode</code>: See <a href="../enums.md">enums</a>.
+- <code>props.axis.minMode</code>: See <a href="../enums.md">enums</a>.
+- <code>props.displayEmptyCellsAs</code>: See <a href="../enums.md">enums</a>.
+- <code>props.seriesColor.value</code>: See <a href="../enums.md">enums</a>.
+- <code>props.type</code>: See <a href="../enums.md">enums</a>.</p>
+<p><strong>Examples</strong></p>
+<pre><code class="language-json">{
+  "op": "sparkline.add",
+  "props": {
+    "type": "line",
+    "targetRange": {
+      "sheet": "KPIs",
+      "range": "H2:H3"
+    },
+    "sourceData": {
+      "sheet": "KPIs",
+      "range": "B2:G3"
+    },
+    "dateAxisRange": {
+      "sheet": "KPIs",
+      "range": "B1:G1"
+    },
+    "seriesColor": "accent1",
+    "markers": {
+      "show": true,
+      "high": true,
+      "low": true
+    }
+  }
+}
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

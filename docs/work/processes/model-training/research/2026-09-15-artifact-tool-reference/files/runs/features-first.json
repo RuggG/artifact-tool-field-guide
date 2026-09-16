@@ -1,0 +1,661 @@
+[
+  {
+    "id": "F01",
+    "description": "All conditional-format rule families; serialize, render and clear",
+    "status": "pass",
+    "ms": 823,
+    "detail": [
+      {
+        "type": "cellIs",
+        "accepted": true
+      },
+      {
+        "type": "CellValue",
+        "accepted": true
+      },
+      {
+        "type": "Custom",
+        "accepted": true
+      },
+      {
+        "type": "expression",
+        "accepted": true
+      },
+      {
+        "type": "colorScale",
+        "accepted": true
+      },
+      {
+        "type": "dataBar",
+        "accepted": true
+      },
+      {
+        "type": "iconSet",
+        "accepted": true
+      },
+      {
+        "type": "containsText",
+        "accepted": true
+      },
+      {
+        "type": "notContainsText",
+        "accepted": true
+      },
+      {
+        "type": "beginsWith",
+        "accepted": true
+      },
+      {
+        "type": "endsWith",
+        "accepted": true
+      },
+      {
+        "type": "containsBlanks",
+        "accepted": true
+      },
+      {
+        "type": "notContainsBlanks",
+        "accepted": true
+      },
+      {
+        "type": "containsErrors",
+        "accepted": true
+      },
+      {
+        "type": "notContainsErrors",
+        "accepted": true
+      },
+      {
+        "type": "duplicateValues",
+        "accepted": true
+      },
+      {
+        "type": "uniqueValues",
+        "accepted": true
+      },
+      {
+        "type": "timePeriod",
+        "accepted": true
+      },
+      {
+        "type": "top10",
+        "accepted": true
+      },
+      {
+        "type": "aboveAverage",
+        "accepted": true
+      }
+    ]
+  },
+  {
+    "id": "F02",
+    "description": "All validation types, settings, collection and Office-style assignment",
+    "status": "pass",
+    "ms": 30,
+    "detail": {
+      "types": [
+        "none",
+        "whole",
+        "decimal",
+        "list",
+        "date",
+        "time",
+        "textLength",
+        "custom"
+      ],
+      "invalidProgrammaticWriteAccepted": true
+    }
+  },
+  {
+    "id": "F03",
+    "description": "All sparkline types, range alias, markers, axes and export",
+    "status": "fail",
+    "ms": 3,
+    "error": "TypeError: extra.delete is not a function",
+    "stack": [
+      "TypeError: extra.delete is not a function",
+      "    at file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:243:113",
+      "    at test (file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:16:86)",
+      "    at file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:239:7"
+    ]
+  },
+  {
+    "id": "F04",
+    "description": "Data table full-range convention and independent two-variable results",
+    "status": "pass",
+    "ms": 10,
+    "detail": {
+      "resultType": "undefined",
+      "actual": [
+        [
+          20,
+          30,
+          40
+        ],
+        [
+          30,
+          40,
+          50
+        ],
+        [
+          40,
+          50,
+          60
+        ]
+      ],
+      "formulas": [
+        [
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          ""
+        ]
+      ],
+      "display": [
+        [
+          "{=TABLE(B2,B3)}",
+          "{=TABLE(B2,B3)}",
+          "{=TABLE(B2,B3)}"
+        ],
+        [
+          "{=TABLE(B2,B3)}",
+          "{=TABLE(B2,B3)}",
+          "{=TABLE(B2,B3)}"
+        ],
+        [
+          "{=TABLE(B2,B3)}",
+          "{=TABLE(B2,B3)}",
+          "{=TABLE(B2,B3)}"
+        ]
+      ],
+      "infos": [
+        [
+          {
+            "kind": "projected",
+            "source": "dataTable",
+            "display": "{=TABLE(B2,B3)}",
+            "master": "Sensitivity!F5",
+            "ref": "Sensitivity!F5:H7",
+            "rowInput": "B2",
+            "columnInput": "B3",
+            "isEditable": false
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": "F05",
+    "description": "Data table older body-only and one-variable documentation",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "body": "Error: Data table range needs a top-left formula cell. \"F5\" is empty. Did you mean \"E4:H7\"?",
+      "one": [
+        [
+          20,
+          1,
+          2,
+          3
+        ],
+        [
+          null,
+          10,
+          20,
+          30
+        ]
+      ]
+    }
+  },
+  {
+    "id": "F06",
+    "description": "Drawing images by SVG, bytes, data URL, path; replace and delete",
+    "status": "fail",
+    "ms": 1,
+    "error": "TypeError: this.anchor.toProtoFields is not a function",
+    "stack": [
+      "TypeError: this.anchor.toProtoFields is not a function",
+      "    at n7.toDrawingProto (file:///Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/dist/artifact_tool.mjs:3122:186809)",
+      "    at file:///Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/dist/artifact_tool.mjs:3122:187930",
+      "    at Array.map (<anonymous>)",
+      "    at G0t.toProto (file:///Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/dist/artifact_tool.mjs:3122:187921)"
+    ]
+  },
+  {
+    "id": "F07",
+    "description": "Shapes, text, drawing layout directions and deleteAllDrawings",
+    "status": "pass",
+    "ms": 75,
+    "detail": [
+      {
+        "direction": "vertical",
+        "count": 4
+      },
+      {
+        "direction": "horizontal",
+        "count": 4
+      },
+      {
+        "direction": "grid",
+        "count": 4
+      }
+    ]
+  },
+  {
+    "id": "CH-line",
+    "description": "Chart type acceptance, export and render: line",
+    "status": "pass",
+    "ms": 76,
+    "detail": {
+      "type": "line",
+      "series": [
+        {
+          "name": "Series A",
+          "formula": "'Chart'!$B$2:$B$5",
+          "categoryFormula": "'Chart'!$A$2:$A$5"
+        },
+        {
+          "name": "Series B",
+          "formula": "'Chart'!$C$2:$C$5",
+          "categoryFormula": "'Chart'!$A$2:$A$5"
+        }
+      ],
+      "render": {
+        "bytes": 18130
+      }
+    }
+  },
+  {
+    "id": "CH-pie",
+    "description": "Chart type acceptance, export and render: pie",
+    "status": "pass",
+    "ms": 82,
+    "detail": {
+      "type": "pie",
+      "series": [
+        {
+          "name": "Series A",
+          "formula": "'Chart'!$B$2:$B$5",
+          "categoryFormula": "'Chart'!$A$2:$A$5"
+        },
+        {
+          "name": "Series B",
+          "formula": "'Chart'!$C$2:$C$5",
+          "categoryFormula": "'Chart'!$A$2:$A$5"
+        }
+      ],
+      "render": {
+        "bytes": 13648
+      }
+    }
+  },
+  {
+    "id": "CH-bar",
+    "description": "Chart type acceptance, export and render: bar",
+    "status": "pass",
+    "ms": 25,
+    "detail": {
+      "type": "bar",
+      "series": [
+        {
+          "name": "Series A",
+          "formula": "'Chart'!$B$2:$B$5",
+          "categoryFormula": "'Chart'!$A$2:$A$5"
+        },
+        {
+          "name": "Series B",
+          "formula": "'Chart'!$C$2:$C$5",
+          "categoryFormula": "'Chart'!$A$2:$A$5"
+        }
+      ],
+      "render": {
+        "bytes": 15863
+      }
+    }
+  },
+  {
+    "id": "CH-doughnut",
+    "description": "Chart type acceptance, export and render: doughnut",
+    "status": "pass",
+    "ms": 32,
+    "detail": {
+      "type": "doughnut",
+      "series": [
+        {
+          "name": "Series A",
+          "formula": "'Chart'!$B$2:$B$5",
+          "categoryFormula": "'Chart'!$A$2:$A$5"
+        },
+        {
+          "name": "Series B",
+          "formula": "'Chart'!$C$2:$C$5",
+          "categoryFormula": "'Chart'!$A$2:$A$5"
+        }
+      ],
+      "render": {
+        "bytes": 15545
+      }
+    }
+  },
+  {
+    "id": "CH-scatter",
+    "description": "Chart type acceptance, export and render: scatter",
+    "status": "pass",
+    "ms": 42,
+    "detail": {
+      "type": "scatter",
+      "series": [
+        {
+          "name": "Series A",
+          "formula": "'Chart'!$B$2:$B$5",
+          "categoryFormula": "'Chart'!$A$2:$A$5"
+        },
+        {
+          "name": "Series B",
+          "formula": "'Chart'!$C$2:$C$5",
+          "categoryFormula": "'Chart'!$A$2:$A$5"
+        }
+      ],
+      "render": {
+        "bytes": 14132
+      }
+    }
+  },
+  {
+    "id": "CH-bubble",
+    "description": "Chart type acceptance, export and render: bubble",
+    "status": "pass",
+    "ms": 51,
+    "detail": {
+      "type": "bubble",
+      "series": [
+        {
+          "name": "Series A",
+          "formula": "'Chart'!$B$2:$B$5",
+          "categoryFormula": "'Chart'!$A$2:$A$5"
+        },
+        {
+          "name": "Series B",
+          "formula": "'Chart'!$C$2:$C$5",
+          "categoryFormula": "'Chart'!$A$2:$A$5"
+        }
+      ],
+      "render": {
+        "bytes": 14471
+      }
+    }
+  },
+  {
+    "id": "CH-radar",
+    "description": "Chart type acceptance, export and render: radar",
+    "status": "pass",
+    "ms": 25,
+    "detail": {
+      "type": "radar",
+      "series": [
+        {
+          "name": "Series A",
+          "formula": "'Chart'!$B$2:$B$5",
+          "categoryFormula": "'Chart'!$A$2:$A$5"
+        },
+        {
+          "name": "Series B",
+          "formula": "'Chart'!$C$2:$C$5",
+          "categoryFormula": "'Chart'!$A$2:$A$5"
+        }
+      ],
+      "render": {
+        "bytes": 19975
+      }
+    }
+  },
+  {
+    "id": "CH-treemap",
+    "description": "Chart type acceptance, export and render: treemap",
+    "status": "pass",
+    "ms": 26,
+    "detail": {
+      "type": "treemap",
+      "series": [
+        {
+          "name": "Series A",
+          "formula": "'Chart'!$B$2:$B$5",
+          "categoryFormula": "'Chart'!$A$2:$A$5"
+        },
+        {
+          "name": "Series B",
+          "formula": "'Chart'!$C$2:$C$5",
+          "categoryFormula": "'Chart'!$A$2:$A$5"
+        }
+      ],
+      "render": {
+        "bytes": 15433
+      }
+    }
+  },
+  {
+    "id": "CH-sunburst",
+    "description": "Chart type acceptance, export and render: sunburst",
+    "status": "pass",
+    "ms": 23,
+    "detail": {
+      "type": "sunburst",
+      "series": [
+        {
+          "name": "Series A",
+          "formula": "'Chart'!$B$2:$B$5",
+          "categoryFormula": "'Chart'!$A$2:$A$5"
+        },
+        {
+          "name": "Series B",
+          "formula": "'Chart'!$C$2:$C$5",
+          "categoryFormula": "'Chart'!$A$2:$A$5"
+        }
+      ],
+      "render": {
+        "bytes": 18345
+      }
+    }
+  },
+  {
+    "id": "CH-map",
+    "description": "Chart type acceptance, export and render: map",
+    "status": "pass",
+    "ms": 48,
+    "detail": {
+      "type": "map",
+      "series": [
+        {
+          "name": "Series A",
+          "formula": "'Chart'!$B$2:$B$5",
+          "categoryFormula": "'Chart'!$A$2:$A$5"
+        },
+        {
+          "name": "Series B",
+          "formula": "'Chart'!$C$2:$C$5",
+          "categoryFormula": "'Chart'!$A$2:$A$5"
+        }
+      ],
+      "render": {
+        "bytes": 9867
+      }
+    }
+  },
+  {
+    "id": "CH-waterfall",
+    "description": "Chart type acceptance, export and render: waterfall",
+    "status": "pass",
+    "ms": 27,
+    "detail": {
+      "type": "waterfall",
+      "series": [
+        {
+          "name": "Series A",
+          "formula": "'Chart'!$B$2:$B$5",
+          "categoryFormula": "'Chart'!$A$2:$A$5"
+        },
+        {
+          "name": "Series B",
+          "formula": "'Chart'!$C$2:$C$5",
+          "categoryFormula": "'Chart'!$A$2:$A$5"
+        }
+      ],
+      "render": {
+        "bytes": 17399
+      }
+    }
+  },
+  {
+    "id": "CH-line3D",
+    "description": "Chart type acceptance, export and render: line3D",
+    "status": "pass",
+    "ms": 24,
+    "detail": {
+      "type": "line3D",
+      "series": [
+        {
+          "name": "Series A",
+          "formula": "'Chart'!$B$2:$B$5",
+          "categoryFormula": "'Chart'!$A$2:$A$5"
+        },
+        {
+          "name": "Series B",
+          "formula": "'Chart'!$C$2:$C$5",
+          "categoryFormula": "'Chart'!$A$2:$A$5"
+        }
+      ],
+      "render": {
+        "bytes": 19044
+      }
+    }
+  },
+  {
+    "id": "CH-pie3D",
+    "description": "Chart type acceptance, export and render: pie3D",
+    "status": "pass",
+    "ms": 25,
+    "detail": {
+      "type": "pie3D",
+      "series": [
+        {
+          "name": "Series A",
+          "formula": "'Chart'!$B$2:$B$5",
+          "categoryFormula": "'Chart'!$A$2:$A$5"
+        },
+        {
+          "name": "Series B",
+          "formula": "'Chart'!$C$2:$C$5",
+          "categoryFormula": "'Chart'!$A$2:$A$5"
+        }
+      ],
+      "render": {
+        "bytes": 14232
+      }
+    }
+  },
+  {
+    "id": "CH-area3D",
+    "description": "Chart type acceptance, export and render: area3D",
+    "status": "pass",
+    "ms": 42,
+    "detail": {
+      "type": "area3D",
+      "series": [
+        {
+          "name": "Series A",
+          "formula": "'Chart'!$B$2:$B$5",
+          "categoryFormula": "'Chart'!$A$2:$A$5"
+        },
+        {
+          "name": "Series B",
+          "formula": "'Chart'!$C$2:$C$5",
+          "categoryFormula": "'Chart'!$A$2:$A$5"
+        }
+      ],
+      "render": {
+        "bytes": 15870
+      }
+    }
+  },
+  {
+    "id": "CH-bar3D",
+    "description": "Chart type acceptance, export and render: bar3D",
+    "status": "pass",
+    "ms": 23,
+    "detail": {
+      "type": "bar3D",
+      "series": [
+        {
+          "name": "Series A",
+          "formula": "'Chart'!$B$2:$B$5",
+          "categoryFormula": "'Chart'!$A$2:$A$5"
+        },
+        {
+          "name": "Series B",
+          "formula": "'Chart'!$C$2:$C$5",
+          "categoryFormula": "'Chart'!$A$2:$A$5"
+        }
+      ],
+      "render": {
+        "bytes": 10414
+      }
+    }
+  },
+  {
+    "id": "CH-funnel",
+    "description": "Chart type acceptance, export and render: funnel",
+    "status": "pass",
+    "ms": 18,
+    "detail": {
+      "type": "funnel",
+      "series": [
+        {
+          "name": "Series A",
+          "formula": "'Chart'!$B$2:$B$5",
+          "categoryFormula": "'Chart'!$A$2:$A$5"
+        },
+        {
+          "name": "Series B",
+          "formula": "'Chart'!$C$2:$C$5",
+          "categoryFormula": "'Chart'!$A$2:$A$5"
+        }
+      ],
+      "render": {
+        "bytes": 12560
+      }
+    }
+  },
+  {
+    "id": "CH-histogram",
+    "description": "Chart type acceptance, export and render: histogram",
+    "status": "pass",
+    "ms": 23,
+    "detail": {
+      "type": "histogram",
+      "series": [
+        {
+          "name": "Series A",
+          "formula": "'Chart'!$B$2:$B$5",
+          "categoryFormula": "'Chart'!$A$2:$A$5"
+        },
+        {
+          "name": "Series B",
+          "formula": "'Chart'!$C$2:$C$5",
+          "categoryFormula": "'Chart'!$A$2:$A$5"
+        }
+      ],
+      "render": {
+        "bytes": 12812
+      }
+    }
+  }
+]

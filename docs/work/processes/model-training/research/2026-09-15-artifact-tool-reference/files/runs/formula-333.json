@@ -1,0 +1,37 @@
+{
+  "name": "fx.ACOTH",
+  "category": "math-trig",
+  "examples": [
+    {
+      "formula": "=ACOTH(10)",
+      "value": 0.10033534773107562,
+      "projection": [
+        [
+          0.10033534773107562,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 10
+    }
+  ]
+}

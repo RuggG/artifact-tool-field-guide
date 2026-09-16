@@ -1,0 +1,37 @@
+{
+  "name": "fx.REGEXTEST",
+  "category": "text",
+  "examples": [
+    {
+      "formula": "=REGEXTEST(\"text\", A1, A1)",
+      "value": false,
+      "projection": [
+        [
+          false,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 9
+    }
+  ]
+}

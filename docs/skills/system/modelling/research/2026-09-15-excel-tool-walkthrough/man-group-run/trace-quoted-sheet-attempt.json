@@ -1,0 +1,6 @@
+{
+  "id": "trace",
+  "input": "return await wb.trace(\"'Fee engine'!R27\");",
+  "elapsedMs": 0,
+  "result": null
+}

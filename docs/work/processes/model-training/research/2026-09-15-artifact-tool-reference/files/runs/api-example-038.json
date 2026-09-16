@@ -1,0 +1,10 @@
+{
+  "index": 38,
+  "name": "range.conditionalFormats",
+  "summary": "Add an icon set for quick up/flat/down signals",
+  "originalCode": "const range = sheet.getRange('D2:D10');\nrange.conditionalFormats.add('iconSet', {\n  iconSet: '3Arrows',\n  showValue: false,\n  reverse: false,\n  percent: true,\n});",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

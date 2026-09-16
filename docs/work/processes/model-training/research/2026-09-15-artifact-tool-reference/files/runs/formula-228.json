@@ -1,0 +1,37 @@
+{
+  "name": "fx.REDUCE",
+  "category": "logical",
+  "examples": [
+    {
+      "formula": "=REDUCE(A1, {1,2;3,4}, A1)",
+      "value": "REDUCE is not implemented. initialValue=1, array=1,2,3,4, functionParam=1",
+      "projection": [
+        [
+          "REDUCE is not implemented. initialValue=1, array=1,2,3,4, functionParam=1",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 15
+    }
+  ]
+}

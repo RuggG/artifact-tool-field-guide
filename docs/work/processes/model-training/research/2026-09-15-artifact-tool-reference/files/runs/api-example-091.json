@@ -1,0 +1,10 @@
+{
+  "index": 91,
+  "name": "range.format.autofitRows",
+  "summary": "Autofit rows for the range",
+  "originalCode": "sheet.getRange('A1:D20').format.autofitRows();",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

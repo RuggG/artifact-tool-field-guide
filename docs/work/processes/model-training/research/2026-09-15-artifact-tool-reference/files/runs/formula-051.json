@@ -1,0 +1,37 @@
+{
+  "name": "fx.DAVERAGE",
+  "category": "database",
+  "examples": [
+    {
+      "formula": "=DAVERAGE(A1:C10, \"Sales\", E1:F2)",
+      "value": "Cannot read properties of undefined (reading '0')",
+      "projection": [
+        [
+          "Cannot read properties of undefined (reading '0')",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 9
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "id": "new-formula",
+  "operation": "small.getRange(\"B2:C5\").values = [[\"Average AUM, USD bn\",100],[\"Annual fee margin, bp\",50],[\"Quarter fraction\",0.25],[\"Fees, USD m\",null]];\nsmall.getRange(\"C5\").formulas = [[\"=C2*1000*C3/10000*C4\"]];",
+  "checkInput": {
+    "before": "",
+    "after": "return {cells:grid(small,\"B2:C5\"),independentExpected:100*1000*50/10000*0.25};"
+  },
+  "startedAt": "2026-09-15T16:53:20.945Z",
+  "libraryReturn": {
+    "javascriptType": "undefined"
+  },
+  "elapsedMs": 3,
+  "after": {
+    "cells": {
+      "address": "B2:C5",
+      "values": [
+        [
+          "Average AUM, USD bn",
+          100
+        ],
+        [
+          "Annual fee margin, bp",
+          50
+        ],
+        [
+          "Quarter fraction",
+          0.25
+        ],
+        [
+          "Fees, USD m",
+          125
+        ]
+      ],
+      "formulas": [
+        [
+          "",
+          ""
+        ],
+        [
+          "",
+          ""
+        ],
+        [
+          "",
+          ""
+        ],
+        [
+          "",
+          "=C2*1000*C3/10000*C4"
+        ]
+      ]
+    },
+    "independentExpected": 125
+  }
+}

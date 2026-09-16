@@ -1,0 +1,10 @@
+{
+  "index": 36,
+  "name": "range.conditionalFormats",
+  "summary": "Add a cell value rule",
+  "originalCode": "const range = sheet.getRange('B2:B6');\nrange.conditionalFormats.addCellIs({\n  operator: 'lessThan',\n  formula: 0,\n  format: { fill: '#F8CBAD' },\n});",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

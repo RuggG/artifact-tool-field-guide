@@ -1,0 +1,90 @@
+[
+  {
+    "id": "F01",
+    "description": "All conditional-format rule families; serialize, render and clear",
+    "status": "pass",
+    "ms": 480,
+    "detail": [
+      {
+        "type": "cellIs",
+        "accepted": true
+      },
+      {
+        "type": "CellValue",
+        "accepted": true
+      },
+      {
+        "type": "Custom",
+        "accepted": true
+      },
+      {
+        "type": "expression",
+        "accepted": true
+      },
+      {
+        "type": "colorScale",
+        "accepted": true
+      },
+      {
+        "type": "dataBar",
+        "accepted": true
+      },
+      {
+        "type": "iconSet",
+        "accepted": true
+      },
+      {
+        "type": "containsText",
+        "accepted": true
+      },
+      {
+        "type": "notContainsText",
+        "accepted": true
+      },
+      {
+        "type": "beginsWith",
+        "accepted": true
+      },
+      {
+        "type": "endsWith",
+        "accepted": true
+      },
+      {
+        "type": "containsBlanks",
+        "accepted": true
+      },
+      {
+        "type": "notContainsBlanks",
+        "accepted": true
+      },
+      {
+        "type": "containsErrors",
+        "accepted": true
+      },
+      {
+        "type": "notContainsErrors",
+        "accepted": true
+      },
+      {
+        "type": "duplicateValues",
+        "accepted": true
+      },
+      {
+        "type": "uniqueValues",
+        "accepted": true
+      },
+      {
+        "type": "timePeriod",
+        "accepted": true
+      },
+      {
+        "type": "top10",
+        "accepted": true
+      },
+      {
+        "type": "aboveAverage",
+        "accepted": true
+      }
+    ]
+  }
+]

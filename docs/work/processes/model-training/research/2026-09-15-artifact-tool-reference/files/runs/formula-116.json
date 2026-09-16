@@ -1,0 +1,37 @@
+{
+  "name": "fx.GESTEP",
+  "category": "engineering",
+  "examples": [
+    {
+      "formula": "=GESTEP(10, A1)",
+      "value": 1,
+      "projection": [
+        [
+          1,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 8
+    }
+  ]
+}

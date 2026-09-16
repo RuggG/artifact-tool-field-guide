@@ -1,0 +1,37 @@
+{
+  "name": "fx.MULTINOMIAL",
+  "category": "math-trig",
+  "examples": [
+    {
+      "formula": "=MULTINOMIAL(10, C1:C5, 20, C1:C5)",
+      "value": 7.858496926878887e+113,
+      "projection": [
+        [
+          7.858496926878887e+113,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 9
+    }
+  ]
+}

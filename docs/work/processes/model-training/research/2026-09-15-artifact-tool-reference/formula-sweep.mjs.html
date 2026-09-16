@@ -1,0 +1,24 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>formula-sweep.mjs · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="formula-sweep.mjs">Raw file</a> · <a data-public-raw download href="formula-sweep.mjs">Download</a></p><article><h1>formula-sweep.mjs</h1><pre class="public-code"><code>import fs from &#x27;node:fs/promises&#x27;;
+import path from &#x27;node:path&#x27;;
+import {spawn} from &#x27;node:child_process&#x27;;
+import {fileURLToPath} from &#x27;node:url&#x27;;
+const root=path.dirname(fileURLToPath(import.meta.url)),out=path.join(root,&#x27;files/runs&#x27;);
+const entries=(await fs.readFile(path.join(out,&#x27;formula-help.ndjson&#x27;),&#x27;utf8&#x27;)).trim().split(&#x27;\n&#x27;).map(JSON.parse);
+const jobs=entries.map((entry,index)=&gt;({entry,index})),results=[];
+async function worker(){for(;;){const job=jobs.shift();if(!job)return;const start=Date.now();
+const result=await new Promise(resolve=&gt;{
+const child=spawn(process.execPath,[path.join(root,&#x27;explore.mjs&#x27;),&#x27;formula-worker&#x27;,String(job.index)],{stdio:[&#x27;ignore&#x27;,&#x27;ignore&#x27;,&#x27;pipe&#x27;]});
+let stderr=&#x27;&#x27;,timedOut=false;child.stderr.on(&#x27;data&#x27;,chunk=&gt;{if(stderr.length&lt;2000)stderr+=chunk.toString().slice(0,2000-stderr.length);});
+const timer=setTimeout(()=&gt;{timedOut=true;child.kill(&#x27;SIGKILL&#x27;);},15000);
+child.on(&#x27;error&#x27;,error=&gt;{clearTimeout(timer);resolve({error:String(error)});});
+child.on(&#x27;close&#x27;,(code,signal)=&gt;{clearTimeout(timer);resolve({code,signal,timedOut,stderr});});
+});
+results.push({name:job.entry.name,index:job.index,ms:Date.now()-start,...result});
+await fs.writeFile(path.join(out,&#x27;formula-sweep.json&#x27;),JSON.stringify(results,null,2));
+if(results.length%25===0)console.log(&#x27;Formula entries completed:&#x27;,results.length,&#x27;/&#x27;,entries.length);
+}}
+await Promise.all(Array.from({length:4},()=&gt;worker()));
+const all=[];for(let i=0;i&lt;entries.length;i++){try{all.push(JSON.parse(await fs.readFile(path.join(out,&#x27;formula-&#x27;+String(i).padStart(3,&#x27;0&#x27;)+&#x27;.json&#x27;),&#x27;utf8&#x27;)));}catch{all.push({name:entries[i].name,category:entries[i].category,worker:results.find(x=&gt;x.index===i)});}}
+await fs.writeFile(path.join(out,&#x27;formula-results.json&#x27;),JSON.stringify(all,null,2));
+console.log(&#x27;Completed&#x27;,all.length,&#x27;formula entries.&#x27;);
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

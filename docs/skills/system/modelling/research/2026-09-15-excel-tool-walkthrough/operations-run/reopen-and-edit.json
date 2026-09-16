@@ -1,0 +1,31 @@
+{
+  "id": "reopen-and-edit",
+  "operation": "reopenBook = await SpreadsheetFile.importXlsx(await FileBlob.load(out));\nreopenSheet = reopenBook.worksheets.getItem(\"Fee lab\");\nreopenSheet.getRange(\"C4\").values = [[55]];",
+  "checkInput": {
+    "before": "",
+    "after": "return {quarterOne:cell(reopenSheet,\"F9\"),total:cell(reopenSheet,\"C15\"),independentExpectedQuarterOne:reopenSheet.getRange(\"C9\").values[0][0]*1000*55/10000*0.25,savedFileStillHasMargin:cell((await SpreadsheetFile.importXlsx(await FileBlob.load(out))).worksheets.getItem(\"Fee lab\"),\"C4\")};"
+  },
+  "startedAt": "2026-09-15T16:55:21.678Z",
+  "libraryReturn": {
+    "javascriptType": "undefined"
+  },
+  "elapsedMs": 369,
+  "after": {
+    "quarterOne": {
+      "address": "F9",
+      "value": 399.45356938289785,
+      "formula": "=IF(ISBLANK($C$4),NA(),C9*1000*D9/10000*E9)"
+    },
+    "total": {
+      "address": "C15",
+      "value": 1646.3910271971065,
+      "formula": "=SUM(F9:F12)"
+    },
+    "independentExpectedQuarterOne": 399.45356938289785,
+    "savedFileStillHasMargin": {
+      "address": "C4",
+      "value": 60,
+      "formula": ""
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "name": "fx.PIVOTBY",
+  "category": "lookup-reference",
+  "examples": [
+    {
+      "formula": "=PIVOTBY(A1, A1, A1:A5, A1)",
+      "value": "PIVOTBY is not implemented. rowFields=1, colFields=1, values=1,2,3,4,5, functionParam=1, fieldHeaders=undefined, rowTotalDepth=undefined, rowSortOrder=undefined, colTotalDepth=undefined, colSortOrder=undefined, filterArray=undefined, relativeTo=undefined",
+      "projection": [
+        [
+          "PIVOTBY is not implemented. rowFields=1, colFields=1, values=1,2,3,4,5, functionParam=1, fieldHeaders=undefined, rowTotalDepth=undefined, rowSortOrder=undefined, colTotalDepth=undefined, colSortOrder=undefined, filterArray=undefined, relativeTo=undefined",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 11
+    }
+  ]
+}

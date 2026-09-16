@@ -1,0 +1,27 @@
+{
+  "id": "new-recalculation",
+  "operation": "small.getRange(\"C3\").values = [[60]];",
+  "checkInput": {
+    "before": "return cell(small,\"C5\");",
+    "after": "return {fees:cell(small,\"C5\"),independentExpected:100*1000*60/10000*0.25,explicitRecalculateCalled:false};"
+  },
+  "startedAt": "2026-09-15T16:55:17.759Z",
+  "before": {
+    "address": "C5",
+    "value": 125,
+    "formula": "=C2*1000*C3/10000*C4"
+  },
+  "libraryReturn": {
+    "javascriptType": "undefined"
+  },
+  "elapsedMs": 0,
+  "after": {
+    "fees": {
+      "address": "C5",
+      "value": 150,
+      "formula": "=C2*1000*C3/10000*C4"
+    },
+    "independentExpected": 150,
+    "explicitRecalculateCalled": false
+  }
+}

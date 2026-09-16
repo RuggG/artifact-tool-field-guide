@@ -1,0 +1,37 @@
+{
+  "name": "fx.REPLACE",
+  "category": "text",
+  "examples": [
+    {
+      "formula": "=REPLACE(\"text\", A1, A1, \"text\")",
+      "value": "textext",
+      "projection": [
+        [
+          "textext",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 13
+    }
+  ]
+}

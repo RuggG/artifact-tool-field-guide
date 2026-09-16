@@ -1,0 +1,4 @@
+{"kind":"workbook","id":"wb/p52nan","sheets":1,"tables":1}
+{"kind":"sheet","id":"ws/hf7ysc","name":"Data","index":0,"range":"A1:A1","address":"A1:A1","tables":1}
+{"kind":"table","sheet":"Data","address":"A1:A1","rows":1,"cols":1,"values":[[1]]}
+{"kind":"computedStyle","sheet":"Data","for":"A1","style":{"fill":{"type":3,"gradientStops":[],"pattern":{"patternType":1},"pictureEffects":[]},"font":{"fontSize":11,"typeface":"Carlito"},"border":{},"wrapText":false,"horizontalAlignment":"general","styleId":0}}

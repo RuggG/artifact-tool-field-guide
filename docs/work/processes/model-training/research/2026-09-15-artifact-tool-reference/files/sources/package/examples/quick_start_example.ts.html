@@ -1,0 +1,147 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>quick_start_example.ts · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="quick_start_example.ts">Raw file</a> · <a data-public-raw download href="quick_start_example.ts">Download</a></p><article><h1>quick_start_example.ts</h1><pre class="public-code"><code>import fs from &quot;node:fs/promises&quot;;
+
+import { SpreadsheetFile, Workbook } from &quot;@oai/artifact-tool&quot;;
+
+/**
+ * Quick Start Examples
+ * This runnable TypeScript example mirrors:
+ * lib/agent/tools/artifact_tool_v2/skills/python/spreadsheets/examples/quick_start_example.py
+ */
+async function quickApiExample(): Promise&lt;void&gt; {
+  // Creating a workbook and adding sheets with data and basic formatting
+  const workbook = Workbook.create();
+  var sheet = workbook.worksheets.add(&quot;ExampleSheet&quot;);
+
+  sheet = workbook.worksheets.getItem(&quot;ExampleSheet&quot;);
+  sheet.getRange(&quot;A1:D4&quot;).values = [
+    [&quot;Name&quot;, &quot;Personality Type&quot;, &quot;Age&quot;, &quot;Birthday&quot;],
+    [&quot;John Doe&quot;, &quot;Introvert&quot;, 30, new Date(&quot;1990-01-01T00:00:00Z&quot;)],
+    [&quot;Jane Smith&quot;, &quot;Extrovert&quot;, 25, new Date(&quot;1995-02-15T00:00:00Z&quot;)],
+    [&quot;Jim Very Long Name&quot;, &quot;Ambivert&quot;, 40, new Date(&quot;1980-03-20T00:00:00Z&quot;)],
+  ];
+  sheet.getRange(&quot;E1&quot;).values = [[&quot;Score&quot;]];
+  sheet.getRange(&quot;E2&quot;).formulas = [[&quot;=C2*10&quot;]]; // score is 10 * age
+  sheet.getRange(&quot;E2:E4&quot;).fillDown();
+  const headerRange = sheet.getRange(&quot;A1:E1&quot;);
+
+  // Styling
+  const headerFormats = {
+    fill: &quot;#0F766E&quot;,
+    font: { bold: true, color: &quot;#FFFFFF&quot; },
+    horizontalAlignment: &quot;center&quot;,
+    verticalAlignment: &quot;center&quot;,
+    rowHeight: 16,
+  };
+  headerRange.format = headerFormats;
+  headerRange.format.autofitColumns();
+
+  const dataRange = sheet.getRange(&quot;A2:D4&quot;);
+  dataRange.format.wrapText = true;
+  sheet.showGridLines = false;
+
+  // Format dates properly.
+  sheet.getRange(&quot;D2:D4&quot;).format.numberFormat = &quot;MM/DD/YYYY&quot;;
+
+  // Conditional formatting
+  sheet.getRange(&quot;C2:C4&quot;).conditionalFormats.add(&quot;dataBar&quot;, {
+    color: &quot;#704023&quot;,
+    gradient: true,
+  });
+  sheet.getRange(&quot;E2:E4&quot;).conditionalFormats.add(&quot;cellIs&quot;, {
+    operator: &quot;greaterThan&quot;,
+    formula: 300,
+    format: { font: { color: &quot;#B91C1C&quot; } },
+  });
+  sheet.conditionalFormattings.add({
+    range: &quot;B2:B4&quot;,
+    rule: {
+      type: &quot;expression&quot;,
+      formula: &#x27;=B2=&quot;Introvert&quot;&#x27;,
+      format: { fill: &quot;#FCA5A5&quot; },
+    },
+  });
+
+  // Data validation: Since Personality Type is a dropdown category, add data validation.
+  sheet.getRange(&quot;B2:B4&quot;).dataValidation = {
+    rule: {
+      type: &quot;list&quot;,
+      values: [&quot;Introvert&quot;, &quot;Extrovert&quot;, &quot;Ambivert&quot;],
+      // formula1: &quot;CategoriesSheet!$A$2:$A$4&quot;, // Alternative: reference a tunable list
+    },
+  };
+
+  // Tables: Turn it into a table (for example purposes! Make sure table names are unique)
+  // NOTE: If hasHeaders=true, the range must include the header row.
+  const table = sheet.tables.add(&quot;A1:E4&quot;, true, &quot;PeopleTable&quot;);
+  table.getHeaderRowRange();
+
+  // First column is still wide since we only auto-fit the first row. Expand it manually.
+  sheet.getRange(&quot;A1:A4&quot;).format.columnWidth = 20;
+
+  // Create a compact chart helper range that references the source table.
+  sheet.getRange(&quot;H1:I1&quot;).merge();
+  sheet.getRange(&quot;H1&quot;).values = [[&quot;Charts&quot;]];
+  sheet.getRange(&quot;H1&quot;).format = headerFormats;
+  sheet.getRange(&quot;H3:I3&quot;).values = [[&quot;Person&quot;, &quot;Score&quot;]];
+  sheet.getRange(&quot;H4:I4&quot;).formulas = [[&quot;=A2&quot;, &quot;=E2&quot;]];
+  sheet.getRange(&quot;H4:I6&quot;).fillDown();
+  const chart = sheet.charts.add(&quot;bar&quot;, sheet.getRange(&quot;H3:I6&quot;));
+  chart.title = &quot;Person by Scores&quot;;
+  chart.hasLegend = true;
+  chart.displayBlanksAs = &quot;zero&quot;;
+  chart.barOptions.direction = &quot;column&quot;;
+  chart.barOptions.grouping = &quot;clustered&quot;;
+  chart.setPosition(&quot;K2&quot;, &quot;R16&quot;);
+
+  // Granular control over chart axes
+  chart.xAxis = {
+    axisType: &quot;textAxis&quot;,
+    title: { text: &quot;Person&quot;, textStyle: { fontSize: 13, bold: true } },
+    position: &quot;bottom&quot;,
+    orientation: &quot;minMax&quot;,
+    textStyle: { fontSize: 10 },
+  };
+  chart.yAxis = {
+    axisType: &quot;textAxis&quot;,
+    title: { text: &quot;Scores&quot;, textStyle: { fontSize: 13, bold: true } },
+    numberFormatCode: &quot;0,000&quot;,
+    numberFormatSourceLinked: false,
+  };
+
+  // Sparklines: add to the right of table
+  const sparklinesHeader = sheet.getRange(&quot;F1&quot;);
+  sparklinesHeader.values = [[&quot;Sparklines&quot;]];
+  sparklinesHeader.format = headerFormats;
+  sparklinesHeader.format.autofitColumns();
+
+  sheet.sparklines.add({
+    type: &quot;column&quot;, // &quot;line&quot; | &quot;column&quot; | &quot;stacked&quot;
+    sourceData: sheet.getRange(&quot;E2:E4&quot;),
+    targetRange: sheet.getRange(&quot;F2:F4&quot;),
+    seriesColor: &quot;#AAAAAA&quot;,
+  });
+
+  // Render
+  await fs.mkdir(&quot;output&quot;, { recursive: true });
+  const pngBlob = await workbook.render({
+    sheetName: &quot;ExampleSheet&quot;,
+    autoCrop: &quot;all&quot;,
+    scale: 1,
+    format: &quot;png&quot;,
+  });
+  const pngBytes = new Uint8Array(await pngBlob.arrayBuffer());
+  await fs.writeFile(&quot;output/example_sheet.png&quot;, pngBytes);
+  console.log(&quot;Rendered first sheet to &#x27;output/example_sheet.png&#x27;&quot;);
+
+  // Export
+  const out = &quot;output/example_sheet.xlsx&quot;;
+  const xlsx = await SpreadsheetFile.exportXlsx(workbook);
+  await xlsx.save(out);
+  console.log(`Spreadsheet saved to ${out}`);
+}
+
+quickApiExample().catch((error: unknown) =&gt; {
+  console.error(error);
+  process.exit(1);
+});
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

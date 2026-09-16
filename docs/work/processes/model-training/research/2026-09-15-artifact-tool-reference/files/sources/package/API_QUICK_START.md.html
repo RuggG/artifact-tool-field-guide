@@ -1,0 +1,494 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Using artifact_tool APIs (JavaScript) · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="API_QUICK_START.md">Raw file</a> · <a data-public-raw download href="API_QUICK_START.md">Download</a></p><article><h1 id="using-artifact_tool-apis-javascript">Using artifact_tool APIs (JavaScript)</h1>
+<p>Library version: 2.8.58+</p>
+<h2 id="required-imports-startup">Required Imports + Startup</h2>
+<p>Import existing workbook only when needed:</p>
+<pre><code class="language-js">import { FileBlob, SpreadsheetFile } from "@oai/artifact-tool";
+
+const input = await FileBlob.load("path/to/input.xlsx");
+const workbook = await SpreadsheetFile.importXlsx(input);
+</code></pre>
+<p>Import CSV text directly when the source or intermediate data is CSV:</p>
+<pre><code class="language-js">import fs from "node:fs/promises";
+import { Workbook } from "@oai/artifact-tool";
+
+const csvText = await fs.readFile("path/to/input.csv", "utf8");
+const workbook = await Workbook.fromCSV(csvText, { sheetName: "Sheet1" });
+</code></pre>
+<p>Prefer <code>Workbook.fromCSV(...)</code> over hand-parsing CSV rows; clean or analyze CSV with Python/Node first only when needed.
+CSV fields import as strings. Convert intended numeric/date columns before calculations; number formatting alone does not convert text to numbers.</p>
+<p>Create new workbook:</p>
+<pre><code class="language-js">import fs from "node:fs/promises";
+import { SpreadsheetFile, Workbook } from "@oai/artifact-tool";
+
+const workbook = Workbook.create();
+const sheet = workbook.worksheets.add("Inputs");
+</code></pre>
+<p>Final export:</p>
+<pre><code class="language-js">await fs.mkdir(outputDir, { recursive: true });
+const output = await SpreadsheetFile.exportXlsx(workbook);
+await output.save(`${outputDir}/output.xlsx`);
+</code></pre>
+<h2 id="build-patterns">Build Patterns</h2>
+<ul>
+<li>Prefer block writes (<code>range.values</code>, <code>range.formulas</code>) over per-cell loops. Normally match the matrix shape to the target range (e.g. "D4:M4" → 1×10). To intentionally expand a larger matrix from an anchor, target a single cell or use <code>range.write(matrix)</code>.</li>
+<li><code>range.values = [[value]]</code> repeats that value across the range; range.formulas does not broadcast a single formula. For merged ranges, write to the top-left cell or <code>mergedRange.values = [[value]]</code> where <code>mergedRange</code> is a single merged range.</li>
+<li>Seed scalar formulas once, then <code>fillDown()</code> / <code>fillRight()</code>. For dynamic-array formulas (<code>SEQUENCE</code>, <code>UNIQUE</code>, <code>FILTER</code>, <code>SORT</code>, <code>VSTACK</code>, <code>HSTACK</code>), write only the anchor cell and let the result spill after.</li>
+<li>Use <code>range.displayFormulas</code> plus <code>range.formulaInfos</code> when you need to understand a spill child or a data-table output cell.</li>
+<li>Formulas calculate automatically.</li>
+<li>Prefer real <code>Date</code> objects for sortable/charted/formula date columns.</li>
+<li>Number and date formats must be applied explicitly (for example <code>yyyy-mm-dd</code>).</li>
+<li>Use JSON-serializable values for non-Date cells: <code>string | number | boolean | null</code>.</li>
+<li>If a cell is intended to display literal text that begins with <code>=</code>, write it as a value prefixed with a single quote (for example <code>'=B2*C2</code>). This includes formula descriptions, validation examples, and labels; do not write these cells through <code>range.formulas</code>.</li>
+<li>Create every worksheet referenced by formulas before writing any cross-sheet formulas.</li>
+<li>Verify with <code>await workbook.inspect(...)</code>; use <code>workbook.help(...)</code> only when the quick surface below is insufficient.</li>
+</ul>
+<h2 id="conventions">Conventions</h2>
+<ul>
+<li>Use camelCase API names and option keys.</li>
+<li>Cell/range addressing: A1 notation (<code>sheet.getRange("A1:C10")</code>).</li>
+<li>Drawing anchors (<code>sheet.charts</code>, <code>sheet.shapes</code>, <code>sheet.images</code>): 0-based <code>{ row, col }</code>.</li>
+<li>Drawing offsets/extents use pixels (<code>rowOffsetPx</code>, <code>colOffsetPx</code>, <code>widthPx</code>, <code>heightPx</code>).</li>
+</ul>
+<h2 id="api-discovery-policy-strict">API Discovery Policy (Strict)</h2>
+<ul>
+<li>Use this quick API surface first.</li>
+<li>Use <code>workbook.help(...)</code> only when the supplied public documentation leaves a required operation unclear. Start with one bounded exact feature/path lookup, such as <code>range.dataValidation</code> or <code>chart.series.add</code>.</li>
+<li>If that lookup returns no useful match, one bounded reformulation is allowed. Stop after those two attempts; do not repeat similar queries, inspect package internals/prototypes/nearby tests, or invent enum values and setters. Use a documented equivalent that preserves the task.</li>
+<li>The examples below are alternatives for the relevant operation, not a discovery checklist to execute in full.</li>
+<li><code>render</code> can be used to examine an existing workbook visually and for visual verifications.</li>
+</ul>
+<h2 id="supported-formulas">Supported Formulas</h2>
+<ul>
+<li>Look up formula syntax with <code>fx.&lt;formula&gt;</code>, e.g. <code>workbook.help("fx.PMT", { include: "index,examples,notes", maxChars: 3000 })</code>. A help entry does not guarantee working calculation or Excel export.</li>
+<li>To browse a family of formulas, use <code>fx.*</code> with a category regex. Useful categories: <code>financial</code>, <code>math-trig</code>, <code>statistical</code>, <code>lookup-reference</code>, <code>logical</code>, <code>text</code>, <code>date-time</code>, <code>information</code>, <code>engineering</code>, <code>database</code>.</li>
+<li>For intent-based lookup, use a short natural query plus a narrow <code>search</code> regex of likely functions.</li>
+<li>Keep <code>maxChars</code> bounded; if results are noisy, narrow <code>search</code> rather than issuing many similar queries.</li>
+</ul>
+<p>Useful <code>help</code> calls:</p>
+<pre><code class="language-js">console.log(workbook.help("shape.add", { include: "examples,notes" }).ndjson);
+console.log(
+  workbook.help("*", {
+    search: "fill|borders|autofit",
+    include: "index,examples,notes",
+    maxChars: 6000,
+  }).ndjson,
+);
+console.log(workbook.help("fx.PMT", { include: "index,examples,notes" }).ndjson);
+console.log(workbook.help("fx.*", { search: "financial", include: "index,examples", maxChars: 4000 }).ndjson);
+console.log(workbook.help("fx.*", { search: "math-trig", include: "index,examples", maxChars: 4000 }).ndjson);
+console.log(workbook.help("lookup with fallback", { search: "XLOOKUP|INDEX|MATCH|IFERROR", include: "index,examples,notes", maxChars: 4000 }).ndjson);
+</code></pre>
+<h3 id="known-formulaexport-limitations-not-exhaustive">Known formula/export limitations (not exhaustive)</h3>
+<p>If a formula fails, use a verified equivalent that preserves the intended result.</p>
+<p>Known issues:
+- Avoid <code>MAP</code>, <code>REDUCE</code>, <code>SCAN</code>, <code>MAKEARRAY</code>, <code>GROUPBY</code>, <code>PIVOTBY</code>. Use helper cells and supported scalar formulas;
+- Prefix <code>XLOOKUP</code>, <code>TEXTJOIN</code>, <code>MINIFS</code>, <code>MAXIFS</code>, <code>IFS</code>, and <code>RANK.EQ</code> with <code>_xlfn.</code>, including nested calls: e.g. <code>'=_xlfn.TEXTJOIN(", ",TRUE,B2:C2)'</code>.
+- For <code>LET</code>, <code>LAMBDA</code>, <code>BYROW</code>, and <code>BYCOL</code>, prefix function names with <code>_xlfn.</code> and every LET/LAMBDA local-variable declaration and reference with <code>_xlpm.</code>.
+- PivotTable APIs exist, but XLSX export is unreliable; use formula summaries.
+- <code>COUNTIF</code> / <code>COUNTIFS</code> with an empty-string criterion can miss blank cells, even in bounded ranges. For unconditional blank counts, use <code>COUNTBLANK(range)</code>.</p>
+<h2 id="reading-existingimported-workbooks">Reading existing/imported workbooks</h2>
+<ul>
+<li>On existing/imported workbooks, get a compact summary via <code>inspect</code> to understand what already exists and where.</li>
+<li>Prefer <code>inspect(...)</code> for workbook understanding and discovery across broad areas.</li>
+<li>Prefer direct getters like <code>range.formulas</code> when you already know the target range and need the exact rectangular formula matrix.</li>
+<li>If formula locations are unknown, prefer <code>inspect({ kind: "formula", ... })</code> over reading <code>range.formulas</code> across a very large area.</li>
+<li>Prefer to set <code>maxChars</code>, <code>tableMaxRows</code>, <code>tableMaxCols</code>, and/or <code>maxResults</code> to prevent large dumps of data.</li>
+<li>For suspicious or high-impact outputs, use <code>workbook.trace("Sheet!A1")</code> to audit the dependency tree from final output/check cell back to source cells. Trace output can be large, so summarize by depth/node count before logging.</li>
+</ul>
+<h3 id="inspect-for-workbook-understanding">Inspect for workbook understanding</h3>
+<ul>
+<li>Compact summary:</li>
+</ul>
+<pre><code class="language-js">await wb.inspect({
+  kind: "workbook,sheet,table",
+  maxChars: 6000,
+  tableMaxRows: 6,
+  tableMaxCols: 6,
+  tableMaxCellChars: 80,
+});
+</code></pre>
+<ul>
+<li>Quick overview of sheet ids and names: <code>await wb.inspect({ kind: "sheet", include: "id,name" })</code></li>
+<li>Formula discovery in a targeted area: <code>await wb.inspect({ kind: "formula", sheetId: firstSheetName, range: "A1:Z30", maxChars: 2500, options: {maxResults:50} })</code></li>
+<li>Checking existing styles in a targeted area: <code>await wb.inspect({ kind: "computedStyle", sheetId: firstSheetName, range: "A1:E10", maxChars: 2500 })</code></li>
+<li>Common <code>kind</code> tokens: <code>workbook</code>, <code>sheet</code>, <code>table</code>, <code>region</code>, <code>match</code>, <code>formula</code>, <code>thread</code>, <code>computedStyle</code>, <code>definedName</code>, <code>drawing</code></li>
+<li>Inspects can also be used to zoom in on specific areas, especially for target edits:</li>
+</ul>
+<pre><code class="language-js">await wb.inspect({
+  kind: "region",
+  sheetId: firstSheetName,
+  range: "A1:Z30",
+  maxChars: 2500,
+});
+</code></pre>
+<ul>
+<li>Inspect output may include JSON records with <code>"id"</code> values (for example <code>"ws/r5qsk5"</code>), which you can resolve back to workbook objects with <code>wb.resolve(...)</code>:</li>
+<li><code>wb.resolve("ws/...")</code> -&gt; worksheet</li>
+<li><code>wb.resolve("th/...")</code> -&gt; comment thread</li>
+</ul>
+<h2 id="known-gotchas-do-not-repeat">Known Gotchas (Do not repeat)</h2>
+<ul>
+<li>Do not set undocumented attributes on remote objects.</li>
+<li><code>Workbook.create()</code> starts with no sheets; add one before calling <code>getActiveWorksheet()</code>.</li>
+<li>Create every worksheet referenced by formulas before writing cross-sheet formulas.</li>
+<li>Prefer bounded formula ranges with explicit start/end rows, e.g. <code>$A$6:$A$205</code>. Full-column references such as <code>A:A</code>, <code>$A:$A</code>, or <code>Sheet!B:B</code> can be truncated to each column's populated extent: unequal extents can make <code>COUNTIFS</code> / <code>SUMIFS</code> return <code>#VALUE!</code>, and <code>ROWS</code> / <code>INDEX</code> can differ from Excel.</li>
+<li>If export fails, isolate the cause by checkpoint-export after major blocks to isolate the cause: base sheets, values/formulas, formatting, conditional formatting, tables, charts/rendering. For charts, first simplify optional styling first: nested border configs, custom chart axis/series mutations, broad autofit/formatting, then nonessential drawings.</li>
+</ul>
+<h2 id="additional-feature-specific-notes">Additional feature-specific notes</h2>
+<h3 id="merging-cells">Merging cells</h3>
+<ul>
+<li><code>range.merge()</code> merges the target range into one cell; <code>range.merge(true)</code> merges across each row in the target range.</li>
+<li><code>range.unmerge()</code> reverses a merge.
+For example:</li>
+</ul>
+<pre><code class="language-js">const range = sheet.getRange("I23:N24");
+range.merge();
+range.values = [["Source note spanning the recommendation panel"]];
+</code></pre>
+<h2 id="quick-api-surface-high-value-common">Quick API Surface (High-Value + Common)</h2>
+<h3 id="core-workbookfile-apis">Core workbook/file APIs</h3>
+<ul>
+<li><code>import { FileBlob, SpreadsheetFile, Workbook } from "@oai/artifact-tool"</code></li>
+<li><code>const workbook = Workbook.create()</code> to create an empty workbook</li>
+<li><code>const sheet = workbook.worksheets.add("Sheet1")</code> to add a sheet</li>
+<li><code>const workbook = await SpreadsheetFile.importXlsx(arrayBufferOrFileBlob)</code></li>
+<li><code>const xlsx = await SpreadsheetFile.exportXlsx(workbook); await xlsx.save("output.xlsx")</code></li>
+<li><code>const inspect = await workbook.inspect({ kind: "sheet", include: "id,name", sheetId, range: "A1:C10" })</code></li>
+<li><code>const help = workbook.help("worksheet.getRange", { include: "index,examples" })</code></li>
+<li>Preferred: <code>const preview = await workbook.render({ sheetName: "Sheet1", autoCrop: "all", scale: 1, format: "png" })</code></li>
+<li>To get the bytes and/or save the blob to file:</li>
+</ul>
+<pre><code class="language-js">const previewBytes = new Uint8Array(await preview.arrayBuffer());
+await fs.writeFile(`${outputDir}/preview.png`, previewBytes);
+</code></pre>
+<ul>
+<li><code>const workbook = await Workbook.fromCSV(csvText, { sheetName: "Sheet1" })</code></li>
+<li><code>await workbook.fromCSV(csvText, { sheetName: "ImportedData" })</code> requires an empty workbook; it does not append CSV to a populated workbook. Prefer static <code>Workbook.fromCSV(...)</code>.</li>
+</ul>
+<h3 id="worksheet-selectioncreation">Worksheet selection/creation</h3>
+<ul>
+<li><code>workbook.worksheets.add(name)</code></li>
+<li><code>workbook.worksheets.getItem(name)</code></li>
+<li><code>workbook.worksheets.getItemAt(index)</code></li>
+<li><code>workbook.worksheets.getActiveWorksheet()</code> (only after at least one sheet exists)</li>
+</ul>
+<h3 id="worksheet-operations">Worksheet operations</h3>
+<ul>
+<li><code>sheet.getRange("A1:C10")</code>, <code>sheet.getRangeByIndexes(startRow, startCol, rowCount, colCount)</code>, <code>sheet.getCell(row, col)</code></li>
+<li><code>sheet.getUsedRange(valuesOnly?)</code></li>
+<li><code>sheet.mergeCells("A1:C1")</code>, <code>sheet.unmergeCells("A1:C1")</code></li>
+<li><code>sheet.freezePanes.freezeRows(rowCount)</code>, <code>sheet.freezePanes.freezeColumns(columnCount)</code>, <code>sheet.freezePanes.unfreeze()</code></li>
+<li><code>sheet.tabColor = "#1F4E78"</code> sets the worksheet tab color; the getter returns a <code>Color</code> object.</li>
+<li><code>sheet.tables</code>, <code>sheet.charts</code>, <code>sheet.sparklineGroups</code> (<code>sheet.sparklines</code> alias), <code>sheet.shapes</code>, <code>sheet.images</code></li>
+<li><code>sheet.showGridLines = false</code></li>
+<li><code>sheet.dataTables</code>, <code>sheet.conditionalFormattings</code>, <code>sheet.dataValidations</code></li>
+<li><code>sheet.deleteAllDrawings()</code> removes all drawings, including charts, shapes, and images.</li>
+</ul>
+<h3 id="range-valuesformulas">Range values/formulas</h3>
+<ul>
+<li><code>const range = sheet.getRange("A1:C10")</code></li>
+<li><code>range.values = [[...], ...]</code> (2D matrix of values).</li>
+<li><code>range.formulas = [["=..."], ...]</code></li>
+<li><code>range.formulasR1C1 = [["=RC[-1]*2"]]</code></li>
+<li>To read: <code>range.values</code> / <code>range.formulas</code> / <code>range.displayFormulas</code> / <code>range.formulaInfos</code> (for spill/array formulas)</li>
+<li><code>range.write(matrixOrPayload)</code> (auto-sizes/spills from anchor as needed)</li>
+<li><code>range.writeValues(matrixOrRows)</code></li>
+<li><code>range.fillDown()</code>, <code>range.fillRight()</code></li>
+<li><code>sheet.getRange("D2").formulas = [["=..."]]</code></li>
+<li><code>sheet.getRange("D2:D200").fillDown()</code></li>
+<li><code>range.clear({ applyTo: "contents" | "formats" | "all" })</code> clears cell contents, formatting, or both; drawings remain.</li>
+<li><code>range.copyFrom(sourceRange, "values" | "formulas" | "all")</code>. Prefer matching shapes; a single-cell value source can broadcast across a larger destination.</li>
+<li><code>range.copyTo(destRange, "values" | "formulas" | "all")</code></li>
+<li><code>range.offset(rowOffset, colOffset)</code>, <code>range.resize(rowCount, columnCount)</code>, <code>range.getCurrentRegion()</code>, <code>range.getRow(i)</code>, <code>range.getColumn(j)</code></li>
+<li><code>range.getRangeByIndexes(startRow, startCol, rowCount, colCount)</code>, <code>range.getCell(row, col)</code> (relative to the range)</li>
+<li><code>range.merge()</code>, <code>range.merge(true)</code> to merge across, <code>range.unmerge()</code></li>
+</ul>
+<h3 id="formatting">Formatting</h3>
+<ul>
+<li><code>range.format</code> supports <code>fill</code>, <code>font</code>, <code>numberFormat</code>, <code>borders</code>, alignments, <code>wrapText</code></li>
+<li><code>range.format.verticalAlignment = "center"</code> maps to Excel Middle Align</li>
+<li><code>range.format.autofitColumns()</code>, <code>range.format.autofitRows()</code></li>
+<li>Excel unit sizing:  <code>range.format.columnWidth = 18</code>, <code>range.format.rowHeight = 24</code></li>
+<li>Pixel sizing: <code>range.format.columnWidthPx = 120</code>, <code>range.format.rowHeightPx = 24</code></li>
+<li><code>range.setNumberFormat("yyyy-mm-dd")</code></li>
+<li><code>range.format.numberFormat = [["0"], ["0.00"], ["@"]]</code></li>
+<li>Borders: There are two ways to set borders on a range (1) simple form (2) per edge form. Example:</li>
+</ul>
+<pre><code class="language-js">// (1) Preferred simple form
+// `preset` can be "none" | "outside" | "inside" | "all" | "doubleBottom"
+// "outside" will just set borders on the outside edges of the range.
+// `style` are Excel/OpenXML-style names such as "thin", "medium", "thick", "dashed", and "dotted".
+range.format.borders = { preset: "all", style: "thin", color: "#D9D9D9" };
+
+// (2) Per-edge form. Use top/bottom/left/right, not edgeTop/edgeBottom/etc.
+// Format: {style?: string; color?: ColorConfig; weight?: number;}
+// Prefer setting `style` over `weight` unless you want granular control.
+range.format.borders = {
+  insideHorizontal: { style: "thin", color: "#D9D9D9" },
+  insideVertical: { style: "medium", color: "#D9D9D9" },
+  top: { style: "thick", color: "#D9D9D9" },
+  bottom: { style: "dashed", color: "#D9D9D9" },
+  left: { style: "dotted", color: "#D9D9D9" },
+  right: { style: "thin", color: "#D9D9D9" },
+};
+</code></pre>
+<h3 id="data-validation">Data Validation</h3>
+<ul>
+<li><code>range.dataValidation = { rule: { type: "list", formula1: "Categories!$A$2:$A$4" } }</code></li>
+<li><code>range.dataValidation = { rule: { type: "list", values: ["Not Started", "In Progress"] } }</code></li>
+<li><code>sheet.dataValidations.add({ range: "B2:B100", rule: { type: "whole", operator: "between", formula1: 1, formula2: 10 } })</code></li>
+</ul>
+<h3 id="conditional-formatting">Conditional formatting</h3>
+<ul>
+<li>Use <code>range.conditionalFormats.add(ruleType, ConditionalFormatConfig);</code>.</li>
+<li>Use <code>range.conditionalFormats.add(ruleType, {operator, formula, format});</code>. Choose ruleType, operator, color, and style strings from the inline types below.</li>
+</ul>
+<pre><code>type ConditionalFormatRuleType =
+  | "cellIs" | "CellValue" | "Custom" | "expression"
+  | "colorScale" | "dataBar" | "iconSet"
+  | "containsText" | "notContainsText" | "beginsWith" | "endsWith"
+  | "containsBlanks" | "notContainsBlanks" | "containsErrors" | "notContainsErrors"
+  | "duplicateValues" | "uniqueValues" | "timePeriod" | "top10" | "aboveAverage";
+
+type CellIsOperator =
+  | "greaterThan"
+  | "greaterThanOrEqual"
+  | "lessThan"
+  | "lessThanOrEqual"
+  | "equal"
+  | "notEqual"
+  | "between"
+  | "notBetween";
+
+type ConditionalFormatConfig =
+  | { operator: CellIsOperator; formula: string | number | Array&lt;string | number&gt;; format?: DifferentialFormatConfig }
+  | { formula: string | number; format?: DifferentialFormatConfig }
+  | { colors?: ColorConfig[]; thresholds?: CfvoInput[] }
+  | { color?: ColorConfig; thresholds?: CfvoInput[]; gradient?: boolean }
+  | { iconSet: string; showValue?: boolean; reverse?: boolean; thresholds?: CfvoInput[] }
+  | { text: string; format?: DifferentialFormatConfig }
+  | { timePeriod: "yesterday" | "today" | "tomorrow" | "last7Days" | "lastWeek" | "thisWeek" | "nextWeek" | "lastMonth" | "thisMonth" | "nextMonth"; format?: DifferentialFormatConfig }
+  | { rank?: number; percent?: boolean; bottom?: boolean; format?: DifferentialFormatConfig }
+  | { aboveAverage?: boolean; equalAverage?: boolean; stdDev?: number; format?: DifferentialFormatConfig };
+
+type DifferentialFormatConfig = {
+  fill?: FillConfig;
+  font?: { bold?: boolean; italic?: boolean; color?: ColorConfig };
+  border?: RangeBordersConfig; // Per-edge top/bottom/left/right only; presets are ignored here.
+  numberFormat?: string;
+};
+
+type CfvoInput =
+  | "min"
+  | "max"
+  | number
+  | `${number}%`
+  | { type: "min" | "max" | "num" | "percent" | "percentile"; value?: string | number };
+</code></pre>
+<ul>
+<li>Rule types (<code>ConditionalFormatRuleType</code>): "cellIs" | "CellValue" | "Custom" | "expression"
+  | "colorScale" | "dataBar" | "iconSet"
+  | "containsText" | "notContainsText" | "beginsWith" | "endsWith"
+  | "containsBlanks" | "notContainsBlanks" | "containsErrors" | "notContainsErrors"
+  | "duplicateValues" | "uniqueValues" | "timePeriod" | "top10" | "aboveAverage";</li>
+<li>XLSX <code>iconSet</code> names: <code>3Arrows</code>, <code>4Arrows</code>, <code>5Arrows</code>, <code>3ArrowsGray</code>, <code>4ArrowsGray</code>, <code>5ArrowsGray</code>, <code>3TrafficLights1</code>, <code>3Signs</code>, <code>4RedToBlack</code>, <code>3TrafficLights2</code>, <code>4TrafficLights</code>, <code>3Symbols</code>, <code>3Flags</code>, <code>3Symbols2</code>, <code>5Quarters</code>, <code>4Rating</code>, <code>5Rating</code>. Avoid <code>3Stars</code>, <code>3Triangles</code>, and <code>5Boxes</code>: their current XLSX serialization is not reliable.</li>
+<li>Custom conditional formatting: <code>range.conditionalFormats.addCustom(expression, {fill, font, border});</code></li>
+<li><code>range.conditionalFormats.deleteAll()</code> / <code>range.conditionalFormats.clear()</code></li>
+</ul>
+<pre><code class="language-js">const grid = sheet.getRange("B2:J10");
+grid.conditionalFormats.add("colorScale", {
+  colors: ["#2563EB", "#FDE047", "#DC2626"],
+  thresholds: ["min", { type: "percentile", value: 50 }, "max"]
+});
+</code></pre>
+<h3 id="tables">Tables</h3>
+<ul>
+<li>When adding new tables, set explicit unique names (<code>TasksTable</code>, <code>SummaryTable</code>).</li>
+<li>Do not overlap tables; the API does not reject overlaps. Check existing table ranges in the initial compact <code>inspect</code> summary before adding one.</li>
+<li><code>const table = sheet.tables.add("A1:H200", true, "TasksTable")</code></li>
+<li><code>table.rows.add(null, [[...], ...])</code>, <code>table.getDataRows()</code>, <code>table.getHeaderRowRange()</code></li>
+<li>Read tables: <code>sheet.tables.items</code> -&gt; <code>Table[]</code></li>
+<li>Set + Getters: <code>table.name</code>, <code>table.style</code>, <code>table.showHeaders</code></li>
+<li>Toggles for table utilities (set/get): <code>table.showTotals</code>, <code>table.showBandedColumns = true</code>, <code>table.showFilterButton</code></li>
+<li><code>table.delete()</code></li>
+</ul>
+<h3 id="images">Images</h3>
+<ul>
+<li><code>sheet.images.add({dataUrl: "data:image/png;base64,...", anchor: {from: { row: 1, col: 2 }, extent: { widthPx: 160, heightPx: 120 }}})</code></li>
+</ul>
+<h3 id="threaded-comments">Threaded Comments</h3>
+<p>This is the API to create a threaded comment in Excel, which requires a user-visible author.
+- Required: Before adding a comment, create its visible author with <code>workbook.comments.setSelf({"displayName": &lt;user_display_string&gt;})</code>, where <code>&lt;user_display_string&gt;</code> is a string such as "User"
+- Create a new thread with a single comment: <code>const thread = workbook.comments.addThread({"cell": sheet.getRange("E2")}, "Source: &lt;website&gt;")</code>
+- To reply to a threaded comment: <code>thread.addReply("This is a reply to the comment")</code>
+- To resolve/re-open a thread: <code>thread.resolve()</code>, <code>thread.reopen()</code></p>
+<h3 id="charts">Charts</h3>
+<ul>
+<li>Place charts in reserved blank areas with gutter rows/columns; do not cover data.</li>
+<li>Prefer range-backed charts so source edits update the chart. Headers are detected when the first row contains text and no numeric cells.</li>
+</ul>
+<h4 id="fast-chart-path">Fast-chart path</h4>
+<ul>
+<li>For contiguous data: pass categories first, then one column per series:
+  <code>js
+  sheet.getRange("F4:H6").values = [
+    ["Month", "Revenue", "EBITDA"],
+    ["Jan", 100, 10],
+    ["Feb", 120, 18],
+  ];
+  const chart = sheet.charts.add("line", sheet.getRange("F4:H6"));</code></li>
+<li>For nonadjacent columns: pass equal-height, single-column ranges with categories first:
+  <code>js
+  const chart = sheet.charts.add("bar", [
+    sheet.getRange("A1:A10"),
+    sheet.getRange("D1:D10"),
+    sheet.getRange("G1:G10"),
+  ]);
+  chart.series.items[0].fill = "#F472B6";</code></li>
+<li>Both paths create source-cell references and show a bottom legend. Apply requested formatting once after creation:</li>
+</ul>
+<pre><code class="language-js">chart.setPosition("J4", "Q20"); // always set
+const fontFamily = "Arial";
+
+chart.title = "Revenue and EBITDA Trend";
+chart.titleTextStyle.fontSize = 12;
+chart.titleTextStyle.typeface = fontFamily;
+
+chart.legend = { position: "top", textStyle: { typeface: fontFamily } };
+chart.xAxis = { axisType: "textAxis", textStyle: { typeface: fontFamily, fontSize: 10 } };
+// Number formatting on chart axis must be set separately even if the source range is already formatted.
+chart.yAxis = { numberFormatCode: "$#,##0", numberFormatSourceLinked: false, textStyle: { typeface: fontFamily }, tickLabelInterval: 2 };
+chart.xAxis.title.text = "Month";
+chart.yAxis.title.text = "Revenue and EBITDA";
+</code></pre>
+<ul>
+<li>Chart <code>textStyle.fontSize</code> uses pixels; <code>typeface</code> sets the family. Style axes, legend, and titles separately (<code>xAxis.textStyle</code>, <code>yAxis.textStyle</code>, <code>legend.textStyle</code>, <code>titleTextStyle</code>); cell fonts do not configure chart fonts.</li>
+<li>Only set/style intended titles; styling an absent title can create a placeholder.</li>
+<li>For custom axis formats, set <code>numberFormatSourceLinked: false</code>. For $M labels, use <code>$0.0,,"M"</code> for dollars, <code>$0.0,"M"</code> for thousands, or <code>$0.0"M"</code> for millions. Fix formatting without changing source data.</li>
+<li><code>chart.setData(range)</code> replaces categories/series but preserves title, legend, and axes. Apply series styling after binding data.</li>
+<li>For month/date labels, use helper cells containing strings such as <code>Jan 2025</code>; date-axis formats may show serial numbers in previews.</li>
+<li>Inspect series through <code>chart.series.items</code>; source bindings are <code>series.formula</code> and <code>series.categoryFormula</code>.</li>
+<li>Additional chart getters: <code>chart.type</code>, <code>chart.title.text</code>, <code>chart.categories</code> (may be empty for range-backed charts; inspect series references).</li>
+<li>Collection methods: <code>sheet.charts.getItemOrNullObject("Chart 1")</code>, <code>sheet.charts.deleteAll()</code>.</li>
+<li>XLSX chart types: <code>"bar" | "line" | "area" | "pie" | "doughnut" | "scatter" | "bubble" | "radar" | "stock"</code>.</li>
+<li><code>"treemap"</code>, <code>"sunburst"</code>, <code>"histogram"</code>, <code>"boxWhisker"</code>, <code>"waterfall"</code>, <code>"funnel"</code>, and <code>"map"</code> are accepted by the API but omitted from XLSX exports in this runtime. Do not use them for Excel deliverables.</li>
+</ul>
+<h3 id="sparklines">Sparklines</h3>
+<pre><code class="language-js">const group = sheet.sparklineGroups.add({
+  type: "line",
+  targetRange: "E2:E4",
+  sourceData: "A2:C4",
+  seriesColor: "#2563EB",
+  markers: { high: true, low: true },
+});
+</code></pre>
+<ul>
+<li>Sparkline type is a string. Use the public options documented below. Do not set internal/proto enum values for empty-cell display or axis modes; if a required option is not documented for the selected runtime, follow the bounded discovery policy.</li>
+<li>Avoid <code>dateAxisRange</code> for XLSX output; it is not serialized. Keep automatic axis limits: <code>manualMin</code> / <code>manualMax</code> alone do not select custom limits in Excel.</li>
+<li>Sparkline Inline Type:</li>
+</ul>
+<pre><code>type SparklineConfig = {
+  type: "line" | "column" | "stacked";
+  targetRange: Range | string;
+  sourceData: Range | string;
+  lineWeight?: number;
+  displayHidden?: boolean;
+  seriesColor?: ColorConfig;
+  negativeColor?: ColorConfig;
+  axisColor?: ColorConfig;
+  markersColor?: ColorConfig;
+  firstMarkerColor?: ColorConfig;
+  lastMarkerColor?: ColorConfig;
+  highMarkerColor?: ColorConfig;
+  lowMarkerColor?: ColorConfig;
+  markers?: SparklineMarkersOptions;
+  axis?: SparklineAxisOptions;
+};
+
+type SparklineMarkersOptions = {
+  show?: boolean;
+  high?: boolean;
+  low?: boolean;
+  first?: boolean;
+  last?: boolean;
+  negative?: boolean;
+};
+
+type SparklineAxisOptions = {
+  showAxis?: boolean;
+  rightToLeft?: boolean;
+};
+</code></pre>
+<ul>
+<li>Range Alias: <code>const group = targetRange.sparklines.add(type, sourceRange, sparklineConfig);</code></li>
+<li>Edit And Delete</li>
+</ul>
+<pre><code class="language-js">group.seriesColor = "#2563EB";
+group.markers.high = true;
+group.axis.showAxis = true;
+sheet.sparklineGroups.delete(group);
+sheet.sparklineGroups.deleteAll();
+</code></pre>
+<h3 id="help-grep">Help / Grep</h3>
+<p>Use <code>workbook.help(...)</code> primarily for obscure/advanced surfaces (for example deep chart axis settings, unusual drawing configs, pivot APIs, or uncommon option schemas).
+- <code>workbook.help("enum.ShapeGeometry", { include: "index,notes" }).ndjson</code>
+- <code>workbook.help("enum.*", { search: "ShapeGeometry|LineStyle", include: "index" }).ndjson</code>
+- <code>workbook.help("shape.add", { include: "examples,notes" }).ndjson</code>
+- <code>workbook.help("fx.RATE", { include: "index,examples,notes" }).ndjson</code>
+- <code>workbook.help("cash flow return rate", { search: "IRR|XIRR|NPV|XNPV", include: "index,examples,notes", maxChars: 4000 }).ndjson</code>
+- <code>workbook.help("*", { search: "fill|borders|autofit", include: "index,examples,notes", maxChars: 6000 }).ndjson</code></p>
+<h3 id="trace">Trace</h3>
+<p>For tracing the full tree of how a formula is calculated, <code>workbook.trace("Sheet!A1")</code> is available. For complex formulas, the full tree can be extremely large, so output should be capped or outputted to a separate temp file (never dump raw traces). It takes only a cell reference. </p>
+<h3 id="javascript-example-snippet-runnable">JavaScript example snippet (runnable)</h3>
+<pre><code class="language-js">import fs from "node:fs/promises";
+import { SpreadsheetFile, Workbook } from "@oai/artifact-tool";
+
+const fontFamily = "Arial";
+
+const outputDir = "output";
+await fs.mkdir(outputDir, { recursive: true });
+
+const workbook = Workbook.create();
+const sheet = workbook.worksheets.add("Summary");
+
+sheet.getRange("A1:C4").values = [
+  ["Month", "Revenue", "EBITDA"],
+  ["Jan", 100, 10],
+  ["Feb", 120, 18],
+  ["Mar", 130, 22],
+];
+sheet.getRange("D1").values = [["Margin"]];
+sheet.getRange("D2").formulas = [["=C2/B2"]];
+sheet.getRange("D2:D4").fillDown();
+
+sheet.getRange("A1:G4").format.font = { name: fontFamily, size: 11 };
+sheet.getRange("A1:D1").format = {
+  fill: "#0F766E",
+  font: { name: fontFamily, bold: true, color: "#FFFFFF" },
+};
+sheet.getRange("B2:C4").format.numberFormat = "$#,##0";
+sheet.getRange("D2:D4").format.numberFormat = "0.0%";
+
+// Helper range links to source cells so edits update the chart.
+sheet.getRange("F1:G1").values = [["Month", "Revenue"]];
+sheet.getRange("F2:G2").formulas = [["=A2", "=B2"]];
+sheet.getRange("F2:G4").fillDown();
+const chart = sheet.charts.add("line", sheet.getRange("F1:G4"));
+chart.title = "Revenue Trend";
+chart.titleTextStyle.typeface = fontFamily;
+chart.hasLegend = false;
+chart.xAxis = { axisType: "textAxis", textStyle: { typeface: fontFamily } };
+chart.yAxis = { numberFormatCode: "$#,##0", numberFormatSourceLinked: false, textStyle: { typeface: fontFamily } };
+chart.setPosition("I1", "P15");
+
+const preview = await workbook.render({
+  sheetName: "Summary",
+  autoCrop: "all",
+  scale: 1,
+  format: "png",
+});
+await fs.writeFile(`${outputDir}/summary.png`, new Uint8Array(await preview.arrayBuffer()));
+
+const xlsx = await SpreadsheetFile.exportXlsx(workbook);
+await xlsx.save(`${outputDir}/summary.xlsx`);
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

@@ -1,0 +1,37 @@
+{
+  "name": "fx.NOW",
+  "category": "date-time",
+  "examples": [
+    {
+      "formula": "=NOW()",
+      "value": 46280,
+      "projection": [
+        [
+          46280,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 12
+    }
+  ]
+}

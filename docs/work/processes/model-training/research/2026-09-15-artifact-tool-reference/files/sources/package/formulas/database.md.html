@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Database Formulas · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="database.md">Raw file</a> · <a data-public-raw download href="database.md">Download</a></p><article><h1 id="database-formulas">Database Formulas</h1>
+<p>Database formulas aggregate rows from headered ranges using criteria ranges.</p>
+<h2 id="formula-pattern">Formula Pattern</h2>
+<pre><code class="language-ts">const formulaBlock = sheet.getRange(outputRange).write({
+  formulas: formulaMatrix,
+});
+workbook.recalculate();
+const results = formulaBlock.values;
+</code></pre>
+<h2 id="common-shapes">Common Shapes</h2>
+<pre><code class="language-ts">const formulas = [
+  `=DSUM(${databaseRangeRef},${fieldRef},${criteriaRangeRef})`,
+  `=DCOUNT(${databaseRangeRef},${fieldRef},${criteriaRangeRef})`,
+  `=DCOUNTA(${databaseRangeRef},${fieldRef},${criteriaRangeRef})`,
+  `=DAVERAGE(${databaseRangeRef},${fieldRef},${criteriaRangeRef})`,
+  `=DMIN(${databaseRangeRef},${fieldRef},${criteriaRangeRef})`,
+  `=DMAX(${databaseRangeRef},${fieldRef},${criteriaRangeRef})`,
+  `=DSTDEV(${databaseRangeRef},${fieldRef},${criteriaRangeRef})`,
+  `=DVAR(${databaseRangeRef},${fieldRef},${criteriaRangeRef})`,
+];
+</code></pre>
+<h2 id="coverage">Coverage</h2>
+<p>Supported families include database sum, count, average, min, max, product, standard deviation, variance, and single-value lookup.</p></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

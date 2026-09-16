@@ -1,0 +1,37 @@
+{
+  "name": "fx.HYPGEOM.DIST",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=HYPGEOM.DIST(A1, 10, A1, 10)",
+      "value": 1,
+      "projection": [
+        [
+          1,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 7
+    }
+  ]
+}

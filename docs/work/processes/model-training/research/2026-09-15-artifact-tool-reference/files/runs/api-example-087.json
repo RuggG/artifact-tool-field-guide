@@ -1,0 +1,10 @@
+{
+  "index": 87,
+  "name": "range.format.numberFormat",
+  "summary": "Assign a per-cell number format matrix",
+  "originalCode": "const r = sheet.getRange('A1:B2');\nr.format.numberFormat = [\n  ['0', '0.00'],\n  ['0', '0.00'],\n];",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

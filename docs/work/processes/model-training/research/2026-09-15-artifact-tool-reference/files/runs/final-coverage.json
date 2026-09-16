@@ -1,0 +1,18 @@
+[
+  {
+    "mode": "geometry",
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stdout": "Inspect result written to file: /Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/runs/geometry.xlsx.inspect.ndjson\n{\"created\":189,\"errors\":[{\"geometry\":\"custom\",\"error\":\"Error: geometry \\\"custom\\\" requires at least one custom path.\"}]}\n",
+    "stderr": ""
+  },
+  {
+    "mode": "roundtrip",
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stdout": "[{\"name\":\"comments\",\"error\":\"TypeError: Cannot read properties of undefined (reading 'length')\"},{\"name\":\"native-note\",\"error\":\"TypeError: Cannot read properties of undefined (reading 'length')\"},{\"name\":\"sparklines\",\"error\":\"TypeError: Cannot read properties of undefined (reading 'length')\"},{\"name\":\"validations\",\"error\":\"TypeError: Cannot read properties of undefined (reading 'length')\"},{\"name\":\"conditional-formats\",\"error\":\"TypeError: Cannot read properties of undefined (reading 'length')\"},{\"name\":\"images\",\"error\":\"TypeError: Cannot read properties of undefined (reading 'length')\"},{\"name\":\"shapes\",\"error\":\"TypeError: Cannot read properties of undefined (reading 'length')\"},{\"name\":\"chart-settings\",\"error\":\"TypeError: Cannot read properties of undefined (reading 'length')\"},{\"name\":\"names\",\"error\":\"TypeError: Cannot read properties of undefined (reading 'length')\"},{\"name\":\"named-function-variants\",\"error\":\"TypeError: Cannot read properties of undefined (reading 'length')\"},{\"name\":\"data-table\",\"error\":\"TypeError: Cannot read properties of undefined (reading 'length')\"},{\"name\":\"one-variable-data-tables\",\"error\":\"TypeError: Cannot read properties of undefined (reading 'length')\"},{\"name\":\"pivot-slicer\",\"error\":\"TypeError: Cannot read properties of undefined (reading 'length')\"},{\"name\":\"slicer-filter\",\"error\":\"TypeError: Cannot read properties of undefined (reading 'length')\"},{\"name\":\"table-total-fresh-formula\",\"error\":\"TypeError: Cannot read properties of undefined (reading 'length')\"}]\n",
+    "stderr": ""
+  }
+]

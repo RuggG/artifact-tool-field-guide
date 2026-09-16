@@ -1,0 +1,13 @@
+{
+  "assertions": 19961,
+  "passed": true,
+  "cases": 38,
+  "sourceSha256": "b7ff5c92bf7562fa6fe3f253fdf7b40fd5f6659e8638310314c6b035ef02c181",
+  "reference": "files/inspection/captures.json",
+  "notes": [
+    "All getter results compared with a separately captured baseline.",
+    "Inspection formulas and grids checked against baseline.",
+    "Search values and formulas checked against baseline; original string representations retained.",
+    "Used-area padding and blank separators retained."
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "name": "fx.LOGINV",
+  "category": "compatibility",
+  "examples": [
+    {
+      "formula": "=LOGINV(A1, A1, A1)",
+      "value": 7.125397860548684e+61,
+      "projection": [
+        [
+          7.125397860548684e+61,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 10
+    }
+  ]
+}

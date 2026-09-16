@@ -1,0 +1,37 @@
+{
+  "name": "fx.LINEST",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=LINEST(A1, A1)",
+      "value": "#NUM!",
+      "projection": [
+        [
+          "#NUM!",
+          null,
+          null,
+          null
+        ],
+        [
+          "#NUM!",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 11
+    }
+  ]
+}

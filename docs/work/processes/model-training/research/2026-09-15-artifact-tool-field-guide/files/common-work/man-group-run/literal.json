@@ -1,0 +1,31 @@
+{
+  "id": "literal",
+  "input": "return await wb.inspect({\n  kind: \"match\", searchTerm: \"profit\", maxChars: 12000,\n  options: {useRegex: false, maxResults: 30}\n});",
+  "elapsedMs": 6,
+  "result": {
+    "ndjson": "{\"kind\":\"match\",\"sheet\":\"Summary\",\"address\":\"C20\",\"value\":\"Core operating profit, USD m\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Summary\",\"address\":\"C26\",\"value\":\"Core profit after tax, USD m\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Assumptions\",\"address\":\"C66\",\"value\":\"PF third-party profit share / fee revenue\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C43\",\"value\":\"Core operating profit before seed gains\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C44\",\"value\":\"Core operating profit including seed gains\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C46\",\"value\":\"PROFIT | FUNDING, TAX AND DILUTED SHARES\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C49\",\"value\":\"Third-party profit share: management\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C50\",\"value\":\"Third-party profit share: performance\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C51\",\"value\":\"Core management-fee profit before tax\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C52\",\"value\":\"Core performance / seed profit before tax\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C53\",\"value\":\"Core total profit before tax\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C55\",\"value\":\"Core profit after tax\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C101\",\"value\":\"Core operating profit including seed gains\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C102\",\"value\":\"Core management-fee profit before tax\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C103\",\"value\":\"Core performance / seed profit before tax\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C104\",\"value\":\"Core total profit before tax\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C106\",\"value\":\"Core profit after tax\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Disclosures\",\"address\":\"C34\",\"value\":\"Third-party profit share: management\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Disclosures\",\"address\":\"C35\",\"value\":\"Third-party profit share: performance\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Disclosures\",\"address\":\"C40\",\"value\":\"Core profit after tax\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Disclosures\",\"address\":\"C43\",\"value\":\"Statutory profit after tax\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Checks\",\"address\":\"C23\",\"value\":\"Core profit after tax\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Readme\",\"address\":\"D9\",\"value\":\"Core (company-adjusted) earnings remove non-core acquisition, restructuring and other adjustments, and eliminate consolidation gross-ups. Statutory profit and EPS are retained as historical memo inputs, not mixed into the forecast.\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Readme\",\"address\":\"D20\",\"value\":\"Seed investment gains and rental income stay at 2025 annual totals / 4. Management and seed financing remain $7m / 4 and $11m / 4. Management third-party profit share stays $2m / 4; performance share scales at $1m / $281m of fee revenue.\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Readme\",\"address\":\"C21\",\"value\":\"Operating profit\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Readme\",\"address\":\"D21\",\"value\":\"Model-defined core operating profit equals net revenue less core operating costs, including D&A and other employment costs. It is before net finance expense and third-party profit allocations. A separate operating-profit line excludes seed gains. Core PBT reconciles to the company.\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Readme\",\"address\":\"D22\",\"value\":\"Forecast tax is the unrounded 2025 ratio $86m / $407m. Forecast shares are 1,164.877368m. H1 actuals retain their reported rates and shares. Annual shares are day-weighted, and EPS equals total profit / weighted diluted shares; quarterly EPS is never added to make FY EPS.\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Readme\",\"address\":\"D26\",\"value\":\"AUM reconciles quarterly to source; fees, cost components, both PBT streams, tax, profit and weighted shares reconcile to H1/FY controls. EPS differences within 0.10 US cents reflect rounded published dollar profits and share counts. Allocation identities are labelled separately from source tie-outs.\",\"formula\":null,\"match\":\"value\"}",
+    "recordCount": 28,
+    "truncated": false,
+    "metadata": {
+      "revision": "1gv5zp",
+      "target": {
+        "id": "wb/gx6lx3",
+        "beforeLines": 0,
+        "afterLines": 0
+      },
+      "kind": {
+        "requested": "match",
+        "tokens": [
+          "match"
+        ]
+      },
+      "include": {
+        "tokens": []
+      },
+      "exclude": {
+        "tokens": []
+      },
+      "notices": []
+    }
+  }
+}

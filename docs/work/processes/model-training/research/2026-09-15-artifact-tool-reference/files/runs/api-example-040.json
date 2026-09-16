@@ -1,0 +1,10 @@
+{
+  "index": 40,
+  "name": "range.conditionalFormats",
+  "summary": "Highlight dates in a relative time window",
+  "originalCode": "const range = sheet.getRange('F2:F12');\nrange.conditionalFormats.add('timePeriod', {\n  timePeriod: 'last7Days',\n  format: { fill: '#DBEAFE', font: { color: '#1D4ED8' } },\n});",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

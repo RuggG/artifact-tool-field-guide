@@ -1,0 +1,10 @@
+{
+  "index": 104,
+  "name": "range.getOffsetRange",
+  "summary": "Shift a block down",
+  "originalCode": "const range = sheet.getRange('B2:D4');\nconst shifted = range.getOffsetRange(1, 0); // B3:D5",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

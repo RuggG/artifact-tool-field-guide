@@ -1,0 +1,37 @@
+{
+  "name": "fx.MID",
+  "category": "text",
+  "examples": [
+    {
+      "formula": "=MID(\"text\", A1, A1)",
+      "value": "t",
+      "projection": [
+        [
+          "t",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 13
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "name": "fx.ERFC.PRECISE",
+  "category": "engineering",
+  "examples": [
+    {
+      "formula": "=ERFC.PRECISE(A1)",
+      "value": 0.1572992070502851,
+      "projection": [
+        [
+          0.1572992070502851,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 8
+    }
+  ]
+}

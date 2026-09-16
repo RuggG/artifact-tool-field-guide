@@ -1,0 +1,37 @@
+{
+  "name": "fx.ERF",
+  "category": "engineering",
+  "examples": [
+    {
+      "formula": "=ERF(A1, A1)",
+      "value": 0.8427007929497149,
+      "projection": [
+        [
+          0.8427007929497149,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 21
+    }
+  ]
+}

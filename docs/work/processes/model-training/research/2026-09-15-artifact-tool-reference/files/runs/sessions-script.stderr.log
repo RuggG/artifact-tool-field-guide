@@ -1,0 +1,2 @@
+Yjs was already imported. This breaks constructor checks and will lead to issues! - https://github.com/yjs/yjs/issues/438
+WARNING: Multiple instances of Three.js being imported.

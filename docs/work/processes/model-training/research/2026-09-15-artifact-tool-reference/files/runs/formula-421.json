@@ -1,0 +1,37 @@
+{
+  "name": "fx.T.DIST.2T",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=T.DIST.2T(A1, A1)",
+      "value": "XDe._2T is not a function",
+      "projection": [
+        [
+          "XDe._2T is not a function",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 14
+    }
+  ]
+}

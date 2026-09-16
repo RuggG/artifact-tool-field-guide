@@ -1,0 +1,56 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Finance Guidance · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="financial_models.md">Raw file</a> · <a data-public-raw download href="financial_models.md">Download</a></p><article><h1 id="finance-guidance">Finance Guidance</h1>
+<p>Use for financial planning, reporting, operating models and valuation. The main skill governs structure, formulas and verification; <a href="../style_guidelines.md">shared style</a> governs general formatting.</p>
+<h2 id="financial-basis-and-sources">Financial Basis and Sources</h2>
+<p>Preserve reference drivers and schedules. Keep scope, accounting basis, inclusions/exclusions, periods, currency, scale and signs consistent. Distinguish revenue from collections, payroll expense from cash paid, capex from depreciation, and earnings from cash flow. Explain material differences and estimates; do not imply FX conversion or round stored values for display.</p>
+<p>Follow <a href="../SKILL.md#citation-requirements">Citation Requirements</a>. Reconcile source controls before combining extracts or comparing versions. Use concise period/unit labels; do not add a redundant Units column.</p>
+<h2 id="periods-assumptions-and-scenarios">Periods, Assumptions and Scenarios</h2>
+<p>Use the source fiscal calendar, cutoff, horizon and grain. Use source actual/forecast labels. Use editable dated drivers even when flat. Keep inputs and commentary tied to absolute dates as horizons advance.</p>
+<p>With monthly pay and no proration, $60,000 actual salary / 10 paid FTE implies $6,000/FTE. Forecast Base/Downside pay of $6,300/$6,000 with 11 paid FTE gives $69,300/$66,000; actual salary stays $60,000. Missing pay or zero FTE cannot establish an implied rate.</p>
+<p>For refreshes, merge complete periods on business/date keys, preserving history and excluding overlaps. Do not roll headers over stationary inputs. Distinguish one-time adjustments from changes to the future run rate.</p>
+<h2 id="operating-schedules-and-reporting">Operating Schedules and Reporting</h2>
+<ul>
+<li>Revenue: preserve volume, price, mix and recognition timing. Roll customers through additions/losses; average billable volume needs a timing assumption.</li>
+<li>Payroll: distinguish headcount, FTE and paid FTE. Use hire/exit dates and supported proration; convert annual pay but do not divide monthly pay by 12 again. Keep commission and employer-cost bases explicit; do not invent load rates or round away fractional FTE.</li>
+<li>Opex: distinguish units × rate, fixed fees and one-time adjustments. Seats need not equal headcount.</li>
+<li>Capital/D&amp;A: use cost, residual value, in-service date, useful life and opening assets' remaining depreciation. Preserve partial periods and disposals; reconcile gross assets, accumulated depreciation and net assets. Bridge cash capex to additions and add back noncash D&amp;A where appropriate.</li>
+<li>Statements: roll retained earnings using source accounting. Keep working capital, principal, interest and equity distinct; tie cash-flow ending cash to balance-sheet cash. Show needed debt/share schedules; never force a tie with unexplained plugs.</li>
+<li>Variances: compare matching periods and bases; show material monetary variance as amount and percent. Label expense over/under-budget and favorable/unfavorable direction. Missing/zero denominators are unavailable, not 0%. Reconcile driver bridges; align charts and requested commentary to the selected period/case.</li>
+</ul>
+<h2 id="valuation-and-returns">Valuation and Returns</h2>
+<p>Use the requested method/date; comps or LBO does not imply DCF. Keep metric periods, net debt and share counts consistent. A DCF shows operating drivers, taxes, D&amp;A, capex, working-capital changes, unlevered cash flow, discounting, terminal value and the applicable enterprise-to-equity bridge. State terminal-value method and discount timing; label missing inputs.</p>
+<p>IRR/XIRR requires valid cash-flow signs and timing; do not silently substitute another return. Sensitivities must recalculate the affected financial mechanics and match the model at the base combination.</p>
+<h2 id="finance-presentation">Finance Presentation</h2>
+<p>Write titles, tab names, labels and commentary in plain business language. Do not use <code>movement</code>, <code>backbone</code>, <code>pressure point</code>, <code>pain point</code>, <code>pressure test</code>, <code>proof point</code> or <code>durable</code>, including plural and grammatical variants, in authored Finance text. Name the specific result, driver, variance, assumption or risk instead of substituting another vague or dramatic phrase. Preserve and attribute necessary source-defined labels and exact required quotations.</p>
+<p>In working model areas, numeric editable inputs are blue, same-sheet formulas black, cross-sheet links green and external-file links red. On output views such as Summary, Exec Summary, Dashboard or Overview, results use black or dark brand text, including linked numbers. Preserve header contrast, editable-control cues and meaningful warning/status colors. Show the linked selected-case name in green, including on outputs; this exception does not turn output result rows green. Apply these conventions by section when working calculations and outputs share a tab; do not impose Finance formula colors on non-Finance operational trackers.</p>
+<p>Use accounting formats: parenthesized negatives, dash zeros, one decimal for percentages, two for per-share prices, and enough precision for fractional FTE/scaled amounts. Currency symbols belong on main/first monetary rows, totals and ending balances across periods, not counts or rates. Keep numeric metric rows numeric: show a runway in months or <code>n.a.</code>, with explanations such as cash generation in a separate note. Avoid double-scaling. Indent supporting labels visibly with the text format <code>@</code> (two leading display spaces), not stored spaces. Italicize percentage and ratio rows, including labels and values. Keep totals flush left.</p>
+<p>For financial period headers, use these compact defaults unless user, locale or reference/template conventions specify otherwise. Full dates follow the main skill's locale-appropriate short-date rule.</p>
+<table>
+<thead>
+<tr>
+<th>Period</th>
+<th>Display format</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Week start</td>
+<td><code>"Week of "d-mmm</code> on the first business day's date</td>
+<td><code>Week of 13-Jul</code></td>
+</tr>
+<tr>
+<td>Month</td>
+<td><code>mmm-yy</code> on a real date</td>
+<td><code>Jul-26</code></td>
+</tr>
+<tr>
+<td>Calendar year</td>
+<td><code>yyyy</code> for a stored date; retain a numeric year as a year</td>
+<td><code>2026</code></td>
+</tr>
+</tbody>
+</table>
+<p>Use <code>Q#:YY</code> for Finance quarter labels, such as <code>Q3:26</code>, and <code>FY:YY</code> for fiscal years, such as <code>FY:26</code>. Derive both from the stated fiscal calendar and year-label convention. Do not invent either. Excel has no quarter number-format token, so calculate a quarter display label while preserving the underlying date/period. Use <code>2026</code> for a regular calendar year, not <code>FY:26</code>.</p>
+<p>For new substantial models, use narrow A:B gutters and content from C; optional faint <code>x</code> section markers support navigation. Do not impose these gutters on raw data or compact calculators.</p>
+<h2 id="finance-audit-and-verification">Finance Audit and Verification</h2>
+<p>Reconcile financial schedules and bridges. For nonnegative flows, annual assumptions cannot imply a negative remainder after actuals. Follow <a href="../SKILL.md#checks-and-audit">Checks and Audit</a>. Show differences to two decimals, including <code>0.00</code>. Passing differences use neutral text even when cross-sheet formulas would normally be green. Use conditional light-red fill and bold red text above an absolute tolerance appropriate to the unit. Missing or untested checks are unavailable, not zero/PASS. Name failed reconciliations and source cells.</p></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

@@ -1,0 +1,252 @@
+{
+  "workbook": {
+    "recordCount": 1,
+    "truncated": false,
+    "metadata": {
+      "revision": "8rm7zz",
+      "target": {
+        "id": "wb/l4ptaa",
+        "beforeLines": 0,
+        "afterLines": 0
+      },
+      "kind": {
+        "requested": "workbook",
+        "tokens": [
+          "workbook"
+        ]
+      },
+      "include": {
+        "tokens": []
+      },
+      "exclude": {
+        "tokens": []
+      },
+      "notices": []
+    }
+  },
+  "sheet": {
+    "recordCount": 1,
+    "truncated": false,
+    "metadata": {
+      "revision": "cbn7gr",
+      "target": {
+        "id": "wb/q6fafu",
+        "beforeLines": 0,
+        "afterLines": 0
+      },
+      "kind": {
+        "requested": "sheet",
+        "tokens": [
+          "sheet"
+        ]
+      },
+      "include": {
+        "tokens": []
+      },
+      "exclude": {
+        "tokens": []
+      },
+      "notices": []
+    }
+  },
+  "table": {
+    "recordCount": 1,
+    "truncated": false,
+    "metadata": {
+      "revision": "5ochmw",
+      "target": {
+        "id": "wb/b8ntnu",
+        "beforeLines": 0,
+        "afterLines": 0
+      },
+      "kind": {
+        "requested": "table",
+        "tokens": [
+          "table"
+        ]
+      },
+      "include": {
+        "tokens": []
+      },
+      "exclude": {
+        "tokens": []
+      },
+      "notices": []
+    }
+  },
+  "region": {
+    "recordCount": 1,
+    "truncated": false,
+    "metadata": {
+      "revision": "74l5js",
+      "target": {
+        "id": "wb/1mc0ez",
+        "beforeLines": 0,
+        "afterLines": 0
+      },
+      "kind": {
+        "requested": "region",
+        "tokens": [
+          "region"
+        ]
+      },
+      "include": {
+        "tokens": []
+      },
+      "exclude": {
+        "tokens": []
+      },
+      "notices": []
+    }
+  },
+  "formula": {
+    "recordCount": 1,
+    "truncated": false,
+    "metadata": {
+      "revision": "azmhb9",
+      "target": {
+        "id": "wb/61s7cb",
+        "beforeLines": 0,
+        "afterLines": 0
+      },
+      "kind": {
+        "requested": "formula",
+        "tokens": [
+          "formula"
+        ]
+      },
+      "include": {
+        "tokens": []
+      },
+      "exclude": {
+        "tokens": []
+      },
+      "notices": []
+    }
+  },
+  "computedStyle": {
+    "recordCount": 6,
+    "truncated": false,
+    "metadata": {
+      "revision": "ahviuh",
+      "target": {
+        "id": "wb/nt51ox",
+        "beforeLines": 0,
+        "afterLines": 0
+      },
+      "kind": {
+        "requested": "computedStyle",
+        "tokens": [
+          "computedStyle"
+        ]
+      },
+      "include": {
+        "tokens": []
+      },
+      "exclude": {
+        "tokens": []
+      },
+      "notices": []
+    }
+  },
+  "match": {
+    "recordCount": 1,
+    "truncated": false,
+    "metadata": {
+      "revision": "iqe19l",
+      "target": {
+        "id": "wb/ga21bh",
+        "beforeLines": 0,
+        "afterLines": 0
+      },
+      "kind": {
+        "requested": "match",
+        "tokens": [
+          "match"
+        ]
+      },
+      "include": {
+        "tokens": []
+      },
+      "exclude": {
+        "tokens": []
+      },
+      "notices": []
+    }
+  },
+  "drawing": {
+    "recordCount": 1,
+    "truncated": false,
+    "metadata": {
+      "revision": "4fiqg4",
+      "target": {
+        "id": "wb/8kgahj",
+        "beforeLines": 0,
+        "afterLines": 0
+      },
+      "kind": {
+        "requested": "drawing",
+        "tokens": [
+          "drawing"
+        ]
+      },
+      "include": {
+        "tokens": []
+      },
+      "exclude": {
+        "tokens": []
+      },
+      "notices": []
+    }
+  },
+  "definedName": {
+    "recordCount": 1,
+    "truncated": false,
+    "metadata": {
+      "revision": "txx1h4",
+      "target": {
+        "id": "wb/08xbm1",
+        "beforeLines": 0,
+        "afterLines": 0
+      },
+      "kind": {
+        "requested": "definedName",
+        "tokens": [
+          "definedName"
+        ]
+      },
+      "include": {
+        "tokens": []
+      },
+      "exclude": {
+        "tokens": []
+      },
+      "notices": []
+    }
+  },
+  "thread": {
+    "recordCount": 1,
+    "truncated": false,
+    "metadata": {
+      "revision": "d04bzf",
+      "target": {
+        "id": "wb/6tgxfy",
+        "beforeLines": 0,
+        "afterLines": 0
+      },
+      "kind": {
+        "requested": "thread",
+        "tokens": [
+          "thread"
+        ]
+      },
+      "include": {
+        "tokens": []
+      },
+      "exclude": {
+        "tokens": []
+      },
+      "notices": []
+    }
+  }
+}

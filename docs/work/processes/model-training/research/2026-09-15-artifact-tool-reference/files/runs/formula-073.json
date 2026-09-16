@@ -1,0 +1,37 @@
+{
+  "name": "fx.DAYS360",
+  "category": "date-time",
+  "examples": [
+    {
+      "formula": "=DAYS360(DATE(2024, 1, 1), DATE(2024, 1, 1), A1)",
+      "value": 0,
+      "projection": [
+        [
+          0,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 10
+    }
+  ]
+}

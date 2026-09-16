@@ -1,0 +1,49 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>shape ops · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="shape.md">Raw file</a> · <a data-public-raw download href="shape.md">Download</a></p><article><h1 id="shape-ops">shape ops</h1>
+<p>Ops in the <code>shape.*</code> namespace for <code>Workbook.apply</code>.</p>
+<h2 id="ops-index">Ops index</h2>
+<ul>
+<li><code>shape.add</code>: Add a shape anchored to worksheet cells.</li>
+</ul>
+<h2 id="shapeadd"><code>shape.add</code></h2>
+<p>Add a shape anchored to worksheet cells.</p>
+<p><strong>Required fields</strong>
+- <code>op</code>
+- <code>props</code>
+- <code>sheet</code>
+- <code>props.geometry</code></p>
+<p><strong>Optional fields</strong>
+- <code>as</code>
+- <code>props.anchor</code>
+- <code>props.fill</code>
+- <code>props.line</code></p>
+<p><strong>Enums</strong>
+- <code>props.fill.color.value</code>: See <a href="../enums.md">enums</a>.
+- <code>props.fill.gradientKind</code>: See <a href="../enums.md">enums</a>.
+- <code>props.fill.pattern.type</code>: See <a href="../enums.md">enums</a>.
+- <code>props.geometry</code>: See <a href="../enums.md">enums</a>.
+- <code>props.line.style</code>: See <a href="../enums.md">enums</a>.</p>
+<p><strong>Examples</strong></p>
+<pre><code class="language-json">{
+  "op": "shape.add",
+  "sheet": "Shapes",
+  "props": {
+    "geometry": "rect",
+    "anchor": {
+      "from": {
+        "row": 2,
+        "col": 3
+      },
+      "extent": {
+        "widthPx": 260,
+        "heightPx": 140
+      }
+    },
+    "fill": "accent1",
+    "line": {
+      "style": "dashed",
+      "fill": "accent4",
+      "width": 1
+    }
+  }
+}
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

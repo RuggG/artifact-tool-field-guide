@@ -1,0 +1,10 @@
+{
+  "index": 102,
+  "name": "range.getColumn",
+  "summary": "Select a column inside a block",
+  "originalCode": "const range = sheet.getRange('B2:D4');\nconst col = range.getColumn(0); // B2:B4",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

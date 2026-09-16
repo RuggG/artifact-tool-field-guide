@@ -1,0 +1,24 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>data-tables.spec.md · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="data-tables.spec.md">Raw file</a> · <a data-public-raw download href="data-tables.spec.md">Download</a></p><article><h2 id="data-tables-worksheetdatatables">Data tables (<code>worksheet.dataTables</code>)</h2>
+<p>Use data tables to project a formula across a row/column grid.</p>
+<h3 id="two-variable-data-table">Two-variable data table</h3>
+<pre><code class="language-ts">const sheet = workbook.worksheets.add("TwoVariable");
+
+sheet.getRange("B3").values = [[0.095]];  // rate
+sheet.getRange("B4").values = [[360]];    // periods
+sheet.getRange("B5").values = [[80000]];  // principal
+
+sheet.getRange("C2").formulas = [[`=PMT(B3/12,B4,-B5)`]];
+sheet.getRange("C3:C5").values = [[0.09], [0.0925], [0.095]];
+sheet.getRange("D2:E2").values = [[180, 360]];
+
+sheet.dataTables.add("D3:E5", {
+  rowInput: "B4",
+  columnInput: "B3",
+});
+
+workbook.recalculate();
+</code></pre>
+<h3 id="single-variable-row-input-only">Single-variable (row input only)</h3>
+<pre><code class="language-ts">sheet.dataTables.add("D3:E3", { rowInput: "B4" });
+workbook.recalculate();
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

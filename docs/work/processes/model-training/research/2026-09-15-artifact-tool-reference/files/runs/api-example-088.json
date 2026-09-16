@@ -1,0 +1,10 @@
+{
+  "index": 88,
+  "name": "range.format.wrapText",
+  "summary": "Wrap header text",
+  "originalCode": "sheet.getRange('A1:D1').format.wrapText = true;",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

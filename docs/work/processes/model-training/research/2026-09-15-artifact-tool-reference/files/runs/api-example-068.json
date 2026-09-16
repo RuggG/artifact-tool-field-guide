@@ -1,0 +1,10 @@
+{
+  "index": 68,
+  "name": "worksheet.shapes.add",
+  "summary": "Compat add with a range anchor",
+  "originalCode": "const sheet = workbook.worksheets.getItem('Shapes');\nconst star = sheet.shapes.add('Star5', sheet.getRange('G2:L10'));\nstar.name = 'Star';\nstar.fill.color = '#FFD966';\nstar.line.color = '#C09000';",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

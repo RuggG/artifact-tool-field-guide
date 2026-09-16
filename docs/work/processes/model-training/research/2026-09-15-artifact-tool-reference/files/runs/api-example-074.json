@@ -1,0 +1,13 @@
+{
+  "index": 74,
+  "name": "workbook.inspect",
+  "summary": "List conditional formatting rules for a range",
+  "adaptations": [
+    "Mapped structured example fields to the corresponding public method; replaced placeholder anchors with actual fixture IDs."
+  ],
+  "execution": "completed",
+  "export": "completed",
+  "logs": [
+    "{\"recordCount\":1,\"truncated\":false,\"metadata\":{\"revision\":\"k10wvr\",\"target\":{\"id\":\"wb/nhdvxh\",\"beforeLines\":0,\"afterLines\":0},\"kind\":{\"requested\":\"conditionalFormatting\",\"tokens\":[\"conditionalFormatting\"]},\"include\":{\"tokens\":[]},\"exclude\":{\"tokens\":[]},\"search\":\"top10\",\"notices\":[\"Worksheet <sheetId> not found.\",\"Search matched 0 entries\"]}}"
+  ]
+}

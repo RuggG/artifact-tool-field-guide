@@ -1,0 +1,30 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>verify_operations.py · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="verify_operations.py">Raw file</a> · <a data-public-raw download href="verify_operations.py">Download</a></p><article><h1>verify_operations.py</h1><pre class="public-code"><code>from pathlib import Path
+import hashlib,json,math,warnings,zipfile
+import openpyxl
+warnings.simplefilter(&#x27;ignore&#x27;,UserWarning)
+HERE=Path(__file__).parent
+src=HERE/&#x27;man-group-run/source.xlsx&#x27;
+dst=HERE/&#x27;operations-run/man-group-operations.xlsx&#x27;
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+a=openpyxl.load_workbook(src,data_only=False)
+b=openpyxl.load_workbook(dst,data_only=False)
+av=openpyxl.load_workbook(src,data_only=True)
+bv=openpyxl.load_workbook(dst,data_only=True)
+def same(x,y):
+    if isinstance(x,(int,float)) and isinstance(y,(int,float)):return math.isclose(x,y,rel_tol=1e-10,abs_tol=1e-8)
+    return x==y
+changes=[];cache=[];formats=[]
+for s in a:
+    for row in s:
+        for c in row:
+            d=b[s.title][c.coordinate]
+            if not same(c.value,d.value):changes.append([s.title,c.coordinate,c.value,d.value])
+            if not same(av[s.title][c.coordinate].value,bv[s.title][c.coordinate].value):cache.append([s.title,c.coordinate])
+            if c.number_format!=d.number_format:formats.append([s.title,c.coordinate,c.number_format,d.number_format])
+with zipfile.ZipFile(dst) as z:
+    names=z.namelist()
+    native={&#x27;zipIntegrityError&#x27;:z.testzip(),&#x27;formalTableFiles&#x27;:[n for n in names if n.startswith(&#x27;xl/tables/&#x27;) and n.endswith(&#x27;.xml&#x27;)],&#x27;chartFiles&#x27;:[n for n in names if &#x27;/charts/chart&#x27; in n and n.endswith(&#x27;.xml&#x27;)],&#x27;annotationPartFiles&#x27;:[n for n in names if &#x27;comment&#x27; in n.lower() and n.endswith(&#x27;.xml&#x27;)]}
+facts={&#x27;sourceSha256&#x27;:sha(src),&#x27;downloadOriginalUnchanged&#x27;:sha(src)==sha(Path(&#x27;/Users/ruggerogargiulo/Downloads/man-group-fees-excel.xlsx&#x27;)),&#x27;originalSheetOrderPreserved&#x27;:b.sheetnames[:len(a.sheetnames)]==a.sheetnames,&#x27;newSheets&#x27;:b.sheetnames[len(a.sheetnames):],&#x27;originalFormulaOrLiteralChanges&#x27;:changes,&#x27;originalCachedValueChanges&#x27;:cache,&#x27;originalNumberFormatChanges&#x27;:formats,&#x27;nativePackage&#x27;:native,&#x27;feeLab&#x27;:{&#x27;margin&#x27;:bv[&#x27;Fee lab&#x27;][&#x27;C4&#x27;].value,&#x27;quarterOne&#x27;:bv[&#x27;Fee lab&#x27;][&#x27;F9&#x27;].value,&#x27;annualFees&#x27;:bv[&#x27;Fee lab&#x27;][&#x27;C15&#x27;].value},&#x27;engine&#x27;:&#x27;Independent file read using openpyxl 3.1.5 and ZIP/XML; Microsoft Excel application not opened.&#x27;}
+(HERE/&#x27;operations-run/independent-verification.json&#x27;).write_text(json.dumps(facts,indent=2))
+print(json.dumps(facts,indent=2))
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

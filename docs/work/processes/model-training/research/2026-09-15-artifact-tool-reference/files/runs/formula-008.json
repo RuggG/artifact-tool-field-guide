@@ -1,0 +1,37 @@
+{
+  "name": "fx.CHIDIST",
+  "category": "compatibility",
+  "examples": [
+    {
+      "formula": "=CHIDIST(A1, A1)",
+      "value": 0.24197072451913293,
+      "projection": [
+        [
+          0.24197072451913293,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 10
+    }
+  ]
+}

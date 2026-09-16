@@ -1,0 +1,37 @@
+{
+  "name": "fx.DDB",
+  "category": "financial",
+  "examples": [
+    {
+      "formula": "=DDB(A1, A1, A1, A1)",
+      "value": 0,
+      "projection": [
+        [
+          0,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 14
+    }
+  ]
+}

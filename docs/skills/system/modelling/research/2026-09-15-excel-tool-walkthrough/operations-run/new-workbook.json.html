@@ -1,0 +1,50 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>new-workbook.json · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="new-workbook.json">Raw file</a> · <a data-public-raw download href="new-workbook.json">Download</a></p><article><h1>new-workbook.json</h1><pre class="public-code"><code>{
+  &quot;id&quot;: &quot;new-workbook&quot;,
+  &quot;operation&quot;: &quot;scratch = Workbook.create();\nsmall = scratch.worksheets.add(\&quot;Fee calculation\&quot;);\nreturn small;&quot;,
+  &quot;checkInput&quot;: {
+    &quot;before&quot;: &quot;&quot;,
+    &quot;after&quot;: &quot;return await names(scratch);&quot;
+  },
+  &quot;startedAt&quot;: &quot;2026-09-15T16:55:17.750Z&quot;,
+  &quot;libraryReturn&quot;: {
+    &quot;type&quot;: &quot;Worksheet object&quot;,
+    &quot;representation&quot;: &quot;Object contents are read separately in the agent checks.&quot;
+  },
+  &quot;elapsedMs&quot;: 3,
+  &quot;after&quot;: {
+    &quot;ndjson&quot;: &quot;{\&quot;kind\&quot;:\&quot;sheet\&quot;,\&quot;id\&quot;:\&quot;ws/xhi5xl\&quot;,\&quot;name\&quot;:\&quot;Fee calculation\&quot;,\&quot;index\&quot;:0}&quot;,
+    &quot;recordCount&quot;: 1,
+    &quot;truncated&quot;: false,
+    &quot;metadata&quot;: {
+      &quot;revision&quot;: &quot;4dwfzz&quot;,
+      &quot;target&quot;: {
+        &quot;id&quot;: &quot;wb/15ud3d&quot;,
+        &quot;beforeLines&quot;: 0,
+        &quot;afterLines&quot;: 0
+      },
+      &quot;kind&quot;: {
+        &quot;requested&quot;: &quot;sheet&quot;,
+        &quot;tokens&quot;: [
+          &quot;sheet&quot;
+        ]
+      },
+      &quot;include&quot;: {
+        &quot;requested&quot;: &quot;id,name&quot;,
+        &quot;tokens&quot;: [
+          &quot;id&quot;,
+          &quot;name&quot;
+        ]
+      },
+      &quot;exclude&quot;: {
+        &quot;requested&quot;: {
+          &quot;javascriptType&quot;: &quot;undefined&quot;
+        },
+        &quot;tokens&quot;: []
+      },
+      &quot;search&quot;: {
+        &quot;javascriptType&quot;: &quot;undefined&quot;
+      },
+      &quot;notices&quot;: []
+    }
+  }
+}</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

@@ -1,0 +1,75 @@
+{
+  "id": "add-table",
+  "operation": "lab.getRange(\"B20:D23\").values = [[\"Scenario\",\"Fee margin, bp\",\"AUM multiplier\"],[\"Base\",56,1],[\"Downside\",51,0.9],[\"Upside\",60,1.1]];\ntableObject = lab.tables.add(\"B20:D23\",true,\"FeeScenarioInputs\");\nreturn tableObject;",
+  "checkInput": {
+    "before": "",
+    "after": "return {tables:lab.tables.items.map(t=>({name:t.name,headers:t.getHeaderRowRange().values,rows:t.getDataRows().values})),values:grid(lab,\"B20:D23\")};"
+  },
+  "startedAt": "2026-09-15T16:53:23.771Z",
+  "libraryReturn": {
+    "type": "Excel Table object",
+    "representation": "Object contents are read separately in the agent checks."
+  },
+  "elapsedMs": 0,
+  "after": {
+    "tables": [
+      {
+        "name": "FeeScenarioInputs",
+        "headers": [
+          [
+            "Scenario",
+            "Fee margin, bp",
+            "AUM multiplier"
+          ]
+        ]
+      }
+    ],
+    "values": {
+      "address": "B20:D23",
+      "values": [
+        [
+          "Scenario",
+          "Fee margin, bp",
+          "AUM multiplier"
+        ],
+        [
+          "Base",
+          56,
+          1
+        ],
+        [
+          "Downside",
+          51,
+          0.9
+        ],
+        [
+          "Upside",
+          60,
+          1.1
+        ]
+      ],
+      "formulas": [
+        [
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          ""
+        ]
+      ]
+    }
+  }
+}

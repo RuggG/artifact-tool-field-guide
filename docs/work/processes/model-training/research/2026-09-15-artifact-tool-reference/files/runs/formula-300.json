@@ -1,0 +1,37 @@
+{
+  "name": "fx.ROUNDDOWN",
+  "category": "math-trig",
+  "examples": [
+    {
+      "formula": "=ROUNDDOWN(10, A1)",
+      "value": 10,
+      "projection": [
+        [
+          10,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 11
+    }
+  ]
+}

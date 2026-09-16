@@ -1,0 +1,206 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>final-save.json · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="final-save.json">Raw file</a> · <a data-public-raw download href="final-save.json">Download</a></p><article><h1>final-save.json</h1><pre class="public-code"><code>{
+  &quot;id&quot;: &quot;final-save&quot;,
+  &quot;operation&quot;: &quot;wb.recalculate();\nconst file = await SpreadsheetFile.exportXlsx(wb);\nreturn await file.save(out);&quot;,
+  &quot;checkInput&quot;: {
+    &quot;before&quot;: &quot;return {diskSha256:await sha(out),memory:labRead()};&quot;,
+    &quot;after&quot;: &quot;const reopened=await SpreadsheetFile.importXlsx(await FileBlob.load(out));const sheet=reopened.worksheets.getItem(\&quot;Fee lab\&quot;);return {file:path.basename(out),bytes:(await fs.stat(out)).size,sha256:await sha(out),reopened:grid(sheet,\&quot;B9:F12\&quot;),reopenedMargin:cell(sheet,\&quot;C4\&quot;),reopenedTableCount:sheet.tables.items.length,sourceUnchanged:sourceHash===await sha(source),checkErrorScan:await inspect(reopened,{kind:\&quot;match\&quot;,sheetId:\&quot;Fee lab\&quot;,range:\&quot;B4:F24\&quot;,searchTerm:\&quot;#REF!|#DIV/0!|#VALUE!|#N/A|#NAME\\\\?\&quot;,options:{useRegex:true,maxResults:20},maxChars:3000})};&quot;
+  },
+  &quot;startedAt&quot;: &quot;2026-09-15T16:55:21.036Z&quot;,
+  &quot;before&quot;: {
+    &quot;diskSha256&quot;: &quot;f99afe138a4ced57579120bb515ccdb29c9ddfc016d1302126833a2516e646ae&quot;,
+    &quot;memory&quot;: {
+      &quot;margin&quot;: {
+        &quot;address&quot;: &quot;C4&quot;,
+        &quot;value&quot;: 60,
+        &quot;formula&quot;: &quot;&quot;
+      },
+      &quot;growth&quot;: {
+        &quot;address&quot;: &quot;C5&quot;,
+        &quot;value&quot;: 0.02,
+        &quot;formula&quot;: &quot;&quot;
+      },
+      &quot;quarters&quot;: {
+        &quot;address&quot;: &quot;B9:F12&quot;,
+        &quot;values&quot;: [
+          [
+            &quot;Quarter 1&quot;,
+            290.5116868239257,
+            60,
+            0.25,
+            435.76753023588856
+          ],
+          [
+            &quot;Quarter 2&quot;,
+            296.3219205604042,
+            60,
+            0.25,
+            444.48288084060624
+          ],
+          [
+            &quot;Quarter 3&quot;,
+            302.2483589716123,
+            60,
+            0.25,
+            453.37253845741844
+          ],
+          [
+            &quot;Quarter 4&quot;,
+            308.29332615104454,
+            60,
+            0.25,
+            462.4399892265668
+          ]
+        ],
+        &quot;formulas&quot;: [
+          [
+            &quot;&quot;,
+            &quot;=&#x27;Fee engine&#x27;!W18&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;=IF(ISBLANK($C$4),NA(),C9*1000*D9/10000*E9)&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;=C9*(1+$C$5)&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;=IF(ISBLANK($C$4),NA(),C10*1000*D10/10000*E10)&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;=C10*(1+$C$5)&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;=IF(ISBLANK($C$4),NA(),C11*1000*D11/10000*E11)&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;=C11*(1+$C$5)&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;=IF(ISBLANK($C$4),NA(),C12*1000*D12/10000*E12)&quot;
+          ]
+        ]
+      },
+      &quot;annual&quot;: {
+        &quot;address&quot;: &quot;C15&quot;,
+        &quot;value&quot;: 1796.06293876048,
+        &quot;formula&quot;: &quot;=SUM(F9:F12)&quot;
+      }
+    }
+  },
+  &quot;libraryReturn&quot;: {
+    &quot;javascriptType&quot;: &quot;undefined&quot;
+  },
+  &quot;elapsedMs&quot;: 264,
+  &quot;after&quot;: {
+    &quot;file&quot;: &quot;man-group-operations.xlsx&quot;,
+    &quot;bytes&quot;: 111215,
+    &quot;sha256&quot;: &quot;df15d8133fba3821c4dc7cfe942ea03a61e0dfeb395f2141668b4fdc22a76905&quot;,
+    &quot;reopened&quot;: {
+      &quot;address&quot;: &quot;B9:F12&quot;,
+      &quot;values&quot;: [
+        [
+          &quot;Quarter 1&quot;,
+          290.5116868239257,
+          60,
+          0.25,
+          435.76753023588856
+        ],
+        [
+          &quot;Quarter 2&quot;,
+          296.3219205604042,
+          60,
+          0.25,
+          444.48288084060624
+        ],
+        [
+          &quot;Quarter 3&quot;,
+          302.2483589716123,
+          60,
+          0.25,
+          453.37253845741844
+        ],
+        [
+          &quot;Quarter 4&quot;,
+          308.29332615104454,
+          60,
+          0.25,
+          462.4399892265668
+        ]
+      ],
+      &quot;formulas&quot;: [
+        [
+          &quot;&quot;,
+          &quot;=&#x27;Fee engine&#x27;!W18&quot;,
+          &quot;=$C$4&quot;,
+          &quot;&quot;,
+          &quot;=IF(ISBLANK($C$4),NA(),C9*1000*D9/10000*E9)&quot;
+        ],
+        [
+          &quot;&quot;,
+          &quot;=C9*(1+$C$5)&quot;,
+          &quot;=$C$4&quot;,
+          &quot;&quot;,
+          &quot;=IF(ISBLANK($C$4),NA(),C10*1000*D10/10000*E10)&quot;
+        ],
+        [
+          &quot;&quot;,
+          &quot;=C10*(1+$C$5)&quot;,
+          &quot;=$C$4&quot;,
+          &quot;&quot;,
+          &quot;=IF(ISBLANK($C$4),NA(),C11*1000*D11/10000*E11)&quot;
+        ],
+        [
+          &quot;&quot;,
+          &quot;=C11*(1+$C$5)&quot;,
+          &quot;=$C$4&quot;,
+          &quot;&quot;,
+          &quot;=IF(ISBLANK($C$4),NA(),C12*1000*D12/10000*E12)&quot;
+        ]
+      ]
+    },
+    &quot;reopenedMargin&quot;: {
+      &quot;address&quot;: &quot;C4&quot;,
+      &quot;value&quot;: 60,
+      &quot;formula&quot;: &quot;&quot;
+    },
+    &quot;reopenedTableCount&quot;: 1,
+    &quot;sourceUnchanged&quot;: true,
+    &quot;checkErrorScan&quot;: {
+      &quot;ndjson&quot;: &quot;{\&quot;kind\&quot;:\&quot;notice\&quot;,\&quot;message\&quot;:\&quot;Cell search matched 0 entries.\&quot;}&quot;,
+      &quot;recordCount&quot;: 1,
+      &quot;truncated&quot;: false,
+      &quot;metadata&quot;: {
+        &quot;revision&quot;: &quot;wkjet5&quot;,
+        &quot;target&quot;: {
+          &quot;id&quot;: &quot;wb/b2yvzh&quot;,
+          &quot;beforeLines&quot;: 0,
+          &quot;afterLines&quot;: 0
+        },
+        &quot;kind&quot;: {
+          &quot;requested&quot;: &quot;match&quot;,
+          &quot;tokens&quot;: [
+            &quot;match&quot;
+          ]
+        },
+        &quot;include&quot;: {
+          &quot;requested&quot;: {
+            &quot;javascriptType&quot;: &quot;undefined&quot;
+          },
+          &quot;tokens&quot;: []
+        },
+        &quot;exclude&quot;: {
+          &quot;requested&quot;: {
+            &quot;javascriptType&quot;: &quot;undefined&quot;
+          },
+          &quot;tokens&quot;: []
+        },
+        &quot;search&quot;: {
+          &quot;javascriptType&quot;: &quot;undefined&quot;
+        },
+        &quot;notices&quot;: []
+      }
+    }
+  }
+}</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

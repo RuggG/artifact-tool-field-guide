@@ -1,0 +1,37 @@
+{
+  "name": "fx.BESSELI",
+  "category": "engineering",
+  "examples": [
+    {
+      "formula": "=BESSELI(A1, A1)",
+      "value": 0.5651590975819435,
+      "projection": [
+        [
+          0.5651590975819435,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 10
+    }
+  ]
+}

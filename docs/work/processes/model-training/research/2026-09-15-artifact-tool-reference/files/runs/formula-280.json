@@ -1,0 +1,37 @@
+{
+  "name": "fx.EXP",
+  "category": "math-trig",
+  "examples": [
+    {
+      "formula": "=EXP(10)",
+      "value": 22026.465794806718,
+      "projection": [
+        [
+          22026.465794806718,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 13
+    }
+  ]
+}

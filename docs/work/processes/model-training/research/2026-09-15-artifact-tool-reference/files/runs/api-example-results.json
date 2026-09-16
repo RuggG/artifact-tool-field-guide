@@ -1,0 +1,1311 @@
+[
+  {
+    "index": 0,
+    "name": "worksheet.charts.add",
+    "summary": "Create a chart with a manual anchor",
+    "originalCode": "const sheet = workbook.worksheets.add('Charts');\nconst chart = sheet.charts.add('line', {\n  title: 'Milky Way Star Birth Rate',\n  titleTextStyle: { fontSize: 18, bold: true },\n  categories: ['2020', '2021', '2022'],\n  series: [\n    { name: 'Milky Way', values: [1.8, 1.9, 2.0] },\n  ],\n  hasLegend: true,\n  legend: { position: 'top' },\n  barOptions: { direction: 'column', grouping: 'stacked', gapWidth: 120 },\n  dataLabels: { showValue: false },\n  from: { row: 1, col: 1 },\n  extent: { widthPx: 520, heightPx: 280 },\n});",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 1,
+    "name": "worksheet.charts.add",
+    "summary": "Compat range-anchored chart API",
+    "originalCode": "const sheet = workbook.worksheets.getItem('Charts');\nconst range = sheet.getRange('A2:B5');\nconst chart = sheet.charts.add('ColumnClustered', range, 'Auto');\nchart.title.text = 'Stock Prices and Market Caps';\nchart.setPosition(sheet.getRange('F2:M10'));\nchart.width = 500;\nchart.height = 300;\nchart.axes.valueAxis.majorGridlines.format.line.color = '#CCCCCC';",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 2,
+    "name": "chart data table",
+    "summary": "Data table with optional legend keys",
+    "originalCode": "chart.dataTable = { visible: true, showLegendKey: true, textStyle: { fontSize: 10 } };\nchart.dataTable = { visible: true, showLegendKey: false };",
+    "adaptations": [],
+    "execution": "completed",
+    "exportError": "TypeError: this[#C].toProto is not a function",
+    "logs": []
+  },
+  {
+    "index": 3,
+    "name": "chart series",
+    "summary": "Series + moving-average trendline",
+    "originalCode": "const sheet = workbook.worksheets.add('Trendlines');\nconst chart = sheet.charts.add('line', { from: { row: 1, col: 1 }, extent: { widthPx: 420, heightPx: 240 } });\nchart.categories = ['Q1', 'Q2', 'Q3', 'Q4'];\nconst series = chart.series.add('Revenue');\nseries.values = [10, 14, 13, 17];\nseries.categories = chart.categories;\nseries.trendlines.add('movingAverage', { movingAveragePeriod: 3 });",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 4,
+    "name": "chart title",
+    "summary": "Compact title edits",
+    "originalCode": "chart.title = '';\nchart.titlePlacement = 'none';\nchart.title = 'Sales Data';\nchart.titlePlacement = 'aboveChart';\nchart.titlePlacement = 'centeredOverlay';\nchart.titleTextStyle.bold = true;\nchart.titleTextStyle.fontSize = 18;",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 5,
+    "name": "chart fills",
+    "summary": "Pattern fills (+ Office.js-style aliases)",
+    "originalCode": "chart.chartFill = { type: 'solid', color: 'background1', pattern: { type: 'percent10', color: 'accent1' } };\nchart.plotAreaFill = { type: 'solid', color: 'background1', pattern: { type: 'diagonalCross', color: 'accent2' } };\n\n// Office.js-style aliases (map to chartFill/plotAreaFill + chartLine/plotAreaLine):\nchart.chartArea.format.fill = { type: 'solid', color: 'background1' };\nchart.plotArea.format.fill.setSolidColor('accent2');\nchart.plotArea.format.line.visible = false;",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 6,
+    "name": "chart legend",
+    "summary": "Legend on/off + position + style",
+    "originalCode": "chart.hasLegend = false;\nchart.hasLegend = true; chart.legend = { position: 'bottom', textStyle: { fontSize: 11 }, fill: { type: 'solid', color: 'background1', pattern: { type: 'zigZag', color: 'accent2' } }, stroke: { fill: 'accent2', style: 'solid', width: 1 } };",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 7,
+    "name": "chart barOptions",
+    "summary": "Column chart spacing + overlap",
+    "originalCode": "chart.barOptions.direction = 'column';\nchart.barOptions.grouping = 'clustered';\nchart.barOptions.gapWidth = 100;\nchart.barOptions.overlap = -20;\nchart.barOptions.direction = 'column';\nchart.barOptions.grouping = 'stacked';\nchart.barOptions.gapWidth = 120;",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 8,
+    "name": "chart axes",
+    "summary": "Axis type + presence",
+    "originalCode": "chart.xAxis = { axisType: 'textAxis' };\nchart.xAxis = { axisType: 'dateAxis' };\nchart.xAxis = { deleted: true, title: 'Years' };\nchart.yAxis = { deleted: true, title: 'Revenue' };",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 9,
+    "name": "chart axes",
+    "summary": "Axis titles + text styles (avoid redundant defaults)",
+    "originalCode": "chart.xAxis = { title: { text: 'Category', textStyle: { fontSize: 14, bold: true } } };\nchart.yAxis = { title: { text: 'Value', textStyle: { fontSize: 12, italic: true, fill: 'accent1' } } };",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 10,
+    "name": "chart axes",
+    "summary": "Axis ordering + crossing",
+    "originalCode": "chart.xAxis = { position: 'bottom', orientation: 'maxMin' };\nchart.yAxis = { position: 'left', crossBetween: 'between' };\nchart.yAxis = { crosses: 'autoZero' };\nchart.yAxis = { crossesAt: 2 };\nchart.yAxis = { crosses: 'max' };",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 11,
+    "name": "chart axes",
+    "summary": "Tick labels",
+    "originalCode": "chart.xAxis = { tickLabelPosition: 'nextTo' };\nchart.xAxis = { tickLabelPosition: 'high' };\nchart.xAxis = { tickLabelPosition: 'low' };\nchart.xAxis = { tickLabelPosition: 'none', tickLabelInterval: 2, tickLabelDistanceFromAxis: 10 };",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 12,
+    "name": "chart axes",
+    "summary": "Tick marks + units",
+    "originalCode": "chart.xAxis = { majorUnit: 5, minorUnit: 1 };\nchart.xAxis = { majorTickMark: 'outside', minorTickMark: 'inside' };\nchart.yAxis = { majorTickMark: 'cross', minorTickMark: 'none' };",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 13,
+    "name": "chart axes",
+    "summary": "Gridlines + axis lines",
+    "originalCode": "chart.yAxis = { majorGridlines: { fill: 'background2', style: 'dashed', width: 1 }, minorGridlines: { fill: 'background2', style: 'dotted', width: 0.5 } };\nchart.xAxis = { majorGridlines: { fill: 'background2', style: 'solid', width: 1 }, minorGridlines: { fill: 'background2', style: 'dotted', width: 0.5 } };\nchart.xAxis = { line: { fill: 'background2', style: 'solid', width: 1 } };\nchart.yAxis = { line: { fill: 'background2', style: 'solid', width: 1 } };\n\n// Hide gridlines:\nchart.yAxis = { majorGridlines: null, minorGridlines: null };\nchart.xAxis = { majorGridlines: null, minorGridlines: null };",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 14,
+    "name": "chart axes",
+    "summary": "Number formats",
+    "originalCode": "chart.xAxis = { numberFormatCode: '0', numberFormatSourceLinked: true };",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 15,
+    "name": "chart axes",
+    "summary": "Axis text style",
+    "originalCode": "chart.xAxis = { textStyle: { fontSize: 10 } };\nchart.yAxis = { textStyle: { fontSize: 1, fill: 'background1' } };",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 16,
+    "name": "categoryAxis",
+    "summary": "Show category axis tick labels",
+    "originalCode": "chart.xAxis = { deleted: false, tickLabelPosition: 'nextToAxis' };",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 17,
+    "name": "valueAxis",
+    "summary": "Format value axis gridlines",
+    "originalCode": "chart.yAxis = { majorGridlines: { fill: 'background2', style: 'dashed', width: 1 } };",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 18,
+    "name": "chart.xAxis",
+    "summary": "Make x-axis labels visible",
+    "originalCode": "chart.xAxis = { visible: true, tickLabelPosition: 'nextToAxis' };",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 19,
+    "name": "chart.yAxis",
+    "summary": "Set y-axis title",
+    "originalCode": "chart.yAxis = { title: { text: 'Revenue' } };",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 20,
+    "name": "chart dataLabels",
+    "summary": "Positions + minimal style",
+    "originalCode": "chart.dataLabels = { showValue: false, position: undefined };\nchart.dataLabels = { showValue: true, position: 'center', textStyle: { fontSize: 9 } };\nchart.dataLabels = { showValue: true, position: 'inEnd' };\nchart.dataLabels = { showValue: true, position: 'inBase' };\nchart.dataLabels = { showValue: true, position: 'outEnd', textStyle: { bold: true, fontSize: 10 } };",
+    "adaptations": [],
+    "execution": "completed",
+    "exportError": "TypeError: this[#R].toProto is not a function",
+    "logs": []
+  },
+  {
+    "index": 21,
+    "name": "chart dataLabels",
+    "summary": "Data callout styling (fill + stroke)",
+    "originalCode": "chart.dataLabels = { showValue: true, position: 'dataCallout', fill: { type: 'solid', color: 'background1', pattern: { type: 'percent20', color: 'accent1' } }, stroke: { fill: 'accent1', style: 'solid', width: 1 } };",
+    "adaptations": [],
+    "execution": "completed",
+    "exportError": "TypeError: this[#R].toProto is not a function",
+    "logs": []
+  },
+  {
+    "index": 22,
+    "name": "chart dataTable",
+    "summary": "Data table with optional legend keys",
+    "originalCode": "chart.dataTable = { visible: true, showLegendKey: true, textStyle: { fontSize: 10 }, fill: { type: 'solid', color: 'background1', pattern: { type: 'smallGrid', color: 'accent3' } } };\nchart.dataTable = { visible: true, showLegendKey: false };",
+    "adaptations": [],
+    "execution": "completed",
+    "exportError": "TypeError: this[#C].toProto is not a function",
+    "logs": []
+  },
+  {
+    "index": 23,
+    "name": "chart series",
+    "summary": "Series styling via worksheet.charts.add config",
+    "originalCode": "const chart = worksheet.charts.add('bar', { categories: ['Q1','Q2'], series: [{ name: '2025', values: [18, 14], line: { fill: '#7c3aed', style: 'solid', width: 2 }, fill: { type: 'solid', color: '#ede9fe', pattern: { type: 'smallCheck', color: '#8b5cf6' } } }, { name: '2026', values: [21, 17], line: { fill: '#d97706', style: 'solid', width: 2 }, fill: { type: 'solid', color: '#fef3c7', pattern: { type: 'dottedDiamond', color: '#f59e0b' } } }] });",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 24,
+    "name": "chart series",
+    "summary": "Scatter series with xValues (config)",
+    "originalCode": "const chart = worksheet.charts.add('scatter', { series: [{ name: 'S1', xValues: [1, 2, 3, 4], values: [2, 4, 3, 5] }] });",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 25,
+    "name": "chart series",
+    "summary": "Create a series and set categories/values (one-liners)",
+    "originalCode": "chart.categories = ['A', 'B', 'C'];\nconst series = chart.series.add('S1'); series.categories = chart.categories; series.values = [1, 2, 3];",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 26,
+    "name": "chart series",
+    "summary": "Series value number format code",
+    "originalCode": "chart.series.items[0]!.valuesFormatCode = '$0.00';",
+    "adaptations": [
+      "Removed TypeScript non-null assertion after array access."
+    ],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 27,
+    "name": "chart series",
+    "summary": "Error bars",
+    "originalCode": "const series = chart.series.items[0]!;\nseries.errorBars = { type: 'standardError', line: { fill: 'accent1', style: 'solid', width: 1 } };\nseries.errorBars = { type: 'percentage', value: 5 };\nseries.errorBars = { type: 'standardDeviation' };",
+    "adaptations": [
+      "Removed TypeScript non-null assertion after array access."
+    ],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 28,
+    "name": "chart series",
+    "summary": "Trendlines",
+    "originalCode": "const series = chart.series.items[0]!;\nseries.trendlines.add('linear', { forecastForward: 2, forecastBackward: 1, intercept: 0, displayEquation: true, displayRSquared: true, stroke: { fill: 'accent1', style: 'dashed', width: 1 } });\nseries.trendlines.add('polynomial', { polynomialOrder: 3 });\nseries.trendlines.add('movingAverage', { movingAveragePeriod: 5 });\nseries.trendlines.add('exponential');\nseries.trendlines.clear();",
+    "adaptations": [
+      "Removed TypeScript non-null assertion after array access."
+    ],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 29,
+    "name": "chart series",
+    "summary": "Trendline styling (label fill + line alias)",
+    "originalCode": "const trend = series.trendlines.add('linear', { line: { fill: 'accent5', style: 'dashed', width: 1 }, label: { fill: { type: 'solid', color: 'background1', pattern: { type: 'smallCheck', color: 'accent6' } } } });",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 30,
+    "name": "chart series",
+    "summary": "Per-point data label overrides",
+    "originalCode": "const series = chart.series.items[1]!;\nconst label0 = series.dataLabelOverrides.add(0);\nlabel0.showValue = true;\nlabel0.position = 'inEnd';\nlabel0.textStyle.bold = true;\nlabel0.textStyle.fontSize = 10;",
+    "adaptations": [
+      "Removed TypeScript non-null assertion after array access."
+    ],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 31,
+    "name": "chart series",
+    "summary": "Series styling after creation (one-liners)",
+    "originalCode": "chart.series.items[0]!.line = { fill: '#3b82f6', style: 'solid', width: 2 };\nchart.series.items[0]!.fill = { type: 'solid', color: '#60a5fa' };",
+    "adaptations": [
+      "Removed TypeScript non-null assertion after array access."
+    ],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 32,
+    "name": "chart series",
+    "summary": "Outline-only bars (no fill + visible stroke)",
+    "originalCode": "const series = chart.series.items[0]!;\nseries.fill = { type: 'none' };\nseries.stroke = { color: 'accent5', style: 'solid', weight: 1.5 };\n\n// Equivalent format-style surface (useful for agent code):\nseries.format.fill.clear();\nseries.format.line = { color: 'accent5', style: 'solid', weight: 1.5 };",
+    "adaptations": [
+      "Removed TypeScript non-null assertion after array access."
+    ],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 33,
+    "name": "range.conditionalFormats",
+    "summary": "Add a color scale rule",
+    "originalCode": "const range = sheet.getRange('B2:B6');\nrange.conditionalFormats.add('colorScale', {\n  colors: ['#FCA5A5', '#DC2626'],\n});",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 34,
+    "name": "range.conditionalFormats",
+    "summary": "Add a 3-stop color scale (min/mid/max)",
+    "originalCode": "const range = sheet.getRange('B2:B6');\nrange.conditionalFormats.add('colorScale', {\n  criteria: [\n    { type: 'lowestValue', color: '#DC2626' },\n    { type: 'percentile', value: 50, color: '#FBBF24' },\n    { type: 'highestValue', color: '#16A34A' },\n  ],\n});",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 35,
+    "name": "range.conditionalFormats",
+    "summary": "Add a custom formula rule",
+    "originalCode": "const range = sheet.getRange('B2:B6');\nrange.conditionalFormats.add('Custom', {\n  formula: '=B2>10',\n  format: { fill: '#FDE68A', font: { bold: true } },\n});",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 36,
+    "name": "range.conditionalFormats",
+    "summary": "Add a cell value rule",
+    "originalCode": "const range = sheet.getRange('B2:B6');\nrange.conditionalFormats.addCellIs({\n  operator: 'lessThan',\n  formula: 0,\n  format: { fill: '#F8CBAD' },\n});",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 37,
+    "name": "range.conditionalFormats",
+    "summary": "Add data bars (color bars) for magnitude",
+    "originalCode": "const range = sheet.getRange('C2:C10');\nrange.conditionalFormats.add('dataBar', {\n  color: 'accent5',\n  gradient: true,\n});",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 38,
+    "name": "range.conditionalFormats",
+    "summary": "Add an icon set for quick up/flat/down signals",
+    "originalCode": "const range = sheet.getRange('D2:D10');\nrange.conditionalFormats.add('iconSet', {\n  iconSet: '3Arrows',\n  showValue: false,\n  reverse: false,\n  percent: true,\n});",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 39,
+    "name": "range.conditionalFormats",
+    "summary": "Highlight text cells that contain a substring",
+    "originalCode": "const range = sheet.getRange('E2:E8');\nrange.conditionalFormats.add('containsText', {\n  text: 'late',\n  format: { fill: '#FDE68A', font: { color: '#92400E', bold: true } },\n});",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 40,
+    "name": "range.conditionalFormats",
+    "summary": "Highlight dates in a relative time window",
+    "originalCode": "const range = sheet.getRange('F2:F12');\nrange.conditionalFormats.add('timePeriod', {\n  timePeriod: 'last7Days',\n  format: { fill: '#DBEAFE', font: { color: '#1D4ED8' } },\n});",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 41,
+    "name": "range.conditionalFormats",
+    "summary": "Highlight top-ranked values by count or percent",
+    "originalCode": "const range = sheet.getRange('G2:G20');\nrange.conditionalFormats.add('top10', {\n  rank: 10,\n  percent: true,\n  format: { fill: '#DCFCE7', font: { color: '#166534' } },\n});",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 42,
+    "name": "range.conditionalFormats",
+    "summary": "Highlight values below or equal to the average",
+    "originalCode": "const range = sheet.getRange('H2:H20');\nrange.conditionalFormats.add('aboveAverage', {\n  aboveAverage: false,\n  equalAverage: true,\n  format: { fill: '#FECACA', font: { color: '#991B1B' } },\n});",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 43,
+    "name": "range.conditionalFormats.addCustom",
+    "summary": "Highlight cells using a custom formula",
+    "originalCode": "const range = sheet.getRange('F2:F50');\nrange.conditionalFormats.addCustom('=F2<E2', {\n  fill: '#FECACA',\n  font: { color: '#991B1B', bold: true },\n});",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 44,
+    "name": "range.conditionalFormats.addCustom",
+    "summary": "Equivalent add('Custom', ...) form",
+    "originalCode": "const range = sheet.getRange('F2:F50');\nrange.conditionalFormats.add('Custom', {\n  formula: '=F2<E2',\n  format: { fill: '#FECACA', font: { color: '#991B1B' } },\n});",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 45,
+    "name": "workbook.export",
+    "summary": "Export an editable workbook",
+    "originalCode": "const xlsx = await workbook.export({ format: 'xlsx' });",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 46,
+    "name": "workbook.render",
+    "summary": "Render a range preview",
+    "originalCode": "const png = await workbook.render({\n  sheetName: 'Summary',\n  range: 'A1:D12',\n  format: 'png',\n});",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 47,
+    "name": "workbook.help",
+    "summary": "Get help for a specific enums",
+    "originalCode": "workbook.help(\n  'enum.ShapeGeometry',\n  { include: ['index','notes'] },\n)",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 48,
+    "name": "workbook.help",
+    "summary": "Get help for multiple enums",
+    "originalCode": "workbook.help(\n  'enum.*',\n  { search: 'ShapeGeometry|LineStyle', include: ['index'] },\n)",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 49,
+    "name": "workbook.help",
+    "summary": "Get help on specific features by regex search",
+    "originalCode": "workbook.help({query: '*', search: 'trendline|trendlines', include: ['index','examples']}).",
+    "adaptations": [
+      "Repaired malformed trailing dot and used the documented query/options signature."
+    ],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 50,
+    "name": "workbook.help",
+    "summary": "Range addressing and value/formula basics",
+    "adaptations": [
+      "Mapped structured example fields to the corresponding public method; replaced placeholder anchors with actual fixture IDs."
+    ],
+    "execution": "completed",
+    "export": "completed",
+    "logs": [
+      "{\"ndjson\":\"{\\\"kind\\\":\\\"api\\\",\\\"name\\\":\\\"ranges\\\",\\\"summary\\\":\\\"Range addressing and cell reads/writes.\\\",\\\"tags\\\":[\\\"ranges\\\"]}\",\"truncated\":false,\"metadata\":{\"revision\":\"o0lmjp\",\"query\":\"ranges\",\"include\":{\"requested\":[\"index\",\"examples\"],\"tokens\":[\"index\",\"examples\"]},\"notices\":[]}}"
+    ]
+  },
+  {
+    "index": 51,
+    "name": "workbook.help",
+    "summary": "Formatting ranges (fills, fonts, borders, number formats)",
+    "adaptations": [
+      "Mapped structured example fields to the corresponding public method; replaced placeholder anchors with actual fixture IDs."
+    ],
+    "execution": "completed",
+    "export": "completed",
+    "logs": [
+      "{\"ndjson\":\"{\\\"kind\\\":\\\"api\\\",\\\"name\\\":\\\"styles\\\",\\\"summary\\\":\\\"Formatting ranges (fills, fonts, borders, number formats).\\\",\\\"tags\\\":[\\\"styles\\\",\\\"range.format\\\",\\\"formatting\\\",\\\"number format\\\",\\\"number_format\\\",\\\"autofit\\\",\\\"fill\\\",\\\"font\\\",\\\"borders\\\"]}\\n{\\\"kind\\\":\\\"notice\\\",\\\"message\\\":\\\"Truncated: omitted 1 lines. Increase maxChars or narrow query.\\\"}\",\"truncated\":true,\"metadata\":{\"revision\":\"8pwax9\",\"query\":\"styles\",\"include\":{\"requested\":[\"index\",\"examples\"],\"tokens\":[\"index\",\"examples\"]},\"notices\":[]}}"
+    ]
+  },
+  {
+    "index": 52,
+    "name": "workbook.help",
+    "summary": "Grep for feature namespaces",
+    "adaptations": [
+      "Mapped structured example fields to the corresponding public method; replaced placeholder anchors with actual fixture IDs."
+    ],
+    "execution": "completed",
+    "export": "completed",
+    "logs": [
+      "{\"ndjson\":\"{\\\"kind\\\":\\\"api\\\",\\\"name\\\":\\\"charts\\\",\\\"summary\\\":\\\"Chart objects anchored to cells.\\\",\\\"tags\\\":[\\\"charts\\\"],\\\"notes\\\":[\\\"Use worksheet.charts.add(...) to create charts.\\\",\\\"Use worksheet.charts.deleteAll() (or .clear()) to remove charts.\\\",\\\"Use chart.delete() to remove a single chart.\\\",\\\"Charts are anchored with 0-based row/col positions and px offsets.\\\",\\\"Charts support title.text, setPosition, width/height, and axes.valueAxis/categoryAxis.\\\",\\\"Passing a multi-cell range to setPosition reserves that rectangle (from/to anchors).\\\"]}\\n{\\\"kind\\\":\\\"notice\\\",\\\"message\\\":\\\"Truncated: omitted 40 lines. Increase maxChars or narrow query.\\\"}\",\"truncated\":true,\"metadata\":{\"revision\":\"6jpp5f\",\"query\":\"*\",\"include\":{\"requested\":[\"index\",\"examples\",\"notes\"],\"tokens\":[\"index\",\"examples\",\"notes\"]},\"search\":\"tables|sparklines|charts|images|render|validation|conditional|freeze|data_validation\",\"notices\":[]}}"
+    ]
+  },
+  {
+    "index": 53,
+    "name": "workbook.help",
+    "summary": "Browse formula metadata entries",
+    "adaptations": [
+      "Mapped structured example fields to the corresponding public method; replaced placeholder anchors with actual fixture IDs."
+    ],
+    "execution": "completed",
+    "export": "completed",
+    "logs": [
+      "{\"ndjson\":\"{\\\"kind\\\":\\\"formula\\\",\\\"name\\\":\\\"fx.EXPONDIST\\\",\\\"summary\\\":\\\"This function is available for compatibility with Excel 2007 and earlier. Returns the exponential distribution\\\",\\\"category\\\":\\\"compatibility\\\",\\\"examples\\\":[\\\"=EXPONDIST(A1, A1, A1)\\\"],\\\"notes\\\":[\\\"x (value|range, required): Is the value of the function, a nonnegative number\\\",\\\"lambda (value|range, required): Is the parameter value, a positive number\\\",\\\"cumulative (value|range, required): Is a logical value for the function to return: the cumulative distribution function = TRUE; the probability density function = FALSE\\\"]}\\n{\\\"kind\\\":\\\"formula\\\",\\\"name\\\":\\\"fx.ISOMITTED\\\",\\\"summary\\\":\\\"Checks whether the value is omitted, and returns TRUE or FALSE\\\",\\\"category\\\":\\\"information\\\",\\\"examples\\\":[\\\"=ISOMITTED(A1)\\\"],\\\"notes\\\":[\\\"argument (value|range, required): Is the value you want to test, such as a LAMBDA parameter\\\"]}\\n{\\\"kind\\\":\\\"formula\\\",\\\"name\\\":\\\"fx.LET\\\",\\\"summary\\\":\\\"Assigns calculation results to names. Useful for storing intermediate calculations and values by defining names inside a formula. These names only apply within the scope of the LET function.\\\",\\\"category\\\":\\\"logical\\\",\\\"examples\\\":[\\\"=LET(A1, A1, A1, C1:C5)\\\"],\\\"notes\\\":[\\\"name1 (value|range, required): The name, or a calculation which can make use of all names within the LET. Names must start with a letter, cannot be the output of a formula, or conflict with range syntax.\\\",\\\"nameValue1 (value|range, required): The value associated with the name.\\\",\\\"calculationOrName2 (value|range, required): Value, reference, or range.\\\",\\\"nameValue2 (value|range, optional): Value argument for the calculation.\\\",\\\"rest (value|range, required): Value, reference, or range.\\\"]}\\n{\\\"kind\\\":\\\"notice\\\",\\\"message\\\":\\\"Truncated: omitted 13 lines. Increase maxChars or narrow query.\\\"}\",\"truncated\":true,\"metadata\":{\"revision\":\"jvi7ad\",\"query\":\"fx.*\",\"include\":{\"requested\":[\"index\",\"examples\",\"notes\"],\"tokens\":[\"index\",\"examples\",\"notes\"]},\"search\":\"LET|LAMBDA|XLOOKUP|MAP|BYROW\",\"notices\":[]}}"
+    ]
+  },
+  {
+    "index": 54,
+    "name": "workbook.resolve",
+    "adaptations": [
+      "Mapped structured example fields to the corresponding public method; replaced placeholder anchors with actual fixture IDs."
+    ],
+    "execution": "completed",
+    "export": "completed",
+    "logs": [
+      "vykaqn"
+    ]
+  },
+  {
+    "index": 55,
+    "name": "workbook.resolve",
+    "adaptations": [
+      "Mapped structured example fields to the corresponding public method; replaced placeholder anchors with actual fixture IDs."
+    ],
+    "execution": "completed",
+    "export": "completed",
+    "logs": [
+      "{DC989978-6189-4405-AEFF-C26ACDD46DB8}"
+    ]
+  },
+  {
+    "index": 56,
+    "name": "workbook.resolve",
+    "adaptations": [
+      "Mapped structured example fields to the corresponding public method; replaced placeholder anchors with actual fixture IDs."
+    ],
+    "execution": "completed",
+    "export": "completed",
+    "logs": [
+      "q0xdu5"
+    ]
+  },
+  {
+    "index": 57,
+    "name": "workbook.recalculate",
+    "summary": "Recalculate after writing formulas",
+    "originalCode": "const sheet = workbook.worksheets.getItem('Sheet1');\nsheet.getRange('A1:A2').values = [[1], [2]];\nsheet.getRange('B1').formulas = [['=SUM(A:A)']];\nconst total = sheet.getRange('B1').values[0]?.[0];",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 58,
+    "name": "workbook.worksheets.add",
+    "summary": "Create a worksheet and write values",
+    "originalCode": "const sheet = workbook.worksheets.add('DogHealth');\nsheet.getRange('A1').values = [['Date']];",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 59,
+    "name": "workbook.worksheets.add",
+    "summary": "Create multiple worksheets",
+    "originalCode": "const [dataSheet, summarySheet] = workbook.worksheets.add(['Data', 'Summary']);",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 60,
+    "name": "workbook.worksheets.getItem",
+    "summary": "Fetch a sheet and write a cell",
+    "originalCode": "const sheet = workbook.worksheets.getItem('Sheet1');\nsheet.getRange('A1').values = [['Hello']];",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 61,
+    "name": "workbook.worksheets.getActiveWorksheet",
+    "summary": "Write to the active sheet",
+    "originalCode": "const sheet = workbook.worksheets.getActiveWorksheet();\nsheet.getRange('A1').values = [['Active sheet']];",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 62,
+    "name": "workbook.setColorScheme",
+    "summary": "Swap the workbook theme palette",
+    "originalCode": "// Prefer updating the theme palette over repainting every range.\n// Theme tokens like 'accent1' will automatically pick up the new palette.\nworkbook.setColorScheme({\n  name: 'Brand',\n  themeColors: {\n    accent1: '#1F6FEB',\n    accent2: '#F97316',\n    accent3: '#16A34A',\n    dk1: '#0B0F19',\n    lt1: '#FFFFFF',\n    lt2: '#E5E7EB',\n    hlink: '#2563EB',\n    folHlink: '#7C3AED',\n  },\n});",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 63,
+    "name": "workbook.setColorScheme",
+    "summary": "Style with theme tokens (accent slots)",
+    "originalCode": "// Then use theme tokens for styling:\nconst sheet = workbook.worksheets.getItem('Sheet1');\nconst header = sheet.getRange('A1:D1');\nheader.format.fill = 'accent1';\nheader.format.font = { color: 'lt1', bold: true };",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 64,
+    "name": "workbook.utils",
+    "summary": "Convert between 1-based columns and letters",
+    "originalCode": "workbook.utils.columnToLetter(1); // \"A\"\nworkbook.utils.columnToLetter(27); // \"AA\"\nworkbook.utils.letterToColumn('AA'); // 27\nworkbook.utils.toA1String(1, 2); // 'B1'\nworkbook.utils.toA1String(1, 2, 3, 4); // 'B1:D3'",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 65,
+    "name": "worksheet.deleteAllDrawings",
+    "summary": "Clear drawings before rebuilding a dashboard",
+    "originalCode": "sheet.deleteAllDrawings();",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 66,
+    "name": "worksheet.autoLayoutDrawings",
+    "summary": "Stack charts vertically in a dashboard frame",
+    "originalCode": "const items = sheet.charts.items;\nsheet.autoLayoutDrawings(items, {\n  direction: 'vertical',\n  frame: { startCell: 'A8', width: 1200, height: 800 },\n  gap: 24,\n  padding: 32,\n});",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 67,
+    "name": "worksheet.shapes.add",
+    "summary": "Create a rectangle with an explicit extent anchor",
+    "originalCode": "const sheet = workbook.worksheets.getItem('Shapes');\nsheet.shapes.add({\n  geometry: 'rect',\n  anchor: {\n    from: { row: 2, col: 3 },\n    extent: { widthPx: 260, heightPx: 140 },\n  },\n  fill: 'accent1',\n  line: { style: 'dashed', fill: 'accent4', width: 1 },\n});",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 68,
+    "name": "worksheet.shapes.add",
+    "summary": "Compat add with a range anchor",
+    "originalCode": "const sheet = workbook.worksheets.getItem('Shapes');\nconst star = sheet.shapes.add('Star5', sheet.getRange('G2:L10'));\nstar.name = 'Star';\nstar.fill.color = '#FFD966';\nstar.line.color = '#C09000';",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 69,
+    "name": "formulas",
+    "originalCode": "const sheet = workbook.worksheets.add(\"Sheet1\");\nconst range = sheet.getRange(\"A1:A2\");\nrange.formulas = [[\"=1+1\"], [\"=SUM(2,3)\"]];\nworkbook.recalculate();\nconst values = range.values;",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 70,
+    "name": "images",
+    "summary": "Place inline SVG without base64 encoding",
+    "originalCode": "worksheet.images.add({\n  svg: '<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"10\" fill=\"#2563eb\"/></svg>',\n  anchor: { from: { row: 1, col: 1 }, extent: { widthPx: 48, heightPx: 48 } },\n});",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 71,
+    "name": "workbook.inspect",
+    "summary": "Inspect sheets/tables matching Revenue",
+    "adaptations": [
+      "Mapped structured example fields to the corresponding public method; replaced placeholder anchors with actual fixture IDs."
+    ],
+    "execution": "completed",
+    "export": "completed",
+    "logs": [
+      "{\"recordCount\":2,\"truncated\":false,\"metadata\":{\"revision\":\"w68lpg\",\"target\":{\"id\":\"wb/j9pl4e\",\"beforeLines\":0,\"afterLines\":0},\"kind\":{\"requested\":\"sheet,table\",\"tokens\":[\"sheet\",\"table\"]},\"include\":{\"tokens\":[]},\"exclude\":{\"tokens\":[]},\"search\":\"Revenue\",\"notices\":[]}}"
+    ]
+  },
+  {
+    "index": 72,
+    "name": "workbook.inspect",
+    "summary": "List data regions with previews for a sheet",
+    "adaptations": [
+      "Mapped structured example fields to the corresponding public method; replaced placeholder anchors with actual fixture IDs."
+    ],
+    "execution": "completed",
+    "export": "completed",
+    "logs": [
+      "{\"recordCount\":6,\"truncated\":false,\"metadata\":{\"revision\":\"c4bv3x\",\"target\":{\"id\":\"wb/dz3h02\",\"beforeLines\":0,\"afterLines\":0},\"kind\":{\"requested\":\"region\",\"tokens\":[\"region\"]},\"include\":{\"tokens\":[]},\"exclude\":{\"tokens\":[]},\"notices\":[\"Worksheet <sheetId> not found.\"]}}"
+    ]
+  },
+  {
+    "index": 73,
+    "name": "workbook.inspect",
+    "summary": "Preview table values for a range",
+    "adaptations": [
+      "Mapped structured example fields to the corresponding public method; replaced placeholder anchors with actual fixture IDs."
+    ],
+    "execution": "completed",
+    "export": "completed",
+    "logs": [
+      "{\"recordCount\":4,\"truncated\":true,\"metadata\":{\"revision\":\"j7o7b2\",\"target\":{\"id\":\"wb/eq7ekd\",\"beforeLines\":0,\"afterLines\":0},\"kind\":{\"requested\":\"table\",\"tokens\":[\"table\"]},\"include\":{\"requested\":\"values\",\"tokens\":[\"values\"]},\"exclude\":{\"tokens\":[]},\"notices\":[\"Worksheet <sheetId> not found.\"]}}"
+    ]
+  },
+  {
+    "index": 74,
+    "name": "workbook.inspect",
+    "summary": "List conditional formatting rules for a range",
+    "adaptations": [
+      "Mapped structured example fields to the corresponding public method; replaced placeholder anchors with actual fixture IDs."
+    ],
+    "execution": "completed",
+    "export": "completed",
+    "logs": [
+      "{\"recordCount\":1,\"truncated\":false,\"metadata\":{\"revision\":\"k10wvr\",\"target\":{\"id\":\"wb/nhdvxh\",\"beforeLines\":0,\"afterLines\":0},\"kind\":{\"requested\":\"conditionalFormatting\",\"tokens\":[\"conditionalFormatting\"]},\"include\":{\"tokens\":[]},\"exclude\":{\"tokens\":[]},\"search\":\"top10\",\"notices\":[\"Worksheet <sheetId> not found.\",\"Search matched 0 entries\"]}}"
+    ]
+  },
+  {
+    "index": 75,
+    "name": "workbook.inspect",
+    "summary": "Window around a sheet record",
+    "adaptations": [
+      "Mapped structured example fields to the corresponding public method; replaced placeholder anchors with actual fixture IDs."
+    ],
+    "execution": "completed",
+    "export": "completed",
+    "logs": [
+      "{\"recordCount\":6,\"truncated\":false,\"metadata\":{\"revision\":\"p4eqyg\",\"target\":{\"id\":\"ws/x523ab\",\"beforeLines\":1,\"afterLines\":4},\"kind\":{\"tokens\":[\"workbook\",\"sheet\",\"table\",\"formula\",\"thread\"]},\"include\":{\"tokens\":[]},\"exclude\":{\"tokens\":[]},\"notices\":[]}}"
+    ]
+  },
+  {
+    "index": 76,
+    "name": "workbook.inspect",
+    "summary": "Find cells matching Age (values or formulas)",
+    "adaptations": [
+      "Mapped structured example fields to the corresponding public method; replaced placeholder anchors with actual fixture IDs."
+    ],
+    "execution": "completed",
+    "export": "completed",
+    "logs": [
+      "{\"recordCount\":8,\"truncated\":false,\"metadata\":{\"revision\":\"7e1ria\",\"target\":{\"id\":\"wb/73zm0m\",\"beforeLines\":0,\"afterLines\":0},\"kind\":{\"requested\":\"workbook,sheet,match\",\"tokens\":[\"workbook\",\"sheet\",\"match\"]},\"include\":{\"tokens\":[]},\"exclude\":{\"tokens\":[]},\"notices\":[]}}"
+    ]
+  },
+  {
+    "index": 77,
+    "name": "range.merge",
+    "summary": "Merge a header row",
+    "originalCode": "sheet.getRange('B1:H1').merge();",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 78,
+    "name": "range.merge",
+    "summary": "Merge across rows",
+    "originalCode": "sheet.getRange('B2:H4').merge(true);",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 79,
+    "name": "range.unmerge",
+    "summary": "Remove merges touching a range",
+    "originalCode": "sheet.getRange('B1:H4').unmerge();",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 80,
+    "name": "range.format.fill",
+    "summary": "Apply a solid fill using a theme token",
+    "originalCode": "const header = sheet.getRange('A1:C1');\nheader.format.fill = 'accent1';\nheader.format.font = { color: 'lt1', bold: true };",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 81,
+    "name": "range.format.fill",
+    "summary": "Apply a theme color transform (LLM-friendly units)",
+    "originalCode": "const header = sheet.getRange('A1:C1');\nheader.format.fill = {\n  type: 'solid',\n  color: { type: 'theme', value: 'accent1', transform: { lighten: 15 } },\n};",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 82,
+    "name": "range.format.fill",
+    "summary": "Clear a range's fill",
+    "originalCode": "sheet.getRange('A2:C10').format.fill = null;",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 83,
+    "name": "range.format.fill.color",
+    "summary": "Update fill via fill.color",
+    "originalCode": "const block = sheet.getRange('A1:B10');\nblock.format.fill.color = '#0055A4';",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 84,
+    "name": "range.format.font",
+    "summary": "Bold header styling",
+    "originalCode": "const header = sheet.getRange('A1:C1');\nheader.format.font.bold = true;\nheader.format.font.size = 14;\n// Patch-style assignment is supported too:\nheader.format.font = { color: '#FFFFFF', bold: true };\nheader.format.setFont({ name: 'Calibri', italic: true });",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 85,
+    "name": "range.format.borders",
+    "summary": "Apply an outside border preset",
+    "originalCode": "const body = sheet.getRange('A2:C10');\nbody.format.borders = { preset: 'outside', style: 'thin', color: '#DDDDDD' };",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 86,
+    "name": "range.format.numberFormat",
+    "summary": "Format currency values",
+    "originalCode": "sheet.getRange('B2:B5').format.numberFormat = '\"$\"#,##0.00';",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 87,
+    "name": "range.format.numberFormat",
+    "summary": "Assign a per-cell number format matrix",
+    "originalCode": "const r = sheet.getRange('A1:B2');\nr.format.numberFormat = [\n  ['0', '0.00'],\n  ['0', '0.00'],\n];",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 88,
+    "name": "range.format.wrapText",
+    "summary": "Wrap header text",
+    "originalCode": "sheet.getRange('A1:D1').format.wrapText = true;",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 89,
+    "name": "range.format.horizontalAlignment",
+    "summary": "Center align a header row",
+    "originalCode": "sheet.getRange('A1:D1').format.horizontalAlignment = \"center\";",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 90,
+    "name": "range.format.autofitColumns",
+    "summary": "Autofit columns for the range",
+    "originalCode": "sheet.getRange('A1:D20').format.autofitColumns();",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 91,
+    "name": "range.format.autofitRows",
+    "summary": "Autofit rows for the range",
+    "originalCode": "sheet.getRange('A1:D20').format.autofitRows();",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 92,
+    "name": "range.format.rowHeight",
+    "summary": "Set row height to 18pt",
+    "originalCode": "sheet.getRange('A1:D10').format.rowHeight = 18;",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 93,
+    "name": "range.format.rowHeightPx",
+    "summary": "Set row height to 24px",
+    "originalCode": "sheet.getRange('A1:D10').format.rowHeightPx = 24;",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 94,
+    "name": "range.format.columnWidth",
+    "summary": "Set column width to 2.75",
+    "originalCode": "sheet.getRange('A1:D10').format.columnWidth = 2.75;",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 95,
+    "name": "range.format.columnWidthPx",
+    "summary": "Set column width to 120px",
+    "originalCode": "sheet.getRange('A1:D10').format.columnWidthPx = 120;",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 96,
+    "name": "worksheet.getRange",
+    "summary": "Create a range from A1 notation",
+    "originalCode": "const sheet = workbook.worksheets.getItem('Sheet1');\nconst range = sheet.getRange('A1:C10');",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 97,
+    "name": "worksheet.getCell",
+    "summary": "Access a single cell by index",
+    "originalCode": "const sheet = workbook.worksheets.getItem('Sheet1');\nconst cell = sheet.getCell(1, 4);\ncell.values = [['Hello']];",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 98,
+    "name": "range.getCell",
+    "summary": "Access a cell relative to a range",
+    "originalCode": "const range = sheet.getRange('B2:D4');\nconst cell = range.getCell(2, 2);",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 99,
+    "name": "range.rowIndex",
+    "summary": "Read the range origin row",
+    "originalCode": "const range = sheet.getRange('B2:D4');\nrange.rowIndex; // 1",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 100,
+    "name": "range.columnIndex",
+    "summary": "Read the range origin column",
+    "originalCode": "const range = sheet.getRange('B2:D4');\nrange.columnIndex; // 1",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 101,
+    "name": "range.getRow",
+    "summary": "Select a row inside a block",
+    "originalCode": "const range = sheet.getRange('B2:D4');\nconst row = range.getRow(1); // B3:D3",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 102,
+    "name": "range.getColumn",
+    "summary": "Select a column inside a block",
+    "originalCode": "const range = sheet.getRange('B2:D4');\nconst col = range.getColumn(0); // B2:B4",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 103,
+    "name": "range.getRangeByIndexes",
+    "summary": "Select a sub-rectangle",
+    "originalCode": "const range = sheet.getRange('B2:D4');\nconst sub = range.getRangeByIndexes(1, 1, 2, 2); // C3:D4",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 104,
+    "name": "range.getOffsetRange",
+    "summary": "Shift a block down",
+    "originalCode": "const range = sheet.getRange('B2:D4');\nconst shifted = range.getOffsetRange(1, 0); // B3:D5",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 105,
+    "name": "range.getOffsetRange",
+    "summary": "Build a small window relative to a block",
+    "originalCode": "const range = sheet.getRange('B2:D4');\nconst window = range.getOffsetRange(-1, 0, 1, 3); // B1:D1",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 106,
+    "name": "range.getResizedRange",
+    "summary": "Grow a range by one column",
+    "originalCode": "const range = sheet.getRange('B2:D4');\nconst wider = range.getResizedRange(0, 1); // B2:E4",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 107,
+    "name": "range.getResizedRange",
+    "summary": "Shrink a range by one row and one column",
+    "originalCode": "const range = sheet.getRange('B2:D4');\nconst smaller = range.getResizedRange(-1, -1); // B2:C3",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 108,
+    "name": "range.getResizeRange",
+    "summary": "Resize to a specific shape",
+    "originalCode": "const range = sheet.getRange('B2:D4');\nconst block = range.getResizeRange(5, 2); // B2:C6",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 109,
+    "name": "range.write",
+    "summary": "Write a matrix without computing the end cell",
+    "originalCode": "const anchor = sheet.getRange('B2');\nconst block = anchor.write([['A','B'],[1,2],[3,4]]);\n// block is the resized range (B2:C4)\nblock.format.autofitColumns();",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 110,
+    "name": "range.values",
+    "summary": "Write a values grid",
+    "originalCode": "const range = sheet.getRange('A1:C2');\nrange.values = [['Date', 'Dog', 'HR'], ['2025-01-02', 'Nova', 58]];",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 111,
+    "name": "range.formulas",
+    "summary": "Write a formula and recalculate",
+    "originalCode": "sheet.getRange('A1:A3').values = [[5], [2], [3]];\nsheet.getRange('B1').formulas = [['=SUM(A:A)']];\nworkbook.recalculate();\nconst total = sheet.getRange('B1').values[0]?.[0];",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 112,
+    "name": "range.clear",
+    "summary": "Clear contents",
+    "originalCode": "sheet.getRange('A1:C10').clear();",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 113,
+    "name": "range.clear",
+    "summary": "Clear contents and formats",
+    "originalCode": "sheet.getRange('A1:C10').clear({ applyTo: 'all' });",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 114,
+    "name": "range.fillDown",
+    "summary": "Fill down like Excel drag-fill",
+    "originalCode": "const r = sheet.getRange('B2:B10');\nr.getCell(0, 0).formulasR1C1 = [['=RC[-1]*2']];\nr.fillDown();",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 115,
+    "name": "range.fillRight",
+    "summary": "Fill right like Excel drag-fill",
+    "originalCode": "const r = sheet.getRange('B2:F2');\nr.getCell(0, 0).formulasR1C1 = [['=RC[-1]*2']];\nr.fillRight();",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 116,
+    "name": "range.fillFrom",
+    "summary": "Extend a block downward from a source selection",
+    "originalCode": "const seed = sheet.getRange('B2:C3');\nconst target = sheet.getRange('B2:C8');\ntarget.fillFrom(seed);",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 117,
+    "name": "range.copyFrom",
+    "summary": "Fill a block of formulas using copyFrom",
+    "originalCode": "// Excel-like drag-fill across a whole block (no manual 2D matrix)\nconst grid = sheet.getRange('B3:AF17');\nconst seed = sheet.getRange('B3');\nseed.formulasR1C1 = [['=RC[-1]*2']];\ngrid.copyFrom(seed, 'formulas');",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 118,
+    "name": "worksheet.sparklines.add",
+    "summary": "Add a line sparkline group",
+    "originalCode": "sheet.getRange('A1:A6').values = [[1],[2],[3],[2],[4],[6]];\nconst group = sheet.sparklines.add({\n  type: 'line',\n  sourceData: sheet.getRange('A1:A6'),\n  targetRange: sheet.getRange('B1:B6'),\n});\ngroup.displayXAxis = true;",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 119,
+    "name": "formatting-quick-reference",
+    "summary": "Formatting quick reference",
+    "originalCode": "const range = sheet.getRange('A1:D10');\n\n// Fill + font\nrange.format.fill = 'lt2';\nrange.format.font = { name: 'Calibri', size: 11, color: 'tx1' };\n\n// Bulk format (single object assignment)\nrange.format = {\n  fill: 'lt2',\n  font: { name: 'Calibri', size: 11, color: 'tx1' },\n  borders: { preset: 'outside', style: 'thin', color: '#D1D5DB' },\n  horizontalAlignment: 'center',\n  verticalAlignment: 'center',\n  wrapText: true,\n};\n\n// Theme token + transform (prefer this over manual hex shading)\nrange.getRow(0).format.fill = {\n  type: 'solid',\n  color: { type: 'theme', value: 'accent1', transform: { darken: 10 } },\n};\n\n// Borders (edge + inside presets or per-edge)\nrange.format.borders = { preset: 'outside', style: 'thin', color: '#D1D5DB' };\nrange.format.borders.getItem('EdgeBottom').style = 'thin';\nrange.format.borders.getItem('EdgeBottom').color = '#D1D5DB';\n\n// Alignment + wrapping\nrange.format.horizontalAlignment = 'center';\nrange.format.verticalAlignment = 'center';\nrange.format.wrapText = true;\n\n// Autofit\nrange.format.autofitColumns();\nrange.format.autofitRows();\n\n// Number formats\nrange.format.numberFormat = '0.00';\nsheet.getRange('E1:F2').format.numberFormat = [['0', '0.00'], ['0', '0.00']];",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 120,
+    "name": "range.dataValidation",
+    "summary": "Create a list validation rule",
+    "originalCode": "const range = sheet.getRange('B2:B6');\nrange.dataValidation = {\n  allowBlank: true,\n  list: { inCellDropDown: true, source: ['Run', 'Bike', 'Rest'] },\n};",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 121,
+    "name": "range.dataValidation",
+    "summary": "Require whole numbers between 1 and 100",
+    "originalCode": "const range = sheet.getRange('C2:C100');\nrange.dataValidation = {\n  rule: { type: 'whole', operator: 'between', formula1: 1, formula2: 100 },\n  errorAlert: {\n    style: 'stop',\n    title: 'Invalid value',\n    message: 'Enter a whole number between 1 and 100.',\n  },\n};",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 122,
+    "name": "range.dataValidation",
+    "summary": "Constrain dates to a specific year",
+    "originalCode": "const range = sheet.getRange('D2:D200');\nrange.dataValidation = {\n  rule: {\n    type: 'date',\n    operator: 'between',\n    formula1: '=DATE(2026,1,1)',\n    formula2: '=DATE(2026,12,31)',\n  },\n};",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 123,
+    "name": "worksheet.freezePanes",
+    "summary": "Freeze header row and first two columns",
+    "originalCode": "const sheet = workbook.worksheets.getItem('Data');\nsheet.freezePanes.freezeRows(1);\nsheet.freezePanes.freezeColumns(2);",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 124,
+    "name": "worksheet.getUsedRange",
+    "summary": "Clear the used range",
+    "originalCode": "const sheet = workbook.worksheets.getItem('Sheet1');\nconst used = sheet.getUsedRange();\nused.clear({ applyTo: 'all' });",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  },
+  {
+    "index": 125,
+    "name": "worksheet.reset",
+    "summary": "Reset a worksheet for a clean rebuild",
+    "originalCode": "const sheet = workbook.worksheets.getItem('Sheet1');\nsheet.reset();",
+    "adaptations": [],
+    "execution": "completed",
+    "export": "completed",
+    "logs": []
+  }
+]

@@ -1,0 +1,16 @@
+[
+  {
+    "id": "F08",
+    "description": "Charts range/nonadjacent/row binding, setData, axes, labels, legend, line and data table",
+    "status": "fail",
+    "ms": 49,
+    "error": "TypeError: this[#R].toProto is not a function",
+    "stack": [
+      "TypeError: this[#R].toProto is not a function",
+      "    at kD.toProto (file:///Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/dist/artifact_tool.mjs:2839:618491)",
+      "    at kD.toDrawingProto (file:///Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/dist/artifact_tool.mjs:3122:164188)",
+      "    at file:///Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/dist/artifact_tool.mjs:3122:181307",
+      "    at Array.map (<anonymous>)"
+    ]
+  }
+]

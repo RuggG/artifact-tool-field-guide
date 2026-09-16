@@ -1,0 +1,10 @@
+{
+  "index": 63,
+  "name": "workbook.setColorScheme",
+  "summary": "Style with theme tokens (accent slots)",
+  "originalCode": "// Then use theme tokens for styling:\nconst sheet = workbook.worksheets.getItem('Sheet1');\nconst header = sheet.getRange('A1:D1');\nheader.format.fill = 'accent1';\nheader.format.font = { color: 'lt1', bold: true };",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

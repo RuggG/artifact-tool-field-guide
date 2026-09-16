@@ -1,0 +1,85 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>import_common_work.py · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="import_common_work.py">Raw file</a> · <a data-public-raw download href="import_common_work.py">Download</a></p><article><h1>import_common_work.py</h1><pre class="public-code"><code>&quot;&quot;&quot;Preserve the Man Group guide&#x27;s delivered recordings in this guide&#x27;s own home.
+
+Usage: python3 scripts/import_common_work.py /path/to/excel-tool-walkthrough
+This imports saved evidence; it does not execute any workbook code.
+&quot;&quot;&quot;
+import hashlib
+import json
+import shutil
+import sys
+from html.parser import HTMLParser
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent.parent
+SOURCE_URL = &#x27;/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html&#x27;
+
+
+class Capture(HTMLParser):
+    active = False
+    data = &#x27;&#x27;
+    def handle_starttag(self, tag, attrs):
+        if tag == &#x27;script&#x27; and dict(attrs).get(&#x27;id&#x27;) == &#x27;operations-reference-data&#x27;:
+            self.active = True
+    def handle_endtag(self, tag):
+        if tag == &#x27;script&#x27;:
+            self.active = False
+    def handle_data(self, text):
+        if self.active:
+            self.data += text
+
+
+class SafeFragment(HTMLParser):
+    def handle_starttag(self, tag, attrs):
+        assert tag in {&#x27;p&#x27;,&#x27;b&#x27;,&#x27;strong&#x27;,&#x27;em&#x27;,&#x27;i&#x27;,&#x27;span&#x27;,&#x27;div&#x27;,&#x27;table&#x27;,&#x27;thead&#x27;,&#x27;tbody&#x27;,&#x27;tr&#x27;,&#x27;th&#x27;,&#x27;td&#x27;,&#x27;code&#x27;,&#x27;pre&#x27;,&#x27;small&#x27;,&#x27;br&#x27;,&#x27;details&#x27;,&#x27;summary&#x27;,&#x27;ul&#x27;,&#x27;ol&#x27;,&#x27;li&#x27;,&#x27;dl&#x27;,&#x27;dt&#x27;,&#x27;dd&#x27;}, tag
+        assert all(k in {&#x27;class&#x27;,&#x27;style&#x27;,&#x27;title&#x27;,&#x27;open&#x27;,&#x27;colspan&#x27;,&#x27;rowspan&#x27;,&#x27;tabindex&#x27;} for k, v in attrs), attrs
+        assert not any(&#x27;url(&#x27; in (v or &#x27;&#x27;).lower() for k, v in attrs), attrs
+
+
+def main(source):
+    parser = Capture()
+    page = source / &#x27;walkthrough.html&#x27;
+    parser.feed(page.read_text())
+    data = json.loads(parser.data)
+    ref = json.loads((source / &#x27;evidence/operations-reference.json&#x27;).read_text())
+    assert data[&#x27;operations&#x27;] == ref[&#x27;operations&#x27;]
+    data.pop(&#x27;aliases&#x27;, None)
+    data[&#x27;groups&#x27;] = ref[&#x27;groups&#x27;]
+    family = dict(create=&#x27;workbooks&#x27;, import_=&#x27;files&#x27;, save=&#x27;files&#x27;, runner=&#x27;changes&#x27;, map=&#x27;inspection&#x27;, grids=&#x27;inspection&#x27;, regions=&#x27;inspection&#x27;, search=&#x27;inspection&#x27;, ranges=&#x27;ranges&#x27;, trace=&#x27;inspection&#x27;, recalculate=&#x27;formulas&#x27;, sheet=&#x27;workbooks&#x27;, values=&#x27;ranges&#x27;, formulas=&#x27;formulas&#x27;, fill=&#x27;ranges&#x27;, format=&#x27;formatting&#x27;, clear=&#x27;ranges&#x27;, table=&#x27;tables&#x27;, chart=&#x27;charts&#x27;, render=&#x27;files&#x27;)
+    family.update({&#x27;import&#x27;:family.pop(&#x27;import_&#x27;), &#x27;table-row&#x27;:&#x27;tables&#x27;,&#x27;table-delete&#x27;:&#x27;tables&#x27;,&#x27;chart-delete&#x27;:&#x27;charts&#x27;})
+    receipts = []
+
+    def preserve(relative):
+        path = relative.split(&#x27;?&#x27;)[0]
+        original = (source / path).resolve()
+        assert original.is_relative_to(source.resolve()) and original.is_file(), original
+        destination = HERE / &#x27;files/common-work&#x27; / path
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(original, destination)
+        receipts.append({&#x27;path&#x27;:path,&#x27;sha256&#x27;:hashlib.sha256(original.read_bytes()).hexdigest()})
+        return &#x27;files/common-work/&#x27; + relative
+
+    for op in data[&#x27;operations&#x27;]:
+        op[&#x27;family&#x27;] = family[op[&#x27;id&#x27;]]
+        op[&#x27;commonApi&#x27;] = op[&#x27;id&#x27;] not in (&#x27;runner&#x27;, &#x27;recalculate&#x27;)
+    for ex in data[&#x27;examples&#x27;].values():
+        for key in (&#x27;inputReadable&#x27;, &#x27;outputReadable&#x27;, &#x27;checkReadable&#x27;):
+            SafeFragment().feed(ex[key])
+            ex[key] = ex[key].replace(&#x27;Exact input&#x27;, &#x27;Raw&#x27;).replace(&#x27;Object tree&#x27;, &#x27;Tree&#x27;)
+        ex[&#x27;note&#x27;] = ex[&#x27;note&#x27;].replace(&#x27;Object tree&#x27;, &#x27;Tree&#x27;)
+        if ex[&#x27;outputLabel&#x27;] == &#x27;Operation return&#x27;:
+            ex[&#x27;outputLabel&#x27;] = &#x27;Recorded code-block return&#x27;
+        ex[&#x27;links&#x27;] = [[label,preserve(path)] for label,path in ex[&#x27;links&#x27;]]
+        if ex[&#x27;image&#x27;]:
+            ex[&#x27;image&#x27;] = preserve(ex[&#x27;image&#x27;])
+    for path in (&#x27;operations-run/man-group-operations.xlsx&#x27;,&#x27;operations-run/new-fee-workbook.xlsx&#x27;,&#x27;operations-run/independent-verification.json&#x27;):
+        preserve(path)
+    data[&#x27;provenance&#x27;] = {&#x27;sourceUrl&#x27;:SOURCE_URL,&#x27;sourceVersion&#x27;:7,&#x27;packageVersion&#x27;:&#x27;2.8.59&#x27;,&#x27;evidenceDate&#x27;:&#x27;2026-09-15&#x27;,&#x27;integrationDate&#x27;:&#x27;2026-09-16&#x27;,&#x27;sourceHtmlSha256&#x27;:hashlib.sha256(page.read_bytes()).hexdigest(),&#x27;actions&#x27;:len(data[&#x27;operations&#x27;]),&#x27;uniqueExamples&#x27;:len(data[&#x27;examples&#x27;]),&#x27;exampleAssignments&#x27;:sum(len(x[&#x27;examples&#x27;]) for x in data[&#x27;operations&#x27;])}
+    (HERE / &#x27;data/common-work.json&#x27;).write_text(json.dumps(data, ensure_ascii=False, indent=2)+&#x27;\n&#x27;)
+    receipt = {**data[&#x27;provenance&#x27;],&#x27;files&#x27;:sorted({x[&#x27;path&#x27;]:x for x in receipts}.values(),key=lambda x:x[&#x27;path&#x27;])}
+    (HERE / &#x27;data/common-work-receipt.json&#x27;).write_text(json.dumps(receipt,ensure_ascii=False,indent=2)+&#x27;\n&#x27;)
+    print(json.dumps(data[&#x27;provenance&#x27;],indent=2))
+
+
+if __name__ == &#x27;__main__&#x27;:
+    main(Path(sys.argv[1]))
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

@@ -1,0 +1,13 @@
+{
+  "index": 51,
+  "name": "workbook.help",
+  "summary": "Formatting ranges (fills, fonts, borders, number formats)",
+  "adaptations": [
+    "Mapped structured example fields to the corresponding public method; replaced placeholder anchors with actual fixture IDs."
+  ],
+  "execution": "completed",
+  "export": "completed",
+  "logs": [
+    "{\"ndjson\":\"{\\\"kind\\\":\\\"api\\\",\\\"name\\\":\\\"styles\\\",\\\"summary\\\":\\\"Formatting ranges (fills, fonts, borders, number formats).\\\",\\\"tags\\\":[\\\"styles\\\",\\\"range.format\\\",\\\"formatting\\\",\\\"number format\\\",\\\"number_format\\\",\\\"autofit\\\",\\\"fill\\\",\\\"font\\\",\\\"borders\\\"]}\\n{\\\"kind\\\":\\\"notice\\\",\\\"message\\\":\\\"Truncated: omitted 1 lines. Increase maxChars or narrow query.\\\"}\",\"truncated\":true,\"metadata\":{\"revision\":\"8pwax9\",\"query\":\"styles\",\"include\":{\"requested\":[\"index\",\"examples\"],\"tokens\":[\"index\",\"examples\"]},\"notices\":[]}}"
+  ]
+}

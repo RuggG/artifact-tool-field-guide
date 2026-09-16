@@ -1,0 +1,37 @@
+{
+  "name": "fx.MAXIFS",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=MAXIFS(B2:B20, A2:A20, \"North\", C2:C20, \">1000\")",
+      "value": 0,
+      "projection": [
+        [
+          0,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 9
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>workflow-examples.mjs · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="workflow-examples.mjs">Raw file</a> · <a data-public-raw download href="workflow-examples.mjs">Download</a></p><article><h1>workflow-examples.mjs</h1><pre class="public-code"><code>import fs from &#x27;node:fs/promises&#x27;;
+import path from &#x27;node:path&#x27;;
+import {fileURLToPath} from &#x27;node:url&#x27;;
+import assert from &#x27;node:assert/strict&#x27;;
+import {Workbook,SpreadsheetFile,FileBlob} from &#x27;@oai/artifact-tool&#x27;;
+const root=path.dirname(fileURLToPath(import.meta.url)),out=path.join(root,&#x27;files/runs&#x27;);
+const w=Workbook.create(),s=w.worksheets.add(&#x27;Model&#x27;);
+s.getRange(&#x27;A1:C3&#x27;).values=[[&#x27;Quantity&#x27;,&#x27;Price&#x27;,&#x27;Revenue&#x27;],[2,10,null],[3,10,null]];
+s.getRange(&#x27;C2&#x27;).formulas=[[&#x27;=A2*B2&#x27;]];s.getRange(&#x27;C2:C3&#x27;).fillDown();
+const before=structuredClone(w.toProto()),input=s.getRange(&#x27;B2:B3&#x27;).values,captures=[];
+try{for(const price of [8,10,12]){s.getRange(&#x27;B2:B3&#x27;).values=[[price]];w.recalculate();const values=s.getRange(&#x27;C2:C3&#x27;).values;assert.deepEqual(values,[[2*price],[3*price]]);captures.push({price,values});}}
+finally{s.getRange(&#x27;B2:B3&#x27;).values=input;w.recalculate();}
+assert.deepEqual(s.getRange(&#x27;C2:C3&#x27;).values,[[20],[30]]);
+const clone=Workbook.load(before);clone.worksheets.getItem(&#x27;Model&#x27;).getRange(&#x27;B2&#x27;).values=[[99]];
+assert.equal(s.getRange(&#x27;B2&#x27;).values[0][0],10);
+const findings=[];for(const row of s.getUsedRange().values)for(const v of row)if(typeof v===&#x27;string&#x27;&amp;&amp;(/^#(?:REF!|DIV\/0!|VALUE!|NAME\?|NUM!|N\/A|SPILL!|CALC!)/.test(v)||/not implemented|Cannot read|is not a function|Invalid array length/i.test(v)))findings.push(v);
+assert.deepEqual(findings,[]);
+const custom=s.shapes.add({geometry:&#x27;custom&#x27;,customPaths:[{width:120,height:90,commands:[{moveTo:{x:0,y:0}},{lineTo:{x:120,y:0}},{quadBezTo:{x1:100,y1:90,x:60,y:90}},{cubicBezTo:{x1:30,y1:90,x2:0,y2:60,x:0,y:0}},{close:{}}]}],anchor:{from:{row:5,col:0},extent:{widthPx:120,heightPx:90}},fill:&#x27;#bfdbfe&#x27;,line:{fill:&#x27;#1e40af&#x27;,width:2}});
+await(await SpreadsheetFile.exportXlsx(w)).save(path.join(out,&#x27;workflow-example.xlsx&#x27;));
+const preview=await w.render({sheetName:&#x27;Model&#x27;,range:&#x27;A1:F12&#x27;,scale:2});await fs.writeFile(path.join(out,&#x27;workflow-example.png&#x27;),new Uint8Array(await preview.arrayBuffer()));
+const imported=await SpreadsheetFile.importXlsx(await FileBlob.load(path.join(out,&#x27;workflow-example.xlsx&#x27;)));imported.recalculate();assert.deepEqual(imported.worksheets.getItem(&#x27;Model&#x27;).getRange(&#x27;C2:C3&#x27;).values,[[20],[30]]);
+await fs.writeFile(path.join(out,&#x27;workflow-example.json&#x27;),JSON.stringify({captures,restored:s.getRange(&#x27;B2:B3&#x27;).values,independentClone:true,errorScan:findings,customShapeId:custom.id,reimportedShapes:imported.worksheets.getItem(&#x27;Model&#x27;).shapes.items.length,reimportedValues:imported.worksheets.getItem(&#x27;Model&#x27;).getRange(&#x27;C2:C3&#x27;).values},null,2));
+console.log(&#x27;Scenario capture/restore, independent clone, error scan, custom path, render/export/reimport checks completed.&#x27;);
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

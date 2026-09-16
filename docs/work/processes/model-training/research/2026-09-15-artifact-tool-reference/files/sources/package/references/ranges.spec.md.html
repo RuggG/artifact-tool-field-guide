@@ -1,0 +1,50 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ranges.spec.md · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="ranges.spec.md">Raw file</a> · <a data-public-raw download href="ranges.spec.md">Download</a></p><article><h2 id="ranges-api">Ranges API</h2>
+<p>Use <code>Worksheet.getRange(address)</code> to read and write grid data using Excel A1 notation.</p>
+<h3 id="values">Values</h3>
+<p><code>range.values</code> is a 2D array of <code>CellValue</code>:</p>
+<ul>
+<li><code>string | number | boolean | Date | null</code></li>
+<li><code>null</code> represents an empty cell</li>
+</ul>
+<pre><code class="language-ts">sheet.getRange("A1:C1").values = [["Date", "Dog", "Resting HR (bpm)"]];
+sheet.getRange("A2:C4").values = [
+  ["2025-01-02", "Nova", 58],
+  ["2025-01-03", "Nova", 61],
+  ["2025-01-03", "Comet", 72],
+];
+</code></pre>
+<h3 id="checkboxes">Checkboxes</h3>
+<p>Assign boolean values to create Excel checkbox cells. Use <code>range.values = null</code> to clear a range and remove the checkbox control.</p>
+<pre><code class="language-ts">sheet.getRange("A1").values = [[true]];
+sheet.getRange("A2").values = [[false]];
+
+sheet.getRange("A1:A2").values = null;
+</code></pre>
+<h3 id="merged-cells">Merged cells</h3>
+<p>Use <code>range.merge()</code> to merge a rectangular range into a single cell region, and <code>range.unmerge()</code> to remove merges that intersect the range.</p>
+<pre><code class="language-ts">// Merge a header across columns
+sheet.getRange("B1:H1").merge();
+
+// Merge across rows (one merge per row, like Excel “Merge Across”)
+sheet.getRange("B2:H4").merge(true);
+
+// Remove merges touching the range
+sheet.getRange("B1:H4").unmerge();
+</code></pre>
+<h3 id="formulas">Formulas</h3>
+<p><code>range.formulas</code> is a 2D array of strings. Call <code>workbook.recalculate()</code> before reading computed <code>values</code>.</p>
+<pre><code class="language-ts">sheet.getRange("E1").values = [["Average HR"]];
+sheet.getRange("E2").formulas = [[`=AVERAGE(C2:C4)`]];
+
+workbook.recalculate();
+const average = sheet.getRange("E2").values[0]?.[0];
+</code></pre>
+<h3 id="a1-addressing-conventions">A1 addressing conventions</h3>
+<p>Supported addressing patterns include:</p>
+<ul>
+<li><code>A1</code> (single cell)</li>
+<li><code>A1:C10</code> (rectangle)</li>
+<li><code>A:A</code> (entire column)</li>
+<li><code>2:2</code> (entire row)</li>
+</ul>
+<p>In formulas, quote sheet names that contain spaces/punctuation: <code>'Cost Summary'!A1</code>.</p></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

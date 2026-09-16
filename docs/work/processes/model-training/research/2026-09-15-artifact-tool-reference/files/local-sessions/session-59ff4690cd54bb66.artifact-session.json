@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "sessionId": "session-59ff4690cd54bb66-b6d62a97-d613-4d47-ab73-42c14f60ccf0",
+  "artifactType": "spreadsheet",
+  "title": "Synthetic session probe",
+  "stateVersion": 2,
+  "createdAtMs": 1789492830357,
+  "updatedAtMs": 1789492830807,
+  "outputDirectory": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/outputs",
+  "schema": "openai.artifact-session.files/v1",
+  "initialArtifactProto": {
+    "path": "session-59ff4690cd54bb66.artifact-session/initial.pb",
+    "byteLength": 944
+  },
+  "initialCrdtState": {
+    "path": "session-59ff4690cd54bb66.artifact-session/initial-crdt.bin",
+    "byteLength": 4715
+  },
+  "updates": [
+    {
+      "version": 1,
+      "source": "model",
+      "updatedAtMs": 1789492830437,
+      "payloadKind": "crdt-update-v2",
+      "payload": {
+        "path": "session-59ff4690cd54bb66.artifact-session/updates/0000000000000001.bin-790b0d6c3f859ea9e370a617ebbe0ac9515b256de1dc949f04e1fc8dad9ae257",
+        "byteLength": 1156
+      }
+    },
+    {
+      "version": 2,
+      "source": "model",
+      "updatedAtMs": 1789492830807,
+      "payloadKind": "crdt-update-v2",
+      "payload": {
+        "path": "session-59ff4690cd54bb66.artifact-session/updates/0000000000000002.bin-a3ac6c0813e239b57590f85d0f1f7198be97106422faac306024f313ed0a3a05",
+        "byteLength": 48
+      },
+      "summary": "Change synthetic quantity"
+    }
+  ]
+}

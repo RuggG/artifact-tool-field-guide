@@ -1,0 +1,26 @@
+[
+  {
+    "op": "range.values.set",
+    "target": {
+      "sheet": "Data",
+      "range": "A1"
+    },
+    "values": [
+      [
+        2
+      ]
+    ]
+  },
+  {
+    "op": "range.formulas.set",
+    "target": {
+      "sheet": "Data",
+      "range": "B1"
+    },
+    "formulas": [
+      [
+        "=A1*3"
+      ]
+    ]
+  }
+]

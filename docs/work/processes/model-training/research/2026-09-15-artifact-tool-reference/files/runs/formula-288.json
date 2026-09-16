@@ -1,0 +1,37 @@
+{
+  "name": "fx.RAND",
+  "category": "math-trig",
+  "examples": [
+    {
+      "formula": "=RAND()",
+      "value": 0.11945641925007944,
+      "projection": [
+        [
+          0.11945641925007944,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 10
+    }
+  ]
+}

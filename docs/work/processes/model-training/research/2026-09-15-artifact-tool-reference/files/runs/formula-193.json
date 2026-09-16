@@ -1,0 +1,37 @@
+{
+  "name": "fx.STOCKHISTORY",
+  "category": "financial",
+  "examples": [
+    {
+      "formula": "=STOCKHISTORY(A1, DATE(2024, 1, 1), C1:C5, C1:C5)",
+      "value": "STOCKHISTORY is not implemented. stock=1, startDate=45292, endDate=3,6,9,12,15, interval=3,6,9,12,15, headers=undefined, properties1=undefined, rest.length=0",
+      "projection": [
+        [
+          "STOCKHISTORY is not implemented. stock=1, startDate=45292, endDate=3,6,9,12,15, interval=3,6,9,12,15, headers=undefined, properties1=undefined, rest.length=0",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 12
+    }
+  ]
+}

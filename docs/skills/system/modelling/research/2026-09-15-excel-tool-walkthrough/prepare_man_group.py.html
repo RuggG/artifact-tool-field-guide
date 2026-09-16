@@ -1,0 +1,110 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>prepare_man_group.py · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="prepare_man_group.py">Raw file</a> · <a data-public-raw download href="prepare_man_group.py">Download</a></p><article><h1>prepare_man_group.py</h1><pre class="public-code"><code>from pathlib import Path
+import json
+
+HERE = Path(__file__).parent
+RUN = HERE / &#x27;man-group-run&#x27;
+def read(name): return json.loads((RUN / (name + &#x27;.json&#x27;)).read_text())
+def card(id, label, title, purpose, returns, finding, notes=(), kind=&#x27;JavaScript spreadsheet library&#x27;):
+    record = read(id)
+    return dict(id=id, label=label, title=title, purpose=purpose, returns=returns,
+                finding=finding, notes=list(notes), kind=kind, input=record[&#x27;input&#x27;],
+                result=record[&#x27;result&#x27;], elapsedMs=record[&#x27;elapsedMs&#x27;],
+                links=[{&#x27;label&#x27;:&#x27;Full captured record&#x27;,&#x27;href&#x27;:f&#x27;man-group-run/{id}.json&#x27;},
+                       {&#x27;label&#x27;:&#x27;Executed JavaScript&#x27;,&#x27;href&#x27;:&#x27;man-group-run/run.mjs&#x27;}])
+
+runner = read(&#x27;runner-tool-record&#x27;)
+cards=[dict(id=&#x27;runner&#x27;,label=&#x27;Script runner&#x27;,title=&#x27;Run a script that works with the workbook&#x27;,
+    purpose=&#x27;Start the JavaScript program that imports the Man Group file and makes the spreadsheet calls below.&#x27;,
+    returns=&#x27;The command tool returns printed text, process status and, when the program is still running, a session ID. It does not automatically return the workbook or every intermediate calculation.&#x27;,
+    finding=&#x27;The first call returned session 22618. A later poll returned exit code 0 and the script’s record-saving messages. Each JSON record was saved separately and read back for this page.&#x27;,
+    kind=&#x27;Built-in Codex command tool&#x27;,input=json.dumps(runner[&#x27;executionInput&#x27;],indent=2),
+    result=runner,notes=[&#x27;The messages such as “saved: overview.json” were printed by our recording helper. They are not independent guarantees from Excel.&#x27;,&#x27;The program runs in Node. No Excel window or connected add-in session is involved in these calls.&#x27;],
+    links=[{&#x27;label&#x27;:&#x27;Actual command and tool results&#x27;,&#x27;href&#x27;:&#x27;man-group-run/runner-tool-record.json&#x27;}, {&#x27;label&#x27;:&#x27;Executed script&#x27;,&#x27;href&#x27;:&#x27;man-group-run/run.mjs&#x27;}])]
+cards += [
+card(&#x27;overview&#x27;,&#x27;Broad workbook read&#x27;,&#x27;Request tab descriptions and cell values together&#x27;,
+    &#x27;Ask for workbook and sheet descriptions plus cell values. This broad request was intended as an overview, but its returned full value grid makes it large.&#x27;,
+    &#x27;A workbook record, sheet records and table-shaped cell data, plus metadata telling us whether the response was cut short.&#x27;,
+    &#x27;It reports six sheets. This broad request returns five records, including a notice that nine further lines were omitted. The separate sheet call below gives the complete tab list.&#x27;,
+    [&#x27;The six “tables” reported here are inspection representations of sheet data. The XLSX contains no native Excel Table objects.&#x27;,&#x27;The requested four-row/six-column table preview is a fallback, not an unconditional cap. The Summary values fit individually, so this call returns all 57 × 13 values. The later response-wide cutoff omits other records.&#x27;]),
+card(&#x27;sheets&#x27;,&#x27;Sheet summaries&#x27;,&#x27;List the tabs and their occupied ranges&#x27;,
+    &#x27;Choose the relevant tab. For this task, Summary shows the answer, Assumptions owns the drivers and Fee engine does the calculations.&#x27;,
+    &#x27;One record per tab, including its name, internal ID, position and used rectangle. This call does not explain what the tabs mean.&#x27;,
+    &#x27;All six tabs are returned: Summary, Assumptions, Fee engine, Disclosures, Checks and Readme.&#x27;,
+    [&#x27;The used rectangle can include empty cells and layout space. It is not a count of populated cells.&#x27;,&#x27;Although the request says include id,name, this runtime also returns index, range and address.&#x27;]),
+card(&#x27;literal&#x27;,&#x27;Text search&#x27;,&#x27;Find cells containing “profit”&#x27;,
+    &#x27;Turn an imprecise request about profit into a list of candidate labels and locations.&#x27;,
+    &#x27;Matching cells with sheet, address, value, formula field and whether the match came from the value or formula.&#x27;,
+    &#x27;“profit” returns 28 matches, including operating profit, profit after tax, statutory profit and explanatory notes. The agent must choose the intended metric from that context.&#x27;,
+    [&#x27;This is text matching. The call does not decide which definition of profit the user intended.&#x27;]),
+card(&#x27;regex&#x27;,&#x27;Pattern search&#x27;,&#x27;Search several fee-related word patterns at once&#x27;,
+    &#x27;Find management-fee and fee-margin labels even when words appear in different phrases.&#x27;,
+    &#x27;The same cell-match records as text search, using the supplied regular expression.&#x27;,
+    &#x27;The expression management.*fee|fee.*margin returns 30 cell matches and an additional limit notice. Both parts of the pattern were chosen by the agent.&#x27;,
+    [&#x27;A regular expression matches text patterns. It does not provide a financial synonym dictionary or semantic index.&#x27;]),
+card(&#x27;regions&#x27;,&#x27;Populated regions&#x27;,&#x27;Locate the populated blocks within Summary&#x27;,
+    &#x27;Break a known section into manageable blocks so the agent can inspect the relevant part next.&#x27;,
+    &#x27;Region addresses, dimensions, counts and preview matrices. The preview address tells us exactly which part of a wider block was returned.&#x27;,
+    &#x27;Within C7:M28 it finds four blocks: headers/AUM, revenue, operating costs/profit, and the PBT-to-EPS bridge. Previews stop at column H even though each region extends to M.&#x27;,
+    [&#x27;The returned text counts include numeric cells rendered as text in this inspection view. They do not prove those cells are stored as text in Excel.&#x27;]),
+card(&#x27;ranges&#x27;,&#x27;Values and formulas&#x27;,&#x27;Read a precise rectangle of values and formulas&#x27;,
+    &#x27;Inspect the forecast revenue and operating-profit section after locating it.&#x27;,
+    &#x27;Two aligned two-dimensional arrays: current values and formula text. The first item in each is K13; rows and columns preserve the requested order.&#x27;,
+    &#x27;K13:M20 covers FY2026, H1 2027 and FY2027. The read shows the displayed numbers and the Fee engine references behind them.&#x27;,
+    [&#x27;Row labels and period captions in the readable grid are added from the same workbook for orientation; the exact rectangular call returns neither automatically.&#x27;,&#x27;Numbers in the readable display are rounded. The tree and raw JSON retain their full captured precision.&#x27;]),
+card(&#x27;trace&#x27;,&#x27;Dependency tree&#x27;,&#x27;Trace one management-fee result back to its inputs&#x27;,
+    &#x27;Explain how Q3 2026 management fees were calculated and which assumptions they depend on.&#x27;,
+    &#x27;A nested tree: each node has a cell, formula, value and a params array of dependencies. Expand a branch to follow it upstream.&#x27;,
+    &#x27;Fee engine!R27 is $359.478m: $256.77bn average AUM × 1,000 × 56 / 10,000 × 0.25. The fee-rate branch reaches the selected case and source margin.&#x27;,
+    [&#x27;The average-AUM node R18 returns formula: null and no children, although a formula exists in the file. That branch is incomplete because this cell is a shared-formula follower.&#x27;,&#x27;The first attempt used Excel-style quotes around the sheet name and returned null. The successful trace call uses Fee engine!R27 without those quotes. The failed attempt is retained in the evidence folder.&#x27;]),
+card(&#x27;render&#x27;,&#x27;Rendered image&#x27;,&#x27;Turn a selected worksheet rectangle into an image&#x27;,
+    &#x27;Let the agent check the model visually: layout, formatting, clipping and whether the numbers are readable.&#x27;,
+    &#x27;render returns an image blob. The script saves its bytes as a PNG; a separate view_image tool then makes those pixels visible to the agent.&#x27;,
+    &#x27;This is the actual Summary C7:M28 image rendered from your Man Group workbook before edits.&#x27;,
+    [&#x27;The file name and byte count are printed by our wrapper after saving the blob. They are not the image itself.&#x27;,&#x27;The screenshot shows the current values. A plausible-looking image does not establish that every formula recalculates correctly.&#x27;]),
+card(&#x27;value-edit&#x27;,&#x27;Cell edit&#x27;,&#x27;Change one forecast assumption from 56bp to 51bp&#x27;,
+    &#x27;Test whether lowering the Q4 2027 base fee margin reaches the model’s earnings outputs.&#x27;,
+    &#x27;The assignment itself has no standalone success report. We explicitly read six relevant cells before and after, including each exposed formula.&#x27;,
+    &#x27;Assumptions!W26 changes to 51, but W25 stays at 56 and Q4 fees remain $406.716m. The missing shared-formula dependency prevents the change from flowing through.&#x27;,
+    [&#x27;The edit is confined to a disposable copy. The original Downloads file remains byte-for-byte unchanged.&#x27;,&#x27;readState is our helper that reads these six cells; its full definition is available below the code and in the executed script.&#x27;]),
+card(&#x27;recalculate&#x27;,&#x27;Recalculation&#x27;,&#x27;Ask the calculation engine to refresh the workbook&#x27;,
+    &#x27;Check whether an explicit recalculation resolves the unchanged result after the assumption edit.&#x27;,
+    &#x27;recalculate returns JavaScript undefined. The useful evidence comes from the explicit before-and-after cell reads.&#x27;,
+    &#x27;It makes no difference here: the input is 51bp, the active assumption remains 56bp and fees are unchanged. Recalculation cannot follow a dependency missing from the imported calculation graph.&#x27;,
+    [&#x27;This is Artifact Tool recalculation, not Microsoft Excel’s native calculation engine.&#x27;,&#x27;A second recalculation was run after restoring the original assumption, before the final checks and export.&#x27;]),
+card(&#x27;formula-edit&#x27;,&#x27;Formula edit&#x27;,&#x27;Restore the formula behind the active fee margin&#x27;,
+    &#x27;Test whether giving the importer the missing formula explicitly restores the connection from the scenario input.&#x27;,
+    &#x27;After assigning formula text, we read the same six cells again to see which values actually move.&#x27;,
+    &#x27;The active margin becomes 51bp. Q4 management fees fall to $370.402m and FY2027 fees to $1,531.994m. Operating profit remains $792.754m, so restoring this one formula does not fix the whole dependency chain.&#x27;,
+    [&#x27;The formula is the existing scenario-selection rule translated to W25, not a new financial assumption or a hardcoded result.&#x27;,&#x27;This is a targeted demonstration of the import issue, not a complete repair of the model.&#x27;]),
+card(&#x27;fill&#x27;,&#x27;Formula fill&#x27;,&#x27;Fill the active-assumption formula across the forecast quarters&#x27;,
+    &#x27;Show how the script copies a formula pattern from R25 across to W25 while adjusting relative references.&#x27;,
+    &#x27;We read the row’s values and formula strings before and after fillRight. The method itself does not print these arrays.&#x27;,
+    &#x27;All six quarterly active-assumption cells now expose formulas. R26 becomes S26, T26 and so on; the absolute case selector $D$4 stays fixed.&#x27;,
+    [&#x27;The values remain 56, 56, 56, 56, 56 and 51. This operation restores the imported formulas for the row; it does not change the scenario rules.&#x27;]),
+card(&#x27;copy&#x27;,&#x27;Formula copy&#x27;,&#x27;Copy the original base formula back into the edited cell&#x27;,
+    &#x27;Restore the original assumption after the temporary 51bp test, while demonstrating a precise formula-only copy.&#x27;,
+    &#x27;copyFrom copies the formula from R26 into W26. We then read the input and downstream outputs again.&#x27;,
+    &#x27;W26 becomes =$D$50 and returns to 56bp. Q4 and FY2027 management fees return to their original values.&#x27;,
+    [&#x27;The “formulas” option copies the calculation rule, not a frozen value or the source formatting.&#x27;]),
+card(&#x27;export&#x27;,&#x27;Export&#x27;,&#x27;Write the workbook object back to an XLSX file&#x27;,
+    &#x27;Produce a file that can be downloaded and opened after the in-memory inspection and edits.&#x27;,
+    &#x27;exportXlsx creates a file object; save writes it to disk and returns undefined. The script then checks the saved file’s size.&#x27;,
+    &#x27;The saved demo is 106,380 bytes. Independent readback confirms the original sheet order, formulas, cell values and 270 annotations remain, after the temporary assumption change was reversed.&#x27;,
+    [&#x27;The workbook still has the broader shared-formula import limitation described above. This export is a demonstration copy, not a claimed complete repair.&#x27;,&#x27;Verification compared formula text and literal cells, cached numbers within 1e-8 absolute / 1e-10 relative tolerance, sheet order and annotation count. Native Excel was not opened for this run.&#x27;])
+]
+for c in cards:
+    if &#x27;ndjson&#x27; in c[&#x27;result&#x27;]:
+        c[&#x27;records&#x27;] = [json.loads(line) for line in c[&#x27;result&#x27;][&#x27;ndjson&#x27;].splitlines() if line.strip()]
+    if c[&#x27;id&#x27;]==&#x27;render&#x27;:
+        c[&#x27;image&#x27;]=&#x27;man-group-run/summary-before.png&#x27;
+        c[&#x27;extraInput&#x27;]=json.dumps({&#x27;path&#x27;:str(RUN/&#x27;summary-before.png&#x27;)},indent=2)
+    if c[&#x27;id&#x27;] in (&#x27;value-edit&#x27;,&#x27;recalculate&#x27;,&#x27;formula-edit&#x27;,&#x27;copy&#x27;):
+        script=(RUN/&#x27;run.mjs&#x27;).read_text()
+        c[&#x27;helper&#x27;]=script[script.index(&#x27;function readState()&#x27;):script.index(&quot;await capture(&#x27;value-edit&#x27;&quot;)]
+    if c[&#x27;id&#x27;]==&#x27;export&#x27;:
+        c[&#x27;verification&#x27;]=read(&#x27;verification&#x27;)
+        c[&#x27;links&#x27;] += [{&#x27;label&#x27;:&#x27;Download demonstration XLSX&#x27;,&#x27;href&#x27;:&#x27;man-group-run/man-group-demo.xlsx&#x27;}, {&#x27;label&#x27;:&#x27;Independent file checks&#x27;,&#x27;href&#x27;:&#x27;man-group-run/verification.json&#x27;}]
+
+(HERE/&#x27;evidence&#x27;/&#x27;man-group-cards.json&#x27;).write_text(json.dumps({&#x27;source&#x27;:&#x27;man-group-fees-excel.xlsx&#x27;,&#x27;cards&#x27;:cards},indent=2))
+print(f&#x27;Prepared {len(cards)} Man Group examples&#x27;)
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

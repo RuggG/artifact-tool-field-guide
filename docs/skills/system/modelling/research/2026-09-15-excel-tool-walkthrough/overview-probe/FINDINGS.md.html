@@ -1,0 +1,45 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>What the overview actually returns · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="FINDINGS.md">Raw file</a> · <a data-public-raw download href="FINDINGS.md">Download</a></p><article><h1 id="what-the-overview-actually-returns">What the overview actually returns</h1>
+<p>Read-only follow-up on 15 September 2026, using the same source.xlsx and installed Artifact Tool runtime. The original workbook and the page’s earlier saved captures were not changed.</p>
+<p>The example labelled “Workbook overview” requests workbook, sheet and table records. With enough response allowance, its table records contain every value in each sheet’s reported used rectangle. All six returned matrices exactly matched direct range.values reads. This is structural data extraction, not a semantic summary of the model.</p>
+<h2 id="preview-limits-are-conditional">Preview limits are conditional</h2>
+<p>The public workbook.inspect help says tableMaxRows/tableMaxCols/tableMaxCellChars control preview sizes “when values would be too large”. The experiments support that condition:</p>
+<table>
+<thead>
+<tr>
+<th>Request</th>
+<th>Returned data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Full workbook, 150,000-character allowance, 4 × 6 preview requested</td>
+<td>All six full value matrices; 70,074 characters / approximately 22.4k o200k_base tokens</td>
+</tr>
+<tr>
+<td>Fee engine table, 150,000-character allowance, 1 × 1 preview requested</td>
+<td>Full 109 × 23 values; 24,242 characters / 9,533 tokens</td>
+</tr>
+<tr>
+<td>Same Fee engine request, 1,000-character allowance</td>
+<td>1 × 1 preview; valuesTruncated: true, valuesPreviewAddress: A1</td>
+</tr>
+<tr>
+<td>Same small allowance with explicit range and include: values</td>
+<td>Same 1 × 1 preview</td>
+</tr>
+<tr>
+<td>Workbook and sheet records only</td>
+<td>All six sheet descriptions; 642 characters / approximately 0.25k tokens</td>
+</tr>
+<tr>
+<td>Fee engine regions, 2 × 3 previews</td>
+<td>Six regions, every preview exactly 2 × 3, text capped at 20 characters; 1,707 characters / 559 tokens</td>
+</tr>
+</tbody>
+</table>
+<p>Token counts measure saved NDJSON with o200k_base, not exact GPT-6 billing.</p>
+<p>Correction to the earlier interpretation: the table preview settings are not wholly ignored. They are fallback limits, not unconditional caps. This distinction matters when judging the API’s behavior.</p>
+<h2 id="why-the-original-response-stopped-after-the-assumptions-description">Why the original response stopped after the Assumptions description</h2>
+<p>Summary’s full table record is 6,602 characters; Assumptions’ is 10,062. Each is below the original 14,000-character allowance, but both together exceed it. The captured result contains the first table and the next sheet description, followed by a notice that nine lines were omitted. This is consistent with deciding whether to preview each table separately, then applying a response-wide limit to complete records. That mechanism is inferred from public help and observed outputs, not a reading of package internals.</p>
+<p>The earlier response’s broad classification and truncation statements remain correct. Calling that output a compact overview was misleading. A useful compact first pass is workbook/sheet descriptions, followed by region previews or explicitly selected ranges when data is needed.</p>
+<p>Evidence: <a href="report.json">inputs and measurements</a>, <a href="inspect-help.txt">public help</a>, <a href="fee-table-tiny-preview.json">large table request</a>, <a href="fee-table-small-budget.json">small-budget request</a>, <a href="metadata-overview.json">compact sheet overview</a>. The read-only script is <a href="../overview-probe.mjs">overview-probe.mjs</a>.</p></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

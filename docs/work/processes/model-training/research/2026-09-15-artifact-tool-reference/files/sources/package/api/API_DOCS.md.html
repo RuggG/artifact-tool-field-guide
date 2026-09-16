@@ -1,0 +1,227 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Workbook API Docs · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="API_DOCS.md">Raw file</a> · <a data-public-raw download href="API_DOCS.md">Download</a></p><article><h1 id="workbook-api-docs">Workbook API Docs</h1>
+<p>Use the workbook facades to create and edit Excel-style workbooks in TypeScript,
+including worksheets, ranges, formulas, tables, charts, drawings, comments,
+named ranges, import/export helpers, inspection, and recorded patches.</p>
+<h2 id="conventions">Conventions</h2>
+<ul>
+<li><strong>A1 addresses for ranges</strong>: use <code>sheet.getRange("A1:B2")</code> for A1 ranges.
+  Use <code>getRangeByIndexes(row, column, rowCount, columnCount)</code> and
+  <code>getCell(row, column)</code> for zero-based index access.</li>
+<li><strong>Matrices are row-major</strong>: range values and formulas use <code>rows x columns</code>
+  arrays. Single-row and single-column ranges accept one-dimensional arrays.</li>
+<li><strong>Formulas include <code>=</code></strong>: assigning a string starting with <code>=</code> through
+  <code>values</code> stores a formula; prefix with <code>'</code> to store a literal leading <code>=</code>.</li>
+<li><strong>Use <code>write</code> for shape-matched writes</strong>: <code>range.write(...)</code> can resize from
+  the target top-left cell.</li>
+<li><strong>Record user edits</strong>: wrap edits in <code>workbook.record(() =&gt; { ... })</code> when a
+  patch, id map, or CRDT update is needed.</li>
+<li><strong>Inspect before editing imported workbooks</strong>: use <code>inspect</code>, <code>findCells</code>,
+  and <code>resolve</code> to locate exact sheets, tables, charts, and threads.</li>
+<li><strong>Config-first creation</strong>: prefer worksheet/range/table/chart config objects
+  where available.</li>
+</ul>
+<h2 id="quick-start">Quick Start</h2>
+<pre><code class="language-ts">const workbook = Workbook.create();
+const sheet = workbook.worksheets.add("Data");
+
+sheet.getRange("A1:C4").values = [
+  ["Region", "Q1", "Q2"],
+  ["North", 10, 12],
+  ["South", 8, 9],
+  ["Total", null, null],
+];
+sheet.getRange("B4:C4").formulas = [["=SUM(B2:B3)", "=SUM(C2:C3)"]];
+workbook.recalculate();
+
+const table = sheet.tables.add("A1:C4", true, "DataTable");
+table.rows.add(null, [["West", 7, 11]]);
+
+const chart = sheet.charts.add("bar", {
+  from: { row: 1, col: 4 },
+  extent: { widthPx: 420, heightPx: 260 },
+});
+chart.title = "Quarterly values";
+chart.categories = ["North", "South", "West"];
+const series = chart.series.add("Q1");
+series.values = [10, 8, 7];
+series.categories = chart.categories;
+
+const preview = await workbook.export({
+  sheet,
+  range: "A1:C5",
+  format: "png",
+  scale: 2,
+});
+const layoutBlob = await workbook.export({
+  sheet,
+  range: "A1:C5",
+  format: "layout",
+});
+const proto = workbook.toProto();
+</code></pre>
+<h2 id="load-existing-workbook-data">Load Existing Workbook Data</h2>
+<pre><code class="language-ts">const workbook = Workbook.load(proto, { validate: true });
+
+const before = await workbook.inspect({
+  kind: "sheet,table,formula,chart,thread",
+  search: "Revenue",
+  maxChars: 8000,
+});
+
+const sheet = workbook.resolve(sheetAnchorId);
+sheet.getRange("B2").values = [["Updated"]];
+
+const after = await workbook.inspect({
+  target: { id: sheetAnchorId, beforeLines: 1, afterLines: 6 },
+  kind: "sheet,table",
+});
+</code></pre>
+<h2 id="recorded-edit">Recorded Edit</h2>
+<pre><code class="language-ts">const { result, patch, idMap, crdtUpdateV2 } = workbook.record(() =&gt; {
+  const sheet = workbook.worksheets.getItem("Data");
+  sheet.getRange("A1:B2").values = [
+    ["Name", "Value"],
+    ["A", 1],
+  ];
+  return sheet.tables.add("A1:B2", true, "DataTable");
+});
+</code></pre>
+<p><code>record</code> hydrates collaborative state when needed and returns the callback
+result, a workbook patch, created-id aliases, and a merged CRDT update when
+collaborative edits occurred.</p>
+<h2 id="core-api-sequence">Core API Sequence</h2>
+<ul>
+<li>Create workbooks with <code>Workbook.create()</code> and load with
+  <code>Workbook.load(proto, { validate })</code>.</li>
+<li>Import simple tabular data with <code>Workbook.fromCSV(...)</code>,
+  <code>workbook.fromCSV(...)</code>, and <code>Workbook.fromMarkdown(...)</code>.</li>
+<li>Add or select sheets with <code>workbook.worksheets.add(...)</code>, <code>getItem(...)</code>,
+  <code>getActiveWorksheet()</code>, and
+  <code>setActiveWorksheet(...)</code>.</li>
+<li>Edit data with <code>sheet.getRange("A1:B2").values</code>, <code>.formulas</code>,
+  <code>.formulasR1C1</code>, <code>.write(...)</code>, <code>.clear(...)</code>, <code>.merge(...)</code>, and
+  <code>.copyFrom(...)</code>.</li>
+<li>Add tables with <code>sheet.tables.add(range, hasHeaders, name)</code> and edit rows,
+  columns, styles, totals, and filters on the table facade.</li>
+<li>Add charts, images, shapes, sparklines, conditional formats, data
+  validations, freeze panes, pivot tables, slicers, comments, notes, and names
+  through their worksheet/workbook facades.</li>
+<li>Recalculate formulas with <code>workbook.recalculate()</code> and inspect dependencies
+  with <code>workbook.trace("Sheet!A1")</code>.</li>
+<li>Inspect imported workbooks with <code>workbook.inspect(...)</code>, <code>findCells(...)</code>,
+  <code>help(...)</code>, and <code>resolve(...)</code>.</li>
+<li>Render previews with <code>workbook.render(...)</code> or <code>workbook.export(...)</code>.</li>
+<li>Export grid and style evidence with <code>workbook.export({ format: "layout" })</code>
+  when template reconstruction needs cell frames, style regions, merged ranges,
+  validations, defined names, and drawing anchors.</li>
+<li>Serialize workbook data with <code>workbook.toProto()</code>.</li>
+</ul>
+<h2 id="output-map">Output Map</h2>
+<table>
+<thead>
+<tr>
+<th>Output</th>
+<th>API</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Serialized data</td>
+<td><code>workbook.toProto()</code></td>
+<td>Serializable workbook proto</td>
+</tr>
+<tr>
+<td>Inspect records</td>
+<td><code>await workbook.inspect(options)</code></td>
+<td>Structured records and NDJSON</td>
+</tr>
+<tr>
+<td>Cell search</td>
+<td><code>workbook.findCells(options)</code></td>
+<td>Matches with sheet/address/value/formula info</td>
+</tr>
+<tr>
+<td>Help records</td>
+<td><code>workbook.help(query, options)</code></td>
+<td>Bounded NDJSON API help records</td>
+</tr>
+<tr>
+<td>Image preview</td>
+<td><code>workbook.export({ format: "png" })</code></td>
+<td>Workbook/sheet/range render blob</td>
+</tr>
+<tr>
+<td>Layout JSON</td>
+<td><code>workbook.export({ format: "layout" })</code></td>
+<td>Typed grid and style evidence</td>
+</tr>
+<tr>
+<td>Native workbook</td>
+<td><code>workbook.export({ format: "xlsx" })</code></td>
+<td>Editable XLSX <code>Blob</code></td>
+</tr>
+<tr>
+<td>Render blob</td>
+<td><code>workbook.render(options)</code></td>
+<td>Render-provider blob</td>
+</tr>
+<tr>
+<td>HTML table</td>
+<td><code>workbook.toHTML(sheetIndex, range, options)</code></td>
+<td>Excel/Sheets-compatible HTML</td>
+</tr>
+<tr>
+<td>Recorded patch</td>
+<td><code>workbook.record(fn)</code></td>
+<td><code>{ result, patch, idMap, crdtUpdateV2 }</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="minimal-patterns">Minimal Patterns</h2>
+<pre><code class="language-ts">// Data + formulas.
+const workbook = Workbook.create();
+const sheet = workbook.worksheets.add("Calc");
+sheet.getRange("A1:B2").values = [
+  [2, 3],
+  [5, 7],
+];
+sheet.getRange("C1:C2").formulas = [["=A1+B1"], ["=A2+B2"]];
+workbook.recalculate();
+</code></pre>
+<pre><code class="language-ts">// Inspect, resolve, edit, re-inspect.
+const snapshot = await workbook.inspect({
+  kind: "sheet,table,formula,thread,chart",
+  search: "Status",
+});
+const sheet = workbook.resolve(sheetAnchorId);
+sheet.getRange("B2").values = [["Closed"]];
+const updated = await workbook.inspect({
+  target: { id: sheetAnchorId },
+  kind: "sheet,table",
+});
+</code></pre>
+<h2 id="reference-map">Reference Map</h2>
+<ul>
+<li><a href="./references/workbook.spec.md"><code>references/workbook.spec.md</code></a> -
+  <code>Workbook</code> create/load/import/export/inspect/help/record surface.</li>
+<li><a href="./references/worksheets.spec.md"><code>references/worksheets.spec.md</code></a> -
+  worksheet collection and worksheet facade.</li>
+<li><a href="./references/ranges.spec.md"><code>references/ranges.spec.md</code></a> - values,
+  formulas, indexing, formatting, clearing, merging, fill, and copy.</li>
+<li><a href="./references/tables.spec.md"><code>references/tables.spec.md</code></a> - worksheet
+  tables, rows, columns, headers, totals, and recorded patches.</li>
+<li><a href="./references/formulas.spec.md"><code>references/formulas.spec.md</code></a> -
+  recalculation, formula assignment, dynamic arrays, trace, and names.</li>
+<li><a href="./references/formatting.spec.md"><code>references/formatting.spec.md</code></a> - range
+  formats, workbook theme, conditional formatting, data validation, and freeze
+  panes.</li>
+<li><a href="./references/charts-drawings.spec.md"><code>references/charts-drawings.spec.md</code></a></li>
+<li>worksheet charts, images, shapes, sparklines, and drawing layout.</li>
+<li><a href="./references/comments-notes-names.spec.md"><code>references/comments-notes-names.spec.md</code></a></li>
+<li>comments, notes, workbook-scoped names, and sheet-scoped names.</li>
+<li><a href="./references/inspect-help.md"><code>references/inspect-help.md</code></a> - inspect,
+  resolve, findCells, and help workflows.</li>
+<li><a href="./references/import-export.md"><code>references/import-export.md</code></a> - CSV,
+  Markdown, HTML, image import, rendering, export, and Google Sheets adapters.</li>
+</ul></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

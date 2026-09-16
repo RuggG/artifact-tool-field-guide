@@ -1,0 +1,37 @@
+{
+  "name": "fx.BITOR",
+  "category": "engineering",
+  "examples": [
+    {
+      "formula": "=BITOR(10, 20)",
+      "value": 30,
+      "projection": [
+        [
+          30,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 6
+    }
+  ]
+}

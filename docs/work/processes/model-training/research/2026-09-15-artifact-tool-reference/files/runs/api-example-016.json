@@ -1,0 +1,10 @@
+{
+  "index": 16,
+  "name": "categoryAxis",
+  "summary": "Show category axis tick labels",
+  "originalCode": "chart.xAxis = { deleted: false, tickLabelPosition: 'nextToAxis' };",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

@@ -1,0 +1,10 @@
+{
+  "index": 59,
+  "name": "workbook.worksheets.add",
+  "summary": "Create multiple worksheets",
+  "originalCode": "const [dataSheet, summarySheet] = workbook.worksheets.add(['Data', 'Summary']);",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

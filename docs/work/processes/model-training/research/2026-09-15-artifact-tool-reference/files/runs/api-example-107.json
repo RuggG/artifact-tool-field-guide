@@ -1,0 +1,10 @@
+{
+  "index": 107,
+  "name": "range.getResizedRange",
+  "summary": "Shrink a range by one row and one column",
+  "originalCode": "const range = sheet.getRange('B2:D4');\nconst smaller = range.getResizedRange(-1, -1); // B2:C3",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

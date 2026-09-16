@@ -1,0 +1,37 @@
+{
+  "name": "fx.ZTEST",
+  "category": "compatibility",
+  "examples": [
+    {
+      "formula": "=ZTEST({1,2;3,4}, A1, A1)",
+      "value": 0.0013498980316301035,
+      "projection": [
+        [
+          0.0013498980316301035,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 16
+    }
+  ]
+}

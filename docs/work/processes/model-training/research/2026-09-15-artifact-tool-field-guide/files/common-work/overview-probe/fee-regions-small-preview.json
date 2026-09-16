@@ -1,0 +1,37 @@
+{
+  "input": {
+    "kind": "region",
+    "sheetId": "Fee engine",
+    "range": "A1:W109",
+    "maxChars": 40000,
+    "tableMaxRows": 2,
+    "tableMaxCols": 3,
+    "tableMaxCellChars": 20
+  },
+  "result": {
+    "ndjson": "{\"kind\":\"region\",\"sheet\":\"Fee engine\",\"address\":\"C62:W82\",\"rows\":21,\"cols\":21,\"nonEmpty\":301,\"blank\":140,\"text\":301,\"maxTextLength\":41,\"preview\":[[\"HISTORICAL ALLOCA...\",null,null],[\"Quarter share of ...\",\"0.49281314168377827\",\"0.50718685831622179\"]],\"previewAddress\":\"C62:E63\",\"previewRows\":2,\"previewCols\":3}\n{\"kind\":\"region\",\"sheet\":\"Fee engine\",\"address\":\"C4:W20\",\"rows\":17,\"cols\":21,\"nonEmpty\":295,\"blank\":62,\"text\":295,\"maxTextLength\":63,\"preview\":[[\"Case selected\",\"Base\",null],[\"USD bn AUM | USD ...\",null,null]],\"previewAddress\":\"C4:E5\",\"previewRows\":2,\"previewCols\":3}\n{\"kind\":\"region\",\"sheet\":\"Fee engine\",\"address\":\"C46:W60\",\"rows\":15,\"cols\":21,\"nonEmpty\":295,\"blank\":20,\"text\":295,\"maxTextLength\":41,\"preview\":[[\"PROFIT | FUNDING,...\",null,null],[\"Management-fee fi...\",\"-0.5\",\"-0.5\"]],\"previewAddress\":\"C46:E47\",\"previewRows\":2,\"previewCols\":3}\n{\"kind\":\"region\",\"sheet\":\"Fee engine\",\"address\":\"C85:W109\",\"rows\":25,\"cols\":21,\"nonEmpty\":264,\"blank\":261,\"text\":264,\"maxTextLength\":51,\"preview\":[[\"H1 / FY ROLLUPS |...\",null,null],[null,\"H1:23\",\"FY:23\"]],\"previewAddress\":\"C85:E86\",\"previewRows\":2,\"previewCols\":3}\n{\"kind\":\"region\",\"sheet\":\"Fee engine\",\"address\":\"C33:W44\",\"rows\":12,\"cols\":21,\"nonEmpty\":232,\"blank\":20,\"text\":232,\"maxTextLength\":49,\"preview\":[[\"COSTS | FIXED CAP...\",null,null],[\"Fixed compensation\",\"-59\",\"-59\"]],\"previewAddress\":\"C33:E34\",\"previewRows\":2,\"previewCols\":3}\n{\"kind\":\"region\",\"sheet\":\"Fee engine\",\"address\":\"C23:W31\",\"rows\":9,\"cols\":21,\"nonEmpty\":169,\"blank\":20,\"text\":169,\"maxTextLength\":42,\"preview\":[[\"REVENUE | RECURRI...\",null,null],[\"Gross management ...\",\"234.57905544147843\",\"241.42094455852157\"]],\"previewAddress\":\"C23:E24\",\"previewRows\":2,\"previewCols\":3}",
+    "recordCount": 6,
+    "truncated": false,
+    "metadata": {
+      "revision": "t19vtm",
+      "target": {
+        "id": "wb/lwoeqo",
+        "beforeLines": 0,
+        "afterLines": 0
+      },
+      "kind": {
+        "requested": "region",
+        "tokens": [
+          "region"
+        ]
+      },
+      "include": {
+        "tokens": []
+      },
+      "exclude": {
+        "tokens": []
+      },
+      "notices": []
+    }
+  }
+}

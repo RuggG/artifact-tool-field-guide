@@ -1,0 +1,37 @@
+{
+  "name": "fx.YEAR",
+  "category": "date-time",
+  "examples": [
+    {
+      "formula": "=YEAR(10)",
+      "value": 1900,
+      "projection": [
+        [
+          1900,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 12
+    }
+  ]
+}

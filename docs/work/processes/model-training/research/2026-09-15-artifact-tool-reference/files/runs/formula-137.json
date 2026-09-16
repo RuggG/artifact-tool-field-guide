@@ -1,0 +1,37 @@
+{
+  "name": "fx.IMSINH",
+  "category": "engineering",
+  "examples": [
+    {
+      "formula": "=IMSINH(10)",
+      "value": "e.substring is not a function",
+      "projection": [
+        [
+          "e.substring is not a function",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 13
+    }
+  ]
+}

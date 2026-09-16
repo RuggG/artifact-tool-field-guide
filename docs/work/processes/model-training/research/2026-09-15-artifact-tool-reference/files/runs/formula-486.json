@@ -1,0 +1,37 @@
+{
+  "name": "fx.TEXTSPLIT",
+  "category": "text",
+  "examples": [
+    {
+      "formula": "=TEXTSPLIT(\"text\", \",\", \",\")",
+      "value": "text",
+      "projection": [
+        [
+          "text",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 51
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>chart-input-change.json · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="chart-input-change.json">Raw file</a> · <a data-public-raw download href="chart-input-change.json">Download</a></p><article><h1>chart-input-change.json</h1><pre class="public-code"><code>{
+  &quot;id&quot;: &quot;chart-input-change&quot;,
+  &quot;operation&quot;: &quot;lab.getRange(\&quot;C4\&quot;).values = [[60]];&quot;,
+  &quot;checkInput&quot;: {
+    &quot;before&quot;: &quot;return {fees:grid(lab,\&quot;F9:F12\&quot;),bindings:chart.series.items.map(s=&gt;s.formula)};&quot;,
+    &quot;after&quot;: &quot;return {fees:grid(lab,\&quot;F9:F12\&quot;),bindings:chart.series.items.map(s=&gt;s.formula)};&quot;
+  },
+  &quot;startedAt&quot;: &quot;2026-09-15T16:55:20.965Z&quot;,
+  &quot;before&quot;: {
+    &quot;fees&quot;: {
+      &quot;address&quot;: &quot;F9:F12&quot;,
+      &quot;values&quot;: [
+        [
+          370.40240070050527
+        ],
+        [
+          377.81044871451536
+        ],
+        [
+          385.3666576888057
+        ],
+        [
+          393.0739908425818
+        ]
+      ],
+      &quot;formulas&quot;: [
+        [
+          &quot;=IF(ISBLANK($C$4),NA(),C9*1000*D9/10000*E9)&quot;
+        ],
+        [
+          &quot;=IF(ISBLANK($C$4),NA(),C10*1000*D10/10000*E10)&quot;
+        ],
+        [
+          &quot;=IF(ISBLANK($C$4),NA(),C11*1000*D11/10000*E11)&quot;
+        ],
+        [
+          &quot;=IF(ISBLANK($C$4),NA(),C12*1000*D12/10000*E12)&quot;
+        ]
+      ]
+    },
+    &quot;bindings&quot;: [
+      &quot;&#x27;Fee lab&#x27;!$F$9:$F$12&quot;
+    ]
+  },
+  &quot;libraryReturn&quot;: {
+    &quot;javascriptType&quot;: &quot;undefined&quot;
+  },
+  &quot;elapsedMs&quot;: 0,
+  &quot;after&quot;: {
+    &quot;fees&quot;: {
+      &quot;address&quot;: &quot;F9:F12&quot;,
+      &quot;values&quot;: [
+        [
+          435.76753023588856
+        ],
+        [
+          444.48288084060624
+        ],
+        [
+          453.37253845741844
+        ],
+        [
+          462.4399892265668
+        ]
+      ],
+      &quot;formulas&quot;: [
+        [
+          &quot;=IF(ISBLANK($C$4),NA(),C9*1000*D9/10000*E9)&quot;
+        ],
+        [
+          &quot;=IF(ISBLANK($C$4),NA(),C10*1000*D10/10000*E10)&quot;
+        ],
+        [
+          &quot;=IF(ISBLANK($C$4),NA(),C11*1000*D11/10000*E11)&quot;
+        ],
+        [
+          &quot;=IF(ISBLANK($C$4),NA(),C12*1000*D12/10000*E12)&quot;
+        ]
+      ]
+    },
+    &quot;bindings&quot;: [
+      &quot;&#x27;Fee lab&#x27;!$F$9:$F$12&quot;
+    ]
+  }
+}</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

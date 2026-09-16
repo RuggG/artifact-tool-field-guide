@@ -1,0 +1,37 @@
+{
+  "name": "fx.MODE.SNGL",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=MODE.SNGL(10, C1:C5, 20, C1:C5)",
+      "value": 3,
+      "projection": [
+        [
+          3,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 12
+    }
+  ]
+}

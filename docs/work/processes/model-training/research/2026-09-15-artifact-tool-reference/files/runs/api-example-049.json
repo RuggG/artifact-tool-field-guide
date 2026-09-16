@@ -1,0 +1,12 @@
+{
+  "index": 49,
+  "name": "workbook.help",
+  "summary": "Get help on specific features by regex search",
+  "originalCode": "workbook.help({query: '*', search: 'trendline|trendlines', include: ['index','examples']}).",
+  "adaptations": [
+    "Repaired malformed trailing dot and used the documented query/options signature."
+  ],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

@@ -1,0 +1,18 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>render-before.json · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="render-before.json">Raw file</a> · <a data-public-raw download href="render-before.json">Download</a></p><article><h1>render-before.json</h1><pre class="public-code"><code>{
+  &quot;id&quot;: &quot;render-before&quot;,
+  &quot;operation&quot;: &quot;return await wb.render({sheetName:\&quot;Fee lab\&quot;,range:\&quot;B2:P25\&quot;,scale:1.5,format:\&quot;png\&quot;});&quot;,
+  &quot;checkInput&quot;: {
+    &quot;before&quot;: &quot;&quot;,
+    &quot;after&quot;: &quot;const blob=await wb.render({sheetName:\&quot;Fee lab\&quot;,range:\&quot;B2:P25\&quot;,scale:1.5,format:\&quot;png\&quot;});await fs.writeFile(path.join(dir,\&quot;fee-lab-before.png\&quot;),new Uint8Array(await blob.arrayBuffer()));return {saved:\&quot;fee-lab-before.png\&quot;,bytes:(await fs.stat(path.join(dir,\&quot;fee-lab-before.png\&quot;))).size};&quot;
+  },
+  &quot;startedAt&quot;: &quot;2026-09-15T16:53:23.775Z&quot;,
+  &quot;libraryReturn&quot;: {
+    &quot;type&quot;: &quot;Image Blob&quot;,
+    &quot;representation&quot;: &quot;Object contents are read separately in the agent checks.&quot;
+  },
+  &quot;elapsedMs&quot;: 262,
+  &quot;after&quot;: {
+    &quot;saved&quot;: &quot;fee-lab-before.png&quot;,
+    &quot;bytes&quot;: 151574
+  }
+}</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

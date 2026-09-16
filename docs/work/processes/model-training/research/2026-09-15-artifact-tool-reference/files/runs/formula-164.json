@@ -1,0 +1,37 @@
+{
+  "name": "fx.TBILLEQ",
+  "category": "financial",
+  "examples": [
+    {
+      "formula": "=TBILLEQ(A1, A1, 10)",
+      "value": 10.13888888888889,
+      "projection": [
+        [
+          10.13888888888889,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 10
+    }
+  ]
+}

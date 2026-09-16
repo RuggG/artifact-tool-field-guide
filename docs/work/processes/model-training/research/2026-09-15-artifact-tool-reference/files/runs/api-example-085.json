@@ -1,0 +1,10 @@
+{
+  "index": 85,
+  "name": "range.format.borders",
+  "summary": "Apply an outside border preset",
+  "originalCode": "const body = sheet.getRange('A2:C10');\nbody.format.borders = { preset: 'outside', style: 'thin', color: '#DDDDDD' };",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

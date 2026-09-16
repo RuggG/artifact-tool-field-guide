@@ -1,0 +1,13 @@
+{
+  "index": 53,
+  "name": "workbook.help",
+  "summary": "Browse formula metadata entries",
+  "adaptations": [
+    "Mapped structured example fields to the corresponding public method; replaced placeholder anchors with actual fixture IDs."
+  ],
+  "execution": "completed",
+  "export": "completed",
+  "logs": [
+    "{\"ndjson\":\"{\\\"kind\\\":\\\"formula\\\",\\\"name\\\":\\\"fx.EXPONDIST\\\",\\\"summary\\\":\\\"This function is available for compatibility with Excel 2007 and earlier. Returns the exponential distribution\\\",\\\"category\\\":\\\"compatibility\\\",\\\"examples\\\":[\\\"=EXPONDIST(A1, A1, A1)\\\"],\\\"notes\\\":[\\\"x (value|range, required): Is the value of the function, a nonnegative number\\\",\\\"lambda (value|range, required): Is the parameter value, a positive number\\\",\\\"cumulative (value|range, required): Is a logical value for the function to return: the cumulative distribution function = TRUE; the probability density function = FALSE\\\"]}\\n{\\\"kind\\\":\\\"formula\\\",\\\"name\\\":\\\"fx.ISOMITTED\\\",\\\"summary\\\":\\\"Checks whether the value is omitted, and returns TRUE or FALSE\\\",\\\"category\\\":\\\"information\\\",\\\"examples\\\":[\\\"=ISOMITTED(A1)\\\"],\\\"notes\\\":[\\\"argument (value|range, required): Is the value you want to test, such as a LAMBDA parameter\\\"]}\\n{\\\"kind\\\":\\\"formula\\\",\\\"name\\\":\\\"fx.LET\\\",\\\"summary\\\":\\\"Assigns calculation results to names. Useful for storing intermediate calculations and values by defining names inside a formula. These names only apply within the scope of the LET function.\\\",\\\"category\\\":\\\"logical\\\",\\\"examples\\\":[\\\"=LET(A1, A1, A1, C1:C5)\\\"],\\\"notes\\\":[\\\"name1 (value|range, required): The name, or a calculation which can make use of all names within the LET. Names must start with a letter, cannot be the output of a formula, or conflict with range syntax.\\\",\\\"nameValue1 (value|range, required): The value associated with the name.\\\",\\\"calculationOrName2 (value|range, required): Value, reference, or range.\\\",\\\"nameValue2 (value|range, optional): Value argument for the calculation.\\\",\\\"rest (value|range, required): Value, reference, or range.\\\"]}\\n{\\\"kind\\\":\\\"notice\\\",\\\"message\\\":\\\"Truncated: omitted 13 lines. Increase maxChars or narrow query.\\\"}\",\"truncated\":true,\"metadata\":{\"revision\":\"jvi7ad\",\"query\":\"fx.*\",\"include\":{\"requested\":[\"index\",\"examples\",\"notes\"],\"tokens\":[\"index\",\"examples\",\"notes\"]},\"search\":\"LET|LAMBDA|XLOOKUP|MAP|BYROW\",\"notices\":[]}}"
+  ]
+}

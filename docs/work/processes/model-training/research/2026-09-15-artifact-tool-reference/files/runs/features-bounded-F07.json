@@ -1,0 +1,22 @@
+[
+  {
+    "id": "F07",
+    "description": "Shapes, text, drawing layout directions and deleteAllDrawings",
+    "status": "pass",
+    "ms": 520,
+    "detail": [
+      {
+        "direction": "vertical",
+        "count": 4
+      },
+      {
+        "direction": "horizontal",
+        "count": 4
+      },
+      {
+        "direction": "grid",
+        "count": 4
+      }
+    ]
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "index": 109,
+  "name": "range.write",
+  "summary": "Write a matrix without computing the end cell",
+  "originalCode": "const anchor = sheet.getRange('B2');\nconst block = anchor.write([['A','B'],[1,2],[3,4]]);\n// block is the resized range (B2:C4)\nblock.format.autofitColumns();",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

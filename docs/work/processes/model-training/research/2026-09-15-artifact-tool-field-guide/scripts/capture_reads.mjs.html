@@ -1,0 +1,81 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>capture_reads.mjs · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="capture_reads.mjs">Raw file</a> · <a data-public-raw download href="capture_reads.mjs">Download</a></p><article><h1>capture_reads.mjs</h1><pre class="public-code"><code>// Read-only comparisons. Run with the bundled Node runtime; no edits or recalculation.
+import fs from &#x27;node:fs/promises&#x27;;
+import path from &#x27;node:path&#x27;;
+import crypto from &#x27;node:crypto&#x27;;
+import {fileURLToPath} from &#x27;node:url&#x27;;
+import {FileBlob, SpreadsheetFile} from &#x27;@oai/artifact-tool&#x27;;
+
+const home=path.resolve(path.dirname(fileURLToPath(import.meta.url)),&#x27;..&#x27;);
+const source=path.join(home,&#x27;files/inspection/source.xlsx&#x27;);
+const hash=value=&gt;crypto.createHash(&#x27;sha256&#x27;).update(value).digest(&#x27;hex&#x27;);
+const sourceHash=hash(await fs.readFile(source));
+const wb=await SpreadsheetFile.importXlsx(await FileBlob.load(source));
+const setup=&#x27;const sheet = wb.worksheets.getItem(&quot;Summary&quot;);\n&#x27;;
+const scopes=[
+ {id:&#x27;cell&#x27;,label:&#x27;One cell&#x27;,where:&#x27;Summary!K13&#x27;,code:setup+&#x27;const range = sheet.getRange(&quot;K13&quot;);&#x27;,note:&#x27;Read one named cell. The ordinary getter still returns one row containing one value.&#x27;},
+ {id:&#x27;block&#x27;,label:&#x27;A rectangle&#x27;,where:&#x27;Summary!K13:M20&#x27;,code:setup+&#x27;const range = sheet.getRange(&quot;K13:M20&quot;);&#x27;,note:&#x27;Read eight rows and three columns. The blank separator at row 18 stays in the result.&#x27;},
+ {id:&#x27;row&#x27;,label:&#x27;Part of one row&#x27;,where:&#x27;Summary!K13:M13&#x27;,code:setup+&#x27;const range = sheet.getRange(&quot;K13:M20&quot;).getRow(0);&#x27;,note:&#x27;Read the first row inside the chosen rectangle. Zero means the first row of that rectangle.&#x27;},
+ {id:&#x27;column&#x27;,label:&#x27;Part of one column&#x27;,where:&#x27;Summary!K13:K20&#x27;,code:setup+&#x27;const range = sheet.getRange(&quot;K13:M20&quot;).getColumn(0);&#x27;,note:&#x27;Read the first column inside the chosen rectangle. This is a bounded eight-cell read.&#x27;},
+ {id:&#x27;index&#x27;,label:&#x27;A cell by row and column number&#x27;,where:&#x27;Summary!K13&#x27;,code:setup+&#x27;const range = sheet.getCell(12, 10);&#x27;,note:&#x27;Read the same K13 cell using zero-based numbers: row 12 is Excel row 13, column 10 is K.&#x27;},
+ {id:&#x27;separate&#x27;,label:&#x27;Several separate areas&#x27;,where:&#x27;Summary!K13:M14 + Fee engine!D10:E12&#x27;,multi:true,code:&#x27;const areas = [\n  {sheet: &quot;Summary&quot;, address: &quot;K13:M14&quot;},\n  {sheet: &quot;Fee engine&quot;, address: &quot;D10:E12&quot;}\n];\nconst selections = areas.map(area =&gt; ({\n  sheet: area.sheet,\n  range: wb.worksheets.getItem(area.sheet).getRange(area.address)\n}));&#x27;,note:&#x27;The script reads two chosen rectangles and collects both results. The cells between them are not requested.&#x27;},
+ {id:&#x27;sheet&#x27;,label:&#x27;A whole tab’s used area&#x27;,where:&#x27;Fee engine&#x27;,multi:true,code:&#x27;const sheet = wb.worksheets.getItem(&quot;Fee engine&quot;);\nconst selections = [{sheet: sheet.name, range: sheet.getUsedRange()}];&#x27;,note:&#x27;Ask the library how far the tab is used, then read that rectangle. Used areas can include cells with formatting but no values.&#x27;},
+ {id:&#x27;workbook&#x27;,label:&#x27;Every tab’s used area&#x27;,where:&#x27;All six tabs&#x27;,multi:true,code:&#x27;const selections = wb.worksheets.items.map(sheet =&gt; ({\n  sheet: sheet.name, range: sheet.getUsedRange()\n}));&#x27;,note:&#x27;The script goes through all six tabs and reads each used rectangle. This returns cell contents; charts, comments and formatting need separate reads.&#x27;}
+];
+const methods=[
+ {id:&#x27;values&#x27;,label:&#x27;Values only&#x27;,api:&#x27;range.values&#x27;,why:&#x27;See the numbers, text, dates and blanks currently held in the cells.&#x27;,assembly:&#x27;The library returns the values in rows. No formula text is requested.&#x27;},
+ {id:&#x27;formulas&#x27;,label:&#x27;Formulas only&#x27;,api:&#x27;range.formulas&#x27;,why:&#x27;See the calculation written in each position. Cells without a formula return an empty string.&#x27;,assembly:&#x27;The library returns the formulas in rows. It does not include their numerical results.&#x27;},
+ {id:&#x27;both&#x27;,label:&#x27;Values and formulas — two lists&#x27;,api:&#x27;range.values + range.formulas&#x27;,why:&#x27;Get both readings. The same position in each list refers to the same cell.&#x27;,assembly:&#x27;Two library reads. The script puts them into one object with values and formulas fields.&#x27;},
+ {id:&#x27;paired&#x27;,label:&#x27;Value and formula together per cell&#x27;,api:&#x27;range.values + range.formulas, joined by the script&#x27;,why:&#x27;Read each address beside its current value and its formula, without matching up two separate lists.&#x27;,assembly:&#x27;Two library reads. The script pairs matching positions and adds a cell address; this layout is made by the script.&#x27;},
+ {id:&#x27;details&#x27;,label:&#x27;Formula details (advanced)&#x27;,api:&#x27;range.formulas + range.displayFormulas + range.formulaInfos&#x27;,why:&#x27;Inspect the stored formula, the formula shown for the cell, and the library’s extra formula information. These getters are useful for spill or data-table cells.&#x27;,assembly:&#x27;Three library reads, packaged by the script. This ordinary Summary example does not demonstrate a spill or a sensitivity table.&#x27;},
+ {id:&#x27;inspect&#x27;,label:&#x27;Values and formula records through inspect&#x27;,api:&#x27;wb.inspect({kind: &quot;table,formula&quot;, ...})&#x27;,why:&#x27;Compare the other reading route: inspect returns a block of values and separate addressed formula records.&#x27;,assembly:&#x27;The library creates these records. The capture explicitly saves its NDJSON and metadata; an inspection table here means a rectangle of cell values.&#x27;},
+ {id:&#x27;search&#x27;,label:&#x27;Matching cells with value and formula&#x27;,api:&#x27;wb.findCells(...)&#x27;,why:&#x27;Ask for cells matching some text. Each match already includes its address, value and formula.&#x27;,assembly:&#x27;The library pairs value and formula for matching cells. This searches for selected cells; it does not read every cell in the area.&#x27;}
+];
+const helpers=`function columnName(index) {
+  let name = &quot;&quot;;
+  for (let n = index + 1; n &gt; 0; n = Math.floor((n - 1) / 26)) {
+    name = String.fromCharCode(65 + (n - 1) % 26) + name;
+  }
+  return name;
+}
+function cellsTogether(range) {
+  const values = range.values;
+  const formulas = range.formulas;
+  return values.flatMap((row, r) =&gt; row.map((value, c) =&gt; ({
+    address: columnName(range.columnIndex + c) + (range.rowIndex + r + 1),
+    value,
+    formula: formulas[r][c]
+  })));
+}`;
+const bodies={values:&#x27;range.values&#x27;,formulas:&#x27;range.formulas&#x27;,both:&#x27;({values: range.values, formulas: range.formulas})&#x27;,paired:&#x27;cellsTogether(range)&#x27;,details:&#x27;({formulas: range.formulas, displayFormulas: range.displayFormulas, formulaInfos: range.formulaInfos})&#x27;};
+const AsyncFunction=Object.getPrototypeOf(async function(){}).constructor;
+const cases=[];
+async function capture(def){
+ const output=await new AsyncFunction(&#x27;wb&#x27;,def.code)(wb);
+ if(output===undefined)throw new Error(&#x27;Missing output: &#x27;+def.id);
+ const text=JSON.stringify(output);
+ cases.push({...def,output:JSON.parse(text),outputSha256:hash(text)});
+ console.log(def.id+&#x27; · &#x27;+text.length+&#x27; characters&#x27;);
+}
+for(const method of methods.slice(0,4))for(const scope of scopes){
+ const expr=bodies[method.id];
+ const code=(method.id===&#x27;paired&#x27;?helpers+&#x27;\n\n&#x27;:&#x27;&#x27;)+scope.code+&#x27;\n&#x27;+(scope.multi?
+  &#x27;return selections.map(({sheet, range}) =&gt; ({\n  sheet, range: range.address, result: &#x27;+expr+&#x27;\n}));&#x27;:
+  &#x27;return &#x27;+expr+&#x27;;&#x27;);
+ const selections=scope.multi?await new AsyncFunction(&#x27;wb&#x27;,scope.code+&#x27;\nreturn selections.map(({sheet,range}) =&gt; ({sheet,address:range.address,row:range.rowIndex,col:range.columnIndex,rows:range.rowCount,cols:range.columnCount}));&#x27;)(wb):await new AsyncFunction(&#x27;wb&#x27;,scope.code+&#x27;\nreturn [{sheet:sheet.name,address:range.address,row:range.rowIndex,col:range.columnIndex,rows:range.rowCount,cols:range.columnCount}];&#x27;)(wb);
+ await capture({id:method.id+&#x27;-&#x27;+scope.id,method:method.id,scope:scope.id,where:scope.where,note:scope.note,multi:!!scope.multi,selections,code});
+}
+const block=scopes.find(s=&gt;s.id===&#x27;block&#x27;);
+await capture({id:&#x27;details-block&#x27;,method:&#x27;details&#x27;,scope:&#x27;block&#x27;,where:block.where,note:block.note,selections:cases.find(c=&gt;c.id===&#x27;both-block&#x27;).selections,code:block.code+&#x27;\nreturn &#x27;+bodies.details+&#x27;;&#x27;});
+for(const [scope,input] of [[&#x27;block&#x27;,{sheetId:&#x27;Summary&#x27;,range:&#x27;K13:M20&#x27;}],[&#x27;sheet&#x27;,{sheetId:&#x27;Fee engine&#x27;}],[&#x27;workbook&#x27;,{}]]){
+ const args={kind:&#x27;table,formula&#x27;,...input,maxChars:1000000};
+ await capture({id:&#x27;inspect-&#x27;+scope,method:&#x27;inspect&#x27;,scope,where:scopes.find(s=&gt;s.id===scope).where,input:args,note:&#x27;The size allowance is deliberately large for this comparison. Check the saved response for omissions and previews.&#x27;,code:&#x27;const result = await wb.inspect(&#x27;+JSON.stringify(args,null,2)+&#x27;);\nreturn {\n  ndjson: result.ndjson, recordCount: result.recordCount,\n  truncated: result.truncated, metadata: result.metadata\n};&#x27;});
+}
+for(const [scope,input] of [[&#x27;workbook&#x27;,{searchTerm:&#x27;profit&#x27;,options:{maxResults:100}}],[&#x27;sheet&#x27;,{sheetId:&#x27;Fee engine&#x27;,searchTerm:&#x27;Assumptions!&#x27;,options:{matchFormulas:true,maxResults:100}}]]){
+ await capture({id:&#x27;search-&#x27;+scope,method:&#x27;search&#x27;,scope,where:scope===&#x27;workbook&#x27;?&#x27;All six tabs · search “profit”&#x27;:&#x27;Fee engine · search formulas for “Assumptions!”&#x27;,input,note:&#x27;Only matching cells are returned. The response reports the total number of matches and whether the selected limit cut them off.&#x27;,code:&#x27;return wb.findCells(&#x27;+JSON.stringify(input,null,2)+&#x27;);&#x27;});
+}
+if(hash(await fs.readFile(source))!==sourceHash)throw new Error(&#x27;Source file changed&#x27;);
+const receipt={capturedAt:new Date().toISOString(),packageVersion:JSON.parse(await fs.readFile(path.join(home,&#x27;node_modules/@oai/artifact-tool/package.json&#x27;),&#x27;utf8&#x27;)).version,source:&#x27;files/inspection/source.xlsx&#x27;,sourceSha256:sourceHash,readOnly:true,recalculated:false,cases:cases.length};
+await fs.mkdir(path.join(home,&#x27;files/reads&#x27;),{recursive:true});
+await fs.writeFile(path.join(home,&#x27;files/reads/captures.json&#x27;),JSON.stringify({receipt,scopes:scopes.map(({code,...s})=&gt;s),methods,cases},null,2)+&#x27;\n&#x27;);
+console.log(JSON.stringify(receipt));
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

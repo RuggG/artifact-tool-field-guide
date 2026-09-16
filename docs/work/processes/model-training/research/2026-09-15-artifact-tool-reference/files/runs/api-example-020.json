@@ -1,0 +1,10 @@
+{
+  "index": 20,
+  "name": "chart dataLabels",
+  "summary": "Positions + minimal style",
+  "originalCode": "chart.dataLabels = { showValue: false, position: undefined };\nchart.dataLabels = { showValue: true, position: 'center', textStyle: { fontSize: 9 } };\nchart.dataLabels = { showValue: true, position: 'inEnd' };\nchart.dataLabels = { showValue: true, position: 'inBase' };\nchart.dataLabels = { showValue: true, position: 'outEnd', textStyle: { bold: true, fontSize: 10 } };",
+  "adaptations": [],
+  "execution": "completed",
+  "exportError": "TypeError: this[#R].toProto is not a function",
+  "logs": []
+}

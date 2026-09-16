@@ -1,0 +1,37 @@
+{
+  "name": "fx.VALUE",
+  "category": "text",
+  "examples": [
+    {
+      "formula": "=VALUE(\"text\")",
+      "value": 0,
+      "projection": [
+        [
+          0,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 12
+    }
+  ]
+}

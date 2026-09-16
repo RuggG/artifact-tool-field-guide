@@ -1,0 +1,6 @@
+{"kind":"workbook","id":"wb/my0d1b","sheets":1,"tables":1}
+{"kind":"definedName","name":"AddTax","scope":"workbook"}
+{"kind":"sheet","id":"ws/f71kcn","name":"Data","index":0,"range":"A1:A1","address":"A1:A1","tables":1,"formulas":1}
+{"kind":"table","sheet":"Data","address":"A1:A1","rows":1,"cols":1,"values":[["#NAME?"]]}
+{"kind":"formula","sheet":"Data","address":"A1","formula":"=AddTax(100)"}
+{"kind":"computedStyle","sheet":"Data","for":"A1","style":{"fill":{"type":3,"gradientStops":[],"pattern":{"patternType":1},"pictureEffects":[]},"font":{"fontSize":11,"typeface":"Carlito"},"border":{},"wrapText":false,"horizontalAlignment":"general","styleId":0}}

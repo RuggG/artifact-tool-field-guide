@@ -1,0 +1,10 @@
+{
+  "index": 77,
+  "name": "range.merge",
+  "summary": "Merge a header row",
+  "originalCode": "sheet.getRange('B1:H1').merge();",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

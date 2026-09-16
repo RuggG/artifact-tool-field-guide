@@ -1,0 +1,37 @@
+{
+  "name": "fx.EFFECT",
+  "category": "financial",
+  "examples": [
+    {
+      "formula": "=EFFECT(A1, A1)",
+      "value": 1,
+      "projection": [
+        [
+          1,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 11
+    }
+  ]
+}

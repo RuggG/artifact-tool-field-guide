@@ -1,0 +1,37 @@
+{
+  "name": "fx.COUNT",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=COUNT(A1:A5, C1:C5, B1:B5, C1:C5)",
+      "value": 20,
+      "projection": [
+        [
+          20,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 18
+    }
+  ]
+}

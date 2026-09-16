@@ -1,0 +1,173 @@
+{
+  "id": "zero-input",
+  "operation": "lab.getRange(\"C4\").values = [[0]];",
+  "checkInput": {
+    "before": "return labRead();",
+    "after": "return labRead();"
+  },
+  "startedAt": "2026-09-15T16:53:23.768Z",
+  "before": {
+    "margin": {
+      "address": "C4",
+      "value": null,
+      "formula": ""
+    },
+    "growth": {
+      "address": "C5",
+      "value": 0.02,
+      "formula": ""
+    },
+    "quarters": {
+      "address": "B9:F12",
+      "values": [
+        [
+          "Quarter 1",
+          290.5116868239257,
+          0,
+          0.25,
+          "#N/A"
+        ],
+        [
+          "Quarter 2",
+          296.3219205604042,
+          0,
+          0.25,
+          "#N/A"
+        ],
+        [
+          "Quarter 3",
+          302.2483589716123,
+          0,
+          0.25,
+          "#N/A"
+        ],
+        [
+          "Quarter 4",
+          308.29332615104454,
+          0,
+          0.25,
+          "#N/A"
+        ]
+      ],
+      "formulas": [
+        [
+          "",
+          "='Fee engine'!W18",
+          "=$C$4",
+          "",
+          "=IF(ISBLANK($C$4),NA(),C9*1000*D9/10000*E9)"
+        ],
+        [
+          "",
+          "=C9*(1+$C$5)",
+          "=$C$4",
+          "",
+          "=IF(ISBLANK($C$4),NA(),C10*1000*D10/10000*E10)"
+        ],
+        [
+          "",
+          "=C10*(1+$C$5)",
+          "=$C$4",
+          "",
+          "=IF(ISBLANK($C$4),NA(),C11*1000*D11/10000*E11)"
+        ],
+        [
+          "",
+          "=C11*(1+$C$5)",
+          "=$C$4",
+          "",
+          "=IF(ISBLANK($C$4),NA(),C12*1000*D12/10000*E12)"
+        ]
+      ]
+    },
+    "annual": {
+      "address": "C15",
+      "value": "#N/A",
+      "formula": "=SUM(F9:F12)"
+    }
+  },
+  "libraryReturn": {
+    "javascriptType": "undefined"
+  },
+  "elapsedMs": 0,
+  "after": {
+    "margin": {
+      "address": "C4",
+      "value": 0,
+      "formula": ""
+    },
+    "growth": {
+      "address": "C5",
+      "value": 0.02,
+      "formula": ""
+    },
+    "quarters": {
+      "address": "B9:F12",
+      "values": [
+        [
+          "Quarter 1",
+          290.5116868239257,
+          0,
+          0.25,
+          0
+        ],
+        [
+          "Quarter 2",
+          296.3219205604042,
+          0,
+          0.25,
+          0
+        ],
+        [
+          "Quarter 3",
+          302.2483589716123,
+          0,
+          0.25,
+          0
+        ],
+        [
+          "Quarter 4",
+          308.29332615104454,
+          0,
+          0.25,
+          0
+        ]
+      ],
+      "formulas": [
+        [
+          "",
+          "='Fee engine'!W18",
+          "=$C$4",
+          "",
+          "=IF(ISBLANK($C$4),NA(),C9*1000*D9/10000*E9)"
+        ],
+        [
+          "",
+          "=C9*(1+$C$5)",
+          "=$C$4",
+          "",
+          "=IF(ISBLANK($C$4),NA(),C10*1000*D10/10000*E10)"
+        ],
+        [
+          "",
+          "=C10*(1+$C$5)",
+          "=$C$4",
+          "",
+          "=IF(ISBLANK($C$4),NA(),C11*1000*D11/10000*E11)"
+        ],
+        [
+          "",
+          "=C11*(1+$C$5)",
+          "=$C$4",
+          "",
+          "=IF(ISBLANK($C$4),NA(),C12*1000*D12/10000*E12)"
+        ]
+      ]
+    },
+    "annual": {
+      "address": "C15",
+      "value": 0,
+      "formula": "=SUM(F9:F12)"
+    }
+  }
+}

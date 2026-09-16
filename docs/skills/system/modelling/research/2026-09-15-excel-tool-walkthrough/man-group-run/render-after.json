@@ -1,0 +1,10 @@
+{
+  "id": "render-after",
+  "input": "const image = await wb.render({sheetName: \"Summary\", range: \"C7:M28\", scale: 1.5, format: \"png\"});\nconst bytes = new Uint8Array(await image.arrayBuffer());\nawait fs.writeFile(path.join(dir, \"summary-after.png\"), bytes);\nreturn {saved: \"summary-after.png\", mimeType: \"image/png\", bytes: bytes.length};",
+  "elapsedMs": 77,
+  "result": {
+    "saved": "summary-after.png",
+    "mimeType": "image/png",
+    "bytes": 254344
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "name": "fx.SLN",
+  "category": "financial",
+  "examples": [
+    {
+      "formula": "=SLN(A1, A1, A1)",
+      "value": 0,
+      "projection": [
+        [
+          0,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 8
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "name": "fx.XNPV",
+  "category": "financial",
+  "examples": [
+    {
+      "formula": "=XNPV(A1, A1:A5, DATE(2024, 1, 1))",
+      "value": "#NUM!",
+      "projection": [
+        [
+          "#NUM!",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 10
+    }
+  ]
+}

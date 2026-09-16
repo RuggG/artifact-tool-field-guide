@@ -1,0 +1,37 @@
+{
+  "name": "fx.SKEW",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=SKEW(10, C1:C5, 20, C1:C5)",
+      "value": 0.36265452904062717,
+      "projection": [
+        [
+          0.36265452904062717,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 14
+    }
+  ]
+}

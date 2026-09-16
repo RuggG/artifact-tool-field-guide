@@ -1,0 +1,45 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Logical Formulas · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="logical.md">Raw file</a> · <a data-public-raw download href="logical.md">Download</a></p><article><h1 id="logical-formulas">Logical Formulas</h1>
+<p>Logical formulas branch, combine conditions, handle error values, and run lambda transforms.</p>
+<h2 id="formula-pattern">Formula Pattern</h2>
+<pre><code class="language-ts">const formulaBlock = sheet.getRange(outputRange).write({
+  formulas: formulaMatrix,
+});
+workbook.recalculate();
+const results = formulaBlock.values;
+</code></pre>
+<h2 id="boolean-and-branching-shapes">Boolean And Branching Shapes</h2>
+<pre><code class="language-ts">const formulas = [
+  `=TRUE()`,
+  `=FALSE()`,
+  `=NA()`,
+  `=AND(${conditionRef1},${conditionRef2})`,
+  `=OR(${conditionRef1},${conditionRef2})`,
+  `=NOT(${conditionRef})`,
+  `=XOR(${conditionRef1},${conditionRef2})`,
+  `=IF(${conditionRef},${trueValueRef},${falseValueRef})`,
+  `=IFS(${conditionRef1},${valueRef1},${conditionRef2},${valueRef2})`,
+  `=SWITCH(${valueRef},${caseRef1},${resultRef1},${defaultRef})`,
+];
+</code></pre>
+<h2 id="error-handling-shapes">Error Handling Shapes</h2>
+<pre><code class="language-ts">const formulas = [
+  `=IFERROR(${valueRef},${replacementRef})`,
+  `=IFNA(${valueRef},${replacementRef})`,
+];
+</code></pre>
+<h2 id="lambda-shapes">Lambda Shapes</h2>
+<pre><code class="language-ts">const formulas = [
+  `=BYROW(${rangeRef},LAMBDA(row,${rowExpression}))`,
+  `=BYCOL(${rangeRef},LAMBDA(col,${columnExpression}))`,
+];
+</code></pre>
+<h2 id="named-lambda">Named Lambda</h2>
+<pre><code class="language-ts">workbook.names.addFunction(functionName, {
+  lambda,
+  description,
+  parameters,
+  returns,
+});
+</code></pre>
+<h2 id="coverage">Coverage</h2>
+<p>Supported families include TRUE, FALSE, NA, IF, IFS, SWITCH, IFERROR, IFNA, AND, OR, NOT, XOR, LET, LAMBDA, BYROW, and BYCOL.</p></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

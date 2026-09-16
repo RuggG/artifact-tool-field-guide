@@ -1,0 +1,37 @@
+{
+  "name": "fx.POWER",
+  "category": "math-trig",
+  "examples": [
+    {
+      "formula": "=POWER(10, A1)",
+      "value": 10,
+      "projection": [
+        [
+          10,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 8
+    }
+  ]
+}

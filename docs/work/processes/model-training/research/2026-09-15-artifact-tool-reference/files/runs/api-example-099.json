@@ -1,0 +1,10 @@
+{
+  "index": 99,
+  "name": "range.rowIndex",
+  "summary": "Read the range origin row",
+  "originalCode": "const range = sheet.getRange('B2:D4');\nrange.rowIndex; // 1",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

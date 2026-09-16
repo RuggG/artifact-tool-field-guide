@@ -1,0 +1,22 @@
+{
+  "id": "checkpoint-save",
+  "operation": "wb.recalculate();\nconst file = await SpreadsheetFile.exportXlsx(wb);\nreturn await file.save(out);",
+  "checkInput": {
+    "before": "",
+    "after": "return {file:path.basename(out),sha256:await sha(out),savedMargin:cell((await SpreadsheetFile.importXlsx(await FileBlob.load(out))).worksheets.getItem(\"Fee lab\"),\"C4\")};"
+  },
+  "startedAt": "2026-09-15T16:55:19.416Z",
+  "libraryReturn": {
+    "javascriptType": "undefined"
+  },
+  "elapsedMs": 390,
+  "after": {
+    "file": "man-group-operations.xlsx",
+    "sha256": "f99afe138a4ced57579120bb515ccdb29c9ddfc016d1302126833a2516e646ae",
+    "savedMargin": {
+      "address": "C4",
+      "value": 56,
+      "formula": ""
+    }
+  }
+}

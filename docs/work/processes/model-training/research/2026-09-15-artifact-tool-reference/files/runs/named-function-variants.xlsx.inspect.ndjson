@@ -1,0 +1,12 @@
+{"kind":"workbook","id":"wb/ngxikd","sheets":1,"tables":1}
+{"kind":"definedName","name":"Plain","scope":"workbook","formula":"=LAMBDA(amount,amount*1.1)"}
+{"kind":"definedName","name":"Prefixed","scope":"workbook","formula":"=_xlfn.LAMBDA(_xlpm.amount,_xlpm.amount*1.1)"}
+{"kind":"definedName","name":"Equals","scope":"workbook","formula":"=_xlfn.LAMBDA(_xlpm.amount,_xlpm.amount*1.1)"}
+{"kind":"sheet","id":"ws/x5oulk","name":"Data","index":0,"range":"A1:A3","address":"A1:A3","tables":1,"formulas":3}
+{"kind":"table","sheet":"Data","address":"A1:A3","rows":3,"cols":1,"values":[[110.00000000000001],[110.00000000000001],[110.00000000000001]]}
+{"kind":"formula","sheet":"Data","address":"A1","formula":"=Plain(100)"}
+{"kind":"formula","sheet":"Data","address":"A2","formula":"=Prefixed(100)"}
+{"kind":"formula","sheet":"Data","address":"A3","formula":"=Equals(100)"}
+{"kind":"computedStyle","sheet":"Data","for":"A1","style":{"fill":{"type":3,"gradientStops":[],"pattern":{"patternType":1},"pictureEffects":[]},"font":{"fontSize":11,"typeface":"Carlito"},"border":{},"wrapText":false,"horizontalAlignment":"general","styleId":0}}
+{"kind":"computedStyle","sheet":"Data","for":"A2","style":{"fill":{"type":3,"gradientStops":[],"pattern":{"patternType":1},"pictureEffects":[]},"font":{"fontSize":11,"typeface":"Carlito"},"border":{},"wrapText":false,"horizontalAlignment":"general","styleId":0}}
+{"kind":"computedStyle","sheet":"Data","for":"A3","style":{"fill":{"type":3,"gradientStops":[],"pattern":{"patternType":1},"pictureEffects":[]},"font":{"fontSize":11,"typeface":"Carlito"},"border":{},"wrapText":false,"horizontalAlignment":"general","styleId":0}}

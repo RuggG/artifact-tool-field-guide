@@ -1,0 +1,2685 @@
+{
+  "cards": [
+    {
+      "id": "checkpoint-save",
+      "operation": "wb.recalculate();\nconst file = await SpreadsheetFile.exportXlsx(wb);\nreturn await file.save(out);",
+      "checkInput": {
+        "before": "",
+        "after": "return {file:path.basename(out),sha256:await sha(out),savedMargin:cell((await SpreadsheetFile.importXlsx(await FileBlob.load(out))).worksheets.getItem(\"Fee lab\"),\"C4\")};"
+      },
+      "startedAt": "2026-09-15T16:55:19.416Z",
+      "libraryReturn": {
+        "javascriptType": "undefined"
+      },
+      "elapsedMs": 390,
+      "after": {
+        "file": "man-group-operations.xlsx",
+        "sha256": "f99afe138a4ced57579120bb515ccdb29c9ddfc016d1302126833a2516e646ae",
+        "savedMargin": {
+          "address": "C4",
+          "value": 56,
+          "formula": ""
+        }
+      },
+      "group": "files",
+      "label": "Save a checkpoint",
+      "intent": "Write the current workbook to disk.",
+      "outcome": "The saved copy has a 56bp fee margin. save() returns undefined; the hash and re-imported value are checks added by the script.",
+      "lesson": "Export creates a file object; save writes its bytes. No application window is involved."
+    },
+    {
+      "id": "edit-without-saving",
+      "operation": "lab.getRange(\"C4\").values = [[51]];",
+      "checkInput": {
+        "before": "return {diskSha256:await sha(out),memory:labRead()};",
+        "after": "return {diskSha256:await sha(out),memory:labRead(),onDisk:cell((await SpreadsheetFile.importXlsx(await FileBlob.load(out))).worksheets.getItem(\"Fee lab\"),\"C4\")};"
+      },
+      "startedAt": "2026-09-15T16:55:20.303Z",
+      "before": {
+        "diskSha256": "f99afe138a4ced57579120bb515ccdb29c9ddfc016d1302126833a2516e646ae",
+        "memory": {
+          "margin": {
+            "address": "C4",
+            "value": 56,
+            "formula": ""
+          },
+          "growth": {
+            "address": "C5",
+            "value": 0.02,
+            "formula": ""
+          },
+          "quarters": {
+            "address": "B9:F12",
+            "values": [
+              [
+                "Quarter 1",
+                290.5116868239257,
+                56,
+                0.25,
+                406.716361553496
+              ],
+              [
+                "Quarter 2",
+                296.3219205604042,
+                56,
+                0.25,
+                414.8506887845659
+              ],
+              [
+                "Quarter 3",
+                302.2483589716123,
+                56,
+                0.25,
+                423.1477025602572
+              ],
+              [
+                "Quarter 4",
+                308.29332615104454,
+                56,
+                0.25,
+                431.61065661146233
+              ]
+            ],
+            "formulas": [
+              [
+                "",
+                "='Fee engine'!W18",
+                "=$C$4",
+                "",
+                "=C9*1000*D9/10000*E9"
+              ],
+              [
+                "",
+                "=C9*(1+$C$5)",
+                "=$C$4",
+                "",
+                "=C10*1000*D10/10000*E10"
+              ],
+              [
+                "",
+                "=C10*(1+$C$5)",
+                "=$C$4",
+                "",
+                "=C11*1000*D11/10000*E11"
+              ],
+              [
+                "",
+                "=C11*(1+$C$5)",
+                "=$C$4",
+                "",
+                "=C12*1000*D12/10000*E12"
+              ]
+            ]
+          },
+          "annual": {
+            "address": "C15",
+            "value": 1676.3254095097814,
+            "formula": "=SUM(F9:F12)"
+          }
+        }
+      },
+      "libraryReturn": {
+        "javascriptType": "undefined"
+      },
+      "elapsedMs": 0,
+      "after": {
+        "diskSha256": "f99afe138a4ced57579120bb515ccdb29c9ddfc016d1302126833a2516e646ae",
+        "memory": {
+          "margin": {
+            "address": "C4",
+            "value": 51,
+            "formula": ""
+          },
+          "growth": {
+            "address": "C5",
+            "value": 0.02,
+            "formula": ""
+          },
+          "quarters": {
+            "address": "B9:F12",
+            "values": [
+              [
+                "Quarter 1",
+                290.5116868239257,
+                51,
+                0.25,
+                370.40240070050527
+              ],
+              [
+                "Quarter 2",
+                296.3219205604042,
+                51,
+                0.25,
+                377.81044871451536
+              ],
+              [
+                "Quarter 3",
+                302.2483589716123,
+                51,
+                0.25,
+                385.3666576888057
+              ],
+              [
+                "Quarter 4",
+                308.29332615104454,
+                51,
+                0.25,
+                393.0739908425818
+              ]
+            ],
+            "formulas": [
+              [
+                "",
+                "='Fee engine'!W18",
+                "=$C$4",
+                "",
+                "=C9*1000*D9/10000*E9"
+              ],
+              [
+                "",
+                "=C9*(1+$C$5)",
+                "=$C$4",
+                "",
+                "=C10*1000*D10/10000*E10"
+              ],
+              [
+                "",
+                "=C10*(1+$C$5)",
+                "=$C$4",
+                "",
+                "=C11*1000*D11/10000*E11"
+              ],
+              [
+                "",
+                "=C11*(1+$C$5)",
+                "=$C$4",
+                "",
+                "=C12*1000*D12/10000*E12"
+              ]
+            ]
+          },
+          "annual": {
+            "address": "C15",
+            "value": 1526.6534979464082,
+            "formula": "=SUM(F9:F12)"
+          }
+        },
+        "onDisk": {
+          "address": "C4",
+          "value": 56,
+          "formula": ""
+        }
+      },
+      "group": "files",
+      "label": "Edit without saving",
+      "intent": "Change the working fee margin from 56bp to 51bp.",
+      "outcome": "Memory changes to 51bp and total fees fall to $1,526.65m. The on-disk copy still says 56bp and its SHA-256 is unchanged.",
+      "lesson": "Changing the workbook object does not save the file. The agent decides when to export."
+    },
+    {
+      "id": "final-save",
+      "operation": "wb.recalculate();\nconst file = await SpreadsheetFile.exportXlsx(wb);\nreturn await file.save(out);",
+      "checkInput": {
+        "before": "return {diskSha256:await sha(out),memory:labRead()};",
+        "after": "const reopened=await SpreadsheetFile.importXlsx(await FileBlob.load(out));const sheet=reopened.worksheets.getItem(\"Fee lab\");return {file:path.basename(out),bytes:(await fs.stat(out)).size,sha256:await sha(out),reopened:grid(sheet,\"B9:F12\"),reopenedMargin:cell(sheet,\"C4\"),reopenedTableCount:sheet.tables.items.length,sourceUnchanged:sourceHash===await sha(source),checkErrorScan:await inspect(reopened,{kind:\"match\",sheetId:\"Fee lab\",range:\"B4:F24\",searchTerm:\"#REF!|#DIV/0!|#VALUE!|#N/A|#NAME\\\\?\",options:{useRegex:true,maxResults:20},maxChars:3000})};"
+      },
+      "startedAt": "2026-09-15T16:55:21.036Z",
+      "before": {
+        "diskSha256": "f99afe138a4ced57579120bb515ccdb29c9ddfc016d1302126833a2516e646ae",
+        "memory": {
+          "margin": {
+            "address": "C4",
+            "value": 60,
+            "formula": ""
+          },
+          "growth": {
+            "address": "C5",
+            "value": 0.02,
+            "formula": ""
+          },
+          "quarters": {
+            "address": "B9:F12",
+            "values": [
+              [
+                "Quarter 1",
+                290.5116868239257,
+                60,
+                0.25,
+                435.76753023588856
+              ],
+              [
+                "Quarter 2",
+                296.3219205604042,
+                60,
+                0.25,
+                444.48288084060624
+              ],
+              [
+                "Quarter 3",
+                302.2483589716123,
+                60,
+                0.25,
+                453.37253845741844
+              ],
+              [
+                "Quarter 4",
+                308.29332615104454,
+                60,
+                0.25,
+                462.4399892265668
+              ]
+            ],
+            "formulas": [
+              [
+                "",
+                "='Fee engine'!W18",
+                "=$C$4",
+                "",
+                "=IF(ISBLANK($C$4),NA(),C9*1000*D9/10000*E9)"
+              ],
+              [
+                "",
+                "=C9*(1+$C$5)",
+                "=$C$4",
+                "",
+                "=IF(ISBLANK($C$4),NA(),C10*1000*D10/10000*E10)"
+              ],
+              [
+                "",
+                "=C10*(1+$C$5)",
+                "=$C$4",
+                "",
+                "=IF(ISBLANK($C$4),NA(),C11*1000*D11/10000*E11)"
+              ],
+              [
+                "",
+                "=C11*(1+$C$5)",
+                "=$C$4",
+                "",
+                "=IF(ISBLANK($C$4),NA(),C12*1000*D12/10000*E12)"
+              ]
+            ]
+          },
+          "annual": {
+            "address": "C15",
+            "value": 1796.06293876048,
+            "formula": "=SUM(F9:F12)"
+          }
+        }
+      },
+      "libraryReturn": {
+        "javascriptType": "undefined"
+      },
+      "elapsedMs": 264,
+      "after": {
+        "file": "man-group-operations.xlsx",
+        "bytes": 111215,
+        "sha256": "df15d8133fba3821c4dc7cfe942ea03a61e0dfeb395f2141668b4fdc22a76905",
+        "reopened": {
+          "address": "B9:F12",
+          "values": [
+            [
+              "Quarter 1",
+              290.5116868239257,
+              60,
+              0.25,
+              435.76753023588856
+            ],
+            [
+              "Quarter 2",
+              296.3219205604042,
+              60,
+              0.25,
+              444.48288084060624
+            ],
+            [
+              "Quarter 3",
+              302.2483589716123,
+              60,
+              0.25,
+              453.37253845741844
+            ],
+            [
+              "Quarter 4",
+              308.29332615104454,
+              60,
+              0.25,
+              462.4399892265668
+            ]
+          ],
+          "formulas": [
+            [
+              "",
+              "='Fee engine'!W18",
+              "=$C$4",
+              "",
+              "=IF(ISBLANK($C$4),NA(),C9*1000*D9/10000*E9)"
+            ],
+            [
+              "",
+              "=C9*(1+$C$5)",
+              "=$C$4",
+              "",
+              "=IF(ISBLANK($C$4),NA(),C10*1000*D10/10000*E10)"
+            ],
+            [
+              "",
+              "=C10*(1+$C$5)",
+              "=$C$4",
+              "",
+              "=IF(ISBLANK($C$4),NA(),C11*1000*D11/10000*E11)"
+            ],
+            [
+              "",
+              "=C11*(1+$C$5)",
+              "=$C$4",
+              "",
+              "=IF(ISBLANK($C$4),NA(),C12*1000*D12/10000*E12)"
+            ]
+          ]
+        },
+        "reopenedMargin": {
+          "address": "C4",
+          "value": 60,
+          "formula": ""
+        },
+        "reopenedTableCount": 1,
+        "sourceUnchanged": true,
+        "checkErrorScan": {
+          "ndjson": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}",
+          "recordCount": 1,
+          "truncated": false,
+          "metadata": {
+            "revision": "wkjet5",
+            "target": {
+              "id": "wb/b2yvzh",
+              "beforeLines": 0,
+              "afterLines": 0
+            },
+            "kind": {
+              "requested": "match",
+              "tokens": [
+                "match"
+              ]
+            },
+            "include": {
+              "requested": {
+                "javascriptType": "undefined"
+              },
+              "tokens": []
+            },
+            "exclude": {
+              "requested": {
+                "javascriptType": "undefined"
+              },
+              "tokens": []
+            },
+            "search": {
+              "javascriptType": "undefined"
+            },
+            "notices": []
+          }
+        }
+      },
+      "group": "files",
+      "label": "Export and reopen",
+      "intent": "Save the completed laboratory and load the saved file again.",
+      "outcome": "The saved file now has the final 60bp input, working formula text and the added formal table. An independent file reader also checks the output.",
+      "lesson": "Export success is one observation. Reading the file back and comparing its contents are extra verification."
+    },
+    {
+      "id": "reopen-and-edit",
+      "operation": "reopenBook = await SpreadsheetFile.importXlsx(await FileBlob.load(out));\nreopenSheet = reopenBook.worksheets.getItem(\"Fee lab\");\nreopenSheet.getRange(\"C4\").values = [[55]];",
+      "checkInput": {
+        "before": "",
+        "after": "return {quarterOne:cell(reopenSheet,\"F9\"),total:cell(reopenSheet,\"C15\"),independentExpectedQuarterOne:reopenSheet.getRange(\"C9\").values[0][0]*1000*55/10000*0.25,savedFileStillHasMargin:cell((await SpreadsheetFile.importXlsx(await FileBlob.load(out))).worksheets.getItem(\"Fee lab\"),\"C4\")};"
+      },
+      "startedAt": "2026-09-15T16:55:21.678Z",
+      "libraryReturn": {
+        "javascriptType": "undefined"
+      },
+      "elapsedMs": 369,
+      "after": {
+        "quarterOne": {
+          "address": "F9",
+          "value": 399.45356938289785,
+          "formula": "=IF(ISBLANK($C$4),NA(),C9*1000*D9/10000*E9)"
+        },
+        "total": {
+          "address": "C15",
+          "value": 1646.3910271971065,
+          "formula": "=SUM(F9:F12)"
+        },
+        "independentExpectedQuarterOne": 399.45356938289785,
+        "savedFileStillHasMargin": {
+          "address": "C4",
+          "value": 60,
+          "formula": ""
+        }
+      },
+      "group": "files",
+      "label": "Edit the saved model",
+      "intent": "Import the saved output and change the fee margin to 55bp in that new working copy.",
+      "outcome": "Quarter-one fees recalculate to $399.45m, matching a separate arithmetic calculation. The disk copy stays at 60bp because this last experiment is not saved.",
+      "lesson": "Reopening a file starts another in-memory workbook. It does not connect the script to a live Excel window."
+    },
+    {
+      "id": "new-workbook",
+      "operation": "scratch = Workbook.create();\nsmall = scratch.worksheets.add(\"Fee calculation\");\nreturn small;",
+      "checkInput": {
+        "before": "",
+        "after": "return await names(scratch);"
+      },
+      "startedAt": "2026-09-15T16:55:17.750Z",
+      "libraryReturn": {
+        "type": "Worksheet object",
+        "representation": "Object contents are read separately in the agent checks."
+      },
+      "elapsedMs": 3,
+      "after": {
+        "ndjson": "{\"kind\":\"sheet\",\"id\":\"ws/xhi5xl\",\"name\":\"Fee calculation\",\"index\":0}",
+        "recordCount": 1,
+        "truncated": false,
+        "metadata": {
+          "revision": "4dwfzz",
+          "target": {
+            "id": "wb/15ud3d",
+            "beforeLines": 0,
+            "afterLines": 0
+          },
+          "kind": {
+            "requested": "sheet",
+            "tokens": [
+              "sheet"
+            ]
+          },
+          "include": {
+            "requested": "id,name",
+            "tokens": [
+              "id",
+              "name"
+            ]
+          },
+          "exclude": {
+            "requested": {
+              "javascriptType": "undefined"
+            },
+            "tokens": []
+          },
+          "search": {
+            "javascriptType": "undefined"
+          },
+          "notices": []
+        }
+      },
+      "group": "create",
+      "label": "Create a workbook",
+      "intent": "Create an empty workbook and add its first worksheet.",
+      "outcome": "Workbook.create() plus worksheets.add() gives a workbook with one tab, Fee calculation. No XLSX has been written yet.",
+      "lesson": "The tab inventory is a separate read. Creating a workbook is not itself file export."
+    },
+    {
+      "id": "new-formula",
+      "operation": "small.getRange(\"B2:C5\").values = [[\"Average AUM, USD bn\",100],[\"Annual fee margin, bp\",50],[\"Quarter fraction\",0.25],[\"Fees, USD m\",null]];\nsmall.getRange(\"C5\").formulas = [[\"=C2*1000*C3/10000*C4\"]];",
+      "checkInput": {
+        "before": "",
+        "after": "return {cells:grid(small,\"B2:C5\"),independentExpected:100*1000*50/10000*0.25};"
+      },
+      "startedAt": "2026-09-15T16:55:17.756Z",
+      "libraryReturn": {
+        "javascriptType": "undefined"
+      },
+      "elapsedMs": 2,
+      "after": {
+        "cells": {
+          "address": "B2:C5",
+          "values": [
+            [
+              "Average AUM, USD bn",
+              100
+            ],
+            [
+              "Annual fee margin, bp",
+              50
+            ],
+            [
+              "Quarter fraction",
+              0.25
+            ],
+            [
+              "Fees, USD m",
+              125
+            ]
+          ],
+          "formulas": [
+            [
+              "",
+              ""
+            ],
+            [
+              "",
+              ""
+            ],
+            [
+              "",
+              ""
+            ],
+            [
+              "",
+              "=C2*1000*C3/10000*C4"
+            ]
+          ]
+        },
+        "independentExpected": 125
+      },
+      "group": "create",
+      "label": "Write a calculation",
+      "intent": "Write three inputs and a formula for quarterly fees.",
+      "outcome": "100bn AUM \u00d7 50bp annually \u00d7 a quarter produces $125m. The script separately calculates the same expected answer.",
+      "lesson": "The agent supplies the formula and units. The engine executes that formula."
+    },
+    {
+      "id": "new-recalculation",
+      "operation": "small.getRange(\"C3\").values = [[60]];",
+      "checkInput": {
+        "before": "return cell(small,\"C5\");",
+        "after": "return {fees:cell(small,\"C5\"),independentExpected:100*1000*60/10000*0.25,explicitRecalculateCalled:false};"
+      },
+      "startedAt": "2026-09-15T16:55:17.759Z",
+      "before": {
+        "address": "C5",
+        "value": 125,
+        "formula": "=C2*1000*C3/10000*C4"
+      },
+      "libraryReturn": {
+        "javascriptType": "undefined"
+      },
+      "elapsedMs": 0,
+      "after": {
+        "fees": {
+          "address": "C5",
+          "value": 150,
+          "formula": "=C2*1000*C3/10000*C4"
+        },
+        "independentExpected": 150,
+        "explicitRecalculateCalled": false
+      },
+      "group": "create",
+      "label": "Change an input",
+      "intent": "Change the annual fee margin from 50bp to 60bp.",
+      "outcome": "Quarterly fees change from $125m to $150m without an explicit recalculate() call.",
+      "lesson": "Automatic calculation is engine behaviour; reading C5 and comparing it with 150 is agent-written verification."
+    },
+    {
+      "id": "import-add-sheet",
+      "operation": "wb = await SpreadsheetFile.importXlsx(await FileBlob.load(source));\nlab = wb.worksheets.add(\"Fee lab\");\nreturn lab;",
+      "checkInput": {
+        "before": "",
+        "after": "return await names(wb);"
+      },
+      "startedAt": "2026-09-15T16:55:17.760Z",
+      "libraryReturn": {
+        "type": "Worksheet object",
+        "representation": "Object contents are read separately in the agent checks."
+      },
+      "elapsedMs": 1626,
+      "after": {
+        "ndjson": "{\"kind\":\"sheet\",\"id\":\"ws/j5k7g5\",\"name\":\"Summary\",\"index\":0,\"range\":\"A1:M57\",\"address\":\"A1:M57\"}\n{\"kind\":\"sheet\",\"id\":\"ws/exq3xp\",\"name\":\"Assumptions\",\"index\":1,\"range\":\"A1:W67\",\"address\":\"A1:W67\"}\n{\"kind\":\"sheet\",\"id\":\"ws/tt0pm0\",\"name\":\"Fee engine\",\"index\":2,\"range\":\"A1:W109\",\"address\":\"A1:W109\"}\n{\"kind\":\"sheet\",\"id\":\"ws/dzbig4\",\"name\":\"Disclosures\",\"index\":3,\"range\":\"A1:Q125\",\"address\":\"A1:Q125\"}\n{\"kind\":\"sheet\",\"id\":\"ws/mrgo2u\",\"name\":\"Checks\",\"index\":4,\"range\":\"A1:W59\",\"address\":\"A1:W59\"}\n{\"kind\":\"sheet\",\"id\":\"ws/507vey\",\"name\":\"Readme\",\"index\":5,\"range\":\"A1:D28\",\"address\":\"A1:D28\"}\n{\"kind\":\"sheet\",\"id\":\"ws/6fycx2\",\"name\":\"Fee lab\",\"index\":6}",
+        "recordCount": 7,
+        "truncated": false,
+        "metadata": {
+          "revision": "fm3iw7",
+          "target": {
+            "id": "wb/ss4xkv",
+            "beforeLines": 0,
+            "afterLines": 0
+          },
+          "kind": {
+            "requested": "sheet",
+            "tokens": [
+              "sheet"
+            ]
+          },
+          "include": {
+            "requested": "id,name",
+            "tokens": [
+              "id",
+              "name"
+            ]
+          },
+          "exclude": {
+            "requested": {
+              "javascriptType": "undefined"
+            },
+            "tokens": []
+          },
+          "search": {
+            "javascriptType": "undefined"
+          },
+          "notices": []
+        }
+      },
+      "group": "create",
+      "label": "Add a tab to Man Group",
+      "intent": "Import the supplied file and append a Fee lab worksheet.",
+      "outcome": "The six existing tabs remain and a seventh tab is added. The Downloads original is unchanged.",
+      "lesson": "This is an authorised demonstration extension, rather than a rewrite of the original company model."
+    },
+    {
+      "id": "add-linked-build",
+      "operation": "lab.getRange(\"B2\").values = [[\"Man Group fee laboratory\"]];\nlab.getRange(\"B3\").values = [[\"Illustrative extension for tool tests; not a forecast\"]];\nlab.getRange(\"B4:C5\").values = [[\"Annual fee margin, bp\",56],[\"Quarterly AUM growth\",0.02]];\nlab.getRange(\"B8:F12\").values = [[\"Period\",\"Average AUM, USD bn\",\"Fee margin, bp\",\"Year fraction\",\"Fees, USD m\"],[\"Quarter 1\",null,null,0.25,null],[\"Quarter 2\",null,null,0.25,null],[\"Quarter 3\",null,null,0.25,null],[\"Quarter 4\",null,null,0.25,null]];\nlab.getRange(\"C9\").formulas = [[\"='Fee engine'!W18\"]];\nlab.getRange(\"C10\").formulas = [[\"=C9*(1+$C$5)\"]];\nlab.getRange(\"C10:C12\").fillDown();\nlab.getRange(\"D9\").formulas = [[\"=$C$4\"]];\nlab.getRange(\"D9:D12\").fillDown();\nlab.getRange(\"F9\").formulas = [[\"=C9*1000*D9/10000*E9\"]];\nlab.getRange(\"F9:F12\").fillDown();\nlab.getRange(\"B15\").values = [[\"Total fees, USD m\"]];\nlab.getRange(\"C15\").formulas = [[\"=SUM(F9:F12)\"]];",
+      "checkInput": {
+        "before": "",
+        "after": "return {selectedReads:labRead(),sourceAum:cell(wb.worksheets.getItem(\"Fee engine\"),\"W18\")};"
+      },
+      "startedAt": "2026-09-15T16:55:19.399Z",
+      "libraryReturn": {
+        "javascriptType": "undefined"
+      },
+      "elapsedMs": 8,
+      "after": {
+        "selectedReads": {
+          "margin": {
+            "address": "C4",
+            "value": 56,
+            "formula": ""
+          },
+          "growth": {
+            "address": "C5",
+            "value": 0.02,
+            "formula": ""
+          },
+          "quarters": {
+            "address": "B9:F12",
+            "values": [
+              [
+                "Quarter 1",
+                290.5116868239257,
+                56,
+                0.25,
+                406.716361553496
+              ],
+              [
+                "Quarter 2",
+                296.3219205604042,
+                56,
+                0.25,
+                414.8506887845659
+              ],
+              [
+                "Quarter 3",
+                302.2483589716123,
+                56,
+                0.25,
+                423.1477025602572
+              ],
+              [
+                "Quarter 4",
+                308.29332615104454,
+                56,
+                0.25,
+                431.61065661146233
+              ]
+            ],
+            "formulas": [
+              [
+                "",
+                "='Fee engine'!W18",
+                "=$C$4",
+                "",
+                "=C9*1000*D9/10000*E9"
+              ],
+              [
+                "",
+                "=C9*(1+$C$5)",
+                "=$C$4",
+                "",
+                "=C10*1000*D10/10000*E10"
+              ],
+              [
+                "",
+                "=C10*(1+$C$5)",
+                "=$C$4",
+                "",
+                "=C11*1000*D11/10000*E11"
+              ],
+              [
+                "",
+                "=C11*(1+$C$5)",
+                "=$C$4",
+                "",
+                "=C12*1000*D12/10000*E12"
+              ]
+            ]
+          },
+          "annual": {
+            "address": "C15",
+            "value": 1676.3254095097814,
+            "formula": "=SUM(F9:F12)"
+          }
+        },
+        "sourceAum": {
+          "address": "W18",
+          "value": 290.5116868239257,
+          "formula": ""
+        }
+      },
+      "group": "create",
+      "label": "Add a linked schedule",
+      "intent": "Build four illustrative quarters, starting from the original Fee engine AUM cell.",
+      "outcome": "New formulas link to Fee engine!W18, grow AUM by 2% per quarter and calculate fees. At 56bp, the four-quarter total is $1,676.33m.",
+      "lesson": "The agent chooses the assumptions, financial logic and cell references. These illustrative quarters are not investment forecasts."
+    },
+    {
+      "id": "format-cells",
+      "operation": "lab.showGridLines = false;\nlab.getRange(\"B2:P28\").format.font = {name:\"Arial\",size:10,color:\"#19364C\"};\nlab.getRange(\"B2\").format.font = {name:\"Arial\",size:14,bold:true,color:\"#19364C\"};\nlab.getRange(\"B3\").format.font.italic = true;\nlab.getRange(\"B4:B5\").format.columnWidth = 29;\nlab.getRange(\"C4:C5\").format.fill = \"#FFF2CC\";\nlab.getRange(\"C8:F28\").format.columnWidth = 19;\nlab.getRange(\"C5\").setNumberFormat(\"0.0%\");\nlab.getRange(\"C9:C12\").setNumberFormat(\"0.00\");\nlab.getRange(\"D9:D12\").setNumberFormat(\"0.0\");\nlab.getRange(\"E9:E12\").setNumberFormat(\"0.00\");\nlab.getRange(\"F9:F12\").setNumberFormat(\"#,##0.00\");\nlab.getRange(\"C15\").setNumberFormat(\"#,##0.00\");\nlab.getRange(\"B8:F8\").format = {fill:\"#19364C\",font:{name:\"Arial\",size:10,bold:true,color:\"#FFFFFF\"},rowHeight:32,wrapText:true};\nlab.getRange(\"B15:C15\").format.font.bold = true;\nlab.getRange(\"B8:F12\").format.rowHeight = 26;",
+      "checkInput": {
+        "before": "",
+        "after": "return {valuesUnaffected:labRead(),styles:await inspect(wb,{kind:\"computedStyle\",sheetId:\"Fee lab\",range:\"C4:C5\",maxChars:2500})};"
+      },
+      "startedAt": "2026-09-15T16:55:19.408Z",
+      "libraryReturn": {
+        "javascriptType": "undefined"
+      },
+      "elapsedMs": 6,
+      "after": {
+        "valuesUnaffected": {
+          "margin": {
+            "address": "C4",
+            "value": 56,
+            "formula": ""
+          },
+          "growth": {
+            "address": "C5",
+            "value": 0.02,
+            "formula": ""
+          },
+          "quarters": {
+            "address": "B9:F12",
+            "values": [
+              [
+                "Quarter 1",
+                290.5116868239257,
+                56,
+                0.25,
+                406.716361553496
+              ],
+              [
+                "Quarter 2",
+                296.3219205604042,
+                56,
+                0.25,
+                414.8506887845659
+              ],
+              [
+                "Quarter 3",
+                302.2483589716123,
+                56,
+                0.25,
+                423.1477025602572
+              ],
+              [
+                "Quarter 4",
+                308.29332615104454,
+                56,
+                0.25,
+                431.61065661146233
+              ]
+            ],
+            "formulas": [
+              [
+                "",
+                "='Fee engine'!W18",
+                "=$C$4",
+                "",
+                "=C9*1000*D9/10000*E9"
+              ],
+              [
+                "",
+                "=C9*(1+$C$5)",
+                "=$C$4",
+                "",
+                "=C10*1000*D10/10000*E10"
+              ],
+              [
+                "",
+                "=C10*(1+$C$5)",
+                "=$C$4",
+                "",
+                "=C11*1000*D11/10000*E11"
+              ],
+              [
+                "",
+                "=C11*(1+$C$5)",
+                "=$C$4",
+                "",
+                "=C12*1000*D12/10000*E12"
+              ]
+            ]
+          },
+          "annual": {
+            "address": "C15",
+            "value": 1676.3254095097814,
+            "formula": "=SUM(F9:F12)"
+          }
+        },
+        "styles": {
+          "ndjson": "{\"kind\":\"computedStyle\",\"sheet\":\"Fee lab\",\"for\":\"C4\",\"style\":{\"fill\":{\"type\":1,\"color\":{\"type\":1,\"value\":\"FFF2CC\"},\"gradientStops\":[],\"pictureEffects\":[]},\"font\":{\"fontSize\":10,\"typeface\":\"Arial\",\"fill\":{\"type\":0,\"color\":{\"type\":1,\"value\":\"19364C\"},\"gradientStops\":[],\"pictureEffects\":[]}},\"border\":{},\"wrapText\":false,\"horizontalAlignment\":\"general\",\"styleId\":67}}\n{\"kind\":\"computedStyle\",\"sheet\":\"Fee lab\",\"for\":\"C5\",\"style\":{\"fill\":{\"type\":1,\"color\":{\"type\":1,\"value\":\"FFF2CC\"},\"gradientStops\":[],\"pictureEffects\":[]},\"font\":{\"fontSize\":10,\"typeface\":\"Arial\",\"fill\":{\"type\":0,\"color\":{\"type\":1,\"value\":\"19364C\"},\"gradientStops\":[],\"pictureEffects\":[]}},\"border\":{},\"numberFormat\":\"0.0%\",\"wrapText\":false,\"horizontalAlignment\":\"general\",\"styleId\":68}}",
+          "recordCount": 2,
+          "truncated": false,
+          "metadata": {
+            "revision": "3m96og",
+            "target": {
+              "id": "wb/rhnjm6",
+              "beforeLines": 0,
+              "afterLines": 0
+            },
+            "kind": {
+              "requested": "computedStyle",
+              "tokens": [
+                "computedStyle"
+              ]
+            },
+            "include": {
+              "requested": {
+                "javascriptType": "undefined"
+              },
+              "tokens": []
+            },
+            "exclude": {
+              "requested": {
+                "javascriptType": "undefined"
+              },
+              "tokens": []
+            },
+            "search": {
+              "javascriptType": "undefined"
+            },
+            "notices": []
+          }
+        }
+      },
+      "group": "create",
+      "label": "Format the new area",
+      "intent": "Set fonts, widths, number formats and input/header colours.",
+      "outcome": "The numbers and formulas stay unchanged. Formatting is a separate set of operations, checked with a style read and later images.",
+      "lesson": "The skill recommends readable, consistent formatting. The agent must choose and apply the settings."
+    },
+    {
+      "id": "clear-formulas",
+      "operation": "return lab.getRange(\"F9:F12\").clear({applyTo:\"contents\"});",
+      "checkInput": {
+        "before": "return labRead();",
+        "after": "return {selectedReads:labRead(),formatStillPresent:await inspect(wb,{kind:\"computedStyle\",sheetId:\"Fee lab\",range:\"F9\",maxChars:1800})};"
+      },
+      "startedAt": "2026-09-15T16:55:20.726Z",
+      "before": {
+        "margin": {
+          "address": "C4",
+          "value": 51,
+          "formula": ""
+        },
+        "growth": {
+          "address": "C5",
+          "value": 0.02,
+          "formula": ""
+        },
+        "quarters": {
+          "address": "B9:F12",
+          "values": [
+            [
+              "Quarter 1",
+              290.5116868239257,
+              51,
+              0.25,
+              370.40240070050527
+            ],
+            [
+              "Quarter 2",
+              296.3219205604042,
+              51,
+              0.25,
+              377.81044871451536
+            ],
+            [
+              "Quarter 3",
+              302.2483589716123,
+              51,
+              0.25,
+              385.3666576888057
+            ],
+            [
+              "Quarter 4",
+              308.29332615104454,
+              51,
+              0.25,
+              393.0739908425818
+            ]
+          ],
+          "formulas": [
+            [
+              "",
+              "='Fee engine'!W18",
+              "=$C$4",
+              "",
+              "=C9*1000*D9/10000*E9"
+            ],
+            [
+              "",
+              "=C9*(1+$C$5)",
+              "=$C$4",
+              "",
+              "=C10*1000*D10/10000*E10"
+            ],
+            [
+              "",
+              "=C10*(1+$C$5)",
+              "=$C$4",
+              "",
+              "=C11*1000*D11/10000*E11"
+            ],
+            [
+              "",
+              "=C11*(1+$C$5)",
+              "=$C$4",
+              "",
+              "=C12*1000*D12/10000*E12"
+            ]
+          ]
+        },
+        "annual": {
+          "address": "C15",
+          "value": 1526.6534979464082,
+          "formula": "=SUM(F9:F12)"
+        }
+      },
+      "libraryReturn": {
+        "javascriptType": "undefined"
+      },
+      "elapsedMs": 0,
+      "after": {
+        "selectedReads": {
+          "margin": {
+            "address": "C4",
+            "value": 51,
+            "formula": ""
+          },
+          "growth": {
+            "address": "C5",
+            "value": 0.02,
+            "formula": ""
+          },
+          "quarters": {
+            "address": "B9:F12",
+            "values": [
+              [
+                "Quarter 1",
+                290.5116868239257,
+                51,
+                0.25,
+                null
+              ],
+              [
+                "Quarter 2",
+                296.3219205604042,
+                51,
+                0.25,
+                null
+              ],
+              [
+                "Quarter 3",
+                302.2483589716123,
+                51,
+                0.25,
+                null
+              ],
+              [
+                "Quarter 4",
+                308.29332615104454,
+                51,
+                0.25,
+                null
+              ]
+            ],
+            "formulas": [
+              [
+                "",
+                "='Fee engine'!W18",
+                "=$C$4",
+                "",
+                ""
+              ],
+              [
+                "",
+                "=C9*(1+$C$5)",
+                "=$C$4",
+                "",
+                ""
+              ],
+              [
+                "",
+                "=C10*(1+$C$5)",
+                "=$C$4",
+                "",
+                ""
+              ],
+              [
+                "",
+                "=C11*(1+$C$5)",
+                "=$C$4",
+                "",
+                ""
+              ]
+            ]
+          },
+          "annual": {
+            "address": "C15",
+            "value": 0,
+            "formula": "=SUM(F9:F12)"
+          }
+        },
+        "formatStillPresent": {
+          "ndjson": "{\"kind\":\"notice\",\"message\":\"No records matched the requested kinds.\"}",
+          "recordCount": 1,
+          "truncated": false,
+          "metadata": {
+            "revision": "lg6ivj",
+            "target": {
+              "id": "wb/xrwhy6",
+              "beforeLines": 0,
+              "afterLines": 0
+            },
+            "kind": {
+              "requested": "computedStyle",
+              "tokens": [
+                "computedStyle"
+              ]
+            },
+            "include": {
+              "requested": {
+                "javascriptType": "undefined"
+              },
+              "tokens": []
+            },
+            "exclude": {
+              "requested": {
+                "javascriptType": "undefined"
+              },
+              "tokens": []
+            },
+            "search": {
+              "javascriptType": "undefined"
+            },
+            "notices": []
+          }
+        }
+      },
+      "group": "clear",
+      "label": "Clear formula cells",
+      "intent": "Clear contents in the four quarterly fee cells, preserving formatting.",
+      "outcome": "The four formulas disappear and the total becomes zero because SUM now reads empty cells.",
+      "lesson": "Clearing cells is different from deleting an entire row or tab. A zero total does not prove a model is healthy."
+    },
+    {
+      "id": "rebuild-formulas",
+      "operation": "lab.getRange(\"F9\").formulas = [[\"=C9*1000*D9/10000*E9\"]];\nreturn lab.getRange(\"F9:F12\").fillDown();",
+      "checkInput": {
+        "before": "return labRead();",
+        "after": "return labRead();"
+      },
+      "startedAt": "2026-09-15T16:55:20.727Z",
+      "before": {
+        "margin": {
+          "address": "C4",
+          "value": 51,
+          "formula": ""
+        },
+        "growth": {
+          "address": "C5",
+          "value": 0.02,
+          "formula": ""
+        },
+        "quarters": {
+          "address": "B9:F12",
+          "values": [
+            [
+              "Quarter 1",
+              290.5116868239257,
+              51,
+              0.25,
+              null
+            ],
+            [
+              "Quarter 2",
+              296.3219205604042,
+              51,
+              0.25,
+              null
+            ],
+            [
+              "Quarter 3",
+              302.2483589716123,
+              51,
+              0.25,
+              null
+            ],
+            [
+              "Quarter 4",
+              308.29332615104454,
+              51,
+              0.25,
+              null
+            ]
+          ],
+          "formulas": [
+            [
+              "",
+              "='Fee engine'!W18",
+              "=$C$4",
+              "",
+              ""
+            ],
+            [
+              "",
+              "=C9*(1+$C$5)",
+              "=$C$4",
+              "",
+              ""
+            ],
+            [
+              "",
+              "=C10*(1+$C$5)",
+              "=$C$4",
+              "",
+              ""
+            ],
+            [
+              "",
+              "=C11*(1+$C$5)",
+              "=$C$4",
+              "",
+              ""
+            ]
+          ]
+        },
+        "annual": {
+          "address": "C15",
+          "value": 0,
+          "formula": "=SUM(F9:F12)"
+        }
+      },
+      "libraryReturn": {
+        "javascriptType": "undefined"
+      },
+      "elapsedMs": 0,
+      "after": {
+        "margin": {
+          "address": "C4",
+          "value": 51,
+          "formula": ""
+        },
+        "growth": {
+          "address": "C5",
+          "value": 0.02,
+          "formula": ""
+        },
+        "quarters": {
+          "address": "B9:F12",
+          "values": [
+            [
+              "Quarter 1",
+              290.5116868239257,
+              51,
+              0.25,
+              370.40240070050527
+            ],
+            [
+              "Quarter 2",
+              296.3219205604042,
+              51,
+              0.25,
+              377.81044871451536
+            ],
+            [
+              "Quarter 3",
+              302.2483589716123,
+              51,
+              0.25,
+              385.3666576888057
+            ],
+            [
+              "Quarter 4",
+              308.29332615104454,
+              51,
+              0.25,
+              393.0739908425818
+            ]
+          ],
+          "formulas": [
+            [
+              "",
+              "='Fee engine'!W18",
+              "=$C$4",
+              "",
+              "=C9*1000*D9/10000*E9"
+            ],
+            [
+              "",
+              "=C9*(1+$C$5)",
+              "=$C$4",
+              "",
+              "=C10*1000*D10/10000*E10"
+            ],
+            [
+              "",
+              "=C10*(1+$C$5)",
+              "=$C$4",
+              "",
+              "=C11*1000*D11/10000*E11"
+            ],
+            [
+              "",
+              "=C11*(1+$C$5)",
+              "=$C$4",
+              "",
+              "=C12*1000*D12/10000*E12"
+            ]
+          ]
+        },
+        "annual": {
+          "address": "C15",
+          "value": 1526.6534979464082,
+          "formula": "=SUM(F9:F12)"
+        }
+      },
+      "group": "clear",
+      "label": "Rebuild the formulas",
+      "intent": "Write the first formula again and fill it down through all four quarters.",
+      "outcome": "The quarterly calculations and $1,526.65m total return. Relative row references advance; the common assumption remains fixed.",
+      "lesson": "This is an explicit rebuild written by the agent, not an automatic undo command."
+    },
+    {
+      "id": "blank-input",
+      "operation": "return lab.getRange(\"C4\").clear({applyTo:\"contents\"});",
+      "checkInput": {
+        "before": "return labRead();",
+        "after": "return labRead();"
+      },
+      "startedAt": "2026-09-15T16:55:20.728Z",
+      "before": {
+        "margin": {
+          "address": "C4",
+          "value": 51,
+          "formula": ""
+        },
+        "growth": {
+          "address": "C5",
+          "value": 0.02,
+          "formula": ""
+        },
+        "quarters": {
+          "address": "B9:F12",
+          "values": [
+            [
+              "Quarter 1",
+              290.5116868239257,
+              51,
+              0.25,
+              370.40240070050527
+            ],
+            [
+              "Quarter 2",
+              296.3219205604042,
+              51,
+              0.25,
+              377.81044871451536
+            ],
+            [
+              "Quarter 3",
+              302.2483589716123,
+              51,
+              0.25,
+              385.3666576888057
+            ],
+            [
+              "Quarter 4",
+              308.29332615104454,
+              51,
+              0.25,
+              393.0739908425818
+            ]
+          ],
+          "formulas": [
+            [
+              "",
+              "='Fee engine'!W18",
+              "=$C$4",
+              "",
+              "=C9*1000*D9/10000*E9"
+            ],
+            [
+              "",
+              "=C9*(1+$C$5)",
+              "=$C$4",
+              "",
+              "=C10*1000*D10/10000*E10"
+            ],
+            [
+              "",
+              "=C10*(1+$C$5)",
+              "=$C$4",
+              "",
+              "=C11*1000*D11/10000*E11"
+            ],
+            [
+              "",
+              "=C11*(1+$C$5)",
+              "=$C$4",
+              "",
+              "=C12*1000*D12/10000*E12"
+            ]
+          ]
+        },
+        "annual": {
+          "address": "C15",
+          "value": 1526.6534979464082,
+          "formula": "=SUM(F9:F12)"
+        }
+      },
+      "libraryReturn": {
+        "javascriptType": "undefined"
+      },
+      "elapsedMs": 0,
+      "after": {
+        "margin": {
+          "address": "C4",
+          "value": null,
+          "formula": ""
+        },
+        "growth": {
+          "address": "C5",
+          "value": 0.02,
+          "formula": ""
+        },
+        "quarters": {
+          "address": "B9:F12",
+          "values": [
+            [
+              "Quarter 1",
+              290.5116868239257,
+              0,
+              0.25,
+              0
+            ],
+            [
+              "Quarter 2",
+              296.3219205604042,
+              0,
+              0.25,
+              0
+            ],
+            [
+              "Quarter 3",
+              302.2483589716123,
+              0,
+              0.25,
+              0
+            ],
+            [
+              "Quarter 4",
+              308.29332615104454,
+              0,
+              0.25,
+              0
+            ]
+          ],
+          "formulas": [
+            [
+              "",
+              "='Fee engine'!W18",
+              "=$C$4",
+              "",
+              "=C9*1000*D9/10000*E9"
+            ],
+            [
+              "",
+              "=C9*(1+$C$5)",
+              "=$C$4",
+              "",
+              "=C10*1000*D10/10000*E10"
+            ],
+            [
+              "",
+              "=C10*(1+$C$5)",
+              "=$C$4",
+              "",
+              "=C11*1000*D11/10000*E11"
+            ],
+            [
+              "",
+              "=C11*(1+$C$5)",
+              "=$C$4",
+              "",
+              "=C12*1000*D12/10000*E12"
+            ]
+          ]
+        },
+        "annual": {
+          "address": "C15",
+          "value": 0,
+          "formula": "=SUM(F9:F12)"
+        }
+      },
+      "group": "missing",
+      "label": "Clear the input",
+      "intent": "Remove the fee-margin input while keeping the fee formulas.",
+      "outcome": "The unguarded calculation treats the missing input as zero and returns zero fees.",
+      "lesson": "The library cannot infer whether a blank means missing, not applicable, or deliberately zero."
+    },
+    {
+      "id": "guard-missing-input",
+      "operation": "lab.getRange(\"F9\").formulas = [[\"=IF(ISBLANK($C$4),NA(),C9*1000*D9/10000*E9)\"]];\nlab.getRange(\"F9:F12\").fillDown();",
+      "checkInput": {
+        "before": "return labRead();",
+        "after": "return {selectedReads:labRead(),errorScan:await inspect(wb,{kind:\"match\",sheetId:\"Fee lab\",range:\"B4:F15\",searchTerm:\"#N/A\",maxChars:2500,options:{maxResults:12}})};"
+      },
+      "startedAt": "2026-09-15T16:55:20.729Z",
+      "before": {
+        "margin": {
+          "address": "C4",
+          "value": null,
+          "formula": ""
+        },
+        "growth": {
+          "address": "C5",
+          "value": 0.02,
+          "formula": ""
+        },
+        "quarters": {
+          "address": "B9:F12",
+          "values": [
+            [
+              "Quarter 1",
+              290.5116868239257,
+              0,
+              0.25,
+              0
+            ],
+            [
+              "Quarter 2",
+              296.3219205604042,
+              0,
+              0.25,
+              0
+            ],
+            [
+              "Quarter 3",
+              302.2483589716123,
+              0,
+              0.25,
+              0
+            ],
+            [
+              "Quarter 4",
+              308.29332615104454,
+              0,
+              0.25,
+              0
+            ]
+          ],
+          "formulas": [
+            [
+              "",
+              "='Fee engine'!W18",
+              "=$C$4",
+              "",
+              "=C9*1000*D9/10000*E9"
+            ],
+            [
+              "",
+              "=C9*(1+$C$5)",
+              "=$C$4",
+              "",
+              "=C10*1000*D10/10000*E10"
+            ],
+            [
+              "",
+              "=C10*(1+$C$5)",
+              "=$C$4",
+              "",
+              "=C11*1000*D11/10000*E11"
+            ],
+            [
+              "",
+              "=C11*(1+$C$5)",
+              "=$C$4",
+              "",
+              "=C12*1000*D12/10000*E12"
+            ]
+          ]
+        },
+        "annual": {
+          "address": "C15",
+          "value": 0,
+          "formula": "=SUM(F9:F12)"
+        }
+      },
+      "libraryReturn": {
+        "javascriptType": "undefined"
+      },
+      "elapsedMs": 0,
+      "after": {
+        "selectedReads": {
+          "margin": {
+            "address": "C4",
+            "value": null,
+            "formula": ""
+          },
+          "growth": {
+            "address": "C5",
+            "value": 0.02,
+            "formula": ""
+          },
+          "quarters": {
+            "address": "B9:F12",
+            "values": [
+              [
+                "Quarter 1",
+                290.5116868239257,
+                0,
+                0.25,
+                "#N/A"
+              ],
+              [
+                "Quarter 2",
+                296.3219205604042,
+                0,
+                0.25,
+                "#N/A"
+              ],
+              [
+                "Quarter 3",
+                302.2483589716123,
+                0,
+                0.25,
+                "#N/A"
+              ],
+              [
+                "Quarter 4",
+                308.29332615104454,
+                0,
+                0.25,
+                "#N/A"
+              ]
+            ],
+            "formulas": [
+              [
+                "",
+                "='Fee engine'!W18",
+                "=$C$4",
+                "",
+                "=IF(ISBLANK($C$4),NA(),C9*1000*D9/10000*E9)"
+              ],
+              [
+                "",
+                "=C9*(1+$C$5)",
+                "=$C$4",
+                "",
+                "=IF(ISBLANK($C$4),NA(),C10*1000*D10/10000*E10)"
+              ],
+              [
+                "",
+                "=C10*(1+$C$5)",
+                "=$C$4",
+                "",
+                "=IF(ISBLANK($C$4),NA(),C11*1000*D11/10000*E11)"
+              ],
+              [
+                "",
+                "=C11*(1+$C$5)",
+                "=$C$4",
+                "",
+                "=IF(ISBLANK($C$4),NA(),C12*1000*D12/10000*E12)"
+              ]
+            ]
+          },
+          "annual": {
+            "address": "C15",
+            "value": "#N/A",
+            "formula": "=SUM(F9:F12)"
+          }
+        },
+        "errorScan": {
+          "ndjson": "{\"kind\":\"match\",\"sheet\":\"Fee lab\",\"address\":\"F9\",\"value\":\"#N/A\",\"formula\":\"IF(ISBLANK($C$4),NA(),C9*1000*D9/10000*E9)\",\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee lab\",\"address\":\"F10\",\"value\":\"#N/A\",\"formula\":\"IF(ISBLANK($C$4),NA(),C10*1000*D10/10000*E10)\",\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee lab\",\"address\":\"F11\",\"value\":\"#N/A\",\"formula\":\"IF(ISBLANK($C$4),NA(),C11*1000*D11/10000*E11)\",\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee lab\",\"address\":\"F12\",\"value\":\"#N/A\",\"formula\":\"IF(ISBLANK($C$4),NA(),C12*1000*D12/10000*E12)\",\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee lab\",\"address\":\"C15\",\"value\":\"#N/A\",\"formula\":\"SUM(F9:F12)\",\"match\":\"value\"}",
+          "recordCount": 5,
+          "truncated": false,
+          "metadata": {
+            "revision": "q24wus",
+            "target": {
+              "id": "wb/06mgrr",
+              "beforeLines": 0,
+              "afterLines": 0
+            },
+            "kind": {
+              "requested": "match",
+              "tokens": [
+                "match"
+              ]
+            },
+            "include": {
+              "requested": {
+                "javascriptType": "undefined"
+              },
+              "tokens": []
+            },
+            "exclude": {
+              "requested": {
+                "javascriptType": "undefined"
+              },
+              "tokens": []
+            },
+            "search": {
+              "javascriptType": "undefined"
+            },
+            "notices": []
+          }
+        }
+      },
+      "group": "missing",
+      "label": "Make missing data visible",
+      "intent": "Add IF(ISBLANK(...),NA(),...) to the fee formula and fill it down.",
+      "outcome": "With the margin still blank, quarterly fees and the total become #N/A.",
+      "lesson": "This is a model rule supplied by the agent. The error marker is deliberate here, so an error scan must be interpreted."
+    },
+    {
+      "id": "zero-input",
+      "operation": "lab.getRange(\"C4\").values = [[0]];",
+      "checkInput": {
+        "before": "return labRead();",
+        "after": "return labRead();"
+      },
+      "startedAt": "2026-09-15T16:55:20.730Z",
+      "before": {
+        "margin": {
+          "address": "C4",
+          "value": null,
+          "formula": ""
+        },
+        "growth": {
+          "address": "C5",
+          "value": 0.02,
+          "formula": ""
+        },
+        "quarters": {
+          "address": "B9:F12",
+          "values": [
+            [
+              "Quarter 1",
+              290.5116868239257,
+              0,
+              0.25,
+              "#N/A"
+            ],
+            [
+              "Quarter 2",
+              296.3219205604042,
+              0,
+              0.25,
+              "#N/A"
+            ],
+            [
+              "Quarter 3",
+              302.2483589716123,
+              0,
+              0.25,
+              "#N/A"
+            ],
+            [
+              "Quarter 4",
+              308.29332615104454,
+              0,
+              0.25,
+              "#N/A"
+            ]
+          ],
+          "formulas": [
+            [
+              "",
+              "='Fee engine'!W18",
+              "=$C$4",
+              "",
+              "=IF(ISBLANK($C$4),NA(),C9*1000*D9/10000*E9)"
+            ],
+            [
+              "",
+              "=C9*(1+$C$5)",
+              "=$C$4",
+              "",
+              "=IF(ISBLANK($C$4),NA(),C10*1000*D10/10000*E10)"
+            ],
+            [
+              "",
+              "=C10*(1+$C$5)",
+              "=$C$4",
+              "",
+              "=IF(ISBLANK($C$4),NA(),C11*1000*D11/10000*E11)"
+            ],
+            [
+              "",
+              "=C11*(1+$C$5)",
+              "=$C$4",
+              "",
+              "=IF(ISBLANK($C$4),NA(),C12*1000*D12/10000*E12)"
+            ]
+          ]
+        },
+        "annual": {
+          "address": "C15",
+          "value": "#N/A",
+          "formula": "=SUM(F9:F12)"
+        }
+      },
+      "libraryReturn": {
+        "javascriptType": "undefined"
+      },
+      "elapsedMs": 0,
+      "after": {
+        "margin": {
+          "address": "C4",
+          "value": 0,
+          "formula": ""
+        },
+        "growth": {
+          "address": "C5",
+          "value": 0.02,
+          "formula": ""
+        },
+        "quarters": {
+          "address": "B9:F12",
+          "values": [
+            [
+              "Quarter 1",
+              290.5116868239257,
+              0,
+              0.25,
+              0
+            ],
+            [
+              "Quarter 2",
+              296.3219205604042,
+              0,
+              0.25,
+              0
+            ],
+            [
+              "Quarter 3",
+              302.2483589716123,
+              0,
+              0.25,
+              0
+            ],
+            [
+              "Quarter 4",
+              308.29332615104454,
+              0,
+              0.25,
+              0
+            ]
+          ],
+          "formulas": [
+            [
+              "",
+              "='Fee engine'!W18",
+              "=$C$4",
+              "",
+              "=IF(ISBLANK($C$4),NA(),C9*1000*D9/10000*E9)"
+            ],
+            [
+              "",
+              "=C9*(1+$C$5)",
+              "=$C$4",
+              "",
+              "=IF(ISBLANK($C$4),NA(),C10*1000*D10/10000*E10)"
+            ],
+            [
+              "",
+              "=C10*(1+$C$5)",
+              "=$C$4",
+              "",
+              "=IF(ISBLANK($C$4),NA(),C11*1000*D11/10000*E11)"
+            ],
+            [
+              "",
+              "=C11*(1+$C$5)",
+              "=$C$4",
+              "",
+              "=IF(ISBLANK($C$4),NA(),C12*1000*D12/10000*E12)"
+            ]
+          ]
+        },
+        "annual": {
+          "address": "C15",
+          "value": 0,
+          "formula": "=SUM(F9:F12)"
+        }
+      },
+      "group": "missing",
+      "label": "Test a deliberate zero",
+      "intent": "Enter an explicit zero fee margin.",
+      "outcome": "The guarded formulas calculate zero fees, distinguishing zero from the missing-input case.",
+      "lesson": "The skill calls for blank-versus-zero tests. The particular cells and expected result are agent choices."
+    },
+    {
+      "id": "restore-valid-input",
+      "operation": "lab.getRange(\"C4\").values = [[51]];",
+      "checkInput": {
+        "before": "",
+        "after": "return labRead();"
+      },
+      "startedAt": "2026-09-15T16:55:20.730Z",
+      "libraryReturn": {
+        "javascriptType": "undefined"
+      },
+      "elapsedMs": 0,
+      "after": {
+        "margin": {
+          "address": "C4",
+          "value": 51,
+          "formula": ""
+        },
+        "growth": {
+          "address": "C5",
+          "value": 0.02,
+          "formula": ""
+        },
+        "quarters": {
+          "address": "B9:F12",
+          "values": [
+            [
+              "Quarter 1",
+              290.5116868239257,
+              51,
+              0.25,
+              370.40240070050527
+            ],
+            [
+              "Quarter 2",
+              296.3219205604042,
+              51,
+              0.25,
+              377.81044871451536
+            ],
+            [
+              "Quarter 3",
+              302.2483589716123,
+              51,
+              0.25,
+              385.3666576888057
+            ],
+            [
+              "Quarter 4",
+              308.29332615104454,
+              51,
+              0.25,
+              393.0739908425818
+            ]
+          ],
+          "formulas": [
+            [
+              "",
+              "='Fee engine'!W18",
+              "=$C$4",
+              "",
+              "=IF(ISBLANK($C$4),NA(),C9*1000*D9/10000*E9)"
+            ],
+            [
+              "",
+              "=C9*(1+$C$5)",
+              "=$C$4",
+              "",
+              "=IF(ISBLANK($C$4),NA(),C10*1000*D10/10000*E10)"
+            ],
+            [
+              "",
+              "=C10*(1+$C$5)",
+              "=$C$4",
+              "",
+              "=IF(ISBLANK($C$4),NA(),C11*1000*D11/10000*E11)"
+            ],
+            [
+              "",
+              "=C11*(1+$C$5)",
+              "=$C$4",
+              "",
+              "=IF(ISBLANK($C$4),NA(),C12*1000*D12/10000*E12)"
+            ]
+          ]
+        },
+        "annual": {
+          "address": "C15",
+          "value": 1526.6534979464082,
+          "formula": "=SUM(F9:F12)"
+        }
+      },
+      "group": "missing",
+      "label": "Restore a valid rate",
+      "intent": "Set the fee margin to 51bp.",
+      "outcome": "The fees and total return to their earlier values.",
+      "lesson": "Temporary testing must be restored or clearly delivered as an intentional example."
+    },
+    {
+      "id": "add-table",
+      "operation": "lab.getRange(\"B20:D23\").values = [[\"Scenario\",\"Fee margin, bp\",\"AUM multiplier\"],[\"Base\",56,1],[\"Downside\",51,0.9],[\"Upside\",60,1.1]];\nlab.getRange(\"B19\").values = [[\"Table example; independent of the calculation above\"]];\ntableObject = lab.tables.add(\"B20:D23\",true,\"FeeScenarioInputs\");\nlab.getRange(\"B20:D20\").format.font.color = \"#FFFFFF\";\nreturn tableObject;",
+      "checkInput": {
+        "before": "",
+        "after": "return {tables:lab.tables.items.map(t=>({name:t.name,headers:t.getHeaderRowRange().values,rowReadUsesExplicitRange:true})),values:grid(lab,\"B20:D23\")};"
+      },
+      "startedAt": "2026-09-15T16:55:20.731Z",
+      "libraryReturn": {
+        "type": "Excel Table object",
+        "representation": "Object contents are read separately in the agent checks."
+      },
+      "elapsedMs": 1,
+      "after": {
+        "tables": [
+          {
+            "name": "FeeScenarioInputs",
+            "headers": [
+              [
+                "Scenario",
+                "Fee margin, bp",
+                "AUM multiplier"
+              ]
+            ],
+            "rowReadUsesExplicitRange": true
+          }
+        ],
+        "values": {
+          "address": "B20:D23",
+          "values": [
+            [
+              "Scenario",
+              "Fee margin, bp",
+              "AUM multiplier"
+            ],
+            [
+              "Base",
+              56,
+              1
+            ],
+            [
+              "Downside",
+              51,
+              0.9
+            ],
+            [
+              "Upside",
+              60,
+              1.1
+            ]
+          ],
+          "formulas": [
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ]
+          ]
+        }
+      },
+      "group": "tables",
+      "label": "Create a formal Table",
+      "intent": "Wrap a separate scenario-input rectangle in a named Excel Table.",
+      "outcome": "FeeScenarioInputs is a real native table object, unlike the table-shaped records in the original broad inspect response.",
+      "lesson": "The cells, headers, table name and range are supplied by the agent. This table is separate from the calculation above it."
+    },
+    {
+      "id": "append-table-row",
+      "operation": "return tableObject.rows.add(null,[[\"Stress\",45,0.8]]);",
+      "checkInput": {
+        "before": "",
+        "after": "return {cells:grid(lab,\"B20:D24\")};"
+      },
+      "startedAt": "2026-09-15T16:55:20.732Z",
+      "libraryReturn": {
+        "javascriptType": "undefined"
+      },
+      "elapsedMs": 0,
+      "after": {
+        "cells": {
+          "address": "B20:D24",
+          "values": [
+            [
+              "Scenario",
+              "Fee margin, bp",
+              "AUM multiplier"
+            ],
+            [
+              "Base",
+              56,
+              1
+            ],
+            [
+              "Downside",
+              51,
+              0.9
+            ],
+            [
+              "Upside",
+              60,
+              1.1
+            ],
+            [
+              "Stress",
+              45,
+              0.8
+            ]
+          ],
+          "formulas": [
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ]
+          ]
+        }
+      },
+      "group": "tables",
+      "label": "Append a table row",
+      "intent": "Add a fourth scenario to the formal Table.",
+      "outcome": "Stress, 45bp and 0.8 appear in B24:D24.",
+      "lesson": "The append operation adds data. Our explicit range read establishes where it landed."
+    },
+    {
+      "id": "delete-table",
+      "operation": "return tableObject.delete();",
+      "checkInput": {
+        "before": "return {tableCount:lab.tables.items.length,cells:grid(lab,\"B20:D24\")};",
+        "after": "return {tableCount:lab.tables.items.length,cells:grid(lab,\"B20:D24\")};"
+      },
+      "startedAt": "2026-09-15T16:55:20.733Z",
+      "before": {
+        "tableCount": 1,
+        "cells": {
+          "address": "B20:D24",
+          "values": [
+            [
+              "Scenario",
+              "Fee margin, bp",
+              "AUM multiplier"
+            ],
+            [
+              "Base",
+              56,
+              1
+            ],
+            [
+              "Downside",
+              51,
+              0.9
+            ],
+            [
+              "Upside",
+              60,
+              1.1
+            ],
+            [
+              "Stress",
+              45,
+              0.8
+            ]
+          ],
+          "formulas": [
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ]
+          ]
+        }
+      },
+      "libraryReturn": {
+        "javascriptType": "undefined"
+      },
+      "elapsedMs": 0,
+      "after": {
+        "tableCount": 0,
+        "cells": {
+          "address": "B20:D24",
+          "values": [
+            [
+              "Scenario",
+              "Fee margin, bp",
+              "AUM multiplier"
+            ],
+            [
+              "Base",
+              56,
+              1
+            ],
+            [
+              "Downside",
+              51,
+              0.9
+            ],
+            [
+              "Upside",
+              60,
+              1.1
+            ],
+            [
+              "Stress",
+              45,
+              0.8
+            ]
+          ],
+          "formulas": [
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ]
+          ]
+        }
+      },
+      "group": "tables",
+      "label": "Delete the Table object",
+      "intent": "Remove the formal Table while watching its cells.",
+      "outcome": "The table count falls from one to zero, but all headers and scenario values remain.",
+      "lesson": "Deleting the Table wrapper is not the same thing as clearing the cells underneath it."
+    },
+    {
+      "id": "recreate-table",
+      "operation": "tableObject = lab.tables.add(\"B20:D24\",true,\"FeeScenarioInputs\");\nlab.getRange(\"B20:D20\").format.font.color = \"#FFFFFF\";\nreturn tableObject;",
+      "checkInput": {
+        "before": "",
+        "after": "return {tableCount:lab.tables.items.length,cells:grid(lab,\"B20:D24\")};"
+      },
+      "startedAt": "2026-09-15T16:55:20.733Z",
+      "libraryReturn": {
+        "type": "Excel Table object",
+        "representation": "Object contents are read separately in the agent checks."
+      },
+      "elapsedMs": 0,
+      "after": {
+        "tableCount": 1,
+        "cells": {
+          "address": "B20:D24",
+          "values": [
+            [
+              "Scenario",
+              "Fee margin, bp",
+              "AUM multiplier"
+            ],
+            [
+              "Base",
+              56,
+              1
+            ],
+            [
+              "Downside",
+              51,
+              0.9
+            ],
+            [
+              "Upside",
+              60,
+              1.1
+            ],
+            [
+              "Stress",
+              45,
+              0.8
+            ]
+          ],
+          "formulas": [
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ]
+          ]
+        }
+      },
+      "group": "tables",
+      "label": "Recreate the Table",
+      "intent": "Create a named Table again over B20:D24.",
+      "outcome": "One formal Table is present again, now including the appended Stress row.",
+      "lesson": "The agent specifies what to rebuild. There is no automatic restore hidden in this step."
+    },
+    {
+      "id": "overlap-table",
+      "operation": "const extra = lab.tables.add(\"D22:F25\", true, \"OverlapProbe\");\nreturn extra;",
+      "checkInput": {
+        "before": "return lab.tables.items.map(t => t.name);",
+        "after": "return {tableNames:lab.tables.items.map(t=>t.name),existingRange:\"B20:D24\",requestedRange:\"D22:F25\",overlap:\"D22:D24\",saved:false};"
+      },
+      "before": [
+        "FeeScenarioInputs"
+      ],
+      "libraryReturn": {
+        "type": "Excel Table object",
+        "representation": "Live object returned. The added range overlaps existing FeeScenarioInputs at B20:D24."
+      },
+      "elapsedMs": 0,
+      "after": {
+        "tableNames": [
+          "FeeScenarioInputs",
+          "OverlapProbe"
+        ],
+        "existingRange": "B20:D24",
+        "requestedRange": "D22:F25",
+        "overlap": "D22:D24",
+        "saved": false
+      },
+      "group": "tables",
+      "label": "Try an overlapping Table",
+      "intent": "In a disposable new import, request another Table over D22:F25, overlapping the existing B20:D24 Table.",
+      "outcome": "The API accepts it and the table-name read returns both FeeScenarioInputs and OverlapProbe. No file is saved.",
+      "lesson": "The guide explicitly says to check for overlaps because the API does not reject them. Acceptance in memory does not establish that this is a valid Excel file."
+    },
+    {
+      "id": "add-chart",
+      "operation": "chart = lab.charts.add(\"line\",[lab.getRange(\"B8:B12\"),lab.getRange(\"F8:F12\")]);\nchart.title = \"Illustrative quarterly fees (USD m)\";\nchart.hasLegend = false;\nchart.titleTextStyle.fontSize = 12;\nchart.titleTextStyle.typeface = \"Arial\";\nchart.yAxis = {numberFormatCode:\"0.0\",numberFormatSourceLinked:false,textStyle:{typeface:\"Arial\",fontSize:10}};\nchart.xAxis = {axisType:\"textAxis\",textStyle:{typeface:\"Arial\",fontSize:10}};\nchart.series.items[0].line = {fill:\"#1B6870\",style:\"solid\",width:2};\nchart.setPosition(\"H8\",\"P22\");\nreturn chart;",
+      "checkInput": {
+        "before": "",
+        "after": "return {series:chart.series.items.map(s=>({formula:s.formula,categoryFormula:s.categoryFormula})),source:grid(lab,\"F9:F12\")};"
+      },
+      "startedAt": "2026-09-15T16:55:20.734Z",
+      "libraryReturn": {
+        "type": "Chart object",
+        "representation": "Object contents are read separately in the agent checks."
+      },
+      "elapsedMs": 1,
+      "after": {
+        "series": [
+          {
+            "formula": "'Fee lab'!$F$9:$F$12",
+            "categoryFormula": "'Fee lab'!$B$9:$B$12"
+          }
+        ],
+        "source": {
+          "address": "F9:F12",
+          "values": [
+            [
+              370.40240070050527
+            ],
+            [
+              377.81044871451536
+            ],
+            [
+              385.3666576888057
+            ],
+            [
+              393.0739908425818
+            ]
+          ],
+          "formulas": [
+            [
+              "=IF(ISBLANK($C$4),NA(),C9*1000*D9/10000*E9)"
+            ],
+            [
+              "=IF(ISBLANK($C$4),NA(),C10*1000*D10/10000*E10)"
+            ],
+            [
+              "=IF(ISBLANK($C$4),NA(),C11*1000*D11/10000*E11)"
+            ],
+            [
+              "=IF(ISBLANK($C$4),NA(),C12*1000*D12/10000*E12)"
+            ]
+          ]
+        }
+      },
+      "group": "charts",
+      "label": "Create a linked chart",
+      "intent": "Create a line chart whose series refers to the quarterly fee cells.",
+      "outcome": "Its series stores cell references to F9:F12 and categories from B9:B12.",
+      "lesson": "A chart object is not a screenshot. The agent explicitly binds source cells and sets its position and appearance."
+    },
+    {
+      "id": "render-before",
+      "operation": "return await wb.render({sheetName:\"Fee lab\",range:\"B2:P25\",scale:1.5,format:\"png\"});",
+      "checkInput": {
+        "before": "",
+        "after": "const blob=lastHandle;await fs.writeFile(path.join(dir,\"fee-lab-before.png\"),new Uint8Array(await blob.arrayBuffer()));return {saved:\"fee-lab-before.png\",bytes:(await fs.stat(path.join(dir,\"fee-lab-before.png\"))).size};"
+      },
+      "startedAt": "2026-09-15T16:55:20.736Z",
+      "libraryReturn": {
+        "type": "Image Blob",
+        "representation": "Object contents are read separately in the agent checks."
+      },
+      "elapsedMs": 228,
+      "after": {
+        "saved": "fee-lab-before.png",
+        "bytes": 161918
+      },
+      "group": "charts",
+      "label": "Render at 51bp",
+      "intent": "Render the new sheet and save the returned image.",
+      "outcome": "The chart and table show quarterly fees of $370.40m to $393.07m.",
+      "lesson": "render returns an image blob. Saving its bytes and viewing the PNG are separate steps performed by the agent."
+    },
+    {
+      "id": "chart-input-change",
+      "operation": "lab.getRange(\"C4\").values = [[60]];",
+      "checkInput": {
+        "before": "return {fees:grid(lab,\"F9:F12\"),bindings:chart.series.items.map(s=>s.formula)};",
+        "after": "return {fees:grid(lab,\"F9:F12\"),bindings:chart.series.items.map(s=>s.formula)};"
+      },
+      "startedAt": "2026-09-15T16:55:20.965Z",
+      "before": {
+        "fees": {
+          "address": "F9:F12",
+          "values": [
+            [
+              370.40240070050527
+            ],
+            [
+              377.81044871451536
+            ],
+            [
+              385.3666576888057
+            ],
+            [
+              393.0739908425818
+            ]
+          ],
+          "formulas": [
+            [
+              "=IF(ISBLANK($C$4),NA(),C9*1000*D9/10000*E9)"
+            ],
+            [
+              "=IF(ISBLANK($C$4),NA(),C10*1000*D10/10000*E10)"
+            ],
+            [
+              "=IF(ISBLANK($C$4),NA(),C11*1000*D11/10000*E11)"
+            ],
+            [
+              "=IF(ISBLANK($C$4),NA(),C12*1000*D12/10000*E12)"
+            ]
+          ]
+        },
+        "bindings": [
+          "'Fee lab'!$F$9:$F$12"
+        ]
+      },
+      "libraryReturn": {
+        "javascriptType": "undefined"
+      },
+      "elapsedMs": 0,
+      "after": {
+        "fees": {
+          "address": "F9:F12",
+          "values": [
+            [
+              435.76753023588856
+            ],
+            [
+              444.48288084060624
+            ],
+            [
+              453.37253845741844
+            ],
+            [
+              462.4399892265668
+            ]
+          ],
+          "formulas": [
+            [
+              "=IF(ISBLANK($C$4),NA(),C9*1000*D9/10000*E9)"
+            ],
+            [
+              "=IF(ISBLANK($C$4),NA(),C10*1000*D10/10000*E10)"
+            ],
+            [
+              "=IF(ISBLANK($C$4),NA(),C11*1000*D11/10000*E11)"
+            ],
+            [
+              "=IF(ISBLANK($C$4),NA(),C12*1000*D12/10000*E12)"
+            ]
+          ]
+        },
+        "bindings": [
+          "'Fee lab'!$F$9:$F$12"
+        ]
+      },
+      "group": "charts",
+      "label": "Change the chart input",
+      "intent": "Change the fee-margin input from 51bp to 60bp.",
+      "outcome": "The source fees increase to $435.77m\u2013$462.44m while the chart keeps the same range references.",
+      "lesson": "The following image checks what was drawn. Reading the bindings alone is not a visual check."
+    },
+    {
+      "id": "render-after",
+      "operation": "return await wb.render({sheetName:\"Fee lab\",range:\"B2:P25\",scale:1.5,format:\"png\"});",
+      "checkInput": {
+        "before": "",
+        "after": "const blob=lastHandle;await fs.writeFile(path.join(dir,\"fee-lab-after.png\"),new Uint8Array(await blob.arrayBuffer()));return {saved:\"fee-lab-after.png\",bytes:(await fs.stat(path.join(dir,\"fee-lab-after.png\"))).size};"
+      },
+      "startedAt": "2026-09-15T16:55:20.966Z",
+      "libraryReturn": {
+        "type": "Image Blob",
+        "representation": "Object contents are read separately in the agent checks."
+      },
+      "elapsedMs": 68,
+      "after": {
+        "saved": "fee-lab-after.png",
+        "bytes": 162088
+      },
+      "group": "charts",
+      "label": "Render at 60bp",
+      "intent": "Render the same area again after the input change.",
+      "outcome": "The plotted line and axis now reflect the larger fee values. Both actual images are available below.",
+      "lesson": "Visual review is recommended in the skill; the library does not itself judge whether the image is readable or financially sensible."
+    },
+    {
+      "id": "delete-chart",
+      "operation": "return lab.charts.deleteAll();",
+      "checkInput": {
+        "before": "",
+        "after": "return {drawingInspection:await inspect(wb,{kind:\"drawing\",sheetId:\"Fee lab\",maxChars:2000}),source:grid(lab,\"F9:F12\")};"
+      },
+      "startedAt": "2026-09-15T16:55:21.034Z",
+      "libraryReturn": {
+        "javascriptType": "undefined"
+      },
+      "elapsedMs": 0,
+      "after": {
+        "drawingInspection": {
+          "ndjson": "{\"kind\":\"notice\",\"message\":\"No records matched the requested kinds.\"}",
+          "recordCount": 1,
+          "truncated": false,
+          "metadata": {
+            "revision": "jl29ug",
+            "target": {
+              "id": "wb/z59xz2",
+              "beforeLines": 0,
+              "afterLines": 0
+            },
+            "kind": {
+              "requested": "drawing",
+              "tokens": [
+                "drawing"
+              ]
+            },
+            "include": {
+              "requested": {
+                "javascriptType": "undefined"
+              },
+              "tokens": []
+            },
+            "exclude": {
+              "requested": {
+                "javascriptType": "undefined"
+              },
+              "tokens": []
+            },
+            "search": {
+              "javascriptType": "undefined"
+            },
+            "notices": []
+          }
+        },
+        "source": {
+          "address": "F9:F12",
+          "values": [
+            [
+              435.76753023588856
+            ],
+            [
+              444.48288084060624
+            ],
+            [
+              453.37253845741844
+            ],
+            [
+              462.4399892265668
+            ]
+          ],
+          "formulas": [
+            [
+              "=IF(ISBLANK($C$4),NA(),C9*1000*D9/10000*E9)"
+            ],
+            [
+              "=IF(ISBLANK($C$4),NA(),C10*1000*D10/10000*E10)"
+            ],
+            [
+              "=IF(ISBLANK($C$4),NA(),C11*1000*D11/10000*E11)"
+            ],
+            [
+              "=IF(ISBLANK($C$4),NA(),C12*1000*D12/10000*E12)"
+            ]
+          ]
+        }
+      },
+      "group": "charts",
+      "label": "Delete the chart",
+      "intent": "Remove the drawings in the new sheet\u2019s chart collection.",
+      "outcome": "A drawing inspection finds no matching drawings in Fee lab, while the source cells remain intact.",
+      "lesson": "Deleting presentation does not remove the calculations it was displaying."
+    },
+    {
+      "id": "recreate-chart",
+      "operation": "chart = lab.charts.add(\"line\",[lab.getRange(\"B8:B12\"),lab.getRange(\"F8:F12\")]);\nchart.title = \"Illustrative quarterly fees (USD m)\";\nchart.hasLegend = false;\nchart.titleTextStyle.fontSize = 12;\nchart.titleTextStyle.typeface = \"Arial\";\nchart.yAxis = {numberFormatCode:\"0.0\",numberFormatSourceLinked:false,textStyle:{typeface:\"Arial\",fontSize:10}};\nchart.xAxis = {axisType:\"textAxis\",textStyle:{typeface:\"Arial\",fontSize:10}};\nchart.series.items[0].line = {fill:\"#1B6870\",style:\"solid\",width:2};\nchart.setPosition(\"H8\",\"P22\");\nreturn chart;",
+      "checkInput": {
+        "before": "",
+        "after": "return {series:chart.series.items.map(s=>({formula:s.formula,categoryFormula:s.categoryFormula}))};"
+      },
+      "startedAt": "2026-09-15T16:55:21.035Z",
+      "libraryReturn": {
+        "type": "Chart object",
+        "representation": "Object contents are read separately in the agent checks."
+      },
+      "elapsedMs": 0,
+      "after": {
+        "series": [
+          {
+            "formula": "'Fee lab'!$F$9:$F$12",
+            "categoryFormula": "'Fee lab'!$B$9:$B$12"
+          }
+        ]
+      },
+      "group": "charts",
+      "label": "Recreate the chart",
+      "intent": "Build the chart again against the existing source range.",
+      "outcome": "The new chart binds to the same cells and is included in the final saved XLSX.",
+      "lesson": "The agent restates the source range and formatting. Export preservation is checked separately."
+    }
+  ],
+  "helpers": "const cell=(sheet,address)=>({address,value:sheet.getRange(address).values[0][0],formula:sheet.getRange(address).formulas[0][0]});\nconst grid=(sheet,address)=>({address,values:sheet.getRange(address).values,formulas:sheet.getRange(address).formulas});\nconst labRead=()=>({margin:cell(lab,'C4'),growth:cell(lab,'C5'),quarters:grid(lab,'B9:F12'),annual:cell(lab,'C15')});\nconst inspect=async (book,args)=>{const r=await book.inspect(args);return {ndjson:r.ndjson,recordCount:r.recordCount,truncated:r.truncated,metadata:r.metadata};};\nconst names=async book=>await inspect(book,{kind:'sheet',include:'id,name',maxChars:5000});\n"
+}

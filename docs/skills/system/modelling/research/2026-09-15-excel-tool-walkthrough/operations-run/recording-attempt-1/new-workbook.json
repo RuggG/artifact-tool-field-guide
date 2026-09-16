@@ -1,0 +1,43 @@
+{
+  "id": "new-workbook",
+  "operation": "scratch = Workbook.create();\nsmall = scratch.worksheets.add(\"Fee calculation\");\nreturn small;",
+  "checkInput": {
+    "before": "",
+    "after": "return await names(scratch);"
+  },
+  "startedAt": "2026-09-15T16:53:20.938Z",
+  "libraryReturn": {
+    "type": "Worksheet object",
+    "representation": "Object contents are read separately in the agent checks."
+  },
+  "elapsedMs": 4,
+  "after": {
+    "recordCount": 1,
+    "truncated": false,
+    "metadata": {
+      "revision": "w0vtp7",
+      "target": {
+        "id": "wb/z5uvgc",
+        "beforeLines": 0,
+        "afterLines": 0
+      },
+      "kind": {
+        "requested": "sheet",
+        "tokens": [
+          "sheet"
+        ]
+      },
+      "include": {
+        "requested": "id,name",
+        "tokens": [
+          "id",
+          "name"
+        ]
+      },
+      "exclude": {
+        "tokens": []
+      },
+      "notices": []
+    }
+  }
+}

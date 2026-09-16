@@ -1,0 +1,37 @@
+{
+  "name": "fx.CHITEST",
+  "category": "compatibility",
+  "examples": [
+    {
+      "formula": "=CHITEST(A1:A5, A1:A5)",
+      "value": 1,
+      "projection": [
+        [
+          1,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 10
+    }
+  ]
+}

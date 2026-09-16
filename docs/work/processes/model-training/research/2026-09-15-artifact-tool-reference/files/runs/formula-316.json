@@ -1,0 +1,37 @@
+{
+  "name": "fx.RADIANS",
+  "category": "math-trig",
+  "examples": [
+    {
+      "formula": "=RADIANS(A1)",
+      "value": 0.017453292519943295,
+      "projection": [
+        [
+          0.017453292519943295,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 13
+    }
+  ]
+}

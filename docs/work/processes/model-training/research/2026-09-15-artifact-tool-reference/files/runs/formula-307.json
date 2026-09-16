@@ -1,0 +1,37 @@
+{
+  "name": "fx.ATANH",
+  "category": "math-trig",
+  "examples": [
+    {
+      "formula": "=ATANH(10)",
+      "value": "#NUM!",
+      "projection": [
+        [
+          "#NUM!",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 10
+    }
+  ]
+}

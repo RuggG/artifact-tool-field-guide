@@ -1,0 +1,1329 @@
+[
+  {
+    "geometry": "line",
+    "lineStyle": "solid",
+    "created": true,
+    "id": "v4089g",
+    "sheet": "Shapes 1"
+  },
+  {
+    "geometry": "lineInv",
+    "lineStyle": "dashed",
+    "created": true,
+    "id": "plzg97",
+    "sheet": "Shapes 1"
+  },
+  {
+    "geometry": "triangle",
+    "lineStyle": "dotted",
+    "created": true,
+    "id": "i198g1",
+    "sheet": "Shapes 1"
+  },
+  {
+    "geometry": "rtTriangle",
+    "lineStyle": "dash-dot",
+    "created": true,
+    "id": "gh125x",
+    "sheet": "Shapes 1"
+  },
+  {
+    "geometry": "rect",
+    "lineStyle": "dash-dot-dot",
+    "created": true,
+    "id": "dqsiv8",
+    "sheet": "Shapes 1"
+  },
+  {
+    "geometry": "diamond",
+    "lineStyle": "solid",
+    "created": true,
+    "id": "fjq9cl",
+    "sheet": "Shapes 1"
+  },
+  {
+    "geometry": "parallelogram",
+    "lineStyle": "dashed",
+    "created": true,
+    "id": "nlv8gf",
+    "sheet": "Shapes 1"
+  },
+  {
+    "geometry": "trapezoid",
+    "lineStyle": "dotted",
+    "created": true,
+    "id": "sbc2cu",
+    "sheet": "Shapes 1"
+  },
+  {
+    "geometry": "nonIsoscelesTrapezoid",
+    "lineStyle": "dash-dot",
+    "created": true,
+    "id": "z8vgrc",
+    "sheet": "Shapes 1"
+  },
+  {
+    "geometry": "pentagon",
+    "lineStyle": "dash-dot-dot",
+    "created": true,
+    "id": "a4odqs",
+    "sheet": "Shapes 1"
+  },
+  {
+    "geometry": "hexagon",
+    "lineStyle": "solid",
+    "created": true,
+    "id": "6peu80",
+    "sheet": "Shapes 1"
+  },
+  {
+    "geometry": "heptagon",
+    "lineStyle": "dashed",
+    "created": true,
+    "id": "seiyv5",
+    "sheet": "Shapes 1"
+  },
+  {
+    "geometry": "octagon",
+    "lineStyle": "dotted",
+    "created": true,
+    "id": "enniu4",
+    "sheet": "Shapes 1"
+  },
+  {
+    "geometry": "decagon",
+    "lineStyle": "dash-dot",
+    "created": true,
+    "id": "59sttr",
+    "sheet": "Shapes 1"
+  },
+  {
+    "geometry": "dodecagon",
+    "lineStyle": "dash-dot-dot",
+    "created": true,
+    "id": "b2nd1a",
+    "sheet": "Shapes 1"
+  },
+  {
+    "geometry": "star4",
+    "lineStyle": "solid",
+    "created": true,
+    "id": "930rvp",
+    "sheet": "Shapes 1"
+  },
+  {
+    "geometry": "star5",
+    "lineStyle": "dashed",
+    "created": true,
+    "id": "xb3xfo",
+    "sheet": "Shapes 1"
+  },
+  {
+    "geometry": "star6",
+    "lineStyle": "dotted",
+    "created": true,
+    "id": "meg2yq",
+    "sheet": "Shapes 1"
+  },
+  {
+    "geometry": "star7",
+    "lineStyle": "dash-dot",
+    "created": true,
+    "id": "idlh8k",
+    "sheet": "Shapes 1"
+  },
+  {
+    "geometry": "star8",
+    "lineStyle": "dash-dot-dot",
+    "created": true,
+    "id": "3yp4gf",
+    "sheet": "Shapes 1"
+  },
+  {
+    "geometry": "star10",
+    "lineStyle": "solid",
+    "created": true,
+    "id": "vpkbyy",
+    "sheet": "Shapes 1"
+  },
+  {
+    "geometry": "star12",
+    "lineStyle": "dashed",
+    "created": true,
+    "id": "rr8zzt",
+    "sheet": "Shapes 1"
+  },
+  {
+    "geometry": "star16",
+    "lineStyle": "dotted",
+    "created": true,
+    "id": "812xfw",
+    "sheet": "Shapes 1"
+  },
+  {
+    "geometry": "star24",
+    "lineStyle": "dash-dot",
+    "created": true,
+    "id": "rdlwse",
+    "sheet": "Shapes 1"
+  },
+  {
+    "geometry": "star32",
+    "lineStyle": "dash-dot-dot",
+    "created": true,
+    "id": "u2kxq7",
+    "sheet": "Shapes 1"
+  },
+  {
+    "geometry": "roundRect",
+    "lineStyle": "solid",
+    "created": true,
+    "id": "5b5oi8",
+    "sheet": "Shapes 1"
+  },
+  {
+    "geometry": "round1Rect",
+    "lineStyle": "dashed",
+    "created": true,
+    "id": "50uyfd",
+    "sheet": "Shapes 1"
+  },
+  {
+    "geometry": "round2SameRect",
+    "lineStyle": "dotted",
+    "created": true,
+    "id": "lvtqs7",
+    "sheet": "Shapes 1"
+  },
+  {
+    "geometry": "round2DiagRect",
+    "lineStyle": "dash-dot",
+    "created": true,
+    "id": "c7zo2n",
+    "sheet": "Shapes 1"
+  },
+  {
+    "geometry": "snipRoundRect",
+    "lineStyle": "dash-dot-dot",
+    "created": true,
+    "id": "lau5mk",
+    "sheet": "Shapes 1"
+  },
+  {
+    "geometry": "snip1Rect",
+    "lineStyle": "solid",
+    "created": true,
+    "id": "w6n3e8",
+    "sheet": "Shapes 1"
+  },
+  {
+    "geometry": "snip2SameRect",
+    "lineStyle": "dashed",
+    "created": true,
+    "id": "wccsoq",
+    "sheet": "Shapes 1"
+  },
+  {
+    "geometry": "snip2DiagRect",
+    "lineStyle": "dotted",
+    "created": true,
+    "id": "6hfcew",
+    "sheet": "Shapes 1"
+  },
+  {
+    "geometry": "plaque",
+    "lineStyle": "dash-dot",
+    "created": true,
+    "id": "dtpjni",
+    "sheet": "Shapes 1"
+  },
+  {
+    "geometry": "ellipse",
+    "lineStyle": "dash-dot-dot",
+    "created": true,
+    "id": "5wkgky",
+    "sheet": "Shapes 1"
+  },
+  {
+    "geometry": "teardrop",
+    "lineStyle": "solid",
+    "created": true,
+    "id": "zaurjb",
+    "sheet": "Shapes 1"
+  },
+  {
+    "geometry": "homePlate",
+    "lineStyle": "dashed",
+    "created": true,
+    "id": "7jbvg5",
+    "sheet": "Shapes 1"
+  },
+  {
+    "geometry": "chevron",
+    "lineStyle": "dotted",
+    "created": true,
+    "id": "9uxywm",
+    "sheet": "Shapes 1"
+  },
+  {
+    "geometry": "pieWedge",
+    "lineStyle": "dash-dot",
+    "created": true,
+    "id": "o2av06",
+    "sheet": "Shapes 1"
+  },
+  {
+    "geometry": "pie",
+    "lineStyle": "dash-dot-dot",
+    "created": true,
+    "id": "jvz87i",
+    "sheet": "Shapes 1"
+  },
+  {
+    "geometry": "blockArc",
+    "lineStyle": "solid",
+    "created": true,
+    "id": "hgygba",
+    "sheet": "Shapes 2"
+  },
+  {
+    "geometry": "donut",
+    "lineStyle": "dashed",
+    "created": true,
+    "id": "atho1a",
+    "sheet": "Shapes 2"
+  },
+  {
+    "geometry": "noSmoking",
+    "lineStyle": "dotted",
+    "created": true,
+    "id": "9p9zj1",
+    "sheet": "Shapes 2"
+  },
+  {
+    "geometry": "rightArrow",
+    "lineStyle": "dash-dot",
+    "created": true,
+    "id": "3ew56y",
+    "sheet": "Shapes 2"
+  },
+  {
+    "geometry": "leftArrow",
+    "lineStyle": "dash-dot-dot",
+    "created": true,
+    "id": "wiwbt3",
+    "sheet": "Shapes 2"
+  },
+  {
+    "geometry": "upArrow",
+    "lineStyle": "solid",
+    "created": true,
+    "id": "yu1zn8",
+    "sheet": "Shapes 2"
+  },
+  {
+    "geometry": "downArrow",
+    "lineStyle": "dashed",
+    "created": true,
+    "id": "x0jewi",
+    "sheet": "Shapes 2"
+  },
+  {
+    "geometry": "stripedRightArrow",
+    "lineStyle": "dotted",
+    "created": true,
+    "id": "u4xun9",
+    "sheet": "Shapes 2"
+  },
+  {
+    "geometry": "notchedRightArrow",
+    "lineStyle": "dash-dot",
+    "created": true,
+    "id": "d2h9jr",
+    "sheet": "Shapes 2"
+  },
+  {
+    "geometry": "bentUpArrow",
+    "lineStyle": "dash-dot-dot",
+    "created": true,
+    "id": "pdgs2x",
+    "sheet": "Shapes 2"
+  },
+  {
+    "geometry": "leftRightArrow",
+    "lineStyle": "solid",
+    "created": true,
+    "id": "o0yb4r",
+    "sheet": "Shapes 2"
+  },
+  {
+    "geometry": "upDownArrow",
+    "lineStyle": "dashed",
+    "created": true,
+    "id": "5wofc3",
+    "sheet": "Shapes 2"
+  },
+  {
+    "geometry": "leftUpArrow",
+    "lineStyle": "dotted",
+    "created": true,
+    "id": "43fd02",
+    "sheet": "Shapes 2"
+  },
+  {
+    "geometry": "leftRightUpArrow",
+    "lineStyle": "dash-dot",
+    "created": true,
+    "id": "q16hqe",
+    "sheet": "Shapes 2"
+  },
+  {
+    "geometry": "quadArrow",
+    "lineStyle": "dash-dot-dot",
+    "created": true,
+    "id": "v3x674",
+    "sheet": "Shapes 2"
+  },
+  {
+    "geometry": "leftArrowCallout",
+    "lineStyle": "solid",
+    "created": true,
+    "id": "i79adu",
+    "sheet": "Shapes 2"
+  },
+  {
+    "geometry": "rightArrowCallout",
+    "lineStyle": "dashed",
+    "created": true,
+    "id": "oq6npl",
+    "sheet": "Shapes 2"
+  },
+  {
+    "geometry": "upArrowCallout",
+    "lineStyle": "dotted",
+    "created": true,
+    "id": "34ppl8",
+    "sheet": "Shapes 2"
+  },
+  {
+    "geometry": "downArrowCallout",
+    "lineStyle": "dash-dot",
+    "created": true,
+    "id": "jwg2xq",
+    "sheet": "Shapes 2"
+  },
+  {
+    "geometry": "leftRightArrowCallout",
+    "lineStyle": "dash-dot-dot",
+    "created": true,
+    "id": "vgg36g",
+    "sheet": "Shapes 2"
+  },
+  {
+    "geometry": "upDownArrowCallout",
+    "lineStyle": "solid",
+    "created": true,
+    "id": "bh1bn7",
+    "sheet": "Shapes 2"
+  },
+  {
+    "geometry": "quadArrowCallout",
+    "lineStyle": "dashed",
+    "created": true,
+    "id": "2sx8el",
+    "sheet": "Shapes 2"
+  },
+  {
+    "geometry": "bentArrow",
+    "lineStyle": "dotted",
+    "created": true,
+    "id": "bcj9ne",
+    "sheet": "Shapes 2"
+  },
+  {
+    "geometry": "uturnArrow",
+    "lineStyle": "dash-dot",
+    "created": true,
+    "id": "z2gnyb",
+    "sheet": "Shapes 2"
+  },
+  {
+    "geometry": "circularArrow",
+    "lineStyle": "dash-dot-dot",
+    "created": true,
+    "id": "j8nksq",
+    "sheet": "Shapes 2"
+  },
+  {
+    "geometry": "leftCircularArrow",
+    "lineStyle": "solid",
+    "created": true,
+    "id": "4y4pvj",
+    "sheet": "Shapes 2"
+  },
+  {
+    "geometry": "leftRightCircularArrow",
+    "lineStyle": "dashed",
+    "created": true,
+    "id": "krkegm",
+    "sheet": "Shapes 2"
+  },
+  {
+    "geometry": "curvedRightArrow",
+    "lineStyle": "dotted",
+    "created": true,
+    "id": "2dlab8",
+    "sheet": "Shapes 2"
+  },
+  {
+    "geometry": "curvedLeftArrow",
+    "lineStyle": "dash-dot",
+    "created": true,
+    "id": "8949n5",
+    "sheet": "Shapes 2"
+  },
+  {
+    "geometry": "curvedUpArrow",
+    "lineStyle": "dash-dot-dot",
+    "created": true,
+    "id": "n6gdt6",
+    "sheet": "Shapes 2"
+  },
+  {
+    "geometry": "curvedDownArrow",
+    "lineStyle": "solid",
+    "created": true,
+    "id": "q2c47t",
+    "sheet": "Shapes 2"
+  },
+  {
+    "geometry": "swooshArrow",
+    "lineStyle": "dashed",
+    "created": true,
+    "id": "mv29g9",
+    "sheet": "Shapes 2"
+  },
+  {
+    "geometry": "cube",
+    "lineStyle": "dotted",
+    "created": true,
+    "id": "ghqu39",
+    "sheet": "Shapes 2"
+  },
+  {
+    "geometry": "can",
+    "lineStyle": "dash-dot",
+    "created": true,
+    "id": "k5bhs3",
+    "sheet": "Shapes 2"
+  },
+  {
+    "geometry": "lightningBolt",
+    "lineStyle": "dash-dot-dot",
+    "created": true,
+    "id": "k1nmqk",
+    "sheet": "Shapes 2"
+  },
+  {
+    "geometry": "heart",
+    "lineStyle": "solid",
+    "created": true,
+    "id": "zcolok",
+    "sheet": "Shapes 2"
+  },
+  {
+    "geometry": "sun",
+    "lineStyle": "dashed",
+    "created": true,
+    "id": "swbhry",
+    "sheet": "Shapes 2"
+  },
+  {
+    "geometry": "moon",
+    "lineStyle": "dotted",
+    "created": true,
+    "id": "jy20jk",
+    "sheet": "Shapes 2"
+  },
+  {
+    "geometry": "smileyFace",
+    "lineStyle": "dash-dot",
+    "created": true,
+    "id": "95w6y3",
+    "sheet": "Shapes 2"
+  },
+  {
+    "geometry": "irregularSeal1",
+    "lineStyle": "dash-dot-dot",
+    "created": true,
+    "id": "4qee02",
+    "sheet": "Shapes 2"
+  },
+  {
+    "geometry": "irregularSeal2",
+    "lineStyle": "solid",
+    "created": true,
+    "id": "wm5361",
+    "sheet": "Shapes 3"
+  },
+  {
+    "geometry": "foldedCorner",
+    "lineStyle": "dashed",
+    "created": true,
+    "id": "6lcus1",
+    "sheet": "Shapes 3"
+  },
+  {
+    "geometry": "bevel",
+    "lineStyle": "dotted",
+    "created": true,
+    "id": "somfwc",
+    "sheet": "Shapes 3"
+  },
+  {
+    "geometry": "frame",
+    "lineStyle": "dash-dot",
+    "created": true,
+    "id": "8kxxjm",
+    "sheet": "Shapes 3"
+  },
+  {
+    "geometry": "halfFrame",
+    "lineStyle": "dash-dot-dot",
+    "created": true,
+    "id": "rbv8qz",
+    "sheet": "Shapes 3"
+  },
+  {
+    "geometry": "corner",
+    "lineStyle": "solid",
+    "created": true,
+    "id": "73i2dz",
+    "sheet": "Shapes 3"
+  },
+  {
+    "geometry": "diagStripe",
+    "lineStyle": "dashed",
+    "created": true,
+    "id": "dlyuyz",
+    "sheet": "Shapes 3"
+  },
+  {
+    "geometry": "chord",
+    "lineStyle": "dotted",
+    "created": true,
+    "id": "soyz8t",
+    "sheet": "Shapes 3"
+  },
+  {
+    "geometry": "arc",
+    "lineStyle": "dash-dot",
+    "created": true,
+    "id": "m7ki0h",
+    "sheet": "Shapes 3"
+  },
+  {
+    "geometry": "leftBracket",
+    "lineStyle": "dash-dot-dot",
+    "created": true,
+    "id": "641qjc",
+    "sheet": "Shapes 3"
+  },
+  {
+    "geometry": "rightBracket",
+    "lineStyle": "solid",
+    "created": true,
+    "id": "fa41ob",
+    "sheet": "Shapes 3"
+  },
+  {
+    "geometry": "leftBrace",
+    "lineStyle": "dashed",
+    "created": true,
+    "id": "thi9bt",
+    "sheet": "Shapes 3"
+  },
+  {
+    "geometry": "rightBrace",
+    "lineStyle": "dotted",
+    "created": true,
+    "id": "ikbd1z",
+    "sheet": "Shapes 3"
+  },
+  {
+    "geometry": "bracketPair",
+    "lineStyle": "dash-dot",
+    "created": true,
+    "id": "v3z7yi",
+    "sheet": "Shapes 3"
+  },
+  {
+    "geometry": "bracePair",
+    "lineStyle": "dash-dot-dot",
+    "created": true,
+    "id": "i5k99j",
+    "sheet": "Shapes 3"
+  },
+  {
+    "geometry": "straightConnector1",
+    "lineStyle": "solid",
+    "created": true,
+    "id": "kn99y4",
+    "sheet": "Shapes 3"
+  },
+  {
+    "geometry": "bentConnector2",
+    "lineStyle": "dashed",
+    "created": true,
+    "id": "5yw0ps",
+    "sheet": "Shapes 3"
+  },
+  {
+    "geometry": "bentConnector3",
+    "lineStyle": "dotted",
+    "created": true,
+    "id": "og26jt",
+    "sheet": "Shapes 3"
+  },
+  {
+    "geometry": "bentConnector4",
+    "lineStyle": "dash-dot",
+    "created": true,
+    "id": "6knh74",
+    "sheet": "Shapes 3"
+  },
+  {
+    "geometry": "bentConnector5",
+    "lineStyle": "dash-dot-dot",
+    "created": true,
+    "id": "dqpezk",
+    "sheet": "Shapes 3"
+  },
+  {
+    "geometry": "curvedConnector2",
+    "lineStyle": "solid",
+    "created": true,
+    "id": "y8k8jb",
+    "sheet": "Shapes 3"
+  },
+  {
+    "geometry": "curvedConnector3",
+    "lineStyle": "dashed",
+    "created": true,
+    "id": "8bd38c",
+    "sheet": "Shapes 3"
+  },
+  {
+    "geometry": "curvedConnector4",
+    "lineStyle": "dotted",
+    "created": true,
+    "id": "idyagq",
+    "sheet": "Shapes 3"
+  },
+  {
+    "geometry": "curvedConnector5",
+    "lineStyle": "dash-dot",
+    "created": true,
+    "id": "fcsv9n",
+    "sheet": "Shapes 3"
+  },
+  {
+    "geometry": "callout1",
+    "lineStyle": "dash-dot-dot",
+    "created": true,
+    "id": "z5sau1",
+    "sheet": "Shapes 3"
+  },
+  {
+    "geometry": "callout2",
+    "lineStyle": "solid",
+    "created": true,
+    "id": "lnoxe2",
+    "sheet": "Shapes 3"
+  },
+  {
+    "geometry": "callout3",
+    "lineStyle": "dashed",
+    "created": true,
+    "id": "nv23i4",
+    "sheet": "Shapes 3"
+  },
+  {
+    "geometry": "accentCallout1",
+    "lineStyle": "dotted",
+    "created": true,
+    "id": "lwzxpt",
+    "sheet": "Shapes 3"
+  },
+  {
+    "geometry": "accentCallout2",
+    "lineStyle": "dash-dot",
+    "created": true,
+    "id": "vrgcds",
+    "sheet": "Shapes 3"
+  },
+  {
+    "geometry": "accentCallout3",
+    "lineStyle": "dash-dot-dot",
+    "created": true,
+    "id": "00l8um",
+    "sheet": "Shapes 3"
+  },
+  {
+    "geometry": "borderCallout1",
+    "lineStyle": "solid",
+    "created": true,
+    "id": "pi0yez",
+    "sheet": "Shapes 3"
+  },
+  {
+    "geometry": "borderCallout2",
+    "lineStyle": "dashed",
+    "created": true,
+    "id": "gier4c",
+    "sheet": "Shapes 3"
+  },
+  {
+    "geometry": "borderCallout3",
+    "lineStyle": "dotted",
+    "created": true,
+    "id": "l37t4v",
+    "sheet": "Shapes 3"
+  },
+  {
+    "geometry": "accentBorderCallout1",
+    "lineStyle": "dash-dot",
+    "created": true,
+    "id": "0bcmd3",
+    "sheet": "Shapes 3"
+  },
+  {
+    "geometry": "accentBorderCallout2",
+    "lineStyle": "dash-dot-dot",
+    "created": true,
+    "id": "kj0fno",
+    "sheet": "Shapes 3"
+  },
+  {
+    "geometry": "accentBorderCallout3",
+    "lineStyle": "solid",
+    "created": true,
+    "id": "alu469",
+    "sheet": "Shapes 3"
+  },
+  {
+    "geometry": "wedgeRectCallout",
+    "lineStyle": "dashed",
+    "created": true,
+    "id": "jawrnh",
+    "sheet": "Shapes 3"
+  },
+  {
+    "geometry": "wedgeRoundRectCallout",
+    "lineStyle": "dotted",
+    "created": true,
+    "id": "ieik5o",
+    "sheet": "Shapes 3"
+  },
+  {
+    "geometry": "wedgeEllipseCallout",
+    "lineStyle": "dash-dot",
+    "created": true,
+    "id": "cqusb2",
+    "sheet": "Shapes 3"
+  },
+  {
+    "geometry": "cloudCallout",
+    "lineStyle": "dash-dot-dot",
+    "created": true,
+    "id": "hc7w2a",
+    "sheet": "Shapes 3"
+  },
+  {
+    "geometry": "cloud",
+    "lineStyle": "solid",
+    "created": true,
+    "id": "lb7fcb",
+    "sheet": "Shapes 4"
+  },
+  {
+    "geometry": "ribbon",
+    "lineStyle": "dashed",
+    "created": true,
+    "id": "7di9ms",
+    "sheet": "Shapes 4"
+  },
+  {
+    "geometry": "ribbon2",
+    "lineStyle": "dotted",
+    "created": true,
+    "id": "rlsuvv",
+    "sheet": "Shapes 4"
+  },
+  {
+    "geometry": "ellipseRibbon",
+    "lineStyle": "dash-dot",
+    "created": true,
+    "id": "gaz1el",
+    "sheet": "Shapes 4"
+  },
+  {
+    "geometry": "ellipseRibbon2",
+    "lineStyle": "dash-dot-dot",
+    "created": true,
+    "id": "k04u3y",
+    "sheet": "Shapes 4"
+  },
+  {
+    "geometry": "leftRightRibbon",
+    "lineStyle": "solid",
+    "created": true,
+    "id": "6vh320",
+    "sheet": "Shapes 4"
+  },
+  {
+    "geometry": "verticalScroll",
+    "lineStyle": "dashed",
+    "created": true,
+    "id": "5repen",
+    "sheet": "Shapes 4"
+  },
+  {
+    "geometry": "horizontalScroll",
+    "lineStyle": "dotted",
+    "created": true,
+    "id": "9z5xcn",
+    "sheet": "Shapes 4"
+  },
+  {
+    "geometry": "wave",
+    "lineStyle": "dash-dot",
+    "created": true,
+    "id": "dp3a5p",
+    "sheet": "Shapes 4"
+  },
+  {
+    "geometry": "doubleWave",
+    "lineStyle": "dash-dot-dot",
+    "created": true,
+    "id": "crh35s",
+    "sheet": "Shapes 4"
+  },
+  {
+    "geometry": "plus",
+    "lineStyle": "solid",
+    "created": true,
+    "id": "fgsfic",
+    "sheet": "Shapes 4"
+  },
+  {
+    "geometry": "flowChartProcess",
+    "lineStyle": "dashed",
+    "created": true,
+    "id": "m4o08d",
+    "sheet": "Shapes 4"
+  },
+  {
+    "geometry": "flowChartDecision",
+    "lineStyle": "dotted",
+    "created": true,
+    "id": "f3wj0k",
+    "sheet": "Shapes 4"
+  },
+  {
+    "geometry": "flowChartInputOutput",
+    "lineStyle": "dash-dot",
+    "created": true,
+    "id": "pauylv",
+    "sheet": "Shapes 4"
+  },
+  {
+    "geometry": "flowChartPredefinedProcess",
+    "lineStyle": "dash-dot-dot",
+    "created": true,
+    "id": "82smqc",
+    "sheet": "Shapes 4"
+  },
+  {
+    "geometry": "flowChartInternalStorage",
+    "lineStyle": "solid",
+    "created": true,
+    "id": "4au7fn",
+    "sheet": "Shapes 4"
+  },
+  {
+    "geometry": "flowChartDocument",
+    "lineStyle": "dashed",
+    "created": true,
+    "id": "7q9d7p",
+    "sheet": "Shapes 4"
+  },
+  {
+    "geometry": "flowChartMultidocument",
+    "lineStyle": "dotted",
+    "created": true,
+    "id": "mob04f",
+    "sheet": "Shapes 4"
+  },
+  {
+    "geometry": "flowChartTerminator",
+    "lineStyle": "dash-dot",
+    "created": true,
+    "id": "fkal72",
+    "sheet": "Shapes 4"
+  },
+  {
+    "geometry": "flowChartPreparation",
+    "lineStyle": "dash-dot-dot",
+    "created": true,
+    "id": "z1zyf9",
+    "sheet": "Shapes 4"
+  },
+  {
+    "geometry": "flowChartManualInput",
+    "lineStyle": "solid",
+    "created": true,
+    "id": "1lvbtc",
+    "sheet": "Shapes 4"
+  },
+  {
+    "geometry": "flowChartManualOperation",
+    "lineStyle": "dashed",
+    "created": true,
+    "id": "oqzznq",
+    "sheet": "Shapes 4"
+  },
+  {
+    "geometry": "flowChartConnector",
+    "lineStyle": "dotted",
+    "created": true,
+    "id": "4h5fy5",
+    "sheet": "Shapes 4"
+  },
+  {
+    "geometry": "flowChartPunchedCard",
+    "lineStyle": "dash-dot",
+    "created": true,
+    "id": "4oajae",
+    "sheet": "Shapes 4"
+  },
+  {
+    "geometry": "flowChartPunchedTape",
+    "lineStyle": "dash-dot-dot",
+    "created": true,
+    "id": "kzka8q",
+    "sheet": "Shapes 4"
+  },
+  {
+    "geometry": "flowChartSummingJunction",
+    "lineStyle": "solid",
+    "created": true,
+    "id": "d0fsy2",
+    "sheet": "Shapes 4"
+  },
+  {
+    "geometry": "flowChartOr",
+    "lineStyle": "dashed",
+    "created": true,
+    "id": "kjuaj5",
+    "sheet": "Shapes 4"
+  },
+  {
+    "geometry": "flowChartCollate",
+    "lineStyle": "dotted",
+    "created": true,
+    "id": "aq4a7r",
+    "sheet": "Shapes 4"
+  },
+  {
+    "geometry": "flowChartSort",
+    "lineStyle": "dash-dot",
+    "created": true,
+    "id": "bcc5fx",
+    "sheet": "Shapes 4"
+  },
+  {
+    "geometry": "flowChartExtract",
+    "lineStyle": "dash-dot-dot",
+    "created": true,
+    "id": "1u26la",
+    "sheet": "Shapes 4"
+  },
+  {
+    "geometry": "flowChartMerge",
+    "lineStyle": "solid",
+    "created": true,
+    "id": "k5vzey",
+    "sheet": "Shapes 4"
+  },
+  {
+    "geometry": "flowChartOfflineStorage",
+    "lineStyle": "dashed",
+    "created": true,
+    "id": "h2wwfg",
+    "sheet": "Shapes 4"
+  },
+  {
+    "geometry": "flowChartOnlineStorage",
+    "lineStyle": "dotted",
+    "created": true,
+    "id": "1jqpsh",
+    "sheet": "Shapes 4"
+  },
+  {
+    "geometry": "flowChartMagneticTape",
+    "lineStyle": "dash-dot",
+    "created": true,
+    "id": "6sr6d0",
+    "sheet": "Shapes 4"
+  },
+  {
+    "geometry": "flowChartMagneticDisk",
+    "lineStyle": "dash-dot-dot",
+    "created": true,
+    "id": "bn74aa",
+    "sheet": "Shapes 4"
+  },
+  {
+    "geometry": "flowChartDatabase",
+    "lineStyle": "solid",
+    "created": true,
+    "id": "wlq1ry",
+    "sheet": "Shapes 4"
+  },
+  {
+    "geometry": "flowChartMagneticDrum",
+    "lineStyle": "dashed",
+    "created": true,
+    "id": "hum72p",
+    "sheet": "Shapes 4"
+  },
+  {
+    "geometry": "flowChartDisplay",
+    "lineStyle": "dotted",
+    "created": true,
+    "id": "qjz2rj",
+    "sheet": "Shapes 4"
+  },
+  {
+    "geometry": "flowChartDelay",
+    "lineStyle": "dash-dot",
+    "created": true,
+    "id": "xwdff5",
+    "sheet": "Shapes 4"
+  },
+  {
+    "geometry": "flowChartAlternateProcess",
+    "lineStyle": "dash-dot-dot",
+    "created": true,
+    "id": "dbp1yl",
+    "sheet": "Shapes 4"
+  },
+  {
+    "geometry": "flowChartOffpageConnector",
+    "lineStyle": "solid",
+    "created": true,
+    "id": "pnnah8",
+    "sheet": "Shapes 5"
+  },
+  {
+    "geometry": "actionButtonBlank",
+    "lineStyle": "dashed",
+    "created": true,
+    "id": "bm6m3z",
+    "sheet": "Shapes 5"
+  },
+  {
+    "geometry": "actionButtonHome",
+    "lineStyle": "dotted",
+    "created": true,
+    "id": "l2ncsc",
+    "sheet": "Shapes 5"
+  },
+  {
+    "geometry": "actionButtonHelp",
+    "lineStyle": "dash-dot",
+    "created": true,
+    "id": "b7zcnd",
+    "sheet": "Shapes 5"
+  },
+  {
+    "geometry": "actionButtonInformation",
+    "lineStyle": "dash-dot-dot",
+    "created": true,
+    "id": "iw9v6z",
+    "sheet": "Shapes 5"
+  },
+  {
+    "geometry": "actionButtonForwardNext",
+    "lineStyle": "solid",
+    "created": true,
+    "id": "n33k7t",
+    "sheet": "Shapes 5"
+  },
+  {
+    "geometry": "actionButtonBackPrevious",
+    "lineStyle": "dashed",
+    "created": true,
+    "id": "n9dt0e",
+    "sheet": "Shapes 5"
+  },
+  {
+    "geometry": "actionButtonEnd",
+    "lineStyle": "dotted",
+    "created": true,
+    "id": "icjmc2",
+    "sheet": "Shapes 5"
+  },
+  {
+    "geometry": "actionButtonBeginning",
+    "lineStyle": "dash-dot",
+    "created": true,
+    "id": "o1m6tf",
+    "sheet": "Shapes 5"
+  },
+  {
+    "geometry": "actionButtonReturn",
+    "lineStyle": "dash-dot-dot",
+    "created": true,
+    "id": "4cvbcr",
+    "sheet": "Shapes 5"
+  },
+  {
+    "geometry": "actionButtonDocument",
+    "lineStyle": "solid",
+    "created": true,
+    "id": "qzd9e9",
+    "sheet": "Shapes 5"
+  },
+  {
+    "geometry": "actionButtonSound",
+    "lineStyle": "dashed",
+    "created": true,
+    "id": "j1yeqv",
+    "sheet": "Shapes 5"
+  },
+  {
+    "geometry": "actionButtonMovie",
+    "lineStyle": "dotted",
+    "created": true,
+    "id": "anh6ry",
+    "sheet": "Shapes 5"
+  },
+  {
+    "geometry": "gear6",
+    "lineStyle": "dash-dot",
+    "created": true,
+    "id": "luxjyp",
+    "sheet": "Shapes 5"
+  },
+  {
+    "geometry": "gear9",
+    "lineStyle": "dash-dot-dot",
+    "created": true,
+    "id": "i2apjg",
+    "sheet": "Shapes 5"
+  },
+  {
+    "geometry": "funnel",
+    "lineStyle": "solid",
+    "created": true,
+    "id": "fql7k9",
+    "sheet": "Shapes 5"
+  },
+  {
+    "geometry": "mathPlus",
+    "lineStyle": "dashed",
+    "created": true,
+    "id": "8wth7c",
+    "sheet": "Shapes 5"
+  },
+  {
+    "geometry": "mathMinus",
+    "lineStyle": "dotted",
+    "created": true,
+    "id": "xopxio",
+    "sheet": "Shapes 5"
+  },
+  {
+    "geometry": "mathMultiply",
+    "lineStyle": "dash-dot",
+    "created": true,
+    "id": "84o2zu",
+    "sheet": "Shapes 5"
+  },
+  {
+    "geometry": "mathDivide",
+    "lineStyle": "dash-dot-dot",
+    "created": true,
+    "id": "qc8r0l",
+    "sheet": "Shapes 5"
+  },
+  {
+    "geometry": "mathEqual",
+    "lineStyle": "solid",
+    "created": true,
+    "id": "5hyupw",
+    "sheet": "Shapes 5"
+  },
+  {
+    "geometry": "mathNotEqual",
+    "lineStyle": "dashed",
+    "created": true,
+    "id": "bd1wuk",
+    "sheet": "Shapes 5"
+  },
+  {
+    "geometry": "cornerTabs",
+    "lineStyle": "dotted",
+    "created": true,
+    "id": "mnd6vd",
+    "sheet": "Shapes 5"
+  },
+  {
+    "geometry": "squareTabs",
+    "lineStyle": "dash-dot",
+    "created": true,
+    "id": "fcxnnp",
+    "sheet": "Shapes 5"
+  },
+  {
+    "geometry": "plaqueTabs",
+    "lineStyle": "dash-dot-dot",
+    "created": true,
+    "id": "9p0ac1",
+    "sheet": "Shapes 5"
+  },
+  {
+    "geometry": "chartX",
+    "lineStyle": "solid",
+    "created": true,
+    "id": "b5ceue",
+    "sheet": "Shapes 5"
+  },
+  {
+    "geometry": "chartStar",
+    "lineStyle": "dashed",
+    "created": true,
+    "id": "6hdcpj",
+    "sheet": "Shapes 5"
+  },
+  {
+    "geometry": "chartPlus",
+    "lineStyle": "dotted",
+    "created": true,
+    "id": "rtrg76",
+    "sheet": "Shapes 5"
+  },
+  {
+    "geometry": "custom",
+    "error": "Error: geometry \"custom\" requires at least one custom path."
+  },
+  {
+    "geometry": "textbox",
+    "lineStyle": "dash-dot-dot",
+    "created": true,
+    "id": "cqjho2",
+    "sheet": "Shapes 5"
+  }
+]

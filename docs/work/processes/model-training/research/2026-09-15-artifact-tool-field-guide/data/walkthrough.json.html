@@ -1,0 +1,4435 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>walkthrough.json · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="walkthrough.json">Raw file</a> · <a data-public-raw download href="walkthrough.json">Download</a></p><article><h1>walkthrough.json</h1><pre class="public-code"><code>{
+  &quot;packageVersion&quot;: &quot;2.8.59&quot;,
+  &quot;capturedAt&quot;: &quot;2026-09-15T19:16:22.104Z&quot;,
+  &quot;kind&quot;: &quot;actual package executions with synthetic inputs&quot;,
+  &quot;runs&quot;: [
+    {
+      &quot;quantity&quot;: 2,
+      &quot;steps&quot;: [
+        {
+          &quot;id&quot;: &quot;create&quot;,
+          &quot;label&quot;: &quot;Create&quot;,
+          &quot;intent&quot;: &quot;A workbook is the container. A worksheet gives cells a place to live.&quot;,
+          &quot;code&quot;: &quot;const workbook = Workbook.create();\nconst sheet = workbook.worksheets.add(&#x27;Sales&#x27;);&quot;,
+          &quot;input&quot;: {
+            &quot;worksheet&quot;: &quot;Sales&quot;
+          },
+          &quot;returned&quot;: {
+            &quot;worksheetCount&quot;: 1
+          },
+          &quot;before&quot;: {
+            &quot;worksheets&quot;: []
+          },
+          &quot;after&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [],
+                &quot;charts&quot;: []
+              }
+            ]
+          }
+        },
+        {
+          &quot;id&quot;: &quot;write&quot;,
+          &quot;label&quot;: &quot;Write&quot;,
+          &quot;intent&quot;: &quot;Put the source facts in cells. Revenue is still empty because it is a calculation.&quot;,
+          &quot;code&quot;: &quot;sheet.getRange(&#x27;A1:D3&#x27;).values = input.values;&quot;,
+          &quot;input&quot;: {
+            &quot;range&quot;: &quot;A1:D3&quot;,
+            &quot;values&quot;: [
+              [
+                &quot;Product&quot;,
+                &quot;Quantity&quot;,
+                &quot;Price&quot;,
+                &quot;Revenue&quot;
+              ],
+              [
+                &quot;Standard&quot;,
+                2,
+                10,
+                null
+              ],
+              [
+                &quot;Premium&quot;,
+                3,
+                20,
+                null
+              ]
+            ]
+          },
+          &quot;returned&quot;: {
+            &quot;writtenRange&quot;: &quot;A1:D3&quot;
+          },
+          &quot;before&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [],
+                &quot;charts&quot;: []
+              }
+            ]
+          },
+          &quot;after&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    &quot;Product&quot;,
+                    &quot;Quantity&quot;,
+                    &quot;Price&quot;,
+                    &quot;Revenue&quot;
+                  ],
+                  [
+                    &quot;Standard&quot;,
+                    2,
+                    10,
+                    null
+                  ],
+                  [
+                    &quot;Premium&quot;,
+                    3,
+                    20,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [],
+                &quot;charts&quot;: []
+              }
+            ]
+          }
+        },
+        {
+          &quot;id&quot;: &quot;calculate&quot;,
+          &quot;label&quot;: &quot;Calculate&quot;,
+          &quot;intent&quot;: &quot;Store the rule once, fill it down, and calculate the result from the inputs.&quot;,
+          &quot;code&quot;: &quot;sheet.getRange(&#x27;D2&#x27;).formulas = [[&#x27;=B2*C2&#x27;]];\nsheet.getRange(&#x27;D2:D3&#x27;).fillDown();\nsheet.getRange(&#x27;C5&#x27;).values = [[&#x27;Total&#x27;]];\nsheet.getRange(&#x27;D5&#x27;).formulas = [[&#x27;=SUM(D2:D3)&#x27;]];\nworkbook.recalculate();&quot;,
+          &quot;input&quot;: {
+            &quot;formula&quot;: &quot;=B2*C2&quot;,
+            &quot;fill&quot;: &quot;D2:D3&quot;,
+            &quot;total&quot;: &quot;=SUM(D2:D3)&quot;
+          },
+          &quot;returned&quot;: {
+            &quot;total&quot;: 80
+          },
+          &quot;before&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    &quot;Product&quot;,
+                    &quot;Quantity&quot;,
+                    &quot;Price&quot;,
+                    &quot;Revenue&quot;
+                  ],
+                  [
+                    &quot;Standard&quot;,
+                    2,
+                    10,
+                    null
+                  ],
+                  [
+                    &quot;Premium&quot;,
+                    3,
+                    20,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [],
+                &quot;charts&quot;: []
+              }
+            ]
+          },
+          &quot;after&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    &quot;Product&quot;,
+                    &quot;Quantity&quot;,
+                    &quot;Price&quot;,
+                    &quot;Revenue&quot;
+                  ],
+                  [
+                    &quot;Standard&quot;,
+                    2,
+                    10,
+                    20
+                  ],
+                  [
+                    &quot;Premium&quot;,
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    &quot;Total&quot;,
+                    80
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B2*C2&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B3*C3&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=SUM(D2:D3)&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [],
+                &quot;charts&quot;: []
+              }
+            ]
+          }
+        },
+        {
+          &quot;id&quot;: &quot;format&quot;,
+          &quot;label&quot;: &quot;Organize&quot;,
+          &quot;intent&quot;: &quot;A named Excel Table adds structure. Formatting helps the reader distinguish inputs and calculated results.&quot;,
+          &quot;code&quot;: &quot;sheet.tables.add(&#x27;A1:D3&#x27;, true, &#x27;SalesData&#x27;);\nsheet.getRange(&#x27;C2:D5&#x27;).setNumberFormat(&#x27;$#,##0&#x27;);\nsheet.getRange(&#x27;A1:D1&#x27;).format = { fill:&#x27;#155e63&#x27;, font:{bold:true,color:&#x27;#ffffff&#x27;} };&quot;,
+          &quot;input&quot;: {
+            &quot;table&quot;: &quot;SalesData&quot;,
+            &quot;hasHeaders&quot;: true,
+            &quot;numberFormat&quot;: &quot;$#,##0&quot;
+          },
+          &quot;returned&quot;: {
+            &quot;tables&quot;: 1,
+            &quot;format&quot;: &quot;currency&quot;
+          },
+          &quot;before&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    &quot;Product&quot;,
+                    &quot;Quantity&quot;,
+                    &quot;Price&quot;,
+                    &quot;Revenue&quot;
+                  ],
+                  [
+                    &quot;Standard&quot;,
+                    2,
+                    10,
+                    20
+                  ],
+                  [
+                    &quot;Premium&quot;,
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    &quot;Total&quot;,
+                    80
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B2*C2&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B3*C3&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=SUM(D2:D3)&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [],
+                &quot;charts&quot;: []
+              }
+            ]
+          },
+          &quot;after&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    &quot;Product&quot;,
+                    &quot;Quantity&quot;,
+                    &quot;Price&quot;,
+                    &quot;Revenue&quot;
+                  ],
+                  [
+                    &quot;Standard&quot;,
+                    2,
+                    10,
+                    20
+                  ],
+                  [
+                    &quot;Premium&quot;,
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    &quot;Total&quot;,
+                    80
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B2*C2&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B3*C3&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=SUM(D2:D3)&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [
+                  {
+                    &quot;name&quot;: &quot;SalesData&quot;,
+                    &quot;range&quot;: &quot;A1:D3&quot;
+                  }
+                ],
+                &quot;charts&quot;: []
+              }
+            ]
+          }
+        },
+        {
+          &quot;id&quot;: &quot;chart&quot;,
+          &quot;label&quot;: &quot;Visualize&quot;,
+          &quot;intent&quot;: &quot;The chart points at worksheet ranges. Its stored references explain where the picture gets its values.&quot;,
+          &quot;code&quot;: &quot;const chart = sheet.charts.add(&#x27;bar&#x27;, [sheet.getRange(&#x27;A1:A3&#x27;),sheet.getRange(&#x27;D1:D3&#x27;)]);\nchart.setPosition(&#x27;A8&#x27;,&#x27;F19&#x27;);\nchart.title.text = &#x27;Revenue by product&#x27;;&quot;,
+          &quot;input&quot;: {
+            &quot;type&quot;: &quot;bar&quot;,
+            &quot;categories&quot;: &quot;A1:A3&quot;,
+            &quot;values&quot;: &quot;D1:D3&quot;
+          },
+          &quot;returned&quot;: {
+            &quot;charts&quot;: 1,
+            &quot;source&quot;: [
+              &quot;&#x27;Sales&#x27;!$D$2:$D$3&quot;
+            ]
+          },
+          &quot;before&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    &quot;Product&quot;,
+                    &quot;Quantity&quot;,
+                    &quot;Price&quot;,
+                    &quot;Revenue&quot;
+                  ],
+                  [
+                    &quot;Standard&quot;,
+                    2,
+                    10,
+                    20
+                  ],
+                  [
+                    &quot;Premium&quot;,
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    &quot;Total&quot;,
+                    80
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B2*C2&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B3*C3&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=SUM(D2:D3)&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [
+                  {
+                    &quot;name&quot;: &quot;SalesData&quot;,
+                    &quot;range&quot;: &quot;A1:D3&quot;
+                  }
+                ],
+                &quot;charts&quot;: []
+              }
+            ]
+          },
+          &quot;after&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    &quot;Product&quot;,
+                    &quot;Quantity&quot;,
+                    &quot;Price&quot;,
+                    &quot;Revenue&quot;
+                  ],
+                  [
+                    &quot;Standard&quot;,
+                    2,
+                    10,
+                    20
+                  ],
+                  [
+                    &quot;Premium&quot;,
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    &quot;Total&quot;,
+                    80
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B2*C2&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B3*C3&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=SUM(D2:D3)&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [
+                  {
+                    &quot;name&quot;: &quot;SalesData&quot;,
+                    &quot;range&quot;: &quot;A1:D3&quot;
+                  }
+                ],
+                &quot;charts&quot;: [
+                  {
+                    &quot;type&quot;: &quot;bar&quot;,
+                    &quot;title&quot;: &quot;Revenue by product&quot;,
+                    &quot;series&quot;: [
+                      {
+                        &quot;name&quot;: &quot;Revenue&quot;,
+                        &quot;formula&quot;: &quot;&#x27;Sales&#x27;!$D$2:$D$3&quot;,
+                        &quot;categoryFormula&quot;: &quot;&#x27;Sales&#x27;!$A$2:$A$3&quot;
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          &quot;id&quot;: &quot;inspect&quot;,
+          &quot;label&quot;: &quot;Inspect&quot;,
+          &quot;intent&quot;: &quot;Inspect gives a compact account of the model. Trace follows a result back to the cells that feed it.&quot;,
+          &quot;code&quot;: &quot;const inspection = await workbook.inspect({kind:&#x27;sheet,table,formula,chart&#x27;});\nconst trace = workbook.trace(&#x27;Sales!D5&#x27;);&quot;,
+          &quot;input&quot;: {
+            &quot;kind&quot;: &quot;sheet,table,formula,chart&quot;,
+            &quot;trace&quot;: &quot;Sales!D5&quot;
+          },
+          &quot;returned&quot;: {
+            &quot;inspection&quot;: {
+              &quot;recordCount&quot;: 5,
+              &quot;truncated&quot;: false,
+              &quot;metadata&quot;: {
+                &quot;revision&quot;: &quot;0llezd&quot;,
+                &quot;target&quot;: {
+                  &quot;id&quot;: &quot;wb/7p6tlo&quot;,
+                  &quot;beforeLines&quot;: 0,
+                  &quot;afterLines&quot;: 0
+                },
+                &quot;kind&quot;: {
+                  &quot;requested&quot;: &quot;sheet,table,formula,chart&quot;,
+                  &quot;tokens&quot;: [
+                    &quot;sheet&quot;,
+                    &quot;table&quot;,
+                    &quot;formula&quot;
+                  ]
+                },
+                &quot;include&quot;: {
+                  &quot;tokens&quot;: []
+                },
+                &quot;exclude&quot;: {
+                  &quot;tokens&quot;: []
+                },
+                &quot;notices&quot;: [
+                  &quot;Unknown kind tokens: chart&quot;
+                ]
+              }
+            },
+            &quot;trace&quot;: {
+              &quot;cell&quot;: &quot;Sales!D5&quot;,
+              &quot;sheetName&quot;: &quot;Sales&quot;,
+              &quot;address&quot;: &quot;D5&quot;,
+              &quot;formula&quot;: &quot;=SUM(D2:D3)&quot;,
+              &quot;value&quot;: 80,
+              &quot;params&quot;: [
+                {
+                  &quot;cell&quot;: &quot;Sales!D2&quot;,
+                  &quot;sheetName&quot;: &quot;Sales&quot;,
+                  &quot;address&quot;: &quot;D2&quot;,
+                  &quot;formula&quot;: &quot;=B2*C2&quot;,
+                  &quot;value&quot;: 20,
+                  &quot;params&quot;: [
+                    {
+                      &quot;cell&quot;: &quot;Sales!B2&quot;,
+                      &quot;sheetName&quot;: &quot;Sales&quot;,
+                      &quot;address&quot;: &quot;B2&quot;,
+                      &quot;formula&quot;: null,
+                      &quot;value&quot;: 2,
+                      &quot;params&quot;: []
+                    },
+                    {
+                      &quot;cell&quot;: &quot;Sales!C2&quot;,
+                      &quot;sheetName&quot;: &quot;Sales&quot;,
+                      &quot;address&quot;: &quot;C2&quot;,
+                      &quot;formula&quot;: null,
+                      &quot;value&quot;: 10,
+                      &quot;params&quot;: []
+                    }
+                  ]
+                },
+                {
+                  &quot;cell&quot;: &quot;Sales!D3&quot;,
+                  &quot;sheetName&quot;: &quot;Sales&quot;,
+                  &quot;address&quot;: &quot;D3&quot;,
+                  &quot;formula&quot;: &quot;=B3*C3&quot;,
+                  &quot;value&quot;: 60,
+                  &quot;params&quot;: [
+                    {
+                      &quot;cell&quot;: &quot;Sales!B3&quot;,
+                      &quot;sheetName&quot;: &quot;Sales&quot;,
+                      &quot;address&quot;: &quot;B3&quot;,
+                      &quot;formula&quot;: null,
+                      &quot;value&quot;: 3,
+                      &quot;params&quot;: []
+                    },
+                    {
+                      &quot;cell&quot;: &quot;Sales!C3&quot;,
+                      &quot;sheetName&quot;: &quot;Sales&quot;,
+                      &quot;address&quot;: &quot;C3&quot;,
+                      &quot;formula&quot;: null,
+                      &quot;value&quot;: 20,
+                      &quot;params&quot;: []
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          &quot;before&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    &quot;Product&quot;,
+                    &quot;Quantity&quot;,
+                    &quot;Price&quot;,
+                    &quot;Revenue&quot;
+                  ],
+                  [
+                    &quot;Standard&quot;,
+                    2,
+                    10,
+                    20
+                  ],
+                  [
+                    &quot;Premium&quot;,
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    &quot;Total&quot;,
+                    80
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B2*C2&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B3*C3&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=SUM(D2:D3)&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [
+                  {
+                    &quot;name&quot;: &quot;SalesData&quot;,
+                    &quot;range&quot;: &quot;A1:D3&quot;
+                  }
+                ],
+                &quot;charts&quot;: [
+                  {
+                    &quot;type&quot;: &quot;bar&quot;,
+                    &quot;title&quot;: &quot;Revenue by product&quot;,
+                    &quot;series&quot;: [
+                      {
+                        &quot;name&quot;: &quot;Revenue&quot;,
+                        &quot;formula&quot;: &quot;&#x27;Sales&#x27;!$D$2:$D$3&quot;,
+                        &quot;categoryFormula&quot;: &quot;&#x27;Sales&#x27;!$A$2:$A$3&quot;
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          &quot;after&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    &quot;Product&quot;,
+                    &quot;Quantity&quot;,
+                    &quot;Price&quot;,
+                    &quot;Revenue&quot;
+                  ],
+                  [
+                    &quot;Standard&quot;,
+                    2,
+                    10,
+                    20
+                  ],
+                  [
+                    &quot;Premium&quot;,
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    &quot;Total&quot;,
+                    80
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B2*C2&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B3*C3&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=SUM(D2:D3)&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [
+                  {
+                    &quot;name&quot;: &quot;SalesData&quot;,
+                    &quot;range&quot;: &quot;A1:D3&quot;
+                  }
+                ],
+                &quot;charts&quot;: [
+                  {
+                    &quot;type&quot;: &quot;bar&quot;,
+                    &quot;title&quot;: &quot;Revenue by product&quot;,
+                    &quot;series&quot;: [
+                      {
+                        &quot;name&quot;: &quot;Revenue&quot;,
+                        &quot;formula&quot;: &quot;&#x27;Sales&#x27;!$D$2:$D$3&quot;,
+                        &quot;categoryFormula&quot;: &quot;&#x27;Sales&#x27;!$A$2:$A$3&quot;
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          &quot;id&quot;: &quot;export&quot;,
+          &quot;label&quot;: &quot;Export&quot;,
+          &quot;intent&quot;: &quot;A picture and an Excel workbook are different deliverables. Save both, then check the workbook itself.&quot;,
+          &quot;code&quot;: &quot;const file = await SpreadsheetFile.exportXlsx(workbook);\nawait file.save(&#x27;sales.xlsx&#x27;);\nconst image = await workbook.render({sheetName:&#x27;Sales&#x27;,range:&#x27;A1:F19&#x27;,scale:1.5});&quot;,
+          &quot;input&quot;: {
+            &quot;formats&quot;: [
+              &quot;xlsx&quot;,
+              &quot;png&quot;
+            ]
+          },
+          &quot;returned&quot;: {
+            &quot;xlsx&quot;: &quot;files/sales-2.xlsx&quot;,
+            &quot;png&quot;: &quot;files/sales-2.png&quot;,
+            &quot;total&quot;: 80
+          },
+          &quot;before&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    &quot;Product&quot;,
+                    &quot;Quantity&quot;,
+                    &quot;Price&quot;,
+                    &quot;Revenue&quot;
+                  ],
+                  [
+                    &quot;Standard&quot;,
+                    2,
+                    10,
+                    20
+                  ],
+                  [
+                    &quot;Premium&quot;,
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    &quot;Total&quot;,
+                    80
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B2*C2&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B3*C3&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=SUM(D2:D3)&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [
+                  {
+                    &quot;name&quot;: &quot;SalesData&quot;,
+                    &quot;range&quot;: &quot;A1:D3&quot;
+                  }
+                ],
+                &quot;charts&quot;: [
+                  {
+                    &quot;type&quot;: &quot;bar&quot;,
+                    &quot;title&quot;: &quot;Revenue by product&quot;,
+                    &quot;series&quot;: [
+                      {
+                        &quot;name&quot;: &quot;Revenue&quot;,
+                        &quot;formula&quot;: &quot;&#x27;Sales&#x27;!$D$2:$D$3&quot;,
+                        &quot;categoryFormula&quot;: &quot;&#x27;Sales&#x27;!$A$2:$A$3&quot;
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          &quot;after&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    &quot;Product&quot;,
+                    &quot;Quantity&quot;,
+                    &quot;Price&quot;,
+                    &quot;Revenue&quot;
+                  ],
+                  [
+                    &quot;Standard&quot;,
+                    2,
+                    10,
+                    20
+                  ],
+                  [
+                    &quot;Premium&quot;,
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    &quot;Total&quot;,
+                    80
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B2*C2&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B3*C3&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=SUM(D2:D3)&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [
+                  {
+                    &quot;name&quot;: &quot;SalesData&quot;,
+                    &quot;range&quot;: &quot;A1:D3&quot;
+                  }
+                ],
+                &quot;charts&quot;: [
+                  {
+                    &quot;type&quot;: &quot;bar&quot;,
+                    &quot;title&quot;: &quot;Revenue by product&quot;,
+                    &quot;series&quot;: [
+                      {
+                        &quot;name&quot;: &quot;Revenue&quot;,
+                        &quot;formula&quot;: &quot;&#x27;Sales&#x27;!$D$2:$D$3&quot;,
+                        &quot;categoryFormula&quot;: &quot;&#x27;Sales&#x27;!$A$2:$A$3&quot;
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          &quot;id&quot;: &quot;reopen&quot;,
+          &quot;label&quot;: &quot;Reopen&quot;,
+          &quot;intent&quot;: &quot;A saved file deserves its own check. Here the total, formulas, native table and chart survive re-import.&quot;,
+          &quot;code&quot;: &quot;const reopened = await SpreadsheetFile.importXlsx(await FileBlob.load(&#x27;sales.xlsx&#x27;));\nreopened.recalculate();&quot;,
+          &quot;input&quot;: {
+            &quot;file&quot;: &quot;sales.xlsx&quot;
+          },
+          &quot;returned&quot;: {
+            &quot;total&quot;: 80,
+            &quot;formulas&quot;: [
+              [
+                &quot;=B2*C2&quot;
+              ],
+              [
+                &quot;=B3*C3&quot;
+              ]
+            ],
+            &quot;tables&quot;: 1,
+            &quot;charts&quot;: 1
+          },
+          &quot;before&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    &quot;Product&quot;,
+                    &quot;Quantity&quot;,
+                    &quot;Price&quot;,
+                    &quot;Revenue&quot;
+                  ],
+                  [
+                    &quot;Standard&quot;,
+                    2,
+                    10,
+                    20
+                  ],
+                  [
+                    &quot;Premium&quot;,
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    &quot;Total&quot;,
+                    80
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B2*C2&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B3*C3&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=SUM(D2:D3)&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [
+                  {
+                    &quot;name&quot;: &quot;SalesData&quot;,
+                    &quot;range&quot;: &quot;A1:D3&quot;
+                  }
+                ],
+                &quot;charts&quot;: [
+                  {
+                    &quot;type&quot;: &quot;bar&quot;,
+                    &quot;title&quot;: &quot;Revenue by product&quot;,
+                    &quot;series&quot;: [
+                      {
+                        &quot;name&quot;: &quot;Revenue&quot;,
+                        &quot;formula&quot;: &quot;&#x27;Sales&#x27;!$D$2:$D$3&quot;,
+                        &quot;categoryFormula&quot;: &quot;&#x27;Sales&#x27;!$A$2:$A$3&quot;
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          &quot;after&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    &quot;Product&quot;,
+                    &quot;Quantity&quot;,
+                    &quot;Price&quot;,
+                    &quot;Revenue&quot;
+                  ],
+                  [
+                    &quot;Standard&quot;,
+                    2,
+                    10,
+                    20
+                  ],
+                  [
+                    &quot;Premium&quot;,
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    &quot;Total&quot;,
+                    80
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B2*C2&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B3*C3&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=SUM(D2:D3)&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [
+                  {
+                    &quot;name&quot;: &quot;SalesData&quot;,
+                    &quot;range&quot;: &quot;A1:D3&quot;
+                  }
+                ],
+                &quot;charts&quot;: [
+                  {
+                    &quot;type&quot;: &quot;bar&quot;,
+                    &quot;title&quot;: &quot;Revenue by product&quot;,
+                    &quot;series&quot;: [
+                      {
+                        &quot;name&quot;: &quot;Revenue&quot;,
+                        &quot;formula&quot;: &quot;&#x27;Sales&#x27;!$D$2:$D$3&quot;,
+                        &quot;categoryFormula&quot;: &quot;&#x27;Sales&#x27;!$A$2:$A$3&quot;
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      &quot;quantity&quot;: 5,
+      &quot;steps&quot;: [
+        {
+          &quot;id&quot;: &quot;create&quot;,
+          &quot;label&quot;: &quot;Create&quot;,
+          &quot;intent&quot;: &quot;A workbook is the container. A worksheet gives cells a place to live.&quot;,
+          &quot;code&quot;: &quot;const workbook = Workbook.create();\nconst sheet = workbook.worksheets.add(&#x27;Sales&#x27;);&quot;,
+          &quot;input&quot;: {
+            &quot;worksheet&quot;: &quot;Sales&quot;
+          },
+          &quot;returned&quot;: {
+            &quot;worksheetCount&quot;: 1
+          },
+          &quot;before&quot;: {
+            &quot;worksheets&quot;: []
+          },
+          &quot;after&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [],
+                &quot;charts&quot;: []
+              }
+            ]
+          }
+        },
+        {
+          &quot;id&quot;: &quot;write&quot;,
+          &quot;label&quot;: &quot;Write&quot;,
+          &quot;intent&quot;: &quot;Put the source facts in cells. Revenue is still empty because it is a calculation.&quot;,
+          &quot;code&quot;: &quot;sheet.getRange(&#x27;A1:D3&#x27;).values = input.values;&quot;,
+          &quot;input&quot;: {
+            &quot;range&quot;: &quot;A1:D3&quot;,
+            &quot;values&quot;: [
+              [
+                &quot;Product&quot;,
+                &quot;Quantity&quot;,
+                &quot;Price&quot;,
+                &quot;Revenue&quot;
+              ],
+              [
+                &quot;Standard&quot;,
+                5,
+                10,
+                null
+              ],
+              [
+                &quot;Premium&quot;,
+                3,
+                20,
+                null
+              ]
+            ]
+          },
+          &quot;returned&quot;: {
+            &quot;writtenRange&quot;: &quot;A1:D3&quot;
+          },
+          &quot;before&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [],
+                &quot;charts&quot;: []
+              }
+            ]
+          },
+          &quot;after&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    &quot;Product&quot;,
+                    &quot;Quantity&quot;,
+                    &quot;Price&quot;,
+                    &quot;Revenue&quot;
+                  ],
+                  [
+                    &quot;Standard&quot;,
+                    5,
+                    10,
+                    null
+                  ],
+                  [
+                    &quot;Premium&quot;,
+                    3,
+                    20,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [],
+                &quot;charts&quot;: []
+              }
+            ]
+          }
+        },
+        {
+          &quot;id&quot;: &quot;calculate&quot;,
+          &quot;label&quot;: &quot;Calculate&quot;,
+          &quot;intent&quot;: &quot;Store the rule once, fill it down, and calculate the result from the inputs.&quot;,
+          &quot;code&quot;: &quot;sheet.getRange(&#x27;D2&#x27;).formulas = [[&#x27;=B2*C2&#x27;]];\nsheet.getRange(&#x27;D2:D3&#x27;).fillDown();\nsheet.getRange(&#x27;C5&#x27;).values = [[&#x27;Total&#x27;]];\nsheet.getRange(&#x27;D5&#x27;).formulas = [[&#x27;=SUM(D2:D3)&#x27;]];\nworkbook.recalculate();&quot;,
+          &quot;input&quot;: {
+            &quot;formula&quot;: &quot;=B2*C2&quot;,
+            &quot;fill&quot;: &quot;D2:D3&quot;,
+            &quot;total&quot;: &quot;=SUM(D2:D3)&quot;
+          },
+          &quot;returned&quot;: {
+            &quot;total&quot;: 110
+          },
+          &quot;before&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    &quot;Product&quot;,
+                    &quot;Quantity&quot;,
+                    &quot;Price&quot;,
+                    &quot;Revenue&quot;
+                  ],
+                  [
+                    &quot;Standard&quot;,
+                    5,
+                    10,
+                    null
+                  ],
+                  [
+                    &quot;Premium&quot;,
+                    3,
+                    20,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [],
+                &quot;charts&quot;: []
+              }
+            ]
+          },
+          &quot;after&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    &quot;Product&quot;,
+                    &quot;Quantity&quot;,
+                    &quot;Price&quot;,
+                    &quot;Revenue&quot;
+                  ],
+                  [
+                    &quot;Standard&quot;,
+                    5,
+                    10,
+                    50
+                  ],
+                  [
+                    &quot;Premium&quot;,
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    &quot;Total&quot;,
+                    110
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B2*C2&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B3*C3&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=SUM(D2:D3)&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [],
+                &quot;charts&quot;: []
+              }
+            ]
+          }
+        },
+        {
+          &quot;id&quot;: &quot;format&quot;,
+          &quot;label&quot;: &quot;Organize&quot;,
+          &quot;intent&quot;: &quot;A named Excel Table adds structure. Formatting helps the reader distinguish inputs and calculated results.&quot;,
+          &quot;code&quot;: &quot;sheet.tables.add(&#x27;A1:D3&#x27;, true, &#x27;SalesData&#x27;);\nsheet.getRange(&#x27;C2:D5&#x27;).setNumberFormat(&#x27;$#,##0&#x27;);\nsheet.getRange(&#x27;A1:D1&#x27;).format = { fill:&#x27;#155e63&#x27;, font:{bold:true,color:&#x27;#ffffff&#x27;} };&quot;,
+          &quot;input&quot;: {
+            &quot;table&quot;: &quot;SalesData&quot;,
+            &quot;hasHeaders&quot;: true,
+            &quot;numberFormat&quot;: &quot;$#,##0&quot;
+          },
+          &quot;returned&quot;: {
+            &quot;tables&quot;: 1,
+            &quot;format&quot;: &quot;currency&quot;
+          },
+          &quot;before&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    &quot;Product&quot;,
+                    &quot;Quantity&quot;,
+                    &quot;Price&quot;,
+                    &quot;Revenue&quot;
+                  ],
+                  [
+                    &quot;Standard&quot;,
+                    5,
+                    10,
+                    50
+                  ],
+                  [
+                    &quot;Premium&quot;,
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    &quot;Total&quot;,
+                    110
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B2*C2&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B3*C3&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=SUM(D2:D3)&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [],
+                &quot;charts&quot;: []
+              }
+            ]
+          },
+          &quot;after&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    &quot;Product&quot;,
+                    &quot;Quantity&quot;,
+                    &quot;Price&quot;,
+                    &quot;Revenue&quot;
+                  ],
+                  [
+                    &quot;Standard&quot;,
+                    5,
+                    10,
+                    50
+                  ],
+                  [
+                    &quot;Premium&quot;,
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    &quot;Total&quot;,
+                    110
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B2*C2&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B3*C3&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=SUM(D2:D3)&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [
+                  {
+                    &quot;name&quot;: &quot;SalesData&quot;,
+                    &quot;range&quot;: &quot;A1:D3&quot;
+                  }
+                ],
+                &quot;charts&quot;: []
+              }
+            ]
+          }
+        },
+        {
+          &quot;id&quot;: &quot;chart&quot;,
+          &quot;label&quot;: &quot;Visualize&quot;,
+          &quot;intent&quot;: &quot;The chart points at worksheet ranges. Its stored references explain where the picture gets its values.&quot;,
+          &quot;code&quot;: &quot;const chart = sheet.charts.add(&#x27;bar&#x27;, [sheet.getRange(&#x27;A1:A3&#x27;),sheet.getRange(&#x27;D1:D3&#x27;)]);\nchart.setPosition(&#x27;A8&#x27;,&#x27;F19&#x27;);\nchart.title.text = &#x27;Revenue by product&#x27;;&quot;,
+          &quot;input&quot;: {
+            &quot;type&quot;: &quot;bar&quot;,
+            &quot;categories&quot;: &quot;A1:A3&quot;,
+            &quot;values&quot;: &quot;D1:D3&quot;
+          },
+          &quot;returned&quot;: {
+            &quot;charts&quot;: 1,
+            &quot;source&quot;: [
+              &quot;&#x27;Sales&#x27;!$D$2:$D$3&quot;
+            ]
+          },
+          &quot;before&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    &quot;Product&quot;,
+                    &quot;Quantity&quot;,
+                    &quot;Price&quot;,
+                    &quot;Revenue&quot;
+                  ],
+                  [
+                    &quot;Standard&quot;,
+                    5,
+                    10,
+                    50
+                  ],
+                  [
+                    &quot;Premium&quot;,
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    &quot;Total&quot;,
+                    110
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B2*C2&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B3*C3&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=SUM(D2:D3)&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [
+                  {
+                    &quot;name&quot;: &quot;SalesData&quot;,
+                    &quot;range&quot;: &quot;A1:D3&quot;
+                  }
+                ],
+                &quot;charts&quot;: []
+              }
+            ]
+          },
+          &quot;after&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    &quot;Product&quot;,
+                    &quot;Quantity&quot;,
+                    &quot;Price&quot;,
+                    &quot;Revenue&quot;
+                  ],
+                  [
+                    &quot;Standard&quot;,
+                    5,
+                    10,
+                    50
+                  ],
+                  [
+                    &quot;Premium&quot;,
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    &quot;Total&quot;,
+                    110
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B2*C2&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B3*C3&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=SUM(D2:D3)&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [
+                  {
+                    &quot;name&quot;: &quot;SalesData&quot;,
+                    &quot;range&quot;: &quot;A1:D3&quot;
+                  }
+                ],
+                &quot;charts&quot;: [
+                  {
+                    &quot;type&quot;: &quot;bar&quot;,
+                    &quot;title&quot;: &quot;Revenue by product&quot;,
+                    &quot;series&quot;: [
+                      {
+                        &quot;name&quot;: &quot;Revenue&quot;,
+                        &quot;formula&quot;: &quot;&#x27;Sales&#x27;!$D$2:$D$3&quot;,
+                        &quot;categoryFormula&quot;: &quot;&#x27;Sales&#x27;!$A$2:$A$3&quot;
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          &quot;id&quot;: &quot;inspect&quot;,
+          &quot;label&quot;: &quot;Inspect&quot;,
+          &quot;intent&quot;: &quot;Inspect gives a compact account of the model. Trace follows a result back to the cells that feed it.&quot;,
+          &quot;code&quot;: &quot;const inspection = await workbook.inspect({kind:&#x27;sheet,table,formula,chart&#x27;});\nconst trace = workbook.trace(&#x27;Sales!D5&#x27;);&quot;,
+          &quot;input&quot;: {
+            &quot;kind&quot;: &quot;sheet,table,formula,chart&quot;,
+            &quot;trace&quot;: &quot;Sales!D5&quot;
+          },
+          &quot;returned&quot;: {
+            &quot;inspection&quot;: {
+              &quot;recordCount&quot;: 5,
+              &quot;truncated&quot;: false,
+              &quot;metadata&quot;: {
+                &quot;revision&quot;: &quot;8xbikb&quot;,
+                &quot;target&quot;: {
+                  &quot;id&quot;: &quot;wb/gtsz48&quot;,
+                  &quot;beforeLines&quot;: 0,
+                  &quot;afterLines&quot;: 0
+                },
+                &quot;kind&quot;: {
+                  &quot;requested&quot;: &quot;sheet,table,formula,chart&quot;,
+                  &quot;tokens&quot;: [
+                    &quot;sheet&quot;,
+                    &quot;table&quot;,
+                    &quot;formula&quot;
+                  ]
+                },
+                &quot;include&quot;: {
+                  &quot;tokens&quot;: []
+                },
+                &quot;exclude&quot;: {
+                  &quot;tokens&quot;: []
+                },
+                &quot;notices&quot;: [
+                  &quot;Unknown kind tokens: chart&quot;
+                ]
+              }
+            },
+            &quot;trace&quot;: {
+              &quot;cell&quot;: &quot;Sales!D5&quot;,
+              &quot;sheetName&quot;: &quot;Sales&quot;,
+              &quot;address&quot;: &quot;D5&quot;,
+              &quot;formula&quot;: &quot;=SUM(D2:D3)&quot;,
+              &quot;value&quot;: 110,
+              &quot;params&quot;: [
+                {
+                  &quot;cell&quot;: &quot;Sales!D2&quot;,
+                  &quot;sheetName&quot;: &quot;Sales&quot;,
+                  &quot;address&quot;: &quot;D2&quot;,
+                  &quot;formula&quot;: &quot;=B2*C2&quot;,
+                  &quot;value&quot;: 50,
+                  &quot;params&quot;: [
+                    {
+                      &quot;cell&quot;: &quot;Sales!B2&quot;,
+                      &quot;sheetName&quot;: &quot;Sales&quot;,
+                      &quot;address&quot;: &quot;B2&quot;,
+                      &quot;formula&quot;: null,
+                      &quot;value&quot;: 5,
+                      &quot;params&quot;: []
+                    },
+                    {
+                      &quot;cell&quot;: &quot;Sales!C2&quot;,
+                      &quot;sheetName&quot;: &quot;Sales&quot;,
+                      &quot;address&quot;: &quot;C2&quot;,
+                      &quot;formula&quot;: null,
+                      &quot;value&quot;: 10,
+                      &quot;params&quot;: []
+                    }
+                  ]
+                },
+                {
+                  &quot;cell&quot;: &quot;Sales!D3&quot;,
+                  &quot;sheetName&quot;: &quot;Sales&quot;,
+                  &quot;address&quot;: &quot;D3&quot;,
+                  &quot;formula&quot;: &quot;=B3*C3&quot;,
+                  &quot;value&quot;: 60,
+                  &quot;params&quot;: [
+                    {
+                      &quot;cell&quot;: &quot;Sales!B3&quot;,
+                      &quot;sheetName&quot;: &quot;Sales&quot;,
+                      &quot;address&quot;: &quot;B3&quot;,
+                      &quot;formula&quot;: null,
+                      &quot;value&quot;: 3,
+                      &quot;params&quot;: []
+                    },
+                    {
+                      &quot;cell&quot;: &quot;Sales!C3&quot;,
+                      &quot;sheetName&quot;: &quot;Sales&quot;,
+                      &quot;address&quot;: &quot;C3&quot;,
+                      &quot;formula&quot;: null,
+                      &quot;value&quot;: 20,
+                      &quot;params&quot;: []
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          &quot;before&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    &quot;Product&quot;,
+                    &quot;Quantity&quot;,
+                    &quot;Price&quot;,
+                    &quot;Revenue&quot;
+                  ],
+                  [
+                    &quot;Standard&quot;,
+                    5,
+                    10,
+                    50
+                  ],
+                  [
+                    &quot;Premium&quot;,
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    &quot;Total&quot;,
+                    110
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B2*C2&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B3*C3&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=SUM(D2:D3)&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [
+                  {
+                    &quot;name&quot;: &quot;SalesData&quot;,
+                    &quot;range&quot;: &quot;A1:D3&quot;
+                  }
+                ],
+                &quot;charts&quot;: [
+                  {
+                    &quot;type&quot;: &quot;bar&quot;,
+                    &quot;title&quot;: &quot;Revenue by product&quot;,
+                    &quot;series&quot;: [
+                      {
+                        &quot;name&quot;: &quot;Revenue&quot;,
+                        &quot;formula&quot;: &quot;&#x27;Sales&#x27;!$D$2:$D$3&quot;,
+                        &quot;categoryFormula&quot;: &quot;&#x27;Sales&#x27;!$A$2:$A$3&quot;
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          &quot;after&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    &quot;Product&quot;,
+                    &quot;Quantity&quot;,
+                    &quot;Price&quot;,
+                    &quot;Revenue&quot;
+                  ],
+                  [
+                    &quot;Standard&quot;,
+                    5,
+                    10,
+                    50
+                  ],
+                  [
+                    &quot;Premium&quot;,
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    &quot;Total&quot;,
+                    110
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B2*C2&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B3*C3&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=SUM(D2:D3)&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [
+                  {
+                    &quot;name&quot;: &quot;SalesData&quot;,
+                    &quot;range&quot;: &quot;A1:D3&quot;
+                  }
+                ],
+                &quot;charts&quot;: [
+                  {
+                    &quot;type&quot;: &quot;bar&quot;,
+                    &quot;title&quot;: &quot;Revenue by product&quot;,
+                    &quot;series&quot;: [
+                      {
+                        &quot;name&quot;: &quot;Revenue&quot;,
+                        &quot;formula&quot;: &quot;&#x27;Sales&#x27;!$D$2:$D$3&quot;,
+                        &quot;categoryFormula&quot;: &quot;&#x27;Sales&#x27;!$A$2:$A$3&quot;
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          &quot;id&quot;: &quot;export&quot;,
+          &quot;label&quot;: &quot;Export&quot;,
+          &quot;intent&quot;: &quot;A picture and an Excel workbook are different deliverables. Save both, then check the workbook itself.&quot;,
+          &quot;code&quot;: &quot;const file = await SpreadsheetFile.exportXlsx(workbook);\nawait file.save(&#x27;sales.xlsx&#x27;);\nconst image = await workbook.render({sheetName:&#x27;Sales&#x27;,range:&#x27;A1:F19&#x27;,scale:1.5});&quot;,
+          &quot;input&quot;: {
+            &quot;formats&quot;: [
+              &quot;xlsx&quot;,
+              &quot;png&quot;
+            ]
+          },
+          &quot;returned&quot;: {
+            &quot;xlsx&quot;: &quot;files/sales-5.xlsx&quot;,
+            &quot;png&quot;: &quot;files/sales-5.png&quot;,
+            &quot;total&quot;: 110
+          },
+          &quot;before&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    &quot;Product&quot;,
+                    &quot;Quantity&quot;,
+                    &quot;Price&quot;,
+                    &quot;Revenue&quot;
+                  ],
+                  [
+                    &quot;Standard&quot;,
+                    5,
+                    10,
+                    50
+                  ],
+                  [
+                    &quot;Premium&quot;,
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    &quot;Total&quot;,
+                    110
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B2*C2&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B3*C3&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=SUM(D2:D3)&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [
+                  {
+                    &quot;name&quot;: &quot;SalesData&quot;,
+                    &quot;range&quot;: &quot;A1:D3&quot;
+                  }
+                ],
+                &quot;charts&quot;: [
+                  {
+                    &quot;type&quot;: &quot;bar&quot;,
+                    &quot;title&quot;: &quot;Revenue by product&quot;,
+                    &quot;series&quot;: [
+                      {
+                        &quot;name&quot;: &quot;Revenue&quot;,
+                        &quot;formula&quot;: &quot;&#x27;Sales&#x27;!$D$2:$D$3&quot;,
+                        &quot;categoryFormula&quot;: &quot;&#x27;Sales&#x27;!$A$2:$A$3&quot;
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          &quot;after&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    &quot;Product&quot;,
+                    &quot;Quantity&quot;,
+                    &quot;Price&quot;,
+                    &quot;Revenue&quot;
+                  ],
+                  [
+                    &quot;Standard&quot;,
+                    5,
+                    10,
+                    50
+                  ],
+                  [
+                    &quot;Premium&quot;,
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    &quot;Total&quot;,
+                    110
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B2*C2&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B3*C3&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=SUM(D2:D3)&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [
+                  {
+                    &quot;name&quot;: &quot;SalesData&quot;,
+                    &quot;range&quot;: &quot;A1:D3&quot;
+                  }
+                ],
+                &quot;charts&quot;: [
+                  {
+                    &quot;type&quot;: &quot;bar&quot;,
+                    &quot;title&quot;: &quot;Revenue by product&quot;,
+                    &quot;series&quot;: [
+                      {
+                        &quot;name&quot;: &quot;Revenue&quot;,
+                        &quot;formula&quot;: &quot;&#x27;Sales&#x27;!$D$2:$D$3&quot;,
+                        &quot;categoryFormula&quot;: &quot;&#x27;Sales&#x27;!$A$2:$A$3&quot;
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          &quot;id&quot;: &quot;reopen&quot;,
+          &quot;label&quot;: &quot;Reopen&quot;,
+          &quot;intent&quot;: &quot;A saved file deserves its own check. Here the total, formulas, native table and chart survive re-import.&quot;,
+          &quot;code&quot;: &quot;const reopened = await SpreadsheetFile.importXlsx(await FileBlob.load(&#x27;sales.xlsx&#x27;));\nreopened.recalculate();&quot;,
+          &quot;input&quot;: {
+            &quot;file&quot;: &quot;sales.xlsx&quot;
+          },
+          &quot;returned&quot;: {
+            &quot;total&quot;: 110,
+            &quot;formulas&quot;: [
+              [
+                &quot;=B2*C2&quot;
+              ],
+              [
+                &quot;=B3*C3&quot;
+              ]
+            ],
+            &quot;tables&quot;: 1,
+            &quot;charts&quot;: 1
+          },
+          &quot;before&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    &quot;Product&quot;,
+                    &quot;Quantity&quot;,
+                    &quot;Price&quot;,
+                    &quot;Revenue&quot;
+                  ],
+                  [
+                    &quot;Standard&quot;,
+                    5,
+                    10,
+                    50
+                  ],
+                  [
+                    &quot;Premium&quot;,
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    &quot;Total&quot;,
+                    110
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B2*C2&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B3*C3&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=SUM(D2:D3)&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [
+                  {
+                    &quot;name&quot;: &quot;SalesData&quot;,
+                    &quot;range&quot;: &quot;A1:D3&quot;
+                  }
+                ],
+                &quot;charts&quot;: [
+                  {
+                    &quot;type&quot;: &quot;bar&quot;,
+                    &quot;title&quot;: &quot;Revenue by product&quot;,
+                    &quot;series&quot;: [
+                      {
+                        &quot;name&quot;: &quot;Revenue&quot;,
+                        &quot;formula&quot;: &quot;&#x27;Sales&#x27;!$D$2:$D$3&quot;,
+                        &quot;categoryFormula&quot;: &quot;&#x27;Sales&#x27;!$A$2:$A$3&quot;
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          &quot;after&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    &quot;Product&quot;,
+                    &quot;Quantity&quot;,
+                    &quot;Price&quot;,
+                    &quot;Revenue&quot;
+                  ],
+                  [
+                    &quot;Standard&quot;,
+                    5,
+                    10,
+                    50
+                  ],
+                  [
+                    &quot;Premium&quot;,
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    &quot;Total&quot;,
+                    110
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B2*C2&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B3*C3&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=SUM(D2:D3)&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [
+                  {
+                    &quot;name&quot;: &quot;SalesData&quot;,
+                    &quot;range&quot;: &quot;A1:D3&quot;
+                  }
+                ],
+                &quot;charts&quot;: [
+                  {
+                    &quot;type&quot;: &quot;bar&quot;,
+                    &quot;title&quot;: &quot;Revenue by product&quot;,
+                    &quot;series&quot;: [
+                      {
+                        &quot;name&quot;: &quot;Revenue&quot;,
+                        &quot;formula&quot;: &quot;&#x27;Sales&#x27;!$D$2:$D$3&quot;,
+                        &quot;categoryFormula&quot;: &quot;&#x27;Sales&#x27;!$A$2:$A$3&quot;
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      &quot;quantity&quot;: 10,
+      &quot;steps&quot;: [
+        {
+          &quot;id&quot;: &quot;create&quot;,
+          &quot;label&quot;: &quot;Create&quot;,
+          &quot;intent&quot;: &quot;A workbook is the container. A worksheet gives cells a place to live.&quot;,
+          &quot;code&quot;: &quot;const workbook = Workbook.create();\nconst sheet = workbook.worksheets.add(&#x27;Sales&#x27;);&quot;,
+          &quot;input&quot;: {
+            &quot;worksheet&quot;: &quot;Sales&quot;
+          },
+          &quot;returned&quot;: {
+            &quot;worksheetCount&quot;: 1
+          },
+          &quot;before&quot;: {
+            &quot;worksheets&quot;: []
+          },
+          &quot;after&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [],
+                &quot;charts&quot;: []
+              }
+            ]
+          }
+        },
+        {
+          &quot;id&quot;: &quot;write&quot;,
+          &quot;label&quot;: &quot;Write&quot;,
+          &quot;intent&quot;: &quot;Put the source facts in cells. Revenue is still empty because it is a calculation.&quot;,
+          &quot;code&quot;: &quot;sheet.getRange(&#x27;A1:D3&#x27;).values = input.values;&quot;,
+          &quot;input&quot;: {
+            &quot;range&quot;: &quot;A1:D3&quot;,
+            &quot;values&quot;: [
+              [
+                &quot;Product&quot;,
+                &quot;Quantity&quot;,
+                &quot;Price&quot;,
+                &quot;Revenue&quot;
+              ],
+              [
+                &quot;Standard&quot;,
+                10,
+                10,
+                null
+              ],
+              [
+                &quot;Premium&quot;,
+                3,
+                20,
+                null
+              ]
+            ]
+          },
+          &quot;returned&quot;: {
+            &quot;writtenRange&quot;: &quot;A1:D3&quot;
+          },
+          &quot;before&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [],
+                &quot;charts&quot;: []
+              }
+            ]
+          },
+          &quot;after&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    &quot;Product&quot;,
+                    &quot;Quantity&quot;,
+                    &quot;Price&quot;,
+                    &quot;Revenue&quot;
+                  ],
+                  [
+                    &quot;Standard&quot;,
+                    10,
+                    10,
+                    null
+                  ],
+                  [
+                    &quot;Premium&quot;,
+                    3,
+                    20,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [],
+                &quot;charts&quot;: []
+              }
+            ]
+          }
+        },
+        {
+          &quot;id&quot;: &quot;calculate&quot;,
+          &quot;label&quot;: &quot;Calculate&quot;,
+          &quot;intent&quot;: &quot;Store the rule once, fill it down, and calculate the result from the inputs.&quot;,
+          &quot;code&quot;: &quot;sheet.getRange(&#x27;D2&#x27;).formulas = [[&#x27;=B2*C2&#x27;]];\nsheet.getRange(&#x27;D2:D3&#x27;).fillDown();\nsheet.getRange(&#x27;C5&#x27;).values = [[&#x27;Total&#x27;]];\nsheet.getRange(&#x27;D5&#x27;).formulas = [[&#x27;=SUM(D2:D3)&#x27;]];\nworkbook.recalculate();&quot;,
+          &quot;input&quot;: {
+            &quot;formula&quot;: &quot;=B2*C2&quot;,
+            &quot;fill&quot;: &quot;D2:D3&quot;,
+            &quot;total&quot;: &quot;=SUM(D2:D3)&quot;
+          },
+          &quot;returned&quot;: {
+            &quot;total&quot;: 160
+          },
+          &quot;before&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    &quot;Product&quot;,
+                    &quot;Quantity&quot;,
+                    &quot;Price&quot;,
+                    &quot;Revenue&quot;
+                  ],
+                  [
+                    &quot;Standard&quot;,
+                    10,
+                    10,
+                    null
+                  ],
+                  [
+                    &quot;Premium&quot;,
+                    3,
+                    20,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [],
+                &quot;charts&quot;: []
+              }
+            ]
+          },
+          &quot;after&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    &quot;Product&quot;,
+                    &quot;Quantity&quot;,
+                    &quot;Price&quot;,
+                    &quot;Revenue&quot;
+                  ],
+                  [
+                    &quot;Standard&quot;,
+                    10,
+                    10,
+                    100
+                  ],
+                  [
+                    &quot;Premium&quot;,
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    &quot;Total&quot;,
+                    160
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B2*C2&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B3*C3&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=SUM(D2:D3)&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [],
+                &quot;charts&quot;: []
+              }
+            ]
+          }
+        },
+        {
+          &quot;id&quot;: &quot;format&quot;,
+          &quot;label&quot;: &quot;Organize&quot;,
+          &quot;intent&quot;: &quot;A named Excel Table adds structure. Formatting helps the reader distinguish inputs and calculated results.&quot;,
+          &quot;code&quot;: &quot;sheet.tables.add(&#x27;A1:D3&#x27;, true, &#x27;SalesData&#x27;);\nsheet.getRange(&#x27;C2:D5&#x27;).setNumberFormat(&#x27;$#,##0&#x27;);\nsheet.getRange(&#x27;A1:D1&#x27;).format = { fill:&#x27;#155e63&#x27;, font:{bold:true,color:&#x27;#ffffff&#x27;} };&quot;,
+          &quot;input&quot;: {
+            &quot;table&quot;: &quot;SalesData&quot;,
+            &quot;hasHeaders&quot;: true,
+            &quot;numberFormat&quot;: &quot;$#,##0&quot;
+          },
+          &quot;returned&quot;: {
+            &quot;tables&quot;: 1,
+            &quot;format&quot;: &quot;currency&quot;
+          },
+          &quot;before&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    &quot;Product&quot;,
+                    &quot;Quantity&quot;,
+                    &quot;Price&quot;,
+                    &quot;Revenue&quot;
+                  ],
+                  [
+                    &quot;Standard&quot;,
+                    10,
+                    10,
+                    100
+                  ],
+                  [
+                    &quot;Premium&quot;,
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    &quot;Total&quot;,
+                    160
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B2*C2&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B3*C3&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=SUM(D2:D3)&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [],
+                &quot;charts&quot;: []
+              }
+            ]
+          },
+          &quot;after&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    &quot;Product&quot;,
+                    &quot;Quantity&quot;,
+                    &quot;Price&quot;,
+                    &quot;Revenue&quot;
+                  ],
+                  [
+                    &quot;Standard&quot;,
+                    10,
+                    10,
+                    100
+                  ],
+                  [
+                    &quot;Premium&quot;,
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    &quot;Total&quot;,
+                    160
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B2*C2&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B3*C3&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=SUM(D2:D3)&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [
+                  {
+                    &quot;name&quot;: &quot;SalesData&quot;,
+                    &quot;range&quot;: &quot;A1:D3&quot;
+                  }
+                ],
+                &quot;charts&quot;: []
+              }
+            ]
+          }
+        },
+        {
+          &quot;id&quot;: &quot;chart&quot;,
+          &quot;label&quot;: &quot;Visualize&quot;,
+          &quot;intent&quot;: &quot;The chart points at worksheet ranges. Its stored references explain where the picture gets its values.&quot;,
+          &quot;code&quot;: &quot;const chart = sheet.charts.add(&#x27;bar&#x27;, [sheet.getRange(&#x27;A1:A3&#x27;),sheet.getRange(&#x27;D1:D3&#x27;)]);\nchart.setPosition(&#x27;A8&#x27;,&#x27;F19&#x27;);\nchart.title.text = &#x27;Revenue by product&#x27;;&quot;,
+          &quot;input&quot;: {
+            &quot;type&quot;: &quot;bar&quot;,
+            &quot;categories&quot;: &quot;A1:A3&quot;,
+            &quot;values&quot;: &quot;D1:D3&quot;
+          },
+          &quot;returned&quot;: {
+            &quot;charts&quot;: 1,
+            &quot;source&quot;: [
+              &quot;&#x27;Sales&#x27;!$D$2:$D$3&quot;
+            ]
+          },
+          &quot;before&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    &quot;Product&quot;,
+                    &quot;Quantity&quot;,
+                    &quot;Price&quot;,
+                    &quot;Revenue&quot;
+                  ],
+                  [
+                    &quot;Standard&quot;,
+                    10,
+                    10,
+                    100
+                  ],
+                  [
+                    &quot;Premium&quot;,
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    &quot;Total&quot;,
+                    160
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B2*C2&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B3*C3&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=SUM(D2:D3)&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [
+                  {
+                    &quot;name&quot;: &quot;SalesData&quot;,
+                    &quot;range&quot;: &quot;A1:D3&quot;
+                  }
+                ],
+                &quot;charts&quot;: []
+              }
+            ]
+          },
+          &quot;after&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    &quot;Product&quot;,
+                    &quot;Quantity&quot;,
+                    &quot;Price&quot;,
+                    &quot;Revenue&quot;
+                  ],
+                  [
+                    &quot;Standard&quot;,
+                    10,
+                    10,
+                    100
+                  ],
+                  [
+                    &quot;Premium&quot;,
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    &quot;Total&quot;,
+                    160
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B2*C2&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B3*C3&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=SUM(D2:D3)&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [
+                  {
+                    &quot;name&quot;: &quot;SalesData&quot;,
+                    &quot;range&quot;: &quot;A1:D3&quot;
+                  }
+                ],
+                &quot;charts&quot;: [
+                  {
+                    &quot;type&quot;: &quot;bar&quot;,
+                    &quot;title&quot;: &quot;Revenue by product&quot;,
+                    &quot;series&quot;: [
+                      {
+                        &quot;name&quot;: &quot;Revenue&quot;,
+                        &quot;formula&quot;: &quot;&#x27;Sales&#x27;!$D$2:$D$3&quot;,
+                        &quot;categoryFormula&quot;: &quot;&#x27;Sales&#x27;!$A$2:$A$3&quot;
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          &quot;id&quot;: &quot;inspect&quot;,
+          &quot;label&quot;: &quot;Inspect&quot;,
+          &quot;intent&quot;: &quot;Inspect gives a compact account of the model. Trace follows a result back to the cells that feed it.&quot;,
+          &quot;code&quot;: &quot;const inspection = await workbook.inspect({kind:&#x27;sheet,table,formula,chart&#x27;});\nconst trace = workbook.trace(&#x27;Sales!D5&#x27;);&quot;,
+          &quot;input&quot;: {
+            &quot;kind&quot;: &quot;sheet,table,formula,chart&quot;,
+            &quot;trace&quot;: &quot;Sales!D5&quot;
+          },
+          &quot;returned&quot;: {
+            &quot;inspection&quot;: {
+              &quot;recordCount&quot;: 5,
+              &quot;truncated&quot;: false,
+              &quot;metadata&quot;: {
+                &quot;revision&quot;: &quot;y20fre&quot;,
+                &quot;target&quot;: {
+                  &quot;id&quot;: &quot;wb/a0fuv1&quot;,
+                  &quot;beforeLines&quot;: 0,
+                  &quot;afterLines&quot;: 0
+                },
+                &quot;kind&quot;: {
+                  &quot;requested&quot;: &quot;sheet,table,formula,chart&quot;,
+                  &quot;tokens&quot;: [
+                    &quot;sheet&quot;,
+                    &quot;table&quot;,
+                    &quot;formula&quot;
+                  ]
+                },
+                &quot;include&quot;: {
+                  &quot;tokens&quot;: []
+                },
+                &quot;exclude&quot;: {
+                  &quot;tokens&quot;: []
+                },
+                &quot;notices&quot;: [
+                  &quot;Unknown kind tokens: chart&quot;
+                ]
+              }
+            },
+            &quot;trace&quot;: {
+              &quot;cell&quot;: &quot;Sales!D5&quot;,
+              &quot;sheetName&quot;: &quot;Sales&quot;,
+              &quot;address&quot;: &quot;D5&quot;,
+              &quot;formula&quot;: &quot;=SUM(D2:D3)&quot;,
+              &quot;value&quot;: 160,
+              &quot;params&quot;: [
+                {
+                  &quot;cell&quot;: &quot;Sales!D2&quot;,
+                  &quot;sheetName&quot;: &quot;Sales&quot;,
+                  &quot;address&quot;: &quot;D2&quot;,
+                  &quot;formula&quot;: &quot;=B2*C2&quot;,
+                  &quot;value&quot;: 100,
+                  &quot;params&quot;: [
+                    {
+                      &quot;cell&quot;: &quot;Sales!B2&quot;,
+                      &quot;sheetName&quot;: &quot;Sales&quot;,
+                      &quot;address&quot;: &quot;B2&quot;,
+                      &quot;formula&quot;: null,
+                      &quot;value&quot;: 10,
+                      &quot;params&quot;: []
+                    },
+                    {
+                      &quot;cell&quot;: &quot;Sales!C2&quot;,
+                      &quot;sheetName&quot;: &quot;Sales&quot;,
+                      &quot;address&quot;: &quot;C2&quot;,
+                      &quot;formula&quot;: null,
+                      &quot;value&quot;: 10,
+                      &quot;params&quot;: []
+                    }
+                  ]
+                },
+                {
+                  &quot;cell&quot;: &quot;Sales!D3&quot;,
+                  &quot;sheetName&quot;: &quot;Sales&quot;,
+                  &quot;address&quot;: &quot;D3&quot;,
+                  &quot;formula&quot;: &quot;=B3*C3&quot;,
+                  &quot;value&quot;: 60,
+                  &quot;params&quot;: [
+                    {
+                      &quot;cell&quot;: &quot;Sales!B3&quot;,
+                      &quot;sheetName&quot;: &quot;Sales&quot;,
+                      &quot;address&quot;: &quot;B3&quot;,
+                      &quot;formula&quot;: null,
+                      &quot;value&quot;: 3,
+                      &quot;params&quot;: []
+                    },
+                    {
+                      &quot;cell&quot;: &quot;Sales!C3&quot;,
+                      &quot;sheetName&quot;: &quot;Sales&quot;,
+                      &quot;address&quot;: &quot;C3&quot;,
+                      &quot;formula&quot;: null,
+                      &quot;value&quot;: 20,
+                      &quot;params&quot;: []
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          &quot;before&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    &quot;Product&quot;,
+                    &quot;Quantity&quot;,
+                    &quot;Price&quot;,
+                    &quot;Revenue&quot;
+                  ],
+                  [
+                    &quot;Standard&quot;,
+                    10,
+                    10,
+                    100
+                  ],
+                  [
+                    &quot;Premium&quot;,
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    &quot;Total&quot;,
+                    160
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B2*C2&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B3*C3&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=SUM(D2:D3)&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [
+                  {
+                    &quot;name&quot;: &quot;SalesData&quot;,
+                    &quot;range&quot;: &quot;A1:D3&quot;
+                  }
+                ],
+                &quot;charts&quot;: [
+                  {
+                    &quot;type&quot;: &quot;bar&quot;,
+                    &quot;title&quot;: &quot;Revenue by product&quot;,
+                    &quot;series&quot;: [
+                      {
+                        &quot;name&quot;: &quot;Revenue&quot;,
+                        &quot;formula&quot;: &quot;&#x27;Sales&#x27;!$D$2:$D$3&quot;,
+                        &quot;categoryFormula&quot;: &quot;&#x27;Sales&#x27;!$A$2:$A$3&quot;
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          &quot;after&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    &quot;Product&quot;,
+                    &quot;Quantity&quot;,
+                    &quot;Price&quot;,
+                    &quot;Revenue&quot;
+                  ],
+                  [
+                    &quot;Standard&quot;,
+                    10,
+                    10,
+                    100
+                  ],
+                  [
+                    &quot;Premium&quot;,
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    &quot;Total&quot;,
+                    160
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B2*C2&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B3*C3&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=SUM(D2:D3)&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [
+                  {
+                    &quot;name&quot;: &quot;SalesData&quot;,
+                    &quot;range&quot;: &quot;A1:D3&quot;
+                  }
+                ],
+                &quot;charts&quot;: [
+                  {
+                    &quot;type&quot;: &quot;bar&quot;,
+                    &quot;title&quot;: &quot;Revenue by product&quot;,
+                    &quot;series&quot;: [
+                      {
+                        &quot;name&quot;: &quot;Revenue&quot;,
+                        &quot;formula&quot;: &quot;&#x27;Sales&#x27;!$D$2:$D$3&quot;,
+                        &quot;categoryFormula&quot;: &quot;&#x27;Sales&#x27;!$A$2:$A$3&quot;
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          &quot;id&quot;: &quot;export&quot;,
+          &quot;label&quot;: &quot;Export&quot;,
+          &quot;intent&quot;: &quot;A picture and an Excel workbook are different deliverables. Save both, then check the workbook itself.&quot;,
+          &quot;code&quot;: &quot;const file = await SpreadsheetFile.exportXlsx(workbook);\nawait file.save(&#x27;sales.xlsx&#x27;);\nconst image = await workbook.render({sheetName:&#x27;Sales&#x27;,range:&#x27;A1:F19&#x27;,scale:1.5});&quot;,
+          &quot;input&quot;: {
+            &quot;formats&quot;: [
+              &quot;xlsx&quot;,
+              &quot;png&quot;
+            ]
+          },
+          &quot;returned&quot;: {
+            &quot;xlsx&quot;: &quot;files/sales-10.xlsx&quot;,
+            &quot;png&quot;: &quot;files/sales-10.png&quot;,
+            &quot;total&quot;: 160
+          },
+          &quot;before&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    &quot;Product&quot;,
+                    &quot;Quantity&quot;,
+                    &quot;Price&quot;,
+                    &quot;Revenue&quot;
+                  ],
+                  [
+                    &quot;Standard&quot;,
+                    10,
+                    10,
+                    100
+                  ],
+                  [
+                    &quot;Premium&quot;,
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    &quot;Total&quot;,
+                    160
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B2*C2&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B3*C3&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=SUM(D2:D3)&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [
+                  {
+                    &quot;name&quot;: &quot;SalesData&quot;,
+                    &quot;range&quot;: &quot;A1:D3&quot;
+                  }
+                ],
+                &quot;charts&quot;: [
+                  {
+                    &quot;type&quot;: &quot;bar&quot;,
+                    &quot;title&quot;: &quot;Revenue by product&quot;,
+                    &quot;series&quot;: [
+                      {
+                        &quot;name&quot;: &quot;Revenue&quot;,
+                        &quot;formula&quot;: &quot;&#x27;Sales&#x27;!$D$2:$D$3&quot;,
+                        &quot;categoryFormula&quot;: &quot;&#x27;Sales&#x27;!$A$2:$A$3&quot;
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          &quot;after&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    &quot;Product&quot;,
+                    &quot;Quantity&quot;,
+                    &quot;Price&quot;,
+                    &quot;Revenue&quot;
+                  ],
+                  [
+                    &quot;Standard&quot;,
+                    10,
+                    10,
+                    100
+                  ],
+                  [
+                    &quot;Premium&quot;,
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    &quot;Total&quot;,
+                    160
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B2*C2&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B3*C3&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=SUM(D2:D3)&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [
+                  {
+                    &quot;name&quot;: &quot;SalesData&quot;,
+                    &quot;range&quot;: &quot;A1:D3&quot;
+                  }
+                ],
+                &quot;charts&quot;: [
+                  {
+                    &quot;type&quot;: &quot;bar&quot;,
+                    &quot;title&quot;: &quot;Revenue by product&quot;,
+                    &quot;series&quot;: [
+                      {
+                        &quot;name&quot;: &quot;Revenue&quot;,
+                        &quot;formula&quot;: &quot;&#x27;Sales&#x27;!$D$2:$D$3&quot;,
+                        &quot;categoryFormula&quot;: &quot;&#x27;Sales&#x27;!$A$2:$A$3&quot;
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          &quot;id&quot;: &quot;reopen&quot;,
+          &quot;label&quot;: &quot;Reopen&quot;,
+          &quot;intent&quot;: &quot;A saved file deserves its own check. Here the total, formulas, native table and chart survive re-import.&quot;,
+          &quot;code&quot;: &quot;const reopened = await SpreadsheetFile.importXlsx(await FileBlob.load(&#x27;sales.xlsx&#x27;));\nreopened.recalculate();&quot;,
+          &quot;input&quot;: {
+            &quot;file&quot;: &quot;sales.xlsx&quot;
+          },
+          &quot;returned&quot;: {
+            &quot;total&quot;: 160,
+            &quot;formulas&quot;: [
+              [
+                &quot;=B2*C2&quot;
+              ],
+              [
+                &quot;=B3*C3&quot;
+              ]
+            ],
+            &quot;tables&quot;: 1,
+            &quot;charts&quot;: 1
+          },
+          &quot;before&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    &quot;Product&quot;,
+                    &quot;Quantity&quot;,
+                    &quot;Price&quot;,
+                    &quot;Revenue&quot;
+                  ],
+                  [
+                    &quot;Standard&quot;,
+                    10,
+                    10,
+                    100
+                  ],
+                  [
+                    &quot;Premium&quot;,
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    &quot;Total&quot;,
+                    160
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B2*C2&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B3*C3&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=SUM(D2:D3)&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [
+                  {
+                    &quot;name&quot;: &quot;SalesData&quot;,
+                    &quot;range&quot;: &quot;A1:D3&quot;
+                  }
+                ],
+                &quot;charts&quot;: [
+                  {
+                    &quot;type&quot;: &quot;bar&quot;,
+                    &quot;title&quot;: &quot;Revenue by product&quot;,
+                    &quot;series&quot;: [
+                      {
+                        &quot;name&quot;: &quot;Revenue&quot;,
+                        &quot;formula&quot;: &quot;&#x27;Sales&#x27;!$D$2:$D$3&quot;,
+                        &quot;categoryFormula&quot;: &quot;&#x27;Sales&#x27;!$A$2:$A$3&quot;
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          &quot;after&quot;: {
+            &quot;worksheets&quot;: [
+              {
+                &quot;name&quot;: &quot;Sales&quot;,
+                &quot;range&quot;: &quot;A1:D5&quot;,
+                &quot;values&quot;: [
+                  [
+                    &quot;Product&quot;,
+                    &quot;Quantity&quot;,
+                    &quot;Price&quot;,
+                    &quot;Revenue&quot;
+                  ],
+                  [
+                    &quot;Standard&quot;,
+                    10,
+                    10,
+                    100
+                  ],
+                  [
+                    &quot;Premium&quot;,
+                    3,
+                    20,
+                    60
+                  ],
+                  [
+                    null,
+                    null,
+                    null,
+                    null
+                  ],
+                  [
+                    null,
+                    null,
+                    &quot;Total&quot;,
+                    160
+                  ]
+                ],
+                &quot;formulas&quot;: [
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B2*C2&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=B3*C3&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;
+                  ],
+                  [
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;&quot;,
+                    &quot;=SUM(D2:D3)&quot;
+                  ]
+                ],
+                &quot;tables&quot;: [
+                  {
+                    &quot;name&quot;: &quot;SalesData&quot;,
+                    &quot;range&quot;: &quot;A1:D3&quot;
+                  }
+                ],
+                &quot;charts&quot;: [
+                  {
+                    &quot;type&quot;: &quot;bar&quot;,
+                    &quot;title&quot;: &quot;Revenue by product&quot;,
+                    &quot;series&quot;: [
+                      {
+                        &quot;name&quot;: &quot;Revenue&quot;,
+                        &quot;formula&quot;: &quot;&#x27;Sales&#x27;!$D$2:$D$3&quot;,
+                        &quot;categoryFormula&quot;: &quot;&#x27;Sales&#x27;!$A$2:$A$3&quot;
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

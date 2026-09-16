@@ -1,0 +1,37 @@
+{
+  "name": "fx.GAMMADIST",
+  "category": "compatibility",
+  "examples": [
+    {
+      "formula": "=GAMMADIST(A1, A1, A1, A1)",
+      "value": 0.6321205588285578,
+      "projection": [
+        [
+          0.6321205588285578,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 12
+    }
+  ]
+}

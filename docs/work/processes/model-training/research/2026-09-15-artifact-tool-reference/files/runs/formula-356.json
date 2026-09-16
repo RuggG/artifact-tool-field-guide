@@ -1,0 +1,37 @@
+{
+  "name": "fx.LOGEST",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=LOGEST(A1, A1)",
+      "value": "#NUM!",
+      "projection": [
+        [
+          "#NUM!",
+          null,
+          null,
+          null
+        ],
+        [
+          "#NUM!",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 12
+    }
+  ]
+}

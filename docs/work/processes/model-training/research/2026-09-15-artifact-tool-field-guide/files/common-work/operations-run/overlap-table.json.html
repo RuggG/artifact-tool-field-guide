@@ -1,0 +1,26 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>overlap-table.json · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="overlap-table.json">Raw file</a> · <a data-public-raw download href="overlap-table.json">Download</a></p><article><h1>overlap-table.json</h1><pre class="public-code"><code>{
+  &quot;id&quot;: &quot;overlap-table&quot;,
+  &quot;operation&quot;: &quot;const extra = lab.tables.add(\&quot;D22:F25\&quot;, true, \&quot;OverlapProbe\&quot;);\nreturn extra;&quot;,
+  &quot;checkInput&quot;: {
+    &quot;before&quot;: &quot;return lab.tables.items.map(t =&gt; t.name);&quot;,
+    &quot;after&quot;: &quot;return {tableNames:lab.tables.items.map(t=&gt;t.name),existingRange:\&quot;B20:D24\&quot;,requestedRange:\&quot;D22:F25\&quot;,overlap:\&quot;D22:D24\&quot;,saved:false};&quot;
+  },
+  &quot;before&quot;: [
+    &quot;FeeScenarioInputs&quot;
+  ],
+  &quot;libraryReturn&quot;: {
+    &quot;type&quot;: &quot;Excel Table object&quot;,
+    &quot;representation&quot;: &quot;Live object returned. The added range overlaps existing FeeScenarioInputs at B20:D24.&quot;
+  },
+  &quot;elapsedMs&quot;: 0,
+  &quot;after&quot;: {
+    &quot;tableNames&quot;: [
+      &quot;FeeScenarioInputs&quot;,
+      &quot;OverlapProbe&quot;
+    ],
+    &quot;existingRange&quot;: &quot;B20:D24&quot;,
+    &quot;requestedRange&quot;: &quot;D22:F25&quot;,
+    &quot;overlap&quot;: &quot;D22:D24&quot;,
+    &quot;saved&quot;: false
+  }
+}</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

@@ -1,0 +1,133 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>range ops · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="range.md">Raw file</a> · <a data-public-raw download href="range.md">Download</a></p><article><h1 id="range-ops">range ops</h1>
+<p>Ops in the <code>range.*</code> namespace for <code>Workbook.apply</code>.</p>
+<h2 id="ops-index">Ops index</h2>
+<ul>
+<li><code>range.format.set</code>: Apply formatting to a range.</li>
+<li><code>range.formulas.set</code>: Set formulas for a range.</li>
+<li><code>range.merge</code>: Merge cells in a range.</li>
+<li><code>range.unmerge</code>: Unmerge any merged blocks intersecting the range.</li>
+<li><code>range.values.set</code>: Set cell values for a range.</li>
+</ul>
+<h2 id="rangeformatset"><code>range.format.set</code></h2>
+<p>Apply formatting to a range.</p>
+<p><strong>Required fields</strong>
+- <code>op</code>
+- <code>props</code>
+- <code>target</code></p>
+<p><strong>Optional fields</strong>
+- <code>props.borders</code>
+- <code>props.columnWidth</code>
+- <code>props.fill</code>
+- <code>props.font</code>
+- <code>props.horizontalAlignment</code>
+- <code>props.numberFormat</code>
+- <code>props.rowHeight</code>
+- <code>props.verticalAlignment</code>
+- <code>props.wrapText</code></p>
+<p><strong>Enums</strong>
+- <code>props.borders.preset</code>: See <a href="../enums.md">enums</a>.
+- <code>props.fill.color.value</code>: See <a href="../enums.md">enums</a>.
+- <code>props.fill.gradientKind</code>: See <a href="../enums.md">enums</a>.
+- <code>props.fill.pattern.type</code>: See <a href="../enums.md">enums</a>.
+- <code>props.horizontalAlignment</code>: See <a href="../enums.md">enums</a>.
+- <code>props.verticalAlignment</code>: See <a href="../enums.md">enums</a>.</p>
+<p><strong>Examples</strong></p>
+<pre><code class="language-json">{
+  "op": "range.format.set",
+  "target": {
+    "sheet": "Scorecard",
+    "range": "A1:C1"
+  },
+  "props": {
+    "fill": "accent1",
+    "font": {
+      "bold": true,
+      "size": 14
+    },
+    "horizontalAlignment": "Center"
+  }
+}
+</code></pre>
+<h2 id="rangeformulasset"><code>range.formulas.set</code></h2>
+<p>Set formulas for a range.</p>
+<p><strong>Required fields</strong>
+- <code>formulas</code>
+- <code>op</code>
+- <code>target</code></p>
+<p><strong>Optional fields</strong>
+- (none)</p>
+<p><strong>Examples</strong></p>
+<pre><code class="language-json">{
+  "op": "range.formulas.set",
+  "target": {
+    "sheet": "Inventory",
+    "range": "E2"
+  },
+  "formulas": [
+    [
+      "=AVERAGE(C2:C4)"
+    ]
+  ]
+}
+</code></pre>
+<h2 id="rangemerge"><code>range.merge</code></h2>
+<p>Merge cells in a range.</p>
+<p><strong>Required fields</strong>
+- <code>op</code>
+- <code>target</code></p>
+<p><strong>Optional fields</strong>
+- <code>across</code></p>
+<p><strong>Examples</strong></p>
+<pre><code class="language-json">{
+  "op": "range.merge",
+  "target": {
+    "sheet": "Report",
+    "range": "A1:D1"
+  }
+}
+</code></pre>
+<h2 id="rangeunmerge"><code>range.unmerge</code></h2>
+<p>Unmerge any merged blocks intersecting the range.</p>
+<p><strong>Required fields</strong>
+- <code>op</code>
+- <code>target</code></p>
+<p><strong>Optional fields</strong>
+- (none)</p>
+<p><strong>Examples</strong></p>
+<pre><code class="language-json">{
+  "op": "range.unmerge",
+  "target": {
+    "sheet": "Report",
+    "range": "A1:D4"
+  }
+}
+</code></pre>
+<h2 id="rangevaluesset"><code>range.values.set</code></h2>
+<p>Set cell values for a range.</p>
+<p><strong>Required fields</strong>
+- <code>op</code>
+- <code>target</code>
+- <code>values</code></p>
+<p><strong>Optional fields</strong>
+- (none)</p>
+<p><strong>Examples</strong></p>
+<pre><code class="language-json">{
+  "op": "range.values.set",
+  "target": {
+    "sheet": "Inventory",
+    "range": "A1:C2"
+  },
+  "values": [
+    [
+      "SKU",
+      "Color",
+      "Stock"
+    ],
+    [
+      "100-001",
+      "Black",
+      15
+    ]
+  ]
+}
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

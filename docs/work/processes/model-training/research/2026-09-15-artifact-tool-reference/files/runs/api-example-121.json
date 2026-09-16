@@ -1,0 +1,10 @@
+{
+  "index": 121,
+  "name": "range.dataValidation",
+  "summary": "Require whole numbers between 1 and 100",
+  "originalCode": "const range = sheet.getRange('C2:C100');\nrange.dataValidation = {\n  rule: { type: 'whole', operator: 'between', formula1: 1, formula2: 100 },\n  errorAlert: {\n    style: 'stop',\n    title: 'Invalid value',\n    message: 'Enter a whole number between 1 and 100.',\n  },\n};",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

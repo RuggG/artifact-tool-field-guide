@@ -1,0 +1,30 @@
+[
+  {
+    "id": "F09",
+    "description": "Raster export selection and output variants",
+    "status": "pass",
+    "ms": 433,
+    "detail": [
+      {
+        "name": "png-index",
+        "type": "image/png",
+        "size": 11938
+      },
+      {
+        "name": "jpeg-center",
+        "type": "image/jpeg",
+        "size": 9977
+      },
+      {
+        "name": "layout",
+        "type": "application/vnd.openai.workbook-layout+json",
+        "size": 3884
+      },
+      {
+        "name": "xlsx",
+        "type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "size": 3428
+      }
+    ]
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "index": 3,
+  "name": "chart series",
+  "summary": "Series + moving-average trendline",
+  "originalCode": "const sheet = workbook.worksheets.add('Trendlines');\nconst chart = sheet.charts.add('line', { from: { row: 1, col: 1 }, extent: { widthPx: 420, heightPx: 240 } });\nchart.categories = ['Q1', 'Q2', 'Q3', 'Q4'];\nconst series = chart.series.add('Revenue');\nseries.values = [10, 14, 13, 17];\nseries.categories = chart.categories;\nseries.trendlines.add('movingAverage', { movingAveragePeriod: 3 });",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

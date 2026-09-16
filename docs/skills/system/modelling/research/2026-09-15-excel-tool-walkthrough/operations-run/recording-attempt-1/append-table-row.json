@@ -1,0 +1,72 @@
+{
+  "id": "append-table-row",
+  "operation": "return tableObject.rows.add(null,[[\"Stress\",45,0.8]]);",
+  "checkInput": {
+    "before": "",
+    "after": "return {tableRows:tableObject.getDataRows().values,cells:grid(lab,\"B20:D24\")};"
+  },
+  "startedAt": "2026-09-15T16:53:23.772Z",
+  "libraryReturn": {
+    "javascriptType": "undefined"
+  },
+  "elapsedMs": 0,
+  "after": {
+    "cells": {
+      "address": "B20:D24",
+      "values": [
+        [
+          "Scenario",
+          "Fee margin, bp",
+          "AUM multiplier"
+        ],
+        [
+          "Base",
+          56,
+          1
+        ],
+        [
+          "Downside",
+          51,
+          0.9
+        ],
+        [
+          "Upside",
+          60,
+          1.1
+        ],
+        [
+          "Stress",
+          45,
+          0.8
+        ]
+      ],
+      "formulas": [
+        [
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          ""
+        ]
+      ]
+    }
+  }
+}

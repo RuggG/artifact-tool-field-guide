@@ -1,0 +1,10 @@
+{
+  "index": 90,
+  "name": "range.format.autofitColumns",
+  "summary": "Autofit columns for the range",
+  "originalCode": "sheet.getRange('A1:D20').format.autofitColumns();",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

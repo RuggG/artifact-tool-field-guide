@@ -1,0 +1,37 @@
+{
+  "name": "fx.WORKDAY.INTL",
+  "category": "date-time",
+  "examples": [
+    {
+      "formula": "=WORKDAY.INTL(DATE(2024, 1, 1), A1, A1)",
+      "value": 45293,
+      "projection": [
+        [
+          45293,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 9
+    }
+  ]
+}

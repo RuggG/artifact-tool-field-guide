@@ -1,0 +1,38 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>satellites.py · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="satellites.py">Raw file</a> · <a data-public-raw download href="satellites.py">Download</a></p><article><h1>satellites.py</h1><pre class="public-code"><code>&quot;&quot;&quot;A grouped source catalogue with a full-width, offline Markdown reader.&quot;&quot;&quot;
+import html
+import json
+from pathlib import Path
+from pagekit_components import ComponentResult
+
+HERE = Path(__file__).resolve().parent
+def render(payload, *, body, context):
+    esc = html.escape
+    groups = []
+    for group in payload[&#x27;groups&#x27;]:
+        rows = []
+        for doc in payload[&#x27;documents&#x27;]:
+            if doc[&#x27;group&#x27;] != group[&#x27;id&#x27;]:
+                continue
+            rows.append(f&#x27;&#x27;&#x27;&lt;a class=&quot;sd-entry&quot; href=&quot;?doc={doc[&#x27;id&#x27;]}#satellite-reader&quot; data-sd-doc=&quot;{doc[&#x27;id&#x27;]}&quot;&gt;
+                &lt;span class=&quot;sd-entry-title&quot;&gt;{esc(doc[&#x27;title&#x27;])}&lt;/span&gt;&lt;span class=&quot;sd-count&quot;&gt;{doc[&#x27;tokens&#x27;]:,} &lt;small&gt;tokens&lt;/small&gt;&lt;/span&gt;
+                &lt;span class=&quot;sd-entry-summary&quot;&gt;{esc(doc[&#x27;summary&#x27;])}&lt;/span&gt;&lt;/a&gt;&#x27;&#x27;&#x27;)
+        groups.append(f&#x27;&lt;section class=&quot;sd-group&quot;&gt;&lt;h3&gt;{esc(group[&quot;title&quot;])}&lt;/h3&gt;&lt;p&gt;{esc(group[&quot;summary&quot;])}&lt;/p&gt;&lt;div&gt;{&quot;&quot;.join(rows)}&lt;/div&gt;&lt;/section&gt;&#x27;)
+    safe = json.dumps(payload, ensure_ascii=False, separators=(&#x27;,&#x27;, &#x27;:&#x27;)).replace(&#x27;&lt;&#x27;, &#x27;\\u003c&#x27;).replace(&#x27;\u2028&#x27;, &#x27;\\u2028&#x27;).replace(&#x27;\u2029&#x27;, &#x27;\\u2029&#x27;)
+    html_out = f&#x27;&#x27;&#x27;&lt;div id=&quot;af-satellites&quot; class=&quot;sd-library&quot;&gt;
+      &lt;div class=&quot;sd-overview&quot;&gt;&lt;strong&gt;1 main skill + 15 supporting documents&lt;/strong&gt;&lt;span&gt;{payload[&#x27;totals&#x27;][&#x27;tokens&#x27;]:,} tokens in total&lt;/span&gt;&lt;/div&gt;
+      &lt;p class=&quot;sd-count-note&quot;&gt;Counts cover the complete Markdown, including code and metadata. The total is the size of this document collection; the agent reads supporting documents as needed.&lt;/p&gt;
+      &lt;div class=&quot;sd-directory&quot;&gt;{&#x27;&#x27;.join(groups)}&lt;/div&gt;
+      &lt;section id=&quot;satellite-reader&quot; class=&quot;sd-reader&quot; aria-label=&quot;Document reader&quot; tabindex=&quot;-1&quot;&gt;&lt;p&gt;Select a document to read its full text here.&lt;/p&gt;&lt;/section&gt;
+      &lt;noscript&gt;&lt;p&gt;The reader needs JavaScript. &lt;a href=&quot;../2026-09-15-artifact-tool-reference/files/sources/skill/SKILL.md&quot;&gt;Open the saved main skill&lt;/a&gt; to follow its source links.&lt;/p&gt;&lt;/noscript&gt;
+    &lt;/div&gt;&#x27;&#x27;&#x27;
+    states = [dict(id=&#x27;directory&#x27;,label=&#x27;All documents with token counts&#x27;,status=&#x27;supported&#x27;,actions=[],selector=&#x27;#af-satellites .sd-directory&#x27;)]
+    for doc in payload[&#x27;documents&#x27;]:
+        states.append(dict(id=doc[&#x27;id&#x27;],label=doc[&#x27;title&#x27;],status=&#x27;supported&#x27;,actions=[dict(action=&#x27;click&#x27;,selector=f&#x27;[data-sd-doc=&quot;{doc[&quot;id&quot;]}&quot;]&#x27;)],selector=&#x27;#satellite-reader&#x27;))
+    states.append(dict(id=&#x27;raw&#x27;,label=&#x27;Complete original Markdown&#x27;,status=&#x27;supported&#x27;,actions=[dict(action=&#x27;click&#x27;,selector=&#x27;[data-sd-view=&quot;raw&quot;]&#x27;)],selector=&#x27;#satellite-reader&#x27;))
+    return ComponentResult(html_out, dependencies=[
+        dict(id=&#x27;artifact-satellites-data&#x27;,kind=&#x27;js&#x27;,content=&#x27;window.ArtifactSatelliteDocuments=&#x27;+safe+&#x27;;&#x27;),
+        dict(id=&#x27;artifact-satellites-css&#x27;,kind=&#x27;css&#x27;,path=str(HERE/&#x27;satellites.css&#x27;)),
+        dict(id=&#x27;artifact-satellites-js&#x27;,kind=&#x27;js&#x27;,path=str(HERE/&#x27;satellites.js&#x27;)),
+    ], exhibits=[dict(id=&#x27;af-satellites&#x27;,kind=&#x27;document-library&#x27;,label=&#x27;Spreadsheet skill and 15 satellite documents&#x27;,
+                     evidence=dict(format=&#x27;json&#x27;,data=payload,source=&#x27;data/satellite-documents.json&#x27;),states=states)])
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

@@ -1,0 +1,114 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>inspect_existing_workbooks.ts · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="inspect_existing_workbooks.ts">Raw file</a> · <a data-public-raw download href="inspect_existing_workbooks.ts">Download</a></p><article><h1>inspect_existing_workbooks.ts</h1><pre class="public-code"><code>import * as fs from &quot;node:fs/promises&quot;;
+import * as path from &quot;node:path&quot;;
+
+import {
+  FileBlob,
+  SpreadsheetFile,
+} from &quot;@oai/artifact-tool&quot;;
+
+const DEFAULT_WORKBOOK_INPUTS = [
+  &quot;/Users/vicky/code/openai/output/spreadsheet-atv/fitness-tracker-20260409&quot;,
+];
+
+type InspectResult = {
+  ndjson: string;
+};
+
+async function resolveWorkbookPath(inputPath: string): Promise&lt;string&gt; {
+  const expandedPath = inputPath.startsWith(&quot;~&quot;)
+    ? path.join(process.env.HOME ?? &quot;&quot;, inputPath.slice(1))
+    : inputPath;
+  const stats = await fs.stat(expandedPath);
+  if (stats.isFile()) {
+    return expandedPath;
+  }
+  if (stats.isDirectory()) {
+    const candidates = (await fs.readdir(expandedPath))
+      .filter((entry) =&gt; entry.endsWith(&quot;.xlsx&quot;))
+      .sort();
+    if (candidates.length &gt; 0) {
+      return path.join(expandedPath, candidates[0]);
+    }
+    throw new Error(`No .xlsx files found in directory: ${expandedPath}`);
+  }
+  throw new Error(`Workbook path is not a file or directory: ${expandedPath}`);
+}
+
+function printInspect(title: string, result: InspectResult): void {
+  console.log(`\n=== ${title} ===`);
+  if (result.ndjson) {
+    console.log(result.ndjson);
+    return;
+  }
+  console.log(&quot;(no rows returned)&quot;);
+}
+
+async function inspectWorkbook(workbookPath: string): Promise&lt;void&gt; {
+  const workbook = await SpreadsheetFile.importXlsx(await FileBlob.load(workbookPath));
+  const firstSheet = workbook.worksheets.getItemAt(0);
+  const firstSheetName = firstSheet.name;
+
+  console.log(`\n########## Inspecting ${workbookPath} ##########`);
+  console.log(`First worksheet: ${firstSheetName}`);
+
+  const summary = await workbook.inspect({
+    kind: &quot;workbook,sheet,table&quot;,
+    maxChars: 6000,
+    tableMaxRows: 6,
+    tableMaxCols: 6,
+    tableMaxCellChars: 80,
+  });
+  printInspect(&quot;Workbook summary&quot;, summary);
+
+  const sheetsIndex = await workbook.inspect({
+    kind: &quot;sheet&quot;,
+    include: &quot;id,name&quot;,
+  });
+  printInspect(&quot;Sheets index&quot;, sheetsIndex);
+
+  const firstRegion = await workbook.inspect({
+    kind: &quot;region&quot;,
+    sheetId: firstSheetName,
+    range: &quot;A1:Z30&quot;,
+    maxChars: 2500,
+    tableMaxRows: 12,
+    tableMaxCols: 8,
+    tableMaxCellChars: 50,
+  });
+  printInspect(`First sheet region preview (${firstSheetName}!A1:Z30)`, firstRegion);
+
+  const formulas = await workbook.inspect({
+    kind: &quot;formula&quot;,
+    sheetId: firstSheetName,
+    maxChars: 2000,
+  });
+  printInspect(`Formula snapshot (${firstSheetName})`, formulas);
+
+  const drawings = await workbook.inspect({
+    kind: &quot;drawing&quot;,
+    sheetId: firstSheetName,
+    maxChars: 2000,
+  });
+  printInspect(`Drawing snapshot (${firstSheetName})`, drawings);
+}
+
+async function inspectExistingWorkbooks(inputPaths: string[]): Promise&lt;void&gt; {
+  for (const inputPath of inputPaths) {
+    const workbookPath = await resolveWorkbookPath(inputPath);
+    await inspectWorkbook(workbookPath);
+  }
+}
+
+async function main(): Promise&lt;void&gt; {
+  const inputPaths =
+    process.argv.slice(2).length &gt; 0
+      ? process.argv.slice(2)
+      : DEFAULT_WORKBOOK_INPUTS;
+  await inspectExistingWorkbooks(inputPaths);
+}
+
+main().catch((error: unknown) =&gt; {
+  console.error(error);
+  process.exit(1);
+});
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

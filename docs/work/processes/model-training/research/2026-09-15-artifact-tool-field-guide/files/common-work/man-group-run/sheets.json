@@ -1,0 +1,35 @@
+{
+  "id": "sheets",
+  "input": "return await wb.inspect({kind: \"sheet\", include: \"id,name\"});",
+  "elapsedMs": 6,
+  "result": {
+    "ndjson": "{\"kind\":\"sheet\",\"id\":\"ws/martey\",\"name\":\"Summary\",\"index\":0,\"range\":\"A1:M57\",\"address\":\"A1:M57\"}\n{\"kind\":\"sheet\",\"id\":\"ws/0tplml\",\"name\":\"Assumptions\",\"index\":1,\"range\":\"A1:W67\",\"address\":\"A1:W67\"}\n{\"kind\":\"sheet\",\"id\":\"ws/dvxktf\",\"name\":\"Fee engine\",\"index\":2,\"range\":\"A1:W109\",\"address\":\"A1:W109\"}\n{\"kind\":\"sheet\",\"id\":\"ws/yfu5pm\",\"name\":\"Disclosures\",\"index\":3,\"range\":\"A1:Q125\",\"address\":\"A1:Q125\"}\n{\"kind\":\"sheet\",\"id\":\"ws/yd9na3\",\"name\":\"Checks\",\"index\":4,\"range\":\"A1:W59\",\"address\":\"A1:W59\"}\n{\"kind\":\"sheet\",\"id\":\"ws/alxc6k\",\"name\":\"Readme\",\"index\":5,\"range\":\"A1:D28\",\"address\":\"A1:D28\"}",
+    "recordCount": 6,
+    "truncated": false,
+    "metadata": {
+      "revision": "v50enu",
+      "target": {
+        "id": "wb/su08vw",
+        "beforeLines": 0,
+        "afterLines": 0
+      },
+      "kind": {
+        "requested": "sheet",
+        "tokens": [
+          "sheet"
+        ]
+      },
+      "include": {
+        "requested": "id,name",
+        "tokens": [
+          "id",
+          "name"
+        ]
+      },
+      "exclude": {
+        "tokens": []
+      },
+      "notices": []
+    }
+  }
+}

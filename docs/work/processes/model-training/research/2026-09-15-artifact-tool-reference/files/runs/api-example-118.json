@@ -1,0 +1,10 @@
+{
+  "index": 118,
+  "name": "worksheet.sparklines.add",
+  "summary": "Add a line sparkline group",
+  "originalCode": "sheet.getRange('A1:A6').values = [[1],[2],[3],[2],[4],[6]];\nconst group = sheet.sparklines.add({\n  type: 'line',\n  sourceData: sheet.getRange('A1:A6'),\n  targetRange: sheet.getRange('B1:B6'),\n});\ngroup.displayXAxis = true;",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

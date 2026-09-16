@@ -1,0 +1,37 @@
+{
+  "name": "fx.DETECTLANGUAGE",
+  "category": "text",
+  "examples": [
+    {
+      "formula": "=DETECTLANGUAGE(\"text\")",
+      "value": "DETECTLANGUAGE is not implemented. text=text",
+      "projection": [
+        [
+          "DETECTLANGUAGE is not implemented. text=text",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 10
+    }
+  ]
+}

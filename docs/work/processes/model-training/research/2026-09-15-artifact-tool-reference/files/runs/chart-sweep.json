@@ -1,0 +1,274 @@
+[
+  {
+    "id": "F01",
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stdout": "Inspect result written to file: /Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/runs/conditional-formats.xlsx.inspect.ndjson\n{\"id\":\"F01\",\"description\":\"All conditional-format rule families; serialize, render and clear\",\"status\":\"pass\",\"ms\":480,\"detail\":[{\"type\":\"cellIs\",\"accepted\":true},{\"type\":\"CellValue\",\"accepted\":true},{\"type\":\"Custom\",\"accepted\":true},{\"type\":\"expression\",\"accepted\":true},{\"type\":\"colorScale\",\"accepted\":true},{\"type\":\"dataBar\",\"accepted\":true},{\"type\":\"iconSet\",\"accepted\":true},{\"type\":\"containsText\",\"accepted\":true},{\"type\":\"notContainsText\",\"accepted\":true},{\"type\":\"beginsWith\",\"accepted\":true},{\"type\":\"endsWith\",\"accepted\":true},{\"type\":\"containsBlanks\",\"accepted\":true},{\"type\":\"notContainsBlanks\",\"accepted\":true},{\"type\":\"containsErrors\",\"accepted\":true},{\"type\":\"notContainsErrors\",\"accepted\":true},{\"type\":\"duplicateValues\",\"accepted\":true},{\"type\":\"uniqueValues\",\"accepted\":true},{\"type\":\"timePeriod\",\"accepted\":true},{\"type\":\"top10\",\"accepted\":true},{\"type\":\"aboveAverage\",\"accepted\":true}]}\n",
+    "stderr": ""
+  },
+  {
+    "id": "F02",
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stdout": "Inspect result written to file: /Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/runs/validations.xlsx.inspect.ndjson\n{\"id\":\"F02\",\"description\":\"All validation types, settings, collection and Office-style assignment\",\"status\":\"pass\",\"ms\":253,\"detail\":{\"types\":[\"none\",\"whole\",\"decimal\",\"list\",\"date\",\"time\",\"textLength\",\"custom\"],\"invalidProgrammaticWriteAccepted\":true}}\n",
+    "stderr": ""
+  },
+  {
+    "id": "F03",
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stdout": "{\"id\":\"F03\",\"description\":\"All sparkline types, range alias, markers, axes and export\",\"status\":\"fail\",\"ms\":8,\"error\":\"TypeError: extra.delete is not a function\",\"stack\":[\"TypeError: extra.delete is not a function\",\"    at file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:312:113\",\"    at test (file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:17:169)\",\"    at file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:308:7\"]}\n",
+    "stderr": ""
+  },
+  {
+    "id": "F04",
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stdout": "Inspect result written to file: /Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/runs/data-table.xlsx.inspect.ndjson\n{\"id\":\"F04\",\"description\":\"Data table full-range convention and independent two-variable results\",\"status\":\"pass\",\"ms\":276,\"detail\":{\"resultType\":\"undefined\",\"actual\":[[20,30,40],[30,40,50],[40,50,60]],\"formulas\":[[\"\",\"\",\"\"],[\"\",\"\",\"\"],[\"\",\"\",\"\"]],\"display\":[[\"{=TABLE(B2,B3)}\",\"{=TABLE(B2,B3)}\",\"{=TABLE(B2,B3)}\"],[\"{=TABLE(B2,B3)}\",\"{=TABLE(B2,B3)}\",\"{=TABLE(B2,B3)}\"],[\"{=TABLE(B2,B3)}\",\"{=TABLE(B2,B3)}\",\"{=TABLE(B2,B3)}\"]],\"infos\":[[{\"kind\":\"projected\",\"source\":\"dataTable\",\"display\":\"{=TABLE(B2,B3)}\",\"master\":\"Sensitivity!F5\",\"ref\":\"Sensitivity!F5:H7\",\"rowInput\":\"B2\",\"columnInput\":\"B3\",\"isEditable\":false}]]}}\n",
+    "stderr": ""
+  },
+  {
+    "id": "F05",
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stdout": "{\"id\":\"F05\",\"description\":\"Data table older body-only and one-variable documentation\",\"status\":\"pass\",\"ms\":7,\"detail\":{\"body\":\"Error: Data table range needs a top-left formula cell. \\\"F5\\\" is empty. Did you mean \\\"E4:H7\\\"?\",\"one\":[[20,1,2,3],[null,10,20,30]]}}\n",
+    "stderr": ""
+  },
+  {
+    "id": "F06",
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stdout": "{\"id\":\"F06\",\"description\":\"Drawing images by SVG, bytes, data URL, path; replace and delete\",\"status\":\"fail\",\"ms\":53,\"error\":\"TypeError: this.anchor.toProtoFields is not a function\",\"stack\":[\"TypeError: this.anchor.toProtoFields is not a function\",\"    at n7.toDrawingProto (file:///Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/dist/artifact_tool.mjs:3122:186809)\",\"    at file:///Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/dist/artifact_tool.mjs:3122:187930\",\"    at Array.map (<anonymous>)\",\"    at G0t.toProto (file:///Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/dist/artifact_tool.mjs:3122:187921)\"]}\n",
+    "stderr": ""
+  },
+  {
+    "id": "F07",
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stdout": "Inspect result written to file: /Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/runs/shapes.xlsx.inspect.ndjson\n{\"id\":\"F07\",\"description\":\"Shapes, text, drawing layout directions and deleteAllDrawings\",\"status\":\"pass\",\"ms\":520,\"detail\":[{\"direction\":\"vertical\",\"count\":4},{\"direction\":\"horizontal\",\"count\":4},{\"direction\":\"grid\",\"count\":4}]}\n",
+    "stderr": ""
+  },
+  {
+    "id": "CH-line",
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stdout": "Inspect result written to file: /Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/runs/chart-line.xlsx.inspect.ndjson\n{\"id\":\"CH-line\",\"description\":\"Chart type acceptance, export and render: line\",\"status\":\"pass\",\"ms\":418,\"detail\":{\"type\":\"line\",\"series\":[{\"name\":\"Series A\",\"formula\":\"'Chart'!$B$2:$B$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"},{\"name\":\"Series B\",\"formula\":\"'Chart'!$C$2:$C$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"}],\"render\":{\"bytes\":18130}}}\n",
+    "stderr": ""
+  },
+  {
+    "id": "CH-pie",
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stdout": "Inspect result written to file: /Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/runs/chart-pie.xlsx.inspect.ndjson\n{\"id\":\"CH-pie\",\"description\":\"Chart type acceptance, export and render: pie\",\"status\":\"pass\",\"ms\":447,\"detail\":{\"type\":\"pie\",\"series\":[{\"name\":\"Series A\",\"formula\":\"'Chart'!$B$2:$B$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"},{\"name\":\"Series B\",\"formula\":\"'Chart'!$C$2:$C$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"}],\"render\":{\"bytes\":13648}}}\n",
+    "stderr": ""
+  },
+  {
+    "id": "CH-bar",
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stdout": "Inspect result written to file: /Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/runs/chart-bar.xlsx.inspect.ndjson\n{\"id\":\"CH-bar\",\"description\":\"Chart type acceptance, export and render: bar\",\"status\":\"pass\",\"ms\":445,\"detail\":{\"type\":\"bar\",\"series\":[{\"name\":\"Series A\",\"formula\":\"'Chart'!$B$2:$B$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"},{\"name\":\"Series B\",\"formula\":\"'Chart'!$C$2:$C$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"}],\"render\":{\"bytes\":15863}}}\n",
+    "stderr": ""
+  },
+  {
+    "id": "CH-doughnut",
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stdout": "Inspect result written to file: /Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/runs/chart-doughnut.xlsx.inspect.ndjson\n{\"id\":\"CH-doughnut\",\"description\":\"Chart type acceptance, export and render: doughnut\",\"status\":\"pass\",\"ms\":412,\"detail\":{\"type\":\"doughnut\",\"series\":[{\"name\":\"Series A\",\"formula\":\"'Chart'!$B$2:$B$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"},{\"name\":\"Series B\",\"formula\":\"'Chart'!$C$2:$C$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"}],\"render\":{\"bytes\":15545}}}\n",
+    "stderr": ""
+  },
+  {
+    "id": "CH-scatter",
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stdout": "Inspect result written to file: /Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/runs/chart-scatter.xlsx.inspect.ndjson\n{\"id\":\"CH-scatter\",\"description\":\"Chart type acceptance, export and render: scatter\",\"status\":\"pass\",\"ms\":744,\"detail\":{\"type\":\"scatter\",\"series\":[{\"name\":\"Series A\",\"formula\":\"'Chart'!$B$2:$B$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"},{\"name\":\"Series B\",\"formula\":\"'Chart'!$C$2:$C$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"}],\"render\":{\"bytes\":14132}}}\n",
+    "stderr": ""
+  },
+  {
+    "id": "CH-bubble",
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stdout": "Inspect result written to file: /Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/runs/chart-bubble.xlsx.inspect.ndjson\n{\"id\":\"CH-bubble\",\"description\":\"Chart type acceptance, export and render: bubble\",\"status\":\"pass\",\"ms\":424,\"detail\":{\"type\":\"bubble\",\"series\":[{\"name\":\"Series A\",\"formula\":\"'Chart'!$B$2:$B$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"},{\"name\":\"Series B\",\"formula\":\"'Chart'!$C$2:$C$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"}],\"render\":{\"bytes\":14471}}}\n",
+    "stderr": ""
+  },
+  {
+    "id": "CH-radar",
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stdout": "Inspect result written to file: /Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/runs/chart-radar.xlsx.inspect.ndjson\n{\"id\":\"CH-radar\",\"description\":\"Chart type acceptance, export and render: radar\",\"status\":\"pass\",\"ms\":487,\"detail\":{\"type\":\"radar\",\"series\":[{\"name\":\"Series A\",\"formula\":\"'Chart'!$B$2:$B$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"},{\"name\":\"Series B\",\"formula\":\"'Chart'!$C$2:$C$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"}],\"render\":{\"bytes\":19975}}}\n",
+    "stderr": ""
+  },
+  {
+    "id": "CH-treemap",
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stdout": "Inspect result written to file: /Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/runs/chart-treemap.xlsx.inspect.ndjson\n{\"id\":\"CH-treemap\",\"description\":\"Chart type acceptance, export and render: treemap\",\"status\":\"pass\",\"ms\":449,\"detail\":{\"type\":\"treemap\",\"series\":[{\"name\":\"Series A\",\"formula\":\"'Chart'!$B$2:$B$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"},{\"name\":\"Series B\",\"formula\":\"'Chart'!$C$2:$C$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"}],\"render\":{\"bytes\":15433}}}\n",
+    "stderr": "[chart] skipping unsupported chart type export: Treemap\n"
+  },
+  {
+    "id": "CH-sunburst",
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stdout": "Inspect result written to file: /Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/runs/chart-sunburst.xlsx.inspect.ndjson\n{\"id\":\"CH-sunburst\",\"description\":\"Chart type acceptance, export and render: sunburst\",\"status\":\"pass\",\"ms\":311,\"detail\":{\"type\":\"sunburst\",\"series\":[{\"name\":\"Series A\",\"formula\":\"'Chart'!$B$2:$B$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"},{\"name\":\"Series B\",\"formula\":\"'Chart'!$C$2:$C$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"}],\"render\":{\"bytes\":18345}}}\n",
+    "stderr": "[chart] skipping unsupported chart type export: Sunburst\n"
+  },
+  {
+    "id": "CH-map",
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stdout": "Inspect result written to file: /Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/runs/chart-map.xlsx.inspect.ndjson\n{\"id\":\"CH-map\",\"description\":\"Chart type acceptance, export and render: map\",\"status\":\"pass\",\"ms\":360,\"detail\":{\"type\":\"map\",\"series\":[{\"name\":\"Series A\",\"formula\":\"'Chart'!$B$2:$B$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"},{\"name\":\"Series B\",\"formula\":\"'Chart'!$C$2:$C$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"}],\"render\":{\"bytes\":9867}}}\n",
+    "stderr": "[chart] skipping unsupported chart type export: Map\n"
+  },
+  {
+    "id": "CH-waterfall",
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stdout": "Inspect result written to file: /Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/runs/chart-waterfall.xlsx.inspect.ndjson\n{\"id\":\"CH-waterfall\",\"description\":\"Chart type acceptance, export and render: waterfall\",\"status\":\"pass\",\"ms\":417,\"detail\":{\"type\":\"waterfall\",\"series\":[{\"name\":\"Series A\",\"formula\":\"'Chart'!$B$2:$B$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"},{\"name\":\"Series B\",\"formula\":\"'Chart'!$C$2:$C$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"}],\"render\":{\"bytes\":17399}}}\n",
+    "stderr": "[chart] skipping unsupported chart type export: Waterfall\n"
+  },
+  {
+    "id": "CH-line3D",
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stdout": "Inspect result written to file: /Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/runs/chart-line3D.xlsx.inspect.ndjson\n{\"id\":\"CH-line3D\",\"description\":\"Chart type acceptance, export and render: line3D\",\"status\":\"pass\",\"ms\":368,\"detail\":{\"type\":\"line3D\",\"series\":[{\"name\":\"Series A\",\"formula\":\"'Chart'!$B$2:$B$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"},{\"name\":\"Series B\",\"formula\":\"'Chart'!$C$2:$C$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"}],\"render\":{\"bytes\":19044}}}\n",
+    "stderr": ""
+  },
+  {
+    "id": "CH-pie3D",
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stdout": "Inspect result written to file: /Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/runs/chart-pie3D.xlsx.inspect.ndjson\n{\"id\":\"CH-pie3D\",\"description\":\"Chart type acceptance, export and render: pie3D\",\"status\":\"pass\",\"ms\":476,\"detail\":{\"type\":\"pie3D\",\"series\":[{\"name\":\"Series A\",\"formula\":\"'Chart'!$B$2:$B$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"},{\"name\":\"Series B\",\"formula\":\"'Chart'!$C$2:$C$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"}],\"render\":{\"bytes\":14232}}}\n",
+    "stderr": ""
+  },
+  {
+    "id": "CH-area3D",
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stdout": "Inspect result written to file: /Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/runs/chart-area3D.xlsx.inspect.ndjson\n{\"id\":\"CH-area3D\",\"description\":\"Chart type acceptance, export and render: area3D\",\"status\":\"pass\",\"ms\":364,\"detail\":{\"type\":\"area3D\",\"series\":[{\"name\":\"Series A\",\"formula\":\"'Chart'!$B$2:$B$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"},{\"name\":\"Series B\",\"formula\":\"'Chart'!$C$2:$C$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"}],\"render\":{\"bytes\":15870}}}\n",
+    "stderr": ""
+  },
+  {
+    "id": "CH-bar3D",
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stdout": "Inspect result written to file: /Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/runs/chart-bar3D.xlsx.inspect.ndjson\n{\"id\":\"CH-bar3D\",\"description\":\"Chart type acceptance, export and render: bar3D\",\"status\":\"pass\",\"ms\":897,\"detail\":{\"type\":\"bar3D\",\"series\":[{\"name\":\"Series A\",\"formula\":\"'Chart'!$B$2:$B$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"},{\"name\":\"Series B\",\"formula\":\"'Chart'!$C$2:$C$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"}],\"render\":{\"bytes\":10414}}}\n",
+    "stderr": ""
+  },
+  {
+    "id": "CH-funnel",
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stdout": "Inspect result written to file: /Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/runs/chart-funnel.xlsx.inspect.ndjson\n{\"id\":\"CH-funnel\",\"description\":\"Chart type acceptance, export and render: funnel\",\"status\":\"pass\",\"ms\":415,\"detail\":{\"type\":\"funnel\",\"series\":[{\"name\":\"Series A\",\"formula\":\"'Chart'!$B$2:$B$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"},{\"name\":\"Series B\",\"formula\":\"'Chart'!$C$2:$C$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"}],\"render\":{\"bytes\":12560}}}\n",
+    "stderr": "[chart] skipping unsupported chart type export: Funnel\n"
+  },
+  {
+    "id": "CH-histogram",
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stdout": "Inspect result written to file: /Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/runs/chart-histogram.xlsx.inspect.ndjson\n{\"id\":\"CH-histogram\",\"description\":\"Chart type acceptance, export and render: histogram\",\"status\":\"pass\",\"ms\":342,\"detail\":{\"type\":\"histogram\",\"series\":[{\"name\":\"Series A\",\"formula\":\"'Chart'!$B$2:$B$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"},{\"name\":\"Series B\",\"formula\":\"'Chart'!$C$2:$C$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"}],\"render\":{\"bytes\":12812}}}\n",
+    "stderr": "[chart] skipping unsupported chart type export: Histogram\n"
+  },
+  {
+    "id": "CH-boxWhisker",
+    "code": null,
+    "signal": "SIGKILL",
+    "timedOut": true,
+    "stdout": "Inspect result written to file: /Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/runs/chart-boxWhisker.xlsx.inspect.ndjson\n",
+    "stderr": "[chart] skipping unsupported chart type export: BoxWhisker\n"
+  },
+  {
+    "id": "CH-stock",
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stdout": "Inspect result written to file: /Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/runs/chart-stock.xlsx.inspect.ndjson\n{\"id\":\"CH-stock\",\"description\":\"Chart type acceptance, export and render: stock\",\"status\":\"pass\",\"ms\":354,\"detail\":{\"type\":\"stock\",\"series\":[{\"name\":\"Series A\",\"formula\":\"'Chart'!$B$2:$B$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"},{\"name\":\"Series B\",\"formula\":\"'Chart'!$C$2:$C$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"}],\"render\":{\"bytes\":16716}}}\n",
+    "stderr": ""
+  },
+  {
+    "id": "CH-surface3D",
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stdout": "Inspect result written to file: /Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/runs/chart-surface3D.xlsx.inspect.ndjson\n{\"id\":\"CH-surface3D\",\"description\":\"Chart type acceptance, export and render: surface3D\",\"status\":\"pass\",\"ms\":484,\"detail\":{\"type\":\"surface3D\",\"series\":[{\"name\":\"Series A\",\"formula\":\"'Chart'!$B$2:$B$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"},{\"name\":\"Series B\",\"formula\":\"'Chart'!$C$2:$C$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"}],\"render\":{\"bytes\":17544}}}\n",
+    "stderr": ""
+  },
+  {
+    "id": "CH-ofPie",
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stdout": "Inspect result written to file: /Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/runs/chart-ofPie.xlsx.inspect.ndjson\n{\"id\":\"CH-ofPie\",\"description\":\"Chart type acceptance, export and render: ofPie\",\"status\":\"pass\",\"ms\":361,\"detail\":{\"type\":\"ofPie\",\"series\":[{\"name\":\"Series A\",\"formula\":\"'Chart'!$B$2:$B$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"},{\"name\":\"Series B\",\"formula\":\"'Chart'!$C$2:$C$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"}],\"render\":{\"bytes\":16530}}}\n",
+    "stderr": ""
+  },
+  {
+    "id": "CH-surface",
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stdout": "Inspect result written to file: /Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/runs/chart-surface.xlsx.inspect.ndjson\n{\"id\":\"CH-surface\",\"description\":\"Chart type acceptance, export and render: surface\",\"status\":\"pass\",\"ms\":403,\"detail\":{\"type\":\"surface\",\"series\":[{\"name\":\"Series A\",\"formula\":\"'Chart'!$B$2:$B$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"},{\"name\":\"Series B\",\"formula\":\"'Chart'!$C$2:$C$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"}],\"render\":{\"bytes\":17011}}}\n",
+    "stderr": ""
+  },
+  {
+    "id": "CH-pareto",
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stdout": "Inspect result written to file: /Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/runs/chart-pareto.xlsx.inspect.ndjson\n{\"id\":\"CH-pareto\",\"description\":\"Chart type acceptance, export and render: pareto\",\"status\":\"pass\",\"ms\":389,\"detail\":{\"type\":\"pareto\",\"series\":[{\"name\":\"Series A\",\"formula\":\"'Chart'!$B$2:$B$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"},{\"name\":\"Series B\",\"formula\":\"'Chart'!$C$2:$C$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"}],\"render\":{\"bytes\":16859}}}\n",
+    "stderr": "[chart] skipping unsupported chart type export: Pareto\n"
+  },
+  {
+    "id": "CH-combo",
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stdout": "Inspect result written to file: /Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/runs/chart-combo.xlsx.inspect.ndjson\n{\"id\":\"CH-combo\",\"description\":\"Chart type acceptance, export and render: combo\",\"status\":\"pass\",\"ms\":361,\"detail\":{\"type\":\"combo\",\"series\":[{\"name\":\"Series A\",\"formula\":\"'Chart'!$B$2:$B$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"},{\"name\":\"Series B\",\"formula\":\"'Chart'!$C$2:$C$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"}],\"render\":{\"bytes\":16574}}}\n",
+    "stderr": "[chart] skipping unsupported chart type export: Combo\n"
+  },
+  {
+    "id": "CH-area",
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stdout": "Inspect result written to file: /Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/runs/chart-area.xlsx.inspect.ndjson\n{\"id\":\"CH-area\",\"description\":\"Chart type acceptance, export and render: area\",\"status\":\"pass\",\"ms\":504,\"detail\":{\"type\":\"area\",\"series\":[{\"name\":\"Series A\",\"formula\":\"'Chart'!$B$2:$B$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"},{\"name\":\"Series B\",\"formula\":\"'Chart'!$C$2:$C$5\",\"categoryFormula\":\"'Chart'!$A$2:$A$5\"}],\"render\":{\"bytes\":15091}}}\n",
+    "stderr": ""
+  },
+  {
+    "id": "F08",
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stdout": "{\"id\":\"F08\",\"description\":\"Charts range/nonadjacent/row binding, setData, axes, labels, legend, line and data table\",\"status\":\"fail\",\"ms\":49,\"error\":\"TypeError: this[#R].toProto is not a function\",\"stack\":[\"TypeError: this[#R].toProto is not a function\",\"    at kD.toProto (file:///Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/dist/artifact_tool.mjs:2839:618491)\",\"    at kD.toDrawingProto (file:///Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/dist/artifact_tool.mjs:3122:164188)\",\"    at file:///Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/dist/artifact_tool.mjs:3122:181307\",\"    at Array.map (<anonymous>)\"]}\n",
+    "stderr": ""
+  },
+  {
+    "id": "F09",
+    "code": null,
+    "signal": "SIGKILL",
+    "timedOut": true,
+    "stdout": "{\"id\":\"F09\",\"description\":\"Raster export selection and output variants\",\"status\":\"pass\",\"ms\":433,\"detail\":[{\"name\":\"png-index\",\"type\":\"image/png\",\"size\":11938},{\"name\":\"jpeg-center\",\"type\":\"image/jpeg\",\"size\":9977},{\"name\":\"layout\",\"type\":\"application/vnd.openai.workbook-layout+json\",\"size\":3884},{\"name\":\"xlsx\",\"type\":\"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet\",\"size\":3428}]}\n",
+    "stderr": ""
+  }
+]

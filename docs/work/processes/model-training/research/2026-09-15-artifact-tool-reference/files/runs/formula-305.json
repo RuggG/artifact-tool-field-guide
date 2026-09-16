@@ -1,0 +1,37 @@
+{
+  "name": "fx.ASINH",
+  "category": "math-trig",
+  "examples": [
+    {
+      "formula": "=ASINH(10)",
+      "value": 2.99822295029797,
+      "projection": [
+        [
+          2.99822295029797,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 9
+    }
+  ]
+}

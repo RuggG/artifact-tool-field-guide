@@ -1,0 +1,37 @@
+{
+  "name": "fx.SIN",
+  "category": "math-trig",
+  "examples": [
+    {
+      "formula": "=SIN(10)",
+      "value": -0.5440211108893698,
+      "projection": [
+        [
+          -0.5440211108893698,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 7
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "regex",
+  "input": "return await wb.inspect({\n  kind: \"match\", searchTerm: \"management.*fee|fee.*margin\", maxChars: 12000,\n  options: {useRegex: true, maxResults: 30}\n});",
+  "elapsedMs": 4,
+  "result": {
+    "ndjson": "{\"kind\":\"match\",\"sheet\":\"Summary\",\"address\":\"C11\",\"value\":\"Implied net fee margin, annual bp\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Summary\",\"address\":\"C13\",\"value\":\"Net management fees, USD m\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Summary\",\"address\":\"C22\",\"value\":\"Management-fee PBT, USD m\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Summary\",\"address\":\"C33\",\"value\":\"Fee margin\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Summary\",\"address\":\"F41\",\"value\":\"Fee margin, bp\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Assumptions\",\"address\":\"C24\",\"value\":\"Net management-fee margin\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Assumptions\",\"address\":\"C50\",\"value\":\"FY2025 published average fee margin\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C24\",\"value\":\"Gross management fees: historical memo\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C26\",\"value\":\"Net management-fee margin, annual bp\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C27\",\"value\":\"Net management fees\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C47\",\"value\":\"Management-fee finance expense\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C51\",\"value\":\"Core management-fee profit before tax\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C65\",\"value\":\"Half-year net management fees\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C95\",\"value\":\"Net management fees\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C102\",\"value\":\"Core management-fee profit before tax\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C109\",\"value\":\"Net management-fee margin, annual bp\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Disclosures\",\"address\":\"C20\",\"value\":\"Gross management and other fees\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Disclosures\",\"address\":\"C22\",\"value\":\"Core net management fees\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Disclosures\",\"address\":\"C28\",\"value\":\"Management-fee compensation\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Disclosures\",\"address\":\"C32\",\"value\":\"Management-fee net finance expense\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Disclosures\",\"address\":\"C36\",\"value\":\"Core management-fee PBT\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Disclosures\",\"address\":\"C45\",\"value\":\"Published average fee margin, bp\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Disclosures\",\"address\":\"C59\",\"value\":\"2025 MIX | AUM STOCK VS MANAGEMENT-FEE FLOW\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Checks\",\"address\":\"C15\",\"value\":\"Net management fees\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Checks\",\"address\":\"C19\",\"value\":\"Management-fee PBT\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Checks\",\"address\":\"C49\",\"value\":\"Fee-margin assumption\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Readme\",\"address\":\"C12\",\"value\":\"Management fees\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Readme\",\"address\":\"D12\",\"value\":\"Model net management fees after distribution costs. Forecast applies 56bp, the reported 2025 average, to midpoint AUM with a quarter-year factor. Immaterial service income is absorbed in this blended rate. Historical gross fees and distribution costs are shown separately as memo lines.\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Readme\",\"address\":\"C13\",\"value\":\"Fee margin limitation\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Readme\",\"address\":\"D17\",\"value\":\"All fixed compensation belongs to the recurring management-fee business. Forecast fixed compensation is $274m / 4 and other fixed costs including D&A $215m / 4. No inflation or incremental cost savings are assumed. Other employment expense stays $7m / 4.\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"notice\",\"message\":\"Cell search truncated: returned 30 matches. Increase options.maxResults or narrow the range.\"}",
+    "recordCount": 31,
+    "truncated": false,
+    "metadata": {
+      "revision": "q35t13",
+      "target": {
+        "id": "wb/9l50fa",
+        "beforeLines": 0,
+        "afterLines": 0
+      },
+      "kind": {
+        "requested": "match",
+        "tokens": [
+          "match"
+        ]
+      },
+      "include": {
+        "tokens": []
+      },
+      "exclude": {
+        "tokens": []
+      },
+      "notices": []
+    }
+  }
+}

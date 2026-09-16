@@ -1,0 +1,10 @@
+{
+  "index": 17,
+  "name": "valueAxis",
+  "summary": "Format value axis gridlines",
+  "originalCode": "chart.yAxis = { majorGridlines: { fill: 'background2', style: 'dashed', width: 1 } };",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

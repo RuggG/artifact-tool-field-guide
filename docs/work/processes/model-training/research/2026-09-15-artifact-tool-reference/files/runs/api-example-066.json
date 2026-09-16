@@ -1,0 +1,10 @@
+{
+  "index": 66,
+  "name": "worksheet.autoLayoutDrawings",
+  "summary": "Stack charts vertically in a dashboard frame",
+  "originalCode": "const items = sheet.charts.items;\nsheet.autoLayoutDrawings(items, {\n  direction: 'vertical',\n  frame: { startCell: 'A8', width: 1200, height: 800 },\n  gap: 24,\n  padding: 32,\n});",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

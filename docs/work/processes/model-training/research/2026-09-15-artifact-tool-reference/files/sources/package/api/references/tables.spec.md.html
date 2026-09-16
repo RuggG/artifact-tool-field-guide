@@ -1,0 +1,52 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tables · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="tables.spec.md">Raw file</a> · <a data-public-raw download href="tables.spec.md">Download</a></p><article><h1 id="tables">Tables</h1>
+<p>Worksheet tables are created from an existing range and can edit rows, headers,
+data body ranges, names, style, and totals.</p>
+<h2 id="add-table">Add Table</h2>
+<pre><code class="language-ts">const sheet = workbook.worksheets.add("Inventory");
+sheet.getRange("A1:C3").values = [
+  ["SKU", "Color", "Stock"],
+  ["100-001", "Black", 15],
+  ["100-002", "Sage", 40],
+];
+
+const table = sheet.tables.add("A1:C3", true, "InventoryTable");
+</code></pre>
+<h2 id="read">Read</h2>
+<pre><code class="language-ts">sheet.tables.items;
+sheet.tables.getItem("InventoryTable");
+sheet.tables.getItemAt(0);
+
+table.name;
+table.address;
+table.getRange();
+table.getHeaderRowRange();
+table.getDataRows();
+</code></pre>
+<h2 id="add-rows">Add Rows</h2>
+<pre><code class="language-ts">table.rows.add(null, [["100-003", "Denim", 12]]);
+</code></pre>
+<h2 id="headerless-table">Headerless Table</h2>
+<pre><code class="language-ts">sheet.getRange("A1:B3").values = [
+  ["West", 12],
+  ["East", 9],
+  ["South", 15],
+];
+sheet.tables.add("A1:B3", false, "HeaderlessTable");
+</code></pre>
+<h2 id="recorded-table-edit">Recorded Table Edit</h2>
+<pre><code class="language-ts">const { patch } = workbook.record(() =&gt; {
+  const table = sheet.tables.add("A1:C3", true, "InventoryTable");
+  table.rows.add(null, [["100-003", "Denim", 12]]);
+});
+</code></pre>
+<p>The recorded patch uses <code>table.add</code> followed by row/column/table operations for
+subsequent edits.</p>
+<h2 id="cookbook">Cookbook</h2>
+<pre><code class="language-ts">const table = sheet.tables.add("A1:D5", true, "DataTable");
+table.rows.add(null, [["West", "Ava", 12, 14]]);
+
+sheet.getRange(table.address).format = {
+  font: { name: "Aptos" },
+  wrapText: true,
+};
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

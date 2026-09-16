@@ -1,0 +1,58 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>table ops · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="table.md">Raw file</a> · <a data-public-raw download href="table.md">Download</a></p><article><h1 id="table-ops">table ops</h1>
+<p>Ops in the <code>table.*</code> namespace for <code>Workbook.apply</code>.</p>
+<h2 id="ops-index">Ops index</h2>
+<ul>
+<li><code>table.add</code>: Create a table from a range.</li>
+<li><code>table.rows.add</code>: Append or insert rows into a table.</li>
+</ul>
+<h2 id="tableadd"><code>table.add</code></h2>
+<p>Create a table from a range.</p>
+<p><strong>Required fields</strong>
+- <code>op</code>
+- <code>props</code>
+- <code>props.range</code></p>
+<p><strong>Optional fields</strong>
+- <code>as</code>
+- <code>props.hasHeaders</code>
+- <code>props.name</code></p>
+<p><strong>Examples</strong></p>
+<pre><code class="language-json">{
+  "op": "table.add",
+  "props": {
+    "range": {
+      "sheet": "Inventory",
+      "range": "A1:C3"
+    },
+    "hasHeaders": true,
+    "name": "InventoryTable"
+  }
+}
+</code></pre>
+<h2 id="tablerowsadd"><code>table.rows.add</code></h2>
+<p>Append or insert rows into a table.</p>
+<p><strong>Required fields</strong>
+- <code>op</code>
+- <code>props</code>
+- <code>target</code>
+- <code>props.values</code></p>
+<p><strong>Optional fields</strong>
+- <code>props.index</code></p>
+<p><strong>Examples</strong></p>
+<pre><code class="language-json">{
+  "op": "table.rows.add",
+  "target": {
+    "name": "InventoryTable",
+    "sheet": "Inventory"
+  },
+  "props": {
+    "index": null,
+    "values": [
+      [
+        "100-003",
+        "Denim",
+        12
+      ]
+    ]
+  }
+}
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

@@ -1,0 +1,37 @@
+{
+  "name": "fx.AREAS",
+  "category": "lookup-reference",
+  "examples": [
+    {
+      "formula": "=AREAS(A1:A5)",
+      "value": "AREAS is not implemented. reference=1,2,3,4,5",
+      "projection": [
+        [
+          "AREAS is not implemented. reference=1,2,3,4,5",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 9
+    }
+  ]
+}

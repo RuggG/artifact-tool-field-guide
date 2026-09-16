@@ -1,0 +1,46 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Comments · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="comments.md">Raw file</a> · <a data-public-raw download href="comments.md">Download</a></p><article><h1 id="comments">Comments</h1>
+<p>Workbook comments use people, threads, replies, reactions, and thread state.</p>
+<h2 id="current-author">Current Author</h2>
+<pre><code class="language-ts">workbook.comments.setSelf({
+  displayName,
+  initials,
+  email,
+});
+</code></pre>
+<h2 id="person-inline-type">Person Inline Type</h2>
+<pre><code class="language-ts">type PersonConfig = {
+  id?: string;
+  displayName: string;
+  initials?: string;
+  email?: string;
+  avatarUrl?: string;
+};
+</code></pre>
+<h2 id="cell-and-range-threads">Cell And Range Threads</h2>
+<pre><code class="language-ts">const cellThread = workbook.comments.addThread(
+  { cell: sheet.getRange(cellAddress) },
+  bodyText,
+);
+
+const rangeThread = workbook.comments.addThread(
+  { range: sheet.getRange(rangeAddress) },
+  bodyText,
+);
+</code></pre>
+<h2 id="thread-inline-types">Thread Inline Types</h2>
+<pre><code class="language-ts">type WorkbookCommentTarget =
+  | { cell: Range }
+  | { range: Range };
+
+type ThreadAddOptions = {
+  author?: Person | PersonConfig | { id: string };
+  createdAt?: string;
+  position?: { x: number; y: number; unit?: "px" | "emu" };
+};
+</code></pre>
+<h2 id="replies-and-state">Replies And State</h2>
+<pre><code class="language-ts">const reply = cellThread.addReply(replyText);
+reply.toggleReaction(reactionText);
+cellThread.resolve();
+cellThread.reopen();
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

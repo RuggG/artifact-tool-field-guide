@@ -1,0 +1,1141 @@
+[
+  {
+    "id": "overview",
+    "input": "return await wb.inspect({\n  kind: \"workbook,sheet,table\", maxChars: 14000,\n  tableMaxRows: 4, tableMaxCols: 6, tableMaxCellChars: 80\n});",
+    "elapsedMs": 11,
+    "result": {
+      "ndjson": "{\"kind\":\"workbook\",\"id\":\"wb/lrmr6s\",\"sheets\":6,\"tables\":6}\n{\"kind\":\"sheet\",\"id\":\"ws/martey\",\"name\":\"Summary\",\"index\":0,\"range\":\"A1:M57\",\"address\":\"A1:M57\",\"tables\":1}\n{\"kind\":\"table\",\"sheet\":\"Summary\",\"address\":\"A1:M57\",\"rows\":57,\"cols\":13,\"values\":[[null,null,null,null,null,null,null,null,null,null,null,null,null],[null,null,\"Man Group | AUM to earnings\",null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null,null,null,null],[null,null,\"Case selected\",\"Base\",null,null,null,null,null,null,null,null,null],[null,null,\"2023–2025 history | H1 2026 actual | Q3 2026–2027 forecast | 14 Sep 2026\",null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null,null,null,null],[null,null,null,\"H1:23\",\"FY:23\",\"H1:24\",\"FY:24\",\"H1:25\",\"FY:25\",\"H1:26\",\"FY:26\",\"H1:27\",\"FY:27\"],[null,null,null,\"Actual\",\"Actual\",\"Actual\",\"Actual\",\"Actual\",\"Actual\",\"Actual\",\"A + F\",\"Forecast\",\"Forecast\"],[null,null,\"Closing AUM, USD bn\",151.7,167.49999999999997,178.20000000000002,168.60000000000002,193.3,227.6,253.59999999999997,266.4384999999999,279.9269490624999,294.09825085878896],[null,null,\"Net flows, USD bn\",2.6,3,0.8999999999999999,-3.3,17.6,28.7,7.1,12.235399999999998,5.395379624999999,11.063900343515622],[null,null,\"Implied net fee margin, annual bp\",62.97056810403833,62.83849918433931,63.233395495624734,62.96907512377127,58.49243388488188,55.37986887774776,53.44129554655871,54.786162474599045,56,56],[null,null,null,null,null,null,null,null,null,null,null,null,null],[null,null,\"Net management fees, USD m\",460,963,551,1097,516.9999999999999,1076.9999999999998,627,1354.9429499999997,764.7950618437496,1568.3078736933392],[null,null,\"Performance fees, USD m\",32,180,170,310,67,281,207,421,67,281],[null,null,\"Seed gains, USD m\",19,48,39,50,19,38,18,37,19,38],[null,null,\"Rental / other income, USD m\",2,5,1,2,1,2,1,2,1,2],[null,null,\"Core net revenue, USD m\",513,1196,761,1459,604,1398,853,1814.9429499999997,851.7950618437496,1889.307873693339],[null,null,null,null,null,null,null,null,null,null,null,null,null],[null,null,\"Core operating costs, USD m\",-370,-834,-487,-960.0000000000001,-449,-970,-546,-1124.404322034071,-498.5594068245066,-1096.553767632043],[null,null,\"Core operating profit, USD m\",142.99999999999997,362.00000000000006,274,498.99999999999994,154.99999999999997,428,306.99999999999994,690.5386279659288,353.2356550192431,792.7541060612962],[null,null,null,null,null,null,null,null,null,null,null,null,null],[null,null,\"Management-fee PBT, USD m\",133,280,162.99999999999997,323,129.99999999999994,293.99999999999994,186,473.73768752705735,315.03659545811456,658.7541060612962],[null,null,\"Performance / seed PBT, USD m\",3.9999999999999964,60.00000000000001,94,150,16.000000000000007,113,111,196.03937460257254,27.96062539742747,113.00000000000003],[null,null,\"Core total PBT, USD m\",136.99999999999997,340,257,473,145.99999999999994,406.99999999999994,297,669.7770621296299,342.9972208555421,771.7541060612963],[null,null,\"Core tax expense, USD m\",-28.999999999999996,-69,-53,-92,-32.999999999999986,-85.99999999999999,-67,-145.7686175507326,-72.47607123728898,-163.07334919231323],[null,null,\"Core profit after tax, USD m\",107.99999999999997,271,203.99999999999997,381,112.99999999999994,320.99999999999994,230.00000000000003,524.0084445788973,270.52114961825305,608.680756868983],[null,null,\"Diluted weighted shares, m\",1217,1207.0554419999999,1192,1189.075845,1168,1164.877368,1153,1158.9874951013699,1164.877368,1164.877368],[null,null,\"Core diluted EPS, US cents\",8.874281018898929,22.451329953077668,17.11409395973154,32.04169032632229,9.67465753424657,27.55654876797297,19.947961838681703,45.21260555387315,23.22314408792369,52.25277557877518],[null,null,null,null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null,null,null,null],[null,null,\"THESIS QUESTIONS | USE THE CASE SELECTOR\",null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null,null,null,null],[null,null,\"Fee margin\",\"Base holds the 2025 average of 56bp; Downside uses 52bp, matching H1 2026.\",null,null,null,null,null,null,null,null,null],[null,null,\"Flows\",\"Base +1% of opening AUM per quarter; Downside 0%; Upside +2%.\",null,null,null,null,null,null,null,null,null],[null,null,\"Performance fees\",\"Base repeats allocated 2025 quarters; Zero PF removes forecast fees and their variable costs.\",null,null,null,null,null,null,null,null,null],[null,null,\"Zero PF interpretation\",\"H1 2026 remains actual. FY2027 is the full-year zero-fee test; seed gains and funding stay.\",null,null,null,null,null,null,null,null,null],[null,null,\"Quarterly evidence\",\"AUM is reported; quarterly financial flows are estimates tied to disclosed H1 and FY totals.\",null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null,null,null,null],[null,null,\"2025 MIX | THE SAME AUM DOES NOT EARN THE SAME FEES\",null,null,null,null,null,null,null,null,null,null],[null,null,\"Product category\",\"AUM share\",\"Fee share\",\"Fee margin, bp\",null,null,null,null,null,null,null],[null,null,\"Absolute return\",0.18673110720562391,0.3955431754874652,105,null,null,null,null,null,null,null],[null,null,\"Total return\",0.20474516695957823,0.24976787372330547,63,null,null,null,null,null,null,null],[null,null,\"Multi-manager\",0.06370826010544815,0.025998142989786442,20,null,null,null,null,null,null,null],[null,null,\"Systematic long-only\",0.3347978910369069,0.12627669452181986,24,null,null,null,null,null,null,null],[null,null,\"Discretionary long-only\",0.21001757469244287,0.19962859795728877,57,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null,null,null,null],[null,null,\"Performance fees reflect hurdles, high-water marks and crystallisation; AUM returns do not mechanically imply fees.\",null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null,null,null,null],[null,null,\"Year\",\"Mgmt PBT\",\"PF / seed PBT\",\"Total PBT\",null,null,null,null,null,null,null],[null,null,\"FY:23\",280,60.00000000000001,340,null,null,null,null,null,null,null],[null,null,\"FY:24\",323,150,473,null,null,null,null,null,null,null],[null,null,\"FY:25\",293.99999999999994,113,406.99999999999994,null,null,null,null,null,null,null],[null,null,\"FY:26\",473.73768752705735,196.03937460257254,669.7770621296299,null,null,null,null,null,null,null],[null,null,\"FY:27\",658.7541060612962,113.00000000000003,771.7541060612963,null,null,null,null,null,null,null]]}\n{\"kind\":\"sheet\",\"id\":\"ws/0tplml\",\"name\":\"Assumptions\",\"index\":1,\"range\":\"A1:W67\",\"address\":\"A1:W67\",\"tables\":1}\n{\"kind\":\"notice\",\"message\":\"Truncated: omitted 9 lines. Increase maxChars, narrow range, or use tableMaxRows/tableMaxCols/tableMaxCellChars.\"}",
+      "recordCount": 5,
+      "truncated": true,
+      "metadata": {
+        "revision": "odzi1t",
+        "target": {
+          "id": "wb/lrmr6s",
+          "beforeLines": 0,
+          "afterLines": 0
+        },
+        "kind": {
+          "requested": "workbook,sheet,table",
+          "tokens": [
+            "workbook",
+            "sheet",
+            "table"
+          ]
+        },
+        "include": {
+          "tokens": []
+        },
+        "exclude": {
+          "tokens": []
+        },
+        "notices": []
+      }
+    }
+  },
+  {
+    "id": "sheets",
+    "input": "return await wb.inspect({kind: \"sheet\", include: \"id,name\"});",
+    "elapsedMs": 6,
+    "result": {
+      "ndjson": "{\"kind\":\"sheet\",\"id\":\"ws/martey\",\"name\":\"Summary\",\"index\":0,\"range\":\"A1:M57\",\"address\":\"A1:M57\"}\n{\"kind\":\"sheet\",\"id\":\"ws/0tplml\",\"name\":\"Assumptions\",\"index\":1,\"range\":\"A1:W67\",\"address\":\"A1:W67\"}\n{\"kind\":\"sheet\",\"id\":\"ws/dvxktf\",\"name\":\"Fee engine\",\"index\":2,\"range\":\"A1:W109\",\"address\":\"A1:W109\"}\n{\"kind\":\"sheet\",\"id\":\"ws/yfu5pm\",\"name\":\"Disclosures\",\"index\":3,\"range\":\"A1:Q125\",\"address\":\"A1:Q125\"}\n{\"kind\":\"sheet\",\"id\":\"ws/yd9na3\",\"name\":\"Checks\",\"index\":4,\"range\":\"A1:W59\",\"address\":\"A1:W59\"}\n{\"kind\":\"sheet\",\"id\":\"ws/alxc6k\",\"name\":\"Readme\",\"index\":5,\"range\":\"A1:D28\",\"address\":\"A1:D28\"}",
+      "recordCount": 6,
+      "truncated": false,
+      "metadata": {
+        "revision": "v50enu",
+        "target": {
+          "id": "wb/su08vw",
+          "beforeLines": 0,
+          "afterLines": 0
+        },
+        "kind": {
+          "requested": "sheet",
+          "tokens": [
+            "sheet"
+          ]
+        },
+        "include": {
+          "requested": "id,name",
+          "tokens": [
+            "id",
+            "name"
+          ]
+        },
+        "exclude": {
+          "tokens": []
+        },
+        "notices": []
+      }
+    }
+  },
+  {
+    "id": "literal",
+    "input": "return await wb.inspect({\n  kind: \"match\", searchTerm: \"profit\", maxChars: 12000,\n  options: {useRegex: false, maxResults: 30}\n});",
+    "elapsedMs": 6,
+    "result": {
+      "ndjson": "{\"kind\":\"match\",\"sheet\":\"Summary\",\"address\":\"C20\",\"value\":\"Core operating profit, USD m\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Summary\",\"address\":\"C26\",\"value\":\"Core profit after tax, USD m\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Assumptions\",\"address\":\"C66\",\"value\":\"PF third-party profit share / fee revenue\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C43\",\"value\":\"Core operating profit before seed gains\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C44\",\"value\":\"Core operating profit including seed gains\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C46\",\"value\":\"PROFIT | FUNDING, TAX AND DILUTED SHARES\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C49\",\"value\":\"Third-party profit share: management\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C50\",\"value\":\"Third-party profit share: performance\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C51\",\"value\":\"Core management-fee profit before tax\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C52\",\"value\":\"Core performance / seed profit before tax\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C53\",\"value\":\"Core total profit before tax\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C55\",\"value\":\"Core profit after tax\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C101\",\"value\":\"Core operating profit including seed gains\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C102\",\"value\":\"Core management-fee profit before tax\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C103\",\"value\":\"Core performance / seed profit before tax\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C104\",\"value\":\"Core total profit before tax\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C106\",\"value\":\"Core profit after tax\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Disclosures\",\"address\":\"C34\",\"value\":\"Third-party profit share: management\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Disclosures\",\"address\":\"C35\",\"value\":\"Third-party profit share: performance\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Disclosures\",\"address\":\"C40\",\"value\":\"Core profit after tax\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Disclosures\",\"address\":\"C43\",\"value\":\"Statutory profit after tax\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Checks\",\"address\":\"C23\",\"value\":\"Core profit after tax\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Readme\",\"address\":\"D9\",\"value\":\"Core (company-adjusted) earnings remove non-core acquisition, restructuring and other adjustments, and eliminate consolidation gross-ups. Statutory profit and EPS are retained as historical memo inputs, not mixed into the forecast.\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Readme\",\"address\":\"D20\",\"value\":\"Seed investment gains and rental income stay at 2025 annual totals / 4. Management and seed financing remain $7m / 4 and $11m / 4. Management third-party profit share stays $2m / 4; performance share scales at $1m / $281m of fee revenue.\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Readme\",\"address\":\"C21\",\"value\":\"Operating profit\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Readme\",\"address\":\"D21\",\"value\":\"Model-defined core operating profit equals net revenue less core operating costs, including D&A and other employment costs. It is before net finance expense and third-party profit allocations. A separate operating-profit line excludes seed gains. Core PBT reconciles to the company.\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Readme\",\"address\":\"D22\",\"value\":\"Forecast tax is the unrounded 2025 ratio $86m / $407m. Forecast shares are 1,164.877368m. H1 actuals retain their reported rates and shares. Annual shares are day-weighted, and EPS equals total profit / weighted diluted shares; quarterly EPS is never added to make FY EPS.\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Readme\",\"address\":\"D26\",\"value\":\"AUM reconciles quarterly to source; fees, cost components, both PBT streams, tax, profit and weighted shares reconcile to H1/FY controls. EPS differences within 0.10 US cents reflect rounded published dollar profits and share counts. Allocation identities are labelled separately from source tie-outs.\",\"formula\":null,\"match\":\"value\"}",
+      "recordCount": 28,
+      "truncated": false,
+      "metadata": {
+        "revision": "1gv5zp",
+        "target": {
+          "id": "wb/gx6lx3",
+          "beforeLines": 0,
+          "afterLines": 0
+        },
+        "kind": {
+          "requested": "match",
+          "tokens": [
+            "match"
+          ]
+        },
+        "include": {
+          "tokens": []
+        },
+        "exclude": {
+          "tokens": []
+        },
+        "notices": []
+      }
+    }
+  },
+  {
+    "id": "regex",
+    "input": "return await wb.inspect({\n  kind: \"match\", searchTerm: \"management.*fee|fee.*margin\", maxChars: 12000,\n  options: {useRegex: true, maxResults: 30}\n});",
+    "elapsedMs": 4,
+    "result": {
+      "ndjson": "{\"kind\":\"match\",\"sheet\":\"Summary\",\"address\":\"C11\",\"value\":\"Implied net fee margin, annual bp\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Summary\",\"address\":\"C13\",\"value\":\"Net management fees, USD m\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Summary\",\"address\":\"C22\",\"value\":\"Management-fee PBT, USD m\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Summary\",\"address\":\"C33\",\"value\":\"Fee margin\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Summary\",\"address\":\"F41\",\"value\":\"Fee margin, bp\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Assumptions\",\"address\":\"C24\",\"value\":\"Net management-fee margin\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Assumptions\",\"address\":\"C50\",\"value\":\"FY2025 published average fee margin\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C24\",\"value\":\"Gross management fees: historical memo\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C26\",\"value\":\"Net management-fee margin, annual bp\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C27\",\"value\":\"Net management fees\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C47\",\"value\":\"Management-fee finance expense\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C51\",\"value\":\"Core management-fee profit before tax\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C65\",\"value\":\"Half-year net management fees\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C95\",\"value\":\"Net management fees\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C102\",\"value\":\"Core management-fee profit before tax\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Fee engine\",\"address\":\"C109\",\"value\":\"Net management-fee margin, annual bp\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Disclosures\",\"address\":\"C20\",\"value\":\"Gross management and other fees\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Disclosures\",\"address\":\"C22\",\"value\":\"Core net management fees\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Disclosures\",\"address\":\"C28\",\"value\":\"Management-fee compensation\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Disclosures\",\"address\":\"C32\",\"value\":\"Management-fee net finance expense\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Disclosures\",\"address\":\"C36\",\"value\":\"Core management-fee PBT\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Disclosures\",\"address\":\"C45\",\"value\":\"Published average fee margin, bp\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Disclosures\",\"address\":\"C59\",\"value\":\"2025 MIX | AUM STOCK VS MANAGEMENT-FEE FLOW\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Checks\",\"address\":\"C15\",\"value\":\"Net management fees\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Checks\",\"address\":\"C19\",\"value\":\"Management-fee PBT\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Checks\",\"address\":\"C49\",\"value\":\"Fee-margin assumption\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Readme\",\"address\":\"C12\",\"value\":\"Management fees\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Readme\",\"address\":\"D12\",\"value\":\"Model net management fees after distribution costs. Forecast applies 56bp, the reported 2025 average, to midpoint AUM with a quarter-year factor. Immaterial service income is absorbed in this blended rate. Historical gross fees and distribution costs are shown separately as memo lines.\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Readme\",\"address\":\"C13\",\"value\":\"Fee margin limitation\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"match\",\"sheet\":\"Readme\",\"address\":\"D17\",\"value\":\"All fixed compensation belongs to the recurring management-fee business. Forecast fixed compensation is $274m / 4 and other fixed costs including D&A $215m / 4. No inflation or incremental cost savings are assumed. Other employment expense stays $7m / 4.\",\"formula\":null,\"match\":\"value\"}\n{\"kind\":\"notice\",\"message\":\"Cell search truncated: returned 30 matches. Increase options.maxResults or narrow the range.\"}",
+      "recordCount": 31,
+      "truncated": false,
+      "metadata": {
+        "revision": "q35t13",
+        "target": {
+          "id": "wb/9l50fa",
+          "beforeLines": 0,
+          "afterLines": 0
+        },
+        "kind": {
+          "requested": "match",
+          "tokens": [
+            "match"
+          ]
+        },
+        "include": {
+          "tokens": []
+        },
+        "exclude": {
+          "tokens": []
+        },
+        "notices": []
+      }
+    }
+  },
+  {
+    "id": "regions",
+    "input": "return await wb.inspect({\n  kind: \"region\", sheetId: \"Summary\", range: \"C7:M28\",\n  maxChars: 10000, tableMaxRows: 8, tableMaxCols: 6\n});",
+    "elapsedMs": 2,
+    "result": {
+      "ndjson": "{\"kind\":\"region\",\"sheet\":\"Summary\",\"address\":\"C22:M28\",\"rows\":7,\"cols\":11,\"nonEmpty\":77,\"text\":77,\"maxTextLength\":29,\"preview\":[[\"Management-fee PBT, USD m\",\"133\",\"280\",\"162.99999999999997\",\"323\",\"129.99999999999994\"],[\"Performance / seed PBT, USD m\",\"3.9999999999999964\",\"60.000000000000007\",\"94\",\"150\",\"16.000000000000007\"],[\"Core total PBT, USD m\",\"136.99999999999997\",\"340\",\"257\",\"473\",\"145.99999999999994\"],[\"Core tax expense, USD m\",\"-28.999999999999996\",\"-69\",\"-53\",\"-92\",\"-32.999999999999986\"],[\"Core profit after tax, USD m\",\"107.99999999999997\",\"271\",\"203.99999999999997\",\"381\",\"112.99999999999994\"],[\"Diluted weighted shares, m\",\"1217\",\"1207.0554419999999\",\"1192\",\"1189.0758450000001\",\"1168\"],[\"Core diluted EPS, US cents\",\"8.8742810188989285\",\"22.451329953077668\",\"17.114093959731541\",\"32.041690326322289\",\"9.6746575342465704\"]],\"previewAddress\":\"C22:H28\",\"previewRows\":7,\"previewCols\":6}\n{\"kind\":\"region\",\"sheet\":\"Summary\",\"address\":\"C13:M17\",\"rows\":5,\"cols\":11,\"nonEmpty\":55,\"text\":55,\"maxTextLength\":28,\"preview\":[[\"Net management fees, USD m\",\"460\",\"963\",\"551\",\"1097\",\"516.99999999999989\"],[\"Performance fees, USD m\",\"32\",\"180\",\"170\",\"310\",\"67\"],[\"Seed gains, USD m\",\"19\",\"48\",\"39\",\"50\",\"19\"],[\"Rental / other income, USD m\",\"2\",\"5\",\"1\",\"2\",\"1\"],[\"Core net revenue, USD m\",\"513\",\"1196\",\"761\",\"1459\",\"604\"]],\"previewAddress\":\"C13:H17\",\"previewRows\":5,\"previewCols\":6}\n{\"kind\":\"region\",\"sheet\":\"Summary\",\"address\":\"C7:M11\",\"rows\":5,\"cols\":11,\"nonEmpty\":53,\"blank\":2,\"text\":53,\"maxTextLength\":33,\"preview\":[[null,\"H1:23\",\"FY:23\",\"H1:24\",\"FY:24\",\"H1:25\"],[null,\"Actual\",\"Actual\",\"Actual\",\"Actual\",\"Actual\"],[\"Closing AUM, USD bn\",\"151.69999999999999\",\"167.49999999999997\",\"178.20000000000002\",\"168.60000000000002\",\"193.3\"],[\"Net flows, USD bn\",\"2.6\",\"3\",\"0.89999999999999991\",\"-3.3\",\"17.600000000000001\"],[\"Implied net fee margin, annual bp\",\"62.970568104038328\",\"62.838499184339312\",\"63.233395495624734\",\"62.969075123771269\",\"58.492433884881883\"]],\"previewAddress\":\"C7:H11\",\"previewRows\":5,\"previewCols\":6}\n{\"kind\":\"region\",\"sheet\":\"Summary\",\"address\":\"C19:M20\",\"rows\":2,\"cols\":11,\"nonEmpty\":22,\"text\":22,\"maxTextLength\":28,\"preview\":[[\"Core operating costs, USD m\",\"-370\",\"-834\",\"-487\",\"-960.00000000000011\",\"-449\"],[\"Core operating profit, USD m\",\"142.99999999999997\",\"362.00000000000006\",\"274\",\"498.99999999999994\",\"154.99999999999997\"]],\"previewAddress\":\"C19:H20\",\"previewRows\":2,\"previewCols\":6}",
+      "recordCount": 4,
+      "truncated": false,
+      "metadata": {
+        "revision": "fusuzs",
+        "target": {
+          "id": "wb/vewvx1",
+          "beforeLines": 0,
+          "afterLines": 0
+        },
+        "kind": {
+          "requested": "region",
+          "tokens": [
+            "region"
+          ]
+        },
+        "include": {
+          "tokens": []
+        },
+        "exclude": {
+          "tokens": []
+        },
+        "notices": []
+      }
+    }
+  },
+  {
+    "id": "ranges",
+    "input": "const range = wb.worksheets.getItem(\"Summary\").getRange(\"K13:M20\");\nreturn {sheet: \"Summary\", range: \"K13:M20\", values: range.values, formulas: range.formulas};",
+    "elapsedMs": 0,
+    "result": {
+      "sheet": "Summary",
+      "range": "K13:M20",
+      "values": [
+        [
+          1354.9429499999997,
+          764.7950618437496,
+          1568.3078736933392
+        ],
+        [
+          421,
+          67,
+          281
+        ],
+        [
+          37,
+          19,
+          38
+        ],
+        [
+          2,
+          1,
+          2
+        ],
+        [
+          1814.9429499999997,
+          851.7950618437496,
+          1889.307873693339
+        ],
+        [
+          null,
+          null,
+          null
+        ],
+        [
+          -1124.404322034071,
+          -498.5594068245066,
+          -1096.553767632043
+        ],
+        [
+          690.5386279659288,
+          353.2356550192431,
+          792.7541060612962
+        ]
+      ],
+      "formulas": [
+        [
+          "='Fee engine'!K95",
+          "='Fee engine'!L95",
+          "='Fee engine'!M95"
+        ],
+        [
+          "='Fee engine'!K96",
+          "='Fee engine'!L96",
+          "='Fee engine'!M96"
+        ],
+        [
+          "='Fee engine'!K97",
+          "='Fee engine'!L97",
+          "='Fee engine'!M97"
+        ],
+        [
+          "='Fee engine'!K98",
+          "='Fee engine'!L98",
+          "='Fee engine'!M98"
+        ],
+        [
+          "='Fee engine'!K99",
+          "='Fee engine'!L99",
+          "='Fee engine'!M99"
+        ],
+        [
+          "",
+          "",
+          ""
+        ],
+        [
+          "='Fee engine'!K100",
+          "='Fee engine'!L100",
+          "='Fee engine'!M100"
+        ],
+        [
+          "='Fee engine'!K101",
+          "='Fee engine'!L101",
+          "='Fee engine'!M101"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "trace",
+    "input": "return await wb.trace(\"Fee engine!R27\");",
+    "elapsedMs": 9,
+    "result": {
+      "cell": "Fee engine!R27",
+      "sheetName": "Fee engine",
+      "address": "R27",
+      "formula": "=R18*Assumptions!$D$49*R26/Assumptions!$D$60*Assumptions!$D$48",
+      "value": 359.47799999999995,
+      "params": [
+        {
+          "cell": "Fee engine!R18",
+          "sheetName": "Fee engine",
+          "address": "R18",
+          "formula": null,
+          "value": 256.77,
+          "params": []
+        },
+        {
+          "cell": "Assumptions!D49",
+          "sheetName": "Assumptions",
+          "address": "D49",
+          "formula": null,
+          "value": 1000,
+          "params": []
+        },
+        {
+          "cell": "Fee engine!R26",
+          "sheetName": "Fee engine",
+          "address": "R26",
+          "formula": "=Assumptions!R25",
+          "value": 56,
+          "params": [
+            {
+              "cell": "Assumptions!R25",
+              "sheetName": "Assumptions",
+              "address": "R25",
+              "formula": "=IF(CHOOSE($D$4,ISBLANK(R26),ISBLANK(R27),ISBLANK(R28),ISBLANK(R29)),NA(),CHOOSE($D$4,R26,R27,R28,R29))",
+              "value": 56,
+              "params": [
+                {
+                  "cell": "Assumptions!D4",
+                  "sheetName": "Assumptions",
+                  "address": "D4",
+                  "formula": null,
+                  "value": 1,
+                  "params": []
+                },
+                {
+                  "cell": "Assumptions!R26",
+                  "sheetName": "Assumptions",
+                  "address": "R26",
+                  "formula": "=$D$50",
+                  "value": 56,
+                  "params": [
+                    {
+                      "cell": "Assumptions!D50",
+                      "sheetName": "Assumptions",
+                      "address": "D50",
+                      "formula": "=Disclosures!I45",
+                      "value": 56,
+                      "params": [
+                        {
+                          "cell": "Disclosures!I45",
+                          "sheetName": "Disclosures",
+                          "address": "I45",
+                          "formula": null,
+                          "value": 56,
+                          "params": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "cell": "Assumptions!R27",
+                  "sheetName": "Assumptions",
+                  "address": "R27",
+                  "formula": null,
+                  "value": 52,
+                  "params": []
+                },
+                {
+                  "cell": "Assumptions!R28",
+                  "sheetName": "Assumptions",
+                  "address": "R28",
+                  "formula": null,
+                  "value": 58,
+                  "params": []
+                },
+                {
+                  "cell": "Assumptions!R29",
+                  "sheetName": "Assumptions",
+                  "address": "R29",
+                  "formula": "=$D$50",
+                  "value": 56,
+                  "params": [
+                    {
+                      "cell": "Assumptions!D50",
+                      "sheetName": "Assumptions",
+                      "address": "D50",
+                      "formula": "=Disclosures!I45",
+                      "value": 56,
+                      "params": [
+                        {
+                          "cell": "Disclosures!I45",
+                          "sheetName": "Disclosures",
+                          "address": "I45",
+                          "formula": null,
+                          "value": 56,
+                          "params": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "cell": "Assumptions!D60",
+          "sheetName": "Assumptions",
+          "address": "D60",
+          "formula": null,
+          "value": 10000,
+          "params": []
+        },
+        {
+          "cell": "Assumptions!D48",
+          "sheetName": "Assumptions",
+          "address": "D48",
+          "formula": null,
+          "value": 0.25,
+          "params": []
+        }
+      ]
+    }
+  },
+  {
+    "id": "render",
+    "input": "const image = await wb.render({sheetName: \"Summary\", range: \"C7:M28\", scale: 1.5, format: \"png\"});\nconst bytes = new Uint8Array(await image.arrayBuffer());\nawait fs.writeFile(path.join(dir, \"summary-before.png\"), bytes);\nreturn {saved: \"summary-before.png\", mimeType: \"image/png\", bytes: bytes.length};",
+    "elapsedMs": 311,
+    "result": {
+      "saved": "summary-before.png",
+      "mimeType": "image/png",
+      "bytes": 254344
+    }
+  },
+  {
+    "id": "edit-context",
+    "input": "const a = wb.worksheets.getItem(\"Assumptions\");\nconst f = wb.worksheets.getItem(\"Fee engine\");\nreturn {\n  assumptions: {range:\"R25:W29\", values:a.getRange(\"R25:W29\").values, formulas:a.getRange(\"R25:W29\").formulas},\n  fees: {range:\"R26:W28\", values:f.getRange(\"R26:W28\").values, formulas:f.getRange(\"R26:W28\").formulas},\n  output: {range:\"K13:M14\", values:wb.worksheets.getItem(\"Summary\").getRange(\"K13:M14\").values}\n};",
+    "elapsedMs": 0,
+    "result": {
+      "assumptions": {
+        "range": "R25:W29",
+        "values": [
+          [
+            56,
+            56,
+            56,
+            56,
+            56,
+            56
+          ],
+          [
+            56,
+            56,
+            56,
+            56,
+            56,
+            56
+          ],
+          [
+            52,
+            52,
+            52,
+            52,
+            52,
+            52
+          ],
+          [
+            58,
+            58,
+            58,
+            58,
+            58,
+            58
+          ],
+          [
+            56,
+            56,
+            56,
+            56,
+            56,
+            56
+          ]
+        ],
+        "formulas": [
+          [
+            "=IF(CHOOSE($D$4,ISBLANK(R26),ISBLANK(R27),ISBLANK(R28),ISBLANK(R29)),NA(),CHOOSE($D$4,R26,R27,R28,R29))",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "=$D$50",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "=$D$50",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      "fees": {
+        "range": "R26:W28",
+        "values": [
+          [
+            56,
+            56,
+            56,
+            56,
+            56,
+            56
+          ],
+          [
+            359.47799999999995,
+            368.4649499999998,
+            377.6765737499998,
+            387.1184880937499,
+            396.79645029609355,
+            406.716361553496
+          ],
+          [
+            21.400000000000002,
+            192.6,
+            6.7,
+            60.300000000000004,
+            21.400000000000002,
+            192.6
+          ]
+        ],
+        "formulas": [
+          [
+            "=Assumptions!R25",
+            "=Assumptions!S25",
+            "=Assumptions!T25",
+            "=Assumptions!U25",
+            "=Assumptions!V25",
+            "=Assumptions!W25"
+          ],
+          [
+            "=R18*Assumptions!$D$49*R26/Assumptions!$D$60*Assumptions!$D$48",
+            "=S18*Assumptions!$D$49*S26/Assumptions!$D$60*Assumptions!$D$48",
+            "=T18*Assumptions!$D$49*T26/Assumptions!$D$60*Assumptions!$D$48",
+            "=U18*Assumptions!$D$49*U26/Assumptions!$D$60*Assumptions!$D$48",
+            "=V18*Assumptions!$D$49*V26/Assumptions!$D$60*Assumptions!$D$48",
+            "=W18*Assumptions!$D$49*W26/Assumptions!$D$60*Assumptions!$D$48"
+          ],
+          [
+            "=Assumptions!R32",
+            "=Assumptions!S32",
+            "=Assumptions!T32",
+            "=Assumptions!U32",
+            "=Assumptions!V32",
+            "=Assumptions!W32"
+          ]
+        ]
+      },
+      "output": {
+        "range": "K13:M14",
+        "values": [
+          [
+            1354.9429499999997,
+            764.7950618437496,
+            1568.3078736933392
+          ],
+          [
+            421,
+            67,
+            281
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "id": "value-edit",
+    "input": "const before = readState();\nwb.worksheets.getItem(\"Assumptions\").getRange(\"W26\").values = [[51]];\nreturn {before, after: readState()};",
+    "elapsedMs": 1,
+    "result": {
+      "before": {
+        "baseFeeMargin": {
+          "sheet": "Assumptions",
+          "cell": "W26",
+          "value": 56,
+          "formula": ""
+        },
+        "activeFeeMargin": {
+          "sheet": "Assumptions",
+          "cell": "W25",
+          "value": 56,
+          "formula": ""
+        },
+        "q4AverageAum": {
+          "sheet": "Fee engine",
+          "cell": "W18",
+          "value": 290.5116868239257,
+          "formula": ""
+        },
+        "q4ManagementFees": {
+          "sheet": "Fee engine",
+          "cell": "W27",
+          "value": 406.716361553496,
+          "formula": "=W18*Assumptions!$D$49*W26/Assumptions!$D$60*Assumptions!$D$48"
+        },
+        "fy2027ManagementFees": {
+          "sheet": "Summary",
+          "cell": "M13",
+          "value": 1568.3078736933392,
+          "formula": "='Fee engine'!M95"
+        },
+        "fy2027OperatingProfit": {
+          "sheet": "Summary",
+          "cell": "M20",
+          "value": 792.7541060612962,
+          "formula": "='Fee engine'!M101"
+        }
+      },
+      "after": {
+        "baseFeeMargin": {
+          "sheet": "Assumptions",
+          "cell": "W26",
+          "value": 51,
+          "formula": ""
+        },
+        "activeFeeMargin": {
+          "sheet": "Assumptions",
+          "cell": "W25",
+          "value": 56,
+          "formula": ""
+        },
+        "q4AverageAum": {
+          "sheet": "Fee engine",
+          "cell": "W18",
+          "value": 290.5116868239257,
+          "formula": ""
+        },
+        "q4ManagementFees": {
+          "sheet": "Fee engine",
+          "cell": "W27",
+          "value": 406.716361553496,
+          "formula": "=W18*Assumptions!$D$49*W26/Assumptions!$D$60*Assumptions!$D$48"
+        },
+        "fy2027ManagementFees": {
+          "sheet": "Summary",
+          "cell": "M13",
+          "value": 1568.3078736933392,
+          "formula": "='Fee engine'!M95"
+        },
+        "fy2027OperatingProfit": {
+          "sheet": "Summary",
+          "cell": "M20",
+          "value": 792.7541060612962,
+          "formula": "='Fee engine'!M101"
+        }
+      }
+    }
+  },
+  {
+    "id": "recalculate",
+    "input": "const before = readState();\nconst nativeReturn = wb.recalculate();\nreturn {nativeReturn: nativeReturn === undefined ? \"undefined\" : nativeReturn, before, after: readState()};",
+    "elapsedMs": 0,
+    "result": {
+      "nativeReturn": "undefined",
+      "before": {
+        "baseFeeMargin": {
+          "sheet": "Assumptions",
+          "cell": "W26",
+          "value": 51,
+          "formula": ""
+        },
+        "activeFeeMargin": {
+          "sheet": "Assumptions",
+          "cell": "W25",
+          "value": 56,
+          "formula": ""
+        },
+        "q4AverageAum": {
+          "sheet": "Fee engine",
+          "cell": "W18",
+          "value": 290.5116868239257,
+          "formula": ""
+        },
+        "q4ManagementFees": {
+          "sheet": "Fee engine",
+          "cell": "W27",
+          "value": 406.716361553496,
+          "formula": "=W18*Assumptions!$D$49*W26/Assumptions!$D$60*Assumptions!$D$48"
+        },
+        "fy2027ManagementFees": {
+          "sheet": "Summary",
+          "cell": "M13",
+          "value": 1568.3078736933392,
+          "formula": "='Fee engine'!M95"
+        },
+        "fy2027OperatingProfit": {
+          "sheet": "Summary",
+          "cell": "M20",
+          "value": 792.7541060612962,
+          "formula": "='Fee engine'!M101"
+        }
+      },
+      "after": {
+        "baseFeeMargin": {
+          "sheet": "Assumptions",
+          "cell": "W26",
+          "value": 51,
+          "formula": ""
+        },
+        "activeFeeMargin": {
+          "sheet": "Assumptions",
+          "cell": "W25",
+          "value": 56,
+          "formula": ""
+        },
+        "q4AverageAum": {
+          "sheet": "Fee engine",
+          "cell": "W18",
+          "value": 290.5116868239257,
+          "formula": ""
+        },
+        "q4ManagementFees": {
+          "sheet": "Fee engine",
+          "cell": "W27",
+          "value": 406.716361553496,
+          "formula": "=W18*Assumptions!$D$49*W26/Assumptions!$D$60*Assumptions!$D$48"
+        },
+        "fy2027ManagementFees": {
+          "sheet": "Summary",
+          "cell": "M13",
+          "value": 1568.3078736933392,
+          "formula": "='Fee engine'!M95"
+        },
+        "fy2027OperatingProfit": {
+          "sheet": "Summary",
+          "cell": "M20",
+          "value": 792.7541060612962,
+          "formula": "='Fee engine'!M101"
+        }
+      }
+    }
+  },
+  {
+    "id": "formula-edit",
+    "input": "const before = readState();\nwb.worksheets.getItem(\"Assumptions\").getRange(\"W25\").formulas = [[\n  \"=IF(CHOOSE($D$4,ISBLANK(W26),ISBLANK(W27),ISBLANK(W28),ISBLANK(W29)),NA(),CHOOSE($D$4,W26,W27,W28,W29))\"\n]];\nreturn {before, after: readState()};",
+    "elapsedMs": 1,
+    "result": {
+      "before": {
+        "baseFeeMargin": {
+          "sheet": "Assumptions",
+          "cell": "W26",
+          "value": 51,
+          "formula": ""
+        },
+        "activeFeeMargin": {
+          "sheet": "Assumptions",
+          "cell": "W25",
+          "value": 56,
+          "formula": ""
+        },
+        "q4AverageAum": {
+          "sheet": "Fee engine",
+          "cell": "W18",
+          "value": 290.5116868239257,
+          "formula": ""
+        },
+        "q4ManagementFees": {
+          "sheet": "Fee engine",
+          "cell": "W27",
+          "value": 406.716361553496,
+          "formula": "=W18*Assumptions!$D$49*W26/Assumptions!$D$60*Assumptions!$D$48"
+        },
+        "fy2027ManagementFees": {
+          "sheet": "Summary",
+          "cell": "M13",
+          "value": 1568.3078736933392,
+          "formula": "='Fee engine'!M95"
+        },
+        "fy2027OperatingProfit": {
+          "sheet": "Summary",
+          "cell": "M20",
+          "value": 792.7541060612962,
+          "formula": "='Fee engine'!M101"
+        }
+      },
+      "after": {
+        "baseFeeMargin": {
+          "sheet": "Assumptions",
+          "cell": "W26",
+          "value": 51,
+          "formula": ""
+        },
+        "activeFeeMargin": {
+          "sheet": "Assumptions",
+          "cell": "W25",
+          "value": 51,
+          "formula": "=IF(CHOOSE($D$4,ISBLANK(W26),ISBLANK(W27),ISBLANK(W28),ISBLANK(W29)),NA(),CHOOSE($D$4,W26,W27,W28,W29))"
+        },
+        "q4AverageAum": {
+          "sheet": "Fee engine",
+          "cell": "W18",
+          "value": 290.5116868239257,
+          "formula": ""
+        },
+        "q4ManagementFees": {
+          "sheet": "Fee engine",
+          "cell": "W27",
+          "value": 370.40240070050527,
+          "formula": "=W18*Assumptions!$D$49*W26/Assumptions!$D$60*Assumptions!$D$48"
+        },
+        "fy2027ManagementFees": {
+          "sheet": "Summary",
+          "cell": "M13",
+          "value": 1531.9939128403485,
+          "formula": "='Fee engine'!M95"
+        },
+        "fy2027OperatingProfit": {
+          "sheet": "Summary",
+          "cell": "M20",
+          "value": 792.7541060612962,
+          "formula": "='Fee engine'!M101"
+        }
+      }
+    }
+  },
+  {
+    "id": "fill",
+    "input": "const sheet = wb.worksheets.getItem(\"Assumptions\");\nconst range = sheet.getRange(\"R25:W25\");\nconst before = {values: range.values, formulas: range.formulas};\nrange.fillRight();\nreturn {sheet: \"Assumptions\", range: \"R25:W25\", before, after: {values: range.values, formulas: range.formulas}};",
+    "elapsedMs": 1,
+    "result": {
+      "sheet": "Assumptions",
+      "range": "R25:W25",
+      "before": {
+        "values": [
+          [
+            56,
+            56,
+            56,
+            56,
+            56,
+            51
+          ]
+        ],
+        "formulas": [
+          [
+            "=IF(CHOOSE($D$4,ISBLANK(R26),ISBLANK(R27),ISBLANK(R28),ISBLANK(R29)),NA(),CHOOSE($D$4,R26,R27,R28,R29))",
+            "",
+            "",
+            "",
+            "",
+            "=IF(CHOOSE($D$4,ISBLANK(W26),ISBLANK(W27),ISBLANK(W28),ISBLANK(W29)),NA(),CHOOSE($D$4,W26,W27,W28,W29))"
+          ]
+        ]
+      },
+      "after": {
+        "values": [
+          [
+            56,
+            56,
+            56,
+            56,
+            56,
+            51
+          ]
+        ],
+        "formulas": [
+          [
+            "=IF(CHOOSE($D$4,ISBLANK(R26),ISBLANK(R27),ISBLANK(R28),ISBLANK(R29)),NA(),CHOOSE($D$4,R26,R27,R28,R29))",
+            "=IF(CHOOSE($D$4,ISBLANK(S26),ISBLANK(S27),ISBLANK(S28),ISBLANK(S29)),NA(),CHOOSE($D$4,S26,S27,S28,S29))",
+            "=IF(CHOOSE($D$4,ISBLANK(T26),ISBLANK(T27),ISBLANK(T28),ISBLANK(T29)),NA(),CHOOSE($D$4,T26,T27,T28,T29))",
+            "=IF(CHOOSE($D$4,ISBLANK(U26),ISBLANK(U27),ISBLANK(U28),ISBLANK(U29)),NA(),CHOOSE($D$4,U26,U27,U28,U29))",
+            "=IF(CHOOSE($D$4,ISBLANK(V26),ISBLANK(V27),ISBLANK(V28),ISBLANK(V29)),NA(),CHOOSE($D$4,V26,V27,V28,V29))",
+            "=IF(CHOOSE($D$4,ISBLANK(W26),ISBLANK(W27),ISBLANK(W28),ISBLANK(W29)),NA(),CHOOSE($D$4,W26,W27,W28,W29))"
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "id": "copy",
+    "input": "const sheet = wb.worksheets.getItem(\"Assumptions\");\nconst before = readState();\nsheet.getRange(\"W26\").copyFrom(sheet.getRange(\"R26\"), \"formulas\");\nreturn {source: \"Assumptions!R26\", destination: \"Assumptions!W26\", before, after: readState()};",
+    "elapsedMs": 0,
+    "result": {
+      "source": "Assumptions!R26",
+      "destination": "Assumptions!W26",
+      "before": {
+        "baseFeeMargin": {
+          "sheet": "Assumptions",
+          "cell": "W26",
+          "value": 51,
+          "formula": ""
+        },
+        "activeFeeMargin": {
+          "sheet": "Assumptions",
+          "cell": "W25",
+          "value": 51,
+          "formula": "=IF(CHOOSE($D$4,ISBLANK(W26),ISBLANK(W27),ISBLANK(W28),ISBLANK(W29)),NA(),CHOOSE($D$4,W26,W27,W28,W29))"
+        },
+        "q4AverageAum": {
+          "sheet": "Fee engine",
+          "cell": "W18",
+          "value": 290.5116868239257,
+          "formula": ""
+        },
+        "q4ManagementFees": {
+          "sheet": "Fee engine",
+          "cell": "W27",
+          "value": 370.40240070050527,
+          "formula": "=W18*Assumptions!$D$49*W26/Assumptions!$D$60*Assumptions!$D$48"
+        },
+        "fy2027ManagementFees": {
+          "sheet": "Summary",
+          "cell": "M13",
+          "value": 1531.9939128403485,
+          "formula": "='Fee engine'!M95"
+        },
+        "fy2027OperatingProfit": {
+          "sheet": "Summary",
+          "cell": "M20",
+          "value": 792.7541060612962,
+          "formula": "='Fee engine'!M101"
+        }
+      },
+      "after": {
+        "baseFeeMargin": {
+          "sheet": "Assumptions",
+          "cell": "W26",
+          "value": 56,
+          "formula": "=$D$50"
+        },
+        "activeFeeMargin": {
+          "sheet": "Assumptions",
+          "cell": "W25",
+          "value": 56,
+          "formula": "=IF(CHOOSE($D$4,ISBLANK(W26),ISBLANK(W27),ISBLANK(W28),ISBLANK(W29)),NA(),CHOOSE($D$4,W26,W27,W28,W29))"
+        },
+        "q4AverageAum": {
+          "sheet": "Fee engine",
+          "cell": "W18",
+          "value": 290.5116868239257,
+          "formula": ""
+        },
+        "q4ManagementFees": {
+          "sheet": "Fee engine",
+          "cell": "W27",
+          "value": 406.716361553496,
+          "formula": "=W18*Assumptions!$D$49*W26/Assumptions!$D$60*Assumptions!$D$48"
+        },
+        "fy2027ManagementFees": {
+          "sheet": "Summary",
+          "cell": "M13",
+          "value": 1568.3078736933392,
+          "formula": "='Fee engine'!M95"
+        },
+        "fy2027OperatingProfit": {
+          "sheet": "Summary",
+          "cell": "M20",
+          "value": 792.7541060612962,
+          "formula": "='Fee engine'!M101"
+        }
+      }
+    }
+  },
+  {
+    "id": "final-recalculation",
+    "input": "wb.recalculate();\nreturn {restoredBase: readState(), summary: {\n  range: \"K13:M20\", values: wb.worksheets.getItem(\"Summary\").getRange(\"K13:M20\").values,\n  formulas: wb.worksheets.getItem(\"Summary\").getRange(\"K13:M20\").formulas\n}};",
+    "elapsedMs": 0,
+    "result": {
+      "restoredBase": {
+        "baseFeeMargin": {
+          "sheet": "Assumptions",
+          "cell": "W26",
+          "value": 56,
+          "formula": "=$D$50"
+        },
+        "activeFeeMargin": {
+          "sheet": "Assumptions",
+          "cell": "W25",
+          "value": 56,
+          "formula": "=IF(CHOOSE($D$4,ISBLANK(W26),ISBLANK(W27),ISBLANK(W28),ISBLANK(W29)),NA(),CHOOSE($D$4,W26,W27,W28,W29))"
+        },
+        "q4AverageAum": {
+          "sheet": "Fee engine",
+          "cell": "W18",
+          "value": 290.5116868239257,
+          "formula": ""
+        },
+        "q4ManagementFees": {
+          "sheet": "Fee engine",
+          "cell": "W27",
+          "value": 406.716361553496,
+          "formula": "=W18*Assumptions!$D$49*W26/Assumptions!$D$60*Assumptions!$D$48"
+        },
+        "fy2027ManagementFees": {
+          "sheet": "Summary",
+          "cell": "M13",
+          "value": 1568.3078736933392,
+          "formula": "='Fee engine'!M95"
+        },
+        "fy2027OperatingProfit": {
+          "sheet": "Summary",
+          "cell": "M20",
+          "value": 792.7541060612962,
+          "formula": "='Fee engine'!M101"
+        }
+      },
+      "summary": {
+        "range": "K13:M20",
+        "values": [
+          [
+            1354.9429499999997,
+            764.7950618437496,
+            1568.3078736933392
+          ],
+          [
+            421,
+            67,
+            281
+          ],
+          [
+            37,
+            19,
+            38
+          ],
+          [
+            2,
+            1,
+            2
+          ],
+          [
+            1814.9429499999997,
+            851.7950618437496,
+            1889.307873693339
+          ],
+          [
+            null,
+            null,
+            null
+          ],
+          [
+            -1124.404322034071,
+            -498.5594068245066,
+            -1096.553767632043
+          ],
+          [
+            690.5386279659288,
+            353.2356550192431,
+            792.7541060612962
+          ]
+        ],
+        "formulas": [
+          [
+            "='Fee engine'!K95",
+            "='Fee engine'!L95",
+            "='Fee engine'!M95"
+          ],
+          [
+            "='Fee engine'!K96",
+            "='Fee engine'!L96",
+            "='Fee engine'!M96"
+          ],
+          [
+            "='Fee engine'!K97",
+            "='Fee engine'!L97",
+            "='Fee engine'!M97"
+          ],
+          [
+            "='Fee engine'!K98",
+            "='Fee engine'!L98",
+            "='Fee engine'!M98"
+          ],
+          [
+            "='Fee engine'!K99",
+            "='Fee engine'!L99",
+            "='Fee engine'!M99"
+          ],
+          [
+            "",
+            "",
+            ""
+          ],
+          [
+            "='Fee engine'!K100",
+            "='Fee engine'!L100",
+            "='Fee engine'!M100"
+          ],
+          [
+            "='Fee engine'!K101",
+            "='Fee engine'!L101",
+            "='Fee engine'!M101"
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "id": "error-scan",
+    "input": "return await wb.inspect({\n  kind: \"match\", searchTerm: \"#REF!|#DIV/0!|#VALUE!|#NAME\\\\?|#NUM!|#NULL!|#SPILL!|#CALC!\", maxChars: 3000,\n  options: {useRegex: true, maxResults: 30}\n});",
+    "elapsedMs": 2,
+    "result": {
+      "ndjson": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}",
+      "recordCount": 1,
+      "truncated": false,
+      "metadata": {
+        "revision": "876n8w",
+        "target": {
+          "id": "wb/nnlpli",
+          "beforeLines": 0,
+          "afterLines": 0
+        },
+        "kind": {
+          "requested": "match",
+          "tokens": [
+            "match"
+          ]
+        },
+        "include": {
+          "tokens": []
+        },
+        "exclude": {
+          "tokens": []
+        },
+        "notices": []
+      }
+    }
+  },
+  {
+    "id": "render-after",
+    "input": "const image = await wb.render({sheetName: \"Summary\", range: \"C7:M28\", scale: 1.5, format: \"png\"});\nconst bytes = new Uint8Array(await image.arrayBuffer());\nawait fs.writeFile(path.join(dir, \"summary-after.png\"), bytes);\nreturn {saved: \"summary-after.png\", mimeType: \"image/png\", bytes: bytes.length};",
+    "elapsedMs": 77,
+    "result": {
+      "saved": "summary-after.png",
+      "mimeType": "image/png",
+      "bytes": 254344
+    }
+  },
+  {
+    "id": "export",
+    "input": "const output = await SpreadsheetFile.exportXlsx(wb);\nconst nativeReturn = await output.save(path.join(dir, \"man-group-demo.xlsx\"));\nconst stats = await fs.stat(path.join(dir, \"man-group-demo.xlsx\"));\nreturn {saveReturn: nativeReturn === undefined ? \"undefined\" : nativeReturn,\n  saved: \"man-group-demo.xlsx\", bytes: stats.size};",
+    "elapsedMs": 420,
+    "result": {
+      "saveReturn": "undefined",
+      "saved": "man-group-demo.xlsx",
+      "bytes": 106380
+    }
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "CH-bubble",
+    "description": "Chart type acceptance, export and render: bubble",
+    "status": "pass",
+    "ms": 424,
+    "detail": {
+      "type": "bubble",
+      "series": [
+        {
+          "name": "Series A",
+          "formula": "'Chart'!$B$2:$B$5",
+          "categoryFormula": "'Chart'!$A$2:$A$5"
+        },
+        {
+          "name": "Series B",
+          "formula": "'Chart'!$C$2:$C$5",
+          "categoryFormula": "'Chart'!$A$2:$A$5"
+        }
+      ],
+      "render": {
+        "bytes": 14471
+      }
+    }
+  }
+]

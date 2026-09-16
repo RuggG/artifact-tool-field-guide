@@ -1,0 +1,55 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>new-formula.json · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="new-formula.json">Raw file</a> · <a data-public-raw download href="new-formula.json">Download</a></p><article><h1>new-formula.json</h1><pre class="public-code"><code>{
+  &quot;id&quot;: &quot;new-formula&quot;,
+  &quot;operation&quot;: &quot;small.getRange(\&quot;B2:C5\&quot;).values = [[\&quot;Average AUM, USD bn\&quot;,100],[\&quot;Annual fee margin, bp\&quot;,50],[\&quot;Quarter fraction\&quot;,0.25],[\&quot;Fees, USD m\&quot;,null]];\nsmall.getRange(\&quot;C5\&quot;).formulas = [[\&quot;=C2*1000*C3/10000*C4\&quot;]];&quot;,
+  &quot;checkInput&quot;: {
+    &quot;before&quot;: &quot;&quot;,
+    &quot;after&quot;: &quot;return {cells:grid(small,\&quot;B2:C5\&quot;),independentExpected:100*1000*50/10000*0.25};&quot;
+  },
+  &quot;startedAt&quot;: &quot;2026-09-15T16:55:17.756Z&quot;,
+  &quot;libraryReturn&quot;: {
+    &quot;javascriptType&quot;: &quot;undefined&quot;
+  },
+  &quot;elapsedMs&quot;: 2,
+  &quot;after&quot;: {
+    &quot;cells&quot;: {
+      &quot;address&quot;: &quot;B2:C5&quot;,
+      &quot;values&quot;: [
+        [
+          &quot;Average AUM, USD bn&quot;,
+          100
+        ],
+        [
+          &quot;Annual fee margin, bp&quot;,
+          50
+        ],
+        [
+          &quot;Quarter fraction&quot;,
+          0.25
+        ],
+        [
+          &quot;Fees, USD m&quot;,
+          125
+        ]
+      ],
+      &quot;formulas&quot;: [
+        [
+          &quot;&quot;,
+          &quot;&quot;
+        ],
+        [
+          &quot;&quot;,
+          &quot;&quot;
+        ],
+        [
+          &quot;&quot;,
+          &quot;&quot;
+        ],
+        [
+          &quot;&quot;,
+          &quot;=C2*1000*C3/10000*C4&quot;
+        ]
+      ]
+    },
+    &quot;independentExpected&quot;: 125
+  }
+}</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

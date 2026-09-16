@@ -1,0 +1,586 @@
+[
+  {
+    "label": "initialize",
+    "response": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": {
+        "protocolVersion": "2025-11-25",
+        "capabilities": {
+          "tools": {
+            "listChanged": false
+          }
+        },
+        "serverInfo": {
+          "name": "artifact-tool-session",
+          "version": "2.8.59"
+        }
+      }
+    }
+  },
+  {
+    "label": "create-and-commit",
+    "input": {
+      "target": "artifact-reference-probe",
+      "sessionRoot": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions",
+      "outputDirectory": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/outputs",
+      "artifactType": "spreadsheet",
+      "timeoutMs": 10000,
+      "create": true,
+      "title": "Synthetic session probe",
+      "code": "const s=workbook.worksheets.add('Session'); s.getRange('A1:C2').values=[['Qty','Price','Total'],[3,4,'=A2*B2']]; return {total:s.getRange('C2').values,session:session.info};"
+    },
+    "response": {
+      "jsonrpc": "2.0",
+      "id": 3,
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"ok\":true,\"committed\":true,\"artifactType\":\"spreadsheet\",\"target\":\"artifact-reference-probe\",\"sessionId\":\"session-59ff4690cd54bb66-b6d62a97-d613-4d47-ab73-42c14f60ccf0\",\"stateVersion\":1,\"snapshotPath\":\"/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/session-59ff4690cd54bb66.artifact-session.json\",\"outputDirectory\":\"/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/outputs\",\"timing\":{\"runMs\":106.646208,\"runtimeImportMs\":290.123333},\"workerInstanceId\":\"52b04726-699e-47aa-b2b2-8b6b81c9eda9\",\"workerPid\":66555,\"outputs\":[],\"result\":{\"total\":[[12]],\"session\":{\"sessionId\":\"session-59ff4690cd54bb66-b6d62a97-d613-4d47-ab73-42c14f60ccf0\",\"snapshotPath\":\"/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/session-59ff4690cd54bb66.artifact-session.json\",\"outputDirectory\":\"/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/outputs\",\"stateVersion\":0}}}"
+          }
+        ],
+        "structuredContent": {
+          "ok": true,
+          "committed": true,
+          "artifactType": "spreadsheet",
+          "target": "artifact-reference-probe",
+          "sessionId": "session-59ff4690cd54bb66-b6d62a97-d613-4d47-ab73-42c14f60ccf0",
+          "stateVersion": 1,
+          "snapshotPath": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/session-59ff4690cd54bb66.artifact-session.json",
+          "outputDirectory": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/outputs",
+          "timing": {
+            "runMs": 106.646208,
+            "runtimeImportMs": 290.123333
+          },
+          "workerInstanceId": "52b04726-699e-47aa-b2b2-8b6b81c9eda9",
+          "workerPid": 66555,
+          "outputs": [],
+          "result": {
+            "total": [
+              [
+                12
+              ]
+            ],
+            "session": {
+              "sessionId": "session-59ff4690cd54bb66-b6d62a97-d613-4d47-ab73-42c14f60ccf0",
+              "snapshotPath": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/session-59ff4690cd54bb66.artifact-session.json",
+              "outputDirectory": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/outputs",
+              "stateVersion": 0
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "resume-and-edit",
+    "input": {
+      "target": "artifact-reference-probe",
+      "sessionRoot": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions",
+      "outputDirectory": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/outputs",
+      "artifactType": "spreadsheet",
+      "timeoutMs": 10000,
+      "input": {
+        "qty": 5
+      },
+      "summary": "Change synthetic quantity",
+      "code": "const s=workbook.worksheets.getItem('Session'); const before=s.getRange('C2').values; s.getRange('A2').values=[[input.qty]]; workbook.recalculate(); return {before,after:s.getRange('C2').values};"
+    },
+    "response": {
+      "jsonrpc": "2.0",
+      "id": 4,
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"ok\":true,\"committed\":true,\"artifactType\":\"spreadsheet\",\"target\":\"artifact-reference-probe\",\"sessionId\":\"session-59ff4690cd54bb66-b6d62a97-d613-4d47-ab73-42c14f60ccf0\",\"stateVersion\":2,\"snapshotPath\":\"/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/session-59ff4690cd54bb66.artifact-session.json\",\"outputDirectory\":\"/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/outputs\",\"timing\":{\"runMs\":64.14920900000004,\"runtimeImportMs\":274.237958},\"workerInstanceId\":\"0c62b575-121c-4ac8-adbb-ce35aaea2461\",\"workerPid\":66556,\"outputs\":[],\"result\":{\"before\":[[12]],\"after\":[[20]]}}"
+          }
+        ],
+        "structuredContent": {
+          "ok": true,
+          "committed": true,
+          "artifactType": "spreadsheet",
+          "target": "artifact-reference-probe",
+          "sessionId": "session-59ff4690cd54bb66-b6d62a97-d613-4d47-ab73-42c14f60ccf0",
+          "stateVersion": 2,
+          "snapshotPath": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/session-59ff4690cd54bb66.artifact-session.json",
+          "outputDirectory": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/outputs",
+          "timing": {
+            "runMs": 64.14920900000004,
+            "runtimeImportMs": 274.237958
+          },
+          "workerInstanceId": "0c62b575-121c-4ac8-adbb-ce35aaea2461",
+          "workerPid": 66556,
+          "outputs": [],
+          "result": {
+            "before": [
+              [
+                12
+              ]
+            ],
+            "after": [
+              [
+                20
+              ]
+            ]
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "managed-outputs",
+    "input": {
+      "target": "artifact-reference-probe",
+      "sessionRoot": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions",
+      "outputDirectory": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/outputs",
+      "artifactType": "spreadsheet",
+      "timeoutMs": 10000,
+      "code": "const inspection=await workbook.inspect({kind:'table',range:'Session!A1:C2',fileName:'session-inspect.ndjson'}); const preview=await workbook.render({sheetName:'Session',range:'A1:C2',fileName:'session-preview.png',scale:2}); const exported=await workbook.export({format:'xlsx',fileName:'session-probe.xlsx'}); return {inspection,preview,exported};"
+    },
+    "response": {
+      "jsonrpc": "2.0",
+      "id": 5,
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"ok\":true,\"committed\":false,\"artifactType\":\"spreadsheet\",\"target\":\"artifact-reference-probe\",\"sessionId\":\"session-59ff4690cd54bb66-b6d62a97-d613-4d47-ab73-42c14f60ccf0\",\"stateVersion\":2,\"snapshotPath\":\"/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/session-59ff4690cd54bb66.artifact-session.json\",\"outputDirectory\":\"/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/outputs\",\"timing\":{\"runMs\":495.208083,\"runtimeImportMs\":265.434792},\"workerInstanceId\":\"26f18675-67c1-42c0-b1b1-87d163417a3e\",\"workerPid\":66558,\"outputs\":[{\"kind\":\"inspect\",\"fileName\":\"session-inspect.ndjson\",\"contentType\":\"application/x-ndjson\",\"byteLength\":114,\"path\":\"/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/outputs/run-session-59ff4690cd54bb66-v3-953c4859-19da-4e90-abb5-d2f5c17d799b/session-inspect.ndjson\",\"status\":\"saved\"},{\"kind\":\"render\",\"fileName\":\"session-preview.png\",\"contentType\":\"image/png\",\"byteLength\":9640,\"path\":\"/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/outputs/run-session-59ff4690cd54bb66-v3-953c4859-19da-4e90-abb5-d2f5c17d799b/session-preview.png\",\"status\":\"saved\"},{\"kind\":\"export\",\"fileName\":\"session-probe.xlsx\",\"contentType\":\"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet\",\"byteLength\":3414,\"path\":\"/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/outputs/run-session-59ff4690cd54bb66-v3-953c4859-19da-4e90-abb5-d2f5c17d799b/session-probe.xlsx\",\"status\":\"saved\"}],\"result\":{\"inspection\":{\"path\":\"/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/outputs/run-session-59ff4690cd54bb66-v3-953c4859-19da-4e90-abb5-d2f5c17d799b/session-inspect.ndjson\",\"recordCount\":1,\"truncated\":false,\"metadata\":{\"revision\":\"49lf1h\",\"target\":{\"id\":\"wb/hr0nwo\",\"beforeLines\":0,\"afterLines\":0},\"kind\":{\"requested\":\"table\",\"tokens\":[\"table\"]},\"include\":{\"tokens\":[]},\"exclude\":{\"tokens\":[]},\"notices\":[]},\"status\":\"saved\"},\"preview\":{\"path\":\"/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/outputs/run-session-59ff4690cd54bb66-v3-953c4859-19da-4e90-abb5-d2f5c17d799b/session-preview.png\",\"fileName\":\"session-preview.png\",\"contentType\":\"image/png\",\"byteLength\":9640,\"status\":\"saved\"},\"exported\":{\"path\":\"/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/outputs/run-session-59ff4690cd54bb66-v3-953c4859-19da-4e90-abb5-d2f5c17d799b/session-probe.xlsx\",\"fileName\":\"session-probe.xlsx\",\"contentType\":\"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet\",\"byteLength\":3414,\"status\":\"saved\"}}}"
+          }
+        ],
+        "structuredContent": {
+          "ok": true,
+          "committed": false,
+          "artifactType": "spreadsheet",
+          "target": "artifact-reference-probe",
+          "sessionId": "session-59ff4690cd54bb66-b6d62a97-d613-4d47-ab73-42c14f60ccf0",
+          "stateVersion": 2,
+          "snapshotPath": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/session-59ff4690cd54bb66.artifact-session.json",
+          "outputDirectory": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/outputs",
+          "timing": {
+            "runMs": 495.208083,
+            "runtimeImportMs": 265.434792
+          },
+          "workerInstanceId": "26f18675-67c1-42c0-b1b1-87d163417a3e",
+          "workerPid": 66558,
+          "outputs": [
+            {
+              "kind": "inspect",
+              "fileName": "session-inspect.ndjson",
+              "contentType": "application/x-ndjson",
+              "byteLength": 114,
+              "path": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/outputs/run-session-59ff4690cd54bb66-v3-953c4859-19da-4e90-abb5-d2f5c17d799b/session-inspect.ndjson",
+              "status": "saved"
+            },
+            {
+              "kind": "render",
+              "fileName": "session-preview.png",
+              "contentType": "image/png",
+              "byteLength": 9640,
+              "path": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/outputs/run-session-59ff4690cd54bb66-v3-953c4859-19da-4e90-abb5-d2f5c17d799b/session-preview.png",
+              "status": "saved"
+            },
+            {
+              "kind": "export",
+              "fileName": "session-probe.xlsx",
+              "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+              "byteLength": 3414,
+              "path": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/outputs/run-session-59ff4690cd54bb66-v3-953c4859-19da-4e90-abb5-d2f5c17d799b/session-probe.xlsx",
+              "status": "saved"
+            }
+          ],
+          "result": {
+            "inspection": {
+              "path": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/outputs/run-session-59ff4690cd54bb66-v3-953c4859-19da-4e90-abb5-d2f5c17d799b/session-inspect.ndjson",
+              "recordCount": 1,
+              "truncated": false,
+              "metadata": {
+                "revision": "49lf1h",
+                "target": {
+                  "id": "wb/hr0nwo",
+                  "beforeLines": 0,
+                  "afterLines": 0
+                },
+                "kind": {
+                  "requested": "table",
+                  "tokens": [
+                    "table"
+                  ]
+                },
+                "include": {
+                  "tokens": []
+                },
+                "exclude": {
+                  "tokens": []
+                },
+                "notices": []
+              },
+              "status": "saved"
+            },
+            "preview": {
+              "path": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/outputs/run-session-59ff4690cd54bb66-v3-953c4859-19da-4e90-abb5-d2f5c17d799b/session-preview.png",
+              "fileName": "session-preview.png",
+              "contentType": "image/png",
+              "byteLength": 9640,
+              "status": "saved"
+            },
+            "exported": {
+              "path": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/outputs/run-session-59ff4690cd54bb66-v3-953c4859-19da-4e90-abb5-d2f5c17d799b/session-probe.xlsx",
+              "fileName": "session-probe.xlsx",
+              "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+              "byteLength": 3414,
+              "status": "saved"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "throw-after-mutation",
+    "input": {
+      "target": "artifact-reference-probe",
+      "sessionRoot": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions",
+      "outputDirectory": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/outputs",
+      "artifactType": "spreadsheet",
+      "timeoutMs": 10000,
+      "code": "workbook.worksheets.getItem('Session').getRange('A2').values=[[999]]; throw new Error('Intentional rollback probe');"
+    },
+    "response": {
+      "jsonrpc": "2.0",
+      "id": 6,
+      "result": {
+        "isError": true,
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"ok\":false,\"outcome\":\"not_committed\",\"error\":{\"message\":\"Intentional rollback probe\"}}"
+          }
+        ],
+        "structuredContent": {
+          "ok": false,
+          "outcome": "not_committed",
+          "error": {
+            "message": "Intentional rollback probe"
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "read-after-failed-run",
+    "input": {
+      "target": "artifact-reference-probe",
+      "sessionRoot": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions",
+      "outputDirectory": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/outputs",
+      "artifactType": "spreadsheet",
+      "timeoutMs": 10000,
+      "code": "return {value:workbook.worksheets.getItem('Session').getRange('A2').values};"
+    },
+    "response": {
+      "jsonrpc": "2.0",
+      "id": 7,
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"ok\":true,\"committed\":false,\"artifactType\":\"spreadsheet\",\"target\":\"artifact-reference-probe\",\"sessionId\":\"session-59ff4690cd54bb66-b6d62a97-d613-4d47-ab73-42c14f60ccf0\",\"stateVersion\":2,\"snapshotPath\":\"/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/session-59ff4690cd54bb66.artifact-session.json\",\"outputDirectory\":\"/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/outputs\",\"timing\":{\"runMs\":25.103042000000016,\"runtimeImportMs\":254.70537499999998},\"workerInstanceId\":\"b4892bf2-7171-466e-9a06-fe1ed72a61ed\",\"workerPid\":66579,\"outputs\":[],\"result\":{\"value\":[[5]]}}"
+          }
+        ],
+        "structuredContent": {
+          "ok": true,
+          "committed": false,
+          "artifactType": "spreadsheet",
+          "target": "artifact-reference-probe",
+          "sessionId": "session-59ff4690cd54bb66-b6d62a97-d613-4d47-ab73-42c14f60ccf0",
+          "stateVersion": 2,
+          "snapshotPath": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/session-59ff4690cd54bb66.artifact-session.json",
+          "outputDirectory": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/outputs",
+          "timing": {
+            "runMs": 25.103042000000016,
+            "runtimeImportMs": 254.70537499999998
+          },
+          "workerInstanceId": "b4892bf2-7171-466e-9a06-fe1ed72a61ed",
+          "workerPid": 66579,
+          "outputs": [],
+          "result": {
+            "value": [
+              [
+                5
+              ]
+            ]
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "import-existing-xlsx",
+    "input": {
+      "target": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/runs/roundtrip.xlsx",
+      "sessionRoot": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions",
+      "outputDirectory": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/outputs",
+      "artifactType": "spreadsheet",
+      "timeoutMs": 10000,
+      "code": "return {sheets:workbook.worksheets.items.map(s=>s.name),values:workbook.worksheets.getItemAt(0).getRange('A1:C3').values};"
+    },
+    "response": {
+      "jsonrpc": "2.0",
+      "id": 8,
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"ok\":true,\"committed\":false,\"artifactType\":\"spreadsheet\",\"target\":\"/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/runs/roundtrip.xlsx\",\"sessionId\":\"workbook-4bc90f5379bcbf59-65903503-32fc-4575-a474-cc36b366b822\",\"stateVersion\":0,\"snapshotPath\":\"/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/file-4bc90f5379bcbf59.artifact-session.json\",\"sourcePath\":\"/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/runs/roundtrip.xlsx\",\"viewState\":{\"version\":1,\"updatedAtMs\":1789492832583,\"activeSheetName\":\"Data\",\"selectedRanges\":[{\"sheetName\":\"Data\",\"range\":\"A1\"}]},\"outputDirectory\":\"/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/outputs\",\"timing\":{\"runMs\":448.070917,\"runtimeImportMs\":334.326166},\"workerInstanceId\":\"380e4af9-6247-4203-855a-ea98be4feb14\",\"workerPid\":66582,\"outputs\":[],\"result\":{\"sheets\":[\"Data\"],\"values\":[[\"Qty\",\"Rate\",\"Value\"],[3,4,12],[5,6,30]]}}"
+          }
+        ],
+        "structuredContent": {
+          "ok": true,
+          "committed": false,
+          "artifactType": "spreadsheet",
+          "target": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/runs/roundtrip.xlsx",
+          "sessionId": "workbook-4bc90f5379bcbf59-65903503-32fc-4575-a474-cc36b366b822",
+          "stateVersion": 0,
+          "snapshotPath": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/file-4bc90f5379bcbf59.artifact-session.json",
+          "sourcePath": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/runs/roundtrip.xlsx",
+          "viewState": {
+            "version": 1,
+            "updatedAtMs": 1789492832583,
+            "activeSheetName": "Data",
+            "selectedRanges": [
+              {
+                "sheetName": "Data",
+                "range": "A1"
+              }
+            ]
+          },
+          "outputDirectory": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/outputs",
+          "timing": {
+            "runMs": 448.070917,
+            "runtimeImportMs": 334.326166
+          },
+          "workerInstanceId": "380e4af9-6247-4203-855a-ea98be4feb14",
+          "workerPid": 66582,
+          "outputs": [],
+          "result": {
+            "sheets": [
+              "Data"
+            ],
+            "values": [
+              [
+                "Qty",
+                "Rate",
+                "Value"
+              ],
+              [
+                3,
+                4,
+                12
+              ],
+              [
+                5,
+                6,
+                30
+              ]
+            ]
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "invalid-parameter",
+    "input": {
+      "target": "artifact-reference-probe",
+      "sessionRoot": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions",
+      "outputDirectory": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/outputs",
+      "artifactType": "spreadsheet",
+      "timeoutMs": 10000,
+      "code": "return 1;",
+      "invented": true
+    },
+    "response": {
+      "jsonrpc": "2.0",
+      "id": 9,
+      "result": {
+        "isError": true,
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"ok\":false,\"outcome\":\"not_committed\",\"error\":{\"message\":\"Unexpected artifact session argument: invented\"}}"
+          }
+        ],
+        "structuredContent": {
+          "ok": false,
+          "outcome": "not_committed",
+          "error": {
+            "message": "Unexpected artifact session argument: invented"
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "missing-target-without-task-meta",
+    "input": {
+      "code": "return 1;",
+      "sessionRoot": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions"
+    },
+    "response": {
+      "jsonrpc": "2.0",
+      "id": 10,
+      "result": {
+        "isError": true,
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"ok\":false,\"outcome\":\"not_committed\",\"error\":{\"message\":\"target is required when the MCP client does not provide a Codex task id.\"}}"
+          }
+        ],
+        "structuredContent": {
+          "ok": false,
+          "outcome": "not_committed",
+          "error": {
+            "message": "target is required when the MCP client does not provide a Codex task id."
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "thread-scoped-default",
+    "input": {
+      "sessionRoot": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions",
+      "code": "const s=workbook.worksheets.add('Default');s.getRange('A1').values=[[42]];return {value:s.getRange('A1').values};"
+    },
+    "response": {
+      "jsonrpc": "2.0",
+      "id": 11,
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"ok\":true,\"committed\":true,\"artifactType\":\"spreadsheet\",\"target\":\"codex-spreadsheet-fa4508294c2fd240cf2b\",\"sessionId\":\"session-6e0d8e0f35b2e44a-4ef5c9ca-1031-44eb-9e08-619d57e79176\",\"stateVersion\":1,\"snapshotPath\":\"/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/session-6e0d8e0f35b2e44a.artifact-session.json\",\"outputDirectory\":\"/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/session-6e0d8e0f35b2e44a.artifact-session/outputs\",\"timing\":{\"runMs\":87.52583300000003,\"runtimeImportMs\":276.28033400000004},\"workerInstanceId\":\"9f217c52-f466-4e5a-ac28-459311922183\",\"workerPid\":66588,\"outputs\":[],\"result\":{\"value\":[[42]]}}"
+          }
+        ],
+        "structuredContent": {
+          "ok": true,
+          "committed": true,
+          "artifactType": "spreadsheet",
+          "target": "codex-spreadsheet-fa4508294c2fd240cf2b",
+          "sessionId": "session-6e0d8e0f35b2e44a-4ef5c9ca-1031-44eb-9e08-619d57e79176",
+          "stateVersion": 1,
+          "snapshotPath": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/session-6e0d8e0f35b2e44a.artifact-session.json",
+          "outputDirectory": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/session-6e0d8e0f35b2e44a.artifact-session/outputs",
+          "timing": {
+            "runMs": 87.52583300000003,
+            "runtimeImportMs": 276.28033400000004
+          },
+          "workerInstanceId": "9f217c52-f466-4e5a-ac28-459311922183",
+          "workerPid": 66588,
+          "outputs": [],
+          "result": {
+            "value": [
+              [
+                42
+              ]
+            ]
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "execution-timeout",
+    "input": {
+      "target": "artifact-reference-probe",
+      "sessionRoot": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions",
+      "outputDirectory": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/outputs",
+      "artifactType": "spreadsheet",
+      "timeoutMs": 500,
+      "code": "while(true){}"
+    },
+    "response": {
+      "jsonrpc": "2.0",
+      "id": 12,
+      "result": {
+        "isError": true,
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"ok\":false,\"outcome\":\"unknown\",\"error\":{\"message\":\"Artifact session execution exceeded 500 ms; the worker was stopped and the commit outcome is unknown. Reopen the session before deciding whether to retry.\"}}"
+          }
+        ],
+        "structuredContent": {
+          "ok": false,
+          "outcome": "unknown",
+          "error": {
+            "message": "Artifact session execution exceeded 500 ms; the worker was stopped and the commit outcome is unknown. Reopen the session before deciding whether to retry."
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "read-after-timeout",
+    "input": {
+      "target": "artifact-reference-probe",
+      "sessionRoot": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions",
+      "outputDirectory": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/outputs",
+      "artifactType": "spreadsheet",
+      "timeoutMs": 10000,
+      "code": "return {value:workbook.worksheets.getItem('Session').getRange('A2').values};"
+    },
+    "response": {
+      "jsonrpc": "2.0",
+      "id": 13,
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"ok\":true,\"committed\":false,\"artifactType\":\"spreadsheet\",\"target\":\"artifact-reference-probe\",\"sessionId\":\"session-59ff4690cd54bb66-b6d62a97-d613-4d47-ab73-42c14f60ccf0\",\"stateVersion\":2,\"snapshotPath\":\"/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/session-59ff4690cd54bb66.artifact-session.json\",\"outputDirectory\":\"/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/outputs\",\"timing\":{\"runMs\":20.52333299999998,\"runtimeImportMs\":246.281958},\"workerInstanceId\":\"cc86a8ad-b5b1-482d-9f0c-c831fdaefb1b\",\"workerPid\":66598,\"outputs\":[],\"result\":{\"value\":[[5]]}}"
+          }
+        ],
+        "structuredContent": {
+          "ok": true,
+          "committed": false,
+          "artifactType": "spreadsheet",
+          "target": "artifact-reference-probe",
+          "sessionId": "session-59ff4690cd54bb66-b6d62a97-d613-4d47-ab73-42c14f60ccf0",
+          "stateVersion": 2,
+          "snapshotPath": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/session-59ff4690cd54bb66.artifact-session.json",
+          "outputDirectory": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/outputs",
+          "timing": {
+            "runMs": 20.52333299999998,
+            "runtimeImportMs": 246.281958
+          },
+          "workerInstanceId": "cc86a8ad-b5b1-482d-9f0c-c831fdaefb1b",
+          "workerPid": 66598,
+          "outputs": [],
+          "result": {
+            "value": [
+              [
+                5
+              ]
+            ]
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "first-party-wrapper-without-trusted-repl",
+    "error": "Error: artifactSession requires the first-party Artifact Session Node REPL tool.",
+    "staticSurface": [
+      "run",
+      "create",
+      "load",
+      "fromGoogleSheets",
+      "fromMarkdown",
+      "fromCSV",
+      "session"
+    ],
+    "runSignature": "run(t,n,r){return e.session.run(t,n,r)}"
+  }
+]

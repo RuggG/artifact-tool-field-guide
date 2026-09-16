@@ -1,0 +1,66 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>capture_inspection.mjs · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="capture_inspection.mjs">Raw file</a> · <a data-public-raw download href="capture_inspection.mjs">Download</a></p><article><h1>capture_inspection.mjs</h1><pre class="public-code"><code>// Read-only inspection comparisons. Run with the bundled Node runtime.
+// No edits, recalculation or export: the original imported representation is the fixture.
+import fs from &#x27;node:fs/promises&#x27;;
+import path from &#x27;node:path&#x27;;
+import crypto from &#x27;node:crypto&#x27;;
+import {fileURLToPath} from &#x27;node:url&#x27;;
+import {FileBlob, SpreadsheetFile} from &#x27;@oai/artifact-tool&#x27;;
+const home=path.resolve(path.dirname(fileURLToPath(import.meta.url)),&#x27;..&#x27;);
+const source=process.argv[2] || path.join(home,&#x27;files/inspection/source.xlsx&#x27;);
+const out=path.join(home,&#x27;files/inspection&#x27;);
+await fs.mkdir(out,{recursive:true});
+const bytes=await fs.readFile(source),hash=b=&gt;crypto.createHash(&#x27;sha256&#x27;).update(b).digest(&#x27;hex&#x27;);
+if(path.resolve(source)!==path.join(out,&#x27;source.xlsx&#x27;))await fs.writeFile(path.join(out,&#x27;source.xlsx&#x27;),bytes);
+const wb=await SpreadsheetFile.importXlsx(await FileBlob.load(source));
+const baseline=[];
+for(const s of wb.worksheets.items){const r=s.getUsedRange();baseline.push({sheet:s.name,address:r.address,values:r.values,formulas:r.formulas,nativeTables:s.tables.items.length});}
+const scopes={workbook:{},sheet:{sheetId:&#x27;Fee engine&#x27;},range:{sheetId:&#x27;Fee engine&#x27;,range:&#x27;C4:H12&#x27;}};
+const cases=[];
+function add(id,group,label,input,extra={}){cases.push({id,group,label,input,...extra});}
+for(const [mode,kind,label] of [[&#x27;map&#x27;,&#x27;workbook,sheet&#x27;,&#x27;Workbook + sheet records&#x27;],[&#x27;table&#x27;,&#x27;table&#x27;,&#x27;Value grids&#x27;],[&#x27;combined&#x27;,&#x27;workbook,sheet,table&#x27;,&#x27;Structure + value grids&#x27;]]){
+ for(const scope of [&#x27;workbook&#x27;,&#x27;sheet&#x27;,&#x27;range&#x27;])for(const maxChars of [150000,1000]){
+  add(`${mode}-${scope}-${maxChars}`,&#x27;core&#x27;,label,{kind,...scopes[scope],maxChars,tableMaxRows:1,tableMaxCols:1,tableMaxCellChars:1},{mode,scope,budget:maxChars,preview:&#x27;1 × 1&#x27;});
+ }
+}
+add(&#x27;combined-workbook-14000&#x27;,&#x27;core&#x27;,&#x27;Structure + value grids&#x27;,{kind:&#x27;workbook,sheet,table&#x27;,maxChars:14000,tableMaxRows:1,tableMaxCols:1,tableMaxCellChars:1},{mode:&#x27;combined&#x27;,scope:&#x27;workbook&#x27;,budget:14000,preview:&#x27;1 × 1&#x27;});
+for(const maxChars of [150000,1000])add(`table-sheet-wide-${maxChars}`,&#x27;core&#x27;,&#x27;Value grids&#x27;,{kind:&#x27;table&#x27;,sheetId:&#x27;Fee engine&#x27;,maxChars,tableMaxRows:4,tableMaxCols:6,tableMaxCellChars:20},{mode:&#x27;table&#x27;,scope:&#x27;sheet&#x27;,budget:maxChars,preview:&#x27;4 × 6&#x27;});
+for(const scope of [&#x27;sheet&#x27;,&#x27;range&#x27;])for(const [rows,cols] of [[2,3],[4,6]])add(`regions-${scope}-${rows}`,&#x27;regions&#x27;,&#x27;Detected blocks with previews&#x27;,{kind:&#x27;region&#x27;,...scopes[scope],range:scopes[scope].range||&#x27;A1:W109&#x27;,maxChars:40000,tableMaxRows:rows,tableMaxCols:cols,tableMaxCellChars:20},{mode:&#x27;region&#x27;,scope,budget:40000,preview:`${rows} × ${cols}`});
+for(const scope of [&#x27;sheet&#x27;,&#x27;range&#x27;])for(const limit of [3,300])add(`formulas-${scope}-${limit}`,&#x27;formulas&#x27;,`Formula records · up to ${limit}`,{kind:&#x27;formula&#x27;,...scopes[scope],maxChars:150000,options:{maxResults:limit}},{scope,limit});
+add(&#x27;sheet-only&#x27;,&#x27;more&#x27;,&#x27;Just the sheet inventory&#x27;,{kind:&#x27;sheet&#x27;,maxChars:150000});
+add(&#x27;table-formula&#x27;,&#x27;more&#x27;,&#x27;Values + formula records in one response&#x27;,{kind:&#x27;table,formula&#x27;,sheetId:&#x27;Fee engine&#x27;,range:&#x27;C4:H12&#x27;,maxChars:150000,options:{maxResults:300}});
+add(&#x27;project-values&#x27;,&#x27;more&#x27;,&#x27;Select values and formulas fields&#x27;,{kind:&#x27;table&#x27;,sheetId:&#x27;Fee engine&#x27;,range:&#x27;C4:H12&#x27;,include:&#x27;values,formulas&#x27;,maxChars:150000});
+add(&#x27;exclude-values&#x27;,&#x27;more&#x27;,&#x27;Describe the grid without its values&#x27;,{kind:&#x27;table&#x27;,sheetId:&#x27;Fee engine&#x27;,exclude:&#x27;values&#x27;,maxChars:150000});
+add(&#x27;record-search&#x27;,&#x27;more&#x27;,&#x27;Filter records using search&#x27;,{kind:&#x27;sheet&#x27;,search:&#x27;Fee engine&#x27;,maxChars:150000});
+add(&#x27;chart-token&#x27;,&#x27;more&#x27;,&#x27;Check an unsupported kind token&#x27;,{kind:&#x27;sheet,table,formula,chart&#x27;,sheetId:&#x27;Fee engine&#x27;,range:&#x27;C4:H12&#x27;,maxChars:150000,options:{maxResults:300}});
+add(&#x27;objects&#x27;,&#x27;more&#x27;,&#x27;Inspect drawing and name records&#x27;,{kind:&#x27;drawing,definedName,thread&#x27;,maxChars:150000});
+add(&#x27;formulas-small-budget&#x27;,&#x27;formulas&#x27;,&#x27;Constrain formula records with maxChars&#x27;,{kind:&#x27;formula&#x27;,sheetId:&#x27;Fee engine&#x27;,maxChars:1000,options:{maxResults:300}},{scope:&#x27;sheet&#x27;,limit:300});
+add(&#x27;table-text-preview&#x27;,&#x27;more&#x27;,&#x27;Shorten text inside a grid preview&#x27;,{kind:&#x27;table&#x27;,sheetId:&#x27;Fee engine&#x27;,range:&#x27;C4:H12&#x27;,maxChars:400,tableMaxRows:2,tableMaxCols:2,tableMaxCellChars:10});
+add(&#x27;region-long-text&#x27;,&#x27;regions&#x27;,&#x27;Allow longer text in region previews&#x27;,{kind:&#x27;region&#x27;,sheetId:&#x27;Fee engine&#x27;,range:&#x27;A1:W109&#x27;,maxChars:40000,tableMaxRows:2,tableMaxCols:3,tableMaxCellChars:80},{mode:&#x27;region&#x27;,scope:&#x27;sheet&#x27;,budget:40000,preview:&#x27;2 × 3 · text 80&#x27;});
+for(const [id,label,input] of [
+ [&#x27;match-all&#x27;,&#x27;Find literal profit text&#x27;,{kind:&#x27;match&#x27;,searchTerm:&#x27;profit&#x27;,maxChars:150000,options:{useRegex:false,maxResults:100}}],
+ [&#x27;match-limit&#x27;,&#x27;Return the first three matches&#x27;,{kind:&#x27;match&#x27;,searchTerm:&#x27;profit&#x27;,maxChars:150000,options:{useRegex:false,maxResults:3}}],
+ [&#x27;match-offset&#x27;,&#x27;Skip three matches with offset&#x27;,{kind:&#x27;match&#x27;,searchTerm:&#x27;profit&#x27;,offset:3,maxChars:150000,options:{useRegex:false,maxResults:3}}],
+ [&#x27;match-pattern&#x27;,&#x27;Use a text pattern on one sheet&#x27;,{kind:&#x27;match&#x27;,sheetId:&#x27;Fee engine&#x27;,searchTerm:&#x27;management.*fee|fee.*margin&#x27;,maxChars:150000,options:{useRegex:true,maxResults:100}}],
+ [&#x27;match-formulas&#x27;,&#x27;Search formula text as well as values&#x27;,{kind:&#x27;match&#x27;,sheetId:&#x27;Fee engine&#x27;,searchTerm:&#x27;Assumptions!&#x27;,maxChars:150000,options:{matchFormulas:true,maxResults:100}}]
+])add(id,&#x27;search&#x27;,label,input);
+const serialize=r=&gt;({ndjson:r.ndjson,recordCount:r.recordCount,truncated:r.truncated,metadata:r.metadata});
+const results=[];
+for(const c of cases){
+ const start=Date.now();
+ try{const response=serialize(await wb.inspect(c.input));results.push({...c,method:&#x27;inspect&#x27;,response,elapsedMs:Date.now()-start});console.log(JSON.stringify({id:c.id,records:response.recordCount,chars:response.ndjson.length,truncated:response.truncated}));}
+ catch(e){throw new Error(`${c.id}: ${e.message}`);}
+}
+const findInput={searchTerm:&#x27;profit&#x27;,options:{maxResults:3}};
+results.push({id:&#x27;find-cells&#x27;,group:&#x27;search&#x27;,label:&#x27;Use findCells for matches and total count&#x27;,method:&#x27;findCells&#x27;,input:findInput,response:JSON.parse(JSON.stringify(wb.findCells(findInput)))});
+const direct=wb.worksheets.getItem(&#x27;Fee engine&#x27;).getRange(&#x27;C4:H12&#x27;);
+results.push({id:&#x27;direct-range&#x27;,group:&#x27;more&#x27;,label:&#x27;Read an explicit range directly&#x27;,method:&#x27;range&#x27;,input:{sheetId:&#x27;Fee engine&#x27;,range:&#x27;C4:H12&#x27;},response:{values:direct.values,formulas:direct.formulas}});
+const inventory=results.find(c=&gt;c.id===&#x27;map-workbook-150000&#x27;).response.ndjson.split(&#x27;\n&#x27;).filter(Boolean).map(JSON.parse);
+const anchor=inventory.find(x=&gt;x.kind===&#x27;sheet&#x27;&amp;&amp;x.name===&#x27;Fee engine&#x27;);
+if(anchor?.id){const input={kind:&#x27;sheet,table&#x27;,target:{id:anchor.id,beforeLines:0,afterLines:1},maxChars:150000};results.push({id:&#x27;target-context&#x27;,group:&#x27;more&#x27;,label:&#x27;Read a window around a sheet record&#x27;,method:&#x27;inspect&#x27;,input,response:serialize(await wb.inspect(input))});}
+const after=await fs.readFile(source);
+if(hash(bytes)!==hash(after))throw new Error(&#x27;Source file changed&#x27;);
+const packageMeta=JSON.parse(await fs.readFile(path.join(home,&#x27;node_modules/@oai/artifact-tool/package.json&#x27;),&#x27;utf8&#x27;));
+const receipt={capturedAt:new Date().toISOString(),packageVersion:packageMeta.version,source:&#x27;files/inspection/source.xlsx&#x27;,sourceSha256:hash(bytes),sourceUnchanged:true,baselinePurpose:&#x27;Separate direct-range reads for checking returned coverage; not part of any inspect response.&#x27;,calls:results.length};
+await fs.writeFile(path.join(out,&#x27;captures.json&#x27;),JSON.stringify({receipt,baseline,cases:results},null,2));
+console.log(JSON.stringify(receipt));
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

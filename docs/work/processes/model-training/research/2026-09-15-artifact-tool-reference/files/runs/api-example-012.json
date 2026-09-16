@@ -1,0 +1,10 @@
+{
+  "index": 12,
+  "name": "chart axes",
+  "summary": "Tick marks + units",
+  "originalCode": "chart.xAxis = { majorUnit: 5, minorUnit: 1 };\nchart.xAxis = { majorTickMark: 'outside', minorTickMark: 'inside' };\nchart.yAxis = { majorTickMark: 'cross', minorTickMark: 'none' };",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

@@ -1,0 +1,10 @@
+{
+  "index": 9,
+  "name": "chart axes",
+  "summary": "Axis titles + text styles (avoid redundant defaults)",
+  "originalCode": "chart.xAxis = { title: { text: 'Category', textStyle: { fontSize: 14, bold: true } } };\nchart.yAxis = { title: { text: 'Value', textStyle: { fontSize: 12, italic: true, fill: 'accent1' } } };",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

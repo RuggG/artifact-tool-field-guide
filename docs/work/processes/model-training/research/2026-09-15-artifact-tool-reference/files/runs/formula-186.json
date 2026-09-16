@@ -1,0 +1,37 @@
+{
+  "name": "fx.ODDFYIELD",
+  "category": "financial",
+  "examples": [
+    {
+      "formula": "=ODDFYIELD(A1, A1, TRUE, A1)",
+      "value": "ODDFYIELD is not implemented. settlement=1, maturity=1, issue=true, firstCoupon=1, rate=undefined, pr=undefined, redemption=undefined, frequency=undefined, basis=undefined",
+      "projection": [
+        [
+          "ODDFYIELD is not implemented. settlement=1, maturity=1, issue=true, firstCoupon=1, rate=undefined, pr=undefined, redemption=undefined, frequency=undefined, basis=undefined",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 11
+    }
+  ]
+}

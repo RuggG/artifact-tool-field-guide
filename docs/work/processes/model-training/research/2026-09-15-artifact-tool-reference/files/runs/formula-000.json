@@ -1,0 +1,37 @@
+{
+  "name": "fx.STDEV",
+  "category": "compatibility",
+  "examples": [
+    {
+      "formula": "=STDEV(10, C1:C5, 20, C1:C5)",
+      "value": 5.134553180524705,
+      "projection": [
+        [
+          5.134553180524705,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 16
+    }
+  ]
+}

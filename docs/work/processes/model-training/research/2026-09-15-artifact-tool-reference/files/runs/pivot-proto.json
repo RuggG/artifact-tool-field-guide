@@ -1,0 +1,910 @@
+{
+  "id": "bbc378a1-e5a5-4d7e-aed8-9dfa575c8450",
+  "sheets": [
+    {
+      "id": "s0jqoi",
+      "sheetId": "1",
+      "index": 0,
+      "name": "Data",
+      "innerXml": "",
+      "outerXml": "",
+      "defaultRowHeight": 15,
+      "defaultColWidth": 0,
+      "rows": [
+        {
+          "index": 1,
+          "cells": [
+            {
+              "address": "A1",
+              "dataType": 3,
+              "paragraphs": [],
+              "value": "Region"
+            },
+            {
+              "address": "B1",
+              "dataType": 3,
+              "paragraphs": [],
+              "value": "Product"
+            },
+            {
+              "address": "C1",
+              "dataType": 3,
+              "paragraphs": [],
+              "value": "Sales"
+            }
+          ],
+          "height": 0,
+          "customHeight": false
+        },
+        {
+          "index": 2,
+          "cells": [
+            {
+              "address": "A2",
+              "dataType": 3,
+              "paragraphs": [],
+              "value": "North"
+            },
+            {
+              "address": "B2",
+              "dataType": 3,
+              "paragraphs": [],
+              "value": "A"
+            },
+            {
+              "address": "C2",
+              "dataType": 5,
+              "paragraphs": [],
+              "value": "10"
+            }
+          ],
+          "height": 0,
+          "customHeight": false
+        },
+        {
+          "index": 3,
+          "cells": [
+            {
+              "address": "A3",
+              "dataType": 3,
+              "paragraphs": [],
+              "value": "South"
+            },
+            {
+              "address": "B3",
+              "dataType": 3,
+              "paragraphs": [],
+              "value": "A"
+            },
+            {
+              "address": "C3",
+              "dataType": 5,
+              "paragraphs": [],
+              "value": "20"
+            }
+          ],
+          "height": 0,
+          "customHeight": false
+        },
+        {
+          "index": 4,
+          "cells": [
+            {
+              "address": "A4",
+              "dataType": 3,
+              "paragraphs": [],
+              "value": "North"
+            },
+            {
+              "address": "B4",
+              "dataType": 3,
+              "paragraphs": [],
+              "value": "B"
+            },
+            {
+              "address": "C4",
+              "dataType": 5,
+              "paragraphs": [],
+              "value": "30"
+            }
+          ],
+          "height": 0,
+          "customHeight": false
+        },
+        {
+          "index": 5,
+          "cells": [
+            {
+              "address": "A5",
+              "dataType": 3,
+              "paragraphs": [],
+              "value": "South"
+            },
+            {
+              "address": "B5",
+              "dataType": 3,
+              "paragraphs": [],
+              "value": "B"
+            },
+            {
+              "address": "C5",
+              "dataType": 5,
+              "paragraphs": [],
+              "value": "40"
+            }
+          ],
+          "height": 0,
+          "customHeight": false
+        }
+      ],
+      "columns": [],
+      "mergedCells": [],
+      "conditionalFormattings": [],
+      "sharedFormulas": [],
+      "tables": [],
+      "pivotTables": [],
+      "slicers": [],
+      "timelines": [],
+      "drawings": []
+    },
+    {
+      "id": "uo53kb",
+      "sheetId": "2",
+      "index": 1,
+      "name": "Pivot",
+      "innerXml": "",
+      "outerXml": "",
+      "defaultRowHeight": 15,
+      "defaultColWidth": 0,
+      "rows": [
+        {
+          "index": 1,
+          "cells": [
+            {
+              "address": "A1",
+              "dataType": 3,
+              "paragraphs": [],
+              "value": "Row Labels"
+            },
+            {
+              "address": "B1",
+              "dataType": 3,
+              "paragraphs": [],
+              "value": ""
+            },
+            {
+              "address": "C1",
+              "dataType": 3,
+              "paragraphs": [],
+              "value": ""
+            },
+            {
+              "address": "D1",
+              "dataType": 3,
+              "paragraphs": [],
+              "value": "Grand Total"
+            }
+          ],
+          "height": 0,
+          "customHeight": false
+        },
+        {
+          "index": 2,
+          "cells": [
+            {
+              "address": "A2",
+              "dataType": 3,
+              "paragraphs": [],
+              "value": "North"
+            },
+            {
+              "address": "B2",
+              "dataType": 5,
+              "paragraphs": [],
+              "value": "10"
+            },
+            {
+              "address": "C2",
+              "dataType": 5,
+              "paragraphs": [],
+              "value": "30"
+            },
+            {
+              "address": "D2",
+              "dataType": 5,
+              "paragraphs": [],
+              "value": "40"
+            }
+          ],
+          "height": 0,
+          "customHeight": false
+        },
+        {
+          "index": 3,
+          "cells": [
+            {
+              "address": "A3",
+              "dataType": 3,
+              "paragraphs": [],
+              "value": "South"
+            },
+            {
+              "address": "B3",
+              "dataType": 5,
+              "paragraphs": [],
+              "value": "20"
+            },
+            {
+              "address": "C3",
+              "dataType": 5,
+              "paragraphs": [],
+              "value": "40"
+            },
+            {
+              "address": "D3",
+              "dataType": 5,
+              "paragraphs": [],
+              "value": "60"
+            }
+          ],
+          "height": 0,
+          "customHeight": false
+        },
+        {
+          "index": 4,
+          "cells": [
+            {
+              "address": "A4",
+              "dataType": 3,
+              "paragraphs": [],
+              "value": "Grand Total"
+            },
+            {
+              "address": "B4",
+              "dataType": 5,
+              "paragraphs": [],
+              "value": "30"
+            },
+            {
+              "address": "C4",
+              "dataType": 5,
+              "paragraphs": [],
+              "value": "70"
+            },
+            {
+              "address": "D4",
+              "dataType": 5,
+              "paragraphs": [],
+              "value": "100"
+            }
+          ],
+          "height": 0,
+          "customHeight": false
+        }
+      ],
+      "columns": [],
+      "mergedCells": [],
+      "conditionalFormattings": [],
+      "sharedFormulas": [],
+      "tables": [],
+      "pivotTables": [
+        {
+          "name": "SalesPivot",
+          "cacheId": 1,
+          "location": {
+            "reference": "A1:D4",
+            "firstHeaderRow": 0,
+            "firstDataRow": 1,
+            "firstHeaderColumn": 0,
+            "firstDataColumn": 1
+          },
+          "dataOnRows": false,
+          "rowGrandTotals": true,
+          "columnGrandTotals": true,
+          "pivotFields": [
+            {
+              "index": 0,
+              "name": "Region",
+              "axis": "axisRow",
+              "dataField": false,
+              "showAll": true,
+              "subtotalTop": true,
+              "items": [
+                {
+                  "index": 0,
+                  "memberPropertyIndexes": [],
+                  "memberProperties": []
+                },
+                {
+                  "index": 1,
+                  "memberPropertyIndexes": [],
+                  "memberProperties": []
+                }
+              ],
+              "axisEnum": 1
+            },
+            {
+              "index": 1,
+              "name": "Product",
+              "axis": "axisCol",
+              "dataField": false,
+              "showAll": true,
+              "subtotalTop": true,
+              "items": [
+                {
+                  "index": 0,
+                  "memberPropertyIndexes": [],
+                  "memberProperties": []
+                },
+                {
+                  "index": 1,
+                  "memberPropertyIndexes": [],
+                  "memberProperties": []
+                }
+              ],
+              "axisEnum": 2
+            },
+            {
+              "index": 2,
+              "name": "Sales",
+              "axis": "axisValues",
+              "dataField": true,
+              "showAll": true,
+              "subtotalTop": true,
+              "items": [],
+              "axisEnum": 4
+            }
+          ],
+          "rowFields": [
+            0
+          ],
+          "columnFields": [
+            1
+          ],
+          "pageFields": [],
+          "dataFields": [
+            {
+              "field": 2,
+              "name": "Sum of Sales",
+              "subtotal": "sum",
+              "subtotalEnum": 1
+            }
+          ],
+          "filters": [],
+          "compact": true,
+          "outline": false,
+          "showDrill": true,
+          "rowItems": [
+            {
+              "index": 0,
+              "type": "0",
+              "memberPropertyIndexes": [],
+              "memberProperties": []
+            },
+            {
+              "index": 1,
+              "type": "0",
+              "memberPropertyIndexes": [],
+              "memberProperties": []
+            },
+            {
+              "type": "14",
+              "memberPropertyIndexes": [],
+              "memberProperties": []
+            }
+          ],
+          "columnItems": [
+            {
+              "index": 0,
+              "type": "0",
+              "memberPropertyIndexes": [],
+              "memberProperties": []
+            },
+            {
+              "index": 1,
+              "type": "0",
+              "memberPropertyIndexes": [],
+              "memberProperties": []
+            },
+            {
+              "index": 2,
+              "type": "14",
+              "memberPropertyIndexes": [],
+              "memberProperties": []
+            }
+          ],
+          "showRowHeaders": true,
+          "showColHeaders": true,
+          "showRowStripes": false,
+          "showColStripes": false,
+          "showLastColumn": false,
+          "formats": [],
+          "conditionalFormats": [],
+          "pivotHierarchies": [],
+          "rowHierarchyUsages": [],
+          "columnHierarchyUsages": []
+        }
+      ],
+      "slicers": [],
+      "timelines": [],
+      "drawings": []
+    }
+  ],
+  "styles": {
+    "fonts": [
+      {
+        "fontSize": 11,
+        "typeface": "Carlito"
+      }
+    ],
+    "fills": [
+      {
+        "type": 3,
+        "gradientStops": [],
+        "pattern": {
+          "patternType": 1
+        },
+        "pictureEffects": []
+      },
+      {
+        "type": 3,
+        "gradientStops": [],
+        "pattern": {
+          "patternType": 18
+        },
+        "pictureEffects": []
+      }
+    ],
+    "cellXfs": [
+      {
+        "fontId": 0,
+        "fillId": 0,
+        "borderId": 0,
+        "xfId": 0,
+        "numFmtId": 0
+      }
+    ],
+    "borders": [
+      {}
+    ],
+    "cellStyles": [
+      {
+        "index": 0,
+        "builtinId": "0",
+        "name": "Normal",
+        "xfId": 0
+      }
+    ],
+    "cellStyleXfs": [
+      {
+        "index": 0,
+        "format": {
+          "numFmtId": 0,
+          "fontId": 0,
+          "fillId": 0,
+          "borderId": 0
+        }
+      }
+    ],
+    "numberFormats": [],
+    "dxfs": [],
+    "indexedColors": [],
+    "mruColors": []
+  },
+  "theme": {
+    "name": "ChatGPT",
+    "colorScheme": {
+      "name": "ChatGPT",
+      "colors": [
+        {
+          "name": "accent1",
+          "color": {
+            "type": 1,
+            "value": "156082",
+            "transform": {}
+          }
+        },
+        {
+          "name": "accent2",
+          "color": {
+            "type": 1,
+            "value": "E97132",
+            "transform": {}
+          }
+        },
+        {
+          "name": "accent3",
+          "color": {
+            "type": 1,
+            "value": "196B24",
+            "transform": {}
+          }
+        },
+        {
+          "name": "accent4",
+          "color": {
+            "type": 1,
+            "value": "0F9ED5",
+            "transform": {}
+          }
+        },
+        {
+          "name": "accent5",
+          "color": {
+            "type": 1,
+            "value": "A02B93",
+            "transform": {}
+          }
+        },
+        {
+          "name": "accent6",
+          "color": {
+            "type": 1,
+            "value": "4EA72E",
+            "transform": {}
+          }
+        },
+        {
+          "name": "dk1",
+          "color": {
+            "type": 3,
+            "value": "windowText",
+            "lastColor": "000000",
+            "transform": {}
+          }
+        },
+        {
+          "name": "lt1",
+          "color": {
+            "type": 3,
+            "value": "window",
+            "lastColor": "FFFFFF",
+            "transform": {}
+          }
+        },
+        {
+          "name": "dk2",
+          "color": {
+            "type": 1,
+            "value": "0E2841",
+            "transform": {}
+          }
+        },
+        {
+          "name": "lt2",
+          "color": {
+            "type": 1,
+            "value": "E8E8E8",
+            "transform": {}
+          }
+        },
+        {
+          "name": "hlink",
+          "color": {
+            "type": 1,
+            "value": "467886",
+            "transform": {}
+          }
+        },
+        {
+          "name": "folHlink",
+          "color": {
+            "type": 1,
+            "value": "96607D",
+            "transform": {}
+          }
+        }
+      ]
+    },
+    "backgroundFillStyleList": [
+      {
+        "type": 1,
+        "color": {
+          "type": 2,
+          "value": "phClr",
+          "transform": {}
+        },
+        "gradientStops": [],
+        "pictureEffects": []
+      },
+      {
+        "type": 1,
+        "color": {
+          "type": 2,
+          "value": "phClr",
+          "transform": {
+            "tint": 95000,
+            "satMod": 170000
+          }
+        },
+        "gradientStops": [],
+        "pictureEffects": []
+      },
+      {
+        "type": 2,
+        "gradientStops": [
+          {
+            "position": 0,
+            "color": {
+              "type": 2,
+              "value": "phClr",
+              "transform": {
+                "tint": 93000,
+                "shade": 98000,
+                "lumMod": 102000,
+                "satMod": 150000
+              }
+            }
+          },
+          {
+            "position": 50000,
+            "color": {
+              "type": 2,
+              "value": "phClr",
+              "transform": {
+                "tint": 98000,
+                "shade": 90000,
+                "lumMod": 103000,
+                "satMod": 130000
+              }
+            }
+          },
+          {
+            "position": 100000,
+            "color": {
+              "type": 2,
+              "value": "phClr",
+              "transform": {
+                "shade": 63000,
+                "satMod": 120000
+              }
+            }
+          }
+        ],
+        "pictureEffects": [],
+        "gradientKind": 1,
+        "angleDeg": 90,
+        "isScaled": false
+      }
+    ],
+    "fillStyleList": [
+      {
+        "type": 1,
+        "color": {
+          "type": 2,
+          "value": "phClr",
+          "transform": {}
+        },
+        "gradientStops": [],
+        "pictureEffects": []
+      },
+      {
+        "type": 2,
+        "gradientStops": [
+          {
+            "position": 0,
+            "color": {
+              "type": 2,
+              "value": "phClr",
+              "transform": {
+                "lumMod": 110000,
+                "satMod": 105000,
+                "tint": 67000
+              }
+            }
+          },
+          {
+            "position": 50000,
+            "color": {
+              "type": 2,
+              "value": "phClr",
+              "transform": {
+                "lumMod": 105000,
+                "satMod": 103000,
+                "tint": 73000
+              }
+            }
+          },
+          {
+            "position": 100000,
+            "color": {
+              "type": 2,
+              "value": "phClr",
+              "transform": {
+                "lumMod": 105000,
+                "satMod": 109000,
+                "tint": 81000
+              }
+            }
+          }
+        ],
+        "pictureEffects": [],
+        "gradientKind": 1,
+        "angleDeg": 90,
+        "isScaled": false
+      },
+      {
+        "type": 2,
+        "gradientStops": [
+          {
+            "position": 0,
+            "color": {
+              "type": 2,
+              "value": "phClr",
+              "transform": {
+                "satMod": 103000,
+                "lumMod": 102000,
+                "tint": 94000
+              }
+            }
+          },
+          {
+            "position": 50000,
+            "color": {
+              "type": 2,
+              "value": "phClr",
+              "transform": {
+                "satMod": 110000,
+                "lumMod": 100000,
+                "shade": 100000
+              }
+            }
+          },
+          {
+            "position": 100000,
+            "color": {
+              "type": 2,
+              "value": "phClr",
+              "transform": {
+                "lumMod": 99000,
+                "satMod": 120000,
+                "shade": 78000
+              }
+            }
+          }
+        ],
+        "pictureEffects": [],
+        "gradientKind": 1,
+        "angleDeg": 90,
+        "isScaled": false
+      }
+    ],
+    "lineStyleList": [
+      {
+        "style": 1,
+        "widthEmu": 12700,
+        "fill": {
+          "type": 1,
+          "color": {
+            "type": 2,
+            "value": "phClr",
+            "transform": {}
+          },
+          "gradientStops": [],
+          "pictureEffects": []
+        }
+      },
+      {
+        "style": 1,
+        "widthEmu": 19050,
+        "fill": {
+          "type": 1,
+          "color": {
+            "type": 2,
+            "value": "phClr",
+            "transform": {}
+          },
+          "gradientStops": [],
+          "pictureEffects": []
+        }
+      },
+      {
+        "style": 1,
+        "widthEmu": 25400,
+        "fill": {
+          "type": 1,
+          "color": {
+            "type": 2,
+            "value": "phClr",
+            "transform": {}
+          },
+          "gradientStops": [],
+          "pictureEffects": []
+        }
+      }
+    ],
+    "effectStyleList": [
+      {
+        "effects": []
+      },
+      {
+        "effects": []
+      },
+      {
+        "effects": [
+          {
+            "type": 1,
+            "shadow": {
+              "color": {
+                "type": 1,
+                "value": "000000",
+                "transform": {
+                  "alpha": 63000
+                }
+              },
+              "blurRadius": 57150,
+              "distance": 19050,
+              "direction": 5400000
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "contentReferences": [],
+  "images": [],
+  "people": [],
+  "threads": [],
+  "notes": [],
+  "slicerCaches": [],
+  "pivotCaches": [
+    {
+      "id": 1,
+      "name": "SalesPivot Cache",
+      "fields": [
+        {
+          "name": "Region",
+          "numFmtId": 0,
+          "sharedItems": {
+            "values": [
+              "North",
+              "South"
+            ],
+            "items": [],
+            "count": 2
+          },
+          "cachedUniqueNames": []
+        },
+        {
+          "name": "Product",
+          "numFmtId": 0,
+          "sharedItems": {
+            "values": [
+              "A",
+              "B"
+            ],
+            "items": [],
+            "count": 2
+          },
+          "cachedUniqueNames": []
+        },
+        {
+          "name": "Sales",
+          "numFmtId": 0,
+          "sharedItems": {
+            "values": [],
+            "items": [],
+            "containsNumeric": true,
+            "containsString": false,
+            "containsSemiMixedTypes": false,
+            "minValue": 10,
+            "maxValue": 40
+          },
+          "cachedUniqueNames": []
+        }
+      ],
+      "cacheHierarchies": [],
+      "dimensions": [],
+      "measureGroups": [],
+      "maps": [],
+      "records": [],
+      "worksheetSourceSheet": "Data",
+      "worksheetSourceReference": "A1:C5",
+      "recordCount": 4
+    }
+  ],
+  "timelineCaches": [],
+  "textStyles": [],
+  "codeEnvironments": [],
+  "codeBlocks": []
+}

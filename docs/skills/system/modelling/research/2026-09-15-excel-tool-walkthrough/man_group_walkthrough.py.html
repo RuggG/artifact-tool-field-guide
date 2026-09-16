@@ -1,0 +1,239 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>man_group_walkthrough.py · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="man_group_walkthrough.py">Raw file</a> · <a data-public-raw download href="man_group_walkthrough.py">Download</a></p><article><h1>man_group_walkthrough.py</h1><pre class="public-code"><code>from html import escape as e
+from pathlib import Path
+import json, re, base64
+from pagekit_components import ComponentResult
+
+HERE=Path(__file__).parent
+TERMS=json.loads((HERE/&#x27;evidence&#x27;/&#x27;terms.json&#x27;).read_text())
+def terms_for(c):
+    keys=TERMS[&#x27;cards&#x27;][c[&#x27;id&#x27;]]
+    labels={&#x27;overview&#x27;:&#x27;Workbook, tab, table and returned records&#x27;,&#x27;regions&#x27;:&#x27;Range, region and preview&#x27;,&#x27;runner&#x27;:&#x27;Script, library and tool call&#x27;,&#x27;ranges&#x27;:&#x27;Cells, grids, values and formulas&#x27;,&#x27;trace&#x27;:&#x27;Dependencies and missing formulas&#x27;}
+    label=labels.get(c[&#x27;id&#x27;],&#x27;Terms used in this example&#x27;)
+    return &#x27;&lt;details class=&quot;xio-terms&quot; id=&quot;xio-&#x27;+c[&#x27;id&#x27;]+&#x27;-terms&quot;&gt;&lt;summary&gt;&#x27;+e(label)+&#x27;&lt;/summary&gt;&lt;dl&gt;&#x27;+&#x27;&#x27;.join(&#x27;&lt;div&gt;&lt;dt&gt;&#x27;+e(TERMS[&#x27;definitions&#x27;][k][0])+&#x27;&lt;/dt&gt;&lt;dd&gt;&#x27;+e(TERMS[&#x27;definitions&#x27;][k][1])+&#x27;&lt;/dd&gt;&lt;/div&gt;&#x27; for k in keys)+&#x27;&lt;/dl&gt;&lt;/details&gt;&#x27;
+def fmt(x):
+    if x is None:return &#x27;—&#x27;
+    if isinstance(x,bool):return str(x).lower()
+    if isinstance(x,float):return f&#x27;{x:,.4f}&#x27;.rstrip(&#x27;0&#x27;).rstrip(&#x27;.&#x27;)
+    return str(x)
+def code(x):return &#x27;&lt;pre tabindex=&quot;0&quot;&gt;&lt;code&gt;&#x27;+e(x if isinstance(x,str) else json.dumps(x,indent=2,ensure_ascii=False))+&#x27;&lt;/code&gt;&lt;/pre&gt;&#x27;
+def table(headers,rows):
+    return &#x27;&lt;div class=&quot;xio-grid-scroll&quot;&gt;&lt;table&#x27;+(&#x27; class=&quot;xio-compact-table&quot;&#x27; if len(headers)&lt;=4 else &#x27;&#x27;)+&#x27;&gt;&lt;thead&gt;&lt;tr&gt;&#x27;+&#x27;&#x27;.join(&#x27;&lt;th&gt;&#x27;+e(h)+&#x27;&lt;/th&gt;&#x27; for h in headers)+&#x27;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&#x27;+&#x27;&#x27;.join(&#x27;&lt;tr&gt;&#x27;+&#x27;&#x27;.join(&#x27;&lt;td&gt;&#x27;+str(v)+&#x27;&lt;/td&gt;&#x27; for v in row)+&#x27;&lt;/tr&gt;&#x27; for row in rows)+&#x27;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&#x27;
+def col(n):
+    s=&#x27;&#x27;
+    while n:n,m=divmod(n-1,26);s=chr(65+m)+s
+    return s
+def matrix(values,address=&#x27;A1&#x27;,formulas=None,labels=None):
+    m=re.match(r&#x27;([A-Z]+)(\d+)&#x27;,address);r0=int(m[2]);c0=0
+    for c in m[1]:c0=c0*26+ord(c)-64
+    width=max(map(len,values),default=0)
+    headers=[&#x27;Cell row&#x27;]+[col(c0+j) for j in range(width)]
+    if labels:headers=[&#x27;Metric&#x27;]+[&#x27;K · FY2026&#x27;,&#x27;L · H1 2027&#x27;,&#x27;M · FY2027&#x27;]
+    rows=[]
+    for i,row in enumerate(values):
+        cells=[e(labels[i] if labels else str(r0+i))]
+        for j,value in enumerate(row):
+            cell=&#x27;&lt;span title=&quot;&#x27;+e(str(value),quote=True)+&#x27;&quot;&gt;&#x27;+e(fmt(value))+&#x27;&lt;/span&gt;&#x27;
+            f=formulas[i][j] if formulas and i&lt;len(formulas) and j&lt;len(formulas[i]) else None
+            if f:cell+=&#x27;&lt;details class=&quot;xio-cell-formula&quot;&gt;&lt;summary&gt;Formula&lt;/summary&gt;&lt;code&gt;&#x27;+e(f)+&#x27;&lt;/code&gt;&lt;/details&gt;&#x27;
+            cells.append(cell)
+        rows.append(cells)
+    return table(headers,rows)
+
+def json_tree(obj,key=&#x27;Response&#x27;,depth=0):
+    if not isinstance(obj,(dict,list)):
+        value=json.dumps(obj,ensure_ascii=False)
+        return &#x27;&lt;div class=&quot;j-leaf&quot;&gt;&lt;span class=&quot;j-key&quot;&gt;&#x27;+e(str(key))+&#x27;&lt;/span&gt;&lt;code&gt;&#x27;+e(value)+&#x27;&lt;/code&gt;&lt;/div&gt;&#x27;
+    count=len(obj);kind=&#x27;fields&#x27; if isinstance(obj,dict) else &#x27;items&#x27;
+    pairs=obj.items() if isinstance(obj,dict) else enumerate(obj)
+    children=&#x27;&#x27;.join(json_tree(v,k,depth+1) for k,v in pairs)
+    return &#x27;&lt;details class=&quot;j-node&quot;&#x27;+(&#x27; open&#x27; if depth==0 else &#x27;&#x27;)+&#x27;&gt;&lt;summary&gt;&lt;span class=&quot;j-key&quot;&gt;&#x27;+e(str(key))+&#x27;&lt;/span&gt;&lt;small&gt;&#x27;+str(count)+&#x27; &#x27;+kind+&#x27;&lt;/small&gt;&lt;/summary&gt;&lt;div&gt;&#x27;+children+&#x27;&lt;/div&gt;&lt;/details&gt;&#x27;
+
+def dependency(n,depth=0):
+    label=&#x27;&lt;b&gt;&#x27;+e(n.get(&#x27;cell&#x27;,&#x27;&#x27;))+&#x27;&lt;/b&gt;&lt;span class=&quot;dep-value&quot;&gt;&#x27;+e(fmt(n.get(&#x27;value&#x27;)))+&#x27;&lt;/span&gt;&#x27;
+    detail=&#x27;&lt;code&gt;&#x27;+e(n[&#x27;formula&#x27;])+&#x27;&lt;/code&gt;&#x27; if n.get(&#x27;formula&#x27;) else &#x27;&lt;small&gt;Formula not returned · may be an input or an import limitation&lt;/small&gt;&#x27;
+    children=n.get(&#x27;params&#x27;,[])
+    if not children:return &#x27;&lt;div class=&quot;dep-leaf&quot;&gt;&#x27;+label+detail+&#x27;&lt;/div&gt;&#x27;
+    return &#x27;&lt;details class=&quot;dep-node&quot;&#x27;+(&#x27; open&#x27; if depth==0 else &#x27;&#x27;)+&#x27;&gt;&lt;summary&gt;&#x27;+label+&#x27;&lt;small&gt;&#x27;+str(len(children))+&#x27; dependencies&lt;/small&gt;&lt;/summary&gt;&#x27;+detail+&#x27;&lt;div&gt;&#x27;+&#x27;&#x27;.join(dependency(x,depth+1) for x in children)+&#x27;&lt;/div&gt;&lt;/details&gt;&#x27;
+
+LABELS={&#x27;baseFeeMargin&#x27;:&#x27;Base fee margin · bp&#x27;,&#x27;activeFeeMargin&#x27;:&#x27;Active fee margin · bp&#x27;,&#x27;q4AverageAum&#x27;:&#x27;Q4 2027 average AUM · $bn&#x27;,&#x27;q4ManagementFees&#x27;:&#x27;Q4 2027 management fees · $m&#x27;,&#x27;fy2027ManagementFees&#x27;:&#x27;FY2027 management fees · $m&#x27;,&#x27;fy2027OperatingProfit&#x27;:&#x27;FY2027 operating profit · $m&#x27;}
+INPUT_GUIDES={
+    &#x27;runner&#x27;:(&#x27;Run the saved experiment script with the bundled JavaScript runtime.&#x27;,[
+        (&#x27;Program&#x27;,&#x27;Node.js → run.mjs&#x27;),(&#x27;Working folder&#x27;,&#x27;man-group-run, alongside the copied source.xlsx&#x27;),
+        (&#x27;Initial wait&#x27;,&#x27;Up to 1,000 milliseconds before returning control if the process is still running&#x27;),
+        (&#x27;Output allowance&#x27;,&#x27;Request up to 1,000 tokens of command output in this call&#x27;)]),
+    &#x27;overview&#x27;:(&#x27;Ask for a broad map of the imported workbook and previews of its contents.&#x27;,[
+        (&#x27;Scope&#x27;,&#x27;The whole workbook&#x27;),(&#x27;Include&#x27;,&#x27;Workbook, sheet and table records&#x27;),
+        (&#x27;Response cap requested&#x27;,&#x27;14,000 characters&#x27;),(&#x27;Fallback preview requested&#x27;,&#x27;4 rows × 6 columns per table; 80 characters per cell. Used when table values would otherwise be too large.&#x27;)]),
+    &#x27;sheets&#x27;:(&#x27;List the sheets so the agent can choose where to look next.&#x27;,[
+        (&#x27;Scope&#x27;,&#x27;The whole workbook&#x27;),(&#x27;Record type&#x27;,&#x27;Sheet&#x27;),(&#x27;Fields requested&#x27;,&#x27;Internal ID and name&#x27;)]),
+    &#x27;literal&#x27;:(&#x27;Find cells containing the text “profit”.&#x27;,[
+        (&#x27;Scope&#x27;,&#x27;The whole workbook&#x27;),(&#x27;Search text&#x27;,&#x27;profit&#x27;),(&#x27;Matching mode&#x27;,&#x27;Literal text; regular expressions disabled&#x27;),
+        (&#x27;Limits requested&#x27;,&#x27;30 matches; 12,000 response characters&#x27;)]),
+    &#x27;regex&#x27;:(&#x27;Find labels mentioning management fees or fee margins using a text pattern.&#x27;,[
+        (&#x27;Scope&#x27;,&#x27;The whole workbook&#x27;),(&#x27;Pattern&#x27;,&#x27;management.*fee|fee.*margin&#x27;),
+        (&#x27;Pattern meaning&#x27;,&#x27;“management” followed by “fee”, OR “fee” followed by “margin”. The .* permits any intervening characters.&#x27;),
+        (&#x27;Matching mode&#x27;,&#x27;Regular expression; this is a text search, not a semantic search&#x27;),
+        (&#x27;Limits requested&#x27;,&#x27;30 matches; 12,000 response characters&#x27;)]),
+    &#x27;regions&#x27;:(&#x27;Identify populated regions and request small previews within a selected part of Summary.&#x27;,[
+        (&#x27;Sheet&#x27;,&#x27;Summary&#x27;),(&#x27;Search area&#x27;,&#x27;C7:M28&#x27;),(&#x27;Record type&#x27;,&#x27;Region&#x27;),
+        (&#x27;Preview caps requested&#x27;,&#x27;8 rows × 6 columns&#x27;),(&#x27;Response cap requested&#x27;,&#x27;10,000 characters&#x27;)]),
+    &#x27;ranges&#x27;:(&#x27;Read the values and formula text from one exact rectangle.&#x27;,[
+        (&#x27;Sheet&#x27;,&#x27;Summary&#x27;),(&#x27;Cells&#x27;,&#x27;K13:M20 · 8 rows × 3 columns&#x27;),
+        (&#x27;Financial context&#x27;,&#x27;FY2026, H1 2027 and FY2027; management fees through operating profit&#x27;),
+        (&#x27;Read&#x27;,&#x27;Two grids: values and formulas. Also return the sheet name and cell range.&#x27;)]),
+    &#x27;trace&#x27;:(&#x27;Ask the library to follow the calculation dependencies of one cell.&#x27;,[
+        (&#x27;Starting cell&#x27;,&#x27;Fee engine!R27&#x27;),(&#x27;Financial context&#x27;,&#x27;Q3 2026 net management fees&#x27;),
+        (&#x27;Request&#x27;,&#x27;Return the dependency tree from this cell&#x27;)]),
+    &#x27;render&#x27;:(&#x27;Render part of the workbook as a PNG and save the resulting image bytes.&#x27;,[
+        (&#x27;Sheet and area&#x27;,&#x27;Summary!C7:M28&#x27;),(&#x27;Image settings&#x27;,&#x27;PNG, at scale 1.5&#x27;),
+        (&#x27;Save as&#x27;,&#x27;summary-before.png, in the experiment folder&#x27;),
+        (&#x27;Record&#x27;,&#x27;The saved filename, PNG media type and byte count&#x27;),
+        (&#x27;Then view&#x27;,&#x27;A separate tools.view_image call opens that saved PNG for Codex to see&#x27;)]),
+    &#x27;value-edit&#x27;:(&#x27;Replace a single forecast assumption with the number 51.&#x27;,[
+        (&#x27;Target&#x27;,&#x27;Assumptions!W26&#x27;),(&#x27;Financial meaning&#x27;,&#x27;Q4 2027 base management-fee margin, in basis points&#x27;),
+        (&#x27;Write&#x27;,&#x27;51 as a cell value, replacing the existing cell content&#x27;),
+        (&#x27;Agent-written check&#x27;,&#x27;I chose six cells and wrote readState() to read them before and after. The edit does not return them automatically.&#x27;)]),
+    &#x27;recalculate&#x27;:(&#x27;Ask the imported workbook to recalculate, then compare the same cells again.&#x27;,[
+        (&#x27;Scope&#x27;,&#x27;The workbook object in memory&#x27;),(&#x27;Calculation call&#x27;,&#x27;wb.recalculate(), with no additional parameters&#x27;),
+        (&#x27;Agent-written check&#x27;,&#x27;I chose six cells and wrote readState() to read them before and after. recalculate() does not return this comparison.&#x27;),
+        (&#x27;Record&#x27;,&#x27;The calculation call’s return value as well as those readings; undefined is saved as the text “undefined”&#x27;)]),
+    &#x27;formula-edit&#x27;:(&#x27;Write the existing scenario-selection rule explicitly into the active fee-margin cell.&#x27;,[
+        (&#x27;Target&#x27;,&#x27;Assumptions!W25&#x27;),(&#x27;Scenario selector&#x27;,&#x27;Assumptions!D4 chooses the first, second, third or fourth scenario&#x27;),
+        (&#x27;Scenario inputs&#x27;,&#x27;W26, W27, W28 and W29, in that order&#x27;),
+        (&#x27;Formula rule&#x27;,&#x27;Return the selected input. If that selected input is blank, return #N/A.&#x27;),
+        (&#x27;Agent-written check&#x27;,&#x27;I chose six cells and wrote readState() to read them before and after. The formula edit does not choose or return them.&#x27;)]),
+    &#x27;fill&#x27;:(&#x27;Fill the active fee-margin formula to the right across six cells.&#x27;,[
+        (&#x27;Sheet&#x27;,&#x27;Assumptions&#x27;),(&#x27;Range&#x27;,&#x27;R25:W25&#x27;),(&#x27;Source&#x27;,&#x27;The leftmost cell, R25&#x27;),
+        (&#x27;Copy behaviour&#x27;,&#x27;Extend the formula across the range, adjusting relative references while keeping $D$4 fixed&#x27;),
+        (&#x27;Check&#x27;,&#x27;Read values and formula text for all six cells before and after&#x27;)]),
+    &#x27;copy&#x27;:(&#x27;Copy the original base fee-margin formula back into the edited assumption cell.&#x27;,[
+        (&#x27;Source&#x27;,&#x27;Assumptions!R26&#x27;),(&#x27;Destination&#x27;,&#x27;Assumptions!W26&#x27;),(&#x27;Copy mode&#x27;,&#x27;Formulas&#x27;),
+        (&#x27;Source formula&#x27;,&#x27;=$D$50 — its absolute reference stays fixed when copied&#x27;),
+        (&#x27;Agent-written check&#x27;,&#x27;I chose six cells and wrote readState() to read them before and after. These are additional reads.&#x27;)]),
+    &#x27;export&#x27;:(&#x27;Convert the in-memory workbook to an Excel file and save it locally.&#x27;,[
+        (&#x27;Source&#x27;,&#x27;The workbook after the preceding demonstration steps&#x27;),(&#x27;Format&#x27;,&#x27;Excel .xlsx&#x27;),
+        (&#x27;Save as&#x27;,&#x27;man-group-demo.xlsx, in the experiment folder&#x27;),
+        (&#x27;Record&#x27;,&#x27;The save call’s return value, filename and file size in bytes&#x27;)])
+}
+
+def readable_input(c):
+    summary,items=INPUT_GUIDES[c[&#x27;id&#x27;]]
+    h=&#x27;&lt;p class=&quot;xio-input-action&quot;&gt;&#x27;+e(summary)+&#x27;&lt;/p&gt;&lt;dl class=&quot;xio-input-fields&quot;&gt;&#x27;
+    h+=&#x27;&#x27;.join(&#x27;&lt;div&gt;&lt;dt&gt;&#x27;+e(k)+&#x27;&lt;/dt&gt;&lt;dd&gt;&#x27;+e(v)+&#x27;&lt;/dd&gt;&lt;/div&gt;&#x27; for k,v in items)+&#x27;&lt;/dl&gt;&#x27;
+    if c.get(&#x27;helper&#x27;):
+        cells=[&#x27;Assumptions!W26 · base fee margin&#x27;,&#x27;Assumptions!W25 · active fee margin&#x27;,&#x27;Fee engine!W18 · Q4 average AUM&#x27;,&#x27;Fee engine!W27 · Q4 management fees&#x27;,&#x27;Summary!M13 · FY2027 management fees&#x27;,&#x27;Summary!M20 · FY2027 operating profit&#x27;]
+        h+=&#x27;&lt;p&gt;&lt;b&gt;Why six?&lt;/b&gt; I selected these particular cells for this experiment. Six is not a tool setting or an automatically discovered dependency count.&lt;/p&gt;&lt;details class=&quot;record-fold&quot;&gt;&lt;summary&gt;The six cells I selected&lt;/summary&gt;&lt;ul&gt;&#x27;+&#x27;&#x27;.join(&#x27;&lt;li&gt;&#x27;+e(x)+&#x27;&lt;/li&gt;&#x27; for x in cells)+&#x27;&lt;/ul&gt;&lt;p&gt;My helper records each cell’s address, value and formula. This sample does not verify every dependency.&lt;/p&gt;&lt;/details&gt;&#x27;
+    h+=&#x27;&lt;p class=&quot;xio-caption&quot;&gt;Plain-English reading of the actual input. Requested limits describe the request, not a guarantee of what the library returns.&lt;/p&gt;&#x27; if c[&#x27;id&#x27;] in (&#x27;overview&#x27;,&#x27;literal&#x27;,&#x27;regex&#x27;,&#x27;regions&#x27;) else &#x27;&lt;p class=&quot;xio-caption&quot;&gt;Plain-English reading of the actual input. Switch to Exact input for the executed code or tool arguments.&lt;/p&gt;&#x27;
+    return h
+
+def readable(c):
+    r=c[&#x27;result&#x27;];id=c[&#x27;id&#x27;];records=c.get(&#x27;records&#x27;,[])
+    if id==&#x27;runner&#x27;:
+        initial=r[&#x27;initialToolResult&#x27;];final=r[&#x27;completionToolResult&#x27;]
+        return table([&#x27;Stage&#x27;,&#x27;What came back&#x27;],[[&#x27;Initial call&#x27;,e(&#x27;Still running · session &#x27;+str(initial[&#x27;session_id&#x27;]))],[&#x27;Later poll&#x27;,e(&#x27;Completed · exit code &#x27;+str(final[&#x27;exit_code&#x27;]))]])+&#x27;&lt;details class=&quot;xio-raw&quot;&gt;&lt;summary&gt;Read all printed output&lt;/summary&gt;&#x27;+code(final[&#x27;output&#x27;])+&#x27;&lt;/details&gt;&#x27;
+    if id==&#x27;overview&#x27;:
+        h=&#x27;&lt;div class=&quot;result-head&quot;&gt;&lt;b&gt;6 sheets&lt;/b&gt;&lt;span&gt;5 records returned&lt;/span&gt;&lt;strong class=&quot;limit&quot;&gt;Response truncated&lt;/strong&gt;&lt;/div&gt;&#x27;
+        h+=&#x27;&lt;p class=&quot;xio-table-definition&quot;&gt;&lt;b&gt;What does tables: 1 mean?&lt;/b&gt; For Summary, this response packages A1:M57 as one table-shaped grid. That rectangle contains several financial sections. The file has &lt;b&gt;no formal Excel Tables&lt;/b&gt;; the reported count describes the inspection output.&lt;/p&gt;&#x27;
+        for x in records:
+            if x[&#x27;kind&#x27;]==&#x27;notice&#x27;:h+=&#x27;&lt;p class=&quot;result-notice&quot;&gt;&#x27;+e(x[&#x27;message&#x27;])+&#x27;&lt;/p&gt;&#x27;;continue
+            title=(&#x27;Table response&#x27; if x[&#x27;kind&#x27;]==&#x27;table&#x27; else x[&#x27;kind&#x27;].capitalize())+&#x27; · &#x27;+str(x.get(&#x27;name&#x27;,x.get(&#x27;sheet&#x27;,x.get(&#x27;id&#x27;,&#x27;&#x27;))))
+            if &#x27;values&#x27; in x:
+                h+=&#x27;&lt;details class=&quot;record-fold&quot;&gt;&lt;summary&gt;&#x27;+e(title)+&#x27;&lt;small&gt;&#x27;+str(x[&#x27;rows&#x27;])+&#x27; rows × &#x27;+str(x[&#x27;cols&#x27;])+&#x27; columns&lt;/small&gt;&lt;/summary&gt;&#x27;+matrix(x[&#x27;values&#x27;],x[&#x27;address&#x27;].split(&#x27;:&#x27;)[0])+&#x27;&lt;/details&gt;&#x27;
+            else:h+=&#x27;&lt;details class=&quot;record-fold&quot;&gt;&lt;summary&gt;&#x27;+e(title)+&#x27;&lt;/summary&gt;&#x27;+json_tree(x)+&#x27;&lt;/details&gt;&#x27;
+        return h
+    if id==&#x27;sheets&#x27;:return table([&#x27;Position&#x27;,&#x27;Sheet&#x27;,&#x27;Used range&#x27;,&#x27;Internal ID&#x27;],[[str(x[&#x27;index&#x27;]+1),e(x[&#x27;name&#x27;]),e(x[&#x27;range&#x27;]),&#x27;&lt;code&gt;&#x27;+e(x[&#x27;id&#x27;])+&#x27;&lt;/code&gt;&#x27;] for x in records])
+    if id in (&#x27;literal&#x27;,&#x27;regex&#x27;):
+        groups={};h=&#x27;&#x27;
+        for x in records:
+            if x[&#x27;kind&#x27;]==&#x27;notice&#x27;:h+=&#x27;&lt;p class=&quot;result-notice&quot;&gt;&#x27;+e(x[&#x27;message&#x27;])+&#x27;&lt;/p&gt;&#x27;
+            else:groups.setdefault(x.get(&#x27;sheet&#x27;,&#x27;&#x27;),[]).append(x)
+        h=&#x27;&lt;p class=&quot;result-count&quot;&gt;&#x27;+str(sum(map(len,groups.values())))+&#x27; cell matches across &#x27;+str(len(groups))+&#x27; sheets&lt;/p&gt;&#x27;+h
+        for name,items in groups.items():
+            h+=&#x27;&lt;details class=&quot;record-fold&quot;&#x27;+(&#x27; open&#x27; if name==&#x27;Summary&#x27; else &#x27;&#x27;)+&#x27;&gt;&lt;summary&gt;&#x27;+e(name)+&#x27;&lt;small&gt;&#x27;+str(len(items))+&#x27; matches&lt;/small&gt;&lt;/summary&gt;&#x27;+table([&#x27;Cell&#x27;,&#x27;Matched value&#x27;],[[e(x[&#x27;address&#x27;]),e(str(x.get(&#x27;value&#x27;)))] for x in items])+&#x27;&lt;/details&gt;&#x27;
+        return h
+    if id==&#x27;regions&#x27;:
+        return &#x27;&#x27;.join(&#x27;&lt;details class=&quot;record-fold&quot;&gt;&lt;summary&gt;&#x27;+e(x[&#x27;address&#x27;])+&#x27;&lt;small&gt;&#x27;+str(x[&#x27;rows&#x27;])+&#x27; × &#x27;+str(x[&#x27;cols&#x27;])+&#x27; · &#x27;+str(x[&#x27;nonEmpty&#x27;])+&#x27; populated&lt;/small&gt;&lt;/summary&gt;&lt;p class=&quot;xio-caption&quot;&gt;Returned preview: &#x27;+e(x[&#x27;previewAddress&#x27;])+&#x27;&lt;/p&gt;&#x27;+matrix(x[&#x27;preview&#x27;],x[&#x27;previewAddress&#x27;].split(&#x27;:&#x27;)[0])+&#x27;&lt;/details&gt;&#x27; for x in records)
+    if id==&#x27;ranges&#x27;:return matrix(r[&#x27;values&#x27;],&#x27;K13&#x27;,r[&#x27;formulas&#x27;],[&#x27;13 · Net management fees&#x27;,&#x27;14 · Performance fees&#x27;,&#x27;15 · Seed gains&#x27;,&#x27;16 · Other income&#x27;,&#x27;17 · Core net revenue&#x27;,&#x27;18 · Blank row&#x27;,&#x27;19 · Operating costs&#x27;,&#x27;20 · Operating profit&#x27;])+&#x27;&lt;p class=&quot;xio-caption&quot;&gt;USD millions. Click Formula beneath a value to inspect its calculation.&lt;/p&gt;&#x27;
+    if id==&#x27;trace&#x27;:return &#x27;&lt;div class=&quot;dep-tree&quot;&gt;&#x27;+dependency(r)+&#x27;&lt;/div&gt;&#x27;
+    if id==&#x27;render&#x27;:return table([&#x27;Saved image&#x27;,&#x27;Size&#x27;],[[e(r[&#x27;saved&#x27;]),f&quot;{r[&#x27;bytes&#x27;]:,} bytes&quot;]])+&#x27;&lt;p&gt;The actual pixels are shown below. Saving a PNG and viewing it are separate operations.&lt;/p&gt;&#x27;
+    if id in (&#x27;value-edit&#x27;,&#x27;recalculate&#x27;,&#x27;formula-edit&#x27;,&#x27;copy&#x27;):
+        rows=[]
+        for key,label in LABELS.items():
+            a=r[&#x27;before&#x27;][key];b=r[&#x27;after&#x27;][key];changed=a[&#x27;value&#x27;]!=b[&#x27;value&#x27;]
+            rows.append([e(label)+&#x27;&lt;small class=&quot;cell-locator&quot;&gt;&#x27;+e(a[&#x27;sheet&#x27;]+&#x27;!&#x27;+a[&#x27;cell&#x27;])+&#x27;&lt;/small&gt;&#x27;,e(fmt(a[&#x27;value&#x27;])),&#x27;&lt;span class=&quot;&#x27;+(&#x27;changed&#x27; if changed else &#x27;&#x27;)+&#x27;&quot;&gt;&#x27;+e(fmt(b[&#x27;value&#x27;]))+&#x27;&lt;/span&gt;&#x27;])
+        return table([&#x27;Readback&#x27;,&#x27;Before&#x27;,&#x27;After&#x27;],rows)+&#x27;&lt;p class=&quot;xio-caption&quot;&gt;Highlighted numbers changed. Expand the object tree for the exact formula returned at each stage.&lt;/p&gt;&#x27;
+    if id==&#x27;fill&#x27;:
+        rows=[]
+        for j in range(6):
+            a=r[&#x27;before&#x27;][&#x27;formulas&#x27;][0][j];b=r[&#x27;after&#x27;][&#x27;formulas&#x27;][0][j]
+            rows.append([col(18+j)+&#x27;25&#x27;,e(fmt(r[&#x27;after&#x27;][&#x27;values&#x27;][0][j])),e(&#x27;Formula present&#x27; if a else &#x27;No formula returned&#x27;),&#x27;&lt;details class=&quot;xio-cell-formula&quot;&gt;&lt;summary&gt;Read copied formula&lt;/summary&gt;&lt;code&gt;&#x27;+e(b)+&#x27;&lt;/code&gt;&lt;/details&gt;&#x27;])
+        return table([&#x27;Cell&#x27;,&#x27;Value after&#x27;,&#x27;Before&#x27;,&#x27;After&#x27;],rows)
+    if id==&#x27;export&#x27;:
+        v=c[&#x27;verification&#x27;];return table([&#x27;File result&#x27;,&#x27;Observed&#x27;],[[&#x27;Saved file&#x27;,e(r[&#x27;saved&#x27;])],[&#x27;Size&#x27;,f&quot;{r[&#x27;bytes&#x27;]:,} bytes&quot;],[&#x27;Formula/literal differences&#x27;,str(len(v[&#x27;formulaOrLiteralChanges&#x27;]))],[&#x27;Cached values outside tolerance&#x27;,str(len(v[&#x27;cachedValueChangesAboveTolerance&#x27;]))],[&#x27;Annotations&#x27;,str(v[&#x27;notesBefore&#x27;])+&#x27; before / &#x27;+str(v[&#x27;notesAfter&#x27;])+&#x27; after&#x27;],[&#x27;Original download&#x27;, &#x27;SHA-256 unchanged&#x27;],[&#x27;Native Excel opening&#x27;,&#x27;Not tested in this run&#x27;]])
+    return json_tree(r)
+
+CSS=(HERE/&#x27;man-group.css&#x27;).read_text()+&#x27;&#x27;&#x27;
+.xio-head h3{font-size:22px!important}.xio-purpose{font-size:15px;line-height:1.65;margin:12px 0 5px}.xio-return-summary{font-size:13px;line-height:1.6;margin:9px 0;color:#405b70}.xio-finding{border-left:3px solid #6e92a9;background:#edf4f8;padding:12px 14px;margin:14px 0 0;font-size:14px;line-height:1.6}.xio-pair{grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr)}.xio-side{padding:17px;overflow:hidden}.xio-view-nav{display:flex;gap:5px;margin-bottom:12px;flex-wrap:wrap}.xio-view-nav button{border:1px solid #cbd9e3;background:white;color:#375a75;padding:7px 9px;border-radius:4px;font-size:11px;cursor:pointer}.xio-view-nav button[aria-pressed=true]{background:#e7f0f6;border-color:#61869f;color:#173c57;font-weight:700}.xio-view[hidden]{display:none!important}.xio-view{font-size:12px;line-height:1.55;max-height:540px;overflow:auto;padding:1px}.xio-grid-scroll{max-height:420px}.xio-grid-scroll table{font-size:11px!important;width:100%}.xio-grid-scroll td,.xio-grid-scroll th{white-space:normal;vertical-align:top;min-width:60px;text-align:left;font-variant-numeric:tabular-nums;padding:8px}.xio-grid-scroll td:first-child{color:#284d67;min-width:95px}.xio-grid-scroll th{position:sticky;top:0;z-index:1}.xio-grid-scroll td code{white-space:pre-wrap;overflow-wrap:anywhere}.cell-locator{display:block;font-size:9px;color:#657e90}.changed{font-weight:700;color:#0b5f75;background:#dff2f4;padding:2px 3px}.xio-cell-formula{margin:4px 0!important;padding:0!important;border:none!important;background:transparent!important;box-shadow:none!important}.xio-cell-formula&gt;summary{display:list-item!important;padding:2px 0!important;font-size:10px!important;color:#52778e;cursor:pointer}.xio-cell-formula code{font-size:10px!important;background:transparent!important}.record-fold,.j-node,.dep-node{border:0!important;box-shadow:none!important;background:transparent!important;margin:6px 0!important;padding:0!important}.record-fold&gt;summary,.j-node&gt;summary,.dep-node&gt;summary{display:list-item!important;cursor:pointer;padding:10px 8px!important;background:#edf3f7;border-radius:4px;font-size:12px!important;font-weight:500!important;line-height:1.5;overflow-wrap:anywhere}.record-fold&gt;summary&gt;small,.j-node&gt;summary&gt;small,.dep-node&gt;summary&gt;small{color:#667d8e;font-size:10px;margin-left:10px;display:inline-block}.record-fold[open]&gt;summary{margin-bottom:8px}.record-fold .xio-grid-scroll{max-height:330px}.result-head{display:flex;gap:7px;flex-wrap:wrap;align-items:center;padding:3px 0 14px}.result-head&gt;*{padding:4px 6px;background:#edf3f7;border-radius:4px;font-size:11px}.result-head .limit{background:#fcf1d9;color:#715320;font-weight:500}.result-notice{background:#fbf5e6;border-left:3px solid #b6995a;padding:10px;font-size:12px;line-height:1.5}.result-count{margin:0 0 8px!important;font-size:12px;color:#46677f}.j-node&gt;div{padding-left:13px;border-left:1px solid #d6e3ec;margin-left:5px}.j-leaf{padding:6px 0;display:grid;grid-template-columns:minmax(85px,.4fr) minmax(0,1fr);gap:8px;border-bottom:1px solid #edf2f6}.j-key{color:#315b77;overflow-wrap:anywhere}.j-leaf code{background:transparent;font:10px/1.6 ui-monospace,monospace;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;color:#395467}.dep-node&gt;div{padding-left:15px;border-left:1px solid #d1e0e9;margin-left:4px}.dep-node&gt;code,.dep-leaf&gt;code{display:block;background:transparent;font:10px/1.6 ui-monospace,monospace;color:#466477;white-space:normal;overflow-wrap:anywhere;padding:6px}.dep-leaf{padding:7px 4px;border-bottom:1px solid #e2ebf1}.dep-leaf&gt;b{color:#2c5571;overflow-wrap:anywhere}.dep-value{float:right;font-variant-numeric:tabular-nums;padding-left:8px;color:#143f59}.dep-leaf&gt;small{display:block;color:#748896;font-size:9px}.xio-output pre{max-height:500px}.xio-image-block img{width:100%;height:auto}.xio-helper{margin-top:12px!important}.xio-caption{line-height:1.6!important}.xio-setup{font:11px/1.6 ui-monospace,monospace}
+.xio .xio-grid-scroll .tablewrap{margin:0!important;max-width:100%;width:100%}.xio .xio-grid-scroll table.xio-compact-table{min-width:0!important;width:100%!important;table-layout:auto!important;margin:0!important}.xio .xio-grid-scroll table.xio-compact-table th,.xio .xio-grid-scroll table.xio-compact-table td{min-width:0!important;white-space:normal!important;overflow-wrap:anywhere;width:auto!important}.xio .xio-grid-scroll table.xio-compact-table td:first-child{min-width:75px!important}
+.xio .xio-grid-scroll td&gt;span{white-space:nowrap}
+.xio-nav-label{font-size:11px;font-weight:700;color:#4d7089;margin:16px 0 7px}.xio-nav{margin-bottom:9px}.xio-nav button{display:block}
+.xio-input-view[hidden]{display:none!important}.xio-input-view{font-size:12px;line-height:1.6;max-height:540px;overflow:auto;padding:1px}.xio-input-action{margin:0 0 12px!important;font-size:13px;color:#244b65}.xio-input-fields{margin:0}.xio-input-fields&gt;div{padding:10px 0;border-bottom:1px solid #dde7ee}.xio-input-fields dt{font-size:10px;font-weight:700;color:#55748a;margin:0 0 3px}.xio-input-fields dd{margin:0;color:#243f53;overflow-wrap:anywhere}.xio-input-view ul{padding-left:20px}.xio-input-view li{margin:5px 0}
+.xio-terms{margin:0!important;border:0!important;border-bottom:1px solid #d4e1ea!important;border-radius:0!important;padding:0!important;box-shadow:none!important;background:#f6f9fb!important}.xio-terms&gt;summary{display:list-item!important;padding:12px 22px!important;font-size:12px!important;line-height:1.5!important;color:#355c78!important;cursor:pointer}.xio-terms&gt;dl{padding:0 22px 16px;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:14px 24px}.xio-terms dt{font-size:12px;color:#244b65;font-weight:700;margin-bottom:4px}.xio-terms dd{font-size:12px;line-height:1.6;margin:0;color:#405970;overflow-wrap:anywhere}.xio-table-definition{font-size:12px;line-height:1.6;border-left:3px solid #6e92a9;background:#edf4f8;padding:10px;margin:0 0 12px!important}
+@media(max-width:650px){.xio-terms&gt;dl{grid-template-columns:1fr}}
+@media(max-width:850px){.xio-pair{grid-template-columns:1fr}.xio-side+div{border-left:0;border-top:1px solid var(--x-line)}}
+@media print{.xio-view-nav{display:none}.xio-view[data-view=readable],.xio-input-view[data-input-pane=readable]{display:block!important;max-height:none}.xio-view[data-view=tree],.xio-view[data-view=raw],.xio-input-view[data-input-pane=exact]{display:none!important}.xio-grid-scroll{max-height:none}}
+&#x27;&#x27;&#x27;
+JS=&#x27;&#x27;&#x27;(()=&gt;{
+const root=document.getElementById(&#x27;excel-calls&#x27;);if(!root)return;
+function choose(id,hash){const panel=document.getElementById(&#x27;xio-&#x27;+id);if(!panel)return;root.querySelectorAll(&#x27;.xio-panel&#x27;).forEach(p=&gt;p.hidden=p!==panel);root.querySelectorAll(&#x27;[data-xio-case]&#x27;).forEach(b=&gt;b.setAttribute(&#x27;aria-pressed&#x27;,String(b.dataset.xioCase===id)));if(hash)history.replaceState(null,&#x27;&#x27;,&#x27;#xio-&#x27;+id);}
+root.querySelectorAll(&#x27;[data-xio-case]&#x27;).forEach(b=&gt;b.addEventListener(&#x27;click&#x27;,()=&gt;choose(b.dataset.xioCase,true)));
+root.querySelectorAll(&#x27;[data-result-view]&#x27;).forEach(b=&gt;b.addEventListener(&#x27;click&#x27;,()=&gt;{const p=b.closest(&#x27;.xio-panel&#x27;),v=b.dataset.resultView;p.querySelectorAll(&#x27;.xio-view&#x27;).forEach(x=&gt;x.hidden=x.dataset.view!==v);p.querySelectorAll(&#x27;[data-result-view]&#x27;).forEach(x=&gt;x.setAttribute(&#x27;aria-pressed&#x27;,String(x===b)));}));
+root.querySelectorAll(&#x27;[data-input-view]&#x27;).forEach(b=&gt;b.addEventListener(&#x27;click&#x27;,()=&gt;{const p=b.closest(&#x27;.xio-input&#x27;),v=b.dataset.inputView;p.querySelectorAll(&#x27;.xio-input-view&#x27;).forEach(x=&gt;x.hidden=x.dataset.inputPane!==v);p.querySelectorAll(&#x27;[data-input-view]&#x27;).forEach(x=&gt;x.setAttribute(&#x27;aria-pressed&#x27;,String(x===b)));}));
+function fromHash(){if(location.hash.startsWith(&#x27;#xio-&#x27;)){const id=location.hash.slice(5);choose(id,false);const panel=document.getElementById(&#x27;xio-&#x27;+id);if(panel){let n=panel.parentElement;while(n){if(n.tagName===&#x27;DETAILS&#x27;)n.open=true;n=n.parentElement;}}}}
+window.addEventListener(&#x27;hashchange&#x27;,fromHash);fromHash();
+})();&#x27;&#x27;&#x27;
+
+def render(payload,*,body,context):
+    if body.strip()==&#x27;flow&#x27;:
+        labels=[(&#x27;1 · Codex chooses&#x27;,&#x27;What do I need to know?&#x27;,&#x27;The agent selects an operation and its settings.&#x27;),(&#x27;2 · Command tool&#x27;,&#x27;Run the script&#x27;,&#x27;Node executes the JavaScript program.&#x27;),(&#x27;3 · Artifact Tool&#x27;,&#x27;Operate on the workbook&#x27;,&#x27;The library reads, edits, traces, renders or calculates.&#x27;),(&#x27;4 · Codex reads&#x27;,&#x27;Interpret the evidence&#x27;,&#x27;The script prints or saves results for the agent to inspect.&#x27;)]
+        html=&#x27;&lt;div id=&quot;excel-call-layers&quot; class=&quot;xio-flow&quot;&gt;&#x27;+&#x27;&#x27;.join(&#x27;&lt;div&gt;&lt;em&gt;&#x27;+e(n)+&#x27;&lt;/em&gt;&lt;b&gt;&#x27;+e(a)+&#x27;&lt;/b&gt;&lt;small&gt;&#x27;+e(b)+&#x27;&lt;/small&gt;&lt;/div&gt;&#x27; for n,a,b in labels)+&#x27;&lt;/div&gt;&#x27;
+        return ComponentResult(html,dependencies=[{&#x27;id&#x27;:&#x27;man-group-call-style&#x27;,&#x27;kind&#x27;:&#x27;css&#x27;,&#x27;content&#x27;:CSS}],exhibits=[{&#x27;id&#x27;:&#x27;excel-call-layers&#x27;,&#x27;kind&#x27;:&#x27;diagram&#x27;,&#x27;label&#x27;:&#x27;Request to returned evidence&#x27;,&#x27;evidence&#x27;:{&#x27;format&#x27;:&#x27;json&#x27;,&#x27;data&#x27;:labels},&#x27;states&#x27;:[{&#x27;id&#x27;:&#x27;default&#x27;,&#x27;label&#x27;:&#x27;Layer map&#x27;,&#x27;status&#x27;:&#x27;supported&#x27;,&#x27;actions&#x27;:[]}]}])
+    cards=payload[&#x27;cards&#x27;];h=&#x27;&lt;div class=&quot;xio&quot; id=&quot;excel-calls&quot;&gt;&#x27;
+    groups=[(&#x27;Execution&#x27;,[&#x27;runner&#x27;]),(&#x27;Discover · same inspect function&#x27;,[&#x27;sheets&#x27;,&#x27;overview&#x27;,&#x27;literal&#x27;,&#x27;regex&#x27;,&#x27;regions&#x27;]),(&#x27;Read specific evidence&#x27;,[&#x27;ranges&#x27;,&#x27;trace&#x27;,&#x27;render&#x27;]),(&#x27;Edit, calculate and save&#x27;,[&#x27;value-edit&#x27;,&#x27;formula-edit&#x27;,&#x27;fill&#x27;,&#x27;copy&#x27;,&#x27;recalculate&#x27;,&#x27;export&#x27;])]
+    for label,ids in groups:
+        h+=&#x27;&lt;div class=&quot;xio-nav-label&quot;&gt;&#x27;+e(label)+&#x27;&lt;/div&gt;&lt;nav class=&quot;xio-nav&quot; aria-label=&quot;&#x27;+e(label)+&#x27;&quot;&gt;&#x27;
+        for cid in ids:
+            c=next(c for c in cards if c[&#x27;id&#x27;]==cid);h+=&#x27;&lt;button type=&quot;button&quot; data-xio-case=&quot;&#x27;+c[&#x27;id&#x27;]+&#x27;&quot; aria-controls=&quot;xio-&#x27;+c[&#x27;id&#x27;]+&#x27;&quot; aria-pressed=&quot;&#x27;+str(cid==&#x27;sheets&#x27;).lower()+&#x27;&quot;&gt;&#x27;+e(c[&#x27;label&#x27;])+&#x27;&lt;/button&gt;&#x27;
+        h+=&#x27;&lt;/nav&gt;&#x27;
+    h+=&#x27;&lt;p class=&quot;xio-caption&quot;&gt;To compare settings of the same function, use the &lt;a href=&quot;#inspection-settings&quot;&gt;inspection settings comparison above&lt;/a&gt;.&lt;/p&gt;&#x27;;ex=[]
+    for i,c in enumerate(cards):
+        id=&#x27;xio-&#x27;+c[&#x27;id&#x27;];h+=&#x27;&lt;article class=&quot;xio-panel&quot; id=&quot;&#x27;+id+&#x27;&quot;&#x27;+(&#x27; hidden&#x27; if c[&#x27;id&#x27;]!=&#x27;sheets&#x27; else &#x27;&#x27;)+&#x27; aria-label=&quot;&#x27;+e(c[&#x27;title&#x27;])+&#x27;&quot;&gt;&lt;header class=&quot;xio-head&quot;&gt;&lt;div class=&quot;xio-badge&quot;&gt;MAN GROUP · &#x27;+e(c[&#x27;kind&#x27;])+&#x27;&lt;/div&gt;&lt;h3&gt;&#x27;+e(c[&#x27;title&#x27;])+&#x27;&lt;/h3&gt;&lt;p class=&quot;xio-purpose&quot;&gt;&lt;b&gt;Why make this call? &lt;/b&gt;&#x27;+e(c[&#x27;purpose&#x27;])+&#x27;&lt;/p&gt;&lt;p class=&quot;xio-return-summary&quot;&gt;&lt;b&gt;What comes back? &lt;/b&gt;&#x27;+e(c[&#x27;returns&#x27;])+&#x27;&lt;/p&gt;&lt;p class=&quot;xio-finding&quot;&gt;&lt;b&gt;In this run: &lt;/b&gt;&#x27;+e(c[&#x27;finding&#x27;])+&#x27;&lt;/p&gt;&lt;/header&gt;&#x27;
+        h+=terms_for(c)
+        h+=&#x27;&lt;div class=&quot;xio-pair&quot;&gt;&lt;div class=&quot;xio-side xio-input&quot;&gt;&lt;h4&gt;Actual input&lt;/h4&gt;&lt;nav class=&quot;xio-view-nav&quot; aria-label=&quot;Input format&quot;&gt;&#x27;
+        for view,label in [(&#x27;readable&#x27;,&#x27;Readable&#x27;),(&#x27;exact&#x27;,&#x27;Exact input&#x27;)]:h+=&#x27;&lt;button type=&quot;button&quot; data-input-view=&quot;&#x27;+view+&#x27;&quot; aria-controls=&quot;&#x27;+id+&#x27;-input-&#x27;+view+&#x27;&quot; aria-pressed=&quot;&#x27;+(&#x27;true&#x27; if view==&#x27;readable&#x27; else &#x27;false&#x27;)+&#x27;&quot;&gt;&#x27;+label+&#x27;&lt;/button&gt;&#x27;
+        h+=&#x27;&lt;/nav&gt;&lt;div class=&quot;xio-input-view&quot; data-input-pane=&quot;readable&quot; id=&quot;&#x27;+id+&#x27;-input-readable&quot;&gt;&#x27;+readable_input(c)+&#x27;&lt;/div&gt;&lt;div class=&quot;xio-input-view&quot; data-input-pane=&quot;exact&quot; id=&quot;&#x27;+id+&#x27;-input-exact&quot; hidden&gt;&#x27;+code(c[&#x27;input&#x27;])
+        if c[&#x27;id&#x27;]!=&#x27;runner&#x27;:h+=&#x27;&lt;p class=&quot;xio-caption&quot;&gt;Executed JavaScript inside the capture helper. “return” passes the result to the recorder that saves the JSON.&lt;/p&gt;&#x27;
+        if c.get(&#x27;helper&#x27;):h+=&#x27;&lt;details class=&quot;xio-raw xio-helper&quot;&gt;&lt;summary&gt;What does readState() read?&lt;/summary&gt;&#x27;+code(c[&#x27;helper&#x27;])+&#x27;&lt;/details&gt;&#x27;
+        if c.get(&#x27;extraInput&#x27;):h+=&#x27;&lt;details class=&quot;xio-raw&quot;&gt;&lt;summary&gt;Separate image-view tool input&lt;/summary&gt;&#x27;+code(c[&#x27;extraInput&#x27;])+&#x27;&lt;p class=&quot;xio-caption&quot;&gt;tools.view_image returns the image shown below to Codex.&lt;/p&gt;&lt;/details&gt;&#x27;
+        wrapped=c[&#x27;id&#x27;] in (&#x27;ranges&#x27;,&#x27;render&#x27;,&#x27;value-edit&#x27;,&#x27;recalculate&#x27;,&#x27;formula-edit&#x27;,&#x27;fill&#x27;,&#x27;copy&#x27;,&#x27;export&#x27;)
+        h+=&#x27;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;xio-side xio-output&quot;&gt;&lt;h4&gt;&#x27;+(&#x27;Script output and added checks&#x27; if wrapped else &#x27;Library response&#x27; if c[&#x27;id&#x27;]!=&#x27;runner&#x27; else &#x27;Command-tool response&#x27;)+&#x27;&lt;/h4&gt;&#x27;
+        if wrapped:
+            h+=&#x27;&lt;p class=&quot;xio-table-definition&quot;&gt;&lt;b&gt;This output is assembled by the script.&lt;/b&gt; &#x27;+(&#x27;I selected six cells, read them before and after, and built this table. The operation does not return those cells or certify the whole calculation chain.&#x27; if c.get(&#x27;helper&#x27;) else &#x27;The script explicitly reads values, saves bytes, or performs comparisons. These fields are not an automatic validation report from the operation.&#x27;)+&#x27;&lt;/p&gt;&#x27;
+        h+=&#x27;&lt;nav class=&quot;xio-view-nav&quot; aria-label=&quot;Result format&quot;&gt;&#x27;
+        for view,label in [(&#x27;readable&#x27;,&#x27;Readable&#x27;),(&#x27;tree&#x27;,&#x27;Object tree&#x27;),(&#x27;raw&#x27;,&#x27;Exact JSON&#x27;)]:h+=&#x27;&lt;button type=&quot;button&quot; data-result-view=&quot;&#x27;+view+&#x27;&quot; aria-pressed=&quot;&#x27;+(&#x27;true&#x27; if view==&#x27;readable&#x27; else &#x27;false&#x27;)+&#x27;&quot;&gt;&#x27;+label+&#x27;&lt;/button&gt;&#x27;
+        h+=&#x27;&lt;/nav&gt;&lt;div class=&quot;xio-view&quot; data-view=&quot;readable&quot;&gt;&#x27;+readable(c)+&#x27;&lt;/div&gt;&#x27;
+        obj=c[&#x27;result&#x27;]
+        if &#x27;records&#x27; in c:obj={&#x27;records&#x27;:c[&#x27;records&#x27;],**{k:v for k,v in c[&#x27;result&#x27;].items() if k!=&#x27;ndjson&#x27;}}
+        h+=&#x27;&lt;div class=&quot;xio-view&quot; data-view=&quot;tree&quot; hidden&gt;&#x27;+(&#x27;&lt;p class=&quot;xio-caption&quot;&gt;NDJSON decoded into records for browsing. The Exact JSON tab retains the original response string.&lt;/p&gt;&#x27; if &#x27;records&#x27; in c else &#x27;&#x27;)+json_tree(obj)+&#x27;&lt;/div&gt;&lt;div class=&quot;xio-view&quot; data-view=&quot;raw&quot; hidden&gt;&#x27;+code(c[&#x27;result&#x27;])+&#x27;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&#x27;
+        if c.get(&#x27;image&#x27;):
+            raw=(HERE/c[&#x27;image&#x27;]).read_bytes();h+=&#x27;&lt;div class=&quot;xio-image-block&quot;&gt;&lt;h4&gt;Actual rendered Man Group image&lt;/h4&gt;&lt;a href=&quot;&#x27;+c[&#x27;image&#x27;]+&#x27;&quot;&gt;&lt;img class=&quot;xio-image&quot; src=&quot;data:image/png;base64,&#x27;+base64.b64encode(raw).decode()+&#x27;&quot; alt=&quot;Man Group Summary C7:M28: historical and forecast AUM, fees, profit and EPS&quot; /&gt;&lt;/a&gt;&lt;p class=&quot;xio-caption&quot;&gt;Click for the original full-resolution PNG.&lt;/p&gt;&lt;/div&gt;&#x27;
+        h+=&#x27;&lt;div class=&quot;xio-notes&quot;&gt;&#x27;+&#x27;&#x27;.join(&#x27;&lt;p&gt;&#x27;+e(n)+&#x27;&lt;/p&gt;&#x27; for n in c[&#x27;notes&#x27;])+&#x27;&lt;/div&gt;&lt;div class=&quot;xio-links&quot;&gt;&#x27;+&#x27;&#x27;.join(&#x27;&lt;a href=&quot;&#x27;+e(x[&#x27;href&#x27;])+&#x27;&quot;&#x27;+(&#x27; download&#x27; if x[&#x27;href&#x27;].endswith(&#x27;.xlsx&#x27;) else &#x27;&#x27;)+&#x27;&gt;&#x27;+e(x[&#x27;label&#x27;])+&#x27;&lt;/a&gt;&#x27; for x in c[&#x27;links&#x27;])+&#x27;&lt;/div&gt;&lt;/article&gt;&#x27;
+        actions=[{&#x27;action&#x27;:&#x27;click&#x27;,&#x27;selector&#x27;:&#x27;[data-xio-case=&quot;&#x27;+c[&#x27;id&#x27;]+&#x27;&quot;]&#x27;}]
+        states=[{&#x27;id&#x27;:&#x27;readable&#x27;,&#x27;label&#x27;:c[&#x27;label&#x27;]+&#x27; readable result&#x27;,&#x27;status&#x27;:&#x27;supported&#x27;,&#x27;actions&#x27;:actions}]
+        for view in [&#x27;tree&#x27;,&#x27;raw&#x27;]:states.append({&#x27;id&#x27;:view,&#x27;label&#x27;:c[&#x27;label&#x27;]+&#x27; &#x27;+view,&#x27;status&#x27;:&#x27;supported&#x27;,&#x27;actions&#x27;:actions+[{&#x27;action&#x27;:&#x27;click&#x27;,&#x27;selector&#x27;:&#x27;#&#x27;+id+&#x27; [data-result-view=&quot;&#x27;+view+&#x27;&quot;]&#x27;}]})
+        states.append({&#x27;id&#x27;:&#x27;exact-input&#x27;,&#x27;label&#x27;:c[&#x27;label&#x27;]+&#x27; exact input&#x27;,&#x27;status&#x27;:&#x27;supported&#x27;,&#x27;actions&#x27;:actions+[{&#x27;action&#x27;:&#x27;click&#x27;,&#x27;selector&#x27;:&#x27;#&#x27;+id+&#x27; [data-input-view=&quot;exact&quot;]&#x27;}]})
+        states.append({&#x27;id&#x27;:&#x27;terms&#x27;,&#x27;label&#x27;:c[&#x27;label&#x27;]+&#x27; term definitions&#x27;,&#x27;status&#x27;:&#x27;supported&#x27;,&#x27;actions&#x27;:actions+[{&#x27;action&#x27;:&#x27;click&#x27;,&#x27;selector&#x27;:&#x27;#&#x27;+id+&#x27;-terms &gt; summary&#x27;}]})
+        ex.append({&#x27;id&#x27;:id,&#x27;kind&#x27;:&#x27;input-output&#x27;,&#x27;label&#x27;:c[&#x27;title&#x27;],&#x27;evidence&#x27;:{&#x27;format&#x27;:&#x27;json&#x27;,&#x27;data&#x27;:c},&#x27;states&#x27;:states})
+    h+=&#x27;&lt;/div&gt;&#x27;
+    return ComponentResult(h,dependencies=[{&#x27;id&#x27;:&#x27;man-group-call-style&#x27;,&#x27;kind&#x27;:&#x27;css&#x27;,&#x27;content&#x27;:CSS},{&#x27;id&#x27;:&#x27;man-group-call-switch&#x27;,&#x27;kind&#x27;:&#x27;js&#x27;,&#x27;content&#x27;:JS}],exhibits=ex)
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

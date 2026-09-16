@@ -1,0 +1,10 @@
+{
+  "index": 47,
+  "name": "workbook.help",
+  "summary": "Get help for a specific enums",
+  "originalCode": "workbook.help(\n  'enum.ShapeGeometry',\n  { include: ['index','notes'] },\n)",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

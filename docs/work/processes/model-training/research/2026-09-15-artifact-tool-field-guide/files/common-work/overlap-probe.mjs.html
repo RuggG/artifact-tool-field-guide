@@ -1,0 +1,15 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>overlap-probe.mjs · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="overlap-probe.mjs">Raw file</a> · <a data-public-raw download href="overlap-probe.mjs">Download</a></p><article><h1>overlap-probe.mjs</h1><pre class="public-code"><code>import fs from &#x27;node:fs/promises&#x27;;
+import {FileBlob,SpreadsheetFile} from &#x27;@oai/artifact-tool&#x27;;
+const file=new URL(&#x27;operations-run/man-group-operations.xlsx&#x27;,import.meta.url);
+const wb=await SpreadsheetFile.importXlsx(await FileBlob.load(file.pathname));
+const lab=wb.worksheets.getItem(&#x27;Fee lab&#x27;);
+const evaluate=code=&gt;eval(&#x27;(async()=&gt;{&#x27;+code+&#x27;})()&#x27;);
+const r={id:&#x27;overlap-table&#x27;,operation:&#x27;const extra = lab.tables.add(&quot;D22:F25&quot;, true, &quot;OverlapProbe&quot;);\nreturn extra;&#x27;,checkInput:{before:&#x27;return lab.tables.items.map(t =&gt; t.name);&#x27;,after:&#x27;return {tableNames:lab.tables.items.map(t=&gt;t.name),existingRange:&quot;B20:D24&quot;,requestedRange:&quot;D22:F25&quot;,overlap:&quot;D22:D24&quot;,saved:false};&#x27;}};
+r.before=await evaluate(r.checkInput.before);
+const t=performance.now();
+try{await evaluate(r.operation);r.libraryReturn={type:&#x27;Excel Table object&#x27;,representation:&#x27;Live object returned. The added range overlaps existing FeeScenarioInputs at B20:D24.&#x27;};}catch(e){r.operationError={name:e.name,message:e.message};r.libraryReturn={javascriptType:&#x27;undefined&#x27;};}
+r.elapsedMs=Math.round(performance.now()-t);
+r.after=await evaluate(r.checkInput.after);
+await fs.writeFile(new URL(&#x27;operations-run/overlap-table.json&#x27;,import.meta.url),JSON.stringify(r,null,2));
+console.log(JSON.stringify(r));
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

@@ -1,0 +1,37 @@
+{
+  "name": "fx.RSQ",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=RSQ(A1, A1)",
+      "value": "#DIV/0!",
+      "projection": [
+        [
+          "#DIV/0!",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 14
+    }
+  ]
+}

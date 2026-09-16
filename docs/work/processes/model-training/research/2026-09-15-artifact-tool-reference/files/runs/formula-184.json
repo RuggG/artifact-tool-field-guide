@@ -1,0 +1,37 @@
+{
+  "name": "fx.ODDLYIELD",
+  "category": "financial",
+  "examples": [
+    {
+      "formula": "=ODDLYIELD(A1, A1, A1, A1)",
+      "value": "ODDLYIELD is not implemented. settlement=1, maturity=1, lastInterest=1, rate=1, pr=undefined, redemption=undefined, frequency=undefined, basis=undefined",
+      "projection": [
+        [
+          "ODDLYIELD is not implemented. settlement=1, maturity=1, lastInterest=1, rate=1, pr=undefined, redemption=undefined, frequency=undefined, basis=undefined",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 7
+    }
+  ]
+}

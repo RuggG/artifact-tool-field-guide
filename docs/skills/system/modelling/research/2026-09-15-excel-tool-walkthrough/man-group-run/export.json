@@ -1,0 +1,10 @@
+{
+  "id": "export",
+  "input": "const output = await SpreadsheetFile.exportXlsx(wb);\nconst nativeReturn = await output.save(path.join(dir, \"man-group-demo.xlsx\"));\nconst stats = await fs.stat(path.join(dir, \"man-group-demo.xlsx\"));\nreturn {saveReturn: nativeReturn === undefined ? \"undefined\" : nativeReturn,\n  saved: \"man-group-demo.xlsx\", bytes: stats.size};",
+  "elapsedMs": 420,
+  "result": {
+    "saveReturn": "undefined",
+    "saved": "man-group-demo.xlsx",
+    "bytes": 106380
+  }
+}

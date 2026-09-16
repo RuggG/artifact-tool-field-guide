@@ -1,0 +1,37 @@
+{
+  "name": "fx.NETWORKDAYS.INTL",
+  "category": "date-time",
+  "examples": [
+    {
+      "formula": "=NETWORKDAYS.INTL(DATE(2024, 1, 1), DATE(2024, 1, 1), A1)",
+      "value": 1,
+      "projection": [
+        [
+          1,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 13
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "index": 13,
+  "name": "chart axes",
+  "summary": "Gridlines + axis lines",
+  "originalCode": "chart.yAxis = { majorGridlines: { fill: 'background2', style: 'dashed', width: 1 }, minorGridlines: { fill: 'background2', style: 'dotted', width: 0.5 } };\nchart.xAxis = { majorGridlines: { fill: 'background2', style: 'solid', width: 1 }, minorGridlines: { fill: 'background2', style: 'dotted', width: 0.5 } };\nchart.xAxis = { line: { fill: 'background2', style: 'solid', width: 1 } };\nchart.yAxis = { line: { fill: 'background2', style: 'solid', width: 1 } };\n\n// Hide gridlines:\nchart.yAxis = { majorGridlines: null, minorGridlines: null };\nchart.xAxis = { majorGridlines: null, minorGridlines: null };",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

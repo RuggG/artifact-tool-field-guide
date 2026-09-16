@@ -1,0 +1,37 @@
+{
+  "name": "fx.BITLSHIFT",
+  "category": "engineering",
+  "examples": [
+    {
+      "formula": "=BITLSHIFT(10, A1)",
+      "value": 20,
+      "projection": [
+        [
+          20,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 10
+    }
+  ]
+}

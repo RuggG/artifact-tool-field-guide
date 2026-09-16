@@ -1,0 +1,56 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Sparklines · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="SPARKLINES.md">Raw file</a> · <a data-public-raw download href="SPARKLINES.md">Download</a></p><article><h1 id="sparklines">Sparklines</h1>
+<pre><code class="language-js">const group = sheet.sparklineGroups.add({
+  type: "line",
+  targetRange: "E2:E4",
+  sourceData: "A2:C4",
+  seriesColor: "#2563EB",
+  markers: { high: true, low: true },
+});
+</code></pre>
+<ul>
+<li>Sparkline type is a string. Use the public options documented below. Do not set internal/proto enum values for empty-cell display or axis modes; if a required option is not documented for the selected runtime, follow the bounded discovery policy.</li>
+<li>Avoid <code>dateAxisRange</code> for XLSX output; it is not serialized. Keep automatic axis limits: <code>manualMin</code> / <code>manualMax</code> alone do not select custom limits in Excel.</li>
+<li>Sparkline Inline Type:</li>
+</ul>
+<pre><code>type SparklineConfig = {
+  type: "line" | "column" | "stacked";
+  targetRange: Range | string;
+  sourceData: Range | string;
+  lineWeight?: number;
+  displayHidden?: boolean;
+  seriesColor?: ColorConfig;
+  negativeColor?: ColorConfig;
+  axisColor?: ColorConfig;
+  markersColor?: ColorConfig;
+  firstMarkerColor?: ColorConfig;
+  lastMarkerColor?: ColorConfig;
+  highMarkerColor?: ColorConfig;
+  lowMarkerColor?: ColorConfig;
+  markers?: SparklineMarkersOptions;
+  axis?: SparklineAxisOptions;
+};
+
+type SparklineMarkersOptions = {
+  show?: boolean;
+  high?: boolean;
+  low?: boolean;
+  first?: boolean;
+  last?: boolean;
+  negative?: boolean;
+};
+
+type SparklineAxisOptions = {
+  showAxis?: boolean;
+  rightToLeft?: boolean;
+};
+</code></pre>
+<ul>
+<li>Range Alias: <code>const group = targetRange.sparklines.add(type, sourceRange, sparklineConfig);</code></li>
+<li>Edit And Delete</li>
+</ul>
+<pre><code class="language-js">group.seriesColor = "#2563EB";
+group.markers.high = true;
+group.axis.showAxis = true;
+sheet.sparklineGroups.delete(group);
+sheet.sparklineGroups.deleteAll();
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

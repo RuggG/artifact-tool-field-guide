@@ -1,0 +1,10 @@
+{
+  "index": 37,
+  "name": "range.conditionalFormats",
+  "summary": "Add data bars (color bars) for magnitude",
+  "originalCode": "const range = sheet.getRange('C2:C10');\nrange.conditionalFormats.add('dataBar', {\n  color: 'accent5',\n  gradient: true,\n});",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

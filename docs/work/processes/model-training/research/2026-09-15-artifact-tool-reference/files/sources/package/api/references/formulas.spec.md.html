@@ -1,0 +1,50 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Formulas · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="formulas.spec.md">Raw file</a> · <a data-public-raw download href="formulas.spec.md">Download</a></p><article><h1 id="formulas">Formulas</h1>
+<p>Workbook formulas are stored on ranges and evaluated by <code>workbook.recalculate()</code>.</p>
+<h2 id="assign-formulas">Assign Formulas</h2>
+<pre><code class="language-ts">sheet.getRange("A1:B2").values = [
+  [2, 3],
+  [5, 7],
+];
+
+sheet.getRange("C1:C2").formulas = [["=A1+B1"], ["=A2+B2"]];
+workbook.recalculate();
+</code></pre>
+<p>Strings starting with <code>=</code> assigned through <code>values</code> are treated as formulas.
+Use a leading apostrophe for literal strings:</p>
+<pre><code class="language-ts">sheet.getRange("C1").values = [["=SUM(A1:B1)"]];
+sheet.getRange("D1").values = [["'=SUM(A1:B1)"]];
+</code></pre>
+<h2 id="dynamic-arrays-and-spill">Dynamic Arrays And Spill</h2>
+<pre><code class="language-ts">sheet.getRange("E1").formulas = [["=SEQUENCE(3, 2)"]];
+workbook.recalculate();
+</code></pre>
+<p>Spill projection cells are not directly editable formula anchors.</p>
+<h2 id="trace">Trace</h2>
+<pre><code class="language-ts">const trace = workbook.trace("Sheet1!C1");
+</code></pre>
+<p><code>trace</code> recalculates first and returns a dependency tree for the target cell or
+<code>null</code> for an invalid reference.</p>
+<h2 id="formula-usage-stats">Formula Usage Stats</h2>
+<pre><code class="language-ts">const stats = workbook.collectFormulaUsageStats();
+</code></pre>
+<h2 id="names">Names</h2>
+<pre><code class="language-ts">workbook.names.addRange("SalesRange", "Data!$A$1:$A$3", {
+  description: "Sales data",
+});
+
+workbook.names.addFunction("AddTax", {
+  formula: "=LAMBDA(amount, amount * 1.1)",
+  description: "Add tax",
+});
+
+sheet.names.addRange("LocalRange", "Sheet1!$A$1:$A$10");
+</code></pre>
+<h2 id="cookbook">Cookbook</h2>
+<pre><code class="language-ts">const workbook = Workbook.create();
+const sheet = workbook.worksheets.add("Calc");
+sheet.getRange("A1:A3").values = [[1], [2], [3]];
+sheet.getRange("B1").formulas = [["=SUM(A1:A3)"]];
+workbook.recalculate();
+
+const trace = workbook.trace("Calc!B1");
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

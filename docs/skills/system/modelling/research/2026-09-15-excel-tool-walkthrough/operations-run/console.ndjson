@@ -1,0 +1,29 @@
+{"id":"new-workbook","elapsedMs":3,"error":null}
+{"id":"new-formula","elapsedMs":2,"error":null}
+{"id":"new-recalculation","elapsedMs":0,"error":null}
+{"id":"import-add-sheet","elapsedMs":1626,"error":null}
+{"id":"add-linked-build","elapsedMs":8,"error":null}
+{"id":"format-cells","elapsedMs":6,"error":null}
+Inspect result written to file: /Users/ruggerogargiulo/repos/lynott-hub/tmp/excel-tool-walkthrough-20260915/operations-run/man-group-operations.xlsx.inspect.ndjson
+{"id":"checkpoint-save","elapsedMs":390,"error":null}
+{"id":"edit-without-saving","elapsedMs":0,"error":null}
+{"id":"clear-formulas","elapsedMs":0,"error":null}
+{"id":"rebuild-formulas","elapsedMs":0,"error":null}
+{"id":"blank-input","elapsedMs":0,"error":null}
+{"id":"guard-missing-input","elapsedMs":0,"error":null}
+{"id":"zero-input","elapsedMs":0,"error":null}
+{"id":"restore-valid-input","elapsedMs":0,"error":null}
+{"id":"add-table","elapsedMs":1,"error":null}
+{"id":"append-table-row","elapsedMs":0,"error":null}
+{"id":"delete-table","elapsedMs":0,"error":null}
+{"id":"recreate-table","elapsedMs":0,"error":null}
+{"id":"add-chart","elapsedMs":1,"error":null}
+{"id":"render-before","elapsedMs":228,"error":null}
+{"id":"chart-input-change","elapsedMs":0,"error":null}
+{"id":"render-after","elapsedMs":68,"error":null}
+{"id":"delete-chart","elapsedMs":0,"error":null}
+{"id":"recreate-chart","elapsedMs":0,"error":null}
+Inspect result written to file: /Users/ruggerogargiulo/repos/lynott-hub/tmp/excel-tool-walkthrough-20260915/operations-run/man-group-operations.xlsx.inspect.ndjson
+{"id":"final-save","elapsedMs":264,"error":null}
+{"id":"reopen-and-edit","elapsedMs":369,"error":null}
+Inspect result written to file: /Users/ruggerogargiulo/repos/lynott-hub/tmp/excel-tool-walkthrough-20260915/operations-run/new-fee-workbook.xlsx.inspect.ndjson

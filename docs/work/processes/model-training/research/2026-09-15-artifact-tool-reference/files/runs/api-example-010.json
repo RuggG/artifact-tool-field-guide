@@ -1,0 +1,10 @@
+{
+  "index": 10,
+  "name": "chart axes",
+  "summary": "Axis ordering + crossing",
+  "originalCode": "chart.xAxis = { position: 'bottom', orientation: 'maxMin' };\nchart.yAxis = { position: 'left', crossBetween: 'between' };\nchart.yAxis = { crosses: 'autoZero' };\nchart.yAxis = { crossesAt: 2 };\nchart.yAxis = { crosses: 'max' };",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

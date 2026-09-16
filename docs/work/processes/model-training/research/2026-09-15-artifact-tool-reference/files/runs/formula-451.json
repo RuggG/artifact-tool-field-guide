@@ -1,0 +1,37 @@
+{
+  "name": "fx.GAUSS",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=GAUSS(A1)",
+      "value": 0.3413447460685429,
+      "projection": [
+        [
+          0.3413447460685429,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 12
+    }
+  ]
+}

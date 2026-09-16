@@ -1,0 +1,10 @@
+{
+  "index": 1,
+  "name": "worksheet.charts.add",
+  "summary": "Compat range-anchored chart API",
+  "originalCode": "const sheet = workbook.worksheets.getItem('Charts');\nconst range = sheet.getRange('A2:B5');\nconst chart = sheet.charts.add('ColumnClustered', range, 'Auto');\nchart.title.text = 'Stock Prices and Market Caps';\nchart.setPosition(sheet.getRange('F2:M10'));\nchart.width = 500;\nchart.height = 300;\nchart.axes.valueAxis.majorGridlines.format.line.color = '#CCCCCC';",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

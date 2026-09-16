@@ -1,0 +1,13 @@
+{
+  "index": 72,
+  "name": "workbook.inspect",
+  "summary": "List data regions with previews for a sheet",
+  "adaptations": [
+    "Mapped structured example fields to the corresponding public method; replaced placeholder anchors with actual fixture IDs."
+  ],
+  "execution": "completed",
+  "export": "completed",
+  "logs": [
+    "{\"recordCount\":6,\"truncated\":false,\"metadata\":{\"revision\":\"c4bv3x\",\"target\":{\"id\":\"wb/dz3h02\",\"beforeLines\":0,\"afterLines\":0},\"kind\":{\"requested\":\"region\",\"tokens\":[\"region\"]},\"include\":{\"tokens\":[]},\"exclude\":{\"tokens\":[]},\"notices\":[\"Worksheet <sheetId> not found.\"]}}"
+  ]
+}

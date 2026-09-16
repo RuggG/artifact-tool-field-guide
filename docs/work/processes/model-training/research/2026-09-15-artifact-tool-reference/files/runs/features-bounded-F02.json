@@ -1,0 +1,21 @@
+[
+  {
+    "id": "F02",
+    "description": "All validation types, settings, collection and Office-style assignment",
+    "status": "pass",
+    "ms": 253,
+    "detail": {
+      "types": [
+        "none",
+        "whole",
+        "decimal",
+        "list",
+        "date",
+        "time",
+        "textLength",
+        "custom"
+      ],
+      "invalidProgrammaticWriteAccepted": true
+    }
+  }
+]

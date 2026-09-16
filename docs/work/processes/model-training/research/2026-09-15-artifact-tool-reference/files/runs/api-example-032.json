@@ -1,0 +1,12 @@
+{
+  "index": 32,
+  "name": "chart series",
+  "summary": "Outline-only bars (no fill + visible stroke)",
+  "originalCode": "const series = chart.series.items[0]!;\nseries.fill = { type: 'none' };\nseries.stroke = { color: 'accent5', style: 'solid', weight: 1.5 };\n\n// Equivalent format-style surface (useful for agent code):\nseries.format.fill.clear();\nseries.format.line = { color: 'accent5', style: 'solid', weight: 1.5 };",
+  "adaptations": [
+    "Removed TypeScript non-null assertion after array access."
+  ],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

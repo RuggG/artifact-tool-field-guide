@@ -1,0 +1,37 @@
+{
+  "name": "fx.FIELDVALUE",
+  "category": "lookup-reference",
+  "examples": [
+    {
+      "formula": "=FIELDVALUE(A1:A5, A1)",
+      "value": "FIELDVALUE is not implemented. value=1,2,3,4,5, fieldName=1",
+      "projection": [
+        [
+          "FIELDVALUE is not implemented. value=1,2,3,4,5, fieldName=1",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 7
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "index": 60,
+  "name": "workbook.worksheets.getItem",
+  "summary": "Fetch a sheet and write a cell",
+  "originalCode": "const sheet = workbook.worksheets.getItem('Sheet1');\nsheet.getRange('A1').values = [['Hello']];",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

@@ -1,0 +1,10 @@
+{
+  "index": 41,
+  "name": "range.conditionalFormats",
+  "summary": "Highlight top-ranked values by count or percent",
+  "originalCode": "const range = sheet.getRange('G2:G20');\nrange.conditionalFormats.add('top10', {\n  rank: 10,\n  percent: true,\n  format: { fill: '#DCFCE7', font: { color: '#166534' } },\n});",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

@@ -1,0 +1,27 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>new-recalculation.json · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="new-recalculation.json">Raw file</a> · <a data-public-raw download href="new-recalculation.json">Download</a></p><article><h1>new-recalculation.json</h1><pre class="public-code"><code>{
+  &quot;id&quot;: &quot;new-recalculation&quot;,
+  &quot;operation&quot;: &quot;small.getRange(\&quot;C3\&quot;).values = [[60]];&quot;,
+  &quot;checkInput&quot;: {
+    &quot;before&quot;: &quot;return cell(small,\&quot;C5\&quot;);&quot;,
+    &quot;after&quot;: &quot;return {fees:cell(small,\&quot;C5\&quot;),independentExpected:100*1000*60/10000*0.25,explicitRecalculateCalled:false};&quot;
+  },
+  &quot;startedAt&quot;: &quot;2026-09-15T16:55:17.759Z&quot;,
+  &quot;before&quot;: {
+    &quot;address&quot;: &quot;C5&quot;,
+    &quot;value&quot;: 125,
+    &quot;formula&quot;: &quot;=C2*1000*C3/10000*C4&quot;
+  },
+  &quot;libraryReturn&quot;: {
+    &quot;javascriptType&quot;: &quot;undefined&quot;
+  },
+  &quot;elapsedMs&quot;: 0,
+  &quot;after&quot;: {
+    &quot;fees&quot;: {
+      &quot;address&quot;: &quot;C5&quot;,
+      &quot;value&quot;: 150,
+      &quot;formula&quot;: &quot;=C2*1000*C3/10000*C4&quot;
+    },
+    &quot;independentExpected&quot;: 150,
+    &quot;explicitRecalculateCalled&quot;: false
+  }
+}</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

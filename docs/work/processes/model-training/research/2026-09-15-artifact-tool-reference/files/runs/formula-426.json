@@ -1,0 +1,37 @@
+{
+  "name": "fx.VAR.P",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=VAR.P(10, C1:C5, 20, C1:C5)",
+      "value": 24.166666666666668,
+      "projection": [
+        [
+          24.166666666666668,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 12
+    }
+  ]
+}

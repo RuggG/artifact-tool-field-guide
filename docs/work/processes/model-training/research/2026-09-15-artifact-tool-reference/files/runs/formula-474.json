@@ -1,0 +1,37 @@
+{
+  "name": "fx.CODE",
+  "category": "text",
+  "examples": [
+    {
+      "formula": "=CODE(\"text\")",
+      "value": 116,
+      "projection": [
+        [
+          116,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 9
+    }
+  ]
+}

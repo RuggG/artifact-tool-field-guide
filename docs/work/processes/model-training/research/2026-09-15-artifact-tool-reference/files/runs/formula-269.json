@@ -1,0 +1,37 @@
+{
+  "name": "fx.IMAGE",
+  "category": "lookup-reference",
+  "examples": [
+    {
+      "formula": "=IMAGE(A1, \"text\")",
+      "value": "IMAGE is not implemented. source=1, altText=text, sizing=undefined, height=undefined, width=undefined",
+      "projection": [
+        [
+          "IMAGE is not implemented. source=1, altText=text, sizing=undefined, height=undefined, width=undefined",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 14
+    }
+  ]
+}

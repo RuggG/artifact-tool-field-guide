@@ -1,0 +1,37 @@
+{
+  "name": "fx.BESSELY",
+  "category": "engineering",
+  "examples": [
+    {
+      "formula": "=BESSELY(A1, A1)",
+      "value": -0.7812128209531197,
+      "projection": [
+        [
+          -0.7812128209531197,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 8
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "id": "delete-table",
+  "operation": "return tableObject.delete();",
+  "checkInput": {
+    "before": "return {tableCount:lab.tables.items.length,cells:grid(lab,\"B20:D24\")};",
+    "after": "return {tableCount:lab.tables.items.length,cells:grid(lab,\"B20:D24\")};"
+  },
+  "startedAt": "2026-09-15T16:53:23.772Z",
+  "before": {
+    "tableCount": 1,
+    "cells": {
+      "address": "B20:D24",
+      "values": [
+        [
+          "Scenario",
+          "Fee margin, bp",
+          "AUM multiplier"
+        ],
+        [
+          "Base",
+          56,
+          1
+        ],
+        [
+          "Downside",
+          51,
+          0.9
+        ],
+        [
+          "Upside",
+          60,
+          1.1
+        ],
+        [
+          "Stress",
+          45,
+          0.8
+        ]
+      ],
+      "formulas": [
+        [
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          ""
+        ]
+      ]
+    }
+  },
+  "libraryReturn": {
+    "javascriptType": "undefined"
+  },
+  "elapsedMs": 0,
+  "after": {
+    "tableCount": 0,
+    "cells": {
+      "address": "B20:D24",
+      "values": [
+        [
+          "Scenario",
+          "Fee margin, bp",
+          "AUM multiplier"
+        ],
+        [
+          "Base",
+          56,
+          1
+        ],
+        [
+          "Downside",
+          51,
+          0.9
+        ],
+        [
+          "Upside",
+          60,
+          1.1
+        ],
+        [
+          "Stress",
+          45,
+          0.8
+        ]
+      ],
+      "formulas": [
+        [
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          ""
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "CH-pareto",
+    "description": "Chart type acceptance, export and render: pareto",
+    "status": "pass",
+    "ms": 389,
+    "detail": {
+      "type": "pareto",
+      "series": [
+        {
+          "name": "Series A",
+          "formula": "'Chart'!$B$2:$B$5",
+          "categoryFormula": "'Chart'!$A$2:$A$5"
+        },
+        {
+          "name": "Series B",
+          "formula": "'Chart'!$C$2:$C$5",
+          "categoryFormula": "'Chart'!$A$2:$A$5"
+        }
+      ],
+      "render": {
+        "bytes": 16859
+      }
+    }
+  }
+]

@@ -1,0 +1,37 @@
+{
+  "name": "fx.ATAN",
+  "category": "math-trig",
+  "examples": [
+    {
+      "formula": "=ATAN(10)",
+      "value": 1.4711276743037347,
+      "projection": [
+        [
+          1.4711276743037347,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 9
+    }
+  ]
+}

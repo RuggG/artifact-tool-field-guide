@@ -1,0 +1,37 @@
+{
+  "name": "fx.CLEAN",
+  "category": "text",
+  "examples": [
+    {
+      "formula": "=CLEAN(\"text\")",
+      "value": "text",
+      "projection": [
+        [
+          "text",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 11
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "name": "fx.PRICEMAT",
+  "category": "financial",
+  "examples": [
+    {
+      "formula": "=PRICEMAT(A1, A1, TRUE, A1)",
+      "value": "#NUM!",
+      "projection": [
+        [
+          "#NUM!",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 10
+    }
+  ]
+}

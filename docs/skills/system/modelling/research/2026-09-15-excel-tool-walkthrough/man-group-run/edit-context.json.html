@@ -1,0 +1,164 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>edit-context.json · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="edit-context.json">Raw file</a> · <a data-public-raw download href="edit-context.json">Download</a></p><article><h1>edit-context.json</h1><pre class="public-code"><code>{
+  &quot;id&quot;: &quot;edit-context&quot;,
+  &quot;input&quot;: &quot;const a = wb.worksheets.getItem(\&quot;Assumptions\&quot;);\nconst f = wb.worksheets.getItem(\&quot;Fee engine\&quot;);\nreturn {\n  assumptions: {range:\&quot;R25:W29\&quot;, values:a.getRange(\&quot;R25:W29\&quot;).values, formulas:a.getRange(\&quot;R25:W29\&quot;).formulas},\n  fees: {range:\&quot;R26:W28\&quot;, values:f.getRange(\&quot;R26:W28\&quot;).values, formulas:f.getRange(\&quot;R26:W28\&quot;).formulas},\n  output: {range:\&quot;K13:M14\&quot;, values:wb.worksheets.getItem(\&quot;Summary\&quot;).getRange(\&quot;K13:M14\&quot;).values}\n};&quot;,
+  &quot;elapsedMs&quot;: 0,
+  &quot;result&quot;: {
+    &quot;assumptions&quot;: {
+      &quot;range&quot;: &quot;R25:W29&quot;,
+      &quot;values&quot;: [
+        [
+          56,
+          56,
+          56,
+          56,
+          56,
+          56
+        ],
+        [
+          56,
+          56,
+          56,
+          56,
+          56,
+          56
+        ],
+        [
+          52,
+          52,
+          52,
+          52,
+          52,
+          52
+        ],
+        [
+          58,
+          58,
+          58,
+          58,
+          58,
+          58
+        ],
+        [
+          56,
+          56,
+          56,
+          56,
+          56,
+          56
+        ]
+      ],
+      &quot;formulas&quot;: [
+        [
+          &quot;=IF(CHOOSE($D$4,ISBLANK(R26),ISBLANK(R27),ISBLANK(R28),ISBLANK(R29)),NA(),CHOOSE($D$4,R26,R27,R28,R29))&quot;,
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;&quot;
+        ],
+        [
+          &quot;=$D$50&quot;,
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;&quot;
+        ],
+        [
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;&quot;
+        ],
+        [
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;&quot;
+        ],
+        [
+          &quot;=$D$50&quot;,
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;&quot;
+        ]
+      ]
+    },
+    &quot;fees&quot;: {
+      &quot;range&quot;: &quot;R26:W28&quot;,
+      &quot;values&quot;: [
+        [
+          56,
+          56,
+          56,
+          56,
+          56,
+          56
+        ],
+        [
+          359.47799999999995,
+          368.4649499999998,
+          377.6765737499998,
+          387.1184880937499,
+          396.79645029609355,
+          406.716361553496
+        ],
+        [
+          21.400000000000002,
+          192.6,
+          6.7,
+          60.300000000000004,
+          21.400000000000002,
+          192.6
+        ]
+      ],
+      &quot;formulas&quot;: [
+        [
+          &quot;=Assumptions!R25&quot;,
+          &quot;=Assumptions!S25&quot;,
+          &quot;=Assumptions!T25&quot;,
+          &quot;=Assumptions!U25&quot;,
+          &quot;=Assumptions!V25&quot;,
+          &quot;=Assumptions!W25&quot;
+        ],
+        [
+          &quot;=R18*Assumptions!$D$49*R26/Assumptions!$D$60*Assumptions!$D$48&quot;,
+          &quot;=S18*Assumptions!$D$49*S26/Assumptions!$D$60*Assumptions!$D$48&quot;,
+          &quot;=T18*Assumptions!$D$49*T26/Assumptions!$D$60*Assumptions!$D$48&quot;,
+          &quot;=U18*Assumptions!$D$49*U26/Assumptions!$D$60*Assumptions!$D$48&quot;,
+          &quot;=V18*Assumptions!$D$49*V26/Assumptions!$D$60*Assumptions!$D$48&quot;,
+          &quot;=W18*Assumptions!$D$49*W26/Assumptions!$D$60*Assumptions!$D$48&quot;
+        ],
+        [
+          &quot;=Assumptions!R32&quot;,
+          &quot;=Assumptions!S32&quot;,
+          &quot;=Assumptions!T32&quot;,
+          &quot;=Assumptions!U32&quot;,
+          &quot;=Assumptions!V32&quot;,
+          &quot;=Assumptions!W32&quot;
+        ]
+      ]
+    },
+    &quot;output&quot;: {
+      &quot;range&quot;: &quot;K13:M14&quot;,
+      &quot;values&quot;: [
+        [
+          1354.9429499999997,
+          764.7950618437496,
+          1568.3078736933392
+        ],
+        [
+          421,
+          67,
+          281
+        ]
+      ]
+    }
+  }
+}</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

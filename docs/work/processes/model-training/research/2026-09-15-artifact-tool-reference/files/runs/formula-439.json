@@ -1,0 +1,37 @@
+{
+  "name": "fx.LOGNORM.DIST",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=LOGNORM.DIST(A1, A1, A1, A1)",
+      "value": 0.15865525393145707,
+      "projection": [
+        [
+          0.15865525393145707,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 9
+    }
+  ]
+}

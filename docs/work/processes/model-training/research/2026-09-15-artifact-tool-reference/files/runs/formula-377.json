@@ -1,0 +1,37 @@
+{
+  "name": "fx.KURT",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=KURT(10, C1:C5, 20, C1:C5)",
+      "value": -0.27033055885850166,
+      "projection": [
+        [
+          -0.27033055885850166,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 15
+    }
+  ]
+}

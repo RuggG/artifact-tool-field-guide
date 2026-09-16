@@ -1,0 +1,54 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Comments, Notes, And Names · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="comments-notes-names.spec.md">Raw file</a> · <a data-public-raw download href="comments-notes-names.spec.md">Download</a></p><article><h1 id="comments-notes-and-names">Comments, Notes, And Names</h1>
+<p>Workbook comments, notes, and names are root-level facades. Sheet-scoped names
+are available from <code>worksheet.names</code>.</p>
+<h2 id="comments">Comments</h2>
+<pre><code class="language-ts">workbook.comments.setSelf({
+  displayName: "Reviewer",
+  initials: "RV",
+});
+
+const thread = workbook.comments.addThread(
+  { cell: sheet.getRange("B2") },
+  "Review this cell",
+);
+
+thread.addReply("Updated.");
+thread.resolve();
+thread.reopen();
+</code></pre>
+<p>Threads appear in <code>workbook.inspect({ kind: "thread" })</code> and resolve from
+<code>th/...</code> anchors.</p>
+<h2 id="notes">Notes</h2>
+<pre><code class="language-ts">workbook.notes;
+</code></pre>
+<p>Notes serialize through <code>workbook.toProto()</code> and participate in recorded
+workbook state.</p>
+<h2 id="workbook-scoped-names">Workbook-Scoped Names</h2>
+<pre><code class="language-ts">workbook.names.addRange("SalesRange", "Data!$A$1:$A$3", {
+  description: "Sales data",
+});
+
+const namedRange = workbook.names.getItem("SalesRange");
+const range = namedRange.getRange();
+namedRange.delete();
+</code></pre>
+<h2 id="functions">Functions</h2>
+<pre><code class="language-ts">workbook.names.addFunction("AddTax", {
+  formula: "=LAMBDA(amount, amount * 1.1)",
+  description: "Add tax",
+});
+</code></pre>
+<h2 id="sheet-scoped-names">Sheet-Scoped Names</h2>
+<pre><code class="language-ts">sheet.names.addRange("LocalRange", "Sheet1!$A$1:$A$10");
+</code></pre>
+<h2 id="alias">Alias</h2>
+<pre><code class="language-ts">workbook.definedNames === workbook.names;
+</code></pre>
+<h2 id="cookbook">Cookbook</h2>
+<pre><code class="language-ts">const data = workbook.worksheets.add("Data");
+data.getRange("A1:A3").values = [[1], [2], [3]];
+workbook.names.add("SalesRange", data.getRange("A1:A3"));
+
+workbook.comments.setSelf({ displayName: "Reviewer", initials: "RV" });
+workbook.comments.addThread({ cell: data.getRange("A1") }, "Check value.");
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

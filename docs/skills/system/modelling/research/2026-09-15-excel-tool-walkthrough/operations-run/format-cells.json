@@ -1,0 +1,130 @@
+{
+  "id": "format-cells",
+  "operation": "lab.showGridLines = false;\nlab.getRange(\"B2:P28\").format.font = {name:\"Arial\",size:10,color:\"#19364C\"};\nlab.getRange(\"B2\").format.font = {name:\"Arial\",size:14,bold:true,color:\"#19364C\"};\nlab.getRange(\"B3\").format.font.italic = true;\nlab.getRange(\"B4:B5\").format.columnWidth = 29;\nlab.getRange(\"C4:C5\").format.fill = \"#FFF2CC\";\nlab.getRange(\"C8:F28\").format.columnWidth = 19;\nlab.getRange(\"C5\").setNumberFormat(\"0.0%\");\nlab.getRange(\"C9:C12\").setNumberFormat(\"0.00\");\nlab.getRange(\"D9:D12\").setNumberFormat(\"0.0\");\nlab.getRange(\"E9:E12\").setNumberFormat(\"0.00\");\nlab.getRange(\"F9:F12\").setNumberFormat(\"#,##0.00\");\nlab.getRange(\"C15\").setNumberFormat(\"#,##0.00\");\nlab.getRange(\"B8:F8\").format = {fill:\"#19364C\",font:{name:\"Arial\",size:10,bold:true,color:\"#FFFFFF\"},rowHeight:32,wrapText:true};\nlab.getRange(\"B15:C15\").format.font.bold = true;\nlab.getRange(\"B8:F12\").format.rowHeight = 26;",
+  "checkInput": {
+    "before": "",
+    "after": "return {valuesUnaffected:labRead(),styles:await inspect(wb,{kind:\"computedStyle\",sheetId:\"Fee lab\",range:\"C4:C5\",maxChars:2500})};"
+  },
+  "startedAt": "2026-09-15T16:55:19.408Z",
+  "libraryReturn": {
+    "javascriptType": "undefined"
+  },
+  "elapsedMs": 6,
+  "after": {
+    "valuesUnaffected": {
+      "margin": {
+        "address": "C4",
+        "value": 56,
+        "formula": ""
+      },
+      "growth": {
+        "address": "C5",
+        "value": 0.02,
+        "formula": ""
+      },
+      "quarters": {
+        "address": "B9:F12",
+        "values": [
+          [
+            "Quarter 1",
+            290.5116868239257,
+            56,
+            0.25,
+            406.716361553496
+          ],
+          [
+            "Quarter 2",
+            296.3219205604042,
+            56,
+            0.25,
+            414.8506887845659
+          ],
+          [
+            "Quarter 3",
+            302.2483589716123,
+            56,
+            0.25,
+            423.1477025602572
+          ],
+          [
+            "Quarter 4",
+            308.29332615104454,
+            56,
+            0.25,
+            431.61065661146233
+          ]
+        ],
+        "formulas": [
+          [
+            "",
+            "='Fee engine'!W18",
+            "=$C$4",
+            "",
+            "=C9*1000*D9/10000*E9"
+          ],
+          [
+            "",
+            "=C9*(1+$C$5)",
+            "=$C$4",
+            "",
+            "=C10*1000*D10/10000*E10"
+          ],
+          [
+            "",
+            "=C10*(1+$C$5)",
+            "=$C$4",
+            "",
+            "=C11*1000*D11/10000*E11"
+          ],
+          [
+            "",
+            "=C11*(1+$C$5)",
+            "=$C$4",
+            "",
+            "=C12*1000*D12/10000*E12"
+          ]
+        ]
+      },
+      "annual": {
+        "address": "C15",
+        "value": 1676.3254095097814,
+        "formula": "=SUM(F9:F12)"
+      }
+    },
+    "styles": {
+      "ndjson": "{\"kind\":\"computedStyle\",\"sheet\":\"Fee lab\",\"for\":\"C4\",\"style\":{\"fill\":{\"type\":1,\"color\":{\"type\":1,\"value\":\"FFF2CC\"},\"gradientStops\":[],\"pictureEffects\":[]},\"font\":{\"fontSize\":10,\"typeface\":\"Arial\",\"fill\":{\"type\":0,\"color\":{\"type\":1,\"value\":\"19364C\"},\"gradientStops\":[],\"pictureEffects\":[]}},\"border\":{},\"wrapText\":false,\"horizontalAlignment\":\"general\",\"styleId\":67}}\n{\"kind\":\"computedStyle\",\"sheet\":\"Fee lab\",\"for\":\"C5\",\"style\":{\"fill\":{\"type\":1,\"color\":{\"type\":1,\"value\":\"FFF2CC\"},\"gradientStops\":[],\"pictureEffects\":[]},\"font\":{\"fontSize\":10,\"typeface\":\"Arial\",\"fill\":{\"type\":0,\"color\":{\"type\":1,\"value\":\"19364C\"},\"gradientStops\":[],\"pictureEffects\":[]}},\"border\":{},\"numberFormat\":\"0.0%\",\"wrapText\":false,\"horizontalAlignment\":\"general\",\"styleId\":68}}",
+      "recordCount": 2,
+      "truncated": false,
+      "metadata": {
+        "revision": "3m96og",
+        "target": {
+          "id": "wb/rhnjm6",
+          "beforeLines": 0,
+          "afterLines": 0
+        },
+        "kind": {
+          "requested": "computedStyle",
+          "tokens": [
+            "computedStyle"
+          ]
+        },
+        "include": {
+          "requested": {
+            "javascriptType": "undefined"
+          },
+          "tokens": []
+        },
+        "exclude": {
+          "requested": {
+            "javascriptType": "undefined"
+          },
+          "tokens": []
+        },
+        "search": {
+          "javascriptType": "undefined"
+        },
+        "notices": []
+      }
+    }
+  }
+}

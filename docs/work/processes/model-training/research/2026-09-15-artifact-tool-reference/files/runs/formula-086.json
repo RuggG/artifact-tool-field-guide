@@ -1,0 +1,37 @@
+{
+  "name": "fx.HEX2DEC",
+  "category": "engineering",
+  "examples": [
+    {
+      "formula": "=HEX2DEC(10)",
+      "value": 16,
+      "projection": [
+        [
+          16,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 6
+    }
+  ]
+}

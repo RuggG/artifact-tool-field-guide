@@ -1,0 +1,180 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>walkthrough-v6.src.md · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="walkthrough-v6.src.md">Raw file</a> · <a data-public-raw download href="walkthrough-v6.src.md">Download</a></p><article><hr/>
+<p>title: How Codex works with Excel files
+class: system-doc
+docver: 6
+primary_author: RG
+agent_assistance:
+  - Codex
+subtitle: Real operations, agent-written checks, and the instructions that shape both
+history:
+  - v6 2026-09-15 — Workbook lifecycle, 27 additional operations and explicit verification provenance
+  - v5 2026-09-15 — Operation map and measured inspection-settings comparison
+stub:
+  - Follow the code from an agent’s request through an in-memory workbook to a saved Excel file.</p>
+<hr/>
+<p><strong>Codex writes a program that works on a workbook in memory, then saves an Excel file.</strong> The library supplies the operations. The spreadsheet skill supplies working instructions. The agent chooses the formulas, reads, checks and sequence of actions. Understanding all three explains much more than looking at a single “tool response”.</p>
+<p>These examples use the supplied Man Group workbook and a small new workbook. The new <strong>Fee lab</strong> tab is an illustrative testing area. Its assumptions are chosen to make behaviour observable, not to forecast Man Group. Every example has readable inputs and outputs, exact code and expandable evidence. The page does not execute spreadsheet code in your browser.</p>
+<h2 id="from-instructions-to-a-saved-file-layers">From instructions to a saved file {#layers}</h2>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>What it does</th>
+<th>What it does not decide for you</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Spreadsheet skill</strong></td>
+<td>Written guidance the agent reads: inspect first, preserve an existing model, use formulas, test changes, review images and export.</td>
+<td>It is not an automatic checker running inside every operation.</td>
+</tr>
+<tr>
+<td><strong>Agent’s script</strong></td>
+<td>Chooses cell addresses, financial rules, tests and when to save. Runs JavaScript through Codex’s command tool.</td>
+<td>Its before/after report is only as complete as the checks it actually requested.</td>
+</tr>
+<tr>
+<td><strong>Artifact Tool library</strong></td>
+<td>Reads and changes workbook objects, calculates formulas, searches, traces, renders and exports.</td>
+<td>It does not infer the correct financial meaning of an input or certify the whole model after an edit.</td>
+</tr>
+</tbody>
+</table>
+<p>The functions here come from <strong><code>@oai/artifact-tool</code></strong>, a JavaScript library. They are not separate Excel MCP tools and do not control the Microsoft Excel window. <strong>MCP</strong> is a protocol for exposing tools to an agent; the outer tool in these examples is a command runner that starts the script.</p>
+<table>
+<thead>
+<tr>
+<th>Starting point</th>
+<th>Working stage</th>
+<th>When the Excel file changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>New workbook</strong></td>
+<td><code>Workbook.create()</code>, add tabs, write values and formulas.</td>
+<td>After <code>exportXlsx(...)</code> creates the file object and <code>.save(...)</code> writes it.</td>
+</tr>
+<tr>
+<td><strong>Existing workbook</strong></td>
+<td>Import the XLSX, then edit its in-memory representation.</td>
+<td>After exporting and saving the revised copy. Editing memory alone leaves the existing file unchanged.</td>
+</tr>
+</tbody>
+</table>
+<p>An Excel window already open on your computer is not connected to this working copy. Open the saved output to see its changes. An agent can save repeatedly as it works. Direct control of a live Excel session is a different route, outside these examples.</p>
+<p><strong>The six-cell checks in the original examples were written by me.</strong> I selected the base margin, active margin, AUM, quarterly fees, annual fees and operating profit. <code>readState()</code> reads those addresses before and after an operation. The edit and <code>recalculate()</code> do not return those six rows automatically. Six is neither a tool setting nor a complete dependency count. The revised examples show <strong>Library operation</strong> and <strong>Agent-written checks</strong> separately.</p>
+<h4 id="instructions-that-materially-shape-the-work-part-of-the-agents-input-guidance">Instructions that materially shape the work — part of the agent’s input {#guidance}</h4>
+<p>The installed skill and API guide do more than explain syntax. They influence the agent’s chosen workflow and model design. These are the most relevant instructions for interpreting the examples. The <a href="guidance.md">saved documentation excerpts</a> preserve the source wording, version and original locations.</p>
+<table>
+<thead>
+<tr>
+<th>Guidance the agent reads</th>
+<th>Work the agent must actually perform</th>
+<th>Example or implication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Inspect before editing; bound large reads.</strong></td>
+<td>Choose areas, character limits and searches, then notice truncation.</td>
+<td>The broad workbook read can consume thousands of tokens without describing the model’s economics. <a href="#inspection-settings">Compare settings</a>.</td>
+</tr>
+<tr>
+<td><strong>Preserve the existing model and keep edits targeted.</strong></td>
+<td>Read nearby formulas and formatting; extend rather than arbitrarily redesign.</td>
+<td>Adding Fee lab leaves the original six tabs intact. This behaviour comes partly from instructions.</td>
+</tr>
+<tr>
+<td><strong>Test input changes and affected outputs.</strong></td>
+<td>Select representative cells, write reads and decide expected results.</td>
+<td>Our six-cell comparison and separate arithmetic are custom code implementing this general instruction.</td>
+</tr>
+<tr>
+<td><strong>Distinguish blank from zero.</strong></td>
+<td>Choose the model’s rule for missing information, write it and test it.</td>
+<td>A blank rate initially produces zero; an explicit guard makes it #N/A, while deliberate zero remains zero. <a href="#op-blank-input">Experiment</a>.</td>
+</tr>
+<tr>
+<td><strong>Use readable formulas and a coherent build.</strong></td>
+<td>Choose formula structure, common assumptions and relative/absolute references.</td>
+<td>The skill discourages introducing LET/LAMBDA and prefers one active forecast build. These are design instructions, not proof those features are impossible in the engine.</td>
+</tr>
+<tr>
+<td><strong>Bind charts to cells; render and review.</strong></td>
+<td>Set source references, render an image, open that image and judge it.</td>
+<td>Creating a chart returns an object; rendering returns pixels. Neither step automatically performs visual review.</td>
+</tr>
+<tr>
+<td><strong>Recalculate before final checks and export.</strong></td>
+<td>Call the engine, inspect results and save.</td>
+<td>Ordinary edits already trigger calculation in the new examples. Final recalculation is an additional workflow instruction.</td>
+</tr>
+<tr>
+<td><strong>Check that formal Table ranges do not overlap.</strong></td>
+<td>Inspect existing ranges before creating another Table.</td>
+<td>The API accepts our deliberately overlapping Table in memory. The agent must enforce this documented constraint. <a href="#op-overlap-table">Experiment</a>.</td>
+</tr>
+<tr>
+<td><strong>Verify saved or native features when relevant.</strong></td>
+<td>Reopen the file, compare it, and use the intended application when its behaviour matters.</td>
+<td>We check saved formulas, values, tables and chart parts. Native Microsoft Excel opening is not established here.</td>
+</tr>
+</tbody>
+</table>
+<p>User instructions and the supplied workbook take precedence over these defaults. An agent may follow the guidance well or poorly. A repeated modelling choice should therefore be attributed to the instructions, the agent’s judgment or the library only after inspecting the evidence.</p>
+<h2 id="create-change-delete-and-rebuild-operations">Create, change, delete and rebuild {#operations}</h2>
+<p>The 27 recorded steps cover six families below. Each distinguishes the <strong>operation’s own return</strong> from the <strong>additional observations requested by the agent</strong>. “Undefined” means no returned report; it does not mean that nothing happened.</p>
+<p>```component operations-laboratory
+renderer: operations_explorer.py
+data: evidence/operations-cards.json</p>
+<hr/>
+<p>operations</p>
+<pre><code>
+**What these experiments establish.** Fresh formulas update after an input edit. Unsaved edits do not reach the file. Clearing a formula can leave a plausible zero total. Deleting a formal Table leaves its cells behind. Deleting a chart leaves its source calculations behind. Rebuilding either is another explicit instruction sequence.
+
+The added schedule works after saving and reopening. The earlier Man Group shared-formula import issue remains in the original model: some existing formulas import as saved values without a working dependency chain. A new working calculation does not repair that issue, and this is not evidence of a calculation defect in native Excel.
+
+[Download Man Group with the Fee lab](operations-run/man-group-operations.xlsx?download) · [Download the newly created workbook](operations-run/new-fee-workbook.xlsx?download) · [Independent file verification](operations-run/independent-verification.json) · [Full analysis notes](LEARNINGS.md)
+
+## Reading and inspecting a workbook {#inspection-settings}
+
+The same `inspect` function supplies several kinds of evidence. A tab inventory, a grid of values, a populated-block preview and a text search are different requests—not four separate tools. The returned **values** are cell results; exact formula text can be read separately through `.formulas`.
+
+
+The settings answer three questions: **what to return** (`kind`), **where to look** (`sheetId` and `range`), and **how much to return** (`maxChars` and preview sizes). `kind` is the output choice within one function; it is not a different tool.
+
+| Setting for kind | What comes back | What it tells the agent |
+| --- | --- | --- |
+| `workbook,sheet` | Workbook counts and one description per tab | Which tabs exist and their occupied ranges; no cell values. |
+| `workbook,sheet,table` | Those descriptions **plus cell-value grids** | Potentially every value in each occupied rectangle. It can be large. |
+| `region` | Located blocks, their dimensions and small cell previews | How a selected area breaks into populated blocks, and a sample of each block’s contents. |
+| `match` | Cells matching supplied text or a pattern | Candidate locations for the agent to inspect and interpret. |
+
+Here **table** means a grid of values returned by inspection. A formal **Excel Table** is a named feature defined inside a sheet. The original six-tab Man Group file has none. The new Fee lab experiment deliberately creates one. **Region** means a populated block identified by the inspection call; it is not another tab.
+
+```component inspection-settings-lab
+renderer: inspect_explainer.py
+data: evidence/inspect-lab.json
+---
+lab
+</code></pre>
+<p><strong>The preview setting has a catch.</strong> For <code>kind: table</code>, the tested runtime uses the row/column preview sizes as a fallback when the values would be too large. They are not unconditional caps. A table that fits can be returned in full. For the tested <code>region</code> calls, each returned block’s preview follows the selected dimensions.</p>
+<p><strong>Two kinds of “cut short” are different.</strong> <code>valuesTruncated: true</code> means a table’s values were reduced to a preview; the table’s full dimensions can still be reported. The outer <code>truncated: true</code> means whole response records were omitted. The small Fee engine preview has the first flag; the original broad workbook read has the second.</p>
+<p>The agent still interprets the data. A list of sheets is a structural overview, not a written explanation of the business model. A search for “profit” gives candidate cells, not a decision about which profit measure is appropriate.</p>
+<h3 id="original-step-by-step-sequence-exact-calls-and-added-checks-calls">Original step-by-step sequence — exact calls and added checks {#calls}</h3>
+<p>These are separate examples of using the operations above. The five discovery examples all use <code>inspect</code> with different settings. The controls show <strong>Readable</strong> explanations, the <strong>Exact input</strong>, and either readable results, an expandable <strong>Object tree</strong>, or <strong>Exact JSON</strong>. JSON is structured text containing named fields and lists.</p>
+<p>```component call-explorer
+renderer: man_group_walkthrough.py
+data: evidence/man-group-cards.json</p>
+<hr/>
+<p>explorer
+```</p>
+<h4 id="what-the-edit-sequence-reveals-formula-import-and-recalculation-findings">What the edit sequence reveals — formula import and recalculation {#findings}</h4>
+<p><strong>Reading a result and having a working calculation chain are different things.</strong> The file contains 495 shared-formula follower cells: Excel stores those formulas compactly by referring to a neighbouring master formula. In this library version, some are imported with their saved values but without formula text or working upstream dependencies. The dependency tree stops at those cells.</p>
+<p>The temporary edit makes the consequence visible. Changing Q4 2027’s base fee margin from 56bp to 51bp initially leaves management fees unchanged, even after <code>recalculate()</code>. Restoring the existing active-assumption formula makes fees change, while operating profit remains unchanged because other dependencies are still missing. Those outcomes are shown in the <a href="#xio-value-edit">cell edit</a>, <a href="#xio-recalculate">recalculation</a> and <a href="#xio-formula-edit">formula edit</a> examples. This is a limitation of the imported model in this library, not evidence that native Excel cannot calculate it.</p>
+<p><strong>Inspection responses also need interpretation.</strong> The original broad read is truncated; the dedicated sheet list is complete. The settings comparison above makes that difference visible. The agent has to notice whether values were sampled or whole records omitted before choosing its next call.</p>
+<p>The original download is unchanged. The temporary assumption was restored before export; independent file reads found no formula/literal differences or cached numeric differences above tolerance, preserved sheet order and 270 annotations. The exported copy remains a demonstration, with the broader import limitation still present. Native Excel opening was not tested in this run.</p>
+<p><a href="man-group-run/source.xlsx?download">Original copied workbook</a> · <a href="man-group-run/man-group-demo.xlsx?download">Exported demonstration</a> · <a href="man-group-run/verification.json">File verification</a> · <a href="MANIFEST.md">Evidence manifest</a></p>
+<p>Runtime: <code>@oai/artifact-tool</code> 2.8.59, workspace bundle 26.909.12148. These are recorded experiments, not live workbook controls.</p></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

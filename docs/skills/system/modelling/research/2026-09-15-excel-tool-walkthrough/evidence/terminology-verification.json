@@ -1,0 +1,28 @@
+{
+  "sourceSha256": "b7ff5c92bf7562fa6fe3f253fdf7b40fd5f6659e8638310314c6b035ef02c181",
+  "excelTableDefinitions": [],
+  "worksheetsWithTableReferences": [],
+  "overviewWorkbookRecord": {
+    "kind": "workbook",
+    "id": "wb/lrmr6s",
+    "sheets": 6,
+    "tables": 6
+  },
+  "overviewSummarySheetRecord": {
+    "kind": "sheet",
+    "id": "ws/martey",
+    "name": "Summary",
+    "index": 0,
+    "range": "A1:M57",
+    "address": "A1:M57",
+    "tables": 1
+  },
+  "overviewSummaryTableRecord": {
+    "kind": "table",
+    "sheet": "Summary",
+    "address": "A1:M57",
+    "rows": 57,
+    "cols": 13
+  },
+  "interpretation": "The captured inspection count labels returned sheet-data tables; it is not a count of formal Excel Tables. No universal segmentation algorithm inferred."
+}

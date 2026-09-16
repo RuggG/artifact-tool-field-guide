@@ -1,0 +1,37 @@
+{
+  "name": "fx.TRUNC",
+  "category": "math-trig",
+  "examples": [
+    {
+      "formula": "=TRUNC(10, A1)",
+      "value": 10,
+      "projection": [
+        [
+          10,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 8
+    }
+  ]
+}

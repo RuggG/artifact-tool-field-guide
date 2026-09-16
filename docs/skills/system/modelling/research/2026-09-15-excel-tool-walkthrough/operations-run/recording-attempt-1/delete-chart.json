@@ -1,0 +1,71 @@
+{
+  "id": "delete-chart",
+  "operation": "return lab.charts.deleteAll();",
+  "checkInput": {
+    "before": "",
+    "after": "return {drawingInspection:await wb.inspect({kind:\"drawing\",sheetId:\"Fee lab\",maxChars:2000}),source:grid(lab,\"F9:F12\")};"
+  },
+  "startedAt": "2026-09-15T16:53:24.219Z",
+  "libraryReturn": {
+    "javascriptType": "undefined"
+  },
+  "elapsedMs": 0,
+  "after": {
+    "drawingInspection": {
+      "recordCount": 1,
+      "truncated": false,
+      "metadata": {
+        "revision": "z953nj",
+        "target": {
+          "id": "wb/k8e8yg",
+          "beforeLines": 0,
+          "afterLines": 0
+        },
+        "kind": {
+          "requested": "drawing",
+          "tokens": [
+            "drawing"
+          ]
+        },
+        "include": {
+          "tokens": []
+        },
+        "exclude": {
+          "tokens": []
+        },
+        "notices": []
+      }
+    },
+    "source": {
+      "address": "F9:F12",
+      "values": [
+        [
+          435.76753023588856
+        ],
+        [
+          444.48288084060624
+        ],
+        [
+          453.37253845741844
+        ],
+        [
+          462.4399892265668
+        ]
+      ],
+      "formulas": [
+        [
+          "=IF(ISBLANK($C$4),NA(),C9*1000*D9/10000*E9)"
+        ],
+        [
+          "=IF(ISBLANK($C$4),NA(),C10*1000*D10/10000*E10)"
+        ],
+        [
+          "=IF(ISBLANK($C$4),NA(),C11*1000*D11/10000*E11)"
+        ],
+        [
+          "=IF(ISBLANK($C$4),NA(),C12*1000*D12/10000*E12)"
+        ]
+      ]
+    }
+  }
+}

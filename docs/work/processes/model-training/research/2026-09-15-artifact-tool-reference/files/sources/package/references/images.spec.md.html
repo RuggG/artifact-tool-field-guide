@@ -1,0 +1,68 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Worksheet Images · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="images.spec.md">Raw file</a> · <a data-public-raw download href="images.spec.md">Download</a></p><article><h1 id="worksheet-images">Worksheet Images</h1>
+<p>Use <code>sheet.images.add(...)</code> to attach images to cell-grid anchors.</p>
+<h2 id="add-image">Add Image</h2>
+<pre><code class="language-ts">const image = sheet.images.add({
+  path,
+  blob,
+  dataUrl,
+  uri,
+  prompt,
+  alt,
+  anchor,
+});
+
+const icon = sheet.images.add({
+  svg: '&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="10" fill="#2563eb"/&gt;&lt;/svg&gt;',
+  anchor: { from: { row: 1, col: 5 }, extent: { widthPx: 48, heightPx: 48 } },
+});
+</code></pre>
+<h2 id="image-inline-types">Image Inline Types</h2>
+<pre><code class="language-ts">type WorksheetImageConfig = ImageSource &amp; {
+  alt?: string;
+  contentType?: string;
+  anchor?: DrawingAnchorConfig;
+};
+
+type ImageSource =
+  | { path: string }
+  | { svg: string }
+  | { blob: ArrayBuffer }
+  | { dataUrl: string }
+  | { uri: string }
+  | { prompt: string };
+</code></pre>
+<h2 id="anchor">Anchor</h2>
+<pre><code class="language-ts">const anchor = {
+  from,
+  to,
+  extent,
+};
+</code></pre>
+<p><code>from</code>, <code>to</code>, and <code>extent</code> use the same zero-based anchor and pixel extent shapes as worksheet charts and shapes.</p>
+<h2 id="anchor-inline-type">Anchor Inline Type</h2>
+<pre><code class="language-ts">type DrawingAnchorConfig = {
+  from: AnchorInput;
+  to?: AnchorInput;
+  extent?: {
+    widthPx?: number;
+    heightPx?: number;
+    widthEmu?: number;
+    heightEmu?: number;
+  };
+};
+
+type AnchorInput = {
+  row: number;
+  col: number;
+  rowOffsetPx?: number;
+  colOffsetPx?: number;
+  rowOffsetEmu?: number;
+  colOffsetEmu?: number;
+};
+</code></pre>
+<h2 id="edit">Edit</h2>
+<pre><code class="language-ts">image.anchor = anchor;
+image.alt = altText;
+image.replace(sourceConfig);
+image.delete();
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

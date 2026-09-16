@@ -1,0 +1,10 @@
+{
+  "index": 65,
+  "name": "worksheet.deleteAllDrawings",
+  "summary": "Clear drawings before rebuilding a dashboard",
+  "originalCode": "sheet.deleteAllDrawings();",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

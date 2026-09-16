@@ -1,0 +1,37 @@
+{
+  "name": "fx.SUMIFS",
+  "category": "math-trig",
+  "examples": [
+    {
+      "formula": "=SUMIFS(A1:A5, A1:A5, \">0\", C1:C5)",
+      "value": 15,
+      "projection": [
+        [
+          15,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 12
+    }
+  ]
+}

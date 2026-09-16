@@ -1,0 +1,12 @@
+{
+  "index": 31,
+  "name": "chart series",
+  "summary": "Series styling after creation (one-liners)",
+  "originalCode": "chart.series.items[0]!.line = { fill: '#3b82f6', style: 'solid', width: 2 };\nchart.series.items[0]!.fill = { type: 'solid', color: '#60a5fa' };",
+  "adaptations": [
+    "Removed TypeScript non-null assertion after array access."
+  ],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

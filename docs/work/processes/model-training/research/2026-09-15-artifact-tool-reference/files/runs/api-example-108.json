@@ -1,0 +1,10 @@
+{
+  "index": 108,
+  "name": "range.getResizeRange",
+  "summary": "Resize to a specific shape",
+  "originalCode": "const range = sheet.getRange('B2:D4');\nconst block = range.getResizeRange(5, 2); // B2:C6",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

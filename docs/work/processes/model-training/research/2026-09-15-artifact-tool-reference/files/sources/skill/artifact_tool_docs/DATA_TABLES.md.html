@@ -1,0 +1,59 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Data tables (two-variable sensitivity) · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="DATA_TABLES.md">Raw file</a> · <a data-public-raw download href="DATA_TABLES.md">Download</a></p><article><h1 id="data-tables-two-variable-sensitivity">Data tables (two-variable sensitivity)</h1>
+<p>Use <code>sheet.dataTables.add(fullRange, { rowInput, columnInput })</code> to calculate a formula for each combination of two scenario inputs. The method returns <code>void</code>.
+Prefer an unused area on the existing model worksheet, reusing its input cells and output formula.</p>
+<ul>
+<li><code>fullRange</code> includes the top-left formula cell, scenario values across the top row and down the left column, and the output body.</li>
+<li><code>rowInput</code> is the model input cell replaced by values across the top row; <code>columnInput</code> is the model input cell replaced by values down the left column. Both must be single-cell A1 references on the table's worksheet. The formula may reference calculations on other sheets.</li>
+<li>These must be the actual cells driving the output formula. A local copy of an input from another sheet does not work if the model still reads the original cell.</li>
+<li>New data tables do not auto-calculate. Call <code>workbook.recalculate()</code> after creating them, before reading results or exporting.</li>
+<li>Do not use one-variable data tables. This is currently not supported.</li>
+</ul>
+<p>Example assumes existing <code>workbook</code> and <code>sheet</code>, with revenue growth in <code>B2</code>, gross margin in <code>B3</code>, and the EBITDA formula (in dollars) in <code>B5</code>. Leave column C blank for spacing and reserve <code>D1:H7</code> for the sensitivity block. The 3×3 result grid uses a 4×4 <code>fullRange</code> (<code>E4:H7</code>), with the base case at <code>G6</code>.</p>
+<p>The optional formatting illustrates a title band, labeled axes, thin rules and a shaded base case. Adapt placement, sizing, scenario steps, labels, colors and number formats to the model and the skill's formatting guidance.</p>
+<pre><code class="language-js">sheet.getRange("E4").formulas = [["=B5"]];
+sheet.getRange("F4:H4").formulas = [["=$B$2-2.5%", "=$B$2", "=$B$2+2.5%"]];
+sheet.getRange("E5:E7").formulas = [["=$B$3-5%"], ["=$B$3"], ["=$B$3+5%"]];
+sheet.dataTables.add("E4:H7", {
+  rowInput: "B2",
+  columnInput: "B3",
+});
+
+// Formula links do not inherit number formats. Adapt these example formats
+// to each model input and the output's units/precision.
+for (const [address, format] of [
+  ["F4:H4", "0.0%"], ["E5:E7", "0%"],
+  ["F5:H7", '$#,##0,,"M";$(#,##0,,"M");"-"'],
+]) sheet.getRange(address).setNumberFormat(format);
+
+// Optional presentation formatting, adapted to the existing worksheet.
+const ink = "#23364D", rule = { style: "thin", color: ink };
+sheet.getRange("D1:H7").format = {
+  fill: "#FFFFFF", font: { color: ink }, verticalAlignment: "center",
+};
+for (const [address, label] of [
+  ["D1:H1", "EBITDA sensitivity"],
+  ["F3:H3", "Revenue Growth"],
+]) {
+  const range = sheet.getRange(address);
+  range.getCell(0, 0).values = [[label]]; // Other cells in the span stay empty.
+  range.format.horizontalAlignment = "left";
+}
+sheet.getRange("D1:H1").format = {
+  fill: ink, font: { bold: true, color: "#FFFFFF" },
+};
+sheet.getRange("D6").values = [["Gross Margin"]];
+sheet.getRange("D6").format = { wrapText: true, horizontalAlignment: "center" };
+for (const address of ["F3:H3", "D6"])
+  sheet.getRange(address).format.font.italic = true;
+for (const address of ["F4:H4", "E5:E7"])
+  sheet.getRange(address).format = {
+    font: { bold: true }, horizontalAlignment: "center",
+  };
+sheet.getRange("F5:H7").format.horizontalAlignment = "right";
+sheet.getRange("E4").setNumberFormat(";;;"); // Hide the display; retain the formula.
+sheet.getRange("F4:H4").format.borders = { top: rule, bottom: rule };
+for (const address of ["E5:E7", "F5:H7"])
+  sheet.getRange(address).format.borders = { left: rule };
+sheet.getRange("G6").format.fill = "#F2F2F2"; // Optional base-case highlight.
+workbook.recalculate();
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

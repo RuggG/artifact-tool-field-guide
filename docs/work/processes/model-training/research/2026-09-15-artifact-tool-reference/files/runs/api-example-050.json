@@ -1,0 +1,13 @@
+{
+  "index": 50,
+  "name": "workbook.help",
+  "summary": "Range addressing and value/formula basics",
+  "adaptations": [
+    "Mapped structured example fields to the corresponding public method; replaced placeholder anchors with actual fixture IDs."
+  ],
+  "execution": "completed",
+  "export": "completed",
+  "logs": [
+    "{\"ndjson\":\"{\\\"kind\\\":\\\"api\\\",\\\"name\\\":\\\"ranges\\\",\\\"summary\\\":\\\"Range addressing and cell reads/writes.\\\",\\\"tags\\\":[\\\"ranges\\\"]}\",\"truncated\":false,\"metadata\":{\"revision\":\"o0lmjp\",\"query\":\"ranges\",\"include\":{\"requested\":[\"index\",\"examples\"],\"tokens\":[\"index\",\"examples\"]},\"notices\":[]}}"
+  ]
+}

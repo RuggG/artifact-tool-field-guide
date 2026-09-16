@@ -1,0 +1,53 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>fill.json · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="fill.json">Raw file</a> · <a data-public-raw download href="fill.json">Download</a></p><article><h1>fill.json</h1><pre class="public-code"><code>{
+  &quot;id&quot;: &quot;fill&quot;,
+  &quot;input&quot;: &quot;const sheet = wb.worksheets.getItem(\&quot;Assumptions\&quot;);\nconst range = sheet.getRange(\&quot;R25:W25\&quot;);\nconst before = {values: range.values, formulas: range.formulas};\nrange.fillRight();\nreturn {sheet: \&quot;Assumptions\&quot;, range: \&quot;R25:W25\&quot;, before, after: {values: range.values, formulas: range.formulas}};&quot;,
+  &quot;elapsedMs&quot;: 1,
+  &quot;result&quot;: {
+    &quot;sheet&quot;: &quot;Assumptions&quot;,
+    &quot;range&quot;: &quot;R25:W25&quot;,
+    &quot;before&quot;: {
+      &quot;values&quot;: [
+        [
+          56,
+          56,
+          56,
+          56,
+          56,
+          51
+        ]
+      ],
+      &quot;formulas&quot;: [
+        [
+          &quot;=IF(CHOOSE($D$4,ISBLANK(R26),ISBLANK(R27),ISBLANK(R28),ISBLANK(R29)),NA(),CHOOSE($D$4,R26,R27,R28,R29))&quot;,
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;=IF(CHOOSE($D$4,ISBLANK(W26),ISBLANK(W27),ISBLANK(W28),ISBLANK(W29)),NA(),CHOOSE($D$4,W26,W27,W28,W29))&quot;
+        ]
+      ]
+    },
+    &quot;after&quot;: {
+      &quot;values&quot;: [
+        [
+          56,
+          56,
+          56,
+          56,
+          56,
+          51
+        ]
+      ],
+      &quot;formulas&quot;: [
+        [
+          &quot;=IF(CHOOSE($D$4,ISBLANK(R26),ISBLANK(R27),ISBLANK(R28),ISBLANK(R29)),NA(),CHOOSE($D$4,R26,R27,R28,R29))&quot;,
+          &quot;=IF(CHOOSE($D$4,ISBLANK(S26),ISBLANK(S27),ISBLANK(S28),ISBLANK(S29)),NA(),CHOOSE($D$4,S26,S27,S28,S29))&quot;,
+          &quot;=IF(CHOOSE($D$4,ISBLANK(T26),ISBLANK(T27),ISBLANK(T28),ISBLANK(T29)),NA(),CHOOSE($D$4,T26,T27,T28,T29))&quot;,
+          &quot;=IF(CHOOSE($D$4,ISBLANK(U26),ISBLANK(U27),ISBLANK(U28),ISBLANK(U29)),NA(),CHOOSE($D$4,U26,U27,U28,U29))&quot;,
+          &quot;=IF(CHOOSE($D$4,ISBLANK(V26),ISBLANK(V27),ISBLANK(V28),ISBLANK(V29)),NA(),CHOOSE($D$4,V26,V27,V28,V29))&quot;,
+          &quot;=IF(CHOOSE($D$4,ISBLANK(W26),ISBLANK(W27),ISBLANK(W28),ISBLANK(W29)),NA(),CHOOSE($D$4,W26,W27,W28,W29))&quot;
+        ]
+      ]
+    }
+  }
+}</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

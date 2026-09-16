@@ -1,0 +1,96 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Workbook Facade · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="workbook.spec.md">Raw file</a> · <a data-public-raw download href="workbook.spec.md">Download</a></p><article><h1 id="workbook-facade">Workbook Facade</h1>
+<h2 id="create-and-load">Create And Load</h2>
+<pre><code class="language-ts">const workbook = Workbook.create();
+const [sheet1, sheet2] = workbook.worksheets.add(["Sheet1", "Sheet2"]);
+const loaded = Workbook.load(proto);
+const validated = Workbook.load(proto, { validate: true });
+</code></pre>
+<h2 id="import">Import</h2>
+<pre><code class="language-ts">const fromCsv = await Workbook.fromCSV(csv, { sheetName: "Data" });
+const fromMarkdown = await Workbook.fromMarkdown(markdown, {
+  sheetName: "Data",
+  format: true,
+});
+
+const { sheet, range } = await workbook.fromCSV(csv, { sheetName: "Data" });
+</code></pre>
+<h2 id="root-collections">Root Collections</h2>
+<pre><code class="language-ts">workbook.worksheets;
+workbook.sheets; // alias
+workbook.pivotTables;
+workbook.slicers;
+workbook.comments;
+workbook.notes;
+workbook.names;
+workbook.definedNames; // alias
+workbook.awareness;
+</code></pre>
+<h2 id="theme">Theme</h2>
+<pre><code class="language-ts">workbook.setColorScheme({
+  name: "Workbook Theme",
+  themeColors: {
+    accent1: "#2563eb",
+    bg1: "#ffffff",
+    tx1: "#0f172a",
+  },
+});
+const theme = workbook.theme;
+</code></pre>
+<h2 id="recalculate-and-trace">Recalculate And Trace</h2>
+<pre><code class="language-ts">workbook.recalculate();
+const trace = workbook.trace("Data!C2");
+const stats = workbook.collectFormulaUsageStats();
+</code></pre>
+<h2 id="inspect-search-help-resolve">Inspect, Search, Help, Resolve</h2>
+<pre><code class="language-ts">const snapshot = await workbook.inspect({ kind: "sheet,table,formula" });
+const matches = workbook.findCells({
+  searchTerm: "East",
+  sheetId: "Revenue",
+  options: { maxResults: 10, matchFormulas: true },
+});
+const help = workbook.help("*", {
+  search: "setColorScheme|worksheet.charts.add",
+  include: ["index", "examples", "notes"],
+});
+const target = workbook.resolve(anchorId);
+</code></pre>
+<h2 id="record-and-apply">Record And Apply</h2>
+<pre><code class="language-ts">const { result, patch, idMap, crdtUpdateV2 } = workbook.record(() =&gt; {
+  const sheet = workbook.worksheets.getItem("Data");
+  sheet.getRange("A1").values = [["Value"]];
+  return sheet;
+});
+
+const applied = workbook.apply(patch);
+</code></pre>
+<h2 id="crdt">CRDT</h2>
+<pre><code class="language-ts">workbook.hydrateCrdtFromProto();
+const ready = workbook.isCollaborativeStateReady();
+const unsubscribe = workbook.onCrdtUpdateV2((update, origin) =&gt; {
+  send(update);
+});
+workbook.applyCrdtUpdateV2(remoteUpdate, { recalculate: true });
+unsubscribe();
+</code></pre>
+<h2 id="serialize">Serialize</h2>
+<pre><code class="language-ts">const proto = workbook.toProto();
+</code></pre>
+<h2 id="utilities">Utilities</h2>
+<pre><code class="language-ts">workbook.utils.columnToLetter(1); // "A"
+workbook.utils.letterToColumn("AA"); // 27
+workbook.utils.toA1String(1, 1, 3, 2); // "A1:B3"
+workbook.utils.fillRight([[1]], 3); // [[1, 1, 1]]
+workbook.utils.fillDown([[1]], 3); // [[1], [1], [1]]
+</code></pre>
+<h2 id="cookbook">Cookbook</h2>
+<pre><code class="language-ts">const workbook = Workbook.create();
+const sheet = workbook.worksheets.add("Data");
+sheet.getRange("A1:B2").values = [
+  ["Name", "Value"],
+  ["A", 1],
+];
+
+const { patch } = workbook.record(() =&gt; {
+  sheet.getRange("B2").values = [[2]];
+});
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

@@ -1,0 +1,276 @@
+[
+  {
+    "id": "A01",
+    "description": "Pivot root collection, native serialization and slicer fields",
+    "status": "pass",
+    "ms": 439,
+    "detail": {
+      "grid": [
+        [
+          "Row Labels",
+          "",
+          "",
+          "Grand Total",
+          null
+        ],
+        [
+          "North",
+          10,
+          30,
+          40,
+          null
+        ],
+        [
+          "South",
+          20,
+          40,
+          60,
+          null
+        ],
+        [
+          "Grand Total",
+          30,
+          70,
+          100,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "hierarchies": [
+        "Region",
+        "Product",
+        "Sales"
+      ],
+      "methods": [
+        "constructor",
+        "workbook",
+        "worksheet",
+        "name",
+        "layout",
+        "hierarchies",
+        "rowHierarchies",
+        "columnHierarchies",
+        "dataHierarchies",
+        "filterHierarchies",
+        "_assignHierarchy",
+        "_getHierarchies",
+        "_getHierarchyByFieldIndex",
+        "_ensureHierarchyIndex",
+        "delete",
+        "cache",
+        "toProto",
+        "rebuildCache",
+        "addDeleteListener",
+        "removeDeleteListener",
+        "addNameChangeListener",
+        "removeNameChangeListener",
+        "__getLayoutType",
+        "__setLayoutType",
+        "__getLayoutMeta",
+        "__setLayoutMeta",
+        "__getLocationForLayout",
+        "__getDataBodyShapeForLayout",
+        "__setRowItems",
+        "__setColumnItems",
+        "__clearPivotCellRenderHints",
+        "__setPivotCellRenderHint",
+        "__getPivotCellRenderHint",
+        "__getPivotCellRenderHints",
+        "__findDataFieldProto",
+        "__addDataFieldProto",
+        "__getPivotFieldProtos",
+        "__updateLocation",
+        "__applyFilterForField",
+        "__clearAllFiltersForField",
+        "preview"
+      ],
+      "pivotExport": "completed",
+      "slicerMethods": [
+        "constructor",
+        "name",
+        "caption",
+        "left",
+        "top",
+        "height",
+        "width",
+        "style",
+        "selectItems",
+        "clearFilters",
+        "delete",
+        "addDeleteListener",
+        "removeDeleteListener",
+        "addNameChangeListener",
+        "removeNameChangeListener"
+      ],
+      "slicerExport": "completed"
+    }
+  },
+  {
+    "id": "A02",
+    "description": "Chart analytics and mutable label/table objects",
+    "status": "pass",
+    "ms": 273,
+    "detail": {
+      "resolvedValues": [],
+      "formula": "'Charts'!$B$2:$B$5",
+      "dataTable": true,
+      "chartCount": 1,
+      "converted": {
+        "bytes": {},
+        "contentType": "image/png",
+        "widthPx": 590,
+        "heightPx": 360
+      },
+      "chartCountAfter": 1,
+      "imageCountAfter": 0
+    }
+  },
+  {
+    "id": "A03",
+    "description": "Native note through operation API and note delete",
+    "status": "fail",
+    "ms": 2,
+    "error": "TypeError: Cannot read properties of undefined (reading 'proto')",
+    "stack": [
+      "TypeError: Cannot read properties of undefined (reading 'proto')",
+      "    at file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:541:47",
+      "    at test (file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:17:169)",
+      "    at file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:538:7"
+    ]
+  },
+  {
+    "id": "A04",
+    "description": "Awareness operation families and correct presence rectangle",
+    "status": "pass",
+    "ms": 3,
+    "detail": {
+      "result": {
+        "idMap": {},
+        "warnings": [
+          "TODO: presence.selection.set is not implemented yet."
+        ]
+      },
+      "selected": [],
+      "reaction": {
+        "idMap": {},
+        "warnings": [
+          "TODO: thread.reaction.toggle is not implemented yet."
+        ]
+      }
+    }
+  },
+  {
+    "id": "A05",
+    "description": "Workbook static session API and common CRDT initialization",
+    "status": "pass",
+    "ms": 1,
+    "detail": {
+      "statics": [],
+      "methods": {},
+      "crdt": {
+        "loadInitial": "loadInitialCrdtStateV2(t,n={}){this.#lt(\"loadInitialCrdtStateV2\");this.applyCrdtUpdateV2(t,n)}",
+        "subscribe": "onCrdtUpdateV2(t){const n=(r,i)=>{t(new Uint8Array(r),i)};this.#I.on(\"updateV2\",n);return()=>{this.#I.off(\"updateV2\",n)}}",
+        "getDoc": "getCrdtDoc(){return this.#I}"
+      }
+    }
+  },
+  {
+    "id": "A06",
+    "description": "Database formula family with valid database and criteria",
+    "status": "pass",
+    "ms": 7,
+    "detail": [
+      {
+        "formula": "=DSUM(A1:C5,\"Sales\",E1:E2)",
+        "expected": 40,
+        "actual": 0
+      },
+      {
+        "formula": "=DCOUNT(A1:C5,\"Sales\",E1:E2)",
+        "expected": 2,
+        "actual": 4
+      },
+      {
+        "formula": "=DCOUNTA(A1:C5,\"Sales\",E1:E2)",
+        "expected": 2,
+        "actual": 4
+      },
+      {
+        "formula": "=DAVERAGE(A1:C5,\"Sales\",E1:E2)",
+        "expected": 20,
+        "actual": 25
+      },
+      {
+        "formula": "=DMIN(A1:C5,\"Sales\",E1:E2)",
+        "expected": 10,
+        "actual": 10
+      },
+      {
+        "formula": "=DMAX(A1:C5,\"Sales\",E1:E2)",
+        "expected": 30,
+        "actual": 40
+      },
+      {
+        "formula": "=DPRODUCT(A1:C5,\"Sales\",E1:E2)",
+        "expected": 300,
+        "actual": 240000
+      },
+      {
+        "formula": "=DSTDEV(A1:C5,\"Sales\",E1:E2)",
+        "expected": 14.142135623730951,
+        "actual": 12.909944487358056
+      },
+      {
+        "formula": "=DVAR(A1:C5,\"Sales\",E1:E2)",
+        "expected": 200,
+        "actual": 166.66666666666666
+      },
+      {
+        "formula": "=DSTDEVP(A1:C5,\"Sales\",E1:E2)",
+        "expected": 10,
+        "actual": 11.180339887498949
+      },
+      {
+        "formula": "=DVARP(A1:C5,\"Sales\",E1:E2)",
+        "expected": 100,
+        "actual": 125
+      },
+      {
+        "formula": "=DGET(A1:C5,\"Sales\",E1:E2)",
+        "expected": "#NUM!",
+        "actual": "#NUM!"
+      }
+    ]
+  },
+  {
+    "id": "A07",
+    "description": "Table total reserve and recalculation before/after flag",
+    "status": "pass",
+    "ms": 2,
+    "detail": {
+      "before": 9,
+      "after": 9,
+      "withReservedTotalsRow": 9
+    }
+  }
+]

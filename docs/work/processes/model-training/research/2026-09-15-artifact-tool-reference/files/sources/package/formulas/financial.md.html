@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Financial Formulas · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="financial.md">Raw file</a> · <a data-public-raw download href="financial.md">Download</a></p><article><h1 id="financial-formulas">Financial Formulas</h1>
+<p>Financial formulas cover loans, rates, cash flows, depreciation, securities, treasury bills, and coupon calculations.</p>
+<h2 id="formula-pattern">Formula Pattern</h2>
+<pre><code class="language-ts">const formulaBlock = sheet.getRange(outputRange).write({
+  formulas: formulaMatrix,
+});
+workbook.recalculate();
+const results = formulaBlock.values;
+</code></pre>
+<h2 id="common-shapes">Common Shapes</h2>
+<pre><code class="language-ts">const formulas = [
+  `=PMT(${rateRef},${periodsRef},${presentValueRef})`,
+  `=PV(${rateRef},${periodsRef},${paymentRef})`,
+  `=FV(${rateRef},${periodsRef},${paymentRef})`,
+  `=NPV(${rateRef},${cashFlowRangeRef})`,
+  `=IRR(${cashFlowRangeRef})`,
+  `=XNPV(${rateRef},${cashFlowRangeRef},${dateRangeRef})`,
+  `=XIRR(${cashFlowRangeRef},${dateRangeRef})`,
+  `=RATE(${periodsRef},${paymentRef},${presentValueRef})`,
+];
+</code></pre>
+<h2 id="coverage">Coverage</h2>
+<p>Supported families include payment and present/future value, net present value, return rate, depreciation, discount/yield, coupon date math, accrued interest, treasury bills, and compatibility variants.</p></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

@@ -1,0 +1,26 @@
+{
+  "id": "overlap-table",
+  "operation": "const extra = lab.tables.add(\"D22:F25\", true, \"OverlapProbe\");\nreturn extra;",
+  "checkInput": {
+    "before": "return lab.tables.items.map(t => t.name);",
+    "after": "return {tableNames:lab.tables.items.map(t=>t.name),existingRange:\"B20:D24\",requestedRange:\"D22:F25\",overlap:\"D22:D24\",saved:false};"
+  },
+  "before": [
+    "FeeScenarioInputs"
+  ],
+  "libraryReturn": {
+    "type": "Excel Table object",
+    "representation": "Live object returned. The added range overlaps existing FeeScenarioInputs at B20:D24."
+  },
+  "elapsedMs": 0,
+  "after": {
+    "tableNames": [
+      "FeeScenarioInputs",
+      "OverlapProbe"
+    ],
+    "existingRange": "B20:D24",
+    "requestedRange": "D22:F25",
+    "overlap": "D22:D24",
+    "saved": false
+  }
+}

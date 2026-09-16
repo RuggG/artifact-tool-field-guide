@@ -1,0 +1,37 @@
+{
+  "name": "fx.F.DIST.RT",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=F.DIST.RT(A1, A1, A1)",
+      "value": 0.49999998199264917,
+      "projection": [
+        [
+          0.49999998199264917,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 8
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "name": "fx.PERMUT",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=PERMUT(10, 10)",
+      "value": 3628800,
+      "projection": [
+        [
+          3628800,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 10
+    }
+  ]
+}

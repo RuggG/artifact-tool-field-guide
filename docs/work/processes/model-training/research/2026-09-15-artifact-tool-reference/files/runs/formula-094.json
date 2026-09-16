@@ -1,0 +1,37 @@
+{
+  "name": "fx.BIN2DEC",
+  "category": "engineering",
+  "examples": [
+    {
+      "formula": "=BIN2DEC(10)",
+      "value": 2,
+      "projection": [
+        [
+          2,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 14
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "name": "fx.LEN",
+  "category": "text",
+  "examples": [
+    {
+      "formula": "=LEN(\"text\")",
+      "value": 4,
+      "projection": [
+        [
+          4,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 9
+    }
+  ]
+}

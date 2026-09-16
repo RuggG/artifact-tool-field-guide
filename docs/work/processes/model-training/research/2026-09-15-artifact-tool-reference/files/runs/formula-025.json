@@ -1,0 +1,37 @@
+{
+  "name": "fx.NORMINV",
+  "category": "compatibility",
+  "examples": [
+    {
+      "formula": "=NORMINV(A1, A1, A1)",
+      "value": 142.4213562373095,
+      "projection": [
+        [
+          142.4213562373095,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 10
+    }
+  ]
+}

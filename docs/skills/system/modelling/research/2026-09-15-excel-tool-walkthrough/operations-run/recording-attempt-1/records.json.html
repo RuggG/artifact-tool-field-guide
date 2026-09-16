@@ -1,0 +1,2368 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>records.json · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="records.json">Raw file</a> · <a data-public-raw download href="records.json">Download</a></p><article><h1>records.json</h1><pre class="public-code"><code>[
+  {
+    &quot;id&quot;: &quot;new-workbook&quot;,
+    &quot;operation&quot;: &quot;scratch = Workbook.create();\nsmall = scratch.worksheets.add(\&quot;Fee calculation\&quot;);\nreturn small;&quot;,
+    &quot;checkInput&quot;: {
+      &quot;before&quot;: &quot;&quot;,
+      &quot;after&quot;: &quot;return await names(scratch);&quot;
+    },
+    &quot;startedAt&quot;: &quot;2026-09-15T16:53:20.938Z&quot;,
+    &quot;libraryReturn&quot;: {
+      &quot;type&quot;: &quot;Worksheet object&quot;,
+      &quot;representation&quot;: &quot;Object contents are read separately in the agent checks.&quot;
+    },
+    &quot;elapsedMs&quot;: 4,
+    &quot;after&quot;: {
+      &quot;recordCount&quot;: 1,
+      &quot;truncated&quot;: false,
+      &quot;metadata&quot;: {
+        &quot;revision&quot;: &quot;w0vtp7&quot;,
+        &quot;target&quot;: {
+          &quot;id&quot;: &quot;wb/z5uvgc&quot;,
+          &quot;beforeLines&quot;: 0,
+          &quot;afterLines&quot;: 0
+        },
+        &quot;kind&quot;: {
+          &quot;requested&quot;: &quot;sheet&quot;,
+          &quot;tokens&quot;: [
+            &quot;sheet&quot;
+          ]
+        },
+        &quot;include&quot;: {
+          &quot;requested&quot;: &quot;id,name&quot;,
+          &quot;tokens&quot;: [
+            &quot;id&quot;,
+            &quot;name&quot;
+          ]
+        },
+        &quot;exclude&quot;: {
+          &quot;tokens&quot;: []
+        },
+        &quot;notices&quot;: []
+      }
+    }
+  },
+  {
+    &quot;id&quot;: &quot;new-formula&quot;,
+    &quot;operation&quot;: &quot;small.getRange(\&quot;B2:C5\&quot;).values = [[\&quot;Average AUM, USD bn\&quot;,100],[\&quot;Annual fee margin, bp\&quot;,50],[\&quot;Quarter fraction\&quot;,0.25],[\&quot;Fees, USD m\&quot;,null]];\nsmall.getRange(\&quot;C5\&quot;).formulas = [[\&quot;=C2*1000*C3/10000*C4\&quot;]];&quot;,
+    &quot;checkInput&quot;: {
+      &quot;before&quot;: &quot;&quot;,
+      &quot;after&quot;: &quot;return {cells:grid(small,\&quot;B2:C5\&quot;),independentExpected:100*1000*50/10000*0.25};&quot;
+    },
+    &quot;startedAt&quot;: &quot;2026-09-15T16:53:20.945Z&quot;,
+    &quot;libraryReturn&quot;: {
+      &quot;javascriptType&quot;: &quot;undefined&quot;
+    },
+    &quot;elapsedMs&quot;: 3,
+    &quot;after&quot;: {
+      &quot;cells&quot;: {
+        &quot;address&quot;: &quot;B2:C5&quot;,
+        &quot;values&quot;: [
+          [
+            &quot;Average AUM, USD bn&quot;,
+            100
+          ],
+          [
+            &quot;Annual fee margin, bp&quot;,
+            50
+          ],
+          [
+            &quot;Quarter fraction&quot;,
+            0.25
+          ],
+          [
+            &quot;Fees, USD m&quot;,
+            125
+          ]
+        ],
+        &quot;formulas&quot;: [
+          [
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;=C2*1000*C3/10000*C4&quot;
+          ]
+        ]
+      },
+      &quot;independentExpected&quot;: 125
+    }
+  },
+  {
+    &quot;id&quot;: &quot;new-recalculation&quot;,
+    &quot;operation&quot;: &quot;small.getRange(\&quot;C3\&quot;).values = [[60]];&quot;,
+    &quot;checkInput&quot;: {
+      &quot;before&quot;: &quot;return cell(small,\&quot;C5\&quot;);&quot;,
+      &quot;after&quot;: &quot;return {fees:cell(small,\&quot;C5\&quot;),independentExpected:100*1000*60/10000*0.25,explicitRecalculateCalled:false};&quot;
+    },
+    &quot;startedAt&quot;: &quot;2026-09-15T16:53:20.948Z&quot;,
+    &quot;before&quot;: {
+      &quot;address&quot;: &quot;C5&quot;,
+      &quot;value&quot;: 125,
+      &quot;formula&quot;: &quot;=C2*1000*C3/10000*C4&quot;
+    },
+    &quot;libraryReturn&quot;: {
+      &quot;javascriptType&quot;: &quot;undefined&quot;
+    },
+    &quot;elapsedMs&quot;: 0,
+    &quot;after&quot;: {
+      &quot;fees&quot;: {
+        &quot;address&quot;: &quot;C5&quot;,
+        &quot;value&quot;: 150,
+        &quot;formula&quot;: &quot;=C2*1000*C3/10000*C4&quot;
+      },
+      &quot;independentExpected&quot;: 150,
+      &quot;explicitRecalculateCalled&quot;: false
+    }
+  },
+  {
+    &quot;id&quot;: &quot;import-add-sheet&quot;,
+    &quot;operation&quot;: &quot;wb = await SpreadsheetFile.importXlsx(await FileBlob.load(source));\nlab = wb.worksheets.add(\&quot;Fee lab\&quot;);\nreturn lab;&quot;,
+    &quot;checkInput&quot;: {
+      &quot;before&quot;: &quot;&quot;,
+      &quot;after&quot;: &quot;return await names(wb);&quot;
+    },
+    &quot;startedAt&quot;: &quot;2026-09-15T16:53:20.949Z&quot;,
+    &quot;libraryReturn&quot;: {
+      &quot;type&quot;: &quot;Worksheet object&quot;,
+      &quot;representation&quot;: &quot;Object contents are read separately in the agent checks.&quot;
+    },
+    &quot;elapsedMs&quot;: 1565,
+    &quot;after&quot;: {
+      &quot;recordCount&quot;: 7,
+      &quot;truncated&quot;: false,
+      &quot;metadata&quot;: {
+        &quot;revision&quot;: &quot;eund71&quot;,
+        &quot;target&quot;: {
+          &quot;id&quot;: &quot;wb/c22l93&quot;,
+          &quot;beforeLines&quot;: 0,
+          &quot;afterLines&quot;: 0
+        },
+        &quot;kind&quot;: {
+          &quot;requested&quot;: &quot;sheet&quot;,
+          &quot;tokens&quot;: [
+            &quot;sheet&quot;
+          ]
+        },
+        &quot;include&quot;: {
+          &quot;requested&quot;: &quot;id,name&quot;,
+          &quot;tokens&quot;: [
+            &quot;id&quot;,
+            &quot;name&quot;
+          ]
+        },
+        &quot;exclude&quot;: {
+          &quot;tokens&quot;: []
+        },
+        &quot;notices&quot;: []
+      }
+    }
+  },
+  {
+    &quot;id&quot;: &quot;add-linked-build&quot;,
+    &quot;operation&quot;: &quot;lab.getRange(\&quot;B2\&quot;).values = [[\&quot;Man Group fee laboratory\&quot;]];\nlab.getRange(\&quot;B3\&quot;).values = [[\&quot;Illustrative extension for tool tests; not a forecast\&quot;]];\nlab.getRange(\&quot;B4:C5\&quot;).values = [[\&quot;Annual fee margin, bp\&quot;,56],[\&quot;Quarterly AUM growth\&quot;,0.02]];\nlab.getRange(\&quot;B8:F12\&quot;).values = [[\&quot;Period\&quot;,\&quot;Average AUM, USD bn\&quot;,\&quot;Fee margin, bp\&quot;,\&quot;Year fraction\&quot;,\&quot;Fees, USD m\&quot;],[\&quot;Quarter 1\&quot;,null,null,0.25,null],[\&quot;Quarter 2\&quot;,null,null,0.25,null],[\&quot;Quarter 3\&quot;,null,null,0.25,null],[\&quot;Quarter 4\&quot;,null,null,0.25,null]];\nlab.getRange(\&quot;C9\&quot;).formulas = [[\&quot;=&#x27;Fee engine&#x27;!W18\&quot;]];\nlab.getRange(\&quot;C10\&quot;).formulas = [[\&quot;=C9*(1+$C$5)\&quot;]];\nlab.getRange(\&quot;C10:C12\&quot;).fillDown();\nlab.getRange(\&quot;D9\&quot;).formulas = [[\&quot;=$C$4\&quot;]];\nlab.getRange(\&quot;D9:D12\&quot;).fillDown();\nlab.getRange(\&quot;F9\&quot;).formulas = [[\&quot;=C9*1000*D9/10000*E9\&quot;]];\nlab.getRange(\&quot;F9:F12\&quot;).fillDown();\nlab.getRange(\&quot;B15\&quot;).values = [[\&quot;Total fees, USD m\&quot;]];\nlab.getRange(\&quot;C15\&quot;).formulas = [[\&quot;=SUM(F9:F12)\&quot;]];&quot;,
+    &quot;checkInput&quot;: {
+      &quot;before&quot;: &quot;&quot;,
+      &quot;after&quot;: &quot;return {selectedReads:labRead(),sourceAum:cell(wb.worksheets.getItem(\&quot;Fee engine\&quot;),\&quot;W18\&quot;)};&quot;
+    },
+    &quot;startedAt&quot;: &quot;2026-09-15T16:53:22.522Z&quot;,
+    &quot;libraryReturn&quot;: {
+      &quot;javascriptType&quot;: &quot;undefined&quot;
+    },
+    &quot;elapsedMs&quot;: 14,
+    &quot;after&quot;: {
+      &quot;selectedReads&quot;: {
+        &quot;margin&quot;: {
+          &quot;address&quot;: &quot;C4&quot;,
+          &quot;value&quot;: 56,
+          &quot;formula&quot;: &quot;&quot;
+        },
+        &quot;growth&quot;: {
+          &quot;address&quot;: &quot;C5&quot;,
+          &quot;value&quot;: 0.02,
+          &quot;formula&quot;: &quot;&quot;
+        },
+        &quot;quarters&quot;: {
+          &quot;address&quot;: &quot;B9:F12&quot;,
+          &quot;values&quot;: [
+            [
+              &quot;Quarter 1&quot;,
+              290.5116868239257,
+              56,
+              0.25,
+              406.716361553496
+            ],
+            [
+              &quot;Quarter 2&quot;,
+              296.3219205604042,
+              56,
+              0.25,
+              414.8506887845659
+            ],
+            [
+              &quot;Quarter 3&quot;,
+              302.2483589716123,
+              56,
+              0.25,
+              423.1477025602572
+            ],
+            [
+              &quot;Quarter 4&quot;,
+              308.29332615104454,
+              56,
+              0.25,
+              431.61065661146233
+            ]
+          ],
+          &quot;formulas&quot;: [
+            [
+              &quot;&quot;,
+              &quot;=&#x27;Fee engine&#x27;!W18&quot;,
+              &quot;=$C$4&quot;,
+              &quot;&quot;,
+              &quot;=C9*1000*D9/10000*E9&quot;
+            ],
+            [
+              &quot;&quot;,
+              &quot;=C9*(1+$C$5)&quot;,
+              &quot;=$C$4&quot;,
+              &quot;&quot;,
+              &quot;=C10*1000*D10/10000*E10&quot;
+            ],
+            [
+              &quot;&quot;,
+              &quot;=C10*(1+$C$5)&quot;,
+              &quot;=$C$4&quot;,
+              &quot;&quot;,
+              &quot;=C11*1000*D11/10000*E11&quot;
+            ],
+            [
+              &quot;&quot;,
+              &quot;=C11*(1+$C$5)&quot;,
+              &quot;=$C$4&quot;,
+              &quot;&quot;,
+              &quot;=C12*1000*D12/10000*E12&quot;
+            ]
+          ]
+        },
+        &quot;annual&quot;: {
+          &quot;address&quot;: &quot;C15&quot;,
+          &quot;value&quot;: 1676.3254095097814,
+          &quot;formula&quot;: &quot;=SUM(F9:F12)&quot;
+        }
+      },
+      &quot;sourceAum&quot;: {
+        &quot;address&quot;: &quot;W18&quot;,
+        &quot;value&quot;: 290.5116868239257,
+        &quot;formula&quot;: &quot;&quot;
+      }
+    }
+  },
+  {
+    &quot;id&quot;: &quot;format-cells&quot;,
+    &quot;operation&quot;: &quot;lab.showGridLines = false;\nlab.getRange(\&quot;B2:P28\&quot;).format.font = {name:\&quot;Arial\&quot;,size:10,color:\&quot;#19364C\&quot;};\nlab.getRange(\&quot;B2\&quot;).format.font = {name:\&quot;Arial\&quot;,size:14,bold:true,color:\&quot;#19364C\&quot;};\nlab.getRange(\&quot;B3\&quot;).format.font.italic = true;\nlab.getRange(\&quot;B4:B5\&quot;).format.columnWidth = 29;\nlab.getRange(\&quot;C4:C5\&quot;).format.fill = \&quot;#FFF2CC\&quot;;\nlab.getRange(\&quot;C8:F28\&quot;).format.columnWidth = 19;\nlab.getRange(\&quot;C5\&quot;).setNumberFormat(\&quot;0.0%\&quot;);\nlab.getRange(\&quot;C9:C12\&quot;).setNumberFormat(\&quot;0.00\&quot;);\nlab.getRange(\&quot;D9:D12\&quot;).setNumberFormat(\&quot;0.0\&quot;);\nlab.getRange(\&quot;E9:E12\&quot;).setNumberFormat(\&quot;0.00\&quot;);\nlab.getRange(\&quot;F9:F12\&quot;).setNumberFormat(\&quot;#,##0.00\&quot;);\nlab.getRange(\&quot;C15\&quot;).setNumberFormat(\&quot;#,##0.00\&quot;);\nlab.getRange(\&quot;B8:F8\&quot;).format = {fill:\&quot;#19364C\&quot;,font:{name:\&quot;Arial\&quot;,size:10,bold:true,color:\&quot;#FFFFFF\&quot;},rowHeight:32,wrapText:true};\nlab.getRange(\&quot;B15:C15\&quot;).format.font.bold = true;\nlab.getRange(\&quot;B8:F12\&quot;).format.rowHeight = 26;&quot;,
+    &quot;checkInput&quot;: {
+      &quot;before&quot;: &quot;&quot;,
+      &quot;after&quot;: &quot;return {valuesUnaffected:labRead(),styles:await wb.inspect({kind:\&quot;computedStyle\&quot;,sheetId:\&quot;Fee lab\&quot;,range:\&quot;C4:C5\&quot;,maxChars:2500})};&quot;
+    },
+    &quot;startedAt&quot;: &quot;2026-09-15T16:53:22.540Z&quot;,
+    &quot;libraryReturn&quot;: {
+      &quot;javascriptType&quot;: &quot;undefined&quot;
+    },
+    &quot;elapsedMs&quot;: 7,
+    &quot;after&quot;: {
+      &quot;valuesUnaffected&quot;: {
+        &quot;margin&quot;: {
+          &quot;address&quot;: &quot;C4&quot;,
+          &quot;value&quot;: 56,
+          &quot;formula&quot;: &quot;&quot;
+        },
+        &quot;growth&quot;: {
+          &quot;address&quot;: &quot;C5&quot;,
+          &quot;value&quot;: 0.02,
+          &quot;formula&quot;: &quot;&quot;
+        },
+        &quot;quarters&quot;: {
+          &quot;address&quot;: &quot;B9:F12&quot;,
+          &quot;values&quot;: [
+            [
+              &quot;Quarter 1&quot;,
+              290.5116868239257,
+              56,
+              0.25,
+              406.716361553496
+            ],
+            [
+              &quot;Quarter 2&quot;,
+              296.3219205604042,
+              56,
+              0.25,
+              414.8506887845659
+            ],
+            [
+              &quot;Quarter 3&quot;,
+              302.2483589716123,
+              56,
+              0.25,
+              423.1477025602572
+            ],
+            [
+              &quot;Quarter 4&quot;,
+              308.29332615104454,
+              56,
+              0.25,
+              431.61065661146233
+            ]
+          ],
+          &quot;formulas&quot;: [
+            [
+              &quot;&quot;,
+              &quot;=&#x27;Fee engine&#x27;!W18&quot;,
+              &quot;=$C$4&quot;,
+              &quot;&quot;,
+              &quot;=C9*1000*D9/10000*E9&quot;
+            ],
+            [
+              &quot;&quot;,
+              &quot;=C9*(1+$C$5)&quot;,
+              &quot;=$C$4&quot;,
+              &quot;&quot;,
+              &quot;=C10*1000*D10/10000*E10&quot;
+            ],
+            [
+              &quot;&quot;,
+              &quot;=C10*(1+$C$5)&quot;,
+              &quot;=$C$4&quot;,
+              &quot;&quot;,
+              &quot;=C11*1000*D11/10000*E11&quot;
+            ],
+            [
+              &quot;&quot;,
+              &quot;=C11*(1+$C$5)&quot;,
+              &quot;=$C$4&quot;,
+              &quot;&quot;,
+              &quot;=C12*1000*D12/10000*E12&quot;
+            ]
+          ]
+        },
+        &quot;annual&quot;: {
+          &quot;address&quot;: &quot;C15&quot;,
+          &quot;value&quot;: 1676.3254095097814,
+          &quot;formula&quot;: &quot;=SUM(F9:F12)&quot;
+        }
+      },
+      &quot;styles&quot;: {
+        &quot;recordCount&quot;: 2,
+        &quot;truncated&quot;: false,
+        &quot;metadata&quot;: {
+          &quot;revision&quot;: &quot;oenjr8&quot;,
+          &quot;target&quot;: {
+            &quot;id&quot;: &quot;wb/wjxhl0&quot;,
+            &quot;beforeLines&quot;: 0,
+            &quot;afterLines&quot;: 0
+          },
+          &quot;kind&quot;: {
+            &quot;requested&quot;: &quot;computedStyle&quot;,
+            &quot;tokens&quot;: [
+              &quot;computedStyle&quot;
+            ]
+          },
+          &quot;include&quot;: {
+            &quot;tokens&quot;: []
+          },
+          &quot;exclude&quot;: {
+            &quot;tokens&quot;: []
+          },
+          &quot;notices&quot;: []
+        }
+      }
+    }
+  },
+  {
+    &quot;id&quot;: &quot;checkpoint-save&quot;,
+    &quot;operation&quot;: &quot;wb.recalculate();\nconst file = await SpreadsheetFile.exportXlsx(wb);\nreturn await file.save(out);&quot;,
+    &quot;checkInput&quot;: {
+      &quot;before&quot;: &quot;&quot;,
+      &quot;after&quot;: &quot;return {file:path.basename(out),sha256:await sha(out),savedMargin:cell((await SpreadsheetFile.importXlsx(await FileBlob.load(out))).worksheets.getItem(\&quot;Fee lab\&quot;),\&quot;C4\&quot;)};&quot;
+    },
+    &quot;startedAt&quot;: &quot;2026-09-15T16:53:22.548Z&quot;,
+    &quot;libraryReturn&quot;: {
+      &quot;javascriptType&quot;: &quot;undefined&quot;
+    },
+    &quot;elapsedMs&quot;: 412,
+    &quot;after&quot;: {
+      &quot;file&quot;: &quot;man-group-operations.xlsx&quot;,
+      &quot;sha256&quot;: &quot;5748df0b26564b31e20b8a0c66e46ab604775e042a17ed220ba27f8b56d5a8aa&quot;,
+      &quot;savedMargin&quot;: {
+        &quot;address&quot;: &quot;C4&quot;,
+        &quot;value&quot;: 56,
+        &quot;formula&quot;: &quot;&quot;
+      }
+    }
+  },
+  {
+    &quot;id&quot;: &quot;edit-without-saving&quot;,
+    &quot;operation&quot;: &quot;lab.getRange(\&quot;C4\&quot;).values = [[51]];&quot;,
+    &quot;checkInput&quot;: {
+      &quot;before&quot;: &quot;return {diskSha256:await sha(out),memory:labRead()};&quot;,
+      &quot;after&quot;: &quot;return {diskSha256:await sha(out),memory:labRead(),onDisk:cell((await SpreadsheetFile.importXlsx(await FileBlob.load(out))).worksheets.getItem(\&quot;Fee lab\&quot;),\&quot;C4\&quot;)};&quot;
+    },
+    &quot;startedAt&quot;: &quot;2026-09-15T16:53:23.392Z&quot;,
+    &quot;before&quot;: {
+      &quot;diskSha256&quot;: &quot;5748df0b26564b31e20b8a0c66e46ab604775e042a17ed220ba27f8b56d5a8aa&quot;,
+      &quot;memory&quot;: {
+        &quot;margin&quot;: {
+          &quot;address&quot;: &quot;C4&quot;,
+          &quot;value&quot;: 56,
+          &quot;formula&quot;: &quot;&quot;
+        },
+        &quot;growth&quot;: {
+          &quot;address&quot;: &quot;C5&quot;,
+          &quot;value&quot;: 0.02,
+          &quot;formula&quot;: &quot;&quot;
+        },
+        &quot;quarters&quot;: {
+          &quot;address&quot;: &quot;B9:F12&quot;,
+          &quot;values&quot;: [
+            [
+              &quot;Quarter 1&quot;,
+              290.5116868239257,
+              56,
+              0.25,
+              406.716361553496
+            ],
+            [
+              &quot;Quarter 2&quot;,
+              296.3219205604042,
+              56,
+              0.25,
+              414.8506887845659
+            ],
+            [
+              &quot;Quarter 3&quot;,
+              302.2483589716123,
+              56,
+              0.25,
+              423.1477025602572
+            ],
+            [
+              &quot;Quarter 4&quot;,
+              308.29332615104454,
+              56,
+              0.25,
+              431.61065661146233
+            ]
+          ],
+          &quot;formulas&quot;: [
+            [
+              &quot;&quot;,
+              &quot;=&#x27;Fee engine&#x27;!W18&quot;,
+              &quot;=$C$4&quot;,
+              &quot;&quot;,
+              &quot;=C9*1000*D9/10000*E9&quot;
+            ],
+            [
+              &quot;&quot;,
+              &quot;=C9*(1+$C$5)&quot;,
+              &quot;=$C$4&quot;,
+              &quot;&quot;,
+              &quot;=C10*1000*D10/10000*E10&quot;
+            ],
+            [
+              &quot;&quot;,
+              &quot;=C10*(1+$C$5)&quot;,
+              &quot;=$C$4&quot;,
+              &quot;&quot;,
+              &quot;=C11*1000*D11/10000*E11&quot;
+            ],
+            [
+              &quot;&quot;,
+              &quot;=C11*(1+$C$5)&quot;,
+              &quot;=$C$4&quot;,
+              &quot;&quot;,
+              &quot;=C12*1000*D12/10000*E12&quot;
+            ]
+          ]
+        },
+        &quot;annual&quot;: {
+          &quot;address&quot;: &quot;C15&quot;,
+          &quot;value&quot;: 1676.3254095097814,
+          &quot;formula&quot;: &quot;=SUM(F9:F12)&quot;
+        }
+      }
+    },
+    &quot;libraryReturn&quot;: {
+      &quot;javascriptType&quot;: &quot;undefined&quot;
+    },
+    &quot;elapsedMs&quot;: 0,
+    &quot;after&quot;: {
+      &quot;diskSha256&quot;: &quot;5748df0b26564b31e20b8a0c66e46ab604775e042a17ed220ba27f8b56d5a8aa&quot;,
+      &quot;memory&quot;: {
+        &quot;margin&quot;: {
+          &quot;address&quot;: &quot;C4&quot;,
+          &quot;value&quot;: 51,
+          &quot;formula&quot;: &quot;&quot;
+        },
+        &quot;growth&quot;: {
+          &quot;address&quot;: &quot;C5&quot;,
+          &quot;value&quot;: 0.02,
+          &quot;formula&quot;: &quot;&quot;
+        },
+        &quot;quarters&quot;: {
+          &quot;address&quot;: &quot;B9:F12&quot;,
+          &quot;values&quot;: [
+            [
+              &quot;Quarter 1&quot;,
+              290.5116868239257,
+              51,
+              0.25,
+              370.40240070050527
+            ],
+            [
+              &quot;Quarter 2&quot;,
+              296.3219205604042,
+              51,
+              0.25,
+              377.81044871451536
+            ],
+            [
+              &quot;Quarter 3&quot;,
+              302.2483589716123,
+              51,
+              0.25,
+              385.3666576888057
+            ],
+            [
+              &quot;Quarter 4&quot;,
+              308.29332615104454,
+              51,
+              0.25,
+              393.0739908425818
+            ]
+          ],
+          &quot;formulas&quot;: [
+            [
+              &quot;&quot;,
+              &quot;=&#x27;Fee engine&#x27;!W18&quot;,
+              &quot;=$C$4&quot;,
+              &quot;&quot;,
+              &quot;=C9*1000*D9/10000*E9&quot;
+            ],
+            [
+              &quot;&quot;,
+              &quot;=C9*(1+$C$5)&quot;,
+              &quot;=$C$4&quot;,
+              &quot;&quot;,
+              &quot;=C10*1000*D10/10000*E10&quot;
+            ],
+            [
+              &quot;&quot;,
+              &quot;=C10*(1+$C$5)&quot;,
+              &quot;=$C$4&quot;,
+              &quot;&quot;,
+              &quot;=C11*1000*D11/10000*E11&quot;
+            ],
+            [
+              &quot;&quot;,
+              &quot;=C11*(1+$C$5)&quot;,
+              &quot;=$C$4&quot;,
+              &quot;&quot;,
+              &quot;=C12*1000*D12/10000*E12&quot;
+            ]
+          ]
+        },
+        &quot;annual&quot;: {
+          &quot;address&quot;: &quot;C15&quot;,
+          &quot;value&quot;: 1526.6534979464082,
+          &quot;formula&quot;: &quot;=SUM(F9:F12)&quot;
+        }
+      },
+      &quot;onDisk&quot;: {
+        &quot;address&quot;: &quot;C4&quot;,
+        &quot;value&quot;: 56,
+        &quot;formula&quot;: &quot;&quot;
+      }
+    }
+  },
+  {
+    &quot;id&quot;: &quot;clear-formulas&quot;,
+    &quot;operation&quot;: &quot;return lab.getRange(\&quot;F9:F12\&quot;).clear({applyTo:\&quot;contents\&quot;});&quot;,
+    &quot;checkInput&quot;: {
+      &quot;before&quot;: &quot;return labRead();&quot;,
+      &quot;after&quot;: &quot;return {selectedReads:labRead(),formatStillPresent:await wb.inspect({kind:\&quot;computedStyle\&quot;,sheetId:\&quot;Fee lab\&quot;,range:\&quot;F9\&quot;,maxChars:1800})};&quot;
+    },
+    &quot;startedAt&quot;: &quot;2026-09-15T16:53:23.764Z&quot;,
+    &quot;before&quot;: {
+      &quot;margin&quot;: {
+        &quot;address&quot;: &quot;C4&quot;,
+        &quot;value&quot;: 51,
+        &quot;formula&quot;: &quot;&quot;
+      },
+      &quot;growth&quot;: {
+        &quot;address&quot;: &quot;C5&quot;,
+        &quot;value&quot;: 0.02,
+        &quot;formula&quot;: &quot;&quot;
+      },
+      &quot;quarters&quot;: {
+        &quot;address&quot;: &quot;B9:F12&quot;,
+        &quot;values&quot;: [
+          [
+            &quot;Quarter 1&quot;,
+            290.5116868239257,
+            51,
+            0.25,
+            370.40240070050527
+          ],
+          [
+            &quot;Quarter 2&quot;,
+            296.3219205604042,
+            51,
+            0.25,
+            377.81044871451536
+          ],
+          [
+            &quot;Quarter 3&quot;,
+            302.2483589716123,
+            51,
+            0.25,
+            385.3666576888057
+          ],
+          [
+            &quot;Quarter 4&quot;,
+            308.29332615104454,
+            51,
+            0.25,
+            393.0739908425818
+          ]
+        ],
+        &quot;formulas&quot;: [
+          [
+            &quot;&quot;,
+            &quot;=&#x27;Fee engine&#x27;!W18&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;=C9*1000*D9/10000*E9&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;=C9*(1+$C$5)&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;=C10*1000*D10/10000*E10&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;=C10*(1+$C$5)&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;=C11*1000*D11/10000*E11&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;=C11*(1+$C$5)&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;=C12*1000*D12/10000*E12&quot;
+          ]
+        ]
+      },
+      &quot;annual&quot;: {
+        &quot;address&quot;: &quot;C15&quot;,
+        &quot;value&quot;: 1526.6534979464082,
+        &quot;formula&quot;: &quot;=SUM(F9:F12)&quot;
+      }
+    },
+    &quot;libraryReturn&quot;: {
+      &quot;javascriptType&quot;: &quot;undefined&quot;
+    },
+    &quot;elapsedMs&quot;: 0,
+    &quot;after&quot;: {
+      &quot;selectedReads&quot;: {
+        &quot;margin&quot;: {
+          &quot;address&quot;: &quot;C4&quot;,
+          &quot;value&quot;: 51,
+          &quot;formula&quot;: &quot;&quot;
+        },
+        &quot;growth&quot;: {
+          &quot;address&quot;: &quot;C5&quot;,
+          &quot;value&quot;: 0.02,
+          &quot;formula&quot;: &quot;&quot;
+        },
+        &quot;quarters&quot;: {
+          &quot;address&quot;: &quot;B9:F12&quot;,
+          &quot;values&quot;: [
+            [
+              &quot;Quarter 1&quot;,
+              290.5116868239257,
+              51,
+              0.25,
+              null
+            ],
+            [
+              &quot;Quarter 2&quot;,
+              296.3219205604042,
+              51,
+              0.25,
+              null
+            ],
+            [
+              &quot;Quarter 3&quot;,
+              302.2483589716123,
+              51,
+              0.25,
+              null
+            ],
+            [
+              &quot;Quarter 4&quot;,
+              308.29332615104454,
+              51,
+              0.25,
+              null
+            ]
+          ],
+          &quot;formulas&quot;: [
+            [
+              &quot;&quot;,
+              &quot;=&#x27;Fee engine&#x27;!W18&quot;,
+              &quot;=$C$4&quot;,
+              &quot;&quot;,
+              &quot;&quot;
+            ],
+            [
+              &quot;&quot;,
+              &quot;=C9*(1+$C$5)&quot;,
+              &quot;=$C$4&quot;,
+              &quot;&quot;,
+              &quot;&quot;
+            ],
+            [
+              &quot;&quot;,
+              &quot;=C10*(1+$C$5)&quot;,
+              &quot;=$C$4&quot;,
+              &quot;&quot;,
+              &quot;&quot;
+            ],
+            [
+              &quot;&quot;,
+              &quot;=C11*(1+$C$5)&quot;,
+              &quot;=$C$4&quot;,
+              &quot;&quot;,
+              &quot;&quot;
+            ]
+          ]
+        },
+        &quot;annual&quot;: {
+          &quot;address&quot;: &quot;C15&quot;,
+          &quot;value&quot;: 0,
+          &quot;formula&quot;: &quot;=SUM(F9:F12)&quot;
+        }
+      },
+      &quot;formatStillPresent&quot;: {
+        &quot;recordCount&quot;: 1,
+        &quot;truncated&quot;: false,
+        &quot;metadata&quot;: {
+          &quot;revision&quot;: &quot;pirpmr&quot;,
+          &quot;target&quot;: {
+            &quot;id&quot;: &quot;wb/a9mo21&quot;,
+            &quot;beforeLines&quot;: 0,
+            &quot;afterLines&quot;: 0
+          },
+          &quot;kind&quot;: {
+            &quot;requested&quot;: &quot;computedStyle&quot;,
+            &quot;tokens&quot;: [
+              &quot;computedStyle&quot;
+            ]
+          },
+          &quot;include&quot;: {
+            &quot;tokens&quot;: []
+          },
+          &quot;exclude&quot;: {
+            &quot;tokens&quot;: []
+          },
+          &quot;notices&quot;: []
+        }
+      }
+    }
+  },
+  {
+    &quot;id&quot;: &quot;rebuild-formulas&quot;,
+    &quot;operation&quot;: &quot;lab.getRange(\&quot;F9\&quot;).formulas = [[\&quot;=C9*1000*D9/10000*E9\&quot;]];\nreturn lab.getRange(\&quot;F9:F12\&quot;).fillDown();&quot;,
+    &quot;checkInput&quot;: {
+      &quot;before&quot;: &quot;return labRead();&quot;,
+      &quot;after&quot;: &quot;return labRead();&quot;
+    },
+    &quot;startedAt&quot;: &quot;2026-09-15T16:53:23.766Z&quot;,
+    &quot;before&quot;: {
+      &quot;margin&quot;: {
+        &quot;address&quot;: &quot;C4&quot;,
+        &quot;value&quot;: 51,
+        &quot;formula&quot;: &quot;&quot;
+      },
+      &quot;growth&quot;: {
+        &quot;address&quot;: &quot;C5&quot;,
+        &quot;value&quot;: 0.02,
+        &quot;formula&quot;: &quot;&quot;
+      },
+      &quot;quarters&quot;: {
+        &quot;address&quot;: &quot;B9:F12&quot;,
+        &quot;values&quot;: [
+          [
+            &quot;Quarter 1&quot;,
+            290.5116868239257,
+            51,
+            0.25,
+            null
+          ],
+          [
+            &quot;Quarter 2&quot;,
+            296.3219205604042,
+            51,
+            0.25,
+            null
+          ],
+          [
+            &quot;Quarter 3&quot;,
+            302.2483589716123,
+            51,
+            0.25,
+            null
+          ],
+          [
+            &quot;Quarter 4&quot;,
+            308.29332615104454,
+            51,
+            0.25,
+            null
+          ]
+        ],
+        &quot;formulas&quot;: [
+          [
+            &quot;&quot;,
+            &quot;=&#x27;Fee engine&#x27;!W18&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;=C9*(1+$C$5)&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;=C10*(1+$C$5)&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;=C11*(1+$C$5)&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ]
+        ]
+      },
+      &quot;annual&quot;: {
+        &quot;address&quot;: &quot;C15&quot;,
+        &quot;value&quot;: 0,
+        &quot;formula&quot;: &quot;=SUM(F9:F12)&quot;
+      }
+    },
+    &quot;libraryReturn&quot;: {
+      &quot;javascriptType&quot;: &quot;undefined&quot;
+    },
+    &quot;elapsedMs&quot;: 0,
+    &quot;after&quot;: {
+      &quot;margin&quot;: {
+        &quot;address&quot;: &quot;C4&quot;,
+        &quot;value&quot;: 51,
+        &quot;formula&quot;: &quot;&quot;
+      },
+      &quot;growth&quot;: {
+        &quot;address&quot;: &quot;C5&quot;,
+        &quot;value&quot;: 0.02,
+        &quot;formula&quot;: &quot;&quot;
+      },
+      &quot;quarters&quot;: {
+        &quot;address&quot;: &quot;B9:F12&quot;,
+        &quot;values&quot;: [
+          [
+            &quot;Quarter 1&quot;,
+            290.5116868239257,
+            51,
+            0.25,
+            370.40240070050527
+          ],
+          [
+            &quot;Quarter 2&quot;,
+            296.3219205604042,
+            51,
+            0.25,
+            377.81044871451536
+          ],
+          [
+            &quot;Quarter 3&quot;,
+            302.2483589716123,
+            51,
+            0.25,
+            385.3666576888057
+          ],
+          [
+            &quot;Quarter 4&quot;,
+            308.29332615104454,
+            51,
+            0.25,
+            393.0739908425818
+          ]
+        ],
+        &quot;formulas&quot;: [
+          [
+            &quot;&quot;,
+            &quot;=&#x27;Fee engine&#x27;!W18&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;=C9*1000*D9/10000*E9&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;=C9*(1+$C$5)&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;=C10*1000*D10/10000*E10&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;=C10*(1+$C$5)&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;=C11*1000*D11/10000*E11&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;=C11*(1+$C$5)&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;=C12*1000*D12/10000*E12&quot;
+          ]
+        ]
+      },
+      &quot;annual&quot;: {
+        &quot;address&quot;: &quot;C15&quot;,
+        &quot;value&quot;: 1526.6534979464082,
+        &quot;formula&quot;: &quot;=SUM(F9:F12)&quot;
+      }
+    }
+  },
+  {
+    &quot;id&quot;: &quot;blank-input&quot;,
+    &quot;operation&quot;: &quot;return lab.getRange(\&quot;C4\&quot;).clear({applyTo:\&quot;contents\&quot;});&quot;,
+    &quot;checkInput&quot;: {
+      &quot;before&quot;: &quot;return labRead();&quot;,
+      &quot;after&quot;: &quot;return labRead();&quot;
+    },
+    &quot;startedAt&quot;: &quot;2026-09-15T16:53:23.766Z&quot;,
+    &quot;before&quot;: {
+      &quot;margin&quot;: {
+        &quot;address&quot;: &quot;C4&quot;,
+        &quot;value&quot;: 51,
+        &quot;formula&quot;: &quot;&quot;
+      },
+      &quot;growth&quot;: {
+        &quot;address&quot;: &quot;C5&quot;,
+        &quot;value&quot;: 0.02,
+        &quot;formula&quot;: &quot;&quot;
+      },
+      &quot;quarters&quot;: {
+        &quot;address&quot;: &quot;B9:F12&quot;,
+        &quot;values&quot;: [
+          [
+            &quot;Quarter 1&quot;,
+            290.5116868239257,
+            51,
+            0.25,
+            370.40240070050527
+          ],
+          [
+            &quot;Quarter 2&quot;,
+            296.3219205604042,
+            51,
+            0.25,
+            377.81044871451536
+          ],
+          [
+            &quot;Quarter 3&quot;,
+            302.2483589716123,
+            51,
+            0.25,
+            385.3666576888057
+          ],
+          [
+            &quot;Quarter 4&quot;,
+            308.29332615104454,
+            51,
+            0.25,
+            393.0739908425818
+          ]
+        ],
+        &quot;formulas&quot;: [
+          [
+            &quot;&quot;,
+            &quot;=&#x27;Fee engine&#x27;!W18&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;=C9*1000*D9/10000*E9&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;=C9*(1+$C$5)&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;=C10*1000*D10/10000*E10&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;=C10*(1+$C$5)&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;=C11*1000*D11/10000*E11&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;=C11*(1+$C$5)&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;=C12*1000*D12/10000*E12&quot;
+          ]
+        ]
+      },
+      &quot;annual&quot;: {
+        &quot;address&quot;: &quot;C15&quot;,
+        &quot;value&quot;: 1526.6534979464082,
+        &quot;formula&quot;: &quot;=SUM(F9:F12)&quot;
+      }
+    },
+    &quot;libraryReturn&quot;: {
+      &quot;javascriptType&quot;: &quot;undefined&quot;
+    },
+    &quot;elapsedMs&quot;: 0,
+    &quot;after&quot;: {
+      &quot;margin&quot;: {
+        &quot;address&quot;: &quot;C4&quot;,
+        &quot;value&quot;: null,
+        &quot;formula&quot;: &quot;&quot;
+      },
+      &quot;growth&quot;: {
+        &quot;address&quot;: &quot;C5&quot;,
+        &quot;value&quot;: 0.02,
+        &quot;formula&quot;: &quot;&quot;
+      },
+      &quot;quarters&quot;: {
+        &quot;address&quot;: &quot;B9:F12&quot;,
+        &quot;values&quot;: [
+          [
+            &quot;Quarter 1&quot;,
+            290.5116868239257,
+            0,
+            0.25,
+            0
+          ],
+          [
+            &quot;Quarter 2&quot;,
+            296.3219205604042,
+            0,
+            0.25,
+            0
+          ],
+          [
+            &quot;Quarter 3&quot;,
+            302.2483589716123,
+            0,
+            0.25,
+            0
+          ],
+          [
+            &quot;Quarter 4&quot;,
+            308.29332615104454,
+            0,
+            0.25,
+            0
+          ]
+        ],
+        &quot;formulas&quot;: [
+          [
+            &quot;&quot;,
+            &quot;=&#x27;Fee engine&#x27;!W18&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;=C9*1000*D9/10000*E9&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;=C9*(1+$C$5)&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;=C10*1000*D10/10000*E10&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;=C10*(1+$C$5)&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;=C11*1000*D11/10000*E11&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;=C11*(1+$C$5)&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;=C12*1000*D12/10000*E12&quot;
+          ]
+        ]
+      },
+      &quot;annual&quot;: {
+        &quot;address&quot;: &quot;C15&quot;,
+        &quot;value&quot;: 0,
+        &quot;formula&quot;: &quot;=SUM(F9:F12)&quot;
+      }
+    }
+  },
+  {
+    &quot;id&quot;: &quot;guard-missing-input&quot;,
+    &quot;operation&quot;: &quot;lab.getRange(\&quot;F9\&quot;).formulas = [[\&quot;=IF(ISBLANK($C$4),NA(),C9*1000*D9/10000*E9)\&quot;]];\nlab.getRange(\&quot;F9:F12\&quot;).fillDown();&quot;,
+    &quot;checkInput&quot;: {
+      &quot;before&quot;: &quot;return labRead();&quot;,
+      &quot;after&quot;: &quot;return {selectedReads:labRead(),errorScan:await wb.inspect({kind:\&quot;match\&quot;,sheetId:\&quot;Fee lab\&quot;,range:\&quot;B4:F15\&quot;,searchTerm:\&quot;#N/A\&quot;,maxChars:2500,options:{maxResults:12}})};&quot;
+    },
+    &quot;startedAt&quot;: &quot;2026-09-15T16:53:23.767Z&quot;,
+    &quot;before&quot;: {
+      &quot;margin&quot;: {
+        &quot;address&quot;: &quot;C4&quot;,
+        &quot;value&quot;: null,
+        &quot;formula&quot;: &quot;&quot;
+      },
+      &quot;growth&quot;: {
+        &quot;address&quot;: &quot;C5&quot;,
+        &quot;value&quot;: 0.02,
+        &quot;formula&quot;: &quot;&quot;
+      },
+      &quot;quarters&quot;: {
+        &quot;address&quot;: &quot;B9:F12&quot;,
+        &quot;values&quot;: [
+          [
+            &quot;Quarter 1&quot;,
+            290.5116868239257,
+            0,
+            0.25,
+            0
+          ],
+          [
+            &quot;Quarter 2&quot;,
+            296.3219205604042,
+            0,
+            0.25,
+            0
+          ],
+          [
+            &quot;Quarter 3&quot;,
+            302.2483589716123,
+            0,
+            0.25,
+            0
+          ],
+          [
+            &quot;Quarter 4&quot;,
+            308.29332615104454,
+            0,
+            0.25,
+            0
+          ]
+        ],
+        &quot;formulas&quot;: [
+          [
+            &quot;&quot;,
+            &quot;=&#x27;Fee engine&#x27;!W18&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;=C9*1000*D9/10000*E9&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;=C9*(1+$C$5)&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;=C10*1000*D10/10000*E10&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;=C10*(1+$C$5)&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;=C11*1000*D11/10000*E11&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;=C11*(1+$C$5)&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;=C12*1000*D12/10000*E12&quot;
+          ]
+        ]
+      },
+      &quot;annual&quot;: {
+        &quot;address&quot;: &quot;C15&quot;,
+        &quot;value&quot;: 0,
+        &quot;formula&quot;: &quot;=SUM(F9:F12)&quot;
+      }
+    },
+    &quot;libraryReturn&quot;: {
+      &quot;javascriptType&quot;: &quot;undefined&quot;
+    },
+    &quot;elapsedMs&quot;: 0,
+    &quot;after&quot;: {
+      &quot;selectedReads&quot;: {
+        &quot;margin&quot;: {
+          &quot;address&quot;: &quot;C4&quot;,
+          &quot;value&quot;: null,
+          &quot;formula&quot;: &quot;&quot;
+        },
+        &quot;growth&quot;: {
+          &quot;address&quot;: &quot;C5&quot;,
+          &quot;value&quot;: 0.02,
+          &quot;formula&quot;: &quot;&quot;
+        },
+        &quot;quarters&quot;: {
+          &quot;address&quot;: &quot;B9:F12&quot;,
+          &quot;values&quot;: [
+            [
+              &quot;Quarter 1&quot;,
+              290.5116868239257,
+              0,
+              0.25,
+              &quot;#N/A&quot;
+            ],
+            [
+              &quot;Quarter 2&quot;,
+              296.3219205604042,
+              0,
+              0.25,
+              &quot;#N/A&quot;
+            ],
+            [
+              &quot;Quarter 3&quot;,
+              302.2483589716123,
+              0,
+              0.25,
+              &quot;#N/A&quot;
+            ],
+            [
+              &quot;Quarter 4&quot;,
+              308.29332615104454,
+              0,
+              0.25,
+              &quot;#N/A&quot;
+            ]
+          ],
+          &quot;formulas&quot;: [
+            [
+              &quot;&quot;,
+              &quot;=&#x27;Fee engine&#x27;!W18&quot;,
+              &quot;=$C$4&quot;,
+              &quot;&quot;,
+              &quot;=IF(ISBLANK($C$4),NA(),C9*1000*D9/10000*E9)&quot;
+            ],
+            [
+              &quot;&quot;,
+              &quot;=C9*(1+$C$5)&quot;,
+              &quot;=$C$4&quot;,
+              &quot;&quot;,
+              &quot;=IF(ISBLANK($C$4),NA(),C10*1000*D10/10000*E10)&quot;
+            ],
+            [
+              &quot;&quot;,
+              &quot;=C10*(1+$C$5)&quot;,
+              &quot;=$C$4&quot;,
+              &quot;&quot;,
+              &quot;=IF(ISBLANK($C$4),NA(),C11*1000*D11/10000*E11)&quot;
+            ],
+            [
+              &quot;&quot;,
+              &quot;=C11*(1+$C$5)&quot;,
+              &quot;=$C$4&quot;,
+              &quot;&quot;,
+              &quot;=IF(ISBLANK($C$4),NA(),C12*1000*D12/10000*E12)&quot;
+            ]
+          ]
+        },
+        &quot;annual&quot;: {
+          &quot;address&quot;: &quot;C15&quot;,
+          &quot;value&quot;: &quot;#N/A&quot;,
+          &quot;formula&quot;: &quot;=SUM(F9:F12)&quot;
+        }
+      },
+      &quot;errorScan&quot;: {
+        &quot;recordCount&quot;: 5,
+        &quot;truncated&quot;: false,
+        &quot;metadata&quot;: {
+          &quot;revision&quot;: &quot;dy4jdn&quot;,
+          &quot;target&quot;: {
+            &quot;id&quot;: &quot;wb/g9tt39&quot;,
+            &quot;beforeLines&quot;: 0,
+            &quot;afterLines&quot;: 0
+          },
+          &quot;kind&quot;: {
+            &quot;requested&quot;: &quot;match&quot;,
+            &quot;tokens&quot;: [
+              &quot;match&quot;
+            ]
+          },
+          &quot;include&quot;: {
+            &quot;tokens&quot;: []
+          },
+          &quot;exclude&quot;: {
+            &quot;tokens&quot;: []
+          },
+          &quot;notices&quot;: []
+        }
+      }
+    }
+  },
+  {
+    &quot;id&quot;: &quot;zero-input&quot;,
+    &quot;operation&quot;: &quot;lab.getRange(\&quot;C4\&quot;).values = [[0]];&quot;,
+    &quot;checkInput&quot;: {
+      &quot;before&quot;: &quot;return labRead();&quot;,
+      &quot;after&quot;: &quot;return labRead();&quot;
+    },
+    &quot;startedAt&quot;: &quot;2026-09-15T16:53:23.768Z&quot;,
+    &quot;before&quot;: {
+      &quot;margin&quot;: {
+        &quot;address&quot;: &quot;C4&quot;,
+        &quot;value&quot;: null,
+        &quot;formula&quot;: &quot;&quot;
+      },
+      &quot;growth&quot;: {
+        &quot;address&quot;: &quot;C5&quot;,
+        &quot;value&quot;: 0.02,
+        &quot;formula&quot;: &quot;&quot;
+      },
+      &quot;quarters&quot;: {
+        &quot;address&quot;: &quot;B9:F12&quot;,
+        &quot;values&quot;: [
+          [
+            &quot;Quarter 1&quot;,
+            290.5116868239257,
+            0,
+            0.25,
+            &quot;#N/A&quot;
+          ],
+          [
+            &quot;Quarter 2&quot;,
+            296.3219205604042,
+            0,
+            0.25,
+            &quot;#N/A&quot;
+          ],
+          [
+            &quot;Quarter 3&quot;,
+            302.2483589716123,
+            0,
+            0.25,
+            &quot;#N/A&quot;
+          ],
+          [
+            &quot;Quarter 4&quot;,
+            308.29332615104454,
+            0,
+            0.25,
+            &quot;#N/A&quot;
+          ]
+        ],
+        &quot;formulas&quot;: [
+          [
+            &quot;&quot;,
+            &quot;=&#x27;Fee engine&#x27;!W18&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;=IF(ISBLANK($C$4),NA(),C9*1000*D9/10000*E9)&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;=C9*(1+$C$5)&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;=IF(ISBLANK($C$4),NA(),C10*1000*D10/10000*E10)&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;=C10*(1+$C$5)&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;=IF(ISBLANK($C$4),NA(),C11*1000*D11/10000*E11)&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;=C11*(1+$C$5)&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;=IF(ISBLANK($C$4),NA(),C12*1000*D12/10000*E12)&quot;
+          ]
+        ]
+      },
+      &quot;annual&quot;: {
+        &quot;address&quot;: &quot;C15&quot;,
+        &quot;value&quot;: &quot;#N/A&quot;,
+        &quot;formula&quot;: &quot;=SUM(F9:F12)&quot;
+      }
+    },
+    &quot;libraryReturn&quot;: {
+      &quot;javascriptType&quot;: &quot;undefined&quot;
+    },
+    &quot;elapsedMs&quot;: 0,
+    &quot;after&quot;: {
+      &quot;margin&quot;: {
+        &quot;address&quot;: &quot;C4&quot;,
+        &quot;value&quot;: 0,
+        &quot;formula&quot;: &quot;&quot;
+      },
+      &quot;growth&quot;: {
+        &quot;address&quot;: &quot;C5&quot;,
+        &quot;value&quot;: 0.02,
+        &quot;formula&quot;: &quot;&quot;
+      },
+      &quot;quarters&quot;: {
+        &quot;address&quot;: &quot;B9:F12&quot;,
+        &quot;values&quot;: [
+          [
+            &quot;Quarter 1&quot;,
+            290.5116868239257,
+            0,
+            0.25,
+            0
+          ],
+          [
+            &quot;Quarter 2&quot;,
+            296.3219205604042,
+            0,
+            0.25,
+            0
+          ],
+          [
+            &quot;Quarter 3&quot;,
+            302.2483589716123,
+            0,
+            0.25,
+            0
+          ],
+          [
+            &quot;Quarter 4&quot;,
+            308.29332615104454,
+            0,
+            0.25,
+            0
+          ]
+        ],
+        &quot;formulas&quot;: [
+          [
+            &quot;&quot;,
+            &quot;=&#x27;Fee engine&#x27;!W18&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;=IF(ISBLANK($C$4),NA(),C9*1000*D9/10000*E9)&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;=C9*(1+$C$5)&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;=IF(ISBLANK($C$4),NA(),C10*1000*D10/10000*E10)&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;=C10*(1+$C$5)&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;=IF(ISBLANK($C$4),NA(),C11*1000*D11/10000*E11)&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;=C11*(1+$C$5)&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;=IF(ISBLANK($C$4),NA(),C12*1000*D12/10000*E12)&quot;
+          ]
+        ]
+      },
+      &quot;annual&quot;: {
+        &quot;address&quot;: &quot;C15&quot;,
+        &quot;value&quot;: 0,
+        &quot;formula&quot;: &quot;=SUM(F9:F12)&quot;
+      }
+    }
+  },
+  {
+    &quot;id&quot;: &quot;restore-valid-input&quot;,
+    &quot;operation&quot;: &quot;lab.getRange(\&quot;C4\&quot;).values = [[51]];&quot;,
+    &quot;checkInput&quot;: {
+      &quot;before&quot;: &quot;&quot;,
+      &quot;after&quot;: &quot;return labRead();&quot;
+    },
+    &quot;startedAt&quot;: &quot;2026-09-15T16:53:23.768Z&quot;,
+    &quot;libraryReturn&quot;: {
+      &quot;javascriptType&quot;: &quot;undefined&quot;
+    },
+    &quot;elapsedMs&quot;: 0,
+    &quot;after&quot;: {
+      &quot;margin&quot;: {
+        &quot;address&quot;: &quot;C4&quot;,
+        &quot;value&quot;: 51,
+        &quot;formula&quot;: &quot;&quot;
+      },
+      &quot;growth&quot;: {
+        &quot;address&quot;: &quot;C5&quot;,
+        &quot;value&quot;: 0.02,
+        &quot;formula&quot;: &quot;&quot;
+      },
+      &quot;quarters&quot;: {
+        &quot;address&quot;: &quot;B9:F12&quot;,
+        &quot;values&quot;: [
+          [
+            &quot;Quarter 1&quot;,
+            290.5116868239257,
+            51,
+            0.25,
+            370.40240070050527
+          ],
+          [
+            &quot;Quarter 2&quot;,
+            296.3219205604042,
+            51,
+            0.25,
+            377.81044871451536
+          ],
+          [
+            &quot;Quarter 3&quot;,
+            302.2483589716123,
+            51,
+            0.25,
+            385.3666576888057
+          ],
+          [
+            &quot;Quarter 4&quot;,
+            308.29332615104454,
+            51,
+            0.25,
+            393.0739908425818
+          ]
+        ],
+        &quot;formulas&quot;: [
+          [
+            &quot;&quot;,
+            &quot;=&#x27;Fee engine&#x27;!W18&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;=IF(ISBLANK($C$4),NA(),C9*1000*D9/10000*E9)&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;=C9*(1+$C$5)&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;=IF(ISBLANK($C$4),NA(),C10*1000*D10/10000*E10)&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;=C10*(1+$C$5)&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;=IF(ISBLANK($C$4),NA(),C11*1000*D11/10000*E11)&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;=C11*(1+$C$5)&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;=IF(ISBLANK($C$4),NA(),C12*1000*D12/10000*E12)&quot;
+          ]
+        ]
+      },
+      &quot;annual&quot;: {
+        &quot;address&quot;: &quot;C15&quot;,
+        &quot;value&quot;: 1526.6534979464082,
+        &quot;formula&quot;: &quot;=SUM(F9:F12)&quot;
+      }
+    }
+  },
+  {
+    &quot;id&quot;: &quot;add-table&quot;,
+    &quot;operation&quot;: &quot;lab.getRange(\&quot;B20:D23\&quot;).values = [[\&quot;Scenario\&quot;,\&quot;Fee margin, bp\&quot;,\&quot;AUM multiplier\&quot;],[\&quot;Base\&quot;,56,1],[\&quot;Downside\&quot;,51,0.9],[\&quot;Upside\&quot;,60,1.1]];\ntableObject = lab.tables.add(\&quot;B20:D23\&quot;,true,\&quot;FeeScenarioInputs\&quot;);\nreturn tableObject;&quot;,
+    &quot;checkInput&quot;: {
+      &quot;before&quot;: &quot;&quot;,
+      &quot;after&quot;: &quot;return {tables:lab.tables.items.map(t=&gt;({name:t.name,headers:t.getHeaderRowRange().values,rows:t.getDataRows().values})),values:grid(lab,\&quot;B20:D23\&quot;)};&quot;
+    },
+    &quot;startedAt&quot;: &quot;2026-09-15T16:53:23.771Z&quot;,
+    &quot;libraryReturn&quot;: {
+      &quot;type&quot;: &quot;Excel Table object&quot;,
+      &quot;representation&quot;: &quot;Object contents are read separately in the agent checks.&quot;
+    },
+    &quot;elapsedMs&quot;: 0,
+    &quot;after&quot;: {
+      &quot;tables&quot;: [
+        {
+          &quot;name&quot;: &quot;FeeScenarioInputs&quot;,
+          &quot;headers&quot;: [
+            [
+              &quot;Scenario&quot;,
+              &quot;Fee margin, bp&quot;,
+              &quot;AUM multiplier&quot;
+            ]
+          ]
+        }
+      ],
+      &quot;values&quot;: {
+        &quot;address&quot;: &quot;B20:D23&quot;,
+        &quot;values&quot;: [
+          [
+            &quot;Scenario&quot;,
+            &quot;Fee margin, bp&quot;,
+            &quot;AUM multiplier&quot;
+          ],
+          [
+            &quot;Base&quot;,
+            56,
+            1
+          ],
+          [
+            &quot;Downside&quot;,
+            51,
+            0.9
+          ],
+          [
+            &quot;Upside&quot;,
+            60,
+            1.1
+          ]
+        ],
+        &quot;formulas&quot;: [
+          [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ]
+        ]
+      }
+    }
+  },
+  {
+    &quot;id&quot;: &quot;append-table-row&quot;,
+    &quot;operation&quot;: &quot;return tableObject.rows.add(null,[[\&quot;Stress\&quot;,45,0.8]]);&quot;,
+    &quot;checkInput&quot;: {
+      &quot;before&quot;: &quot;&quot;,
+      &quot;after&quot;: &quot;return {tableRows:tableObject.getDataRows().values,cells:grid(lab,\&quot;B20:D24\&quot;)};&quot;
+    },
+    &quot;startedAt&quot;: &quot;2026-09-15T16:53:23.772Z&quot;,
+    &quot;libraryReturn&quot;: {
+      &quot;javascriptType&quot;: &quot;undefined&quot;
+    },
+    &quot;elapsedMs&quot;: 0,
+    &quot;after&quot;: {
+      &quot;cells&quot;: {
+        &quot;address&quot;: &quot;B20:D24&quot;,
+        &quot;values&quot;: [
+          [
+            &quot;Scenario&quot;,
+            &quot;Fee margin, bp&quot;,
+            &quot;AUM multiplier&quot;
+          ],
+          [
+            &quot;Base&quot;,
+            56,
+            1
+          ],
+          [
+            &quot;Downside&quot;,
+            51,
+            0.9
+          ],
+          [
+            &quot;Upside&quot;,
+            60,
+            1.1
+          ],
+          [
+            &quot;Stress&quot;,
+            45,
+            0.8
+          ]
+        ],
+        &quot;formulas&quot;: [
+          [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ]
+        ]
+      }
+    }
+  },
+  {
+    &quot;id&quot;: &quot;delete-table&quot;,
+    &quot;operation&quot;: &quot;return tableObject.delete();&quot;,
+    &quot;checkInput&quot;: {
+      &quot;before&quot;: &quot;return {tableCount:lab.tables.items.length,cells:grid(lab,\&quot;B20:D24\&quot;)};&quot;,
+      &quot;after&quot;: &quot;return {tableCount:lab.tables.items.length,cells:grid(lab,\&quot;B20:D24\&quot;)};&quot;
+    },
+    &quot;startedAt&quot;: &quot;2026-09-15T16:53:23.772Z&quot;,
+    &quot;before&quot;: {
+      &quot;tableCount&quot;: 1,
+      &quot;cells&quot;: {
+        &quot;address&quot;: &quot;B20:D24&quot;,
+        &quot;values&quot;: [
+          [
+            &quot;Scenario&quot;,
+            &quot;Fee margin, bp&quot;,
+            &quot;AUM multiplier&quot;
+          ],
+          [
+            &quot;Base&quot;,
+            56,
+            1
+          ],
+          [
+            &quot;Downside&quot;,
+            51,
+            0.9
+          ],
+          [
+            &quot;Upside&quot;,
+            60,
+            1.1
+          ],
+          [
+            &quot;Stress&quot;,
+            45,
+            0.8
+          ]
+        ],
+        &quot;formulas&quot;: [
+          [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ]
+        ]
+      }
+    },
+    &quot;libraryReturn&quot;: {
+      &quot;javascriptType&quot;: &quot;undefined&quot;
+    },
+    &quot;elapsedMs&quot;: 0,
+    &quot;after&quot;: {
+      &quot;tableCount&quot;: 0,
+      &quot;cells&quot;: {
+        &quot;address&quot;: &quot;B20:D24&quot;,
+        &quot;values&quot;: [
+          [
+            &quot;Scenario&quot;,
+            &quot;Fee margin, bp&quot;,
+            &quot;AUM multiplier&quot;
+          ],
+          [
+            &quot;Base&quot;,
+            56,
+            1
+          ],
+          [
+            &quot;Downside&quot;,
+            51,
+            0.9
+          ],
+          [
+            &quot;Upside&quot;,
+            60,
+            1.1
+          ],
+          [
+            &quot;Stress&quot;,
+            45,
+            0.8
+          ]
+        ],
+        &quot;formulas&quot;: [
+          [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;&quot;,
+            &quot;&quot;
+          ]
+        ]
+      }
+    }
+  },
+  {
+    &quot;id&quot;: &quot;recreate-table&quot;,
+    &quot;operation&quot;: &quot;tableObject = lab.tables.add(\&quot;B20:D24\&quot;,true,\&quot;FeeScenarioInputs\&quot;);\nreturn tableObject;&quot;,
+    &quot;checkInput&quot;: {
+      &quot;before&quot;: &quot;&quot;,
+      &quot;after&quot;: &quot;return {tableCount:lab.tables.items.length,rows:tableObject.getDataRows().values};&quot;
+    },
+    &quot;startedAt&quot;: &quot;2026-09-15T16:53:23.773Z&quot;,
+    &quot;libraryReturn&quot;: {
+      &quot;type&quot;: &quot;Excel Table object&quot;,
+      &quot;representation&quot;: &quot;Object contents are read separately in the agent checks.&quot;
+    },
+    &quot;elapsedMs&quot;: 0,
+    &quot;after&quot;: {
+      &quot;tableCount&quot;: 1
+    }
+  },
+  {
+    &quot;id&quot;: &quot;add-chart&quot;,
+    &quot;operation&quot;: &quot;chart = lab.charts.add(\&quot;line\&quot;,[lab.getRange(\&quot;B8:B12\&quot;),lab.getRange(\&quot;F8:F12\&quot;)]);\nchart.title = \&quot;Illustrative quarterly fees (USD m)\&quot;;\nchart.hasLegend = false;\nchart.titleTextStyle.fontSize = 12;\nchart.titleTextStyle.typeface = \&quot;Arial\&quot;;\nchart.yAxis = {numberFormatCode:\&quot;0.0\&quot;,numberFormatSourceLinked:false,textStyle:{typeface:\&quot;Arial\&quot;,fontSize:10}};\nchart.xAxis = {axisType:\&quot;textAxis\&quot;,textStyle:{typeface:\&quot;Arial\&quot;,fontSize:10}};\nchart.series.items[0].line = {fill:\&quot;#1B6870\&quot;,style:\&quot;solid\&quot;,width:2};\nchart.setPosition(\&quot;H8\&quot;,\&quot;P22\&quot;);\nreturn chart;&quot;,
+    &quot;checkInput&quot;: {
+      &quot;before&quot;: &quot;&quot;,
+      &quot;after&quot;: &quot;return {series:chart.series.items.map(s=&gt;({formula:s.formula,categoryFormula:s.categoryFormula})),source:grid(lab,\&quot;F9:F12\&quot;)};&quot;
+    },
+    &quot;startedAt&quot;: &quot;2026-09-15T16:53:23.773Z&quot;,
+    &quot;libraryReturn&quot;: {
+      &quot;type&quot;: &quot;Chart object&quot;,
+      &quot;representation&quot;: &quot;Object contents are read separately in the agent checks.&quot;
+    },
+    &quot;elapsedMs&quot;: 1,
+    &quot;after&quot;: {
+      &quot;series&quot;: [
+        {
+          &quot;formula&quot;: &quot;&#x27;Fee lab&#x27;!$F$9:$F$12&quot;,
+          &quot;categoryFormula&quot;: &quot;&#x27;Fee lab&#x27;!$B$9:$B$12&quot;
+        }
+      ],
+      &quot;source&quot;: {
+        &quot;address&quot;: &quot;F9:F12&quot;,
+        &quot;values&quot;: [
+          [
+            370.40240070050527
+          ],
+          [
+            377.81044871451536
+          ],
+          [
+            385.3666576888057
+          ],
+          [
+            393.0739908425818
+          ]
+        ],
+        &quot;formulas&quot;: [
+          [
+            &quot;=IF(ISBLANK($C$4),NA(),C9*1000*D9/10000*E9)&quot;
+          ],
+          [
+            &quot;=IF(ISBLANK($C$4),NA(),C10*1000*D10/10000*E10)&quot;
+          ],
+          [
+            &quot;=IF(ISBLANK($C$4),NA(),C11*1000*D11/10000*E11)&quot;
+          ],
+          [
+            &quot;=IF(ISBLANK($C$4),NA(),C12*1000*D12/10000*E12)&quot;
+          ]
+        ]
+      }
+    }
+  },
+  {
+    &quot;id&quot;: &quot;render-before&quot;,
+    &quot;operation&quot;: &quot;return await wb.render({sheetName:\&quot;Fee lab\&quot;,range:\&quot;B2:P25\&quot;,scale:1.5,format:\&quot;png\&quot;});&quot;,
+    &quot;checkInput&quot;: {
+      &quot;before&quot;: &quot;&quot;,
+      &quot;after&quot;: &quot;const blob=await wb.render({sheetName:\&quot;Fee lab\&quot;,range:\&quot;B2:P25\&quot;,scale:1.5,format:\&quot;png\&quot;});await fs.writeFile(path.join(dir,\&quot;fee-lab-before.png\&quot;),new Uint8Array(await blob.arrayBuffer()));return {saved:\&quot;fee-lab-before.png\&quot;,bytes:(await fs.stat(path.join(dir,\&quot;fee-lab-before.png\&quot;))).size};&quot;
+    },
+    &quot;startedAt&quot;: &quot;2026-09-15T16:53:23.775Z&quot;,
+    &quot;libraryReturn&quot;: {
+      &quot;type&quot;: &quot;Image Blob&quot;,
+      &quot;representation&quot;: &quot;Object contents are read separately in the agent checks.&quot;
+    },
+    &quot;elapsedMs&quot;: 262,
+    &quot;after&quot;: {
+      &quot;saved&quot;: &quot;fee-lab-before.png&quot;,
+      &quot;bytes&quot;: 151574
+    }
+  },
+  {
+    &quot;id&quot;: &quot;chart-input-change&quot;,
+    &quot;operation&quot;: &quot;lab.getRange(\&quot;C4\&quot;).values = [[60]];&quot;,
+    &quot;checkInput&quot;: {
+      &quot;before&quot;: &quot;return {fees:grid(lab,\&quot;F9:F12\&quot;),bindings:chart.series.items.map(s=&gt;s.formula)};&quot;,
+      &quot;after&quot;: &quot;return {fees:grid(lab,\&quot;F9:F12\&quot;),bindings:chart.series.items.map(s=&gt;s.formula)};&quot;
+    },
+    &quot;startedAt&quot;: &quot;2026-09-15T16:53:24.097Z&quot;,
+    &quot;before&quot;: {
+      &quot;fees&quot;: {
+        &quot;address&quot;: &quot;F9:F12&quot;,
+        &quot;values&quot;: [
+          [
+            370.40240070050527
+          ],
+          [
+            377.81044871451536
+          ],
+          [
+            385.3666576888057
+          ],
+          [
+            393.0739908425818
+          ]
+        ],
+        &quot;formulas&quot;: [
+          [
+            &quot;=IF(ISBLANK($C$4),NA(),C9*1000*D9/10000*E9)&quot;
+          ],
+          [
+            &quot;=IF(ISBLANK($C$4),NA(),C10*1000*D10/10000*E10)&quot;
+          ],
+          [
+            &quot;=IF(ISBLANK($C$4),NA(),C11*1000*D11/10000*E11)&quot;
+          ],
+          [
+            &quot;=IF(ISBLANK($C$4),NA(),C12*1000*D12/10000*E12)&quot;
+          ]
+        ]
+      },
+      &quot;bindings&quot;: [
+        &quot;&#x27;Fee lab&#x27;!$F$9:$F$12&quot;
+      ]
+    },
+    &quot;libraryReturn&quot;: {
+      &quot;javascriptType&quot;: &quot;undefined&quot;
+    },
+    &quot;elapsedMs&quot;: 0,
+    &quot;after&quot;: {
+      &quot;fees&quot;: {
+        &quot;address&quot;: &quot;F9:F12&quot;,
+        &quot;values&quot;: [
+          [
+            435.76753023588856
+          ],
+          [
+            444.48288084060624
+          ],
+          [
+            453.37253845741844
+          ],
+          [
+            462.4399892265668
+          ]
+        ],
+        &quot;formulas&quot;: [
+          [
+            &quot;=IF(ISBLANK($C$4),NA(),C9*1000*D9/10000*E9)&quot;
+          ],
+          [
+            &quot;=IF(ISBLANK($C$4),NA(),C10*1000*D10/10000*E10)&quot;
+          ],
+          [
+            &quot;=IF(ISBLANK($C$4),NA(),C11*1000*D11/10000*E11)&quot;
+          ],
+          [
+            &quot;=IF(ISBLANK($C$4),NA(),C12*1000*D12/10000*E12)&quot;
+          ]
+        ]
+      },
+      &quot;bindings&quot;: [
+        &quot;&#x27;Fee lab&#x27;!$F$9:$F$12&quot;
+      ]
+    }
+  },
+  {
+    &quot;id&quot;: &quot;render-after&quot;,
+    &quot;operation&quot;: &quot;return await wb.render({sheetName:\&quot;Fee lab\&quot;,range:\&quot;B2:P25\&quot;,scale:1.5,format:\&quot;png\&quot;});&quot;,
+    &quot;checkInput&quot;: {
+      &quot;before&quot;: &quot;&quot;,
+      &quot;after&quot;: &quot;const blob=await wb.render({sheetName:\&quot;Fee lab\&quot;,range:\&quot;B2:P25\&quot;,scale:1.5,format:\&quot;png\&quot;});await fs.writeFile(path.join(dir,\&quot;fee-lab-after.png\&quot;),new Uint8Array(await blob.arrayBuffer()));return {saved:\&quot;fee-lab-after.png\&quot;,bytes:(await fs.stat(path.join(dir,\&quot;fee-lab-after.png\&quot;))).size};&quot;
+    },
+    &quot;startedAt&quot;: &quot;2026-09-15T16:53:24.098Z&quot;,
+    &quot;libraryReturn&quot;: {
+      &quot;type&quot;: &quot;Image Blob&quot;,
+      &quot;representation&quot;: &quot;Object contents are read separately in the agent checks.&quot;
+    },
+    &quot;elapsedMs&quot;: 62,
+    &quot;after&quot;: {
+      &quot;saved&quot;: &quot;fee-lab-after.png&quot;,
+      &quot;bytes&quot;: 151676
+    }
+  },
+  {
+    &quot;id&quot;: &quot;delete-chart&quot;,
+    &quot;operation&quot;: &quot;return lab.charts.deleteAll();&quot;,
+    &quot;checkInput&quot;: {
+      &quot;before&quot;: &quot;&quot;,
+      &quot;after&quot;: &quot;return {drawingInspection:await wb.inspect({kind:\&quot;drawing\&quot;,sheetId:\&quot;Fee lab\&quot;,maxChars:2000}),source:grid(lab,\&quot;F9:F12\&quot;)};&quot;
+    },
+    &quot;startedAt&quot;: &quot;2026-09-15T16:53:24.219Z&quot;,
+    &quot;libraryReturn&quot;: {
+      &quot;javascriptType&quot;: &quot;undefined&quot;
+    },
+    &quot;elapsedMs&quot;: 0,
+    &quot;after&quot;: {
+      &quot;drawingInspection&quot;: {
+        &quot;recordCount&quot;: 1,
+        &quot;truncated&quot;: false,
+        &quot;metadata&quot;: {
+          &quot;revision&quot;: &quot;z953nj&quot;,
+          &quot;target&quot;: {
+            &quot;id&quot;: &quot;wb/k8e8yg&quot;,
+            &quot;beforeLines&quot;: 0,
+            &quot;afterLines&quot;: 0
+          },
+          &quot;kind&quot;: {
+            &quot;requested&quot;: &quot;drawing&quot;,
+            &quot;tokens&quot;: [
+              &quot;drawing&quot;
+            ]
+          },
+          &quot;include&quot;: {
+            &quot;tokens&quot;: []
+          },
+          &quot;exclude&quot;: {
+            &quot;tokens&quot;: []
+          },
+          &quot;notices&quot;: []
+        }
+      },
+      &quot;source&quot;: {
+        &quot;address&quot;: &quot;F9:F12&quot;,
+        &quot;values&quot;: [
+          [
+            435.76753023588856
+          ],
+          [
+            444.48288084060624
+          ],
+          [
+            453.37253845741844
+          ],
+          [
+            462.4399892265668
+          ]
+        ],
+        &quot;formulas&quot;: [
+          [
+            &quot;=IF(ISBLANK($C$4),NA(),C9*1000*D9/10000*E9)&quot;
+          ],
+          [
+            &quot;=IF(ISBLANK($C$4),NA(),C10*1000*D10/10000*E10)&quot;
+          ],
+          [
+            &quot;=IF(ISBLANK($C$4),NA(),C11*1000*D11/10000*E11)&quot;
+          ],
+          [
+            &quot;=IF(ISBLANK($C$4),NA(),C12*1000*D12/10000*E12)&quot;
+          ]
+        ]
+      }
+    }
+  },
+  {
+    &quot;id&quot;: &quot;recreate-chart&quot;,
+    &quot;operation&quot;: &quot;chart = lab.charts.add(\&quot;line\&quot;,[lab.getRange(\&quot;B8:B12\&quot;),lab.getRange(\&quot;F8:F12\&quot;)]);\nchart.title = \&quot;Illustrative quarterly fees (USD m)\&quot;;\nchart.hasLegend = false;\nchart.titleTextStyle.fontSize = 12;\nchart.titleTextStyle.typeface = \&quot;Arial\&quot;;\nchart.yAxis = {numberFormatCode:\&quot;0.0\&quot;,numberFormatSourceLinked:false,textStyle:{typeface:\&quot;Arial\&quot;,fontSize:10}};\nchart.xAxis = {axisType:\&quot;textAxis\&quot;,textStyle:{typeface:\&quot;Arial\&quot;,fontSize:10}};\nchart.series.items[0].line = {fill:\&quot;#1B6870\&quot;,style:\&quot;solid\&quot;,width:2};\nchart.setPosition(\&quot;H8\&quot;,\&quot;P22\&quot;);\nreturn chart;&quot;,
+    &quot;checkInput&quot;: {
+      &quot;before&quot;: &quot;&quot;,
+      &quot;after&quot;: &quot;return {series:chart.series.items.map(s=&gt;({formula:s.formula,categoryFormula:s.categoryFormula}))};&quot;
+    },
+    &quot;startedAt&quot;: &quot;2026-09-15T16:53:24.220Z&quot;,
+    &quot;libraryReturn&quot;: {
+      &quot;type&quot;: &quot;Chart object&quot;,
+      &quot;representation&quot;: &quot;Object contents are read separately in the agent checks.&quot;
+    },
+    &quot;elapsedMs&quot;: 0,
+    &quot;after&quot;: {
+      &quot;series&quot;: [
+        {
+          &quot;formula&quot;: &quot;&#x27;Fee lab&#x27;!$F$9:$F$12&quot;,
+          &quot;categoryFormula&quot;: &quot;&#x27;Fee lab&#x27;!$B$9:$B$12&quot;
+        }
+      ]
+    }
+  },
+  {
+    &quot;id&quot;: &quot;final-save&quot;,
+    &quot;operation&quot;: &quot;wb.recalculate();\nconst file = await SpreadsheetFile.exportXlsx(wb);\nreturn await file.save(out);&quot;,
+    &quot;checkInput&quot;: {
+      &quot;before&quot;: &quot;return {diskSha256:await sha(out),memory:labRead()};&quot;,
+      &quot;after&quot;: &quot;const reopened=await SpreadsheetFile.importXlsx(await FileBlob.load(out));const sheet=reopened.worksheets.getItem(\&quot;Fee lab\&quot;);return {file:path.basename(out),bytes:(await fs.stat(out)).size,sha256:await sha(out),reopened:grid(sheet,\&quot;B9:F12\&quot;),reopenedMargin:cell(sheet,\&quot;C4\&quot;),reopenedTableCount:sheet.tables.items.length,sourceUnchanged:sourceHash===await sha(source),checkErrorScan:await reopened.inspect({kind:\&quot;match\&quot;,sheetId:\&quot;Fee lab\&quot;,range:\&quot;B4:F24\&quot;,searchTerm:\&quot;#REF!|#DIV/0!|#VALUE!|#N/A|#NAME\\\\?\&quot;,options:{useRegex:true,maxResults:20},maxChars:3000})};&quot;
+    },
+    &quot;startedAt&quot;: &quot;2026-09-15T16:53:24.221Z&quot;,
+    &quot;before&quot;: {
+      &quot;diskSha256&quot;: &quot;5748df0b26564b31e20b8a0c66e46ab604775e042a17ed220ba27f8b56d5a8aa&quot;,
+      &quot;memory&quot;: {
+        &quot;margin&quot;: {
+          &quot;address&quot;: &quot;C4&quot;,
+          &quot;value&quot;: 60,
+          &quot;formula&quot;: &quot;&quot;
+        },
+        &quot;growth&quot;: {
+          &quot;address&quot;: &quot;C5&quot;,
+          &quot;value&quot;: 0.02,
+          &quot;formula&quot;: &quot;&quot;
+        },
+        &quot;quarters&quot;: {
+          &quot;address&quot;: &quot;B9:F12&quot;,
+          &quot;values&quot;: [
+            [
+              &quot;Quarter 1&quot;,
+              290.5116868239257,
+              60,
+              0.25,
+              435.76753023588856
+            ],
+            [
+              &quot;Quarter 2&quot;,
+              296.3219205604042,
+              60,
+              0.25,
+              444.48288084060624
+            ],
+            [
+              &quot;Quarter 3&quot;,
+              302.2483589716123,
+              60,
+              0.25,
+              453.37253845741844
+            ],
+            [
+              &quot;Quarter 4&quot;,
+              308.29332615104454,
+              60,
+              0.25,
+              462.4399892265668
+            ]
+          ],
+          &quot;formulas&quot;: [
+            [
+              &quot;&quot;,
+              &quot;=&#x27;Fee engine&#x27;!W18&quot;,
+              &quot;=$C$4&quot;,
+              &quot;&quot;,
+              &quot;=IF(ISBLANK($C$4),NA(),C9*1000*D9/10000*E9)&quot;
+            ],
+            [
+              &quot;&quot;,
+              &quot;=C9*(1+$C$5)&quot;,
+              &quot;=$C$4&quot;,
+              &quot;&quot;,
+              &quot;=IF(ISBLANK($C$4),NA(),C10*1000*D10/10000*E10)&quot;
+            ],
+            [
+              &quot;&quot;,
+              &quot;=C10*(1+$C$5)&quot;,
+              &quot;=$C$4&quot;,
+              &quot;&quot;,
+              &quot;=IF(ISBLANK($C$4),NA(),C11*1000*D11/10000*E11)&quot;
+            ],
+            [
+              &quot;&quot;,
+              &quot;=C11*(1+$C$5)&quot;,
+              &quot;=$C$4&quot;,
+              &quot;&quot;,
+              &quot;=IF(ISBLANK($C$4),NA(),C12*1000*D12/10000*E12)&quot;
+            ]
+          ]
+        },
+        &quot;annual&quot;: {
+          &quot;address&quot;: &quot;C15&quot;,
+          &quot;value&quot;: 1796.06293876048,
+          &quot;formula&quot;: &quot;=SUM(F9:F12)&quot;
+        }
+      }
+    },
+    &quot;libraryReturn&quot;: {
+      &quot;javascriptType&quot;: &quot;undefined&quot;
+    },
+    &quot;elapsedMs&quot;: 280,
+    &quot;after&quot;: {
+      &quot;file&quot;: &quot;man-group-operations.xlsx&quot;,
+      &quot;bytes&quot;: 111163,
+      &quot;sha256&quot;: &quot;2b8ce04bb3f59bb2c2134c0478dc27c3362a0f7c84dc307e53107d0c63ee00d9&quot;,
+      &quot;reopened&quot;: {
+        &quot;address&quot;: &quot;B9:F12&quot;,
+        &quot;values&quot;: [
+          [
+            &quot;Quarter 1&quot;,
+            290.5116868239257,
+            60,
+            0.25,
+            435.76753023588856
+          ],
+          [
+            &quot;Quarter 2&quot;,
+            296.3219205604042,
+            60,
+            0.25,
+            444.48288084060624
+          ],
+          [
+            &quot;Quarter 3&quot;,
+            302.2483589716123,
+            60,
+            0.25,
+            453.37253845741844
+          ],
+          [
+            &quot;Quarter 4&quot;,
+            308.29332615104454,
+            60,
+            0.25,
+            462.4399892265668
+          ]
+        ],
+        &quot;formulas&quot;: [
+          [
+            &quot;&quot;,
+            &quot;=&#x27;Fee engine&#x27;!W18&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;=IF(ISBLANK($C$4),NA(),C9*1000*D9/10000*E9)&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;=C9*(1+$C$5)&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;=IF(ISBLANK($C$4),NA(),C10*1000*D10/10000*E10)&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;=C10*(1+$C$5)&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;=IF(ISBLANK($C$4),NA(),C11*1000*D11/10000*E11)&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;=C11*(1+$C$5)&quot;,
+            &quot;=$C$4&quot;,
+            &quot;&quot;,
+            &quot;=IF(ISBLANK($C$4),NA(),C12*1000*D12/10000*E12)&quot;
+          ]
+        ]
+      },
+      &quot;reopenedMargin&quot;: {
+        &quot;address&quot;: &quot;C4&quot;,
+        &quot;value&quot;: 60,
+        &quot;formula&quot;: &quot;&quot;
+      },
+      &quot;reopenedTableCount&quot;: 1,
+      &quot;sourceUnchanged&quot;: true,
+      &quot;checkErrorScan&quot;: {
+        &quot;recordCount&quot;: 1,
+        &quot;truncated&quot;: false,
+        &quot;metadata&quot;: {
+          &quot;revision&quot;: &quot;jyombj&quot;,
+          &quot;target&quot;: {
+            &quot;id&quot;: &quot;wb/5zkijm&quot;,
+            &quot;beforeLines&quot;: 0,
+            &quot;afterLines&quot;: 0
+          },
+          &quot;kind&quot;: {
+            &quot;requested&quot;: &quot;match&quot;,
+            &quot;tokens&quot;: [
+              &quot;match&quot;
+            ]
+          },
+          &quot;include&quot;: {
+            &quot;tokens&quot;: []
+          },
+          &quot;exclude&quot;: {
+            &quot;tokens&quot;: []
+          },
+          &quot;notices&quot;: []
+        }
+      }
+    }
+  }
+]</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

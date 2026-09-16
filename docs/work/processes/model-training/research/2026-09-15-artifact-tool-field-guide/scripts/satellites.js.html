@@ -1,0 +1,55 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>satellites.js · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="satellites.js">Raw file</a> · <a data-public-raw download href="satellites.js">Download</a></p><article><h1>satellites.js</h1><pre class="public-code"><code>(()=&gt;{&#x27;use strict&#x27;;
+ const start=()=&gt;{
+  const root=document.getElementById(&#x27;af-satellites&#x27;),data=window.ArtifactSatelliteDocuments;
+  if(!root||!data||root.dataset.ready)return;root.dataset.ready=&#x27;true&#x27;;
+  const reader=root.querySelector(&#x27;#satellite-reader&#x27;),docs=data.documents;
+  const esc=s=&gt;String(s).replace(/[&amp;&lt;&gt;&quot;&#x27;]/g,c=&gt;({&#x27;&amp;&#x27;:&#x27;&amp;amp;&#x27;,&#x27;&lt;&#x27;:&#x27;&amp;lt;&#x27;,&#x27;&gt;&#x27;:&#x27;&amp;gt;&#x27;,&#x27;&quot;&#x27;:&#x27;&amp;quot;&#x27;,&quot;&#x27;&quot;:&#x27;&amp;#39;&#x27;}[c]));
+  const num=n=&gt;n.toLocaleString(&#x27;en-US&#x27;);
+  let id=&#x27;style&#x27;,view=&#x27;readable&#x27;;
+  const current=()=&gt;docs.find(d=&gt;d.id===id)||docs.find(d=&gt;d.id===&#x27;style&#x27;);
+  function render(){
+   const d=current();id=d.id;
+   root.querySelectorAll(&#x27;[data-sd-doc]&#x27;).forEach(a=&gt;a.setAttribute(&#x27;aria-current&#x27;,String(a.dataset.sdDoc===id)));
+   const options=data.groups.map(g=&gt;`&lt;optgroup label=&quot;${esc(g.title)}&quot;&gt;${docs.filter(x=&gt;x.group===g.id).map(x=&gt;`&lt;option value=&quot;${x.id}&quot; ${x.id===id?&#x27;selected&#x27;:&#x27;&#x27;}&gt;${esc(x.title)}&lt;/option&gt;`).join(&#x27;&#x27;)}&lt;/optgroup&gt;`).join(&#x27;&#x27;);
+   const outline=d.outline.map(h=&gt;`&lt;a style=&quot;--sd-depth:${Math.max(0,h.level-1)}&quot; href=&quot;?doc=${id}&amp;dsection=${encodeURIComponent(h.anchor)}#satellite-reader&quot;&gt;${esc(h.label)}&lt;/a&gt;`).join(&#x27;&#x27;);
+   reader.innerHTML=`&lt;div class=&quot;sd-reader-head&quot;&gt;&lt;div&gt;&lt;h3 class=&quot;sd-title&quot;&gt;${esc(d.title)}&lt;/h3&gt;&lt;div class=&quot;sd-path&quot;&gt;${esc(d.path)}&lt;/div&gt;&lt;/div&gt;&lt;label&gt;Read another document&lt;select id=&quot;sd-select&quot;&gt;${options}&lt;/select&gt;&lt;/label&gt;&lt;/div&gt;
+    &lt;div class=&quot;sd-metrics&quot;&gt;&lt;span&gt;&lt;strong&gt;${num(d.tokens)}&lt;/strong&gt; tokens&lt;/span&gt;&lt;span&gt;&lt;strong&gt;${num(d.words)}&lt;/strong&gt; words&lt;/span&gt;&lt;span&gt;&lt;strong&gt;${num(d.characters)}&lt;/strong&gt; characters&lt;/span&gt;&lt;/div&gt;
+    &lt;p class=&quot;sd-when&quot;&gt;&lt;strong&gt;When the agent reads it:&lt;/strong&gt; ${esc(d.when)}&lt;/p&gt;
+    &lt;div class=&quot;sd-toolbar&quot;&gt;&lt;div class=&quot;sd-views&quot; role=&quot;group&quot; aria-label=&quot;Document view&quot;&gt;&lt;button type=&quot;button&quot; data-sd-view=&quot;readable&quot; aria-pressed=&quot;${view===&#x27;readable&#x27;}&quot;&gt;Rendered&lt;/button&gt;&lt;button type=&quot;button&quot; data-sd-view=&quot;raw&quot; aria-pressed=&quot;${view===&#x27;raw&#x27;}&quot;&gt;Raw Markdown&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;sd-links&quot;&gt;&lt;a href=&quot;#af-satellites&quot; data-sd-back&gt;All documents ↑&lt;/a&gt;&lt;a href=&quot;${esc(d.source)}&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Source file ↗&lt;/a&gt;&lt;button type=&quot;button&quot; data-sd-download&gt;Download .md&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;
+    ${view===&#x27;readable&#x27;?`&lt;details class=&quot;sd-outline&quot;&gt;&lt;summary&gt;Contents · ${d.outline.length} headings&lt;/summary&gt;&lt;nav aria-label=&quot;Document contents&quot;&gt;${outline}&lt;/nav&gt;&lt;/details&gt;&lt;article class=&quot;sd-document&quot; aria-label=&quot;Full document&quot;&gt;${d.html}&lt;/article&gt;`:`&lt;pre class=&quot;sd-raw&quot; aria-label=&quot;Complete original Markdown&quot;&gt;${esc(d.markdown)}&lt;/pre&gt;`}
+    &lt;p class=&quot;sd-source-note&quot;&gt;Complete saved document from 15 September 2026. “Saved” means a study snapshot, not a retired skill. Counts cover the original Markdown. Words are whitespace-separated; characters include spaces and line breaks.&lt;/p&gt;`;
+   reader.querySelectorAll(&#x27;.sd-document table&#x27;).forEach(t=&gt;{const w=document.createElement(&#x27;div&#x27;);w.className=&#x27;sd-table-scroll&#x27;;w.tabIndex=0;w.setAttribute(&#x27;role&#x27;,&#x27;region&#x27;);w.setAttribute(&#x27;aria-label&#x27;,&#x27;Scrollable document table&#x27;);t.before(w);w.append(t)});
+  }
+  function openParents(el){for(let p=el.parentElement;p;p=p.parentElement)if(p.tagName===&#x27;DETAILS&#x27;)p.open=true}
+  function move(section){
+   openParents(reader);const target=section?document.getElementById(&#x27;sd-&#x27;+id+&#x27;-&#x27;+section):reader;
+   requestAnimationFrame(()=&gt;{(target||reader).scrollIntoView({block:&#x27;start&#x27;,behavior:&#x27;instant&#x27;});if(!section)reader.focus({preventScroll:true})});
+  }
+  function pick(next,{nextView=&#x27;readable&#x27;,section=&#x27;&#x27;,scroll=true,push=true}={}){
+   id=docs.some(d=&gt;d.id===next)?next:&#x27;style&#x27;;view=nextView===&#x27;raw&#x27;?&#x27;raw&#x27;:&#x27;readable&#x27;;render();
+   const u=new URL(location.href);u.searchParams.set(&#x27;doc&#x27;,id);u.searchParams.set(&#x27;dview&#x27;,view);u.hash=section?&#x27;sd-&#x27;+id+&#x27;-&#x27;+section:&#x27;satellite-reader&#x27;;
+   if(section)u.searchParams.set(&#x27;dsection&#x27;,section);else u.searchParams.delete(&#x27;dsection&#x27;);
+   if(push)history.pushState(null,&#x27;&#x27;,u);
+   if(scroll)move(section);
+  }
+  root.addEventListener(&#x27;click&#x27;,e=&gt;{
+   const a=e.target.closest(&#x27;a&#x27;),b=e.target.closest(&#x27;button&#x27;);
+   if(a&amp;&amp;(!e.ctrlKey&amp;&amp;!e.metaKey&amp;&amp;!e.shiftKey&amp;&amp;!e.altKey)){
+    if(a.hasAttribute(&#x27;data-sd-back&#x27;)){e.preventDefault();openParents(root);root.scrollIntoView({block:&#x27;start&#x27;,behavior:&#x27;instant&#x27;});root.querySelector(&#x27;[data-sd-doc]&#x27;).focus({preventScroll:true});return}
+    const u=new URL(a.href,location.href),next=u.searchParams.get(&#x27;doc&#x27;);
+    if(u.pathname===location.pathname&amp;&amp;next&amp;&amp;a.target!==&#x27;_blank&#x27;){e.preventDefault();pick(next,{section:u.searchParams.get(&#x27;dsection&#x27;)||&#x27;&#x27;});return}
+   }
+   if(b?.dataset.sdView){pick(id,{nextView:b.dataset.sdView,scroll:false});reader.querySelector(`[data-sd-view=&quot;${view}&quot;]`).focus({preventScroll:true})}
+   if(b?.hasAttribute(&#x27;data-sd-download&#x27;)){const d=current(),url=URL.createObjectURL(new Blob([d.markdown],{type:&#x27;text/markdown;charset=utf-8&#x27;})),a=document.createElement(&#x27;a&#x27;);a.href=url;a.download=d.path.split(&#x27;/&#x27;).pop();a.click();setTimeout(()=&gt;URL.revokeObjectURL(url),1000)}
+  });
+  root.addEventListener(&#x27;change&#x27;,e=&gt;{if(e.target.id===&#x27;sd-select&#x27;)pick(e.target.value)});
+  const linked=()=&gt;location.hash===&#x27;#satellite-reader&#x27;||location.hash.startsWith(&#x27;#sd-&#x27;);
+  const restore=()=&gt;{const p=new URLSearchParams(location.search);pick(p.get(&#x27;doc&#x27;)||&#x27;style&#x27;,{nextView:p.get(&#x27;dview&#x27;)||&#x27;readable&#x27;,section:p.get(&#x27;dsection&#x27;)||&#x27;&#x27;,push:false,scroll:linked()})};
+  window.addEventListener(&#x27;popstate&#x27;,restore);restore();
+  // Let the browser and the shared page frame finish their initial anchor jump.
+  const settle=()=&gt;{if(linked())requestAnimationFrame(()=&gt;move(new URLSearchParams(location.search).get(&#x27;dsection&#x27;)||&#x27;&#x27;))};
+  if(document.readyState===&#x27;complete&#x27;)settle();else window.addEventListener(&#x27;load&#x27;,settle,{once:true});
+ };
+ if(document.readyState===&#x27;loading&#x27;)document.addEventListener(&#x27;DOMContentLoaded&#x27;,start);else start();
+})();
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

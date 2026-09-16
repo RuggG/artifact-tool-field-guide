@@ -1,0 +1,74 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>prepare_reads.py · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="prepare_reads.py">Raw file</a> · <a data-public-raw download href="prepare_reads.py">Download</a></p><article><h1>prepare_reads.py</h1><pre class="public-code"><code>&quot;&quot;&quot;Check fresh read-only captures against the separately saved v4 direct reads.&quot;&quot;&quot;
+import hashlib
+import json
+import re
+from pathlib import Path
+ROOT = Path(__file__).resolve().parent.parent
+D = json.loads((ROOT/&#x27;files/reads/captures.json&#x27;).read_text())
+B = {s[&#x27;sheet&#x27;]:s for s in json.loads((ROOT/&#x27;files/inspection/captures.json&#x27;).read_text())[&#x27;baseline&#x27;]}
+checks = 0
+def check(value, note):
+    global checks
+    assert value, note
+    checks += 1
+def origin(address):
+    m=re.match(r&#x27;([A-Z]+)(\d+)&#x27;,address.replace(&#x27;$&#x27;,&#x27;&#x27;)); col=0
+    for char in m[1]: col=col*26+ord(char)-64
+    return int(m[2])-1,col-1
+def letter(c):
+    s=&#x27;&#x27;; c+=1
+    while c: c,r=divmod(c-1,26); s=chr(r+65)+s
+    return s
+def expected(s,field):
+    b=B[s[&#x27;sheet&#x27;]];r,c=s[&#x27;row&#x27;],s[&#x27;col&#x27;]
+    return [row[c:c+s[&#x27;cols&#x27;]] for row in b[field][r:r+s[&#x27;rows&#x27;]]]
+check(len(D[&#x27;cases&#x27;])==38,&#x27;38 executions&#x27;)
+check(hashlib.sha256((ROOT/D[&#x27;receipt&#x27;][&#x27;source&#x27;]).read_bytes()).hexdigest()==D[&#x27;receipt&#x27;][&#x27;sourceSha256&#x27;],&#x27;Original source unchanged&#x27;)
+for c in D[&#x27;cases&#x27;]:
+    o=c[&#x27;output&#x27;]; method=c[&#x27;method&#x27;]; name=c[&#x27;id&#x27;]
+    if c.get(&#x27;selections&#x27;):
+        for i,s in enumerate(c[&#x27;selections&#x27;]):
+            vals,forms=expected(s,&#x27;values&#x27;),expected(s,&#x27;formulas&#x27;)
+            out=o[i][&#x27;result&#x27;] if c.get(&#x27;multi&#x27;) else o
+            if method==&#x27;values&#x27;: check(out==vals,name)
+            if method==&#x27;formulas&#x27;: check(out==forms,name)
+            if method==&#x27;both&#x27;: check(out==dict(values=vals,formulas=forms),name)
+            if method==&#x27;paired&#x27;:
+                check(len(out)==s[&#x27;rows&#x27;]*s[&#x27;cols&#x27;],name+&#x27; all positions&#x27;)
+                for j,cell in enumerate(out):
+                    r,col=divmod(j,s[&#x27;cols&#x27;])
+                    check(cell==dict(address=letter(s[&#x27;col&#x27;]+col)+str(s[&#x27;row&#x27;]+r+1),value=vals[r][col],formula=forms[r][col]),name+&#x27; &#x27;+cell[&#x27;address&#x27;])
+            if method==&#x27;details&#x27;:
+                check(out[&#x27;formulas&#x27;]==forms,name+&#x27; stored&#x27;)
+                check(out[&#x27;displayFormulas&#x27;]==forms,name+&#x27; displayed&#x27;)
+                for r,row in enumerate(out[&#x27;formulaInfos&#x27;]):
+                    for col,info in enumerate(row):
+                        check(info==dict(kind=&#x27;stored&#x27;,formula=forms[r][col],display=forms[r][col],isEditable=True) if forms[r][col] else info is None,name+&#x27; info&#x27;)
+    elif method==&#x27;inspect&#x27;:
+        records=[json.loads(x) for x in o[&#x27;ndjson&#x27;].splitlines()]
+        check(len(records)==o[&#x27;recordCount&#x27;] and not o[&#x27;truncated&#x27;],name+&#x27; envelope&#x27;)
+        for rec in records:
+            r,col=origin(rec[&#x27;address&#x27;]);b=B[rec[&#x27;sheet&#x27;]]
+            if rec[&#x27;kind&#x27;]==&#x27;table&#x27;:
+                check(not rec.get(&#x27;valuesTruncated&#x27;),name+&#x27; full values&#x27;)
+                check(rec[&#x27;values&#x27;]==[row[col:col+rec[&#x27;cols&#x27;]] for row in b[&#x27;values&#x27;][r:r+rec[&#x27;rows&#x27;]]],name+&#x27; grid equality&#x27;)
+            elif rec[&#x27;kind&#x27;]==&#x27;formula&#x27;:check(rec[&#x27;formula&#x27;]==b[&#x27;formulas&#x27;][r][col],name+&#x27; formula equality&#x27;)
+            else:raise AssertionError(&#x27;Unexpected record &#x27;+str(rec))
+    elif method==&#x27;search&#x27;:
+        check(len(o[&#x27;matches&#x27;])==min(o[&#x27;limit&#x27;],o[&#x27;total&#x27;]),name+&#x27; match count&#x27;)
+        check(o[&#x27;truncated&#x27;]==(o[&#x27;total&#x27;]&gt;o[&#x27;limit&#x27;]),name+&#x27; truncation&#x27;)
+        for match in o[&#x27;matches&#x27;]:
+            r,col=origin(match[&#x27;address&#x27;]);b=B[match[&#x27;sheet&#x27;]]
+            check((&#x27;=&#x27;+match[&#x27;formula&#x27;] if match[&#x27;formula&#x27;] else &#x27;&#x27;)==b[&#x27;formulas&#x27;][r][col],name+&#x27; formula pairing&#x27;)
+            v=b[&#x27;values&#x27;][r][col]
+            check(float(match[&#x27;value&#x27;])==v if isinstance(v,(int,float)) else match[&#x27;value&#x27;]==v,name+&#x27; value pairing&#x27;)
+C={c[&#x27;id&#x27;]:c for c in D[&#x27;cases&#x27;]}
+for m in (&#x27;values&#x27;,&#x27;formulas&#x27;,&#x27;both&#x27;,&#x27;paired&#x27;):check(C[m+&#x27;-cell&#x27;][&#x27;output&#x27;]==C[m+&#x27;-index&#x27;][&#x27;output&#x27;],m+&#x27; cell vs index&#x27;)
+check(sum(s[&#x27;rows&#x27;]*s[&#x27;cols&#x27;] for s in C[&#x27;both-workbook&#x27;][&#x27;selections&#x27;])==14697,&#x27;Used areas including formatting&#x27;)
+check(sum(r[&#x27;rows&#x27;]*r[&#x27;cols&#x27;] for r in map(json.loads,C[&#x27;inspect-workbook&#x27;][&#x27;output&#x27;][&#x27;ndjson&#x27;].splitlines()) if r[&#x27;kind&#x27;]==&#x27;table&#x27;)==8383,&#x27;Inspection content rectangles&#x27;)
+check(C[&#x27;search-sheet&#x27;][&#x27;output&#x27;][&#x27;total&#x27;]==329 and len(C[&#x27;search-sheet&#x27;][&#x27;output&#x27;][&#x27;matches&#x27;])==100,&#x27;Search limit example&#x27;)
+check(C[&#x27;paired-block&#x27;][&#x27;output&#x27;][15:18]==[dict(address=a,value=None,formula=&#x27;&#x27;) for a in [&#x27;K18&#x27;,&#x27;L18&#x27;,&#x27;M18&#x27;]],&#x27;Blank separator retained&#x27;)
+(ROOT/&#x27;data/reads.json&#x27;).write_text(json.dumps(D,ensure_ascii=False,separators=(&#x27;,&#x27;,&#x27;:&#x27;))+&#x27;\n&#x27;)
+(ROOT/&#x27;data/reads-checks.json&#x27;).write_text(json.dumps(dict(assertions=checks,passed=True,cases=38,sourceSha256=D[&#x27;receipt&#x27;][&#x27;sourceSha256&#x27;],reference=&#x27;files/inspection/captures.json&#x27;,notes=[&#x27;All getter results compared with a separately captured baseline.&#x27;,&#x27;Inspection formulas and grids checked against baseline.&#x27;,&#x27;Search values and formulas checked against baseline; original string representations retained.&#x27;,&#x27;Used-area padding and blank separators retained.&#x27;]),indent=2)+&#x27;\n&#x27;)
+print(f&#x27;{checks} assertions passed; 38 captures prepared&#x27;)
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

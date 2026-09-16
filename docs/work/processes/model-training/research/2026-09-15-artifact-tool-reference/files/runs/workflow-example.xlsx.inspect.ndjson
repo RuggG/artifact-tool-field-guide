@@ -1,0 +1,16 @@
+{"kind":"workbook","id":"wb/tx4sp8","sheets":1,"tables":1}
+{"kind":"sheet","id":"ws/3aorca","name":"Model","index":0,"range":"A1:C3","address":"A1:C3","tables":1,"formulas":2}
+{"kind":"table","sheet":"Model","address":"A1:C3","rows":3,"cols":3,"values":[["Quantity","Price","Revenue"],[2,10,20],[3,10,30]]}
+{"kind":"region","sheet":"Model","address":"A1:C3","rows":3,"cols":3,"nonEmpty":9,"text":9,"maxTextLength":8,"preview":[["Quantity","Price","Revenue"],["2","10","20"],["3","10","30"]],"previewAddress":"A1:C3","previewRows":3,"previewCols":3}
+{"kind":"formula","sheet":"Model","address":"C2","formula":"=A2*B2"}
+{"kind":"formula","sheet":"Model","address":"C3","formula":"=A3*B3"}
+{"kind":"computedStyle","sheet":"Model","for":"A1","style":{"fill":{"type":3,"gradientStops":[],"pattern":{"patternType":1},"pictureEffects":[]},"font":{"fontSize":11,"typeface":"Carlito"},"border":{},"wrapText":false,"horizontalAlignment":"general","styleId":0}}
+{"kind":"computedStyle","sheet":"Model","for":"B1","style":{"fill":{"type":3,"gradientStops":[],"pattern":{"patternType":1},"pictureEffects":[]},"font":{"fontSize":11,"typeface":"Carlito"},"border":{},"wrapText":false,"horizontalAlignment":"general","styleId":0}}
+{"kind":"computedStyle","sheet":"Model","for":"C1","style":{"fill":{"type":3,"gradientStops":[],"pattern":{"patternType":1},"pictureEffects":[]},"font":{"fontSize":11,"typeface":"Carlito"},"border":{},"wrapText":false,"horizontalAlignment":"general","styleId":0}}
+{"kind":"computedStyle","sheet":"Model","for":"A2","style":{"fill":{"type":3,"gradientStops":[],"pattern":{"patternType":1},"pictureEffects":[]},"font":{"fontSize":11,"typeface":"Carlito"},"border":{},"wrapText":false,"horizontalAlignment":"general","styleId":0}}
+{"kind":"computedStyle","sheet":"Model","for":"B2","style":{"fill":{"type":3,"gradientStops":[],"pattern":{"patternType":1},"pictureEffects":[]},"font":{"fontSize":11,"typeface":"Carlito"},"border":{},"wrapText":false,"horizontalAlignment":"general","styleId":0}}
+{"kind":"computedStyle","sheet":"Model","for":"C2","style":{"fill":{"type":3,"gradientStops":[],"pattern":{"patternType":1},"pictureEffects":[]},"font":{"fontSize":11,"typeface":"Carlito"},"border":{},"wrapText":false,"horizontalAlignment":"general","styleId":0}}
+{"kind":"computedStyle","sheet":"Model","for":"A3","style":{"fill":{"type":3,"gradientStops":[],"pattern":{"patternType":1},"pictureEffects":[]},"font":{"fontSize":11,"typeface":"Carlito"},"border":{},"wrapText":false,"horizontalAlignment":"general","styleId":0}}
+{"kind":"computedStyle","sheet":"Model","for":"B3","style":{"fill":{"type":3,"gradientStops":[],"pattern":{"patternType":1},"pictureEffects":[]},"font":{"fontSize":11,"typeface":"Carlito"},"border":{},"wrapText":false,"horizontalAlignment":"general","styleId":0}}
+{"kind":"computedStyle","sheet":"Model","for":"C3","style":{"fill":{"type":3,"gradientStops":[],"pattern":{"patternType":1},"pictureEffects":[]},"font":{"fontSize":11,"typeface":"Carlito"},"border":{},"wrapText":false,"horizontalAlignment":"general","styleId":0}}
+{"kind":"drawing","sheet":"Model","drawingType":"shape","id":"h2orqa","name":"","geometry":"custom","anchor":{"from":{"row":5,"col":0,"rowOffsetEmu":0,"colOffsetEmu":0,"rowOffsetPx":0,"colOffsetPx":0},"extent":{"widthEmu":1143000,"widthPx":120,"heightEmu":857250,"heightPx":90}}}

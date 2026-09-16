@@ -1,0 +1,29 @@
+{
+  "version": 7,
+  "result": "Reviewed",
+  "scope": "Editorial and interaction redesign; underlying spreadsheet evidence unchanged.",
+  "automated": {
+    "status": "pass",
+    "states": {
+      "seen": 81
+    },
+    "receipt": "evidence/reference-page-qa.json",
+    "mobileOverflow": false
+  },
+  "manual": [
+    "Desktop six-family catalogue and operation reference",
+    "Readable/exact input, native return versus added checks",
+    "Legacy xio-overview deep link opens the broad-grid example",
+    "NDJSON object tree now decodes into individually expandable records; exact output unchanged",
+    "390px input/output layout; viewport reset after review"
+  ],
+  "limitations": [
+    "The full automated run preceded small NDJSON-tree, provenance-label and mobile numeric-table refinements, which received targeted browser review.",
+    "Native Microsoft Excel was not opened; prior workbook evidence unchanged."
+  ],
+  "nomineeDispositions": [
+    "Shared chrome SVG icons unchanged",
+    "Guidance table: retained, reviewed as comparison of library, skill and agent work",
+    "Operations reference: custom UI justified by capability selection and inspectable captured evidence; interactions exercised"
+  ]
+}

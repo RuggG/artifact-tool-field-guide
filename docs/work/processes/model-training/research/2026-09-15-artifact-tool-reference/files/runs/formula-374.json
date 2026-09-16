@@ -1,0 +1,37 @@
+{
+  "name": "fx.DEVSQ",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=DEVSQ(10, C1:C5, 20, C1:C5)",
+      "value": 290,
+      "projection": [
+        [
+          290,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 9
+    }
+  ]
+}

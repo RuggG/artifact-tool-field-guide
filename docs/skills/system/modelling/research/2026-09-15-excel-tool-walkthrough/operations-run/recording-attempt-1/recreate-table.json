@@ -1,0 +1,17 @@
+{
+  "id": "recreate-table",
+  "operation": "tableObject = lab.tables.add(\"B20:D24\",true,\"FeeScenarioInputs\");\nreturn tableObject;",
+  "checkInput": {
+    "before": "",
+    "after": "return {tableCount:lab.tables.items.length,rows:tableObject.getDataRows().values};"
+  },
+  "startedAt": "2026-09-15T16:53:23.773Z",
+  "libraryReturn": {
+    "type": "Excel Table object",
+    "representation": "Object contents are read separately in the agent checks."
+  },
+  "elapsedMs": 0,
+  "after": {
+    "tableCount": 1
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "index": 52,
+  "name": "workbook.help",
+  "summary": "Grep for feature namespaces",
+  "adaptations": [
+    "Mapped structured example fields to the corresponding public method; replaced placeholder anchors with actual fixture IDs."
+  ],
+  "execution": "completed",
+  "export": "completed",
+  "logs": [
+    "{\"ndjson\":\"{\\\"kind\\\":\\\"api\\\",\\\"name\\\":\\\"charts\\\",\\\"summary\\\":\\\"Chart objects anchored to cells.\\\",\\\"tags\\\":[\\\"charts\\\"],\\\"notes\\\":[\\\"Use worksheet.charts.add(...) to create charts.\\\",\\\"Use worksheet.charts.deleteAll() (or .clear()) to remove charts.\\\",\\\"Use chart.delete() to remove a single chart.\\\",\\\"Charts are anchored with 0-based row/col positions and px offsets.\\\",\\\"Charts support title.text, setPosition, width/height, and axes.valueAxis/categoryAxis.\\\",\\\"Passing a multi-cell range to setPosition reserves that rectangle (from/to anchors).\\\"]}\\n{\\\"kind\\\":\\\"notice\\\",\\\"message\\\":\\\"Truncated: omitted 40 lines. Increase maxChars or narrow query.\\\"}\",\"truncated\":true,\"metadata\":{\"revision\":\"6jpp5f\",\"query\":\"*\",\"include\":{\"requested\":[\"index\",\"examples\",\"notes\"],\"tokens\":[\"index\",\"examples\",\"notes\"]},\"search\":\"tables|sparklines|charts|images|render|validation|conditional|freeze|data_validation\",\"notices\":[]}}"
+  ]
+}

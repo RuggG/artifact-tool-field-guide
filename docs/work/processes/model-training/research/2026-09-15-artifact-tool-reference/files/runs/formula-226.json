@@ -1,0 +1,37 @@
+{
+  "name": "fx.MAKEARRAY",
+  "category": "logical",
+  "examples": [
+    {
+      "formula": "=MAKEARRAY(A1, A1, A1)",
+      "value": "MAKEARRAY is not implemented. rows=1, columns=1, functionParam=1",
+      "projection": [
+        [
+          "MAKEARRAY is not implemented. rows=1, columns=1, functionParam=1",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 11
+    }
+  ]
+}

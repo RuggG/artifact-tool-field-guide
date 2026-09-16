@@ -1,0 +1,13 @@
+{
+  "index": 76,
+  "name": "workbook.inspect",
+  "summary": "Find cells matching Age (values or formulas)",
+  "adaptations": [
+    "Mapped structured example fields to the corresponding public method; replaced placeholder anchors with actual fixture IDs."
+  ],
+  "execution": "completed",
+  "export": "completed",
+  "logs": [
+    "{\"recordCount\":8,\"truncated\":false,\"metadata\":{\"revision\":\"7e1ria\",\"target\":{\"id\":\"wb/73zm0m\",\"beforeLines\":0,\"afterLines\":0},\"kind\":{\"requested\":\"workbook,sheet,match\",\"tokens\":[\"workbook\",\"sheet\",\"match\"]},\"include\":{\"tokens\":[]},\"exclude\":{\"tokens\":[]},\"notices\":[]}}"
+  ]
+}

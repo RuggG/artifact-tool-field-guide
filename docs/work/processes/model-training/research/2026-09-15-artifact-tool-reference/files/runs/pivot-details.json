@@ -1,0 +1,120 @@
+{
+  "grid": [
+    [
+      "Row Labels",
+      "",
+      "",
+      "Grand Total",
+      null
+    ],
+    [
+      "North",
+      10,
+      30,
+      40,
+      null
+    ],
+    [
+      "South",
+      20,
+      40,
+      60,
+      null
+    ],
+    [
+      "Grand Total",
+      30,
+      70,
+      100,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ]
+  ],
+  "hierarchies": [
+    "Region",
+    "Product",
+    "Sales"
+  ],
+  "methods": [
+    "constructor",
+    "workbook",
+    "worksheet",
+    "name",
+    "layout",
+    "hierarchies",
+    "rowHierarchies",
+    "columnHierarchies",
+    "dataHierarchies",
+    "filterHierarchies",
+    "_assignHierarchy",
+    "_getHierarchies",
+    "_getHierarchyByFieldIndex",
+    "_ensureHierarchyIndex",
+    "delete",
+    "cache",
+    "toProto",
+    "rebuildCache",
+    "addDeleteListener",
+    "removeDeleteListener",
+    "addNameChangeListener",
+    "removeNameChangeListener",
+    "__getLayoutType",
+    "__setLayoutType",
+    "__getLayoutMeta",
+    "__setLayoutMeta",
+    "__getLocationForLayout",
+    "__getDataBodyShapeForLayout",
+    "__setRowItems",
+    "__setColumnItems",
+    "__clearPivotCellRenderHints",
+    "__setPivotCellRenderHint",
+    "__getPivotCellRenderHint",
+    "__getPivotCellRenderHints",
+    "__findDataFieldProto",
+    "__addDataFieldProto",
+    "__getPivotFieldProtos",
+    "__updateLocation",
+    "__applyFilterForField",
+    "__clearAllFiltersForField",
+    "preview"
+  ],
+  "pivotExport": "completed",
+  "slicerMethods": [
+    "constructor",
+    "name",
+    "caption",
+    "left",
+    "top",
+    "height",
+    "width",
+    "style",
+    "selectItems",
+    "clearFilters",
+    "delete",
+    "addDeleteListener",
+    "removeDeleteListener",
+    "addNameChangeListener",
+    "removeNameChangeListener"
+  ],
+  "slicerExport": "completed"
+}

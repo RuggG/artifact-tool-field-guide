@@ -1,0 +1,41 @@
+{
+  "input": {
+    "kind": "table",
+    "include": "values",
+    "sheetId": "Fee engine",
+    "range": "A1:W109",
+    "maxChars": 1000,
+    "tableMaxRows": 1,
+    "tableMaxCols": 1,
+    "tableMaxCellChars": 1
+  },
+  "result": {
+    "ndjson": "{\"kind\":\"table\",\"sheet\":\"Fee engine\",\"address\":\"A1:W109\",\"rows\":109,\"cols\":23,\"values\":[[null]],\"valuesTruncated\":true,\"valuesPreviewRows\":1,\"valuesPreviewCols\":1,\"valuesPreviewAddress\":\"A1\"}",
+    "recordCount": 1,
+    "truncated": false,
+    "metadata": {
+      "revision": "b937qf",
+      "target": {
+        "id": "wb/isi7q1",
+        "beforeLines": 0,
+        "afterLines": 0
+      },
+      "kind": {
+        "requested": "table",
+        "tokens": [
+          "table"
+        ]
+      },
+      "include": {
+        "requested": "values",
+        "tokens": [
+          "values"
+        ]
+      },
+      "exclude": {
+        "tokens": []
+      },
+      "notices": []
+    }
+  }
+}

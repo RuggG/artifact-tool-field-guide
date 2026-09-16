@@ -1,0 +1,37 @@
+{
+  "name": "fx.AVERAGEIF",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=AVERAGEIF(A2:A10, \">100\", B2:B10)",
+      "value": "#DIV/0!",
+      "projection": [
+        [
+          "#DIV/0!",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 13
+    }
+  ]
+}

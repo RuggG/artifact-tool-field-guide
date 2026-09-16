@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Charts And Drawings · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="charts-drawings.spec.md">Raw file</a> · <a data-public-raw download href="charts-drawings.spec.md">Download</a></p><article><h1 id="charts-and-drawings">Charts And Drawings</h1>
+<p>Worksheets expose drawing collections for charts, images, and shapes.</p>
+<h2 id="charts">Charts</h2>
+<pre><code class="language-ts">const chart = sheet.charts.add("bar", {
+  from: { row: 1, col: 4 },
+  extent: { widthPx: 420, heightPx: 260 },
+});
+chart.title = "Values";
+chart.categories = ["A", "B", "C"];
+const series = chart.series.add("Value");
+series.values = [3, 5, 8];
+series.categories = chart.categories;
+</code></pre>
+<p>Charts can be resolved from inspect anchors:</p>
+<pre><code class="language-ts">const chart = workbook.resolve("ch/&lt;chartId&gt;");
+</code></pre>
+<h2 id="chart-to-image">Chart To Image</h2>
+<pre><code class="language-ts">const result = await workbook.chartToImage(0, chart.id);
+</code></pre>
+<h2 id="images">Images</h2>
+<pre><code class="language-ts">const image = sheet.images.add({
+  blob: imageBytes,
+  contentType: "image/png",
+  anchor: {
+    from: { row: 1, col: 2 },
+    extent: { widthPx: 240, heightPx: 160 },
+  },
+});
+
+image.bytes;
+image.contentType;
+image.prompt;
+image.uri;
+</code></pre>
+<h2 id="shapes">Shapes</h2>
+<pre><code class="language-ts">const shape = sheet.shapes.add({
+  geometry: "rect",
+  anchor: {
+    from: { row: 2, col: 3 },
+    extent: { widthPx: 240, heightPx: 80 },
+  },
+  fill: "#f8fafc",
+  line: { fill: "#334155", width: 1 },
+});
+shape.text = "Label";
+</code></pre>
+<h2 id="sparklines">Sparklines</h2>
+<pre><code class="language-ts">sheet.sparklineGroups.add({
+  targetRange: sheet.getRange("D2:D10"),
+  sourceData: sheet.getRange("B2:C10"),
+  type: "line",
+});
+</code></pre>
+<p><code>sheet.sparklines</code> is a deprecated alias for <code>sheet.sparklineGroups</code>.</p>
+<h2 id="auto-layout">Auto Layout</h2>
+<pre><code class="language-ts">sheet.autoLayoutDrawings(sheet.charts.items, {
+  direction: "vertical",
+  frame: { startCell: "E2", width: 800, height: 1200 },
+  gap: 16,
+  padding: 24,
+});
+</code></pre>
+<h2 id="cookbook">Cookbook</h2>
+<pre><code class="language-ts">sheet.getRange("A1:B4").values = [
+  ["Name", "Value"],
+  ["A", 3],
+  ["B", 5],
+  ["C", 8],
+];
+
+sheet.charts.add("bar", {
+  from: { row: 1, col: 4 },
+  extent: { widthPx: 420, heightPx: 260 },
+});
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

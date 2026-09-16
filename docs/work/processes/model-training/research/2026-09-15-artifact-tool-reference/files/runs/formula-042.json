@@ -1,0 +1,37 @@
+{
+  "name": "fx.CUBEVALUE",
+  "category": "cube",
+  "examples": [
+    {
+      "formula": "=CUBEVALUE(A1, C1:C5, A1, C1:C5)",
+      "value": "CUBEVALUE is not implemented. connection=1, memberExpression1=3,6,9,12,15, rest.length=2",
+      "projection": [
+        [
+          "CUBEVALUE is not implemented. connection=1, memberExpression1=3,6,9,12,15, rest.length=2",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 8
+    }
+  ]
+}

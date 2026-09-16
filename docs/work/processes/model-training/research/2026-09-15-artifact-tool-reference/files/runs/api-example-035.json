@@ -1,0 +1,10 @@
+{
+  "index": 35,
+  "name": "range.conditionalFormats",
+  "summary": "Add a custom formula rule",
+  "originalCode": "const range = sheet.getRange('B2:B6');\nrange.conditionalFormats.add('Custom', {\n  formula: '=B2>10',\n  format: { fill: '#FDE68A', font: { bold: true } },\n});",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

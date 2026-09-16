@@ -1,0 +1,10 @@
+{
+  "index": 15,
+  "name": "chart axes",
+  "summary": "Axis text style",
+  "originalCode": "chart.xAxis = { textStyle: { fontSize: 10 } };\nchart.yAxis = { textStyle: { fontSize: 1, fill: 'background1' } };",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

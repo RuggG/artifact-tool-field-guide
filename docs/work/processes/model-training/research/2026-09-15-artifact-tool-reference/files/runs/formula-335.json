@@ -1,0 +1,37 @@
+{
+  "name": "fx.COTH",
+  "category": "math-trig",
+  "examples": [
+    {
+      "formula": "=COTH(10)",
+      "value": 1.0000000041223072,
+      "projection": [
+        [
+          1.0000000041223072,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 12
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "name": "fx.DAY",
+  "category": "date-time",
+  "examples": [
+    {
+      "formula": "=DAY(10)",
+      "value": 10,
+      "projection": [
+        [
+          10,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 9
+    }
+  ]
+}

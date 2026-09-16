@@ -1,0 +1,10 @@
+{
+  "index": 4,
+  "name": "chart title",
+  "summary": "Compact title edits",
+  "originalCode": "chart.title = '';\nchart.titlePlacement = 'none';\nchart.title = 'Sales Data';\nchart.titlePlacement = 'aboveChart';\nchart.titlePlacement = 'centeredOverlay';\nchart.titleTextStyle.bold = true;\nchart.titleTextStyle.fontSize = 18;",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

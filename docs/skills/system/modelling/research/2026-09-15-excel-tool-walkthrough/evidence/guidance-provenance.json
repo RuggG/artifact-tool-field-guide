@@ -1,0 +1,76 @@
+[
+  {
+    "source": "/Users/ruggerogargiulo/.codex/plugins/cache/openai-primary-runtime/spreadsheets/26.909.12148/skills/spreadsheets/SKILL.md",
+    "sha256": "499172cadf77be41b6ec7d87981463aec0859e10aba9cc0b864143e42955474b",
+    "lineRanges": [
+      [
+        327,
+        333
+      ],
+      [
+        364,
+        368
+      ],
+      [
+        385,
+        387
+      ]
+    ]
+  },
+  {
+    "source": "/Users/ruggerogargiulo/.codex/plugins/cache/openai-primary-runtime/spreadsheets/26.909.12148/skills/spreadsheets/SKILL.md",
+    "sha256": "499172cadf77be41b6ec7d87981463aec0859e10aba9cc0b864143e42955474b",
+    "lineRanges": [
+      [
+        129,
+        140
+      ],
+      [
+        175,
+        189
+      ]
+    ]
+  },
+  {
+    "source": "/Users/ruggerogargiulo/.codex/plugins/cache/openai-primary-runtime/spreadsheets/26.909.12148/skills/spreadsheets/workflows/edit_workflows.md",
+    "sha256": "f75917488c75b5a7b9e194c57131163d54ad23405802944e1d59eece990d27d8",
+    "lineRanges": [
+      [
+        1,
+        24
+      ]
+    ]
+  },
+  {
+    "source": "/Users/ruggerogargiulo/.codex/plugins/cache/openai-primary-runtime/spreadsheets/26.909.12148/skills/spreadsheets/artifact_tool_docs/API_QUICK_START.md",
+    "sha256": "2795943c6a356a6bb94767526acb53a6aec8599be1d15fdbe54458bc799d5f4a",
+    "lineRanges": [
+      [
+        33,
+        45
+      ],
+      [
+        81,
+        87
+      ],
+      [
+        274,
+        282
+      ]
+    ]
+  },
+  {
+    "source": "/Users/ruggerogargiulo/.codex/plugins/cache/openai-primary-runtime/spreadsheets/26.909.12148/skills/spreadsheets/features/charts.md",
+    "sha256": "f85e0fa9ba2505f9ee3dd9c4529d1c529b0ce7c9c5e95a919409025c0217c470",
+    "lineRanges": [
+      [
+        11,
+        16
+      ],
+      [
+        37,
+        43
+      ]
+    ]
+  }
+]

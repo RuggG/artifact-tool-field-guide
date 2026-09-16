@@ -1,0 +1,53 @@
+{
+  "id": "add-chart",
+  "operation": "chart = lab.charts.add(\"line\",[lab.getRange(\"B8:B12\"),lab.getRange(\"F8:F12\")]);\nchart.title = \"Illustrative quarterly fees (USD m)\";\nchart.hasLegend = false;\nchart.titleTextStyle.fontSize = 12;\nchart.titleTextStyle.typeface = \"Arial\";\nchart.yAxis = {numberFormatCode:\"0.0\",numberFormatSourceLinked:false,textStyle:{typeface:\"Arial\",fontSize:10}};\nchart.xAxis = {axisType:\"textAxis\",textStyle:{typeface:\"Arial\",fontSize:10}};\nchart.series.items[0].line = {fill:\"#1B6870\",style:\"solid\",width:2};\nchart.setPosition(\"H8\",\"P22\");\nreturn chart;",
+  "checkInput": {
+    "before": "",
+    "after": "return {series:chart.series.items.map(s=>({formula:s.formula,categoryFormula:s.categoryFormula})),source:grid(lab,\"F9:F12\")};"
+  },
+  "startedAt": "2026-09-15T16:55:20.734Z",
+  "libraryReturn": {
+    "type": "Chart object",
+    "representation": "Object contents are read separately in the agent checks."
+  },
+  "elapsedMs": 1,
+  "after": {
+    "series": [
+      {
+        "formula": "'Fee lab'!$F$9:$F$12",
+        "categoryFormula": "'Fee lab'!$B$9:$B$12"
+      }
+    ],
+    "source": {
+      "address": "F9:F12",
+      "values": [
+        [
+          370.40240070050527
+        ],
+        [
+          377.81044871451536
+        ],
+        [
+          385.3666576888057
+        ],
+        [
+          393.0739908425818
+        ]
+      ],
+      "formulas": [
+        [
+          "=IF(ISBLANK($C$4),NA(),C9*1000*D9/10000*E9)"
+        ],
+        [
+          "=IF(ISBLANK($C$4),NA(),C10*1000*D10/10000*E10)"
+        ],
+        [
+          "=IF(ISBLANK($C$4),NA(),C11*1000*D11/10000*E11)"
+        ],
+        [
+          "=IF(ISBLANK($C$4),NA(),C12*1000*D12/10000*E12)"
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,89 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>session-mcp-schema.json · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="session-mcp-schema.json">Raw file</a> · <a data-public-raw download href="session-mcp-schema.json">Download</a></p><article><h1>session-mcp-schema.json</h1><pre class="public-code"><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;id&quot;: 2,
+  &quot;result&quot;: {
+    &quot;tools&quot;: [
+      {
+        &quot;name&quot;: &quot;artifact_session_run&quot;,
+        &quot;title&quot;: &quot;Run Artifact Session Code&quot;,
+        &quot;description&quot;: &quot;Run an asynchronous JavaScript function body against a persistent local spreadsheet or presentation session and commit the resulting edit. The body receives `artifact`, `session`, and `input`, plus `workbook` or `presentation`. Its JSON return value is placed directly in this tool response, so it can carry stable aids, focused inspect results, or other compact context into the next turn.&quot;,
+        &quot;inputSchema&quot;: {
+          &quot;type&quot;: &quot;object&quot;,
+          &quot;properties&quot;: {
+            &quot;artifactType&quot;: {
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;enum&quot;: [
+                &quot;spreadsheet&quot;,
+                &quot;presentation&quot;
+              ],
+              &quot;description&quot;: &quot;Artifact type. Defaults to spreadsheet.&quot;
+            },
+            &quot;target&quot;: {
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;description&quot;: &quot;Absolute .xlsx/.pptx/.artifact-session.json path or stable session id. Pass an existing Office file here to import it as the session source; explicit artifact export writes under outputDirectory. Do not use sourcePath to import. When omitted, the current Codex task gets a stable plugin-local session.&quot;
+            },
+            &quot;code&quot;: {
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;description&quot;: &quot;Async JavaScript function body with prebound artifact/session/input and workbook/presentation variables. Return a JSON value useful to the next model turn.&quot;
+            },
+            &quot;input&quot;: {
+              &quot;description&quot;: &quot;Optional JSON value available to the code body as `input`.&quot;
+            },
+            &quot;summary&quot;: {
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;description&quot;: &quot;Short summary stored with a committed model update.&quot;
+            },
+            &quot;create&quot;: {
+              &quot;type&quot;: &quot;boolean&quot;,
+              &quot;description&quot;: &quot;Advanced option for a missing target or stable session id. Existing Office files are imported by passing their path as target.&quot;
+            },
+            &quot;sessionRoot&quot;: {
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;description&quot;: &quot;Directory used for generated session snapshots.&quot;
+            },
+            &quot;snapshotPath&quot;: {
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;description&quot;: &quot;Explicit session snapshot path for an artifact target or id.&quot;
+            },
+            &quot;title&quot;: {
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;description&quot;: &quot;Title used when creating a session.&quot;
+            },
+            &quot;sourcePath&quot;: {
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;description&quot;: &quot;Advanced persistence metadata override. This does not import an Office file; pass an existing Office file as target instead.&quot;
+            },
+            &quot;outputDirectory&quot;: {
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;description&quot;: &quot;Parent directory for session-managed render, inspect, and export files. The session persists this directory and publishes each successful run into its own child directory.&quot;
+            },
+            &quot;timeoutMs&quot;: {
+              &quot;type&quot;: &quot;integer&quot;,
+              &quot;minimum&quot;: 1,
+              &quot;maximum&quot;: 300000,
+              &quot;description&quot;: &quot;Hard execution timeout. Defaults to 120000 ms.&quot;
+            },
+            &quot;sessionMode&quot;: {
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;enum&quot;: [
+                &quot;thread&quot;,
+                &quot;new&quot;
+              ],
+              &quot;description&quot;: &quot;With no target, reuse this task&#x27;s session or create a new one. Defaults to thread.&quot;
+            }
+          },
+          &quot;required&quot;: [
+            &quot;code&quot;
+          ],
+          &quot;additionalProperties&quot;: false
+        },
+        &quot;annotations&quot;: {
+          &quot;readOnlyHint&quot;: false,
+          &quot;destructiveHint&quot;: true,
+          &quot;idempotentHint&quot;: false,
+          &quot;openWorldHint&quot;: true
+        }
+      }
+    ]
+  }
+}</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

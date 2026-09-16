@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "sessionId": "workbook-4bc90f5379bcbf59-65903503-32fc-4575-a474-cc36b366b822",
+  "artifactType": "spreadsheet",
+  "title": "roundtrip",
+  "stateVersion": 0,
+  "createdAtMs": 1789492832583,
+  "updatedAtMs": 1789492832583,
+  "viewState": {
+    "version": 1,
+    "updatedAtMs": 1789492832583,
+    "activeSheetName": "Data",
+    "selectedRanges": [
+      {
+        "sheetName": "Data",
+        "range": "A1"
+      }
+    ]
+  },
+  "sourcePath": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/runs/roundtrip.xlsx",
+  "outputDirectory": "/Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/local-sessions/outputs",
+  "schema": "openai.artifact-session.files/v1",
+  "initialArtifactProto": {
+    "path": "file-4bc90f5379bcbf59.artifact-session/initial.pb",
+    "byteLength": 1097
+  },
+  "initialCrdtState": {
+    "path": "file-4bc90f5379bcbf59.artifact-session/initial-crdt.bin",
+    "byteLength": 6120
+  },
+  "updates": []
+}

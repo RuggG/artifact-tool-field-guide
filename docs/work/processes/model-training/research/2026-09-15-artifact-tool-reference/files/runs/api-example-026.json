@@ -1,0 +1,12 @@
+{
+  "index": 26,
+  "name": "chart series",
+  "summary": "Series value number format code",
+  "originalCode": "chart.series.items[0]!.valuesFormatCode = '$0.00';",
+  "adaptations": [
+    "Removed TypeScript non-null assertion after array access."
+  ],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

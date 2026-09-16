@@ -1,0 +1,926 @@
+[
+  {
+    "id": "FX-SUM",
+    "description": "Independent fixture: =SUM(A1:A5)",
+    "status": "pass",
+    "ms": 1,
+    "detail": {
+      "formula": "=SUM(A1:A5)",
+      "expected": 15,
+      "actual": 15,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-PRODUCT",
+    "description": "Independent fixture: =PRODUCT(A1:A5)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=PRODUCT(A1:A5)",
+      "expected": 120,
+      "actual": 120,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-SUMPRODUCT",
+    "description": "Independent fixture: =SUMPRODUCT(A1:A5,B1:B5)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=SUMPRODUCT(A1:A5,B1:B5)",
+      "expected": 550,
+      "actual": 550,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-SUMIFS",
+    "description": "Independent fixture: =SUMIFS(B1:B5,A1:A5,\">2\")",
+    "status": "pass",
+    "ms": 1,
+    "detail": {
+      "formula": "=SUMIFS(B1:B5,A1:A5,\">2\")",
+      "expected": 120,
+      "actual": 120,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-COUNTIFS",
+    "description": "Independent fixture: =COUNTIFS(A1:A5,\">2\")",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=COUNTIFS(A1:A5,\">2\")",
+      "expected": 3,
+      "actual": 3,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-AVERAGEIFS",
+    "description": "Independent fixture: =AVERAGEIFS(B1:B5,A1:A5,\">2\")",
+    "status": "pass",
+    "ms": 1,
+    "detail": {
+      "formula": "=AVERAGEIFS(B1:B5,A1:A5,\">2\")",
+      "expected": 40,
+      "actual": 40,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-ROUND",
+    "description": "Independent fixture: =ROUND(12.345,2)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=ROUND(12.345,2)",
+      "expected": 12.35,
+      "actual": 12.35,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-MOD",
+    "description": "Independent fixture: =MOD(17,5)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=MOD(17,5)",
+      "expected": 2,
+      "actual": 2,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-POWER",
+    "description": "Independent fixture: =POWER(2,8)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=POWER(2,8)",
+      "expected": 256,
+      "actual": 256,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-SQRT",
+    "description": "Independent fixture: =SQRT(81)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=SQRT(81)",
+      "expected": 9,
+      "actual": 9,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-CEILING.MATH",
+    "description": "Independent fixture: =CEILING.MATH(4.2)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=CEILING.MATH(4.2)",
+      "expected": 5,
+      "actual": 5,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-FLOOR.MATH",
+    "description": "Independent fixture: =FLOOR.MATH(4.8)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=FLOOR.MATH(4.8)",
+      "expected": 4,
+      "actual": 4,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-ABS",
+    "description": "Independent fixture: =ABS(-4)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=ABS(-4)",
+      "expected": 4,
+      "actual": 4,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-AVERAGE",
+    "description": "Independent fixture: =AVERAGE(A1:A5)",
+    "status": "pass",
+    "ms": 1,
+    "detail": {
+      "formula": "=AVERAGE(A1:A5)",
+      "expected": 3,
+      "actual": 3,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-MEDIAN",
+    "description": "Independent fixture: =MEDIAN(A1:A5)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=MEDIAN(A1:A5)",
+      "expected": 3,
+      "actual": 3,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-MIN",
+    "description": "Independent fixture: =MIN(A1:A5)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=MIN(A1:A5)",
+      "expected": 1,
+      "actual": 1,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-MAX",
+    "description": "Independent fixture: =MAX(A1:A5)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=MAX(A1:A5)",
+      "expected": 5,
+      "actual": 5,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-STDEV.S",
+    "description": "Independent fixture: =STDEV.S(A1:A5)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=STDEV.S(A1:A5)",
+      "expected": 1.5811388300841898,
+      "actual": 1.5811388300841898,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-VAR.P",
+    "description": "Independent fixture: =VAR.P(A1:A5)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=VAR.P(A1:A5)",
+      "expected": 2,
+      "actual": 2,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-CORREL",
+    "description": "Independent fixture: =CORREL(A1:A5,B1:B5)",
+    "status": "pass",
+    "ms": 1,
+    "detail": {
+      "formula": "=CORREL(A1:A5,B1:B5)",
+      "expected": 1,
+      "actual": 1,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-NORM.DIST",
+    "description": "Independent fixture: =NORM.DIST(0,0,1,TRUE)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=NORM.DIST(0,0,1,TRUE)",
+      "expected": 0.5,
+      "actual": 0.5,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-PERCENTILE.INC",
+    "description": "Independent fixture: =PERCENTILE.INC(A1:A5,0.5)",
+    "status": "pass",
+    "ms": 1,
+    "detail": {
+      "formula": "=PERCENTILE.INC(A1:A5,0.5)",
+      "expected": 3,
+      "actual": 3,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-IF",
+    "description": "Independent fixture: =IF(A1=1,\"yes\",\"no\")",
+    "status": "pass",
+    "ms": 1,
+    "detail": {
+      "formula": "=IF(A1=1,\"yes\",\"no\")",
+      "expected": "yes",
+      "actual": "yes",
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-AND",
+    "description": "Independent fixture: =AND(A1=1,A2=2)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=AND(A1=1,A2=2)",
+      "expected": true,
+      "actual": true,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-OR",
+    "description": "Independent fixture: =OR(FALSE,TRUE)",
+    "status": "pass",
+    "ms": 1,
+    "detail": {
+      "formula": "=OR(FALSE,TRUE)",
+      "expected": true,
+      "actual": true,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-IFERROR",
+    "description": "Independent fixture: =IFERROR(1/0,99)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=IFERROR(1/0,99)",
+      "expected": 99,
+      "actual": 99,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-IFNA",
+    "description": "Independent fixture: =IFNA(NA(),99)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=IFNA(NA(),99)",
+      "expected": 99,
+      "actual": 99,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-CHOOSE",
+    "description": "Independent fixture: =CHOOSE(2,10,20,30)",
+    "status": "pass",
+    "ms": 1,
+    "detail": {
+      "formula": "=CHOOSE(2,10,20,30)",
+      "expected": 20,
+      "actual": 20,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-SWITCH",
+    "description": "Independent fixture: =SWITCH(2,1,10,2,20,0)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=SWITCH(2,1,10,2,20,0)",
+      "expected": 20,
+      "actual": 20,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-IFS-prefixed",
+    "description": "Independent fixture: =_xlfn.IFS(A1=1,10,TRUE,20)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=_xlfn.IFS(A1=1,10,TRUE,20)",
+      "expected": 10,
+      "actual": 10,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-INDEX",
+    "description": "Independent fixture: =INDEX(B1:B5,3)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=INDEX(B1:B5,3)",
+      "expected": 30,
+      "actual": 30,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-MATCH",
+    "description": "Independent fixture: =MATCH(3,A1:A5,0)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=MATCH(3,A1:A5,0)",
+      "expected": 3,
+      "actual": 3,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-VLOOKUP",
+    "description": "Independent fixture: =VLOOKUP(3,A1:B5,2,FALSE)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=VLOOKUP(3,A1:B5,2,FALSE)",
+      "expected": 30,
+      "actual": 30,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-XLOOKUP",
+    "description": "Independent fixture: =XLOOKUP(3,A1:A5,B1:B5)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=XLOOKUP(3,A1:A5,B1:B5)",
+      "expected": 30,
+      "actual": 30,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-XLOOKUP-prefixed",
+    "description": "Independent fixture: =_xlfn.XLOOKUP(3,A1:A5,B1:B5)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=_xlfn.XLOOKUP(3,A1:A5,B1:B5)",
+      "expected": 30,
+      "actual": 30,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-OFFSET",
+    "description": "Independent fixture: =OFFSET(A1,1,1)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=OFFSET(A1,1,1)",
+      "expected": 20,
+      "actual": "OFFSET is not implemented. reference=1, rows=1, cols=1, height=undefined, width=undefined",
+      "matches": false
+    }
+  },
+  {
+    "id": "FX-INDIRECT",
+    "description": "Independent fixture: =INDIRECT(\"B3\")",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=INDIRECT(\"B3\")",
+      "expected": 30,
+      "actual": "INDIRECT is not implemented. refText=B3, a1=undefined",
+      "matches": false
+    }
+  },
+  {
+    "id": "FX-ADDRESS",
+    "description": "Independent fixture: =ADDRESS(3,2)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=ADDRESS(3,2)",
+      "expected": "$B$3",
+      "actual": "$B$3",
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-FORMULATEXT",
+    "description": "Independent fixture: =FORMULATEXT(H1)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=FORMULATEXT(H1)",
+      "expected": "=A1*2",
+      "actual": "FORMULATEXT is not implemented. reference=2",
+      "matches": false
+    }
+  },
+  {
+    "id": "FX-ISFORMULA",
+    "description": "Independent fixture: =ISFORMULA(H1)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=ISFORMULA(H1)",
+      "expected": true,
+      "actual": "ISFORMULA is not implemented. reference=2",
+      "matches": false
+    }
+  },
+  {
+    "id": "FX-ISNUMBER",
+    "description": "Independent fixture: =ISNUMBER(B1)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=ISNUMBER(B1)",
+      "expected": true,
+      "actual": true,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-ISBLANK",
+    "description": "Independent fixture: =ISBLANK(J1)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=ISBLANK(J1)",
+      "expected": true,
+      "actual": true,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-ISERROR",
+    "description": "Independent fixture: =ISERROR(1/0)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=ISERROR(1/0)",
+      "expected": true,
+      "actual": true,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-TYPE",
+    "description": "Independent fixture: =TYPE(\"x\")",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=TYPE(\"x\")",
+      "expected": 2,
+      "actual": 2,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-LEN",
+    "description": "Independent fixture: =LEN(\"hello\")",
+    "status": "pass",
+    "ms": 1,
+    "detail": {
+      "formula": "=LEN(\"hello\")",
+      "expected": 5,
+      "actual": 5,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-LEFT",
+    "description": "Independent fixture: =LEFT(\"hello\",2)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=LEFT(\"hello\",2)",
+      "expected": "he",
+      "actual": "he",
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-MID",
+    "description": "Independent fixture: =MID(\"hello\",2,3)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=MID(\"hello\",2,3)",
+      "expected": "ell",
+      "actual": "ell",
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-TRIM",
+    "description": "Independent fixture: =TRIM(\"  a  b  \")",
+    "status": "pass",
+    "ms": 1,
+    "detail": {
+      "formula": "=TRIM(\"  a  b  \")",
+      "expected": "a b",
+      "actual": "a b",
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-SUBSTITUTE",
+    "description": "Independent fixture: =SUBSTITUTE(\"a-b\",\"-\",\"/\")",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=SUBSTITUTE(\"a-b\",\"-\",\"/\")",
+      "expected": "a/b",
+      "actual": "a/b",
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-TEXTJOIN-prefixed",
+    "description": "Independent fixture: =_xlfn.TEXTJOIN(\", \",TRUE,\"a\",\"b\")",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=_xlfn.TEXTJOIN(\", \",TRUE,\"a\",\"b\")",
+      "expected": "a, b",
+      "actual": "a, b",
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-TEXT",
+    "description": "Independent fixture: =TEXT(0.125,\"0.0%\")",
+    "status": "pass",
+    "ms": 1,
+    "detail": {
+      "formula": "=TEXT(0.125,\"0.0%\")",
+      "expected": "12.5%",
+      "actual": "12.5%",
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-DATE",
+    "description": "Independent fixture: =DATE(2026,1,1)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=DATE(2026,1,1)",
+      "expected": 46023,
+      "actual": 46023,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-YEAR",
+    "description": "Independent fixture: =YEAR(DATE(2026,1,1))",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=YEAR(DATE(2026,1,1))",
+      "expected": 2026,
+      "actual": 2026,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-MONTH",
+    "description": "Independent fixture: =MONTH(DATE(2026,9,15))",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=MONTH(DATE(2026,9,15))",
+      "expected": 9,
+      "actual": 9,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-EOMONTH",
+    "description": "Independent fixture: =DAY(EOMONTH(DATE(2026,2,2),0))",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=DAY(EOMONTH(DATE(2026,2,2),0))",
+      "expected": 28,
+      "actual": 28,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-EDATE",
+    "description": "Independent fixture: =MONTH(EDATE(DATE(2026,1,1),2))",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=MONTH(EDATE(DATE(2026,1,1),2))",
+      "expected": 3,
+      "actual": 3,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-NETWORKDAYS",
+    "description": "Independent fixture: =NETWORKDAYS(DATE(2026,9,14),DATE(2026,9,18))",
+    "status": "pass",
+    "ms": 1,
+    "detail": {
+      "formula": "=NETWORKDAYS(DATE(2026,9,14),DATE(2026,9,18))",
+      "expected": 5,
+      "actual": 5,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-DAYS",
+    "description": "Independent fixture: =DAYS(DATE(2026,2,1),DATE(2026,1,1))",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=DAYS(DATE(2026,2,1),DATE(2026,1,1))",
+      "expected": 31,
+      "actual": 31,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-PMT",
+    "description": "Independent fixture: =PMT(0,10,1000)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=PMT(0,10,1000)",
+      "expected": -100,
+      "actual": -100,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-PV",
+    "description": "Independent fixture: =PV(0,10,-100)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=PV(0,10,-100)",
+      "expected": 1000,
+      "actual": 1000,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-FV",
+    "description": "Independent fixture: =FV(0,10,-100)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=FV(0,10,-100)",
+      "expected": 1000,
+      "actual": 1000,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-NPV",
+    "description": "Independent fixture: =NPV(0.1,100,100)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=NPV(0.1,100,100)",
+      "expected": 173.55371900826447,
+      "actual": 173.55371900826447,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-IRR",
+    "description": "Independent fixture: =IRR({-100,110})",
+    "status": "pass",
+    "ms": 1,
+    "detail": {
+      "formula": "=IRR({-100,110})",
+      "expected": 0.1,
+      "actual": 0.1,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-XIRR",
+    "description": "Independent fixture: =XIRR({-100,110},{DATE(2025,1,1),DATE(2026,1,1)})",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=XIRR({-100,110},{DATE(2025,1,1),DATE(2026,1,1)})",
+      "expected": 0.1,
+      "actual": 0.09999999999999985,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-RATE",
+    "description": "Independent fixture: =RATE(1,0,-100,110)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=RATE(1,0,-100,110)",
+      "expected": 0.1,
+      "actual": 0.10000000000000009,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-NPER",
+    "description": "Independent fixture: =NPER(0,-10,100)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=NPER(0,-10,100)",
+      "expected": 10,
+      "actual": 10,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-SLN",
+    "description": "Independent fixture: =SLN(100,10,9)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=SLN(100,10,9)",
+      "expected": 10,
+      "actual": 10,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-CONVERT",
+    "description": "Independent fixture: =CONVERT(1,\"m\",\"cm\")",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=CONVERT(1,\"m\",\"cm\")",
+      "expected": 100,
+      "actual": 100,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-DEC2BIN",
+    "description": "Independent fixture: =DEC2BIN(10)",
+    "status": "pass",
+    "ms": 1,
+    "detail": {
+      "formula": "=DEC2BIN(10)",
+      "expected": "1010",
+      "actual": "1010",
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-BIN2DEC",
+    "description": "Independent fixture: =BIN2DEC(\"1010\")",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=BIN2DEC(\"1010\")",
+      "expected": 10,
+      "actual": 10,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-IMABS",
+    "description": "Independent fixture: =IMABS(\"3+4i\")",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=IMABS(\"3+4i\")",
+      "expected": 5,
+      "actual": 5,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-IMSUM",
+    "description": "Independent fixture: =IMSUM(\"1+2i\",\"3+4i\")",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=IMSUM(\"1+2i\",\"3+4i\")",
+      "expected": "4+6i",
+      "actual": "4+6i",
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-LET",
+    "description": "Independent fixture: =LET(x,2,x*3)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=LET(x,2,x*3)",
+      "expected": 6,
+      "actual": 6,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-LET-prefixed",
+    "description": "Independent fixture: =_xlfn.LET(_xlpm.x,2,_xlpm.x*3)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=_xlfn.LET(_xlpm.x,2,_xlpm.x*3)",
+      "expected": 6,
+      "actual": 6,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-LAMBDA-call",
+    "description": "Independent fixture: =_xlfn.LAMBDA(_xlpm.x,_xlpm.x*3)(2)",
+    "status": "pass",
+    "ms": 1,
+    "detail": {
+      "formula": "=_xlfn.LAMBDA(_xlpm.x,_xlpm.x*3)(2)",
+      "expected": 6,
+      "actual": 6,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-COUNTBLANK",
+    "description": "Independent fixture: =COUNTBLANK(J1:J5)",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=COUNTBLANK(J1:J5)",
+      "expected": 5,
+      "actual": 5,
+      "matches": true
+    }
+  },
+  {
+    "id": "FX-COUNTIF-blanks",
+    "description": "Independent fixture: =COUNTIF(J1:J5,\"\")",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "formula": "=COUNTIF(J1:J5,\"\")",
+      "expected": 5,
+      "actual": 0,
+      "matches": false
+    }
+  }
+]

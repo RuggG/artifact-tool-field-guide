@@ -1,0 +1,10 @@
+{
+  "index": 117,
+  "name": "range.copyFrom",
+  "summary": "Fill a block of formulas using copyFrom",
+  "originalCode": "// Excel-like drag-fill across a whole block (no manual 2D matrix)\nconst grid = sheet.getRange('B3:AF17');\nconst seed = sheet.getRange('B3');\nseed.formulasR1C1 = [['=RC[-1]*2']];\ngrid.copyFrom(seed, 'formulas');",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

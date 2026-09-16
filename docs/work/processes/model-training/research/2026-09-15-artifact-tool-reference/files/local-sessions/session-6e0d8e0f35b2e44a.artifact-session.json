@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "sessionId": "session-6e0d8e0f35b2e44a-4ef5c9ca-1031-44eb-9e08-619d57e79176",
+  "artifactType": "spreadsheet",
+  "title": "codex-spreadsheet-fa4508294c2fd240cf2b",
+  "stateVersion": 1,
+  "createdAtMs": 1789492833334,
+  "updatedAtMs": 1789492833399,
+  "schema": "openai.artifact-session.files/v1",
+  "initialArtifactProto": {
+    "path": "session-6e0d8e0f35b2e44a.artifact-session/initial.pb",
+    "byteLength": 944
+  },
+  "initialCrdtState": {
+    "path": "session-6e0d8e0f35b2e44a.artifact-session/initial-crdt.bin",
+    "byteLength": 4715
+  },
+  "updates": [
+    {
+      "version": 1,
+      "source": "model",
+      "updatedAtMs": 1789492833399,
+      "payloadKind": "crdt-update-v2",
+      "payload": {
+        "path": "session-6e0d8e0f35b2e44a.artifact-session/updates/0000000000000001.bin-bf1bfe63ab2c636d6080fb449609bf61426d6d9a13efe1d89a0ea4b3f3c7386c",
+        "byteLength": 1028
+      },
+      "authorClientId": "artifact-reference-synthetic-task"
+    }
+  ]
+}

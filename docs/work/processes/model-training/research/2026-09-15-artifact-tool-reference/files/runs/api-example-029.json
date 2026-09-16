@@ -1,0 +1,10 @@
+{
+  "index": 29,
+  "name": "chart series",
+  "summary": "Trendline styling (label fill + line alias)",
+  "originalCode": "const trend = series.trendlines.add('linear', { line: { fill: 'accent5', style: 'dashed', width: 1 }, label: { fill: { type: 'solid', color: 'background1', pattern: { type: 'smallCheck', color: 'accent6' } } } });",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

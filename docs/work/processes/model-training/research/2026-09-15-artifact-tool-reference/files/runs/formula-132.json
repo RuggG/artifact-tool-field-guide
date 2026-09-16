@@ -1,0 +1,37 @@
+{
+  "name": "fx.BITAND",
+  "category": "engineering",
+  "examples": [
+    {
+      "formula": "=BITAND(10, 20)",
+      "value": 0,
+      "projection": [
+        [
+          0,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 6
+    }
+  ]
+}

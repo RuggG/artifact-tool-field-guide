@@ -1,0 +1,37 @@
+{
+  "name": "fx.AVEDEV",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=AVEDEV(10, C1:C5, 20, C1:C5)",
+      "value": 4,
+      "projection": [
+        [
+          4,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 15
+    }
+  ]
+}

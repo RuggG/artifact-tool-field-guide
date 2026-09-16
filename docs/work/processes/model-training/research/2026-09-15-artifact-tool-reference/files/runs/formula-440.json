@@ -1,0 +1,37 @@
+{
+  "name": "fx.LOGNORM.INV",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=LOGNORM.INV(A1, A1, A1)",
+      "value": 7.125397860548684e+61,
+      "projection": [
+        [
+          7.125397860548684e+61,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 11
+    }
+  ]
+}

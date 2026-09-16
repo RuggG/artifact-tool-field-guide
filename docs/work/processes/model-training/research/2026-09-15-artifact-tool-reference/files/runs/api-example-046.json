@@ -1,0 +1,10 @@
+{
+  "index": 46,
+  "name": "workbook.render",
+  "summary": "Render a range preview",
+  "originalCode": "const png = await workbook.render({\n  sheetName: 'Summary',\n  range: 'A1:D12',\n  format: 'png',\n});",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

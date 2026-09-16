@@ -1,0 +1,76 @@
+[
+  {
+    "id": "F04",
+    "description": "Data table full-range convention and independent two-variable results",
+    "status": "pass",
+    "ms": 276,
+    "detail": {
+      "resultType": "undefined",
+      "actual": [
+        [
+          20,
+          30,
+          40
+        ],
+        [
+          30,
+          40,
+          50
+        ],
+        [
+          40,
+          50,
+          60
+        ]
+      ],
+      "formulas": [
+        [
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          ""
+        ]
+      ],
+      "display": [
+        [
+          "{=TABLE(B2,B3)}",
+          "{=TABLE(B2,B3)}",
+          "{=TABLE(B2,B3)}"
+        ],
+        [
+          "{=TABLE(B2,B3)}",
+          "{=TABLE(B2,B3)}",
+          "{=TABLE(B2,B3)}"
+        ],
+        [
+          "{=TABLE(B2,B3)}",
+          "{=TABLE(B2,B3)}",
+          "{=TABLE(B2,B3)}"
+        ]
+      ],
+      "infos": [
+        [
+          {
+            "kind": "projected",
+            "source": "dataTable",
+            "display": "{=TABLE(B2,B3)}",
+            "master": "Sensitivity!F5",
+            "ref": "Sensitivity!F5:H7",
+            "rowInput": "B2",
+            "columnInput": "B3",
+            "isEditable": false
+          }
+        ]
+      ]
+    }
+  }
+]

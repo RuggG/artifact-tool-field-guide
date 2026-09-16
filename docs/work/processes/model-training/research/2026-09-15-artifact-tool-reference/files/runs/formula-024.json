@@ -1,0 +1,37 @@
+{
+  "name": "fx.NORMSDIST",
+  "category": "compatibility",
+  "examples": [
+    {
+      "formula": "=NORMSDIST(A1)",
+      "value": 0.8413447460685429,
+      "projection": [
+        [
+          0.8413447460685429,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 8
+    }
+  ]
+}

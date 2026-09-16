@@ -1,0 +1,37 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>sessions.mjs · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="sessions.mjs">Raw file</a> · <a data-public-raw download href="sessions.mjs">Download</a></p><article><h1>sessions.mjs</h1><pre class="public-code"><code>import fs from &#x27;node:fs/promises&#x27;;
+import path from &#x27;node:path&#x27;;
+import {spawn} from &#x27;node:child_process&#x27;;
+import {fileURLToPath} from &#x27;node:url&#x27;;
+import {Workbook} from &#x27;@oai/artifact-tool&#x27;;
+import {artifactSession} from &#x27;@oai/artifact-tool/artifact-session&#x27;;
+const root=path.dirname(fileURLToPath(import.meta.url)),out=path.join(root,&#x27;files/runs&#x27;),sessionRoot=path.join(root,&#x27;files/local-sessions&#x27;);
+await fs.mkdir(sessionRoot,{recursive:true});
+const pkg=path.dirname(fileURLToPath(import.meta.resolve(&#x27;@oai/artifact-tool&#x27;)));
+const child=spawn(process.execPath,[path.join(pkg,&#x27;artifact-session-mcp/server.mjs&#x27;)],{stdio:[&#x27;pipe&#x27;,&#x27;pipe&#x27;,&#x27;pipe&#x27;]});
+const pending=new Map;let id=0,buffer=&#x27;&#x27;,stderr=&#x27;&#x27;;
+child.stderr.on(&#x27;data&#x27;,d=&gt;{stderr+=d;});
+child.stdout.on(&#x27;data&#x27;,d=&gt;{buffer+=d;let n;while((n=buffer.indexOf(&#x27;\n&#x27;))&gt;=0){const line=buffer.slice(0,n);buffer=buffer.slice(n+1);try{const r=JSON.parse(line),p=pending.get(r.id);if(p){clearTimeout(p.timer);pending.delete(r.id);p.resolve(r);}}catch{}}});
+function rpc(method,params={}){return new Promise((resolve,reject)=&gt;{const current=++id;const timer=setTimeout(()=&gt;{pending.delete(current);reject(new Error(&#x27;MCP response timed out&#x27;));},30000);pending.set(current,{resolve,reject,timer});child.stdin.write(JSON.stringify({jsonrpc:&#x27;2.0&#x27;,id:current,method,params})+&#x27;\n&#x27;);});}
+const results=[];
+async function call(label,args,meta){const response=await rpc(&#x27;tools/call&#x27;,{name:&#x27;artifact_session_run&#x27;,arguments:args,...meta?{_meta:meta}:{}});results.push({label,input:args,response});await fs.writeFile(path.join(out,&#x27;sessions.json&#x27;),JSON.stringify(results,null,2));console.log(label,JSON.stringify(response.result?.structuredContent??response.error));return response;}
+try{
+ results.push({label:&#x27;initialize&#x27;,response:await rpc(&#x27;initialize&#x27;,{protocolVersion:&#x27;2025-11-25&#x27;,capabilities:{},clientInfo:{name:&#x27;artifact-reference-probe&#x27;,version:&#x27;1&#x27;}})});
+ const schema=await rpc(&#x27;tools/list&#x27;);await fs.writeFile(path.join(out,&#x27;session-mcp-schema.json&#x27;),JSON.stringify(schema,null,2));
+ const base={target:&#x27;artifact-reference-probe&#x27;,sessionRoot,outputDirectory:path.join(sessionRoot,&#x27;outputs&#x27;),artifactType:&#x27;spreadsheet&#x27;,timeoutMs:10000};
+ await call(&#x27;create-and-commit&#x27;,{...base,create:true,title:&#x27;Synthetic session probe&#x27;,code:&quot;const s=workbook.worksheets.add(&#x27;Session&#x27;); s.getRange(&#x27;A1:C2&#x27;).values=[[&#x27;Qty&#x27;,&#x27;Price&#x27;,&#x27;Total&#x27;],[3,4,&#x27;=A2*B2&#x27;]]; return {total:s.getRange(&#x27;C2&#x27;).values,session:session.info};&quot;});
+ await call(&#x27;resume-and-edit&#x27;,{...base,input:{qty:5},summary:&#x27;Change synthetic quantity&#x27;,code:&quot;const s=workbook.worksheets.getItem(&#x27;Session&#x27;); const before=s.getRange(&#x27;C2&#x27;).values; s.getRange(&#x27;A2&#x27;).values=[[input.qty]]; workbook.recalculate(); return {before,after:s.getRange(&#x27;C2&#x27;).values};&quot;});
+ await call(&#x27;managed-outputs&#x27;,{...base,code:&quot;const inspection=await workbook.inspect({kind:&#x27;table&#x27;,range:&#x27;Session!A1:C2&#x27;,fileName:&#x27;session-inspect.ndjson&#x27;}); const preview=await workbook.render({sheetName:&#x27;Session&#x27;,range:&#x27;A1:C2&#x27;,fileName:&#x27;session-preview.png&#x27;,scale:2}); const exported=await workbook.export({format:&#x27;xlsx&#x27;,fileName:&#x27;session-probe.xlsx&#x27;}); return {inspection,preview,exported};&quot;});
+ await call(&#x27;throw-after-mutation&#x27;,{...base,code:&quot;workbook.worksheets.getItem(&#x27;Session&#x27;).getRange(&#x27;A2&#x27;).values=[[999]]; throw new Error(&#x27;Intentional rollback probe&#x27;);&quot;});
+ await call(&#x27;read-after-failed-run&#x27;,{...base,code:&quot;return {value:workbook.worksheets.getItem(&#x27;Session&#x27;).getRange(&#x27;A2&#x27;).values};&quot;});
+ await call(&#x27;import-existing-xlsx&#x27;,{...base,target:path.join(out,&#x27;roundtrip.xlsx&#x27;),code:&quot;return {sheets:workbook.worksheets.items.map(s=&gt;s.name),values:workbook.worksheets.getItemAt(0).getRange(&#x27;A1:C3&#x27;).values};&quot;});
+ await call(&#x27;invalid-parameter&#x27;,{...base,code:&#x27;return 1;&#x27;,invented:true});
+ await call(&#x27;missing-target-without-task-meta&#x27;,{code:&#x27;return 1;&#x27;,sessionRoot});
+ await call(&#x27;thread-scoped-default&#x27;,{sessionRoot,code:&quot;const s=workbook.worksheets.add(&#x27;Default&#x27;);s.getRange(&#x27;A1&#x27;).values=[[42]];return {value:s.getRange(&#x27;A1&#x27;).values};&quot;},{&#x27;openai/threadId&#x27;:&#x27;artifact-reference-synthetic-task&#x27;});
+ await call(&#x27;execution-timeout&#x27;,{...base,timeoutMs:500,code:&#x27;while(true){}&#x27;});
+ await call(&#x27;read-after-timeout&#x27;,{...base,code:&quot;return {value:workbook.worksheets.getItem(&#x27;Session&#x27;).getRange(&#x27;A2&#x27;).values};&quot;});
+ let directError;try{await artifactSession.run(async()=&gt;({ok:true}));}catch(e){directError=String(e);}
+ const staticSurface=Object.getOwnPropertyNames(Workbook).filter(x=&gt;![&#x27;length&#x27;,&#x27;name&#x27;,&#x27;prototype&#x27;].includes(x));
+ results.push({label:&#x27;first-party-wrapper-without-trusted-repl&#x27;,error:directError,staticSurface,runSignature:Workbook.run?.toString()});
+ await fs.writeFile(path.join(out,&#x27;sessions.json&#x27;),JSON.stringify(results,null,2));
+}finally{child.stdin.end();await fs.writeFile(path.join(out,&#x27;sessions.stderr.log&#x27;),stderr);}
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

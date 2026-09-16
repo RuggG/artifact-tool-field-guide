@@ -1,0 +1,37 @@
+{
+  "name": "fx.TANH",
+  "category": "math-trig",
+  "examples": [
+    {
+      "formula": "=TANH(10)",
+      "value": 0.9999999958776927,
+      "projection": [
+        [
+          0.9999999958776927,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 11
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "name": "fx.BAHTTEXT",
+  "category": "text",
+  "examples": [
+    {
+      "formula": "=BAHTTEXT(10)",
+      "value": "BAHTTEXT is not implemented. numberParam=10",
+      "projection": [
+        [
+          "BAHTTEXT is not implemented. numberParam=10",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 12
+    }
+  ]
+}

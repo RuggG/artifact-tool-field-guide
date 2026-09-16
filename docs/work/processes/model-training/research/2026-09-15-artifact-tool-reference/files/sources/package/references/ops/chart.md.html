@@ -1,0 +1,78 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>chart ops · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="chart.md">Raw file</a> · <a data-public-raw download href="chart.md">Download</a></p><article><h1 id="chart-ops">chart ops</h1>
+<p>Ops in the <code>chart.*</code> namespace for <code>Workbook.apply</code>.</p>
+<h2 id="ops-index">Ops index</h2>
+<ul>
+<li><code>chart.add</code>: Add a chart anchored to worksheet cells.</li>
+</ul>
+<h2 id="chartadd"><code>chart.add</code></h2>
+<p>Add a chart anchored to worksheet cells.</p>
+<p><strong>Required fields</strong>
+- <code>op</code>
+- <code>props</code>
+- <code>sheet</code>
+- <code>props.anchor</code>
+- <code>props.chartType</code></p>
+<p><strong>Optional fields</strong>
+- <code>as</code>
+- <code>props.categories</code>
+- <code>props.dataLabels</code>
+- <code>props.displayBlanksAs</code>
+- <code>props.hasLegend</code>
+- <code>props.legend</code>
+- <code>props.series</code>
+- <code>props.title</code></p>
+<p><strong>Enums</strong>
+- <code>props.chartType</code>: See <a href="../enums.md">enums</a>.
+- <code>props.displayBlanksAs</code>: See <a href="../enums.md">enums</a>.
+- <code>props.legend.position</code>: See <a href="../enums.md">enums</a>.
+- <code>props.series[].marker.symbol</code>: See <a href="../enums.md">enums</a>.
+- <code>props.series[].stroke.fill.color.value</code>: See <a href="../enums.md">enums</a>.
+- <code>props.series[].stroke.fill.gradientKind</code>: See <a href="../enums.md">enums</a>.
+- <code>props.series[].stroke.fill.pattern.type</code>: See <a href="../enums.md">enums</a>.
+- <code>props.series[].stroke.style</code>: See <a href="../enums.md">enums</a>.</p>
+<p><strong>Examples</strong></p>
+<pre><code class="language-json">{
+  "op": "chart.add",
+  "sheet": "Charts",
+  "props": {
+    "chartType": "line",
+    "anchor": {
+      "from": {
+        "row": 1,
+        "col": 1,
+        "rowOffsetPx": 4,
+        "colOffsetPx": 8
+      },
+      "extent": {
+        "widthPx": 520,
+        "heightPx": 280
+      }
+    },
+    "title": "Milky Way Star Birth Rate",
+    "categories": [
+      "2020",
+      "2021",
+      "2022",
+      "2023"
+    ],
+    "series": [
+      {
+        "name": "Milky Way",
+        "values": [
+          1.8,
+          1.9,
+          2,
+          2.2
+        ]
+      }
+    ],
+    "hasLegend": true,
+    "legend": {
+      "position": "bottom"
+    },
+    "dataLabels": {
+      "showValue": true
+    }
+  }
+}
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

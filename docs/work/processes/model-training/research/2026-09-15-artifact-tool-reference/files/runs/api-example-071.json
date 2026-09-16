@@ -1,0 +1,13 @@
+{
+  "index": 71,
+  "name": "workbook.inspect",
+  "summary": "Inspect sheets/tables matching Revenue",
+  "adaptations": [
+    "Mapped structured example fields to the corresponding public method; replaced placeholder anchors with actual fixture IDs."
+  ],
+  "execution": "completed",
+  "export": "completed",
+  "logs": [
+    "{\"recordCount\":2,\"truncated\":false,\"metadata\":{\"revision\":\"w68lpg\",\"target\":{\"id\":\"wb/j9pl4e\",\"beforeLines\":0,\"afterLines\":0},\"kind\":{\"requested\":\"sheet,table\",\"tokens\":[\"sheet\",\"table\"]},\"include\":{\"tokens\":[]},\"exclude\":{\"tokens\":[]},\"search\":\"Revenue\",\"notices\":[]}}"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "name": "fx.ROWS",
+  "category": "lookup-reference",
+  "examples": [
+    {
+      "formula": "=ROWS({1,2;3,4})",
+      "value": 2,
+      "projection": [
+        [
+          2,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 6
+    }
+  ]
+}

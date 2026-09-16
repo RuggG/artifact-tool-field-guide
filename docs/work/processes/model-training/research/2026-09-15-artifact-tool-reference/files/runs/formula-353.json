@@ -1,0 +1,37 @@
+{
+  "name": "fx.MAX",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=MAX(A2:A10, 0, C2:C4)",
+      "value": 12,
+      "projection": [
+        [
+          12,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 7
+    }
+  ]
+}

@@ -1,0 +1,1125 @@
+{
+  "capturedAt": "2026-09-15T17:44:12.253Z",
+  "package": {
+    "name": "@oai/artifact-tool",
+    "version": "2.8.59",
+    "private": true,
+    "type": "module",
+    "dependencies": {
+      "skia-canvas": "^3.0.6",
+      "@oai/walnut": "0.1.247"
+    },
+    "exports": {
+      ".": "./dist/artifact_tool.mjs",
+      "./docs/*": "./docs/*",
+      "./artifact-session": "./dist/artifact-session/index.mjs",
+      "./artifact-session/service": "./dist/artifact-session/service.mjs",
+      "./artifact-session/host-client": "./dist/artifact-session/host-client.mjs",
+      "./artifact-session/host-daemon": "./dist/artifact-session/host-daemon.mjs",
+      "./session-mcp": "./dist/artifact-session-mcp/server.mjs",
+      "./presentation-jsx": "./dist/presentation-jsx/index.mjs",
+      "./presentation-jsx/jsx-runtime": "./dist/presentation-jsx/jsx-runtime.mjs",
+      "./presentation-jsx/jsx-dev-runtime": "./dist/presentation-jsx/jsx-dev-runtime.mjs"
+    },
+    "bin": {
+      "artifact-session-host": "./dist/artifact-session/host-daemon.mjs",
+      "artifact-session-mcp": "./dist/artifact-session-mcp/server.mjs"
+    },
+    "files": [
+      "docs/**",
+      "dist/artifact_tool.mjs",
+      "dist/embedded_font_decoder.wasm",
+      "dist/presentation-jsx/**",
+      "dist/artifact-session/**",
+      "dist/artifact-session-mcp/**",
+      "node_modules/**",
+      "oai_js_emf.wasm",
+      "LICENSE.md"
+    ],
+    "bundledDependencies": [
+      "@oai/walnut",
+      "skia-canvas"
+    ]
+  },
+  "node": "v24.19.0",
+  "platform": "darwin",
+  "entries": [
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/API_QUICK_START.md",
+      "savedPath": "files/sources/package/API_QUICK_START.md",
+      "bytes": 27041,
+      "sha256": "d012a51f999b48ea85c88cd29c0d950ec9b3351f7662a4f7aeccff092970b499",
+      "headings": [
+        "# Using artifact_tool APIs (JavaScript)",
+        "## Required Imports + Startup",
+        "## Build Patterns",
+        "## Conventions",
+        "## API Discovery Policy (Strict)",
+        "## Supported Formulas",
+        "### Known formula/export limitations (not exhaustive)",
+        "## Reading existing/imported workbooks",
+        "### Inspect for workbook understanding",
+        "## Known Gotchas (Do not repeat)",
+        "## Additional feature-specific notes",
+        "### Merging cells",
+        "## Quick API Surface (High-Value + Common)",
+        "### Core workbook/file APIs",
+        "### Worksheet selection/creation",
+        "### Worksheet operations",
+        "### Range values/formulas",
+        "### Formatting",
+        "### Data Validation",
+        "### Conditional formatting",
+        "### Tables",
+        "### Images",
+        "### Threaded Comments",
+        "### Charts",
+        "#### Fast-chart path",
+        "### Sparklines",
+        "### Help / Grep",
+        "### Trace",
+        "### JavaScript example snippet (runnable)"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/api/API_DOCS.md",
+      "savedPath": "files/sources/package/api/API_DOCS.md",
+      "bytes": 8011,
+      "sha256": "d0278d01fc56085acfe356a3171cf12666a365714c684e2c031d05da35cebc33",
+      "headings": [
+        "# Workbook API Docs",
+        "## Conventions",
+        "## Quick Start",
+        "## Load Existing Workbook Data",
+        "## Recorded Edit",
+        "## Core API Sequence",
+        "## Output Map",
+        "## Minimal Patterns",
+        "## Reference Map"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/api/references/charts-drawings.spec.md",
+      "savedPath": "files/sources/package/api/references/charts-drawings.spec.md",
+      "bytes": 1728,
+      "sha256": "26f913c6db2ff204256e693bc3d1dd2b018be60f26da974fe39449d2736212b6",
+      "headings": [
+        "# Charts And Drawings",
+        "## Charts",
+        "## Chart To Image",
+        "## Images",
+        "## Shapes",
+        "## Sparklines",
+        "## Auto Layout",
+        "## Cookbook"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/api/references/comments-notes-names.spec.md",
+      "savedPath": "files/sources/package/api/references/comments-notes-names.spec.md",
+      "bytes": 1499,
+      "sha256": "d581d13c4216ea443a05f102881b71671122b112f80ef78612765c8106eae525",
+      "headings": [
+        "# Comments, Notes, And Names",
+        "## Comments",
+        "## Notes",
+        "## Workbook-Scoped Names",
+        "## Functions",
+        "## Sheet-Scoped Names",
+        "## Alias",
+        "## Cookbook"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/api/references/formatting.spec.md",
+      "savedPath": "files/sources/package/api/references/formatting.spec.md",
+      "bytes": 1762,
+      "sha256": "0aaf7ca599d1ab37d5f62adf8d972b89d292ca421413906debff19edce197d1e",
+      "headings": [
+        "# Formatting, Validation, And Theme",
+        "## Range Format",
+        "## Number Format",
+        "## Conditional Formatting",
+        "## Data Validation",
+        "## Freeze Panes",
+        "## Theme",
+        "## Cookbook"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/api/references/formulas.spec.md",
+      "savedPath": "files/sources/package/api/references/formulas.spec.md",
+      "bytes": 1511,
+      "sha256": "89c75091b1da14858bd778b0346120281f6d5c141ae04dec59b1fe96bbc1287c",
+      "headings": [
+        "# Formulas",
+        "## Assign Formulas",
+        "## Dynamic Arrays And Spill",
+        "## Trace",
+        "## Formula Usage Stats",
+        "## Names",
+        "## Cookbook"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/api/references/import-export.md",
+      "savedPath": "files/sources/package/api/references/import-export.md",
+      "bytes": 3387,
+      "sha256": "a5a7ef8af9ec95d39c84e84a9e373ef91d94c4673269b63c7b9390ab2cf51c8a",
+      "headings": [
+        "# Import, Export, HTML, Images, And Google Sheets",
+        "## CSV",
+        "## Markdown Table",
+        "## HTML",
+        "## Image Import",
+        "### Worksheet Images",
+        "## Chart To Image",
+        "## Render And Export",
+        "## Export Inline Types",
+        "## Google Sheets",
+        "## Cookbook"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/api/references/inspect-help.md",
+      "savedPath": "files/sources/package/api/references/inspect-help.md",
+      "bytes": 2491,
+      "sha256": "90d2d4399186a57b36c1118139b7ccae998a8da2324427851b80d4d90e69f41e",
+      "headings": [
+        "# Inspect, Resolve, Find Cells, And Help",
+        "## Inspect",
+        "## Targeted Inspect",
+        "## Resolve",
+        "## Find Cells",
+        "## Help",
+        "## Create/Edit Loop",
+        "## Inline Types"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/api/references/ranges.spec.md",
+      "savedPath": "files/sources/package/api/references/ranges.spec.md",
+      "bytes": 2915,
+      "sha256": "12e84b016baf2d063272e94df94809f3e8ec6a3eaab1f00a11c9401f1696319a",
+      "headings": [
+        "# Ranges",
+        "## Addressing",
+        "## Values",
+        "## Formulas",
+        "## Write",
+        "## Format",
+        "## Navigation",
+        "## Clear, Merge, Fill, Copy",
+        "## Inline Types",
+        "## Cookbook"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/api/references/tables.spec.md",
+      "savedPath": "files/sources/package/api/references/tables.spec.md",
+      "bytes": 1367,
+      "sha256": "8e7503477413ddb62839911818dab1382fe0b2362aa82d9c379dec7603b4a33b",
+      "headings": [
+        "# Tables",
+        "## Add Table",
+        "## Read",
+        "## Add Rows",
+        "## Headerless Table",
+        "## Recorded Table Edit",
+        "## Cookbook"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/api/references/workbook.spec.md",
+      "savedPath": "files/sources/package/api/references/workbook.spec.md",
+      "bytes": 2641,
+      "sha256": "203782076c26ff1ab7c41e572d44cdf9bb0c9271256ff59d32c714ef42712786",
+      "headings": [
+        "# Workbook Facade",
+        "## Create And Load",
+        "## Import",
+        "## Root Collections",
+        "## Theme",
+        "## Recalculate And Trace",
+        "## Inspect, Search, Help, Resolve",
+        "## Record And Apply",
+        "## CRDT",
+        "## Serialize",
+        "## Utilities",
+        "## Cookbook"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/api/references/worksheets.spec.md",
+      "savedPath": "files/sources/package/api/references/worksheets.spec.md",
+      "bytes": 2295,
+      "sha256": "5295185292d995391a5ecdbf6de112da7bdbdbda88df94581dc0caa047aca24b",
+      "headings": [
+        "# Worksheets",
+        "## Collection",
+        "## Worksheet Properties",
+        "## Ranges",
+        "## Worksheet Collections",
+        "## Reset And Delete",
+        "## Merge",
+        "## Drawings",
+        "## Inline Types",
+        "## Cookbook"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/examples/chart_suggestions.ts",
+      "savedPath": "files/sources/package/examples/chart_suggestions.ts",
+      "bytes": 3567,
+      "sha256": "ffba12b53f41de1aff3e3660f97655338922310b3eaccf5603f5b06cdf5d34d9",
+      "headings": []
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/examples/formula_trace_and_help.ts",
+      "savedPath": "files/sources/package/examples/formula_trace_and_help.ts",
+      "bytes": 5813,
+      "sha256": "c1d6767c52f5ce45d3d0b9d0b12aac16d71d93823efa5852e798b0b6b9ce0e39",
+      "headings": []
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/examples/inspect_existing_workbooks.ts",
+      "savedPath": "files/sources/package/examples/inspect_existing_workbooks.ts",
+      "bytes": 3174,
+      "sha256": "1daf6dab3769301960290b17e9821e1f554a4896d531111b83a8f758c5c0f2bc",
+      "headings": []
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/examples/quick_start_example.ts",
+      "savedPath": "files/sources/package/examples/quick_start_example.ts",
+      "bytes": 4889,
+      "sha256": "a0e23ee3e8d26215abe8c9f891be85133da96eac385824d5f71ed9284c50f688",
+      "headings": []
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/formulas/database.md",
+      "savedPath": "files/sources/package/formulas/database.md",
+      "bytes": 997,
+      "sha256": "43c8f57654b669cf198d1e8fecf69776a1e239ae0e97b2fb03f66a5b17893076",
+      "headings": [
+        "# Database Formulas",
+        "## Formula Pattern",
+        "## Common Shapes",
+        "## Coverage"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/formulas/date-time.md",
+      "savedPath": "files/sources/package/formulas/date-time.md",
+      "bytes": 867,
+      "sha256": "afbcd76848edebb47aaf980dda326f8ee02bf9f6b3aaed29e3eac7cc0ac98e21",
+      "headings": [
+        "# Date And Time Formulas",
+        "## Formula Pattern",
+        "## Common Shapes",
+        "## Coverage"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/formulas/engineering.md",
+      "savedPath": "files/sources/package/formulas/engineering.md",
+      "bytes": 929,
+      "sha256": "5694b05715bfabf7dc9cf819edf1237d62cd7059af6fb469d9025117c479be2c",
+      "headings": [
+        "# Engineering Formulas",
+        "## Formula Pattern",
+        "## Common Shapes",
+        "## Coverage"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/formulas/financial.md",
+      "savedPath": "files/sources/package/formulas/financial.md",
+      "bytes": 980,
+      "sha256": "94ec433f2d11023b45ace9dc76314f0321dd751479d08248dd1fb604724ed192",
+      "headings": [
+        "# Financial Formulas",
+        "## Formula Pattern",
+        "## Common Shapes",
+        "## Coverage"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/formulas/information.md",
+      "savedPath": "files/sources/package/formulas/information.md",
+      "bytes": 792,
+      "sha256": "378ae765bff52f81dcee4229c2c3c83c52aafd22b228e1d2811154c069306632",
+      "headings": [
+        "# Information Formulas",
+        "## Formula Pattern",
+        "## Common Shapes",
+        "## Coverage"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/formulas/logical.md",
+      "savedPath": "files/sources/package/formulas/logical.md",
+      "bytes": 1327,
+      "sha256": "9d1a63c18b4380ad132d8e155df7f5be4a264a4626449db513808ed0370b3427",
+      "headings": [
+        "# Logical Formulas",
+        "## Formula Pattern",
+        "## Boolean And Branching Shapes",
+        "## Error Handling Shapes",
+        "## Lambda Shapes",
+        "## Named Lambda",
+        "## Coverage"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/formulas/lookup-reference.md",
+      "savedPath": "files/sources/package/formulas/lookup-reference.md",
+      "bytes": 1022,
+      "sha256": "da77855fcf5821dc80f43b9b289c3f87d1575c3bc20778abf56eef3d35d21477",
+      "headings": [
+        "# Lookup And Reference Formulas",
+        "## Formula Pattern",
+        "## Common Shapes",
+        "## Coverage"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/formulas/math-trig.md",
+      "savedPath": "files/sources/package/formulas/math-trig.md",
+      "bytes": 868,
+      "sha256": "bb13bd03018234f37d024e58bcf276179f0a30ada01d7373f061aa900acc937c",
+      "headings": [
+        "# Math And Trig Formulas",
+        "## Formula Pattern",
+        "## Common Shapes",
+        "## Coverage"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/formulas/statistical.md",
+      "savedPath": "files/sources/package/formulas/statistical.md",
+      "bytes": 881,
+      "sha256": "ed2bf93edad916d8bea7b8c38e1088fb238c571609be4c6cd6e1f6137fd9c3ef",
+      "headings": [
+        "# Statistical Formulas",
+        "## Formula Pattern",
+        "## Common Shapes",
+        "## Coverage"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/formulas/text.md",
+      "savedPath": "files/sources/package/formulas/text.md",
+      "bytes": 905,
+      "sha256": "f3a2295e5cdf2691a64a2822598cc2a8ddd893b74b1af5117c3de65aea5e07c2",
+      "headings": [
+        "# Text Formulas",
+        "## Formula Pattern",
+        "## Common Shapes",
+        "## Coverage"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/references/comments.md",
+      "savedPath": "files/sources/package/references/comments.md",
+      "bytes": 1022,
+      "sha256": "3232ba2b04aa3ed66bcb4e07603c9368804fb6275b12b77e160b4dad3f35c812",
+      "headings": [
+        "# Comments",
+        "## Current Author",
+        "## Person Inline Type",
+        "## Cell And Range Threads",
+        "## Thread Inline Types",
+        "## Replies And State"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/references/conditional-formatting.spec.md",
+      "savedPath": "files/sources/package/references/conditional-formatting.spec.md",
+      "bytes": 2433,
+      "sha256": "79b16558a2d46d08fdd98aa82a8f68ac94e1416e7948485d03bd2762428d78aa",
+      "headings": [
+        "# Conditional Formatting",
+        "## Rule Pattern",
+        "## Rule Inline Types",
+        "## Custom Rule",
+        "## Rule Families",
+        "## Clear Rules"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/references/data-tables.spec.md",
+      "savedPath": "files/sources/package/references/data-tables.spec.md",
+      "bytes": 750,
+      "sha256": "d5d38dc1cab4d63394b65581cd8522caa482a314097f1055e6d372f1ec1f5d51",
+      "headings": [
+        "## Data tables (`worksheet.dataTables`)",
+        "### Two-variable data table",
+        "### Single-variable (row input only)"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/references/data-validations.spec.md",
+      "savedPath": "files/sources/package/references/data-validations.spec.md",
+      "bytes": 1425,
+      "sha256": "145ccd483e9133fae701464879ab549a830473241a2146e857d30604499ef75c",
+      "headings": [
+        "# Data Validations",
+        "## Range Assignment",
+        "## Rule Config",
+        "## Validation Inline Types",
+        "## Collection Add"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/references/defined-names.spec.md",
+      "savedPath": "files/sources/package/references/defined-names.spec.md",
+      "bytes": 1031,
+      "sha256": "088ae2855cb97019fcf8877a6d87ba4ba3afe2c578745bde5bb9ca32b2e75608",
+      "headings": [
+        "## Defined names (`workbook.names`, `worksheet.names`)",
+        "### Named ranges",
+        "### Named functions (LAMBDA)"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/references/drawings.spec.md",
+      "savedPath": "files/sources/package/references/drawings.spec.md",
+      "bytes": 3542,
+      "sha256": "2f16b38b57f6318eab4551d3687247dd812aa46739b2e9b3e0dda83fb33ee89c",
+      "headings": [
+        "# Worksheet Drawings",
+        "## Units",
+        "## Chart Config",
+        "## Chart Inline Types",
+        "## Chart From Range",
+        "## Shape Config",
+        "## Shape Inline Type",
+        "## Rebuild And Layout",
+        "## Auto Layout Inline Type"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/references/enums.md",
+      "savedPath": "files/sources/package/references/enums.md",
+      "bytes": 9180,
+      "sha256": "25e0bf5b30fd829c52b3e564af039db4af1e34f92cfc034c5d51d8d35aada3b4",
+      "headings": [
+        "# Workbook.apply enums (v0)",
+        "## `props.axis.maxMode`",
+        "## `props.axis.minMode`",
+        "## `props.borders.preset`",
+        "## `props.chartType`",
+        "## `props.displayBlanksAs`",
+        "## `props.displayEmptyCellsAs`",
+        "## `props.errorAlert.style`",
+        "## `props.fill.color.value`",
+        "## `props.fill.gradientKind`",
+        "## `props.fill.pattern.type`",
+        "## `props.geometry`",
+        "## `props.horizontalAlignment`",
+        "## `props.legend.position`",
+        "## `props.line.style`",
+        "## `props.rule.format.fill.color.value`",
+        "## `props.rule.format.fill.gradientKind`",
+        "## `props.rule.format.fill.pattern.type`",
+        "## `props.rule.operator`",
+        "## `props.rule.thresholds[].type`",
+        "## `props.rule.type`",
+        "## `props.series[].marker.symbol`",
+        "## `props.series[].stroke.fill.color.value`",
+        "## `props.series[].stroke.fill.gradientKind`",
+        "## `props.series[].stroke.fill.pattern.type`",
+        "## `props.series[].stroke.style`",
+        "## `props.seriesColor.value`",
+        "## `props.type`",
+        "## `props.verticalAlignment`"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/references/images.spec.md",
+      "savedPath": "files/sources/package/references/images.spec.md",
+      "bytes": 1418,
+      "sha256": "0a4a0c5696f9c821dcc6d5229e2790512591f168cd2a7422be8a8673b2e46cb5",
+      "headings": [
+        "# Worksheet Images",
+        "## Add Image",
+        "## Image Inline Types",
+        "## Anchor",
+        "## Anchor Inline Type",
+        "## Edit"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/references/ops/chart.md",
+      "savedPath": "files/sources/package/references/ops/chart.md",
+      "bytes": 1666,
+      "sha256": "bcc162d1bf010939d157291ffa5d6e2c0d070063f9e2fcb5eb339f0ba20de244",
+      "headings": [
+        "# chart ops",
+        "## Ops index",
+        "## `chart.add`"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/references/ops/comments.md",
+      "savedPath": "files/sources/package/references/ops/comments.md",
+      "bytes": 419,
+      "sha256": "abc0439a2550b3b82787939c173ceec4a6d5ebef9afad5a5e383c9535a58402b",
+      "headings": [
+        "# comments ops",
+        "## Ops index",
+        "## `comments.self.set`"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/references/ops/conditionalformat.md",
+      "savedPath": "files/sources/package/references/ops/conditionalformat.md",
+      "bytes": 1039,
+      "sha256": "0998627dafabe9446bda4db137352da2073ace803344d5b79742518d59b0f36b",
+      "headings": [
+        "# conditionalformat ops",
+        "## Ops index",
+        "## `conditionalformat.add`"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/references/ops/datavalidation.md",
+      "savedPath": "files/sources/package/references/ops/datavalidation.md",
+      "bytes": 1026,
+      "sha256": "a04958ddfc05526e2caa11448a370cbc91ccc93e660bed7e0e219a0a3e450996",
+      "headings": [
+        "# datavalidation ops",
+        "## Ops index",
+        "## `datavalidation.set`"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/references/ops/image.md",
+      "savedPath": "files/sources/package/references/ops/image.md",
+      "bytes": 679,
+      "sha256": "714b22ed45aceb5663fb14ac8c91d3274e7901bcb327428c686af91adade5f6e",
+      "headings": [
+        "# image ops",
+        "## Ops index",
+        "## `image.add`"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/references/ops/names.md",
+      "savedPath": "files/sources/package/references/ops/names.md",
+      "bytes": 1106,
+      "sha256": "ec1a7f26dad28c8485150739255d679e11c2f52da28b4e7928ad4ec78849524d",
+      "headings": [
+        "# names ops",
+        "## Ops index",
+        "## `names.function.add`",
+        "## `names.range.add`"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/references/ops/range.md",
+      "savedPath": "files/sources/package/references/ops/range.md",
+      "bytes": 2435,
+      "sha256": "fed930c37708ad183ec2f8e46535375966511234590dd83b9e6104dcf8d30f3c",
+      "headings": [
+        "# range ops",
+        "## Ops index",
+        "## `range.format.set`",
+        "## `range.formulas.set`",
+        "## `range.merge`",
+        "## `range.unmerge`",
+        "## `range.values.set`"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/references/ops/shape.md",
+      "savedPath": "files/sources/package/references/ops/shape.md",
+      "bytes": 986,
+      "sha256": "10ee57ba435ff25bcdb12790d8d14a6a3ecb23d12a3b4a993994990834bba491",
+      "headings": [
+        "# shape ops",
+        "## Ops index",
+        "## `shape.add`"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/references/ops/sheet.md",
+      "savedPath": "files/sources/package/references/ops/sheet.md",
+      "bytes": 317,
+      "sha256": "fbd9808a9bfb1032125cdfe76e06da54b5d2bb7bf0a5fd79fd5d5d3acd72feb1",
+      "headings": [
+        "# sheet ops",
+        "## Ops index",
+        "## `sheet.add`"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/references/ops/sparkline.md",
+      "savedPath": "files/sources/package/references/ops/sparkline.md",
+      "bytes": 1358,
+      "sha256": "3806a26f3a0000d634100114f79fd3f4a8a755fb529de4d567a2f273d13f4515",
+      "headings": [
+        "# sparkline ops",
+        "## Ops index",
+        "## `sparkline.add`"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/references/ops/table.md",
+      "savedPath": "files/sources/package/references/ops/table.md",
+      "bytes": 951,
+      "sha256": "6e9a8d990c4df486458f6260cd4f6a49e816d0a5fa693665b30d5a3af055bbe0",
+      "headings": [
+        "# table ops",
+        "## Ops index",
+        "## `table.add`",
+        "## `table.rows.add`"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/references/ops/thread.md",
+      "savedPath": "files/sources/package/references/ops/thread.md",
+      "bytes": 1253,
+      "sha256": "f62a03b3c3e23e946080fa6c1783d1dcac0c867ef5cd65c33f6eaf44e6f1c28b",
+      "headings": [
+        "# thread ops",
+        "## Ops index",
+        "## `thread.add`",
+        "## `thread.reopen`",
+        "## `thread.reply`",
+        "## `thread.resolve`"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/references/ranges.spec.md",
+      "savedPath": "files/sources/package/references/ranges.spec.md",
+      "bytes": 1710,
+      "sha256": "e109cfa010b9a6109c20e87f574c0aeab9273a5b0391e86d02e1eb6b4719dac0",
+      "headings": [
+        "## Ranges API",
+        "### Values",
+        "### Checkboxes",
+        "### Merged cells",
+        "### Formulas",
+        "### A1 addressing conventions"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/references/sparklines.spec.md",
+      "savedPath": "files/sources/package/references/sparklines.spec.md",
+      "bytes": 1592,
+      "sha256": "3aa83e6935c8c2038d1a796fc3befb39953d3faa0403d1299269bee68f20c631",
+      "headings": [
+        "# Sparklines",
+        "## Add Group",
+        "## Sparkline Inline Type",
+        "## Range Alias",
+        "## Edit And Delete"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/references/styles.spec.md",
+      "savedPath": "files/sources/package/references/styles.spec.md",
+      "bytes": 2852,
+      "sha256": "f04049b540df693c62c07e0918b3f76c16c3f78dabc4bac3d91704f35f0351bd",
+      "headings": [
+        "# Range Formatting",
+        "## Shared Color And Fill Inline Types",
+        "## Grouped Format",
+        "## Format Inline Types",
+        "## Sizing",
+        "## Borders",
+        "## Border Inline Type"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/references/tables.spec.md",
+      "savedPath": "files/sources/package/references/tables.spec.md",
+      "bytes": 843,
+      "sha256": "552fc166d6bdb2f357cbb35b4ffb7940a3fd0842d2582235d71bd08077cbbf3d",
+      "headings": [
+        "# Worksheet Tables",
+        "## Add Table",
+        "## Add Inline Type",
+        "## Rows And Values",
+        "## Table Style",
+        "## Table Inline Type",
+        "## Delete"
+      ]
+    },
+    {
+      "sourceKind": "package",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/docs/spreadsheets/references/workbook.spec.md",
+      "savedPath": "files/sources/package/references/workbook.spec.md",
+      "bytes": 939,
+      "sha256": "018df5de3a6bed037f0805e4067cfd6ca1028910e04571a1b35f23bef8323c20",
+      "headings": [
+        "## Workbook API",
+        "### Quick start",
+        "### Workbook lifecycle",
+        "### Worksheets"
+      ]
+    },
+    {
+      "sourceKind": "skill",
+      "sourcePath": "/Users/ruggerogargiulo/.codex/plugins/cache/openai-primary-runtime/spreadsheets/26.909.12148/skills/spreadsheets/SKILL.md",
+      "savedPath": "files/sources/skill/SKILL.md",
+      "bytes": 64729,
+      "sha256": "499172cadf77be41b6ec7d87981463aec0859e10aba9cc0b864143e42955474b",
+      "headings": [
+        "# Spreadsheets skill",
+        "## Decision Boundary",
+        "## Important Instructions",
+        "## Tools + Contract Requirements",
+        "## Spreadsheet (Workbook) Complexity: Workbook Structure & Formulas",
+        "## Workbook Structure",
+        "### Tab Types & Relationships",
+        "### Tab Names",
+        "### Tab Order & Progression",
+        "#### Checks and Audit",
+        "### Build Structure and Formula Flow",
+        "### Workbook Structure Examples",
+        "## Formulas",
+        "### Formula Construction",
+        "### Anchoring",
+        "### Dates and Time Periods",
+        "### Choosing Formulas and Excel Tools",
+        "### Scalable Formulas and Brief Explanations",
+        "### Missing Inputs, Errors and Overrides",
+        "### Circular References and Iterative Calculation",
+        "### Formula Examples",
+        "## Writing Quality and Authored Content",
+        "## Workflows",
+        "## Resources",
+        "## Role and Domain Guidance",
+        "## Create and Edits",
+        "### Data Formatting Rules",
+        "### Verification Rules",
+        "### Citation Requirements",
+        "## Completion Criteria",
+        "### Criteria for Question / Read only requests",
+        "### Criteria for all create and edit requests",
+        "## Error Recovery",
+        "## Final response",
+        "### Final response citations",
+        "### Final response suggested followups",
+        "## Comment Author",
+        "## Source, PDF, and Attachment Processing"
+      ]
+    },
+    {
+      "sourceKind": "skill",
+      "sourcePath": "/Users/ruggerogargiulo/.codex/plugins/cache/openai-primary-runtime/spreadsheets/26.909.12148/skills/spreadsheets/agents/openai.yaml",
+      "savedPath": "files/sources/skill/agents/openai.yaml",
+      "bytes": 364,
+      "sha256": "8dc6dfa3a1c6fd33ecb3088fe4d4e24689fc47685c43a9bac360fcee2af02a40",
+      "headings": []
+    },
+    {
+      "sourceKind": "skill",
+      "sourcePath": "/Users/ruggerogargiulo/.codex/plugins/cache/openai-primary-runtime/spreadsheets/26.909.12148/skills/spreadsheets/artifact_tool_docs/API_QUICK_START.md",
+      "savedPath": "files/sources/skill/artifact_tool_docs/API_QUICK_START.md",
+      "bytes": 25830,
+      "sha256": "2795943c6a356a6bb94767526acb53a6aec8599be1d15fdbe54458bc799d5f4a",
+      "headings": [
+        "# Using artifact_tool APIs (JavaScript)",
+        "## Required imports, setup and exports",
+        "## Build Patterns",
+        "## Conventions",
+        "## API Discovery Policy (Strict)",
+        "## Supported Formulas",
+        "### Known formula/export limitations (not exhaustive)",
+        "## Reading existing/imported workbooks",
+        "### Inspect for workbook understanding",
+        "## Known Gotchas (Do not repeat)",
+        "## Quick API Surface (High-Value + Common)",
+        "### Core workbook/file APIs",
+        "### Worksheet selection/creation",
+        "### Worksheet operations",
+        "### Range values/formulas",
+        "### Formatting",
+        "### Data Validation",
+        "### Conditional formatting",
+        "### Tables",
+        "### Images",
+        "### Threaded Comments",
+        "### Notes",
+        "### Charts",
+        "#### Fast-chart path",
+        "### Merging cells",
+        "### Help / Grep",
+        "### Trace",
+        "## Additional Resources",
+        "## JavaScript example snippet (runnable)"
+      ]
+    },
+    {
+      "sourceKind": "skill",
+      "sourcePath": "/Users/ruggerogargiulo/.codex/plugins/cache/openai-primary-runtime/spreadsheets/26.909.12148/skills/spreadsheets/artifact_tool_docs/DATA_TABLES.md",
+      "savedPath": "files/sources/skill/artifact_tool_docs/DATA_TABLES.md",
+      "bytes": 3586,
+      "sha256": "f87542406b8a2282521233c11fec87087eb2889628a1f20944977c0ad9c68488",
+      "headings": [
+        "# Data tables (two-variable sensitivity)"
+      ]
+    },
+    {
+      "sourceKind": "skill",
+      "sourcePath": "/Users/ruggerogargiulo/.codex/plugins/cache/openai-primary-runtime/spreadsheets/26.909.12148/skills/spreadsheets/artifact_tool_docs/SPARKLINES.md",
+      "savedPath": "files/sources/skill/artifact_tool_docs/SPARKLINES.md",
+      "bytes": 1646,
+      "sha256": "d3926fac25653829837c03136124126e1d1be192de6d62bf1f77e29300d97c1f",
+      "headings": [
+        "# Sparklines"
+      ]
+    },
+    {
+      "sourceKind": "skill",
+      "sourcePath": "/Users/ruggerogargiulo/.codex/plugins/cache/openai-primary-runtime/spreadsheets/26.909.12148/skills/spreadsheets/container_tools/mark_artifact_operation_started.mjs",
+      "savedPath": "files/sources/skill/container_tools/mark_artifact_operation_started.mjs",
+      "bytes": 743,
+      "sha256": "20c5a86e596154c0541c7bfc4c52c17d928e22e27c6f0ff936c1c3fe16873c10",
+      "headings": []
+    },
+    {
+      "sourceKind": "skill",
+      "sourcePath": "/Users/ruggerogargiulo/.codex/plugins/cache/openai-primary-runtime/spreadsheets/26.909.12148/skills/spreadsheets/domain_guidance/financial_models.md",
+      "savedPath": "files/sources/skill/domain_guidance/financial_models.md",
+      "bytes": 6987,
+      "sha256": "ff163c47d4bcb14a9bf21cbb8e6fa5d73f407100e818e7a307f062e08d3025f1",
+      "headings": [
+        "# Finance Guidance",
+        "## Financial Basis and Sources",
+        "## Periods, Assumptions and Scenarios",
+        "## Operating Schedules and Reporting",
+        "## Valuation and Returns",
+        "## Finance Presentation",
+        "## Finance Audit and Verification"
+      ]
+    },
+    {
+      "sourceKind": "skill",
+      "sourcePath": "/Users/ruggerogargiulo/.codex/plugins/cache/openai-primary-runtime/spreadsheets/26.909.12148/skills/spreadsheets/domain_guidance/healthcare.md",
+      "savedPath": "files/sources/skill/domain_guidance/healthcare.md",
+      "bytes": 4695,
+      "sha256": "df5b9dcb9df988c197fcb377e0b9798f582e9cd30d1c103fd7cd8957a215dff9",
+      "headings": [
+        "## Healthcare (clinical/administrative) spreadsheets",
+        "### Tab structure",
+        "### Formatting",
+        "### Formulas",
+        "### Raw data and outputs",
+        "### Metadata, units, and codes"
+      ]
+    },
+    {
+      "sourceKind": "skill",
+      "sourcePath": "/Users/ruggerogargiulo/.codex/plugins/cache/openai-primary-runtime/spreadsheets/26.909.12148/skills/spreadsheets/domain_guidance/marketing_advertising.md",
+      "savedPath": "files/sources/skill/domain_guidance/marketing_advertising.md",
+      "bytes": 3913,
+      "sha256": "bd6a715ac7d9ad2c830dff146e48321ccc4330c0024f471e85be66c5bb65b014",
+      "headings": [
+        "## Marketing/Advertising Guidance",
+        "### Tab structure",
+        "### Cell formatting",
+        "### Marketing Analysis",
+        "### Raw data vs. outputs",
+        "### Metadata and sources"
+      ]
+    },
+    {
+      "sourceKind": "skill",
+      "sourcePath": "/Users/ruggerogargiulo/.codex/plugins/cache/openai-primary-runtime/spreadsheets/26.909.12148/skills/spreadsheets/domain_guidance/scientific_research.md",
+      "savedPath": "files/sources/skill/domain_guidance/scientific_research.md",
+      "bytes": 3695,
+      "sha256": "a95381e624c4c9562efee3e4a5cdd41bd52e1d3330545ab64d2a85242b10c0af",
+      "headings": [
+        "## Scientific Research Guidance",
+        "### Tab structure & naming",
+        "### Formatting",
+        "### Formula practices"
+      ]
+    },
+    {
+      "sourceKind": "skill",
+      "sourcePath": "/Users/ruggerogargiulo/.codex/plugins/cache/openai-primary-runtime/spreadsheets/26.909.12148/skills/spreadsheets/features/charts.md",
+      "savedPath": "files/sources/skill/features/charts.md",
+      "bytes": 5822,
+      "sha256": "f85e0fa9ba2505f9ee3dd9c4529d1c529b0ce7c9c5e95a919409025c0217c470",
+      "headings": [
+        "# Charts",
+        "## Choose the chart",
+        "## Keep data auditable",
+        "## Format and place",
+        "## Verify and repair",
+        "## Edit existing charts"
+      ]
+    },
+    {
+      "sourceKind": "skill",
+      "sourcePath": "/Users/ruggerogargiulo/.codex/plugins/cache/openai-primary-runtime/spreadsheets/26.909.12148/skills/spreadsheets/references/image-references.md",
+      "savedPath": "files/sources/skill/references/image-references.md",
+      "bytes": 1068,
+      "sha256": "148690f09a1f33a8d61a3f28df8b9c872a6bc16f0eaa2ea561bcc4dcd07bc2cc",
+      "headings": [
+        "## Importing or extracting data from screenshots or reference images"
+      ]
+    },
+    {
+      "sourceKind": "skill",
+      "sourcePath": "/Users/ruggerogargiulo/.codex/plugins/cache/openai-primary-runtime/spreadsheets/26.909.12148/skills/spreadsheets/references/read_only_qna.md",
+      "savedPath": "files/sources/skill/references/read_only_qna.md",
+      "bytes": 1095,
+      "sha256": "687beb1ce4c32164fd8f8f17e0a2c6a4371798ab1d47835a0a74efe7b8f980a6",
+      "headings": [
+        "## Handling queries and questions"
+      ]
+    },
+    {
+      "sourceKind": "skill",
+      "sourcePath": "/Users/ruggerogargiulo/.codex/plugins/cache/openai-primary-runtime/spreadsheets/26.909.12148/skills/spreadsheets/references/template-elicitation.md",
+      "savedPath": "files/sources/skill/references/template-elicitation.md",
+      "bytes": 1492,
+      "sha256": "60b0ea3e373eef4f2a11fa419a7214f6580ac8e9b91028e7ba0968d4106e69ad",
+      "headings": [
+        "# Artifact Template Selection"
+      ]
+    },
+    {
+      "sourceKind": "skill",
+      "sourcePath": "/Users/ruggerogargiulo/.codex/plugins/cache/openai-primary-runtime/spreadsheets/26.909.12148/skills/spreadsheets/routing/google_sheets.md",
+      "savedPath": "files/sources/skill/routing/google_sheets.md",
+      "bytes": 1456,
+      "sha256": "0acafc1a346240b9346c08e67b69ab289286c80d93528583c085444407ffc428",
+      "headings": [
+        "## Google Sheets-targeted output",
+        "### New Creations",
+        "### Edits"
+      ]
+    },
+    {
+      "sourceKind": "skill",
+      "sourcePath": "/Users/ruggerogargiulo/.codex/plugins/cache/openai-primary-runtime/spreadsheets/26.909.12148/skills/spreadsheets/style_guidelines.md",
+      "savedPath": "files/sources/skill/style_guidelines.md",
+      "bytes": 10103,
+      "sha256": "52f91ee6bc4c0a3b633b35df33924092a07e48c45cc839942288592989e33063",
+      "headings": [
+        "# Style and Formatting Instructions",
+        "## Tab Structure Defaults",
+        "## Reader-facing sheet layout",
+        "## Use a visually clear layout",
+        "## Freeze panes",
+        "## Align and format by data type",
+        "## Typography - Use intentionally but conservatively",
+        "## Live inputs and visuals"
+      ]
+    },
+    {
+      "sourceKind": "skill",
+      "sourcePath": "/Users/ruggerogargiulo/.codex/plugins/cache/openai-primary-runtime/spreadsheets/26.909.12148/skills/spreadsheets/workflows/create_workflows.md",
+      "savedPath": "files/sources/skill/workflows/create_workflows.md",
+      "bytes": 1563,
+      "sha256": "92e3d0910bde06d210718f47f88f24a51d33bf03b4560cca3e280fbcde22a47d",
+      "headings": [
+        "# Workflows for creating new spreadsheets",
+        "## Quality Guidelines",
+        "## Checks"
+      ]
+    },
+    {
+      "sourceKind": "skill",
+      "sourcePath": "/Users/ruggerogargiulo/.codex/plugins/cache/openai-primary-runtime/spreadsheets/26.909.12148/skills/spreadsheets/workflows/edit_workflows.md",
+      "savedPath": "files/sources/skill/workflows/edit_workflows.md",
+      "bytes": 2481,
+      "sha256": "f75917488c75b5a7b9e194c57131163d54ad23405802944e1d59eece990d27d8",
+      "headings": [
+        "# Editing an existing spreadsheet",
+        "## Safety rules",
+        "## Important guidelines",
+        "## Formula Rules"
+      ]
+    },
+    {
+      "sourceKind": "runtime",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/dist/artifact-session/service.mjs",
+      "savedPath": "files/sources/runtime/artifact-session/service.mjs",
+      "bytes": 30352,
+      "sha256": "1eddcc994a6c5451533177ed73bd066255541495bdecdeef461aeb040ca9f16e",
+      "headings": []
+    },
+    {
+      "sourceKind": "runtime",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/dist/artifact-session/host-client.mjs",
+      "savedPath": "files/sources/runtime/artifact-session/host-client.mjs",
+      "bytes": 18296,
+      "sha256": "bece46d402a5a42b841f16e817ec1d226921b6dbaeea19490648dc44fd947855",
+      "headings": []
+    },
+    {
+      "sourceKind": "runtime",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/dist/artifact-session-mcp/server.mjs",
+      "savedPath": "files/sources/runtime/artifact-session-mcp/server.mjs",
+      "bytes": 12783,
+      "sha256": "af33172225f86354c7442a20b601b4034dd7b826ce4dd68d4aef5d33f7109a4e",
+      "headings": []
+    },
+    {
+      "sourceKind": "runtime",
+      "sourcePath": "/Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/dist/artifact-session-mcp/worker.mjs",
+      "savedPath": "files/sources/runtime/artifact-session-mcp/worker.mjs",
+      "bytes": 6190,
+      "sha256": "7f4ae870c77a88de4493237ae2682ccb3a0b58b2c6d89b72ce626dd4e88e9c84",
+      "headings": []
+    }
+  ]
+}

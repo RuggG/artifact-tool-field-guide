@@ -1,0 +1,37 @@
+{
+  "name": "fx.VARPA",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=VARPA(A1:A5, C1:C5, B1:B5, C1:C5)",
+      "value": 17.6875,
+      "projection": [
+        [
+          17.6875,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 10
+    }
+  ]
+}

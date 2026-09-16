@@ -1,0 +1,37 @@
+{
+  "name": "fx.MIRR",
+  "category": "financial",
+  "examples": [
+    {
+      "formula": "=MIRR(A1:A5, A1, A1)",
+      "value": "#NUM!",
+      "projection": [
+        [
+          "#NUM!",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 7
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "index": 122,
+  "name": "range.dataValidation",
+  "summary": "Constrain dates to a specific year",
+  "originalCode": "const range = sheet.getRange('D2:D200');\nrange.dataValidation = {\n  rule: {\n    type: 'date',\n    operator: 'between',\n    formula1: '=DATE(2026,1,1)',\n    formula2: '=DATE(2026,12,31)',\n  },\n};",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

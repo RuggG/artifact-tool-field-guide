@@ -1,0 +1,117 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ranges · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="ranges.spec.md">Raw file</a> · <a data-public-raw download href="ranges.spec.md">Download</a></p><article><h1 id="ranges">Ranges</h1>
+<p>Ranges read and write cell values, formulas, formatting, validation,
+conditional formats, sparklines, merges, fills, and copies.</p>
+<h2 id="addressing">Addressing</h2>
+<pre><code class="language-ts">const range = sheet.getRange("A1:B2");
+const byIndexes = sheet.getRangeByIndexes(0, 0, 2, 2);
+const cell = sheet.getCell(0, 0);
+
+range.address;
+range.getAddress();
+range.rowIndex;
+range.columnIndex;
+range.rowCount;
+range.columnCount;
+</code></pre>
+<h2 id="values">Values</h2>
+<pre><code class="language-ts">sheet.getRange("A1:B2").values = [
+  [1, 2],
+  [3, 4],
+];
+
+sheet.getRange("B1:I1").values = [1, 2, 3, 4, 5, 6, 7, 8];
+sheet.getRange("A2:A5").values = ["a", "b", "c", "d"];
+</code></pre>
+<p>Single-cell ranges can spill larger matrices:</p>
+<pre><code class="language-ts">sheet.getRange("N9").values = [[1, 2, 3]];
+sheet.getRange("B2").values = [[1], [2], [3]];
+</code></pre>
+<h2 id="formulas">Formulas</h2>
+<pre><code class="language-ts">sheet.getRange("C1").values = [["=SUM(A1:B1)"]];
+sheet.getRange("D1").values = [["'=SUM(A1:B1)"]];
+
+sheet.getRange("C1:C2").formulas = [["=A1+B1"], ["=A2+B2"]];
+sheet.getRange("B3:E3").formulas = ["=1+1", "=2+2", "=3+3", "=4+4"];
+sheet.getRange("G2:G5").formulas = ["=10", "=11", "=12", "=13"];
+</code></pre>
+<h2 id="write">Write</h2>
+<pre><code class="language-ts">sheet.getRange("A1").write([
+  ["Name", "Value"],
+  ["A", 1],
+]);
+
+sheet.getRange("C1").write({ formulas: [["=SUM(B2:B10)"]] });
+sheet.getRange("E1").write({ values: [["Literal"]] }, { overwrite: "error" });
+</code></pre>
+<h2 id="format">Format</h2>
+<pre><code class="language-ts">range.format = {
+  fill: "#f8fafc",
+  font: { bold: true, color: "#0f172a" },
+  numberFormat: "$#,##0.00",
+  horizontalAlignment: "center",
+  verticalAlignment: "middle",
+  wrapText: true,
+  rowHeightPx: 28,
+  columnWidthPx: 120,
+};
+
+range.setNumberFormat("0.0%");
+</code></pre>
+<h2 id="navigation">Navigation</h2>
+<pre><code class="language-ts">range.getCell(0, 1);
+range.getRow(0);
+range.getColumn(1);
+range.getRange("A1");
+range.getRangeByIndexes(0, 0, 1, 1);
+range.getOffsetRange(1, 0);
+range.getResizedRange(2, 3);
+range.getResizeRange(10, 4);
+range.offset(1, 0);
+range.resize(10, 4);
+range.getCurrentRegion();
+</code></pre>
+<h2 id="clear-merge-fill-copy">Clear, Merge, Fill, Copy</h2>
+<pre><code class="language-ts">range.clear({ applyTo: "contents" });
+range.clear({ applyTo: "formats" });
+range.clear({ applyTo: "all" });
+
+range.merge();
+range.unmerge();
+
+range.fillDown();
+range.fillRight();
+range.fillFrom(sourceRange);
+
+range.copyFrom(sourceRange);
+range.copyTo(targetRange);
+</code></pre>
+<h2 id="inline-types">Inline Types</h2>
+<pre><code class="language-ts">type CellValue = string | number | boolean | Date | null;
+
+type RangeWriteOptions = {
+  clear?: "contents" | "formats" | "all";
+  overwrite?: "allow" | "error";
+  resize?: "auto" | "none";
+};
+
+type RangeWritePayload =
+  | CellValue[][]
+  | CellValue[]
+  | null
+  | {
+      values?: CellValue[][] | CellValue[] | null;
+      formulas?: string[][] | string[];
+      formulasR1C1?: string[][] | string[];
+    };
+</code></pre>
+<h2 id="cookbook">Cookbook</h2>
+<pre><code class="language-ts">const data = sheet.getRange("A1:C4");
+data.values = [
+  ["Region", "Q1", "Q2"],
+  ["North", 10, 12],
+  ["South", 8, 9],
+  ["Total", null, null],
+];
+sheet.getRange("B4:C4").formulas = [["=SUM(B2:B3)", "=SUM(C2:C3)"]];
+data.format = { numberFormat: "General", wrapText: true };
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

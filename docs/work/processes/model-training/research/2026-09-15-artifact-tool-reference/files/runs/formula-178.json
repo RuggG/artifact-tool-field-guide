@@ -1,0 +1,37 @@
+{
+  "name": "fx.COUPNCD",
+  "category": "financial",
+  "examples": [
+    {
+      "formula": "=COUPNCD(A1, A1, A1)",
+      "value": "#NUM!",
+      "projection": [
+        [
+          "#NUM!",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 12
+    }
+  ]
+}

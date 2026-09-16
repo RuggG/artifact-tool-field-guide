@@ -1,0 +1,592 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Spreadsheets skill · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="SKILL.md">Raw file</a> · <a data-public-raw download href="SKILL.md">Download</a></p><article><hr/>
+<p>name: "Spreadsheets"
+description: "Use skill when user requests to create, modify, analyze, visualize, or work with spreadsheet files (<code>.xlsx</code>, <code>.xls</code>, <code>.csv</code>, <code>.tsv</code>) or Google Sheets with formulas, formatting, charts, tables, and recalculation. Do not use for live controlling Microsoft Excel app or a live Excel session."</p>
+<hr/>
+<h1 id="spreadsheets-skill">Spreadsheets skill</h1>
+<p>Read entirely for spreadsheet creation, editing, analysis, or visualization.</p>
+<h2 id="decision-boundary">Decision Boundary</h2>
+<ul>
+<li>Google Sheets targeted outputs also require <code>routing/google_sheets.md</code>. Otherwise, author local files with artifact tool.</li>
+</ul>
+<h2 id="important-instructions">Important Instructions</h2>
+<ul>
+<li>For new workbooks or authorized redesigns, plan the simplest correct workbook that meets the task, audience, actual data and domain. If formulas become hard to read, first reconsider whether the workbook’s structure, layout, or logic is overcomplicated before simplifying individual formulas. Remove unnecessary or duplicated logic while preserving calculation correctness, required business relationships, and financial reconciliation</li>
+<li>Instruction precedence for workbook content, layout, and formatting is: user request &gt; reference/template &gt; domain defaults/conventions &gt; general defaults.</li>
+</ul>
+<h2 id="tools-contract-requirements">Tools + Contract Requirements</h2>
+<ul>
+<li>Author spreadsheet with <code>@oai/artifact-tool</code> JS and only <code>load_workspace_dependencies</code> executables/dependencies, never repo-local deps. If unavailable, check <code>~/.cache/codex-runtimes/codex-primary-runtime/dependencies/</code>. Never modify dependency directories.</li>
+<li>In a writable, conversation-specific or tmp directory, create a <code>node_modules</code> symlink or Windows junction to the loader <code>node_modules</code>.</li>
+<li>Prefer to patch/rerun one <code>.mjs</code> builder. No heredocs or duplicate builders.</li>
+<li>Use the provided API reference for supported syntax. Its examples do not set workbook structure, formatting or formula defaults. Do not inspect package internals or prototypes. If blocked, run at most one targeted <code>workbook.help("&lt;api_or_feature&gt;")</code> query.</li>
+<li>No <code>openpyxl</code>, <code>xlsxwriter</code>, or <code>pandas.ExcelWriter</code> authoring unless asked, or  <code>@oai/artifact-tool</code> is unavailable.</li>
+<li>Analyze with JS/formulas, else bundled Python (libraries) and JSON/CSV intermediates; other libraries only for missing capabilities.</li>
+<li>Use <code>update_plan</code> for complex work.</li>
+<li>In your final response, omit builders, previews, or other support files unless requested.</li>
+<li>Immediately before the first create/edit authoring command, run <code>mark_artifact_operation_started.mjs</code> successfully exactly once using the command below. Do not run it for read-only work. For edits, replace <code>create</code> with <code>edit</code>; adjust the expected count and output format to match the requested outputs.
+  <code>bash
+  node container_tools/mark_artifact_operation_started.mjs --operation-kind create --expected-output-count 1 --output-format xlsx</code></li>
+</ul>
+<h2 id="spreadsheet-workbook-complexity-workbook-structure-formulas">Spreadsheet (Workbook) Complexity: Workbook Structure &amp; Formulas</h2>
+<p>Keep the workbook simple, especially for focused tasks. A focused task produces a simple analysis, report or tracker for a specific question or workflow. It needs one main output, supported by the necessary inputs and calculations. “Focused” describes the scope of the task, not the number of source records.</p>
+<p>Design the structure and formulas together so a reader can follow the inputs, useful calculation steps and final answer. Put summaries and main outputs first, show the work behind them, and avoid tabs or formulas that only repeat finished results. Keep separate schedules and output views when they serve distinct needs. Preserve required detail, the supplied template and the requested edit scope.</p>
+<h2 id="workbook-structure">Workbook Structure</h2>
+<h3 id="tab-types-relationships">Tab Types &amp; Relationships</h3>
+<p>Tab types describe the role each part of the workbook plays. They do not require separate tabs. A simple workbook can combine inputs, assumptions, builds and outputs in clearly labeled sections on one worksheet.</p>
+<p><strong>Inputs/Sources and Assumptions feed Builds; Builds calculate results and feed Outputs.</strong> These relationships describe how calculations flow, not the physical tab order. The same rules apply when roles share a tab.</p>
+<p><strong>Input / Sources</strong> contain the data the workbook starts from. Keep dedicated raw source or Actuals areas intact, with original values and source meaning separate from prepared calculations. Cleaning, mapping and source summaries may have their own labeled areas with clear provenance. Put business calculations, including historical calibration from actuals, in the build. Raw source data does not read results back from downstream areas.</p>
+<p><strong>Assumptions</strong> hold the editable drivers and controls used by the builds. When cases are needed, keep one authoritative Case selector on Cover or Assumptions. Group each driver with its <code>Active Selection</code> row first, followed by its labeled case inputs, such as Base and Downside, sharing the same period columns. Prefer these driver groups to separate whole-case blocks for new designs. The build links directly to each period's active input. Preserve a supplied layout during narrow edits, and do not add cases or a separate tab when the task does not need them.</p>
+<p>Changing the Case selector updates the active forecast assumptions for each period. The same build keeps linking to those active cells and recalculates with the selected values. Outputs update from the build results while historical actuals remain unchanged.</p>
+<p>When cases are used, display the selected case on each worksheet by linking to the authoritative selector. Keep only one editable selector; distinguish source actuals and separately labeled comparison cases from the active forecast.</p>
+<p>In historical periods, the active assumption row may link to ratios or other measures calculated from actuals in a build. Show that history once, aligned with the build's historical period columns, to help the user set forecast assumptions. The forecast active row selects the chosen case's assumptions and feeds the build. Forecast results must not feed back into the assumptions driving that same forecast. Historical calibration is a business calculation, not a terminal Check/Audit result.</p>
+<p><strong>Build</strong> tabs pull source inputs and assumptions to combine historical analysis, current results and/or a forecast. Bring the relevant inputs and applicable assumptions into clearly labeled rows or columns, then calculate the results on the build. Keep periods aligned and chronological. Show meaningful steps, subtotals and totals so readers can follow the logic—for example, headcount and compensation driving personnel cost, or revenue less COGS producing gross profit. Each step should do useful work. Do not hide the whole calculation in one dense formula or make the build merely repeat finished results from elsewhere.</p>
+<p>For a simple calculation, a small labeled assumption block can sit beside it. For a larger build, link important drivers from their control area and show the useful calculation steps. Use one set of forecast schedules driven by the active assumptions, organized by the business sequence, such as revenue, headcount, vendors and cash. Do not mirror the Assumptions grid, add Case columns or parallel named-case forecasts, or apply the selector only to finished results.</p>
+<p>A requested case comparison still needs each case's correctly evaluated results. If the requested simultaneous current results cannot be produced with the supported single-build design, explain the limitation and agree on the calculation or refresh method before building the comparison. Do not omit it, link both cases to the active result, or silently substitute snapshots, <code>TABLE</code>, arrays, dense formulas or a hidden second build. Preserve explicit user/template requirements and the separately authorized native-feature and capture workflows below.</p>
+<p><strong>Output / Summary</strong> tabs consolidate the builds and tell the main story. These might be named “Overview,” “Summary,” “Exec Summary” or “Dashboard,” depending on the task. Bring across finished build results, show how matching totals roll into higher-level totals and put the main summary above the detail. Readers should be able to trace a headline result to its supporting build without finding the same calculation repeated elsewhere. Keep input retrieval, case selection and detailed business logic in the owning build/control area. Do not route forecast results through Assumptions before presenting them. Historical references used to set drivers and linked case/period displays remain allowed.</p>
+<p><strong>Check / Audit</strong> tabs review source data and builds for completeness, consistency and reconciliation. They may calculate their own diagnostics, but do not own business calculations or feed assumptions, builds or outputs. Nothing outside the check/audit area should depend on its results.</p>
+<p><strong>Cover, if useful</strong> gives a complex workbook a simple front page, especially for recurring or shared workflows. Include the company/project name or available logo, workbook title and relevant period or as-of date, with generous whitespace and restrained branding. Place it first. Keep analysis and methodology off the cover. Skip it for focused tasks or when the main output provides enough context.</p>
+<p>For complex workbooks, use a separate <code>ReadMe</code> only when source choices, joins, scoring or refresh steps need more explanation than nearby notes. Explain the method and material limitations without repeating outputs or giving a tab tour. Put it last. Multiple sources alone do not require one.</p>
+<p>Apply <a href="style_guidelines.md">Style guidance</a> to these tab and section roles, so formatting helps readers distinguish the main answer, editable inputs and supporting calculations.</p>
+<h3 id="tab-names">Tab Names</h3>
+<p>Use concise names that describe each tab's purpose, such as <code>Check</code> or <code>Audit</code> for a reconciliation tab. Preserve established names during unrelated edits. For new forecast work, use <code>Forecast review</code> for review checks, <code>Forecast variance</code> for comparisons with a prior forecast, or <code>Sensitivity</code> for assumption tests. Do not label these tabs or views <code>Movement</code> or <code>Forecast movement</code>.</p>
+<h3 id="tab-order-progression">Tab Order &amp; Progression</h3>
+<p>For a new workbook or authorized redesign, start with one clear primary view that answers the task. Start with one tab, or two when the original source needs to stay separate, for focused tasks such as a department budget versus actuals report, a peer-company valuation comparison, a weekly marketing campaign report, an appointment-capacity tracker or a research measurement log with unit conversions. Preserve required source tabs and dependencies. Put the requested summary above the supporting detail and calculations. Add another tab only for a distinct source, calculation, reader or workflow need; do not create a separate tab for every role. Keep review commentary, refresh instructions and documentation beside the relevant work when they do not need a separate workflow.</p>
+<p>Keep separate schedules when the work requires them, such as revenue, payroll, depreciation and debt builds in a financial model. One or two tabs is a starting point for the examples above, not a limit on every workbook. Do not shrink text, hide necessary calculations or discard records to meet a tab count or fit one printed page. Preserve the supplied template and existing architecture during narrow edits.</p>
+<table>
+<thead>
+<tr>
+<th>Domain and task</th>
+<th>Do: one output tab</th>
+<th>Don't: create extra output/build tabs by default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Finance / FP&amp;A: one department's monthly budget versus actuals</td>
+<td>On <code>Budget vs Actuals</code>, tab name <code>BvA</code>, show total spend and variance at the top, with category-level budget, actuals and variance calculations below.</td>
+<td>Separate Summary, Dashboard, Scenarios and Assumptions tabs for this report.</td>
+</tr>
+<tr>
+<td>Financial modeling: peer-company valuation comparison from supplied data</td>
+<td>On <code>Comparable Companies</code>, tab name <code>Comps</code>, show the requested multiple summaries at the top, with peer-company inputs and calculated multiples below.</td>
+<td>A DCF, debt schedule or full three-statement model when the task only asks for comparable-company analysis.</td>
+</tr>
+<tr>
+<td>Marketing: weekly campaign spend and cost per lead</td>
+<td>On <code>Campaigns</code>, show total spend, leads and overall cost per lead at the top, with campaign detail below. Calculate overall cost per lead from the matching totals.</td>
+<td>One output tab per campaign, a duplicate dashboard or an attribution model that wasn't requested.</td>
+</tr>
+<tr>
+<td>Healthcare administration: appointment capacity by clinic</td>
+<td>On <code>Appointments</code>, tab name <code>Appts</code>, show available slots, bookings and overall utilization at the top, with clinic and period detail below. Calculate overall utilization from the matching totals.</td>
+<td>A separate dashboard, clinical alerts or a payroll schedule for an appointment report.</td>
+</tr>
+<tr>
+<td>Scientific research: measurement log with required unit conversions and a requested summary</td>
+<td>On <code>Measurements</code>, show the requested results at the top, with original observations, units and required conversions below.</td>
+<td>Separate Protocol, Processing, Calculations and Checks tabs, or statistical tests that the task does not require.</td>
+</tr>
+</tbody>
+</table>
+<p>One output worksheet can contain several useful sections. Keep original sources and substantial builds separate when needed; do not create multiple output tabs for the same answer.</p>
+<p>For a file with multiple tabs, the physical left-to-right order is <strong>Outputs → Builds → Inputs/Sources/Internal</strong>, with a separate <strong>Assumptions</strong> control panel kept easy to reach, usually just after the primary output and before build tabs. Covers, key outputs (executive summary, financial statements, etc.) belong toward the left; working builds sit in the middle when needed; data, sources, inputs and internal documentation sit toward the right. A two-tab workbook has Output on the left and Input on the right. The logical calculation flow is Source/Input and Assumptions → Build → Output; a visible control panel may sit to the left of its builds. Do not confuse tab position with calculation sequence. Within a horizontal build, factors may feed intermediate results from left to right; preserve chronological period columns. Within a single worksheet, inputs and supporting calculations below can feed the main answer above. Preserve an intentional user/reference layout; do not reorganize a narrow edit to enforce this default.</p>
+<h4 id="checks-and-audit">Checks and Audit</h4>
+<p>Checks/Audit are terminal review areas and are not required for focused tasks. They read source/build evidence and may calculate or summarize their own diagnostics within that area. No formula outside a terminal check/audit area may use its results, directly or through helpers, names or dynamic references. This includes assumptions, business calculations, summaries, presented outputs, displayed statuses and output gates. Keep necessary input validation in the owning input/build logic; checks observe it independently. When separate tabs are useful, keep Checks/Audit and internal documentation toward the right. In complex workbooks, a divider such as <code>Internal &gt;&gt;</code> can group them with source data; follow <a href="style_guidelines.md">Style guidance</a> for divider and child-tab colors. Preserve useful supplied controls and notes, but do not add separate tabs for a few lines.</p>
+<h3 id="build-structure-and-formula-flow">Build Structure and Formula Flow</h3>
+<p>Arrange labeled rows and columns so a reader can follow starting data, assumptions, useful calculation steps, subtotals and results. Follow the physical layout above; the logical sequence of inputs to results does not require every build to run from top to bottom.</p>
+<ul>
+<li><strong>Row progression:</strong> make the useful business steps visible, such as quantity × rate, capacity used ÷ capacity available, or a balance plus its movements. Link the clean input and applicable assumption into their own labeled rows, then calculate the result on that build. Do not add trivial steps just to create more rows.</li>
+<li><strong>Active assumptions:</strong> select the active assumptions once in the control area and link each period's cells directly into the same build. Do not bypass the active row, repeat case selection across schedules, put a forecast inside Assumptions or maintain parallel case builds. Resolve a required comparison's calculation and refresh method as described in <a href="#tab-types--relationships">Tab Types &amp; Relationships</a>.</li>
+<li><strong>Historical reference:</strong> Assumptions may link to historical ratios calculated from actuals in a build to help set forecast drivers. Trace the cells: this actuals-only reference must not create a feedback loop from the forecast into its own assumptions.</li>
+<li><strong>Column progression:</strong> keep comparable items, scenarios and periods aligned. Use the shared headers and controls described in <a href="#anchoring">Anchoring</a> and <a href="#dates-and-time-periods">Dates and Time Periods</a>, rather than repeating them beside each calculation.</li>
+<li><strong>Roll-forwards:</strong> show opening balance, relevant movements and closing balance. Normally link each new period's opening balance to the prior period's closing balance, preserving the model's actual timing and conventions.</li>
+<li><strong>Reuse:</strong> keep one place that owns each calculation, then link matching results into summaries and useful output views. Apply the matching-input, period, unit, rounding and override conditions in <a href="#formula-construction">Formula Construction</a>.</li>
+</ul>
+<p>A tab that only repeats linked values from another tab or workbook is a red flag. Build tabs should perform useful calculations and show the steps. Output tabs should bring results together and calculate relevant subtotals or totals where needed. A useful output may link directly to completed build results without adding new calculations. Keep a linking-only tab when it serves a clear source, import or reporting need; otherwise, combine or remove it within the authorized scope. Do not invent calculations merely to justify a distinct reader view.</p>
+<h3 id="workbook-structure-examples">Workbook Structure Examples</h3>
+<table>
+<thead>
+<tr>
+<th>Example</th>
+<th>Do</th>
+<th>Don't</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A1. Simple action tracker</td>
+<td>Use one <code>Actions</code> tab with owner, due date, status and the requested totals above the table.</td>
+<td>Add Cover, Readme, Inputs, Dashboard and Checks tabs around a small task list.</td>
+</tr>
+<tr>
+<td>A2. Newly designed monthly activity report</td>
+<td>Keep Month as a column in one activity table; use that table directly or add a linked summary tab to its left.</td>
+<td>Copy the same layout into Jan, Feb and Mar tabs when separate monthly sheets are not required.</td>
+</tr>
+<tr>
+<td>A3. Compare several teams or campaigns</td>
+<td>Keep the comparison in one table with a team/campaign field and the requested measures.</td>
+<td>Create a separate nearly identical report tab for each team and make the reader assemble the comparison.</td>
+</tr>
+<tr>
+<td>A4. A few shared assumptions</td>
+<td>Put a short labeled rate/assumption block to the left of the working calculation, or below the results on one worksheet.</td>
+<td>Create Setup and Assumptions tabs for three cells, or duplicate editable copies of the same rate.</td>
+</tr>
+<tr>
+<td>A5. A requested scenario comparison</td>
+<td>Group each driver's Active Selection and case inputs together. Keep one active build. Agree on any required comparison's calculation and refresh method, and label retained results accurately.</td>
+<td>Maintain parallel case forecasts, omit the comparison or affected dependencies, link both cases to the active result, or use <code>TABLE</code> or snapshots as an ordinary shortcut. Do not add unneeded scenarios. Preserve explicitly required native sensitivity or <a href="#circular-references-and-iterative-calculation">capture workflows</a>.</td>
+</tr>
+<tr>
+<td>A6. Explain a one-page operating calculation</td>
+<td>Put People needed at the top, the work/capacity calculation beneath it, and Requests and Minutes per request below. Let the lower inputs feed the answer above.</td>
+<td>Scatter each step across a different tab, bury the answer at the bottom, or show only an unexplained staffing result.</td>
+</tr>
+<tr>
+<td>A7. Present an existing calculation</td>
+<td>In a new multi-tab workbook, put Outputs on the left, Builds in the middle and Sources/Inputs on the right. Link the output to the completed build; on one worksheet, show that output above its build. Keep each editable control authoritative in one place; preserve an intentional front-end selector.</td>
+<td>Put the primary output after internal source tabs, duplicate the same editable control in several places, create an unintended circular calculation, or rebuild the same calculation in the summary.</td>
+</tr>
+<tr>
+<td>A8. Reconcile a small import</td>
+<td>Put an independent comparison near the relevant table. Use a Checks/Audit tab only if needed, and keep it a terminal reader of sources and builds.</td>
+<td>Add a full control dashboard for one useful tie-out, or make the build, summary or output gate read a Checks/Audit result.</td>
+</tr>
+<tr>
+<td>A9. Keep source context usable</td>
+<td>Document each source once alongside the relevant input data, following <a href="#citation-requirements">Citation Requirements</a>. Retain essential period/unit labels, required row-level source columns and intact source tabs.</td>
+<td>Repeat filenames and source explanations across builds and outputs, hide essential context in cell notes, or create Sources, Notes, Methodology and Version History tabs for a one-off analysis with one source.</td>
+</tr>
+<tr>
+<td>A10. Summarize a long source table</td>
+<td>Keep all required records intact and make the primary view compact. Use a separate source tab when it improves use or preserves the import.</td>
+<td>Drop rows, hide needed calculations or make text tiny so all the evidence fits on one page.</td>
+</tr>
+<tr>
+<td>A11. A production plan with distinct schedules</td>
+<td>Keep materials, line-capacity and staffing schedules separate when their inputs, time grains or update owners differ; place the primary output plan to the left of those builds, with supporting data/inputs farther right.</td>
+<td>Merge incompatible schedules just to stay within two tabs, or repeat their calculations in the summary.</td>
+</tr>
+<tr>
+<td>A12. A narrow edit to an existing workbook</td>
+<td>Change the requested cells and affected dependencies, preserving established tabs, native features and layout.</td>
+<td>Normalize, merge, rename or remove existing tabs just because a new workbook could be simpler.</td>
+</tr>
+<tr>
+<td>A13. Several thin tabs around one calculation</td>
+<td>For a new capacity plan, keep the input factors, meaningful work/capacity calculation and requested result together in one view or two useful tabs. A Build should contribute the steps shown in F13.</td>
+<td>Create seven tabs that mostly repeat the same central range, with nominal Build tabs doing no distinct work. Putting that central calculation on Checks/Audit is also a dependency failure.</td>
+</tr>
+<tr>
+<td>A14. More than one output view</td>
+<td>Keep an operator detail view and a manager summary when their fields, level of detail or workflow differ. Both may link to the same owning build, as in F14.</td>
+<td>Copy the same table into Summary, Dashboard, Report and Executive tabs without a distinct reader need, or invent new calculations just to make each tab look different.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="formulas">Formulas</h2>
+<p>Apply these rules to newly added or edited formulas and their affected dependencies. Follow the user's preferences and supplied template; preserve unrelated formulas and layout during narrow edits. Design formulas to support the workbook structure above: the reader should be able to follow the inputs, useful calculation steps and final answer.</p>
+<h3 id="formula-construction">Formula Construction</h3>
+<ul>
+<li>Use direct references, familiar functions and meaningful intermediate calculations. Follow <a href="#build-structure-and-formula-flow">Build Structure and Formula Flow</a> to show the work; do not hide an entire build in one dense formula or add trivial helpers just to make formulas shorter.</li>
+<li>Keep raw data, editable assumptions, mappings and business rules in labeled cells or tables. Mathematical, index and control constants may remain in formulas. Keep calculated results as formulas so they update with their inputs.</li>
+<li>Fixed cutoffs or categories from the user's request can appear directly in formulas when result labels state the rule. For example, label <code>COUNTIFS(B2:B100,"&gt;1000")</code> as <code>Invoices over $1,000</code>, without adding an input cell for <code>1000</code>. Use one labeled input cell when the cutoff is user-adjustable or serves as a shared assumption across different calculations.</li>
+<li>Calculate a shared result once and reuse it when the inputs, period, units, rounding and overrides match. Keep independent reconciliations independent.</li>
+<li>Use consistent formulas across comparable rows and periods, while preserving intentional differences such as <a href="domain_guidance/financial_models.md#periods-assumptions-and-scenarios">historical versus forecast logic</a>, one-off adjustments and overrides.</li>
+<li>Keep business calculations in the owning build and necessary input guards with their inputs or dependent build logic, following the <a href="#checks-and-audit">terminal Checks/Audit rule</a>. Do not invent business restrictions or wrap ordinary calculations in repeated workbook-wide validation gates. For example, use <code>=SUM(I11:I12)</code> for a valid total; do not add an <code>IF</code> that rejects a negative result unless the business rule requires it.</li>
+</ul>
+<h3 id="anchoring">Anchoring</h3>
+<p>Use <code>$</code> to fix only the part of a reference that must stay in place when a formula is copied. Anchor shared <strong>rows, columns or individual cells</strong> so the workbook can reuse one period header, assumption block, item column or Case selector instead of repeating it beside every calculation.</p>
+<table>
+<thead>
+<tr>
+<th>Reference</th>
+<th>What stays fixed</th>
+<th>Useful pattern</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>C8</code></td>
+<td>Neither row nor column</td>
+<td>A quantity that moves with the calculation when copied across or down.</td>
+</tr>
+<tr>
+<td><code>C$4</code></td>
+<td>Row 4</td>
+<td>Read each column's period from one shared header row; copying across advances the period, copying down keeps that header.</td>
+</tr>
+<tr>
+<td><code>$A8</code></td>
+<td>Column A</td>
+<td>Read each row's item or category from one shared column; copying down advances the item, copying across keeps its label.</td>
+</tr>
+<tr>
+<td><code>$B$3</code></td>
+<td>Cell B3</td>
+<td>Reuse one fixed conversion rate or Case selector throughout the applicable calculation.</td>
+</tr>
+</tbody>
+</table>
+<p>For example, <code>=SUMIFS(Amount,Month,C$4,Item,$A8)</code> reads the period above and the item at the left. Copied one column right it uses <code>D$4</code>; copied one row down it uses <code>$A9</code>. The aligned named ranges represent the source columns; they do not require named ranges in the delivered workbook.</p>
+<p>A period-specific assumption should move with its period: <code>=C8*C$3</code> becomes <code>=D8*D$3</code> when copied across. A single assumption shared by every period should stay fixed: <code>=C8*$B$3</code> becomes <code>=D8*$B$3</code>. Choose between them from the model's meaning, not by adding <code>$</code> everywhere. Use keyed lookups when source and destination orders differ; anchoring cannot make mismatched row positions equivalent. Quote cross-sheet names, for example <code>='Build'!E14</code>.</p>
+<h3 id="dates-and-time-periods">Dates and Time Periods</h3>
+<ul>
+<li>When calculations depend on a reporting date, use the date specified by the task or source. Use TODAY() only when calculations should update with the current date. Use a fixed reporting date when results should remain tied to a particular date. Label any assumed date. Preserve source deadlines and flag conflicts with derived deadlines.</li>
+<li>Review the template's calendar, period layout and source grain before building formulas. Use real dates where the source supports them, with number formats for display; do not invent a missing reporting year. Derive period filters and labels from the shared header rather than hardcoding months in individual formulas.</li>
+<li>For a new <code>Week of</code> label, use the week's first business day as the underlying date: Monday by default, moved forward for holidays only when a holiday calendar is supplied. Follow an explicit source/template week convention. Do not invent holidays or relabel a week-ending date as a week start.</li>
+<li>When several time scales are needed and the template does not prescribe a layout, place the broader summaries to the left and finer detail to the right: <strong>Annual | Quarterly | Monthly | Weekly</strong>. Include only the time scales needed for the task. Keep periods chronological from left to right within each group; use the supplied fiscal calendar and week convention.</li>
+<li>Separate different time scales with narrow, blank, unfilled spacer columns; do not extend formatting down the entire column. Do not add a spacer merely between actual and forecast months in one continuous schedule. Align matching period columns across Assumptions, builds and summaries where practical. When recent actuals help set drivers, include that historical reference on Assumptions in the same period column as the build, followed by the matching forecast periods. Within a continuous schedule, use one shared period header rather than repeating identical date rows above every subsection. Keep it visible when useful; separate tables with different column meanings may need their own headers, and print titles can repeat headers on printed pages.</li>
+<li>Match each period to its own assumptions and data. Roll detail into summaries using the right calculation: sum additive amounts, use the appropriate ending balance for stocks, and calculate ratios or weighted averages from the relevant components. Do not sum monthly percentages or double-count weeks that cross month boundaries.</li>
+</ul>
+<p>For a monthly summary of daily dates, with <code>C4</code> holding the first day of the month and aligned source ranges, use <code>=SUMIFS(Amount,Date,"&gt;="&amp;C$4,Date,"&lt;"&amp;EDATE(C$4,1),Item,$A8)</code>. The next-month exclusive upper bound includes the full last day, including timestamps. Equality to <code>C$4</code> is appropriate only when the source already stores that same monthly key.</p>
+<h3 id="choosing-formulas-and-excel-tools">Choosing Formulas and Excel Tools</h3>
+<ul>
+<li><strong>Totals and products:</strong> use <code>SUM</code> over the relevant detail for total rows. Use <code>PRODUCT</code> for a result built by multiplying a range of numeric factors, or direct multiplication for a simple two-cell calculation. Use <code>SUMPRODUCT</code> for a sum of matching quantity × rate pairs or a weighted calculation. Keep ranges aligned and bounded; do not include both subtotals and their detail. Check required factors first: <code>PRODUCT</code> ignores blank/text cells in a referenced range, which can make missing inputs look like a valid result.</li>
+<li><strong>Conditional counts, sums and averages:</strong> prefer <code>COUNTIFS</code>, <code>SUMIFS</code> and <code>AVERAGEIFS</code> for new formulas, even with one criterion, so another condition can be added consistently. Avoid choosing <code>COUNTIF</code>, <code>SUMIF</code> or <code>AVERAGEIF</code> for new work by default; preserve a valid existing/template convention during a narrow edit. This preference does not prohibit an ordinary <code>IF</code> condition.</li>
+<li><strong>Lookups:</strong> <code>INDEX/MATCH</code>, <code>VLOOKUP</code> and <code>XLOOKUP</code> are all useful. Follow the user's preference and the workbook's established approach where it works. Make exact versus approximate matching intentional, handle missing keys explicitly and confirm whether duplicate keys should be rejected, matched once or aggregated. Do not substitute a first-match lookup for a required sum.</li>
+<li><strong>Conditional logic:</strong> use a short <code>IF</code> for a simple choice. Nested <code>IF</code> formulas are appropriate when they express necessary, understandable logic, including advanced Finance calculations. For a long list of categories or editable rules, prefer a mapping table or labeled steps. Preserve rule order, boundaries, gaps and the unmatched case; do not replace useful business logic merely to reduce nesting.</li>
+<li><strong>Formula choices to avoid:</strong> do not introduce <code>LET</code>, array/spill formulas, <code>MAP</code>, <code>REDUCE</code> or <code>LAMBDA</code>. Use familiar formulas and labeled intermediate steps. Normal range arguments in functions such as <code>SUMIFS</code> and <code>SUMPRODUCT</code> remain appropriate, as do the lookup, <code>INDIRECT</code>, <code>OFFSET</code> and <code>CHOOSE</code> patterns below. Preserve required existing/template behavior and do not rewrite unrelated formulas during a narrow edit. Formula length alone is not the test: the reader must be able to understand and extend the calculation.</li>
+<li><strong>Sensitivity analysis:</strong> use a native What-If Data Table only for an explicitly requested native sensitivity analysis or required existing/template behavior, when supported. Do not introduce <code>TABLE</code> into an ordinary forecast or case comparison, or manufacture a second varying input with a metric selector. Excel supports one or two varying inputs; the current Artifact Tool supports only two-variable tables, with both input cells on the table’s worksheet. Read <a href="artifact_tool_docs/DATA_TABLES.md">Data Tables</a> before creating one. Two inputs test one output across their combinations; use separate tables for additional outputs. If the requested native design is unsupported, explain the limitation before agreeing on a formula-based design or change-input/recalculate/restore process. Label captured results and their refresh method. Ordinary case comparisons follow the single-build and comparison boundary above.</li>
+</ul>
+<p>An Excel Table, PivotTable and What-If Data Table are different features. Check the chosen tool and destination's support. If a requested native feature cannot be created or preserved, explain the limitation before substituting a formula or static result. Keep API setup and feature-specific execution details in the relevant tool reference.</p>
+<h3 id="scalable-formulas-and-brief-explanations">Scalable Formulas and Brief Explanations</h3>
+<p>Use the patterns below when they make recurring updates easier without hiding the calculation. Choose the simplest approach that supports the actual update workflow, not just the current snapshot.
+- <strong>Assumption and Case selection:</strong> prefer one numeric Case selector with labeled case names and <code>CHOOSE</code> or <code>OFFSET</code> to select the active assumptions. <code>INDEX/MATCH</code> or <code>XLOOKUP</code> remain valid when they fit the layout. In each driver group, put Active Selection above its case inputs, sharing the same period header. For example, with Case in B3 and two case values in I22:I23, active I21 can be <code>=CHOOSE($B$3,I22,I23)</code>; the matching build input is simply <code>='Assumptions'!I21</code>. Anchor and validate the selector. Do not repeat the choice in the build or maintain a second editable copy of the drivers. The simple CHOOSE example assumes validated numeric case inputs. Otherwise, test the selected source value before a reference can turn a blank into zero. Preserve a valid zero. A missing unselected case must not block the active case. In an agreed comparison, mark only the affected case and dependent deltas unavailable. Keep necessary validation local to the driver and reuse it. OFFSET and INDIRECT are volatile, so keep references bounded and consider recalculation cost.
+- <strong>New monthly source tabs:</strong> if the workflow receives a separate tab in the same format each month, a visible month-to-tab registry and bounded <code>INDIRECT</code> references can support new periods without rewriting the reference pattern. Register the new tab and extend the summary periods or bounded ranges when needed. Validate the expected layout, tab names and source coverage; quote and escape sheet names correctly. For a new workflow without that constraint, one source table with a Month column may be simpler.
+- <strong>Explain recurring updates:</strong> when a less familiar formula materially improves the workbook, add a short explanation near its control or in the existing guide: why it helps, what the user can change and how to extend it safely. For example: “Add the new month tab in the same layout and register its name in Setup. Extend the summary period and ranges if needed; the formulas keep the same reference pattern.” Keep this brief; do not add comments to every formula or create a new instruction tab for one note.</p>
+<h3 id="missing-inputs-errors-and-overrides">Missing Inputs, Errors and Overrides</h3>
+<ul>
+<li>Do not invent missing source data or substitute a different metric. If required data is absent, leave the result unavailable and state the specific missing input beside its data or setting and briefly in the response. For a rate, preserve the requested numerator, denominator, population and period; do not substitute another available denominator.</li>
+<li>Distinguish a real zero from missing data, an unavailable result and something that is not applicable. Use <code>"n.a."</code>, a deliberate <code>""</code> blank, or an exposed error according to the user's preference and the calculation's meaning. Right-align <code>n.a.</code> and similar placeholders when they sit among numeric results; do not turn them into numeric zero for appearance.</li>
+<li><code>IFERROR</code> can be useful for a deliberate, understood fallback, but must not hide unexpected failures. Prefer testing the expected condition directly, or <code>IFNA</code>/a lookup's not-found result when only a missing match is expected. Do not blanket-wrap formulas in <code>IFERROR(...,0)</code> or <code>IFERROR(...,"")</code> to make broken references and bad inputs disappear. Text <code>"n.a."</code> and the <code>#N/A</code> error are different; choose intentionally and ensure downstream formulas handle the result correctly.</li>
+<li>Guards such as <code>ISNUMBER</code> must not turn a failed prerequisite into a healthy zero or an understated issue count. Keep unexpected failures visible in the affected results, even when an intermediate formula returns text or a blank instead of an error.</li>
+<li>Handle necessary validation in the input/build that owns it, affecting only the relevant outputs. A SUMIFS result of zero does not prove matching records exist; retain a source-coverage test when no match must remain blank or unavailable. Keep the issue visible without spreading the same long guard through every summary formula or pulling a global status from Checks/Audit.</li>
+<li>A matched lookup key does not prove its value is populated. Check required source values before a lookup or reference can turn a blank into zero; preserve a permitted numeric zero.</li>
+<li>Add manual overrides only when the task, template or established workflow needs them. Otherwise, calculate directly from the relevant drivers; do not add an optional override row to every result.</li>
+<li>Preserve deliberate zero overrides, blanks, one-off adjustments and rounding. A blank optional override may mean “use the base”; a zero override may mean “use zero.” Do not treat those as the same condition.</li>
+</ul>
+<h3 id="circular-references-and-iterative-calculation">Circular References and Iterative Calculation</h3>
+<p>Avoid unintended circular references. Use intentional circular logic only when the requested model needs it and the selected tool and target engine support it. Document the loop and its purpose; preserve or deliberately configure iteration, maximum iterations and maximum change. Verify convergence after representative input changes and save/reopen. Do not silently enable iteration, change application-wide settings, or treat cached values, a successful export or an error-free scan as proof. If calculation or setting preservation cannot be verified, report the limitation and use a verified workflow or a mathematically equivalent non-circular approach within scope. Keep Checks/Audit outside the loop.</p>
+<p>An explicit/template case-capture workflow may use a self-retaining <code>IF</code> in an output area to store a selected case's result while the same model calculates the other cases. This is a snapshot, not a live recalculation of every case; assumptions and business calculations must not depend on it. Define initialization and capture/refresh steps, show the captured case and stale-state warning, and verify each case is captured and retained correctly in the intended engine. Convergence alone does not prove capture correctness. Do not introduce this pattern as a default scenario comparison.</p>
+<p>Present case results as a compact <code>Case comparison</code>, with each case named above comparable metric rows and period columns. Keep capture/refresh instructions secondary and label saved snapshots clearly; a new label or layout does not make them live.</p>
+<h3 id="formula-examples">Formula Examples</h3>
+<p>These examples assume the inputs, ranges and units described. Named ranges stand for labeled source ranges, not a requirement to add names. Preserve the task's missing-data policy and material rounding.</p>
+<table>
+<thead>
+<tr>
+<th>Example</th>
+<th>Do</th>
+<th>Don't</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F1. Reuse an editable assumption</td>
+<td>With one fixed conversion rate in B3, use <code>=C8*$B$3</code>. With a different rate in each period of row 3, use <code>=C8*C$3</code> and fill across.</td>
+<td>Hardcode the rate in every formula, or let a shared rate drift to a neighboring cell when copied.</td>
+</tr>
+<tr>
+<td>F2. Show a build on one worksheet</td>
+<td>Put Requests in B10 and Minutes per request in B9; calculate Work minutes in B8 as <code>=PRODUCT(B9:B10)</code>. With positive Available minutes per person in B7, put People needed in B6 as <code>=B8/B7</code>, with required whole-person rounding. All factors must be present and numeric.</td>
+<td>Hide input retrieval, unit conversion and staffing logic inside one unexplained output, or treat a missing factor as zero workload.</td>
+</tr>
+<tr>
+<td>F3. Reuse the matching subtotal</td>
+<td>If B12 is the eligible-volume subtotal for the required period, calculate <code>=B12*$B$3</code>.</td>
+<td>Re-sum the detail in every output, or reuse a subtotal with different eligibility, units, period or rounding.</td>
+</tr>
+<tr>
+<td>F4. Link a period rollforward</td>
+<td>Link this month's Beginning inventory to the prior month's Ending inventory; calculate Ending as Beginning + Receipts − Usage.</td>
+<td>Rebuild cumulative history from the first month in every period when the prior ending balance already represents the same quantity.</td>
+</tr>
+<tr>
+<td>F5. Resolve a shared lookup once</td>
+<td>With unique validated keys and matched ranges, put the rate in D8 with <code>=INDEX('Rates'!$C$5:$C$12,MATCH($A8,'Rates'!$A$5:$A$12,0))</code>; reuse D8 for that same rate. An established VLOOKUP or XLOOKUP pattern is also valid.</td>
+<td>Repeat the same lookup in each output, silently select an ambiguous duplicate, or add a helper for an already simple one-use expression.</td>
+</tr>
+<tr>
+<td>F6. Replace a long category decision tree</td>
+<td>Keep the category-to-owner mapping in a table; with unique keys, use <code>=XLOOKUP($A8,Categories,Owners,"Unmapped",0)</code>.</td>
+<td>Repeat a long category <code>IF</code> chain in every row, or remove necessary conditional model logic merely because it uses nested IFs.</td>
+</tr>
+<tr>
+<td>F7. Preserve rule boundaries</td>
+<td>For supplied bands <code>0 ≤ x &lt; 100</code>, <code>100 ≤ x &lt; 500</code>, and <code>x ≥ 500</code>, preserve those boundaries and test the thresholds and values on either side.</td>
+<td>Turn <code>&lt;100</code> into <code>≤100</code>, reorder overlapping tests, fill an intentional gap or invent a default category.</td>
+</tr>
+<tr>
+<td>F8. Guard the expected exception</td>
+<td>With validated numeric B8 and C8 and a not-applicable policy for a zero denominator, use <code>=IF(C8=0,"n.a.",B8/C8)</code>. A deliberate blank may be appropriate under a different display policy.</td>
+<td>Use <code>IFERROR(...,0)</code> so missing data or a broken reference appears to be a real zero rate.</td>
+</tr>
+<tr>
+<td>F9. Preserve a zero override</td>
+<td>With base B8 and validated optional override C8, use <code>=IF(C8="",B8,C8)</code>.</td>
+<td>Use <code>=IF(C8=0,B8,C8)</code> and erase a valid zero override, or overwrite the base to apply an adjustment.</td>
+</tr>
+<tr>
+<td>F10. Fill using shared headers and labels</td>
+<td>Use <code>=SUMIFS(Amount,Month,C$4,Item,$A8)</code> for matching monthly keys. Row 4 supplies periods across the table; column A supplies items down it. Use the date-bounds pattern above for daily source dates.</td>
+<td>Repeat the same date header in every subsection, hardcode January across the year, or assume differently ordered source tabs have matching row positions.</td>
+</tr>
+<tr>
+<td>F11. Choose the aggregate that matches the math</td>
+<td>Use <code>=SUM(C8:C11)</code> for a total, <code>=PRODUCT(C8:C10)</code> for three required numeric factors, or <code>=SUMPRODUCT(B8:B11,C8:C11)</code> for matching quantity × rate pairs. Use SUMIFS for an ordinary conditional sum.</td>
+<td>Replace these with a custom array pipeline, double-count subtotal rows, or let PRODUCT silently skip a missing required factor.</td>
+</tr>
+<tr>
+<td>F12. Keep checks independent and one-way</td>
+<td>If a Checks tab is warranted, compare the build with an independent source control there, such as <code>='Build'!E14-'Source'!D20</code>.</td>
+<td>Use <code>='Checks'!C8</code> in a build, summary or output gate, compare a total with itself, or treat a cached PASS as a newly executed check.</td>
+</tr>
+<tr>
+<td>F13. Show progression within a build</td>
+<td>For A13's capacity plan, use numeric Runs in C8 and kWh per run in D8 to calculate Energy needed in E8 as <code>=C8*D8</code>. With positive Available kWh in F8 for the same period, calculate Capacity share in G8 as <code>=E8/F8</code>.</td>
+<td>Label a linked copy “Build,” hide all factors in one long formula, or add relay tabs without useful work.</td>
+</tr>
+<tr>
+<td>F14. Share a result across useful views</td>
+<td>For A14's distinct output views, let both read the owning result, such as <code>='Build'!E14</code>, and present the detail their readers need.</td>
+<td>Recompute the same result in every output, or copy the same table into several tabs without a distinct reader or workflow need.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="writing-quality-and-authored-content">Writing Quality and Authored Content</h2>
+<p>Apply these defaults to text you write, including titles, labels and messages returned by formulas. User instructions and preferences, reference/template conventions and domain guidance take precedence, in that order. For edits, do not change unrelated content outside of the user's request and follow the workbook’s existing writing style.</p>
+<ul>
+<li>Write for the intended audience. Never include internal file paths, authoring commentary, planning notes, or requester instructions in the artifact unless explicitly requested. Do not repeat audience or style directives such as “executive-friendly” in headings, content, or comments.</li>
+<li>Omit: <code>Discussion support only. This workbook does not make final rating or promotion decisions.</code> just because the user asked for a workbook for discussion.</li>
+<li>
+<p>Omit: <code>Supports discussion and consistency checks. Human reviewers remain responsible.</code> unless that limitation is explicitly required.</p>
+</li>
+<li>
+<p>Include text only when it helps the reader understand the data or use the workbook. Keep clear text unchanged. Rewrite useful text that is unclear. Delete unnecessary text instead of replacing it with a cleaner version of the same filler.</p>
+</li>
+<li>
+<p>Use concise, plain-language titles and labels. Name the specific subject, issue or action and avoid internal jargon and vague status labels. Preserve what each label measures, including the population, period, units, comparison, and uncertainty. Do not shorten a label by removing a distinction the reader needs.</p>
+</li>
+<li>Good: <code>Weekly metrics</code>. Bad: <code>Follow the weekly trends</code></li>
+<li>Use <code>Metric</code> for a general metric column and <code>Revenue driver</code> for a revenue assumption explanation. Avoid invented labels such as <code>Planning measure</code>, <code>Movement explanation</code> or <code>Planning basis</code>. Retain specific labels when they add necessary meaning.</li>
+<li>Bad: <code>Requisition blockers</code>. Good: <code>Hiring requests awaiting approval</code> when approval is the issue.</li>
+<li>Bad: <code>Two-band rating movement</code>. Choose a descriptive, clear phrase that represents the underlying event, e.g.:<ul>
+<li>Promotion: <code>Promoted by two job levels</code></li>
+<li>Rating change: <code>Performance rating increased by two levels</code></li>
+</ul>
+</li>
+<li>Good: <code>Monthly results</code>. Bad: <code>Decision-ready monthly impact analysis</code></li>
+<li>Good: <code>Income and household assumptions</code>. Bad: <code>Same paycheck. Different purchasing power.</code></li>
+<li>
+<p>Use <code>Retained employees</code> only for employees who remained over a defined period. Otherwise, name the population counted, such as <code>Total employees</code> or <code>Employees reviewed</code>.</p>
+</li>
+<li>
+<p>Avoid decorative bullets, icons, emoji, arrows and pipe-delimited titles. Omit filler suffixes; keep terms such as <code>review</code>, <code>analysis</code> or <code>dashboard</code> when they identify the content.</p>
+</li>
+<li>Bad: <code>$ in USD • monthly • forecast</code></li>
+<li>
+<p>Good: <code>Monthly forecast (USD)</code></p>
+</li>
+<li>
+<p>Prefer direct, specific human wording. Avoid slogans, buzzwords, invented terminology, vague framing and formulaic claims.</p>
+</li>
+<li>Good (when supported by the data): <code>Most revenue growth comes from data centers.</code> Bad: <code>Data centers are doing the heavy lifting.</code></li>
+<li>Good: <code>Contributions decreased</code>. Bad: <code>Contributions waned</code></li>
+<li>Good: <code>Revenue metrics</code>. Bad: <code>Strategic Value Drivers</code></li>
+<li>Bad formulaic phrasing: <code>The tool not only saves time, but also transforms how teams collaborate.</code> or <code>Faster, smarter, and more intuitive.</code></li>
+<li>Bad: <code>While remote work offers flexibility, it also presents unique challenges.</code> (synthetic balance without a real tradeoff)</li>
+<li>
+<p>Bad: <code>Operating evidence improved</code>. Operating evidence is unclear and not a common term used.</p>
+</li>
+<li>
+<p>Avoid AI-like sentence constructions. Use direct sentences with clear meaning and avoid vague explanations and forced contrasts. Prefer periods between sentences. Do not use semicolons, pipes, bullets, or dashes to assemble several labels into a slogan.</p>
+</li>
+<li>Semicolons and vague explanations: Use <code>Travel demand and employment fell from Jan to Feb.</code>, not <code>Travel demand and employment fell from Jan to Feb; persistent behavior shifts are shaping the path back.</code>.</li>
+<li>Passive voice when active is clearer e.g. Use <code>The team approved the proposal.</code> not <code>The proposal was approved by the team.</code></li>
+<li>Contrast slogans like <code>It’s not X, it’s Y</code>: For a title, use <code>Humidity exposure over time</code> not <code>Humidity is an exposure trajectory, not a setpoint.</code></li>
+<li>
+<p>Unnecessary em-dashes: Bad: <code>Purpose: isolate what changed – and what deliberately stayed in place – under Osaka Prefecture’s Red Stage emergency response.</code></p>
+</li>
+<li>
+<p>Keep wording factual, parseable and supported by the workbook.</p>
+</li>
+<li>Good: <code>Transit use is 79% of pre-pandemic levels.</code></li>
+<li>
+<p>Bad: <code>79% Transit use back to pre-pandemic</code></p>
+</li>
+<li>
+<p>Omit repeated information, obvious purpose statements and generic disclaimers. Subtitles are optional. State critical definitions and material assumptions once beside the relevant data or setting. Preserve task-required limits and warnings, such as a review supporting discussion rather than making final personnel decisions.</p>
+</li>
+<li>
+<p>Do not include motivational wording or self-assessment. Omit decorative badges and self-evaluation banners. Preserve task-required business statuses, risk flags, uncertainty labels and specific warnings as ordinary data. Do not invent scoring systems or confidence scales merely to decorate the workbook.</p>
+</li>
+<li>
+<p>Omit: <code>This workbook is source-backed and ready for review</code>.</p>
+</li>
+<li>
+<p>For checks and logic, be specific:</p>
+</li>
+<li>
+<p>Bad: <code>Signal integrity: BLOCKED</code>. Good: <code>Missing input: forecast rate</code> (a specific functional warning)</p>
+</li>
+<li>
+<p>For a requested workflow, provide an obvious editable field for required human input, separate from original source notes. Short calculated statuses or actions should reflect all required prerequisites. Do not imply completion while another required action is still open.</p>
+</li>
+</ul>
+<h2 id="workflows">Workflows</h2>
+<p>Required:
+- <code>workflows/edit_workflows.md</code> for existing files/follow-ups.
+- <code>workflows/create_workflows.md</code> for new files</p>
+<h2 id="resources">Resources</h2>
+<p>Read the following BEFORE starting the task:</p>
+<p>Required:
+- <code>artifact_tool_docs/API_QUICK_START.md</code> for <code>artifact_tool</code> JS API documentation. Read entirely.
+- <code>style_guidelines.md</code> for formatting.</p>
+<p>As applicable:
+- <code>references/template-elicitation.md</code>: if user has not provided a template, reference, or visual direction.
+- <code>references/image-references.md</code>: if a reference image or screenshot is provided.
+- <code>references/read_only_qna.md</code>: for Q&amp;/audits
+- <code>features/charts.md</code>: for creating or editing charts.</p>
+<p><a id="domain-requirements"></a></p>
+<h2 id="role-and-domain-guidance">Role and Domain Guidance</h2>
+<p>Before authoring, identify the user's <strong>task/function</strong>, <strong>role</strong>, <strong>audience</strong> and <strong>industry</strong> separately, then read the relevant guides below. Apply the professional conventions of the work being done; a role or industry label alone does not determine the workbook's structure or formatting.
+- Use function guidance for the work being done. Financial forecasts, budgets, cash models and valuations use Finance guidance in any industry.
+- Add industry requirements only when they affect definitions, units, source handling or the workflow. A healthcare company's financial forecast uses Finance guidance; an appointment tracker does not inherit financial-model structure or colors.
+- Use the user's role and audience to choose useful detail, terminology and outputs, and to resolve ambiguity in the task. Do not apply Finance conventions to an unrelated task just because the user works in Finance. Explicit instructions and templates retain precedence; relevant domain conventions override generic defaults.</p>
+<p>Guides:
+- Finance, corporate finance and FP&amp;A, financial modeling, valuation and investment banking: <code>domain_guidance/financial_models.md</code>. Read the relevant financial requirements below the shared structure, formula and style rules.
+- Healthcare: <code>domain_guidance/healthcare.md</code>
+- Marketing and advertising: <code>domain_guidance/marketing_advertising.md</code>
+- Scientific research: <code>domain_guidance/scientific_research.md</code></p>
+<h2 id="create-and-edits">Create and Edits</h2>
+<p>For any task that requires modifying or creating a workbook:</p>
+<h3 id="data-formatting-rules">Data Formatting Rules</h3>
+<ul>
+<li>Store numbers, percentages, currency, and dates as typed spreadsheet values, not preformatted strings. Use text only for true identifiers such as ZIP codes, account IDs, SKUs, or labels.</li>
+<li>Use Excel-invariant number/date format codes, not locale-specific display strings. Generic numeric examples include <code>#,##0</code>, <code>#,##0.0</code>, <code>0.0%</code>, <code>0.00%</code>, <code>"$"#,##0</code>, <code>"$"#,##0.00</code>. Preserve source dates and unrelated existing formats.</li>
+<li>Percentages: Follow the domain or reference's precision. Otherwise, use 1 decimal for most analytical cells, 0 decimals for dashboard outputs, and 2 decimals where small rate differences matter.</li>
+<li>Do not swap <code>.</code> and <code>,</code> in format codes to mimic locale separators; separators are controlled by spreadsheet/render locale. Use <code>0.0%</code>, not <code>0,0%</code>, and <code>#,##0</code>, not <code>#.##0</code>.</li>
+<li>
+<p>Choose the appropriate format for readability. Match precision to meaning: counts use <code>#,##0</code>; rates usually use <code>0.0%</code> or <code>0.00%</code>; currency uses whole units unless cents matter.</p>
+</li>
+<li>
+<p>For dates in data columns, default to a short date format appropriate to the workbook's language/location, such as <code>mm/dd/yy</code> for the US. Follow explicit user preferences and reference/template or domain conventions.</p>
+</li>
+</ul>
+<p>Keep underlying dates numeric and sortable. A display format does not change the period represented or authorize aggregation. Fit the final display so dates do not truncate or show <code>####</code>.</p>
+<h3 id="verification-rules">Verification Rules</h3>
+<p>Use Artifact Tool to verify requested features and results within the authorized changes and their affected dependencies. Match coverage to the scope, complexity and risk. Report unrelated pre-existing defects without repairing them. Reuse checks for unchanged content and keep authoring-only tests out of the delivered workbook.</p>
+<p>After completing all edits, call <code>workbook.recalculate()</code> once before the final checks below and export. If you make further edits, recalculate again before repeating affected checks and exporting.</p>
+<pre><code class="language-js">workbook.recalculate();
+</code></pre>
+<ol>
+<li>Inspect labels, values and formulas in key ranges:</li>
+</ol>
+<pre><code class="language-js">const check = await workbook.inspect({
+  kind: "table",
+  range: "Dashboard!A1:H20",
+  include: "values,formulas",
+  tableMaxRows: 20,
+  tableMaxCols: 12,
+});
+console.log(check.ndjson);
+</code></pre>
+<p>Check what each source row represents, units, reporting periods, and numerators and denominators for rates. Spot-check representative metrics against source data or an independent calculation. Trace headline results through the build to inputs, including named and dynamic references. Confirm the build does useful calculations and does not depend on terminal Checks/Audit. When cases are used, trace each period to its active assumptions. Summary should link to finished results without repeating the build or routing results through Assumptions. An actuals-only historical calibration reference is allowed.</p>
+<p>Check formula copying across and down at first, middle and later rows/periods. When the workflow promises extensions, test the next record, period or requested case. Keep notes and overrides tied to stable record IDs after supported sorts or refreshes. Reconcile key totals to independent source controls using the right period aggregation. Apply tolerances appropriate to the units and precision, but compare identifiers, counts and categories exactly. Investigate double-counting or conflicting data and fix confirmed errors within scope.</p>
+<ol start="2">
+<li>Scan formula errors:</li>
+</ol>
+<pre><code class="language-js">const errors = await workbook.inspect({
+  kind: "match",
+  searchTerm: "#REF!|#DIV/0!|#VALUE!|#NAME\\?|#N/A|#NUM!|#NULL!|#SPILL!|#CALC!",
+  options: { useRegex: true, maxResults: 300 },
+  summary: "final formula error scan",
+});
+console.log(errors.ndjson);
+</code></pre>
+<p>Check wrong or shifted references and unintended cycles as well as reported errors. Distinguish deliberate missing-data markers from unexpected failures. Trace unavailable results and zero issue counts through their prerequisites: a failed detail calculation must not disappear into a healthy zero or an understated summary.</p>
+<ol start="3">
+<li>Verify applicable recalculation in the intended engine. Test representative input changes and boundaries in a disposable copy or restore every temporary edit before delivery. Include blank versus zero, missing/duplicate keys, period cutoffs, overrides and rounding. For cases, change the selector and a later-period driver. Confirm the same build and linked outputs update while actuals remain unchanged. A blank unselected input must not block a valid active case; selecting that case must expose the missing input. Verify any agreed comparison refresh and stale-state behavior separately. Report any engine checks that could not be performed.</li>
+</ol>
+<p>For workflows, check that required human inputs have editable fields and that completion guidance accounts for every prerequisite. Complete one prerequisite while leaving another open and confirm the remaining action stays visible. For input-driven rankings and action lists, change an input that should alter the order or included records and verify the list updates. Verify affected charts, status text, validation and conditional formatting react to edits. A saved value, static matrix or unchanged PASS cell is not recalculation proof.</p>
+<ol start="4">
+<li>Render sheets/ranges to verify visual output. Skip only when the rendered view and its data/formula dependencies are unchanged:</li>
+</ol>
+<pre><code class="language-js">const blob = await workbook.render({ sheetName: "Sheet1", range: "A1:H20", scale: 2 });
+</code></pre>
+<p>For creation or broad authorized restructuring, visually review every sheet. For a narrow edit, review the changed view and affected dependencies, then compare all tabs with the source for unintended value, formula, object, validation or style changes. Do not repeatedly render unchanged tabs; investigate any scope-preservation failure.</p>
+<p>Inspect at normal zoom with cells unselected. Fix blank/broken charts, low-contrast text, unreadable fonts, clipped headers/numbers, <code>####</code>, awkward wrapping, truncated chart labels, default blank sheets and content outside the working area. Check effective cell/chart fonts, fitted row heights and widths, pane boundaries and conditional-format ranges. Logical titles and labels should appear once with a clear layout. Valid check values should stay neutral, with errors and missing inputs visibly distinct. Do not shrink content to force a fit.</p>
+<p>Keep output compact: avoid arbitrary formula-count checks, assumptions about file storage and huge NDJSON dumps.</p>
+<ol start="5">
+<li>Export:</li>
+</ol>
+<pre><code class="language-js">await fs.mkdir(outputDir, { recursive: true });
+const output = await SpreadsheetFile.exportXlsx(workbook);
+await output.save(`${outputDir}/output.xlsx`);
+</code></pre>
+<ol start="6">
+<li>Inspect the saved file when an affected feature or export concern requires it. Verify requested or preserved native features in the intended engine, including any explicitly required Data Table input/output behavior. Check iteration and capture behavior separately when used.</li>
+</ol>
+<p>Finalize only after successful export and the applicable checks. Report what was performed and any remaining limitations. Formula text, a preview and a successful export do not establish native-application behavior.
+- Do not export extra <code>.xlsx</code> variants unless asked.</p>
+<h3 id="citation-requirements">Citation Requirements</h3>
+<p>These are defaults for new workbooks: user instructions, reference/template conventions and domain guidance take precedence. For edits, follow the workbook’s existing citation practices.
+- Cite real sources when they exist.
+- Keep citations and sources in one place: an existing input tab (sources or data tab) or in the correct input section in a tab, alongside the input data.
+- There are two ways to cite a source: 
+  1. (Preferred) Inline in the input tab when the tab exists.
+    - If there are multiple unique sources (different pages/lines don't count), inline them in an adjacent cell at the table's end, with one column as a buffer, when a table exists
+    - If there is a single source, just have a single cell above the data, left aligned.
+  2. (Fallback) Cell note, not a comment/thread, with the citation
+    Only do this for hardcoded inputs not on a separate input tab, such as an input area on a build sheet. For adjacent cells in the same row or column that come from the same source, do not add duplicate cell notes. Never add citation notes to titles or headers.
+- If there is no clear place for sources, return sources in chat. Do not add a tab just for citations.
+- Citation format should follow best practice for domain, default to <code>(Source: Company 10-K, FY2026, Page 20, Revenue Note, [URL LINK])</code>
+- Do not add citations, comments or notes to cover/presentation tabs or output regions unless requested. On a mixed-use sheet, citations may sit beside the input data, outside the output region.
+- When comments are requested, keep them succinct, minimal and easy to read.
+- Do not add a different annotation type to a cell that already has one. Update an existing note/comment/thread rather than layering another system over it.
+- Do not add cell comments unless the user requests them. Preserve existing annotations.</p>
+<h2 id="completion-criteria">Completion Criteria</h2>
+<h3 id="criteria-for-question-read-only-requests">Criteria for Question / Read only requests</h3>
+<ul>
+<li>Answer from the available workbook context. Do not edit or overwrite unless the user asks for a workbook change.</li>
+</ul>
+<h3 id="criteria-for-all-create-and-edit-requests">Criteria for all create and edit requests</h3>
+<p>Complete only when:
+- Content is populated, addresses the user's request, and formulas compute, with no obvious formula errors in key scanned ranges (including bad-reference, off-by-one or circular errors).
+- <code>.xlsx</code> saved to <code>outputs/&lt;unique_thread_id&gt;/</code>.
+- Visual verification passes: organized, legible layout matches requested style or default/existing edit baseline; all important numbers/callouts are visible; numbers, text, charts and content are unclipped without awkward wrapping.
+- Required controls, charts, panes and requested features exist.</p>
+<h2 id="error-recovery">Error Recovery</h2>
+<p>On first tool or API error:
+1. Read error text.
+2. Consult the selected workflow's targeted help or schema discovery only if needed.
+3. Retry with minimal patch (not full rewrite).
+4. Continue from existing workbook state.</p>
+<p>Do not loop indefinitely on similar failures.</p>
+<h2 id="final-response">Final response</h2>
+<h3 id="final-response-citations">Final response citations</h3>
+<p>Place :codex-file-citation{...} inline in prose without wrapping it in backticks or a code block, not in a trailing list. Use <code>purpose="source"</code> for Q&amp;A/no-op and <code>purpose="output"</code> for create/edit.</p>
+<ul>
+<li>[HARD REQUIREMENT] Create/edit: cite each final workbook exactly once with a plain output citation. Summarize representative changes; do not cite every sheet/range or add a separate filename, path, or Markdown link. Example: <code>Created :codex-file-citation{path="/abs/path/inventory.xlsx" purpose="output"} with formula-driven status and a summary.</code></li>
+<li>Q&amp;A: cite whole-workbook claims plainly; otherwise use the narrowest reliable <code>sheet</code> + <code>range</code> (the exact cell for a discrete value). Cite discontiguous cells separately. For objects, use <code>sheet</code> + exact inspected <code>object_id</code>; add <code>object_kind</code>/<code>label</code> only when useful. Never cite a sheet alone or guess locators.</li>
+<li>Calculations: cite only distinct inputs, drivers, formulas, or results the answer needs.</li>
+</ul>
+<p>:codex-file-citation{path="/abs/path/book.xlsx" purpose="source" artifact_kind="workbook" sheet="Revenue Model" range="C27"}</p>
+<p>Never cite intermediates unless asked.</p>
+<h3 id="final-response-suggested-followups">Final response suggested followups</h3>
+<ul>
+<li>After successfully creating, editing, or analyzing an artifact, finish your final response with 3 useful next actions tailored to the artifact and the user's goal. Completing the requested work is not a reason to skip these actions: they help the user continue from the result. Do not perform the actions unless the user chooses one.</li>
+<li>Each action must be a distinct, concrete request the user could send next. Do not repeat completed work or invent filler. Omit the list if the user declines suggestions, the requested work fails, or no genuinely useful next action remains.</li>
+<li>Present each action as an unescaped Markdown list item using this exact syntax: <code>- :codex-followup[Short action]{prompt="Complete request for that action"}</code>.</li>
+</ul>
+<h2 id="comment-author">Comment Author</h2>
+<ul>
+<li>If the authenticated/user profile or env context provides a user display name, use it as the threaded comment display name unless the user requests another name. Default to <code>User</code>.</li>
+</ul>
+<h2 id="source-pdf-and-attachment-processing">Source, PDF, and Attachment Processing</h2>
+<ul>
+<li>For attachment references, include only the file/section/table details needed to locate supporting data. Do not paste large PDF excerpts unless requested.</li>
+<li>Bundled Python libraries available in the bundled runtime environment for extraction/analysis include <code>pandas</code>, <code>numpy</code>, <code>pypdf</code>, <code>python-docx</code>, and <code>reportlab</code>. You may read/extract in separate scripts if needed.</li>
+<li>Bundled JS libraries available for document/PDF work include <code>docx</code>, <code>pdf-lib</code>, and <code>pdfjs-dist</code>.</li>
+</ul></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

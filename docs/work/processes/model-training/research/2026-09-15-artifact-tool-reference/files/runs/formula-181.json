@@ -1,0 +1,37 @@
+{
+  "name": "fx.DURATION",
+  "category": "financial",
+  "examples": [
+    {
+      "formula": "=DURATION(A1, A1, A1, A1)",
+      "value": "DURATION is not implemented. settlement=1, maturity=1, coupon=1, yld=1, frequency=undefined, basis=undefined",
+      "projection": [
+        [
+          "DURATION is not implemented. settlement=1, maturity=1, coupon=1, yld=1, frequency=undefined, basis=undefined",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 9
+    }
+  ]
+}

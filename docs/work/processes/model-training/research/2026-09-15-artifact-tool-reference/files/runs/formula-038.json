@@ -1,0 +1,37 @@
+{
+  "name": "fx.PERCENTRANK",
+  "category": "compatibility",
+  "examples": [
+    {
+      "formula": "=PERCENTRANK({1,2;3,4}, A1, A1)",
+      "value": 0,
+      "projection": [
+        [
+          0,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 13
+    }
+  ]
+}

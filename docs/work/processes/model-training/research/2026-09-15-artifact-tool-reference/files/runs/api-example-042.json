@@ -1,0 +1,10 @@
+{
+  "index": 42,
+  "name": "range.conditionalFormats",
+  "summary": "Highlight values below or equal to the average",
+  "originalCode": "const range = sheet.getRange('H2:H20');\nrange.conditionalFormats.add('aboveAverage', {\n  aboveAverage: false,\n  equalAverage: true,\n  format: { fill: '#FECACA', font: { color: '#991B1B' } },\n});",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

@@ -1,0 +1,10 @@
+{
+  "index": 96,
+  "name": "worksheet.getRange",
+  "summary": "Create a range from A1 notation",
+  "originalCode": "const sheet = workbook.worksheets.getItem('Sheet1');\nconst range = sheet.getRange('A1:C10');",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

@@ -1,0 +1,10 @@
+{
+  "index": 125,
+  "name": "worksheet.reset",
+  "summary": "Reset a worksheet for a clean rebuild",
+  "originalCode": "const sheet = workbook.worksheets.getItem('Sheet1');\nsheet.reset();",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

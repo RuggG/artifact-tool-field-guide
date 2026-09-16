@@ -1,0 +1,83 @@
+{
+  "id": "value-edit",
+  "input": "const before = readState();\nwb.worksheets.getItem(\"Assumptions\").getRange(\"W26\").values = [[51]];\nreturn {before, after: readState()};",
+  "elapsedMs": 1,
+  "result": {
+    "before": {
+      "baseFeeMargin": {
+        "sheet": "Assumptions",
+        "cell": "W26",
+        "value": 56,
+        "formula": ""
+      },
+      "activeFeeMargin": {
+        "sheet": "Assumptions",
+        "cell": "W25",
+        "value": 56,
+        "formula": ""
+      },
+      "q4AverageAum": {
+        "sheet": "Fee engine",
+        "cell": "W18",
+        "value": 290.5116868239257,
+        "formula": ""
+      },
+      "q4ManagementFees": {
+        "sheet": "Fee engine",
+        "cell": "W27",
+        "value": 406.716361553496,
+        "formula": "=W18*Assumptions!$D$49*W26/Assumptions!$D$60*Assumptions!$D$48"
+      },
+      "fy2027ManagementFees": {
+        "sheet": "Summary",
+        "cell": "M13",
+        "value": 1568.3078736933392,
+        "formula": "='Fee engine'!M95"
+      },
+      "fy2027OperatingProfit": {
+        "sheet": "Summary",
+        "cell": "M20",
+        "value": 792.7541060612962,
+        "formula": "='Fee engine'!M101"
+      }
+    },
+    "after": {
+      "baseFeeMargin": {
+        "sheet": "Assumptions",
+        "cell": "W26",
+        "value": 51,
+        "formula": ""
+      },
+      "activeFeeMargin": {
+        "sheet": "Assumptions",
+        "cell": "W25",
+        "value": 56,
+        "formula": ""
+      },
+      "q4AverageAum": {
+        "sheet": "Fee engine",
+        "cell": "W18",
+        "value": 290.5116868239257,
+        "formula": ""
+      },
+      "q4ManagementFees": {
+        "sheet": "Fee engine",
+        "cell": "W27",
+        "value": 406.716361553496,
+        "formula": "=W18*Assumptions!$D$49*W26/Assumptions!$D$60*Assumptions!$D$48"
+      },
+      "fy2027ManagementFees": {
+        "sheet": "Summary",
+        "cell": "M13",
+        "value": 1568.3078736933392,
+        "formula": "='Fee engine'!M95"
+      },
+      "fy2027OperatingProfit": {
+        "sheet": "Summary",
+        "cell": "M20",
+        "value": 792.7541060612962,
+        "formula": "='Fee engine'!M101"
+      }
+    }
+  }
+}

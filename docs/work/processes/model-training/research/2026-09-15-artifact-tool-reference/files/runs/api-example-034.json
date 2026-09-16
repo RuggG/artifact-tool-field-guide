@@ -1,0 +1,10 @@
+{
+  "index": 34,
+  "name": "range.conditionalFormats",
+  "summary": "Add a 3-stop color scale (min/mid/max)",
+  "originalCode": "const range = sheet.getRange('B2:B6');\nrange.conditionalFormats.add('colorScale', {\n  criteria: [\n    { type: 'lowestValue', color: '#DC2626' },\n    { type: 'percentile', value: 50, color: '#FBBF24' },\n    { type: 'highestValue', color: '#16A34A' },\n  ],\n});",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

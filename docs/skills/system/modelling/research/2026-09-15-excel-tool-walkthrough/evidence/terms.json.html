@@ -1,0 +1,216 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>terms.json · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="terms.json">Raw file</a> · <a data-public-raw download href="terms.json">Download</a></p><article><h1>terms.json</h1><pre class="public-code"><code>{
+  &quot;definitions&quot;: {
+    &quot;workbook&quot;: [
+      &quot;Workbook&quot;,
+      &quot;The whole spreadsheet document: here, man-group-fees-excel.xlsx. It contains six worksheets. After import, wb is the script’s in-memory representation of that document.&quot;
+    ],
+    &quot;sheet&quot;: [
+      &quot;Worksheet / sheet / tab&quot;,
+      &quot;Worksheet and sheet mean the same thing. A tab is the selector you click to open that sheet in Excel. Summary and Assumptions are two sheets in this workbook.&quot;
+    ],
+    &quot;cell&quot;: [
+      &quot;Cell and address&quot;,
+      &quot;One position in a sheet’s grid. W26 means column W, row 26. Assumptions!W26 also names the sheet; the ! separates sheet name from cell address.&quot;
+    ],
+    &quot;range&quot;: [
+      &quot;Range / rectangle&quot;,
+      &quot;A selection of cells. K13:M20 means every cell from K13 at the top left to M20 at the bottom right, inclusive: eight rows and three columns. Selecting a range does not create a new Excel object.&quot;
+    ],
+    &quot;used&quot;: [
+      &quot;Used range&quot;,
+      &quot;The bounding rectangle reported for a sheet’s occupied area. Summary is reported as A1:M57. Blank cells and layout space can lie inside that rectangle; 57 × 13 is its size, not the number of filled cells.&quot;
+    ],
+    &quot;table&quot;: [
+      &quot;Table — in this inspection response&quot;,
+      &quot;A table-shaped package of sheet data returned by inspect. In this captured overview, Summary’s tables: 1 accompanies one table record covering A1:M57, even though that area contains several financial sections. This count does not mean one financial schedule or one formal Excel Table. The capture establishes this behavior for this workbook, not a universal table-detection rule.&quot;
+    ],
+    &quot;excel-table&quot;: [
+      &quot;Excel Table — the formal feature&quot;,
+      &quot;An explicitly defined, named block within a sheet, with column headers and features such as filtering and references by column name. Formatting some cells to look like a table is not enough to create one. The supplied Man Group file has no formal Excel Tables: its file package contains no table definitions or worksheet table references.&quot;
+    ],
+    &quot;region&quot;: [
+      &quot;Region / populated block&quot;,
+      &quot;A block the inspection call identifies within the requested area. In Summary!C7:M28 it returns four regions, including C13:M17 for revenue. Here blank rows separate the four returned blocks. A region is a description returned by the library; it need not be a named Excel Table or a financial schedule the agent understands.&quot;
+    ],
+    &quot;preview&quot;: [
+      &quot;Preview&quot;,
+      &quot;A sample of the data, possibly smaller than the whole region. For the C13:M17 region, previewAddress is C13:H17: all five rows, but only the first six columns. Values outside that preview were not returned in that preview.&quot;
+    ],
+    &quot;record&quot;: [
+      &quot;Record / field&quot;,
+      &quot;A record is one structured item in the response, such as the Summary sheet description. A field is a named property within it, such as name, address or tables. Five returned records does not mean five Excel rows or five tabs; the records can be different kinds, including a notice.&quot;
+    ],
+    &quot;metadata&quot;: [
+      &quot;Metadata / truncated&quot;,
+      &quot;Metadata describes the response itself, such as what was requested. Truncated means the answer was cut short by a response limit. It does not mean cells were deleted from the workbook.&quot;
+    ],
+    &quot;json&quot;: [
+      &quot;JSON / object / array&quot;,
+      &quot;JSON is a text format for structured data. An object groups named fields inside { }; an array is an ordered list inside [ ]. The Object tree control expands those structures for reading. It is a presentation of the saved response, not another call to Excel.&quot;
+    ],
+    &quot;ndjson&quot;: [
+      &quot;NDJSON&quot;,
+      &quot;Newline-delimited JSON: one JSON record per line of text. This inspection API puts those lines inside its ndjson field. The page decodes them into expandable records; Exact JSON retains the captured string.&quot;
+    ],
+    &quot;matrix&quot;: [
+      &quot;Matrix / two-dimensional array&quot;,
+      &quot;A grid represented as a list of rows, each containing a list of cell entries. In the K13:M20 read, values[0][0] refers to K13: programming list positions start at zero. The formulas grid uses the same row and column positions.&quot;
+    ],
+    &quot;value&quot;: [
+      &quot;Value / formula / cached value&quot;,
+      &quot;A value is the result currently read from a cell; a formula is the calculation rule, such as =SUM(A1:A3). A cached value is a result saved from an earlier calculation. A plausible value alone does not prove the imported formula is present or still recalculates.&quot;
+    ],
+    &quot;null&quot;: [
+      &quot;null / blank formula&quot;,
+      &quot;null means this returned field has no value; an empty formula string means no formula text was returned. Neither establishes that the original Excel cell is empty. Here, some cells have formulas in the file that the import does not expose.&quot;
+    ],
+    &quot;id&quot;: [
+      &quot;Internal ID / index&quot;,
+      &quot;An internal ID such as ws/martey is the library’s handle for a sheet; its name is Summary. Index is its zero-based position: index 0 is the first tab. The page’s readable Position column starts at 1.&quot;
+    ],
+    &quot;match&quot;: [
+      &quot;Match / regular expression&quot;,
+      &quot;A match is a cell satisfying the supplied text-search rule. A regular expression is a written pattern: management.*fee|fee.*margin means management followed by fee, OR fee followed by margin. It does not decide which financial metric the user intended.&quot;
+    ],
+    &quot;dependency&quot;: [
+      &quot;Dependency tree / node / params&quot;,
+      &quot;A dependency is a cell used to calculate another cell. The tree starts at the requested result and branches toward its inputs. Each node describes a cell; params lists its immediate input branches. It is not a map of tabs. Missing branches can reflect an import limitation rather than a truly independent input.&quot;
+    ],
+    &quot;shared&quot;: [
+      &quot;Shared-formula follower&quot;,
+      &quot;Excel can store one master formula plus instructions to shift its references for neighboring cells. Those other cells are followers. They still have formulas in Excel. This import fails to expose some followers’ formulas and dependencies, leaving their saved values visible.&quot;
+    ],
+    &quot;script&quot;: [
+      &quot;Script / Node / library&quot;,
+      &quot;A script is the saved program run.mjs. Node.js is the program that executes its JavaScript. The library, @oai/artifact-tool, supplies spreadsheet functions that the script calls. This route works with the file without driving an Excel window.&quot;
+    ],
+    &quot;tool&quot;: [
+      &quot;Tool call / library method / MCP&quot;,
+      &quot;The command tool is how Codex launches the script. wb.inspect and wb.trace are functions provided by the spreadsheet library inside that script. MCP is a protocol for exposing tools to an agent; these spreadsheet functions are not separate Excel MCP calls in this run.&quot;
+    ],
+    &quot;session&quot;: [
+      &quot;Session ID / poll / exit code&quot;,
+      &quot;If a command is still running, its session ID identifies the process to check later. Poll means request its latest output or status. Exit code 0 means the script ended successfully; it does not certify the model’s financial correctness.&quot;
+    ],
+    &quot;helper&quot;: [
+      &quot;Helper / wrapper / readback&quot;,
+      &quot;A helper or wrapper is small code written around a library call. capture saves evidence; readState reads six selected cells. Readback means checking values after an operation. These are explicit parts of this script, not automatic success reports from Excel.&quot;
+    ],
+    &quot;render&quot;: [
+      &quot;Render / image blob / PNG&quot;,
+      &quot;Render means draw the selected cells into an image. A blob holds the image bytes in memory; PNG is the image-file format used here. The script saves the PNG, then a separate image-view tool lets Codex see it. This is a library-rendered image, not a screenshot of an open Excel window.&quot;
+    ],
+    &quot;recalc&quot;: [
+      &quot;Calculation engine / recalculation&quot;,
+      &quot;The calculation engine evaluates formulas and their links. Recalculation asks it to refresh results from current inputs. In these calls it is Artifact Tool’s engine. Missing imported dependencies can leave results unchanged even when recalculation is requested.&quot;
+    ],
+    &quot;undefined&quot;: [
+      &quot;undefined&quot;,
+      &quot;JavaScript’s indication that a function supplied no return value. recalculate and save return undefined here. That alone means neither success nor failure; the script separately reads cells or checks the saved file.&quot;
+    ],
+    &quot;reference&quot;: [
+      &quot;Relative / absolute reference&quot;,
+      &quot;When copied, W26 moves with the formula’s new position. $D$4 fixes both column D and row 4, so it stays D4. fillRight extends a formula across a range; copyFrom copies from a specified source to a specified destination.&quot;
+    ],
+    &quot;export&quot;: [
+      &quot;Import / in memory / export&quot;,
+      &quot;Import reads the .xlsx file into the library’s workbook object in the running program. Edits initially affect that object. Export converts it back to a file representation, and save writes that file to disk. These are distinct steps.&quot;
+    ],
+    &quot;annotation&quot;: [
+      &quot;Annotation / tolerance&quot;,
+      &quot;Annotations are notes or comments attached to cells. A numeric tolerance is the allowed difference in an independent comparison, to avoid treating tiny rounding differences as substantive changes. Neither check proves that all formulas recalculate in native Excel.&quot;
+    ]
+  },
+  &quot;cards&quot;: {
+    &quot;runner&quot;: [
+      &quot;script&quot;,
+      &quot;tool&quot;,
+      &quot;session&quot;,
+      &quot;json&quot;
+    ],
+    &quot;overview&quot;: [
+      &quot;workbook&quot;,
+      &quot;sheet&quot;,
+      &quot;table&quot;,
+      &quot;excel-table&quot;,
+      &quot;record&quot;,
+      &quot;metadata&quot;,
+      &quot;ndjson&quot;
+    ],
+    &quot;sheets&quot;: [
+      &quot;sheet&quot;,
+      &quot;used&quot;,
+      &quot;range&quot;,
+      &quot;id&quot;
+    ],
+    &quot;literal&quot;: [
+      &quot;cell&quot;,
+      &quot;match&quot;,
+      &quot;record&quot;,
+      &quot;null&quot;
+    ],
+    &quot;regex&quot;: [
+      &quot;match&quot;,
+      &quot;metadata&quot;,
+      &quot;record&quot;
+    ],
+    &quot;regions&quot;: [
+      &quot;range&quot;,
+      &quot;region&quot;,
+      &quot;preview&quot;,
+      &quot;table&quot;
+    ],
+    &quot;ranges&quot;: [
+      &quot;cell&quot;,
+      &quot;range&quot;,
+      &quot;matrix&quot;,
+      &quot;value&quot;,
+      &quot;null&quot;
+    ],
+    &quot;trace&quot;: [
+      &quot;dependency&quot;,
+      &quot;value&quot;,
+      &quot;shared&quot;,
+      &quot;null&quot;
+    ],
+    &quot;render&quot;: [
+      &quot;range&quot;,
+      &quot;render&quot;,
+      &quot;helper&quot;
+    ],
+    &quot;value-edit&quot;: [
+      &quot;cell&quot;,
+      &quot;value&quot;,
+      &quot;helper&quot;,
+      &quot;shared&quot;
+    ],
+    &quot;recalculate&quot;: [
+      &quot;recalc&quot;,
+      &quot;undefined&quot;,
+      &quot;value&quot;,
+      &quot;dependency&quot;
+    ],
+    &quot;formula-edit&quot;: [
+      &quot;value&quot;,
+      &quot;shared&quot;,
+      &quot;reference&quot;,
+      &quot;helper&quot;
+    ],
+    &quot;fill&quot;: [
+      &quot;range&quot;,
+      &quot;reference&quot;,
+      &quot;matrix&quot;
+    ],
+    &quot;copy&quot;: [
+      &quot;reference&quot;,
+      &quot;value&quot;,
+      &quot;helper&quot;
+    ],
+    &quot;export&quot;: [
+      &quot;export&quot;,
+      &quot;undefined&quot;,
+      &quot;value&quot;,
+      &quot;annotation&quot;
+    ]
+  }
+}</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

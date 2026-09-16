@@ -1,0 +1,10 @@
+{
+  "index": 7,
+  "name": "chart barOptions",
+  "summary": "Column chart spacing + overlap",
+  "originalCode": "chart.barOptions.direction = 'column';\nchart.barOptions.grouping = 'clustered';\nchart.barOptions.gapWidth = 100;\nchart.barOptions.overlap = -20;\nchart.barOptions.direction = 'column';\nchart.barOptions.grouping = 'stacked';\nchart.barOptions.gapWidth = 120;",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

@@ -1,0 +1,10 @@
+{
+  "index": 115,
+  "name": "range.fillRight",
+  "summary": "Fill right like Excel drag-fill",
+  "originalCode": "const r = sheet.getRange('B2:F2');\nr.getCell(0, 0).formulasR1C1 = [['=RC[-1]*2']];\nr.fillRight();",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

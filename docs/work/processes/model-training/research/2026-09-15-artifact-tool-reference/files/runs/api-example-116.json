@@ -1,0 +1,10 @@
+{
+  "index": 116,
+  "name": "range.fillFrom",
+  "summary": "Extend a block downward from a source selection",
+  "originalCode": "const seed = sheet.getRange('B2:C3');\nconst target = sheet.getRange('B2:C8');\ntarget.fillFrom(seed);",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

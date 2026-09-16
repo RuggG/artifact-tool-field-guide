@@ -1,0 +1,37 @@
+{
+  "name": "fx.QUARTILE.EXC",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=QUARTILE.EXC({1,2;3,4}, A1)",
+      "value": 1.25,
+      "projection": [
+        [
+          1.25,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 11
+    }
+  ]
+}

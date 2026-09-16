@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Editing an existing spreadsheet · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="edit_workflows.md">Raw file</a> · <a data-public-raw download href="edit_workflows.md">Download</a></p><article><h1 id="editing-an-existing-spreadsheet">Editing an existing spreadsheet</h1>
+<p>Treat existing workbook as the reference: preserve its structure, formula patterns, formatting, terminology, and navigation and extend nearby conventions unless the user explicitly requests a change.</p>
+<p>User requests always take priority over any rules in this file.</p>
+<h2 id="safety-rules">Safety rules</h2>
+<ul>
+<li>Do not add, remove, rename, reorder, or split tabs unless requested or required.</li>
+<li>Before modifying: ALWAYS study and match the existing format, style and conventions when making edits by rendering and viewing the image. Read related values and formulas.</li>
+</ul>
+<h2 id="important-guidelines">Important guidelines</h2>
+<ul>
+<li>Prioritize consistency unless it conflicts with user request: Ensure existing formulas, layouts, structures, and patterns are consistent. For example, if asked to add another column or row to a table and there is conditional formatting applied to the whole table, it should extend to the new column or rows as well.</li>
+<li>Keep edits targeted unless a broader change is clearly necessary. Exceptions are when there's dependencies, e.g. a dynamic chart that is based on the range of values in a table and a new row is added, the chart should also update.</li>
+<li>Change only requested cells and directly affected formulas/charts. Preserve unrelated tabs, formulas, formatting, validations, named ranges, comments, protection, hidden/grouped rows/columns, freeze panes and chart content. Do not add sheets, rows, columns or helpers unless requested.</li>
+<li>Never overwrite formatting for spreadsheets with established formats, unless requested or to extend an added range.</li>
+<li>Preserve native tables, structured references, pivot sources, shared formulas, filters, external links, INDIRECT routing and calculation/iteration settings. Do not flatten formulas or rebuild unrelated features for convenience.</li>
+<li>For visual fixes, start with the smallest plausible local change. Do not apply sheet-wide autofit, wrapping, or restyling unless requested.</li>
+</ul>
+<h2 id="formula-rules">Formula Rules</h2>
+<p>For formula edits, follow the user's request first; otherwise preserve valid existing conventions before applying defaults for new formulas.</p>
+<ul>
+<li>Preserve valid existing formula conventions, structure and references to editable inputs unless the user requests otherwise. Look at a couple examples in the requested edit area before making changes.</li>
+<li>If there are any errors with the original workbook, unrelated to the task at hand, do not fix them arbitrarily. Instead, summarize the issues to the user and ask if they want them fixed.</li>
+</ul></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

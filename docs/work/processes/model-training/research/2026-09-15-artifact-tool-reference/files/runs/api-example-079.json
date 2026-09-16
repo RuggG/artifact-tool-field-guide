@@ -1,0 +1,10 @@
+{
+  "index": 79,
+  "name": "range.unmerge",
+  "summary": "Remove merges touching a range",
+  "originalCode": "sheet.getRange('B1:H4').unmerge();",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

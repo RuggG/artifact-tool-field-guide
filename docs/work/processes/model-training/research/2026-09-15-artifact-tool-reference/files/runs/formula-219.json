@@ -1,0 +1,37 @@
+{
+  "name": "fx.IFERROR",
+  "category": "logical",
+  "examples": [
+    {
+      "formula": "=IFERROR(A1:A5, A1:A5)",
+      "value": 1,
+      "projection": [
+        [
+          1,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 7
+    }
+  ]
+}

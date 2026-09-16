@@ -1,0 +1,37 @@
+{
+  "name": "fx.CORREL",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=CORREL({1,2;3,4}, {1,2;3,4})",
+      "value": 1.0000000000000002,
+      "projection": [
+        [
+          1.0000000000000002,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 22
+    }
+  ]
+}

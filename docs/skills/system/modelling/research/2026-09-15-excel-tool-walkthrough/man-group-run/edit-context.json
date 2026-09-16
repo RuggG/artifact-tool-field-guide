@@ -1,0 +1,164 @@
+{
+  "id": "edit-context",
+  "input": "const a = wb.worksheets.getItem(\"Assumptions\");\nconst f = wb.worksheets.getItem(\"Fee engine\");\nreturn {\n  assumptions: {range:\"R25:W29\", values:a.getRange(\"R25:W29\").values, formulas:a.getRange(\"R25:W29\").formulas},\n  fees: {range:\"R26:W28\", values:f.getRange(\"R26:W28\").values, formulas:f.getRange(\"R26:W28\").formulas},\n  output: {range:\"K13:M14\", values:wb.worksheets.getItem(\"Summary\").getRange(\"K13:M14\").values}\n};",
+  "elapsedMs": 0,
+  "result": {
+    "assumptions": {
+      "range": "R25:W29",
+      "values": [
+        [
+          56,
+          56,
+          56,
+          56,
+          56,
+          56
+        ],
+        [
+          56,
+          56,
+          56,
+          56,
+          56,
+          56
+        ],
+        [
+          52,
+          52,
+          52,
+          52,
+          52,
+          52
+        ],
+        [
+          58,
+          58,
+          58,
+          58,
+          58,
+          58
+        ],
+        [
+          56,
+          56,
+          56,
+          56,
+          56,
+          56
+        ]
+      ],
+      "formulas": [
+        [
+          "=IF(CHOOSE($D$4,ISBLANK(R26),ISBLANK(R27),ISBLANK(R28),ISBLANK(R29)),NA(),CHOOSE($D$4,R26,R27,R28,R29))",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "=$D$50",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "=$D$50",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ]
+      ]
+    },
+    "fees": {
+      "range": "R26:W28",
+      "values": [
+        [
+          56,
+          56,
+          56,
+          56,
+          56,
+          56
+        ],
+        [
+          359.47799999999995,
+          368.4649499999998,
+          377.6765737499998,
+          387.1184880937499,
+          396.79645029609355,
+          406.716361553496
+        ],
+        [
+          21.400000000000002,
+          192.6,
+          6.7,
+          60.300000000000004,
+          21.400000000000002,
+          192.6
+        ]
+      ],
+      "formulas": [
+        [
+          "=Assumptions!R25",
+          "=Assumptions!S25",
+          "=Assumptions!T25",
+          "=Assumptions!U25",
+          "=Assumptions!V25",
+          "=Assumptions!W25"
+        ],
+        [
+          "=R18*Assumptions!$D$49*R26/Assumptions!$D$60*Assumptions!$D$48",
+          "=S18*Assumptions!$D$49*S26/Assumptions!$D$60*Assumptions!$D$48",
+          "=T18*Assumptions!$D$49*T26/Assumptions!$D$60*Assumptions!$D$48",
+          "=U18*Assumptions!$D$49*U26/Assumptions!$D$60*Assumptions!$D$48",
+          "=V18*Assumptions!$D$49*V26/Assumptions!$D$60*Assumptions!$D$48",
+          "=W18*Assumptions!$D$49*W26/Assumptions!$D$60*Assumptions!$D$48"
+        ],
+        [
+          "=Assumptions!R32",
+          "=Assumptions!S32",
+          "=Assumptions!T32",
+          "=Assumptions!U32",
+          "=Assumptions!V32",
+          "=Assumptions!W32"
+        ]
+      ]
+    },
+    "output": {
+      "range": "K13:M14",
+      "values": [
+        [
+          1354.9429499999997,
+          764.7950618437496,
+          1568.3078736933392
+        ],
+        [
+          421,
+          67,
+          281
+        ]
+      ]
+    }
+  }
+}

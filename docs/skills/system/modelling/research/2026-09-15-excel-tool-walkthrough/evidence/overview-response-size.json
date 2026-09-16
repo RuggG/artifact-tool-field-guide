@@ -1,0 +1,16 @@
+{
+  "tokenizer": "o200k_base",
+  "note": "Counts for saved text, not billed tokens or an exact GPT-6 tokenizer guarantee. Exact JSON count uses the page renderer serialization.",
+  "returned_ndjson": {
+    "characters": 7024,
+    "tokens_o200k_base": 2261
+  },
+  "exact_json_result": {
+    "characters": 7705,
+    "tokens_o200k_base": 2416
+  },
+  "capture_file_including_input": {
+    "characters": 7970,
+    "tokens_o200k_base": 2494
+  }
+}

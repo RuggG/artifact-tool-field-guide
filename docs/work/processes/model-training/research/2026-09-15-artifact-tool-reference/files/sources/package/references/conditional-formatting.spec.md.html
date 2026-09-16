@@ -1,0 +1,65 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Conditional Formatting · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="conditional-formatting.spec.md">Raw file</a> · <a data-public-raw download href="conditional-formatting.spec.md">Download</a></p><article><h1 id="conditional-formatting">Conditional Formatting</h1>
+<p>Use <code>range.conditionalFormats</code> to add formatting rules to ranges.</p>
+<h2 id="rule-pattern">Rule Pattern</h2>
+<pre><code class="language-ts">range.conditionalFormats.add(ruleType, {
+  operator,
+  formula,
+  format,
+});
+</code></pre>
+<p>Choose <code>ruleType</code>, <code>operator</code>, color, and style strings from the inline types below.</p>
+<h2 id="rule-inline-types">Rule Inline Types</h2>
+<pre><code class="language-ts">type ConditionalFormatRuleType =
+  | "cellIs" | "CellValue" | "Custom" | "expression"
+  | "colorScale" | "dataBar" | "iconSet"
+  | "containsText" | "notContainsText" | "beginsWith" | "endsWith"
+  | "containsBlanks" | "notContainsBlanks" | "containsErrors" | "notContainsErrors"
+  | "duplicateValues" | "uniqueValues" | "timePeriod" | "top10" | "aboveAverage";
+
+type CellIsOperator =
+  | "greaterThan"
+  | "greaterThanOrEqual"
+  | "lessThan"
+  | "lessThanOrEqual"
+  | "equal"
+  | "notEqual"
+  | "between"
+  | "notBetween";
+
+type ConditionalFormatConfig =
+  | { operator: CellIsOperator; formula: string | number | Array&lt;string | number&gt;; format?: DifferentialFormatConfig }
+  | { formula: string | number; format?: DifferentialFormatConfig }
+  | { colors?: ColorConfig[]; thresholds?: CfvoInput[] }
+  | { color?: ColorConfig; thresholds?: CfvoInput[]; gradient?: boolean }
+  | { iconSet: string; showValue?: boolean; reverse?: boolean; thresholds?: CfvoInput[] }
+  | { text: string; format?: DifferentialFormatConfig }
+  | { timePeriod: "yesterday" | "today" | "tomorrow" | "last7Days" | "lastWeek" | "thisWeek" | "nextWeek" | "lastMonth" | "thisMonth" | "nextMonth"; format?: DifferentialFormatConfig }
+  | { rank?: number; percent?: boolean; bottom?: boolean; format?: DifferentialFormatConfig }
+  | { aboveAverage?: boolean; equalAverage?: boolean; stdDev?: number; format?: DifferentialFormatConfig };
+
+type DifferentialFormatConfig = {
+  fill?: FillConfig;
+  font?: { bold?: boolean; italic?: boolean; color?: ColorConfig };
+  border?: RangeBordersConfig;
+  numberFormat?: string;
+};
+
+type CfvoInput =
+  | "min"
+  | "max"
+  | number
+  | `${number}%`
+  | { type: "min" | "max" | "num" | "percent" | "percentile"; value?: string | number };
+</code></pre>
+<h2 id="custom-rule">Custom Rule</h2>
+<pre><code class="language-ts">range.conditionalFormats.addCustom(expression, {
+  fill,
+  font,
+  border,
+});
+</code></pre>
+<h2 id="rule-families">Rule Families</h2>
+<p>Supported rule families include cell value, custom expression, text, blank/error, duplicate/unique, time period, top/bottom, above/below average, color scale, data bar, and icon set.</p>
+<h2 id="clear-rules">Clear Rules</h2>
+<pre><code class="language-ts">range.conditionalFormats.deleteAll();
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

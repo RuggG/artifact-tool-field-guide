@@ -1,0 +1,66 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>walkthrough.src.md · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="walkthrough.src.md">Raw file</a> · <a data-public-raw download href="walkthrough.src.md">Download</a></p><article><hr/>
+<p>title: What Codex can do with Excel files
+class: system-doc
+docver: 7
+primary_author: RG
+agent_assistance:
+  - Codex
+subtitle: An operations reference, with inspectable inputs, outputs and agent-written checks
+history:
+  - v7 2026-09-15 — Reorganised by capability, with one reference and supporting recorded examples
+  - v6 2026-09-15 — Workbook operations, persistence and verification provenance
+stub:
+  - Choose an operation to understand its inputs, returns and what the agent must still decide.</p>
+<hr/>
+<p><strong>The agent works with a workbook in memory, using a JavaScript library called Artifact Tool.</strong> It can inspect cells, write formulas, calculate, format, create charts and save an <code>.xlsx</code> file. This page maps those operations and separates what the library does from the checks the agent writes around it.</p>
+<p><strong>Create or import → read and change in memory → export and save a file.</strong> An existing file changes only when saved. These examples do not control a live Microsoft Excel window; that is a separate interaction route.</p>
+<h2 id="operations-capabilities">Operations {#capabilities}</h2>
+<p>Choose what you want to do. Each entry explains <strong>what you supply, what comes back, and what the agent still decides</strong>. Open its recorded examples for readable inputs and outputs, exact code, and expandable data. Different settings of <code>inspect</code> are grouped by the information they return.</p>
+<p>```component operations-reference
+renderer: operations_reference.py
+data: evidence/operations-reference.json</p>
+<hr/>
+<p>reference
+```</p>
+<h2 id="what-the-agent-adds-guidance">What the agent adds {#guidance}</h2>
+<p><strong>An operation is not the whole workflow.</strong> The spreadsheet skill is a local instruction document the agent reads. It recommends inspection, targeted edits, formula checks, visual review and final export. The agent translates that guidance into specific code. The library does not automatically perform all those checks.</p>
+<table>
+<thead>
+<tr>
+<th>Library capability</th>
+<th>Guidance the agent reads</th>
+<th>Agent’s own work</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Read, search and trace</td>
+<td>Inspect before editing; keep reads manageable.</td>
+<td>Choose ranges and search terms, notice missing data, interpret financial meaning.</td>
+</tr>
+<tr>
+<td>Write values and formulas</td>
+<td>Preserve the model; test input changes and affected results; distinguish blank from zero.</td>
+<td>Choose assumptions and formulas, select outputs to check, calculate expected answers.</td>
+</tr>
+<tr>
+<td>Create Tables and charts</td>
+<td>Avoid overlapping Tables; bind charts to cells and review a render.</td>
+<td>Check existing ranges and decide whether the layout or chart is useful.</td>
+</tr>
+<tr>
+<td>Recalculate, export and save</td>
+<td>Recalculate and verify the finished output.</td>
+<td>Read results, scan errors, reopen or compare files, and use native Excel when its behavior matters.</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>six-cell before/after reports</strong> in some examples were our choice: the script reads six particular addresses. They are not an automatic dependency report, a tool limit, or proof that every formula works. The same distinction applies to our file comparisons and separate arithmetic checks. Exact check code is available beside the examples that use it.</p>
+<p><a href="guidance.md">Read the saved skill and documentation excerpts</a> for the instructions and their provenance. <a href="#ref-runner">Run the script</a> explains the outer Codex tool call: the spreadsheet functions themselves are library calls, not separate Excel MCP tools.</p>
+<h2 id="evidence-and-scope-evidence">Evidence and scope {#evidence}</h2>
+<p>The reference covers operations exercised in the supplied <strong>Man Group</strong> workbook and a small new workbook, using Artifact Tool <strong>2.8.59</strong>. It is a tested selection, not a complete API catalogue. The added <strong>Fee lab</strong> sheet is an illustrative calculation, not a new Man Group forecast. The controls display saved recordings rather than executing spreadsheet edits.</p>
+<p><strong>One material limit:</strong> some shared formulas in the original Man Group file imported as saved values without working dependencies. That affects what reads, traces and recalculation can establish. The <a href="#ref-trace">dependency example</a> and <a href="#ref-values~old-value-edit">original-model input edit</a> show it directly. It is a limitation of this imported representation, not evidence of a defect in native Excel.</p>
+<h4 id="files-and-detailed-findings-downloads-checks-and-analysis-files">Files and detailed findings — downloads, checks and analysis {#files}</h4>
+<p><a href="operations-run/man-group-operations.xlsx?download">Download Man Group with the Fee lab</a> · <a href="operations-run/new-fee-workbook.xlsx?download">Download the small new workbook</a></p>
+<p><a href="operations-run/independent-verification.json">Independent saved-file verification</a> · <a href="LEARNINGS.md">Detailed analysis notes</a> · <a href="MANIFEST.md">Evidence manifest</a></p>
+<p>The original download remains unchanged. Independent file reads checked preserved formulas, literals, saved values, sheet order and selected workbook features. Native Microsoft Excel opening was not tested in these operations experiments. The earlier export and the later Fee lab output are separate copies, with their own saved verification records.</p></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

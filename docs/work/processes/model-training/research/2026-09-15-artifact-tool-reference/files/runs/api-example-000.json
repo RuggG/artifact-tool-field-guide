@@ -1,0 +1,10 @@
+{
+  "index": 0,
+  "name": "worksheet.charts.add",
+  "summary": "Create a chart with a manual anchor",
+  "originalCode": "const sheet = workbook.worksheets.add('Charts');\nconst chart = sheet.charts.add('line', {\n  title: 'Milky Way Star Birth Rate',\n  titleTextStyle: { fontSize: 18, bold: true },\n  categories: ['2020', '2021', '2022'],\n  series: [\n    { name: 'Milky Way', values: [1.8, 1.9, 2.0] },\n  ],\n  hasLegend: true,\n  legend: { position: 'top' },\n  barOptions: { direction: 'column', grouping: 'stacked', gapWidth: 120 },\n  dataLabels: { showValue: false },\n  from: { row: 1, col: 1 },\n  extent: { widthPx: 520, heightPx: 280 },\n});",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

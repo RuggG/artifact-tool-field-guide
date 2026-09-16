@@ -1,0 +1,37 @@
+{
+  "name": "fx.GROWTH",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=GROWTH(A1, A1)",
+      "value": "#NUM!",
+      "projection": [
+        [
+          "#NUM!",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 16
+    }
+  ]
+}

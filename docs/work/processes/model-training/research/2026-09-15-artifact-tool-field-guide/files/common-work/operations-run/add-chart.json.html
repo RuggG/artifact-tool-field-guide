@@ -1,0 +1,53 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>add-chart.json · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="add-chart.json">Raw file</a> · <a data-public-raw download href="add-chart.json">Download</a></p><article><h1>add-chart.json</h1><pre class="public-code"><code>{
+  &quot;id&quot;: &quot;add-chart&quot;,
+  &quot;operation&quot;: &quot;chart = lab.charts.add(\&quot;line\&quot;,[lab.getRange(\&quot;B8:B12\&quot;),lab.getRange(\&quot;F8:F12\&quot;)]);\nchart.title = \&quot;Illustrative quarterly fees (USD m)\&quot;;\nchart.hasLegend = false;\nchart.titleTextStyle.fontSize = 12;\nchart.titleTextStyle.typeface = \&quot;Arial\&quot;;\nchart.yAxis = {numberFormatCode:\&quot;0.0\&quot;,numberFormatSourceLinked:false,textStyle:{typeface:\&quot;Arial\&quot;,fontSize:10}};\nchart.xAxis = {axisType:\&quot;textAxis\&quot;,textStyle:{typeface:\&quot;Arial\&quot;,fontSize:10}};\nchart.series.items[0].line = {fill:\&quot;#1B6870\&quot;,style:\&quot;solid\&quot;,width:2};\nchart.setPosition(\&quot;H8\&quot;,\&quot;P22\&quot;);\nreturn chart;&quot;,
+  &quot;checkInput&quot;: {
+    &quot;before&quot;: &quot;&quot;,
+    &quot;after&quot;: &quot;return {series:chart.series.items.map(s=&gt;({formula:s.formula,categoryFormula:s.categoryFormula})),source:grid(lab,\&quot;F9:F12\&quot;)};&quot;
+  },
+  &quot;startedAt&quot;: &quot;2026-09-15T16:55:20.734Z&quot;,
+  &quot;libraryReturn&quot;: {
+    &quot;type&quot;: &quot;Chart object&quot;,
+    &quot;representation&quot;: &quot;Object contents are read separately in the agent checks.&quot;
+  },
+  &quot;elapsedMs&quot;: 1,
+  &quot;after&quot;: {
+    &quot;series&quot;: [
+      {
+        &quot;formula&quot;: &quot;&#x27;Fee lab&#x27;!$F$9:$F$12&quot;,
+        &quot;categoryFormula&quot;: &quot;&#x27;Fee lab&#x27;!$B$9:$B$12&quot;
+      }
+    ],
+    &quot;source&quot;: {
+      &quot;address&quot;: &quot;F9:F12&quot;,
+      &quot;values&quot;: [
+        [
+          370.40240070050527
+        ],
+        [
+          377.81044871451536
+        ],
+        [
+          385.3666576888057
+        ],
+        [
+          393.0739908425818
+        ]
+      ],
+      &quot;formulas&quot;: [
+        [
+          &quot;=IF(ISBLANK($C$4),NA(),C9*1000*D9/10000*E9)&quot;
+        ],
+        [
+          &quot;=IF(ISBLANK($C$4),NA(),C10*1000*D10/10000*E10)&quot;
+        ],
+        [
+          &quot;=IF(ISBLANK($C$4),NA(),C11*1000*D11/10000*E11)&quot;
+        ],
+        [
+          &quot;=IF(ISBLANK($C$4),NA(),C12*1000*D12/10000*E12)&quot;
+        ]
+      ]
+    }
+  }
+}</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

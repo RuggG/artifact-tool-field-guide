@@ -1,0 +1,37 @@
+{
+  "name": "fx.FISHERINV",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=FISHERINV(A1)",
+      "value": 0.7615941559557649,
+      "projection": [
+        [
+          0.7615941559557649,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 9
+    }
+  ]
+}

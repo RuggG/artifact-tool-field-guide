@@ -1,0 +1,37 @@
+{
+  "name": "fx.QUARTILE.INC",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=QUARTILE.INC({1,2;3,4}, A1)",
+      "value": 1.75,
+      "projection": [
+        [
+          1.75,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 8
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Import, Export, HTML, Images, And Google Sheets · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="import-export.md">Raw file</a> · <a data-public-raw download href="import-export.md">Download</a></p><article><h1 id="import-export-html-images-and-google-sheets">Import, Export, HTML, Images, And Google Sheets</h1>
+<p>Workbook import/export helpers cover CSV, Markdown, HTML copy/paste,
+image/chart conversion, rendering, and Google Sheets adapter flows.</p>
+<h2 id="csv">CSV</h2>
+<pre><code class="language-ts">const workbook = await Workbook.fromCSV(csv, {
+  sheetName: "Data",
+});
+
+const { sheet, range } = await workbook.fromCSV(csv, {
+  sheetName: "Imported",
+});
+</code></pre>
+<h2 id="markdown-table">Markdown Table</h2>
+<pre><code class="language-ts">const workbook = await Workbook.fromMarkdown(markdown, {
+  sheetName: "Data",
+  format: true,
+});
+</code></pre>
+<p>Markdown import expects a Markdown table. With <code>format: true</code>, the imported
+range is formatted as a worksheet table and columns are autofit.</p>
+<h2 id="html">HTML</h2>
+<pre><code class="language-ts">const html = source.toHTML(0, "A1:B2");
+const withFormulas = source.toHTML(0, "A1:B2", { formulas: true });
+
+const result = target.fromHTML(0, html, "C3");
+const filled = target.fromHTML(0, html, "B2:C4");
+</code></pre>
+<p><code>sheetIndex</code> is zero-based. The optional range uses A1 syntax.</p>
+<h2 id="image-import">Image Import</h2>
+<pre><code class="language-ts">const result = workbook.fromImage(
+  0,
+  { bytes: imageBytes, contentType: "image/png" },
+  "A1:D10",
+);
+</code></pre>
+<h3 id="worksheet-images">Worksheet Images</h3>
+<pre><code class="language-ts">const sheet = workbook.worksheets.getItem("Data");
+sheet.images.add({
+  svg: '&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="10" /&gt;&lt;/svg&gt;',
+  anchor: {
+    from: { row: 0, col: 4 },
+    extent: { widthPx: 48, heightPx: 48 },
+  },
+});
+</code></pre>
+<h2 id="chart-to-image">Chart To Image</h2>
+<pre><code class="language-ts">const result = await workbook.chartToImage(0, chart.id);
+</code></pre>
+<h2 id="render-and-export">Render And Export</h2>
+<pre><code class="language-ts">const renderBlob = await workbook.render({
+  sheet: "Data",
+  range: "A1:C10",
+  format: "png",
+  scale: 2,
+});
+
+const exportBlob = await workbook.export({
+  sheetName: "Data",
+  range: "A1:C10",
+  format: "png",
+  scale: 2,
+  headers: true,
+});
+
+const layoutBlob = await workbook.export({
+  sheetName: "Data",
+  range: "A1:C10",
+  format: "layout",
+});
+
+const xlsxBlob = await workbook.export({ format: "xlsx" });
+</code></pre>
+<p><code>format: "layout"</code> exports JSON evidence for workbook template
+reconstruction. It includes sheet/range geometry, row and column metrics,
+per-cell frames, style records, style regions, merged ranges, validations,
+defined names, and drawing anchors. Use it as inspection evidence; keep authored
+workbook creation scripts semantic instead of replaying the layout JSON at
+runtime. Layout exports support sheet selection, <code>range</code>, and <code>autoCrop</code>;
+<code>center</code>, <code>width</code>, and <code>height</code> are raster export options.</p>
+<h2 id="export-inline-types">Export Inline Types</h2>
+<pre><code class="language-ts">type WorkbookExportFormat = "png" | "jpeg" | "layout" | "xlsx";
+
+type WorkbookExportOptions = {
+  fileName?: string;
+  sheet?: Worksheet | string | number;
+  sheetName?: string;
+  sheetIndex?: number;
+  range?: string;
+  center?: string;
+  width?: number;
+  height?: number;
+  scale?: number;
+  autoCrop?: "all" | "charts";
+  headers?: boolean;
+  format?: WorkbookExportFormat;
+  quality?: number;
+};
+</code></pre>
+<h2 id="google-sheets">Google Sheets</h2>
+<pre><code class="language-ts">const workbook = await Workbook.fromGoogleSheets(config);
+workbook.configureGoogleSheets(config);
+
+const { patch } = workbook.record(() =&gt; {
+  workbook.worksheets.getItem("Data").getRange("A1").values = [["Updated"]];
+});
+
+await workbook.apply(patch, { target: "googleSheets" });
+</code></pre>
+<h2 id="cookbook">Cookbook</h2>
+<pre><code class="language-ts">const workbook = await Workbook.fromCSV(csv, { sheetName: "Data" });
+const preview = await workbook.export({
+  sheetName: "Data",
+  range: "A1:D20",
+  format: "png",
+  scale: 2,
+});
+const proto = workbook.toProto();
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

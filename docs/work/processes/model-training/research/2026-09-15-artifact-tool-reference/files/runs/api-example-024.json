@@ -1,0 +1,10 @@
+{
+  "index": 24,
+  "name": "chart series",
+  "summary": "Scatter series with xValues (config)",
+  "originalCode": "const chart = worksheet.charts.add('scatter', { series: [{ name: 'S1', xValues: [1, 2, 3, 4], values: [2, 4, 3, 5] }] });",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

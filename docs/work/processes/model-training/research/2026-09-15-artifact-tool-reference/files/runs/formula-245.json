@@ -1,0 +1,37 @@
+{
+  "name": "fx.INDIRECT",
+  "category": "lookup-reference",
+  "examples": [
+    {
+      "formula": "=INDIRECT(\"text\", A1)",
+      "value": "INDIRECT is not implemented. refText=text, a1=1",
+      "projection": [
+        [
+          "INDIRECT is not implemented. refText=text, a1=1",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 13
+    }
+  ]
+}

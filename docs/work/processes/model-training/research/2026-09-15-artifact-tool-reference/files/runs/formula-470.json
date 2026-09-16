@@ -1,0 +1,37 @@
+{
+  "name": "fx.EXACT",
+  "category": "text",
+  "examples": [
+    {
+      "formula": "=EXACT(\"text1\", \"text2\")",
+      "value": false,
+      "projection": [
+        [
+          false,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 11
+    }
+  ]
+}

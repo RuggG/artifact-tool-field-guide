@@ -1,0 +1,89 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "tools": [
+      {
+        "name": "artifact_session_run",
+        "title": "Run Artifact Session Code",
+        "description": "Run an asynchronous JavaScript function body against a persistent local spreadsheet or presentation session and commit the resulting edit. The body receives `artifact`, `session`, and `input`, plus `workbook` or `presentation`. Its JSON return value is placed directly in this tool response, so it can carry stable aids, focused inspect results, or other compact context into the next turn.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "artifactType": {
+              "type": "string",
+              "enum": [
+                "spreadsheet",
+                "presentation"
+              ],
+              "description": "Artifact type. Defaults to spreadsheet."
+            },
+            "target": {
+              "type": "string",
+              "description": "Absolute .xlsx/.pptx/.artifact-session.json path or stable session id. Pass an existing Office file here to import it as the session source; explicit artifact export writes under outputDirectory. Do not use sourcePath to import. When omitted, the current Codex task gets a stable plugin-local session."
+            },
+            "code": {
+              "type": "string",
+              "description": "Async JavaScript function body with prebound artifact/session/input and workbook/presentation variables. Return a JSON value useful to the next model turn."
+            },
+            "input": {
+              "description": "Optional JSON value available to the code body as `input`."
+            },
+            "summary": {
+              "type": "string",
+              "description": "Short summary stored with a committed model update."
+            },
+            "create": {
+              "type": "boolean",
+              "description": "Advanced option for a missing target or stable session id. Existing Office files are imported by passing their path as target."
+            },
+            "sessionRoot": {
+              "type": "string",
+              "description": "Directory used for generated session snapshots."
+            },
+            "snapshotPath": {
+              "type": "string",
+              "description": "Explicit session snapshot path for an artifact target or id."
+            },
+            "title": {
+              "type": "string",
+              "description": "Title used when creating a session."
+            },
+            "sourcePath": {
+              "type": "string",
+              "description": "Advanced persistence metadata override. This does not import an Office file; pass an existing Office file as target instead."
+            },
+            "outputDirectory": {
+              "type": "string",
+              "description": "Parent directory for session-managed render, inspect, and export files. The session persists this directory and publishes each successful run into its own child directory."
+            },
+            "timeoutMs": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 300000,
+              "description": "Hard execution timeout. Defaults to 120000 ms."
+            },
+            "sessionMode": {
+              "type": "string",
+              "enum": [
+                "thread",
+                "new"
+              ],
+              "description": "With no target, reuse this task's session or create a new one. Defaults to thread."
+            }
+          },
+          "required": [
+            "code"
+          ],
+          "additionalProperties": false
+        },
+        "annotations": {
+          "readOnlyHint": false,
+          "destructiveHint": true,
+          "idempotentHint": false,
+          "openWorldHint": true
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "index": 103,
+  "name": "range.getRangeByIndexes",
+  "summary": "Select a sub-rectangle",
+  "originalCode": "const range = sheet.getRange('B2:D4');\nconst sub = range.getRangeByIndexes(1, 1, 2, 2); // C3:D4",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

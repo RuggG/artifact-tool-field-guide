@@ -1,0 +1,7 @@
+{"kind":"workbook","id":"wb/qgjcgb","sheets":1}
+{"kind":"sheet","id":"ws/eqp403","name":"Images","index":0}
+{"kind":"drawing","sheet":"Images","drawingType":"image","id":"/xl/media/image.png","anchor":{"from":{"row":0,"col":1,"rowOffsetEmu":0,"colOffsetEmu":0,"rowOffsetPx":0,"colOffsetPx":0},"extent":{"widthEmu":1524000,"widthPx":160,"heightEmu":762000,"heightPx":80}}}
+{"kind":"drawing","sheet":"Images","drawingType":"image","id":"/xl/media/image2.png","anchor":{"from":{"row":5,"col":1,"rowOffsetEmu":0,"colOffsetEmu":0,"rowOffsetPx":0,"colOffsetPx":0},"extent":{"widthEmu":1524000,"widthPx":160,"heightEmu":762000,"heightPx":80}}}
+{"kind":"drawing","sheet":"Images","drawingType":"image","id":"/xl/media/image3.png","anchor":{"from":{"row":10,"col":1,"rowOffsetEmu":0,"colOffsetEmu":0,"rowOffsetPx":0,"colOffsetPx":0},"extent":{"widthEmu":1524000,"widthPx":160,"heightEmu":762000,"heightPx":80}}}
+{"kind":"drawing","sheet":"Images","drawingType":"image","id":"/xl/media/image4.png","anchor":{"from":{"row":15,"col":1,"rowOffsetEmu":0,"colOffsetEmu":0,"rowOffsetPx":0,"colOffsetPx":0},"extent":{"widthEmu":1524000,"widthPx":160,"heightEmu":762000,"heightPx":80}}}
+{"kind":"drawing","sheet":"Images","drawingType":"image","id":"/xl/media/image5.png","anchor":{"from":{"row":0,"col":5,"rowOffsetEmu":0,"colOffsetEmu":0,"rowOffsetPx":0,"colOffsetPx":0},"extent":{"widthEmu":5619750,"widthPx":590,"heightEmu":2095500,"heightPx":220}}}

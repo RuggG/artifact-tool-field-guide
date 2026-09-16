@@ -1,0 +1,37 @@
+{
+  "name": "fx.IMSECH",
+  "category": "engineering",
+  "examples": [
+    {
+      "formula": "=IMSECH(10)",
+      "value": "e.substring is not a function",
+      "projection": [
+        [
+          "e.substring is not a function",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 14
+    }
+  ]
+}

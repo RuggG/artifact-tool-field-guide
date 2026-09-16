@@ -1,0 +1,37 @@
+{
+  "name": "fx.EXPAND",
+  "category": "lookup-reference",
+  "examples": [
+    {
+      "formula": "=EXPAND({1,2;3,4}, A1, A1)",
+      "value": "#VALUE!",
+      "projection": [
+        [
+          "#VALUE!",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 9
+    }
+  ]
+}

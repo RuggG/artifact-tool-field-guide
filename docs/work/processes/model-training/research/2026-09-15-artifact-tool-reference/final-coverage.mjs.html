@@ -1,0 +1,47 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>final-coverage.mjs · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="final-coverage.mjs">Raw file</a> · <a data-public-raw download href="final-coverage.mjs">Download</a></p><article><h1>final-coverage.mjs</h1><pre class="public-code"><code>import fs from &#x27;node:fs/promises&#x27;;
+import path from &#x27;node:path&#x27;;
+import {fileURLToPath} from &#x27;node:url&#x27;;
+import {spawn} from &#x27;node:child_process&#x27;;
+import {Workbook,SpreadsheetFile,FileBlob} from &#x27;@oai/artifact-tool&#x27;;
+const root=path.dirname(fileURLToPath(import.meta.url)),out=path.join(root,&#x27;files/runs&#x27;);
+const save=async(n,x)=&gt;fs.writeFile(path.join(out,n),JSON.stringify(x,null,2));
+if(!process.argv[2]){
+ const results=[];
+ for(const mode of [&#x27;geometry&#x27;,&#x27;roundtrip&#x27;]){
+  results.push(await new Promise(resolve=&gt;{
+   const child=spawn(process.execPath,[fileURLToPath(import.meta.url),mode],{stdio:[&#x27;ignore&#x27;,&#x27;pipe&#x27;,&#x27;pipe&#x27;]});let stdout=&#x27;&#x27;,stderr=&#x27;&#x27;,timedOut=false;
+   child.stdout.on(&#x27;data&#x27;,x=&gt;stdout+=x);child.stderr.on(&#x27;data&#x27;,x=&gt;stderr+=x);
+   const timer=setTimeout(()=&gt;{timedOut=true;child.kill(&#x27;SIGKILL&#x27;);},45000);
+   child.on(&#x27;close&#x27;,(code,signal)=&gt;{clearTimeout(timer);resolve({mode,code,signal,timedOut,stdout,stderr});});
+  }));
+ }
+ await save(&#x27;final-coverage.json&#x27;,results);console.log(JSON.stringify(results));
+}else if(process.argv[2]===&#x27;geometry&#x27;){
+ const enums=(await fs.readFile(path.join(out,&#x27;enums-help.ndjson&#x27;),&#x27;utf8&#x27;)).trim().split(&#x27;\n&#x27;).map(JSON.parse);
+ const shapes=enums.find(x=&gt;x.name===&#x27;enum.ShapeGeometry&#x27;).values,lines=enums.find(x=&gt;x.name===&#x27;enum.LineStyle&#x27;).values;
+ const w=Workbook.create(),results=[];
+ for(let start=0;start&lt;shapes.length;start+=40){
+  const s=w.worksheets.add(&#x27;Shapes &#x27;+(start/40+1));s.showGridLines=false;s.getRange(&#x27;A1:P82&#x27;).format.columnWidthPx=38;s.getRange(&#x27;A1:P82&#x27;).format.rowHeightPx=17;
+  for(let i=start;i&lt;Math.min(start+40,shapes.length);i++){
+   const row=Math.floor((i-start)/4)*8,col=((i-start)%4)*4;
+   try{s.getCell(row,col).values=[[shapes[i]]];s.getCell(row,col).format.font.size=8;
+    const shape=s.shapes.add({geometry:shapes[i],anchor:{from:{row:row+1,col},extent:{widthPx:130,heightPx:95}},fill:&#x27;#bfdbfe&#x27;,line:{fill:&#x27;#1e40af&#x27;,width:1,style:lines[i%lines.length]}});
+    results.push({geometry:shapes[i],lineStyle:lines[i%lines.length],created:true,id:shape.id,sheet:s.name});
+   }catch(e){results.push({geometry:shapes[i],error:String(e)});}
+  }
+ }
+ await save(&#x27;geometry.json&#x27;,results);
+ const file=await SpreadsheetFile.exportXlsx(w);await file.save(path.join(out,&#x27;geometry.xlsx&#x27;));
+ for(const s of w.worksheets.items){try{const b=await w.render({sheetName:s.name,range:&#x27;A1:P80&#x27;,scale:1});await fs.writeFile(path.join(out,s.name.replace(&#x27; &#x27;,&#x27;-&#x27;)+&#x27;.png&#x27;),new Uint8Array(await b.arrayBuffer()));}catch(e){results.push({sheet:s.name,renderError:String(e)});}await save(&#x27;geometry.json&#x27;,results);}
+ console.log(JSON.stringify({created:results.filter(x=&gt;x.created).length,errors:results.filter(x=&gt;x.error||x.renderError)}));
+}else{
+ const results=[];
+ for(const name of [&#x27;comments&#x27;,&#x27;native-note&#x27;,&#x27;sparklines&#x27;,&#x27;validations&#x27;,&#x27;conditional-formats&#x27;,&#x27;images&#x27;,&#x27;shapes&#x27;,&#x27;chart-settings&#x27;,&#x27;names&#x27;,&#x27;named-function-variants&#x27;,&#x27;data-table&#x27;,&#x27;one-variable-data-tables&#x27;,&#x27;pivot-slicer&#x27;,&#x27;slicer-filter&#x27;,&#x27;table-total-fresh-formula&#x27;]){
+  try{const w=await SpreadsheetFile.importXlsx(await FileBlob.load(path.join(out,name+&#x27;.xlsx&#x27;)));w.recalculate();
+   const snapshot={sheets:w.worksheets.items.map(s=&gt;({name:s.name,charts:s.charts.items.length,images:s.images.items.length,shapes:s.shapes.items.length,tables:s.tables.items.length,sparklines:s.sparklineGroups.getAll().length})),inspection:await w.inspect({kind:&#x27;definedName,thread&#x27;,maxChars:20000})};
+   await(await SpreadsheetFile.exportXlsx(w)).save(path.join(out,&#x27;reimport-&#x27;+name+&#x27;.xlsx&#x27;));results.push({name,completed:true,...snapshot});
+  }catch(e){results.push({name,error:String(e)});}await save(&#x27;feature-roundtrip.json&#x27;,results);
+ }
+ console.log(JSON.stringify(results.map(({name,completed,error})=&gt;({name,completed,error}))));
+}
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

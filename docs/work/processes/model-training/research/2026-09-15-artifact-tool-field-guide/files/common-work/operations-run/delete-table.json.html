@@ -1,0 +1,133 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>delete-table.json · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="delete-table.json">Raw file</a> · <a data-public-raw download href="delete-table.json">Download</a></p><article><h1>delete-table.json</h1><pre class="public-code"><code>{
+  &quot;id&quot;: &quot;delete-table&quot;,
+  &quot;operation&quot;: &quot;return tableObject.delete();&quot;,
+  &quot;checkInput&quot;: {
+    &quot;before&quot;: &quot;return {tableCount:lab.tables.items.length,cells:grid(lab,\&quot;B20:D24\&quot;)};&quot;,
+    &quot;after&quot;: &quot;return {tableCount:lab.tables.items.length,cells:grid(lab,\&quot;B20:D24\&quot;)};&quot;
+  },
+  &quot;startedAt&quot;: &quot;2026-09-15T16:55:20.733Z&quot;,
+  &quot;before&quot;: {
+    &quot;tableCount&quot;: 1,
+    &quot;cells&quot;: {
+      &quot;address&quot;: &quot;B20:D24&quot;,
+      &quot;values&quot;: [
+        [
+          &quot;Scenario&quot;,
+          &quot;Fee margin, bp&quot;,
+          &quot;AUM multiplier&quot;
+        ],
+        [
+          &quot;Base&quot;,
+          56,
+          1
+        ],
+        [
+          &quot;Downside&quot;,
+          51,
+          0.9
+        ],
+        [
+          &quot;Upside&quot;,
+          60,
+          1.1
+        ],
+        [
+          &quot;Stress&quot;,
+          45,
+          0.8
+        ]
+      ],
+      &quot;formulas&quot;: [
+        [
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;&quot;
+        ],
+        [
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;&quot;
+        ],
+        [
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;&quot;
+        ],
+        [
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;&quot;
+        ],
+        [
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;&quot;
+        ]
+      ]
+    }
+  },
+  &quot;libraryReturn&quot;: {
+    &quot;javascriptType&quot;: &quot;undefined&quot;
+  },
+  &quot;elapsedMs&quot;: 0,
+  &quot;after&quot;: {
+    &quot;tableCount&quot;: 0,
+    &quot;cells&quot;: {
+      &quot;address&quot;: &quot;B20:D24&quot;,
+      &quot;values&quot;: [
+        [
+          &quot;Scenario&quot;,
+          &quot;Fee margin, bp&quot;,
+          &quot;AUM multiplier&quot;
+        ],
+        [
+          &quot;Base&quot;,
+          56,
+          1
+        ],
+        [
+          &quot;Downside&quot;,
+          51,
+          0.9
+        ],
+        [
+          &quot;Upside&quot;,
+          60,
+          1.1
+        ],
+        [
+          &quot;Stress&quot;,
+          45,
+          0.8
+        ]
+      ],
+      &quot;formulas&quot;: [
+        [
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;&quot;
+        ],
+        [
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;&quot;
+        ],
+        [
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;&quot;
+        ],
+        [
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;&quot;
+        ],
+        [
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;&quot;
+        ]
+      ]
+    }
+  }
+}</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

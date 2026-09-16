@@ -1,0 +1,37 @@
+{
+  "name": "fx.PRODUCT",
+  "category": "math-trig",
+  "examples": [
+    {
+      "formula": "=PRODUCT(10, C1:C5, 20, C1:C5)",
+      "value": 170061120000,
+      "projection": [
+        [
+          170061120000,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 10
+    }
+  ]
+}

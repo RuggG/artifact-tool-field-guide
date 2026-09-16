@@ -1,0 +1,37 @@
+{
+  "name": "fx.PERCENTOF",
+  "category": "math-trig",
+  "examples": [
+    {
+      "formula": "=PERCENTOF(A1, A1)",
+      "value": "PERCENTOF is not implemented. dataSubset=1, dataAll=1",
+      "projection": [
+        [
+          "PERCENTOF is not implemented. dataSubset=1, dataAll=1",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 9
+    }
+  ]
+}

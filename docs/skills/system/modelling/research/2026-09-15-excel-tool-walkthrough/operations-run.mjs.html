@@ -1,0 +1,155 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>operations-run.mjs · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="operations-run.mjs">Raw file</a> · <a data-public-raw download href="operations-run.mjs">Download</a></p><article><h1>operations-run.mjs</h1><pre class="public-code"><code>import fs from &#x27;node:fs/promises&#x27;;
+import path from &#x27;node:path&#x27;;
+import crypto from &#x27;node:crypto&#x27;;
+import {fileURLToPath} from &#x27;node:url&#x27;;
+import {Workbook, SpreadsheetFile, FileBlob} from &#x27;@oai/artifact-tool&#x27;;
+
+const here=path.dirname(fileURLToPath(import.meta.url));
+const dir=path.join(here,&#x27;operations-run&#x27;);
+await fs.mkdir(dir,{recursive:true});
+const source=path.join(here,&#x27;man-group-run/source.xlsx&#x27;);
+const out=path.join(dir,&#x27;man-group-operations.xlsx&#x27;);
+const sha=async p=&gt;crypto.createHash(&#x27;sha256&#x27;).update(await fs.readFile(p)).digest(&#x27;hex&#x27;);
+const sourceHash=await sha(source);
+const records=[];
+let wb,lab,tableObject,chart,scratch,small,lastHandle,reopenBook,reopenSheet;
+const cell=(sheet,address)=&gt;({address,value:sheet.getRange(address).values[0][0],formula:sheet.getRange(address).formulas[0][0]});
+const grid=(sheet,address)=&gt;({address,values:sheet.getRange(address).values,formulas:sheet.getRange(address).formulas});
+const labRead=()=&gt;({margin:cell(lab,&#x27;C4&#x27;),growth:cell(lab,&#x27;C5&#x27;),quarters:grid(lab,&#x27;B9:F12&#x27;),annual:cell(lab,&#x27;C15&#x27;)});
+const inspect=async (book,args)=&gt;{const r=await book.inspect(args);return {ndjson:r.ndjson,recordCount:r.recordCount,truncated:r.truncated,metadata:r.metadata};};
+const names=async book=&gt;await inspect(book,{kind:&#x27;sheet&#x27;,include:&#x27;id,name&#x27;,maxChars:5000});
+const serialize=v=&gt;v===undefined?{javascriptType:&#x27;undefined&#x27;}:v;
+const encode=v=&gt;JSON.stringify(v,(_key,x)=&gt;{if(x===undefined)return {javascriptType:&#x27;undefined&#x27;};if(x &amp;&amp; typeof x.ndjson===&#x27;string&#x27;)return {ndjson:x.ndjson,recordCount:x.recordCount,truncated:x.truncated,metadata:x.metadata};return x;},2);
+async function run(id,operation,{before=&#x27;&#x27;,after=&#x27;&#x27;,handle=&#x27;&#x27;}={}) {
+  const evaluate=code=&gt;eval(&#x27;(async()=&gt;{&#x27;+code+&#x27;\n})()&#x27;);
+  const r={id,operation,checkInput:{before,after},startedAt:new Date().toISOString()};
+  if(before)try{r.before=await evaluate(before);}catch(e){r.beforeError=String(e.message);}
+  const t=performance.now();
+  try {const value=await evaluate(operation);lastHandle=value;r.libraryReturn=handle?{type:handle,representation:&#x27;Object contents are read separately in the agent checks.&#x27;}:serialize(value);}
+  catch(e){r.operationError={name:e.name,message:e.message};}
+  r.elapsedMs=Math.round(performance.now()-t);
+  if(after)try{r.after=await evaluate(after);}catch(e){r.afterError=String(e.message);}
+  records.push(r);
+  await fs.writeFile(path.join(dir,id+&#x27;.json&#x27;),encode(r));
+  await fs.writeFile(path.join(dir,&#x27;records.json&#x27;),encode(records));
+  console.log(JSON.stringify({id,elapsedMs:r.elapsedMs,error:r.operationError||r.afterError||null}));
+  return r;
+}
+
+await run(&#x27;new-workbook&#x27;,&#x27;scratch = Workbook.create();\nsmall = scratch.worksheets.add(&quot;Fee calculation&quot;);\nreturn small;&#x27;,{
+  handle:&#x27;Worksheet object&#x27;,after:&#x27;return await names(scratch);&#x27;});
+await run(&#x27;new-formula&#x27;,`small.getRange(&quot;B2:C5&quot;).values = [[&quot;Average AUM, USD bn&quot;,100],[&quot;Annual fee margin, bp&quot;,50],[&quot;Quarter fraction&quot;,0.25],[&quot;Fees, USD m&quot;,null]];
+small.getRange(&quot;C5&quot;).formulas = [[&quot;=C2*1000*C3/10000*C4&quot;]];`,{
+  after:&#x27;return {cells:grid(small,&quot;B2:C5&quot;),independentExpected:100*1000*50/10000*0.25};&#x27;});
+await run(&#x27;new-recalculation&#x27;,&#x27;small.getRange(&quot;C3&quot;).values = [[60]];&#x27;,{
+  before:&#x27;return cell(small,&quot;C5&quot;);&#x27;,after:&#x27;return {fees:cell(small,&quot;C5&quot;),independentExpected:100*1000*60/10000*0.25,explicitRecalculateCalled:false};&#x27;});
+await run(&#x27;import-add-sheet&#x27;,`wb = await SpreadsheetFile.importXlsx(await FileBlob.load(source));
+lab = wb.worksheets.add(&quot;Fee lab&quot;);
+return lab;`,{handle:&#x27;Worksheet object&#x27;,after:&#x27;return await names(wb);&#x27;});
+await run(&#x27;add-linked-build&#x27;,`lab.getRange(&quot;B2&quot;).values = [[&quot;Man Group fee laboratory&quot;]];
+lab.getRange(&quot;B3&quot;).values = [[&quot;Illustrative extension for tool tests; not a forecast&quot;]];
+lab.getRange(&quot;B4:C5&quot;).values = [[&quot;Annual fee margin, bp&quot;,56],[&quot;Quarterly AUM growth&quot;,0.02]];
+lab.getRange(&quot;B8:F12&quot;).values = [[&quot;Period&quot;,&quot;Average AUM, USD bn&quot;,&quot;Fee margin, bp&quot;,&quot;Year fraction&quot;,&quot;Fees, USD m&quot;],[&quot;Quarter 1&quot;,null,null,0.25,null],[&quot;Quarter 2&quot;,null,null,0.25,null],[&quot;Quarter 3&quot;,null,null,0.25,null],[&quot;Quarter 4&quot;,null,null,0.25,null]];
+lab.getRange(&quot;C9&quot;).formulas = [[&quot;=&#x27;Fee engine&#x27;!W18&quot;]];
+lab.getRange(&quot;C10&quot;).formulas = [[&quot;=C9*(1+$C$5)&quot;]];
+lab.getRange(&quot;C10:C12&quot;).fillDown();
+lab.getRange(&quot;D9&quot;).formulas = [[&quot;=$C$4&quot;]];
+lab.getRange(&quot;D9:D12&quot;).fillDown();
+lab.getRange(&quot;F9&quot;).formulas = [[&quot;=C9*1000*D9/10000*E9&quot;]];
+lab.getRange(&quot;F9:F12&quot;).fillDown();
+lab.getRange(&quot;B15&quot;).values = [[&quot;Total fees, USD m&quot;]];
+lab.getRange(&quot;C15&quot;).formulas = [[&quot;=SUM(F9:F12)&quot;]];`,{
+  after:&#x27;return {selectedReads:labRead(),sourceAum:cell(wb.worksheets.getItem(&quot;Fee engine&quot;),&quot;W18&quot;)};&#x27;});
+await run(&#x27;format-cells&#x27;,`lab.showGridLines = false;
+lab.getRange(&quot;B2:P28&quot;).format.font = {name:&quot;Arial&quot;,size:10,color:&quot;#19364C&quot;};
+lab.getRange(&quot;B2&quot;).format.font = {name:&quot;Arial&quot;,size:14,bold:true,color:&quot;#19364C&quot;};
+lab.getRange(&quot;B3&quot;).format.font.italic = true;
+lab.getRange(&quot;B4:B5&quot;).format.columnWidth = 29;
+lab.getRange(&quot;C4:C5&quot;).format.fill = &quot;#FFF2CC&quot;;
+lab.getRange(&quot;C8:F28&quot;).format.columnWidth = 19;
+lab.getRange(&quot;C5&quot;).setNumberFormat(&quot;0.0%&quot;);
+lab.getRange(&quot;C9:C12&quot;).setNumberFormat(&quot;0.00&quot;);
+lab.getRange(&quot;D9:D12&quot;).setNumberFormat(&quot;0.0&quot;);
+lab.getRange(&quot;E9:E12&quot;).setNumberFormat(&quot;0.00&quot;);
+lab.getRange(&quot;F9:F12&quot;).setNumberFormat(&quot;#,##0.00&quot;);
+lab.getRange(&quot;C15&quot;).setNumberFormat(&quot;#,##0.00&quot;);
+lab.getRange(&quot;B8:F8&quot;).format = {fill:&quot;#19364C&quot;,font:{name:&quot;Arial&quot;,size:10,bold:true,color:&quot;#FFFFFF&quot;},rowHeight:32,wrapText:true};
+lab.getRange(&quot;B15:C15&quot;).format.font.bold = true;
+lab.getRange(&quot;B8:F12&quot;).format.rowHeight = 26;`,{
+  after:&#x27;return {valuesUnaffected:labRead(),styles:await inspect(wb,{kind:&quot;computedStyle&quot;,sheetId:&quot;Fee lab&quot;,range:&quot;C4:C5&quot;,maxChars:2500})};&#x27;});
+await run(&#x27;checkpoint-save&#x27;,`wb.recalculate();
+const file = await SpreadsheetFile.exportXlsx(wb);
+return await file.save(out);`,{
+  after:&#x27;return {file:path.basename(out),sha256:await sha(out),savedMargin:cell((await SpreadsheetFile.importXlsx(await FileBlob.load(out))).worksheets.getItem(&quot;Fee lab&quot;),&quot;C4&quot;)};&#x27;});
+await run(&#x27;edit-without-saving&#x27;,&#x27;lab.getRange(&quot;C4&quot;).values = [[51]];&#x27;,{
+  before:&#x27;return {diskSha256:await sha(out),memory:labRead()};&#x27;,
+  after:&#x27;return {diskSha256:await sha(out),memory:labRead(),onDisk:cell((await SpreadsheetFile.importXlsx(await FileBlob.load(out))).worksheets.getItem(&quot;Fee lab&quot;),&quot;C4&quot;)};&#x27;});
+await run(&#x27;clear-formulas&#x27;,&#x27;return lab.getRange(&quot;F9:F12&quot;).clear({applyTo:&quot;contents&quot;});&#x27;,{
+  before:&#x27;return labRead();&#x27;,after:&#x27;return {selectedReads:labRead(),formatStillPresent:await inspect(wb,{kind:&quot;computedStyle&quot;,sheetId:&quot;Fee lab&quot;,range:&quot;F9&quot;,maxChars:1800})};&#x27;});
+await run(&#x27;rebuild-formulas&#x27;,`lab.getRange(&quot;F9&quot;).formulas = [[&quot;=C9*1000*D9/10000*E9&quot;]];
+return lab.getRange(&quot;F9:F12&quot;).fillDown();`,{before:&#x27;return labRead();&#x27;,after:&#x27;return labRead();&#x27;});
+await run(&#x27;blank-input&#x27;,&#x27;return lab.getRange(&quot;C4&quot;).clear({applyTo:&quot;contents&quot;});&#x27;,{
+  before:&#x27;return labRead();&#x27;,after:&#x27;return labRead();&#x27;});
+await run(&#x27;guard-missing-input&#x27;,`lab.getRange(&quot;F9&quot;).formulas = [[&quot;=IF(ISBLANK($C$4),NA(),C9*1000*D9/10000*E9)&quot;]];
+lab.getRange(&quot;F9:F12&quot;).fillDown();`,{before:&#x27;return labRead();&#x27;,after:&#x27;return {selectedReads:labRead(),errorScan:await inspect(wb,{kind:&quot;match&quot;,sheetId:&quot;Fee lab&quot;,range:&quot;B4:F15&quot;,searchTerm:&quot;#N/A&quot;,maxChars:2500,options:{maxResults:12}})};&#x27;});
+await run(&#x27;zero-input&#x27;,&#x27;lab.getRange(&quot;C4&quot;).values = [[0]];&#x27;,{
+  before:&#x27;return labRead();&#x27;,after:&#x27;return labRead();&#x27;});
+await run(&#x27;restore-valid-input&#x27;,&#x27;lab.getRange(&quot;C4&quot;).values = [[51]];&#x27;,{after:&#x27;return labRead();&#x27;});
+await run(&#x27;add-table&#x27;,`lab.getRange(&quot;B20:D23&quot;).values = [[&quot;Scenario&quot;,&quot;Fee margin, bp&quot;,&quot;AUM multiplier&quot;],[&quot;Base&quot;,56,1],[&quot;Downside&quot;,51,0.9],[&quot;Upside&quot;,60,1.1]];
+lab.getRange(&quot;B19&quot;).values = [[&quot;Table example; independent of the calculation above&quot;]];
+tableObject = lab.tables.add(&quot;B20:D23&quot;,true,&quot;FeeScenarioInputs&quot;);
+lab.getRange(&quot;B20:D20&quot;).format.font.color = &quot;#FFFFFF&quot;;
+return tableObject;`,{handle:&#x27;Excel Table object&#x27;,after:&#x27;return {tables:lab.tables.items.map(t=&gt;({name:t.name,headers:t.getHeaderRowRange().values,rowReadUsesExplicitRange:true})),values:grid(lab,&quot;B20:D23&quot;)};&#x27;});
+await run(&#x27;append-table-row&#x27;,&#x27;return tableObject.rows.add(null,[[&quot;Stress&quot;,45,0.8]]);&#x27;,{
+  after:&#x27;return {cells:grid(lab,&quot;B20:D24&quot;)};&#x27;});
+await run(&#x27;delete-table&#x27;,&#x27;return tableObject.delete();&#x27;,{
+  before:&#x27;return {tableCount:lab.tables.items.length,cells:grid(lab,&quot;B20:D24&quot;)};&#x27;,after:&#x27;return {tableCount:lab.tables.items.length,cells:grid(lab,&quot;B20:D24&quot;)};&#x27;});
+await run(&#x27;recreate-table&#x27;,&#x27;tableObject = lab.tables.add(&quot;B20:D24&quot;,true,&quot;FeeScenarioInputs&quot;);\nlab.getRange(&quot;B20:D20&quot;).format.font.color = &quot;#FFFFFF&quot;;\nreturn tableObject;&#x27;,{
+  handle:&#x27;Excel Table object&#x27;,after:&#x27;return {tableCount:lab.tables.items.length,cells:grid(lab,&quot;B20:D24&quot;)};&#x27;});
+await run(&#x27;add-chart&#x27;,`chart = lab.charts.add(&quot;line&quot;,[lab.getRange(&quot;B8:B12&quot;),lab.getRange(&quot;F8:F12&quot;)]);
+chart.title = &quot;Illustrative quarterly fees (USD m)&quot;;
+chart.hasLegend = false;
+chart.titleTextStyle.fontSize = 12;
+chart.titleTextStyle.typeface = &quot;Arial&quot;;
+chart.yAxis = {numberFormatCode:&quot;0.0&quot;,numberFormatSourceLinked:false,textStyle:{typeface:&quot;Arial&quot;,fontSize:10}};
+chart.xAxis = {axisType:&quot;textAxis&quot;,textStyle:{typeface:&quot;Arial&quot;,fontSize:10}};
+chart.series.items[0].line = {fill:&quot;#1B6870&quot;,style:&quot;solid&quot;,width:2};
+chart.setPosition(&quot;H8&quot;,&quot;P22&quot;);
+return chart;`,{handle:&#x27;Chart object&#x27;,after:&#x27;return {series:chart.series.items.map(s=&gt;({formula:s.formula,categoryFormula:s.categoryFormula})),source:grid(lab,&quot;F9:F12&quot;)};&#x27;});
+await run(&#x27;render-before&#x27;,`return await wb.render({sheetName:&quot;Fee lab&quot;,range:&quot;B2:P25&quot;,scale:1.5,format:&quot;png&quot;});`,{
+  handle:&#x27;Image Blob&#x27;,after:&#x27;const blob=lastHandle;await fs.writeFile(path.join(dir,&quot;fee-lab-before.png&quot;),new Uint8Array(await blob.arrayBuffer()));return {saved:&quot;fee-lab-before.png&quot;,bytes:(await fs.stat(path.join(dir,&quot;fee-lab-before.png&quot;))).size};&#x27;});
+await run(&#x27;chart-input-change&#x27;,&#x27;lab.getRange(&quot;C4&quot;).values = [[60]];&#x27;,{
+  before:&#x27;return {fees:grid(lab,&quot;F9:F12&quot;),bindings:chart.series.items.map(s=&gt;s.formula)};&#x27;,after:&#x27;return {fees:grid(lab,&quot;F9:F12&quot;),bindings:chart.series.items.map(s=&gt;s.formula)};&#x27;});
+await run(&#x27;render-after&#x27;,`return await wb.render({sheetName:&quot;Fee lab&quot;,range:&quot;B2:P25&quot;,scale:1.5,format:&quot;png&quot;});`,{
+  handle:&#x27;Image Blob&#x27;,after:&#x27;const blob=lastHandle;await fs.writeFile(path.join(dir,&quot;fee-lab-after.png&quot;),new Uint8Array(await blob.arrayBuffer()));return {saved:&quot;fee-lab-after.png&quot;,bytes:(await fs.stat(path.join(dir,&quot;fee-lab-after.png&quot;))).size};&#x27;});
+await run(&#x27;delete-chart&#x27;,&#x27;return lab.charts.deleteAll();&#x27;,{
+  after:&#x27;return {drawingInspection:await inspect(wb,{kind:&quot;drawing&quot;,sheetId:&quot;Fee lab&quot;,maxChars:2000}),source:grid(lab,&quot;F9:F12&quot;)};&#x27;});
+await run(&#x27;recreate-chart&#x27;,`chart = lab.charts.add(&quot;line&quot;,[lab.getRange(&quot;B8:B12&quot;),lab.getRange(&quot;F8:F12&quot;)]);
+chart.title = &quot;Illustrative quarterly fees (USD m)&quot;;
+chart.hasLegend = false;
+chart.titleTextStyle.fontSize = 12;
+chart.titleTextStyle.typeface = &quot;Arial&quot;;
+chart.yAxis = {numberFormatCode:&quot;0.0&quot;,numberFormatSourceLinked:false,textStyle:{typeface:&quot;Arial&quot;,fontSize:10}};
+chart.xAxis = {axisType:&quot;textAxis&quot;,textStyle:{typeface:&quot;Arial&quot;,fontSize:10}};
+chart.series.items[0].line = {fill:&quot;#1B6870&quot;,style:&quot;solid&quot;,width:2};
+chart.setPosition(&quot;H8&quot;,&quot;P22&quot;);
+return chart;`,{handle:&#x27;Chart object&#x27;,after:&#x27;return {series:chart.series.items.map(s=&gt;({formula:s.formula,categoryFormula:s.categoryFormula}))};&#x27;});
+await run(&#x27;final-save&#x27;,`wb.recalculate();
+const file = await SpreadsheetFile.exportXlsx(wb);
+return await file.save(out);`,{
+  before:&#x27;return {diskSha256:await sha(out),memory:labRead()};&#x27;,
+  after:&#x27;const reopened=await SpreadsheetFile.importXlsx(await FileBlob.load(out));const sheet=reopened.worksheets.getItem(&quot;Fee lab&quot;);return {file:path.basename(out),bytes:(await fs.stat(out)).size,sha256:await sha(out),reopened:grid(sheet,&quot;B9:F12&quot;),reopenedMargin:cell(sheet,&quot;C4&quot;),reopenedTableCount:sheet.tables.items.length,sourceUnchanged:sourceHash===await sha(source),checkErrorScan:await inspect(reopened,{kind:&quot;match&quot;,sheetId:&quot;Fee lab&quot;,range:&quot;B4:F24&quot;,searchTerm:&quot;#REF!|#DIV/0!|#VALUE!|#N/A|#NAME\\\\?&quot;,options:{useRegex:true,maxResults:20},maxChars:3000})};&#x27;});
+await run(&#x27;reopen-and-edit&#x27;,`reopenBook = await SpreadsheetFile.importXlsx(await FileBlob.load(out));
+reopenSheet = reopenBook.worksheets.getItem(&quot;Fee lab&quot;);
+reopenSheet.getRange(&quot;C4&quot;).values = [[55]];`,{
+  after:&#x27;return {quarterOne:cell(reopenSheet,&quot;F9&quot;),total:cell(reopenSheet,&quot;C15&quot;),independentExpectedQuarterOne:reopenSheet.getRange(&quot;C9&quot;).values[0][0]*1000*55/10000*0.25,savedFileStillHasMargin:cell((await SpreadsheetFile.importXlsx(await FileBlob.load(out))).worksheets.getItem(&quot;Fee lab&quot;),&quot;C4&quot;)};&#x27;});
+// Save the separately-created workbook, with modest formatting for readable download.
+small.getRange(&#x27;B2:C5&#x27;).format.font={name:&#x27;Arial&#x27;,size:11};
+small.getRange(&#x27;B2:B5&#x27;).format.columnWidth=29;
+small.getRange(&#x27;C2:C5&#x27;).format.columnWidth=18;
+small.getRange(&#x27;C2:C4&#x27;).format.fill=&#x27;#FFF2CC&#x27;;
+small.showGridLines=false;
+scratch.recalculate();
+await (await SpreadsheetFile.exportXlsx(scratch)).save(path.join(dir,&#x27;new-fee-workbook.xlsx&#x27;));
+await fs.writeFile(path.join(dir,&#x27;summary.json&#x27;),JSON.stringify({sourceHash,sourceUnchanged:sourceHash===await sha(source),recordCount:records.length,failures:records.filter(r=&gt;r.operationError||r.afterError||r.beforeError).map(r=&gt;r.id)},null,2));
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

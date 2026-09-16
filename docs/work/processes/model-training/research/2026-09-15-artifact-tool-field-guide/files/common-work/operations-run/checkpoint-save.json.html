@@ -1,0 +1,22 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>checkpoint-save.json · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="checkpoint-save.json">Raw file</a> · <a data-public-raw download href="checkpoint-save.json">Download</a></p><article><h1>checkpoint-save.json</h1><pre class="public-code"><code>{
+  &quot;id&quot;: &quot;checkpoint-save&quot;,
+  &quot;operation&quot;: &quot;wb.recalculate();\nconst file = await SpreadsheetFile.exportXlsx(wb);\nreturn await file.save(out);&quot;,
+  &quot;checkInput&quot;: {
+    &quot;before&quot;: &quot;&quot;,
+    &quot;after&quot;: &quot;return {file:path.basename(out),sha256:await sha(out),savedMargin:cell((await SpreadsheetFile.importXlsx(await FileBlob.load(out))).worksheets.getItem(\&quot;Fee lab\&quot;),\&quot;C4\&quot;)};&quot;
+  },
+  &quot;startedAt&quot;: &quot;2026-09-15T16:55:19.416Z&quot;,
+  &quot;libraryReturn&quot;: {
+    &quot;javascriptType&quot;: &quot;undefined&quot;
+  },
+  &quot;elapsedMs&quot;: 390,
+  &quot;after&quot;: {
+    &quot;file&quot;: &quot;man-group-operations.xlsx&quot;,
+    &quot;sha256&quot;: &quot;f99afe138a4ced57579120bb515ccdb29c9ddfc016d1302126833a2516e646ae&quot;,
+    &quot;savedMargin&quot;: {
+      &quot;address&quot;: &quot;C4&quot;,
+      &quot;value&quot;: 56,
+      &quot;formula&quot;: &quot;&quot;
+    }
+  }
+}</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

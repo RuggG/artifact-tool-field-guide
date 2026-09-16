@@ -1,0 +1,37 @@
+{
+  "name": "fx.GETPIVOTDATA",
+  "category": "lookup-reference",
+  "examples": [
+    {
+      "formula": "=GETPIVOTDATA(A1, A1, C1:C5, C1:C5)",
+      "value": "GETPIVOTDATA is not implemented. dataField=1, pivotTable=1, field=3,6,9,12,15, item=3,6,9,12,15, rest.length=0",
+      "projection": [
+        [
+          "GETPIVOTDATA is not implemented. dataField=1, pivotTable=1, field=3,6,9,12,15, item=3,6,9,12,15, rest.length=0",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 9
+    }
+  ]
+}

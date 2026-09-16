@@ -1,0 +1,64 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Sparklines · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="sparklines.spec.md">Raw file</a> · <a data-public-raw download href="sparklines.spec.md">Download</a></p><article><h1 id="sparklines">Sparklines</h1>
+<p>Use <code>sheet.sparklineGroups</code> for worksheet sparkline groups.</p>
+<h2 id="add-group">Add Group</h2>
+<pre><code class="language-ts">const group = sheet.sparklineGroups.add({
+  type,
+  targetRange,
+  sourceData,
+  dateAxisRange,
+  seriesColor,
+  negativeColor,
+  markers,
+  axis,
+  lineWeight,
+  displayEmptyCellsAs,
+  displayHidden,
+});
+</code></pre>
+<p>Sparkline type is a string. Empty-cell display mode and axis min/max modes are proto enum numbers on the current facade; inspect nearby tests before setting them directly.</p>
+<h2 id="sparkline-inline-type">Sparkline Inline Type</h2>
+<pre><code class="language-ts">type SparklineConfig = {
+  type: "line" | "column" | "stacked";
+  targetRange: Range | string;
+  sourceData: Range | string;
+  dateAxisRange?: Range | string;
+  lineWeight?: number;
+  displayHidden?: boolean;
+  seriesColor?: ColorConfig;
+  negativeColor?: ColorConfig;
+  axisColor?: ColorConfig;
+  markersColor?: ColorConfig;
+  firstMarkerColor?: ColorConfig;
+  lastMarkerColor?: ColorConfig;
+  highMarkerColor?: ColorConfig;
+  lowMarkerColor?: ColorConfig;
+  markers?: SparklineMarkersOptions;
+  axis?: SparklineAxisOptions;
+};
+
+type SparklineMarkersOptions = {
+  show?: boolean;
+  high?: boolean;
+  low?: boolean;
+  first?: boolean;
+  last?: boolean;
+  negative?: boolean;
+};
+
+type SparklineAxisOptions = {
+  showAxis?: boolean;
+  manualMin?: number;
+  manualMax?: number;
+  rightToLeft?: boolean;
+};
+</code></pre>
+<h2 id="range-alias">Range Alias</h2>
+<pre><code class="language-ts">const group = targetRange.sparklines.add(type, sourceRange, sparklineConfig);
+</code></pre>
+<h2 id="edit-and-delete">Edit And Delete</h2>
+<pre><code class="language-ts">group.seriesColor = colorConfig;
+group.markers = markerConfig;
+group.axis = axisConfig;
+group.delete();
+sheet.sparklineGroups.deleteAll();
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

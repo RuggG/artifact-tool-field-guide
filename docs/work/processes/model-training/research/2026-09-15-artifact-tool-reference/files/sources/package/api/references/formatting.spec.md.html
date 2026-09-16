@@ -1,0 +1,74 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Formatting, Validation, And Theme · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="formatting.spec.md">Raw file</a> · <a data-public-raw download href="formatting.spec.md">Download</a></p><article><h1 id="formatting-validation-and-theme">Formatting, Validation, And Theme</h1>
+<p>Use range formatting for cell style, worksheet collections for validation and
+conditional formatting, and <code>workbook.setColorScheme</code> for workbook theme colors.</p>
+<h2 id="range-format">Range Format</h2>
+<pre><code class="language-ts">range.format = {
+  fill: "#f8fafc",
+  font: {
+    name: "Aptos",
+    bold: true,
+    color: "#0f172a",
+    size: 11,
+  },
+  borders: {
+    bottom: { style: "thin", color: "#94a3b8" },
+  },
+  numberFormat: "$#,##0.00",
+  horizontalAlignment: "center",
+  verticalAlignment: "middle",
+  wrapText: true,
+  rowHeightPx: 28,
+  columnWidthPx: 120,
+};
+</code></pre>
+<h2 id="number-format">Number Format</h2>
+<pre><code class="language-ts">range.setNumberFormat("0.0%");
+</code></pre>
+<h2 id="conditional-formatting">Conditional Formatting</h2>
+<pre><code class="language-ts">sheet.getRange("B2:B10").conditionalFormats.add("cellIs", {
+  operator: "greaterThan",
+  formula: 10,
+  format: {
+    fill: "#dcfce7",
+    font: { bold: true, color: "#166534" },
+  },
+});
+</code></pre>
+<p>Use <code>workbook.getConditionalFormattingRenderCache(sheet.name)</code> when a renderer
+needs evaluated conditional-format metadata.</p>
+<h2 id="data-validation">Data Validation</h2>
+<pre><code class="language-ts">sheet.getRange("A2:A10").dataValidation = {
+  list: {
+    source: ["Open", "Closed"],
+    inCellDropDown: true,
+  },
+  allowBlank: true,
+};
+</code></pre>
+<p>The range setter accepts Office-style list assignments or validation config
+objects.</p>
+<h2 id="freeze-panes">Freeze Panes</h2>
+<pre><code class="language-ts">sheet.freezePanes.freezeRows(1);
+sheet.freezePanes.freezeColumns(1);
+sheet.freezePanes.unfreeze();
+</code></pre>
+<h2 id="theme">Theme</h2>
+<pre><code class="language-ts">workbook.setColorScheme({
+  name: "Workbook Theme",
+  themeColors: {
+    accent1: "#2563eb",
+    accent2: "#0f766e",
+    bg1: "#ffffff",
+    tx1: "#0f172a",
+  },
+});
+</code></pre>
+<h2 id="cookbook">Cookbook</h2>
+<pre><code class="language-ts">const header = sheet.getRange("A1:C1");
+header.format = {
+  fill: "#0f172a",
+  font: { bold: true, color: "#ffffff" },
+  horizontalAlignment: "center",
+};
+sheet.freezePanes.freezeRows(1);
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

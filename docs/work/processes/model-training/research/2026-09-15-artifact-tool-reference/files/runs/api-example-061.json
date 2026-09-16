@@ -1,0 +1,10 @@
+{
+  "index": 61,
+  "name": "workbook.worksheets.getActiveWorksheet",
+  "summary": "Write to the active sheet",
+  "originalCode": "const sheet = workbook.worksheets.getActiveWorksheet();\nsheet.getRange('A1').values = [['Active sheet']];",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

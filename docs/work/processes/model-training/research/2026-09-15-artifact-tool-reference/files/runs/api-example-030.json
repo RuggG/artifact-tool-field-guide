@@ -1,0 +1,12 @@
+{
+  "index": 30,
+  "name": "chart series",
+  "summary": "Per-point data label overrides",
+  "originalCode": "const series = chart.series.items[1]!;\nconst label0 = series.dataLabelOverrides.add(0);\nlabel0.showValue = true;\nlabel0.position = 'inEnd';\nlabel0.textStyle.bold = true;\nlabel0.textStyle.fontSize = 10;",
+  "adaptations": [
+    "Removed TypeScript non-null assertion after array access."
+  ],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

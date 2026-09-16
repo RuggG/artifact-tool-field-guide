@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>mark_artifact_operation_started.mjs · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="mark_artifact_operation_started.mjs">Raw file</a> · <a data-public-raw download href="mark_artifact_operation_started.mjs">Download</a></p><article><h1>mark_artifact_operation_started.mjs</h1><pre class="public-code"><code>#!/usr/bin/env node
+
+const args = process.argv.slice(2);
+const expectedOutputCount = Number(args[3]);
+const validOutputFormats = new Set([&quot;csv&quot;, &quot;tsv&quot;, &quot;xls&quot;, &quot;xlsm&quot;, &quot;xlsx&quot;]);
+const valid =
+  args.length === 6 &amp;&amp;
+  args[0] === &quot;--operation-kind&quot; &amp;&amp;
+  new Set([&quot;create&quot;, &quot;edit&quot;]).has(args[1]) &amp;&amp;
+  args[2] === &quot;--expected-output-count&quot; &amp;&amp;
+  Number.isSafeInteger(expectedOutputCount) &amp;&amp;
+  expectedOutputCount &gt;= 1 &amp;&amp;
+  expectedOutputCount &lt;= 100 &amp;&amp;
+  args[4] === &quot;--output-format&quot; &amp;&amp;
+  validOutputFormats.has(args[5].toLowerCase());
+
+if (!valid) {
+  console.error(
+    &quot;usage: mark_artifact_operation_started.mjs --operation-kind &lt;create|edit&gt; --expected-output-count &lt;1-100&gt; --output-format &lt;supported format&gt;&quot;,
+  );
+  process.exitCode = 2;
+}
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

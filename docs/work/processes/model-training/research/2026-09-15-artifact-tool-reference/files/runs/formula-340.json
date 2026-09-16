@@ -1,0 +1,37 @@
+{
+  "name": "fx.COMBINA",
+  "category": "math-trig",
+  "examples": [
+    {
+      "formula": "=COMBINA(10, 10)",
+      "value": 92378,
+      "projection": [
+        [
+          92378,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 11
+    }
+  ]
+}

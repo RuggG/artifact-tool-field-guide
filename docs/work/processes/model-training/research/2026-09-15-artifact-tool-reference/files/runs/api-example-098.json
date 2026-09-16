@@ -1,0 +1,10 @@
+{
+  "index": 98,
+  "name": "range.getCell",
+  "summary": "Access a cell relative to a range",
+  "originalCode": "const range = sheet.getRange('B2:D4');\nconst cell = range.getCell(2, 2);",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

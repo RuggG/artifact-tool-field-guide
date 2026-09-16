@@ -1,0 +1,37 @@
+{
+  "name": "fx.UPPER",
+  "category": "text",
+  "examples": [
+    {
+      "formula": "=UPPER(\"text\")",
+      "value": "TEXT",
+      "projection": [
+        [
+          "TEXT",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 8
+    }
+  ]
+}

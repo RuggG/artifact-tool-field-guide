@@ -1,0 +1,37 @@
+{
+  "name": "fx.HEX2BIN",
+  "category": "engineering",
+  "examples": [
+    {
+      "formula": "=HEX2BIN(10, A1)",
+      "value": "#NUM!",
+      "projection": [
+        [
+          "#NUM!",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 10
+    }
+  ]
+}

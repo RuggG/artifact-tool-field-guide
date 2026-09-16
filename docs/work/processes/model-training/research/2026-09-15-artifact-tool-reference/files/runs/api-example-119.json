@@ -1,0 +1,10 @@
+{
+  "index": 119,
+  "name": "formatting-quick-reference",
+  "summary": "Formatting quick reference",
+  "originalCode": "const range = sheet.getRange('A1:D10');\n\n// Fill + font\nrange.format.fill = 'lt2';\nrange.format.font = { name: 'Calibri', size: 11, color: 'tx1' };\n\n// Bulk format (single object assignment)\nrange.format = {\n  fill: 'lt2',\n  font: { name: 'Calibri', size: 11, color: 'tx1' },\n  borders: { preset: 'outside', style: 'thin', color: '#D1D5DB' },\n  horizontalAlignment: 'center',\n  verticalAlignment: 'center',\n  wrapText: true,\n};\n\n// Theme token + transform (prefer this over manual hex shading)\nrange.getRow(0).format.fill = {\n  type: 'solid',\n  color: { type: 'theme', value: 'accent1', transform: { darken: 10 } },\n};\n\n// Borders (edge + inside presets or per-edge)\nrange.format.borders = { preset: 'outside', style: 'thin', color: '#D1D5DB' };\nrange.format.borders.getItem('EdgeBottom').style = 'thin';\nrange.format.borders.getItem('EdgeBottom').color = '#D1D5DB';\n\n// Alignment + wrapping\nrange.format.horizontalAlignment = 'center';\nrange.format.verticalAlignment = 'center';\nrange.format.wrapText = true;\n\n// Autofit\nrange.format.autofitColumns();\nrange.format.autofitRows();\n\n// Number formats\nrange.format.numberFormat = '0.00';\nsheet.getRange('E1:F2').format.numberFormat = [['0', '0.00'], ['0', '0.00']];",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

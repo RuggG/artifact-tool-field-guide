@@ -1,0 +1,37 @@
+{
+  "name": "fx.CUBEMEMBERPROPERTY",
+  "category": "cube",
+  "examples": [
+    {
+      "formula": "=CUBEMEMBERPROPERTY(A1, A1, A1)",
+      "value": "CUBEMEMBERPROPERTY is not implemented. connection=1, memberExpression=1, property=1",
+      "projection": [
+        [
+          "CUBEMEMBERPROPERTY is not implemented. connection=1, memberExpression=1, property=1",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 9
+    }
+  ]
+}

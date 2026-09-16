@@ -1,0 +1,37 @@
+{
+  "name": "fx.GAMMA",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=GAMMA(A1)",
+      "value": 1,
+      "projection": [
+        [
+          1,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 10
+    }
+  ]
+}

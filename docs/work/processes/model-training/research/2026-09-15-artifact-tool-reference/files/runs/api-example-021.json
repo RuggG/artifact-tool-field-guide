@@ -1,0 +1,10 @@
+{
+  "index": 21,
+  "name": "chart dataLabels",
+  "summary": "Data callout styling (fill + stroke)",
+  "originalCode": "chart.dataLabels = { showValue: true, position: 'dataCallout', fill: { type: 'solid', color: 'background1', pattern: { type: 'percent20', color: 'accent1' } }, stroke: { fill: 'accent1', style: 'solid', width: 1 } };",
+  "adaptations": [],
+  "execution": "completed",
+  "exportError": "TypeError: this[#R].toProto is not a function",
+  "logs": []
+}

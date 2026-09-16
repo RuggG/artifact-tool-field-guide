@@ -1,0 +1,140 @@
+{
+  "id": "trace",
+  "input": "return await wb.trace(\"Fee engine!R27\");",
+  "elapsedMs": 9,
+  "result": {
+    "cell": "Fee engine!R27",
+    "sheetName": "Fee engine",
+    "address": "R27",
+    "formula": "=R18*Assumptions!$D$49*R26/Assumptions!$D$60*Assumptions!$D$48",
+    "value": 359.47799999999995,
+    "params": [
+      {
+        "cell": "Fee engine!R18",
+        "sheetName": "Fee engine",
+        "address": "R18",
+        "formula": null,
+        "value": 256.77,
+        "params": []
+      },
+      {
+        "cell": "Assumptions!D49",
+        "sheetName": "Assumptions",
+        "address": "D49",
+        "formula": null,
+        "value": 1000,
+        "params": []
+      },
+      {
+        "cell": "Fee engine!R26",
+        "sheetName": "Fee engine",
+        "address": "R26",
+        "formula": "=Assumptions!R25",
+        "value": 56,
+        "params": [
+          {
+            "cell": "Assumptions!R25",
+            "sheetName": "Assumptions",
+            "address": "R25",
+            "formula": "=IF(CHOOSE($D$4,ISBLANK(R26),ISBLANK(R27),ISBLANK(R28),ISBLANK(R29)),NA(),CHOOSE($D$4,R26,R27,R28,R29))",
+            "value": 56,
+            "params": [
+              {
+                "cell": "Assumptions!D4",
+                "sheetName": "Assumptions",
+                "address": "D4",
+                "formula": null,
+                "value": 1,
+                "params": []
+              },
+              {
+                "cell": "Assumptions!R26",
+                "sheetName": "Assumptions",
+                "address": "R26",
+                "formula": "=$D$50",
+                "value": 56,
+                "params": [
+                  {
+                    "cell": "Assumptions!D50",
+                    "sheetName": "Assumptions",
+                    "address": "D50",
+                    "formula": "=Disclosures!I45",
+                    "value": 56,
+                    "params": [
+                      {
+                        "cell": "Disclosures!I45",
+                        "sheetName": "Disclosures",
+                        "address": "I45",
+                        "formula": null,
+                        "value": 56,
+                        "params": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "cell": "Assumptions!R27",
+                "sheetName": "Assumptions",
+                "address": "R27",
+                "formula": null,
+                "value": 52,
+                "params": []
+              },
+              {
+                "cell": "Assumptions!R28",
+                "sheetName": "Assumptions",
+                "address": "R28",
+                "formula": null,
+                "value": 58,
+                "params": []
+              },
+              {
+                "cell": "Assumptions!R29",
+                "sheetName": "Assumptions",
+                "address": "R29",
+                "formula": "=$D$50",
+                "value": 56,
+                "params": [
+                  {
+                    "cell": "Assumptions!D50",
+                    "sheetName": "Assumptions",
+                    "address": "D50",
+                    "formula": "=Disclosures!I45",
+                    "value": 56,
+                    "params": [
+                      {
+                        "cell": "Disclosures!I45",
+                        "sheetName": "Disclosures",
+                        "address": "I45",
+                        "formula": null,
+                        "value": 56,
+                        "params": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "cell": "Assumptions!D60",
+        "sheetName": "Assumptions",
+        "address": "D60",
+        "formula": null,
+        "value": 10000,
+        "params": []
+      },
+      {
+        "cell": "Assumptions!D48",
+        "sheetName": "Assumptions",
+        "address": "D48",
+        "formula": null,
+        "value": 0.25,
+        "params": []
+      }
+    ]
+  }
+}

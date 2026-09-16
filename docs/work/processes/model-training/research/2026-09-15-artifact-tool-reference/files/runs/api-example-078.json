@@ -1,0 +1,10 @@
+{
+  "index": 78,
+  "name": "range.merge",
+  "summary": "Merge across rows",
+  "originalCode": "sheet.getRange('B2:H4').merge(true);",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

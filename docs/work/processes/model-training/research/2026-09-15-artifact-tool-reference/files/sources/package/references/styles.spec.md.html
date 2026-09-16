@@ -1,0 +1,99 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Range Formatting · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="styles.spec.md">Raw file</a> · <a data-public-raw download href="styles.spec.md">Download</a></p><article><h1 id="range-formatting">Range Formatting</h1>
+<p>Use <code>range.format</code> to style cells with fills, fonts, borders, number formats, sizing, and alignment.</p>
+<h2 id="shared-color-and-fill-inline-types">Shared Color And Fill Inline Types</h2>
+<pre><code class="language-ts">type ThemeColorName =
+  | "accent1" | "accent2" | "accent3" | "accent4" | "accent5" | "accent6"
+  | "bg1" | "bg2" | "tx1" | "tx2" | "dk1" | "lt1" | "dk2" | "lt2"
+  | "hlink" | "folHlink";
+
+type ColorConfig =
+  | string
+  | { type: "rgb"; value: string; transform?: { opacity?: number; lighten?: number; darken?: number } }
+  | { type: "theme"; value: ThemeColorName; transform?: { opacity?: number; lighten?: number; darken?: number } };
+
+type FillConfig =
+  | string
+  | { type: "none" }
+  | { type: "solid"; color: ColorConfig }
+  | { type: "gradient"; stops: Array&lt;{ offset: number; color: ColorConfig }&gt;; angleDeg?: number; gradientKind?: "linear" | "path" };
+</code></pre>
+<h2 id="grouped-format">Grouped Format</h2>
+<pre><code class="language-ts">range.format = {
+  fill,
+  font,
+  horizontalAlignment,
+  verticalAlignment,
+  wrapText,
+  borders,
+  numberFormat,
+};
+</code></pre>
+<h2 id="format-inline-types">Format Inline Types</h2>
+<pre><code class="language-ts">type RangeFormatConfig = {
+  fill?: FillConfig | null;
+  font?: RangeFontConfig | null;
+  borders?: RangeBordersConfig;
+  numberFormat?: string | string[][];
+  wrapText?: boolean;
+  horizontalAlignment?:
+    | "general"
+    | "left"
+    | "center"
+    | "right"
+    | "fill"
+    | "justify"
+    | "centerAcrossSelection"
+    | "distributed";
+  verticalAlignment?: "top" | "middle" | "bottom" | "center";
+  rowHeight?: number; // points
+  rowHeightPx?: number;
+  columnWidth?: number; // Excel width units
+  columnWidthPx?: number;
+};
+
+type RangeFontConfig = {
+  bold?: boolean;
+  italic?: boolean;
+  size?: number;
+  name?: string;
+  color?: ColorConfig;
+};
+</code></pre>
+<h2 id="sizing">Sizing</h2>
+<pre><code class="language-ts">range.format.rowHeightPx = rowHeightPx;
+range.format.columnWidthPx = columnWidthPx;
+</code></pre>
+<p>Pixel sizing is the preferred surface for layout-sensitive work. Point row heights and Excel-width column widths are also available through <code>rowHeight</code> and <code>columnWidth</code>.</p>
+<h2 id="borders">Borders</h2>
+<pre><code class="language-ts">range.format.borders = {
+  preset,
+  style,
+  color,
+};
+</code></pre>
+<p>Use the border preset strings below. Border style strings are Excel/OpenXML-style names such as <code>"thin"</code>, <code>"medium"</code>, <code>"thick"</code>, <code>"dashed"</code>, and <code>"dotted"</code>.</p>
+<h2 id="border-inline-type">Border Inline Type</h2>
+<pre><code class="language-ts">type RangeBordersConfig =
+  | {
+      preset: "none" | "outside" | "inside" | "all" | "doubleBottom";
+      style?: string; // common: "thin", "medium", "thick", "dashed", "dotted"
+      color?: ColorConfig;
+    }
+  | {
+      top?: BorderLineInput;
+      bottom?: BorderLineInput;
+      left?: BorderLineInput;
+      right?: BorderLineInput;
+      inside?: BorderLineInput;
+      insideHorizontal?: BorderLineInput;
+      insideVertical?: BorderLineInput;
+      diagonalUp?: BorderLineInput;
+      diagonalDown?: BorderLineInput;
+    };
+
+type BorderLineInput = {
+  style?: string;
+  color?: ColorConfig;
+  weight?: number;
+};
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

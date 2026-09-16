@@ -1,0 +1,18 @@
+{
+  "id": "render-before",
+  "operation": "return await wb.render({sheetName:\"Fee lab\",range:\"B2:P25\",scale:1.5,format:\"png\"});",
+  "checkInput": {
+    "before": "",
+    "after": "const blob=lastHandle;await fs.writeFile(path.join(dir,\"fee-lab-before.png\"),new Uint8Array(await blob.arrayBuffer()));return {saved:\"fee-lab-before.png\",bytes:(await fs.stat(path.join(dir,\"fee-lab-before.png\"))).size};"
+  },
+  "startedAt": "2026-09-15T16:55:20.736Z",
+  "libraryReturn": {
+    "type": "Image Blob",
+    "representation": "Object contents are read separately in the agent checks."
+  },
+  "elapsedMs": 228,
+  "after": {
+    "saved": "fee-lab-before.png",
+    "bytes": 161918
+  }
+}

@@ -1,0 +1,1899 @@
+{
+  "input": {
+    "op": "table.remove",
+    "target": {
+      "name": "InventoryTable",
+      "sheet": "Inventory"
+    }
+  },
+  "adaptations": [],
+  "result": {
+    "idMap": {},
+    "warnings": []
+  },
+  "changed": true,
+  "after": {
+    "id": "ac10aed5-bd7b-4e62-a1b1-a0dd89f04295",
+    "sheets": [
+      {
+        "id": "lpgppj",
+        "sheetId": "1",
+        "index": 0,
+        "name": "Sheet1",
+        "innerXml": "",
+        "outerXml": "",
+        "defaultRowHeight": 15,
+        "defaultColWidth": 0,
+        "rows": [
+          {
+            "index": 1,
+            "cells": [
+              {
+                "address": "A1",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Name"
+              },
+              {
+                "address": "B1",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Qty"
+              },
+              {
+                "address": "C1",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Stock"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          },
+          {
+            "index": 2,
+            "cells": [
+              {
+                "address": "A2",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Alpha"
+              },
+              {
+                "address": "B2",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "2"
+              },
+              {
+                "address": "C2",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "10"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          },
+          {
+            "index": 3,
+            "cells": [
+              {
+                "address": "A3",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Beta"
+              },
+              {
+                "address": "B3",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "3"
+              },
+              {
+                "address": "C3",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "20"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          },
+          {
+            "index": 4,
+            "cells": [
+              {
+                "address": "A4",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Gamma"
+              },
+              {
+                "address": "B4",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "4"
+              },
+              {
+                "address": "C4",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "30"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          }
+        ],
+        "columns": [],
+        "mergedCells": [],
+        "conditionalFormattings": [],
+        "sharedFormulas": [],
+        "tables": [],
+        "pivotTables": [],
+        "slicers": [],
+        "timelines": [],
+        "drawings": []
+      },
+      {
+        "id": "wte27e",
+        "sheetId": "2",
+        "index": 1,
+        "name": "Inventory",
+        "innerXml": "",
+        "outerXml": "",
+        "defaultRowHeight": 15,
+        "defaultColWidth": 0,
+        "rows": [
+          {
+            "index": 1,
+            "cells": [
+              {
+                "address": "A1",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Name"
+              },
+              {
+                "address": "B1",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Qty"
+              },
+              {
+                "address": "C1",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Stock"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          },
+          {
+            "index": 2,
+            "cells": [
+              {
+                "address": "A2",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Alpha"
+              },
+              {
+                "address": "B2",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "2"
+              },
+              {
+                "address": "C2",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "10"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          },
+          {
+            "index": 3,
+            "cells": [
+              {
+                "address": "A3",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Beta"
+              },
+              {
+                "address": "B3",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "3"
+              },
+              {
+                "address": "C3",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "20"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          },
+          {
+            "index": 4,
+            "cells": [
+              {
+                "address": "A4",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Gamma"
+              },
+              {
+                "address": "B4",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "4"
+              },
+              {
+                "address": "C4",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "30"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          }
+        ],
+        "columns": [],
+        "mergedCells": [],
+        "conditionalFormattings": [],
+        "sharedFormulas": [],
+        "tables": [],
+        "pivotTables": [],
+        "slicers": [],
+        "timelines": [],
+        "drawings": []
+      },
+      {
+        "id": "79kzfq",
+        "sheetId": "3",
+        "index": 2,
+        "name": "Scratch",
+        "innerXml": "",
+        "outerXml": "",
+        "defaultRowHeight": 15,
+        "defaultColWidth": 0,
+        "rows": [
+          {
+            "index": 1,
+            "cells": [
+              {
+                "address": "A1",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Name"
+              },
+              {
+                "address": "B1",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Qty"
+              },
+              {
+                "address": "C1",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Stock"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          },
+          {
+            "index": 2,
+            "cells": [
+              {
+                "address": "A2",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Alpha"
+              },
+              {
+                "address": "B2",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "2"
+              },
+              {
+                "address": "C2",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "10"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          },
+          {
+            "index": 3,
+            "cells": [
+              {
+                "address": "A3",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Beta"
+              },
+              {
+                "address": "B3",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "3"
+              },
+              {
+                "address": "C3",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "20"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          },
+          {
+            "index": 4,
+            "cells": [
+              {
+                "address": "A4",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Gamma"
+              },
+              {
+                "address": "B4",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "4"
+              },
+              {
+                "address": "C4",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "30"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          }
+        ],
+        "columns": [],
+        "mergedCells": [],
+        "conditionalFormattings": [],
+        "sharedFormulas": [],
+        "tables": [],
+        "pivotTables": [],
+        "slicers": [],
+        "timelines": [],
+        "drawings": []
+      },
+      {
+        "id": "n3d7bq",
+        "sheetId": "4",
+        "index": 3,
+        "name": "Report",
+        "innerXml": "",
+        "outerXml": "",
+        "defaultRowHeight": 15,
+        "defaultColWidth": 0,
+        "rows": [
+          {
+            "index": 1,
+            "cells": [
+              {
+                "address": "A1",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Name"
+              },
+              {
+                "address": "B1",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Qty"
+              },
+              {
+                "address": "C1",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Stock"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          },
+          {
+            "index": 2,
+            "cells": [
+              {
+                "address": "A2",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Alpha"
+              },
+              {
+                "address": "B2",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "2"
+              },
+              {
+                "address": "C2",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "10"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          },
+          {
+            "index": 3,
+            "cells": [
+              {
+                "address": "A3",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Beta"
+              },
+              {
+                "address": "B3",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "3"
+              },
+              {
+                "address": "C3",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "20"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          },
+          {
+            "index": 4,
+            "cells": [
+              {
+                "address": "A4",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Gamma"
+              },
+              {
+                "address": "B4",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "4"
+              },
+              {
+                "address": "C4",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "30"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          }
+        ],
+        "columns": [],
+        "mergedCells": [],
+        "conditionalFormattings": [],
+        "sharedFormulas": [],
+        "tables": [],
+        "pivotTables": [],
+        "slicers": [],
+        "timelines": [],
+        "drawings": []
+      },
+      {
+        "id": "v4yiit",
+        "sheetId": "5",
+        "index": 4,
+        "name": "Scorecard",
+        "innerXml": "",
+        "outerXml": "",
+        "defaultRowHeight": 15,
+        "defaultColWidth": 0,
+        "rows": [
+          {
+            "index": 1,
+            "cells": [
+              {
+                "address": "A1",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Name"
+              },
+              {
+                "address": "B1",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Qty"
+              },
+              {
+                "address": "C1",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Stock"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          },
+          {
+            "index": 2,
+            "cells": [
+              {
+                "address": "A2",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Alpha"
+              },
+              {
+                "address": "B2",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "2"
+              },
+              {
+                "address": "C2",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "10"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          },
+          {
+            "index": 3,
+            "cells": [
+              {
+                "address": "A3",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Beta"
+              },
+              {
+                "address": "B3",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "3"
+              },
+              {
+                "address": "C3",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "20"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          },
+          {
+            "index": 4,
+            "cells": [
+              {
+                "address": "A4",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Gamma"
+              },
+              {
+                "address": "B4",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "4"
+              },
+              {
+                "address": "C4",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "30"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          }
+        ],
+        "columns": [],
+        "mergedCells": [],
+        "conditionalFormattings": [],
+        "sharedFormulas": [],
+        "tables": [],
+        "pivotTables": [],
+        "slicers": [],
+        "timelines": [],
+        "drawings": []
+      },
+      {
+        "id": "vgy0ry",
+        "sheetId": "6",
+        "index": 5,
+        "name": "CF",
+        "innerXml": "",
+        "outerXml": "",
+        "defaultRowHeight": 15,
+        "defaultColWidth": 0,
+        "rows": [
+          {
+            "index": 1,
+            "cells": [
+              {
+                "address": "A1",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Name"
+              },
+              {
+                "address": "B1",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Qty"
+              },
+              {
+                "address": "C1",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Stock"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          },
+          {
+            "index": 2,
+            "cells": [
+              {
+                "address": "A2",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Alpha"
+              },
+              {
+                "address": "B2",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "2"
+              },
+              {
+                "address": "C2",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "10"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          },
+          {
+            "index": 3,
+            "cells": [
+              {
+                "address": "A3",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Beta"
+              },
+              {
+                "address": "B3",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "3"
+              },
+              {
+                "address": "C3",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "20"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          },
+          {
+            "index": 4,
+            "cells": [
+              {
+                "address": "A4",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Gamma"
+              },
+              {
+                "address": "B4",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "4"
+              },
+              {
+                "address": "C4",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "30"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          }
+        ],
+        "columns": [],
+        "mergedCells": [],
+        "conditionalFormattings": [],
+        "sharedFormulas": [],
+        "tables": [],
+        "pivotTables": [],
+        "slicers": [],
+        "timelines": [],
+        "drawings": []
+      },
+      {
+        "id": "mcpv19",
+        "sheetId": "7",
+        "index": 6,
+        "name": "KPIs",
+        "innerXml": "",
+        "outerXml": "",
+        "defaultRowHeight": 15,
+        "defaultColWidth": 0,
+        "rows": [
+          {
+            "index": 1,
+            "cells": [
+              {
+                "address": "A1",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Name"
+              },
+              {
+                "address": "B1",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Qty"
+              },
+              {
+                "address": "C1",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Stock"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          },
+          {
+            "index": 2,
+            "cells": [
+              {
+                "address": "A2",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Alpha"
+              },
+              {
+                "address": "B2",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "2"
+              },
+              {
+                "address": "C2",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "10"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          },
+          {
+            "index": 3,
+            "cells": [
+              {
+                "address": "A3",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Beta"
+              },
+              {
+                "address": "B3",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "3"
+              },
+              {
+                "address": "C3",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "20"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          },
+          {
+            "index": 4,
+            "cells": [
+              {
+                "address": "A4",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Gamma"
+              },
+              {
+                "address": "B4",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "4"
+              },
+              {
+                "address": "C4",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "30"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          }
+        ],
+        "columns": [],
+        "mergedCells": [],
+        "conditionalFormattings": [],
+        "sharedFormulas": [],
+        "tables": [],
+        "pivotTables": [],
+        "slicers": [],
+        "timelines": [],
+        "drawings": []
+      },
+      {
+        "id": "7q7dwv",
+        "sheetId": "8",
+        "index": 7,
+        "name": "Validation",
+        "innerXml": "",
+        "outerXml": "",
+        "defaultRowHeight": 15,
+        "defaultColWidth": 0,
+        "rows": [
+          {
+            "index": 1,
+            "cells": [
+              {
+                "address": "A1",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Name"
+              },
+              {
+                "address": "B1",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Qty"
+              },
+              {
+                "address": "C1",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Stock"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          },
+          {
+            "index": 2,
+            "cells": [
+              {
+                "address": "A2",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Alpha"
+              },
+              {
+                "address": "B2",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "2"
+              },
+              {
+                "address": "C2",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "10"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          },
+          {
+            "index": 3,
+            "cells": [
+              {
+                "address": "A3",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Beta"
+              },
+              {
+                "address": "B3",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "3"
+              },
+              {
+                "address": "C3",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "20"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          },
+          {
+            "index": 4,
+            "cells": [
+              {
+                "address": "A4",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Gamma"
+              },
+              {
+                "address": "B4",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "4"
+              },
+              {
+                "address": "C4",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "30"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          }
+        ],
+        "columns": [],
+        "mergedCells": [],
+        "conditionalFormattings": [],
+        "sharedFormulas": [],
+        "tables": [],
+        "pivotTables": [],
+        "slicers": [],
+        "timelines": [],
+        "drawings": []
+      },
+      {
+        "id": "7tfxws",
+        "sheetId": "9",
+        "index": 8,
+        "name": "Charts",
+        "innerXml": "",
+        "outerXml": "",
+        "defaultRowHeight": 15,
+        "defaultColWidth": 0,
+        "rows": [
+          {
+            "index": 1,
+            "cells": [
+              {
+                "address": "A1",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Name"
+              },
+              {
+                "address": "B1",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Qty"
+              },
+              {
+                "address": "C1",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Stock"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          },
+          {
+            "index": 2,
+            "cells": [
+              {
+                "address": "A2",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Alpha"
+              },
+              {
+                "address": "B2",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "2"
+              },
+              {
+                "address": "C2",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "10"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          },
+          {
+            "index": 3,
+            "cells": [
+              {
+                "address": "A3",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Beta"
+              },
+              {
+                "address": "B3",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "3"
+              },
+              {
+                "address": "C3",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "20"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          },
+          {
+            "index": 4,
+            "cells": [
+              {
+                "address": "A4",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Gamma"
+              },
+              {
+                "address": "B4",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "4"
+              },
+              {
+                "address": "C4",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "30"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          }
+        ],
+        "columns": [],
+        "mergedCells": [],
+        "conditionalFormattings": [],
+        "sharedFormulas": [],
+        "tables": [],
+        "pivotTables": [],
+        "slicers": [],
+        "timelines": [],
+        "drawings": []
+      },
+      {
+        "id": "9c8bx1",
+        "sheetId": "10",
+        "index": 9,
+        "name": "Shapes",
+        "innerXml": "",
+        "outerXml": "",
+        "defaultRowHeight": 15,
+        "defaultColWidth": 0,
+        "rows": [
+          {
+            "index": 1,
+            "cells": [
+              {
+                "address": "A1",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Name"
+              },
+              {
+                "address": "B1",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Qty"
+              },
+              {
+                "address": "C1",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Stock"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          },
+          {
+            "index": 2,
+            "cells": [
+              {
+                "address": "A2",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Alpha"
+              },
+              {
+                "address": "B2",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "2"
+              },
+              {
+                "address": "C2",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "10"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          },
+          {
+            "index": 3,
+            "cells": [
+              {
+                "address": "A3",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Beta"
+              },
+              {
+                "address": "B3",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "3"
+              },
+              {
+                "address": "C3",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "20"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          },
+          {
+            "index": 4,
+            "cells": [
+              {
+                "address": "A4",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Gamma"
+              },
+              {
+                "address": "B4",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "4"
+              },
+              {
+                "address": "C4",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "30"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          }
+        ],
+        "columns": [],
+        "mergedCells": [],
+        "conditionalFormattings": [],
+        "sharedFormulas": [],
+        "tables": [],
+        "pivotTables": [],
+        "slicers": [],
+        "timelines": [],
+        "drawings": []
+      },
+      {
+        "id": "50bjfy",
+        "sheetId": "11",
+        "index": 10,
+        "name": "Images",
+        "innerXml": "",
+        "outerXml": "",
+        "defaultRowHeight": 15,
+        "defaultColWidth": 0,
+        "rows": [
+          {
+            "index": 1,
+            "cells": [
+              {
+                "address": "A1",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Name"
+              },
+              {
+                "address": "B1",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Qty"
+              },
+              {
+                "address": "C1",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Stock"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          },
+          {
+            "index": 2,
+            "cells": [
+              {
+                "address": "A2",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Alpha"
+              },
+              {
+                "address": "B2",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "2"
+              },
+              {
+                "address": "C2",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "10"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          },
+          {
+            "index": 3,
+            "cells": [
+              {
+                "address": "A3",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Beta"
+              },
+              {
+                "address": "B3",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "3"
+              },
+              {
+                "address": "C3",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "20"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          },
+          {
+            "index": 4,
+            "cells": [
+              {
+                "address": "A4",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Gamma"
+              },
+              {
+                "address": "B4",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "4"
+              },
+              {
+                "address": "C4",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "30"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          }
+        ],
+        "columns": [],
+        "mergedCells": [],
+        "conditionalFormattings": [],
+        "sharedFormulas": [],
+        "tables": [],
+        "pivotTables": [],
+        "slicers": [],
+        "timelines": [],
+        "drawings": []
+      },
+      {
+        "id": "13si4x",
+        "sheetId": "12",
+        "index": 11,
+        "name": "Data",
+        "innerXml": "",
+        "outerXml": "",
+        "defaultRowHeight": 15,
+        "defaultColWidth": 0,
+        "rows": [
+          {
+            "index": 1,
+            "cells": [
+              {
+                "address": "A1",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Name"
+              },
+              {
+                "address": "B1",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Qty"
+              },
+              {
+                "address": "C1",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Stock"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          },
+          {
+            "index": 2,
+            "cells": [
+              {
+                "address": "A2",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Alpha"
+              },
+              {
+                "address": "B2",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "2"
+              },
+              {
+                "address": "C2",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "10"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          },
+          {
+            "index": 3,
+            "cells": [
+              {
+                "address": "A3",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Beta"
+              },
+              {
+                "address": "B3",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "3"
+              },
+              {
+                "address": "C3",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "20"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          },
+          {
+            "index": 4,
+            "cells": [
+              {
+                "address": "A4",
+                "dataType": 3,
+                "paragraphs": [],
+                "value": "Gamma"
+              },
+              {
+                "address": "B4",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "4"
+              },
+              {
+                "address": "C4",
+                "dataType": 5,
+                "paragraphs": [],
+                "value": "30"
+              }
+            ],
+            "height": 0,
+            "customHeight": false
+          }
+        ],
+        "columns": [],
+        "mergedCells": [],
+        "conditionalFormattings": [],
+        "sharedFormulas": [],
+        "tables": [],
+        "pivotTables": [],
+        "slicers": [],
+        "timelines": [],
+        "drawings": []
+      }
+    ],
+    "styles": {
+      "fonts": [
+        {
+          "fontSize": 11,
+          "typeface": "Carlito"
+        }
+      ],
+      "fills": [
+        {
+          "type": 3,
+          "gradientStops": [],
+          "pattern": {
+            "patternType": 1
+          },
+          "pictureEffects": []
+        },
+        {
+          "type": 3,
+          "gradientStops": [],
+          "pattern": {
+            "patternType": 18
+          },
+          "pictureEffects": []
+        }
+      ],
+      "cellXfs": [
+        {
+          "fontId": 0,
+          "fillId": 0,
+          "borderId": 0,
+          "xfId": 0,
+          "numFmtId": 0
+        }
+      ],
+      "borders": [
+        {}
+      ],
+      "cellStyles": [
+        {
+          "index": 0,
+          "builtinId": "0",
+          "name": "Normal",
+          "xfId": 0
+        }
+      ],
+      "cellStyleXfs": [
+        {
+          "index": 0,
+          "format": {
+            "numFmtId": 0,
+            "fontId": 0,
+            "fillId": 0,
+            "borderId": 0
+          }
+        }
+      ],
+      "numberFormats": [],
+      "dxfs": [],
+      "indexedColors": [],
+      "mruColors": []
+    },
+    "theme": {
+      "name": "ChatGPT",
+      "colorScheme": {
+        "name": "ChatGPT",
+        "colors": [
+          {
+            "name": "accent1",
+            "color": {
+              "type": 1,
+              "value": "156082",
+              "transform": {}
+            }
+          },
+          {
+            "name": "accent2",
+            "color": {
+              "type": 1,
+              "value": "E97132",
+              "transform": {}
+            }
+          },
+          {
+            "name": "accent3",
+            "color": {
+              "type": 1,
+              "value": "196B24",
+              "transform": {}
+            }
+          },
+          {
+            "name": "accent4",
+            "color": {
+              "type": 1,
+              "value": "0F9ED5",
+              "transform": {}
+            }
+          },
+          {
+            "name": "accent5",
+            "color": {
+              "type": 1,
+              "value": "A02B93",
+              "transform": {}
+            }
+          },
+          {
+            "name": "accent6",
+            "color": {
+              "type": 1,
+              "value": "4EA72E",
+              "transform": {}
+            }
+          },
+          {
+            "name": "dk1",
+            "color": {
+              "type": 3,
+              "value": "windowText",
+              "lastColor": "000000",
+              "transform": {}
+            }
+          },
+          {
+            "name": "lt1",
+            "color": {
+              "type": 3,
+              "value": "window",
+              "lastColor": "FFFFFF",
+              "transform": {}
+            }
+          },
+          {
+            "name": "dk2",
+            "color": {
+              "type": 1,
+              "value": "0E2841",
+              "transform": {}
+            }
+          },
+          {
+            "name": "lt2",
+            "color": {
+              "type": 1,
+              "value": "E8E8E8",
+              "transform": {}
+            }
+          },
+          {
+            "name": "hlink",
+            "color": {
+              "type": 1,
+              "value": "467886",
+              "transform": {}
+            }
+          },
+          {
+            "name": "folHlink",
+            "color": {
+              "type": 1,
+              "value": "96607D",
+              "transform": {}
+            }
+          }
+        ]
+      },
+      "backgroundFillStyleList": [
+        {
+          "type": 1,
+          "color": {
+            "type": 2,
+            "value": "phClr",
+            "transform": {}
+          },
+          "gradientStops": [],
+          "pictureEffects": []
+        },
+        {
+          "type": 1,
+          "color": {
+            "type": 2,
+            "value": "phClr",
+            "transform": {
+              "tint": 95000,
+              "satMod": 170000
+            }
+          },
+          "gradientStops": [],
+          "pictureEffects": []
+        },
+        {
+          "type": 2,
+          "gradientStops": [
+            {
+              "position": 0,
+              "color": {
+                "type": 2,
+                "value": "phClr",
+                "transform": {
+                  "tint": 93000,
+                  "shade": 98000,
+                  "lumMod": 102000,
+                  "satMod": 150000
+                }
+              }
+            },
+            {
+              "position": 50000,
+              "color": {
+                "type": 2,
+                "value": "phClr",
+                "transform": {
+                  "tint": 98000,
+                  "shade": 90000,
+                  "lumMod": 103000,
+                  "satMod": 130000
+                }
+              }
+            },
+            {
+              "position": 100000,
+              "color": {
+                "type": 2,
+                "value": "phClr",
+                "transform": {
+                  "shade": 63000,
+                  "satMod": 120000
+                }
+              }
+            }
+          ],
+          "pictureEffects": [],
+          "gradientKind": 1,
+          "angleDeg": 90,
+          "isScaled": false
+        }
+      ],
+      "fillStyleList": [
+        {
+          "type": 1,
+          "color": {
+            "type": 2,
+            "value": "phClr",
+            "transform": {}
+          },
+          "gradientStops": [],
+          "pictureEffects": []
+        },
+        {
+          "type": 2,
+          "gradientStops": [
+            {
+              "position": 0,
+              "color": {
+                "type": 2,
+                "value": "phClr",
+                "transform": {
+                  "lumMod": 110000,
+                  "satMod": 105000,
+                  "tint": 67000
+                }
+              }
+            },
+            {
+              "position": 50000,
+              "color": {
+                "type": 2,
+                "value": "phClr",
+                "transform": {
+                  "lumMod": 105000,
+                  "satMod": 103000,
+                  "tint": 73000
+                }
+              }
+            },
+            {
+              "position": 100000,
+              "color": {
+                "type": 2,
+                "value": "phClr",
+                "transform": {
+                  "lumMod": 105000,
+                  "satMod": 109000,
+                  "tint": 81000
+                }
+              }
+            }
+          ],
+          "pictureEffects": [],
+          "gradientKind": 1,
+          "angleDeg": 90,
+          "isScaled": false
+        },
+        {
+          "type": 2,
+          "gradientStops": [
+            {
+              "position": 0,
+              "color": {
+                "type": 2,
+                "value": "phClr",
+                "transform": {
+                  "satMod": 103000,
+                  "lumMod": 102000,
+                  "tint": 94000
+                }
+              }
+            },
+            {
+              "position": 50000,
+              "color": {
+                "type": 2,
+                "value": "phClr",
+                "transform": {
+                  "satMod": 110000,
+                  "lumMod": 100000,
+                  "shade": 100000
+                }
+              }
+            },
+            {
+              "position": 100000,
+              "color": {
+                "type": 2,
+                "value": "phClr",
+                "transform": {
+                  "lumMod": 99000,
+                  "satMod": 120000,
+                  "shade": 78000
+                }
+              }
+            }
+          ],
+          "pictureEffects": [],
+          "gradientKind": 1,
+          "angleDeg": 90,
+          "isScaled": false
+        }
+      ],
+      "lineStyleList": [
+        {
+          "style": 1,
+          "widthEmu": 12700,
+          "fill": {
+            "type": 1,
+            "color": {
+              "type": 2,
+              "value": "phClr",
+              "transform": {}
+            },
+            "gradientStops": [],
+            "pictureEffects": []
+          }
+        },
+        {
+          "style": 1,
+          "widthEmu": 19050,
+          "fill": {
+            "type": 1,
+            "color": {
+              "type": 2,
+              "value": "phClr",
+              "transform": {}
+            },
+            "gradientStops": [],
+            "pictureEffects": []
+          }
+        },
+        {
+          "style": 1,
+          "widthEmu": 25400,
+          "fill": {
+            "type": 1,
+            "color": {
+              "type": 2,
+              "value": "phClr",
+              "transform": {}
+            },
+            "gradientStops": [],
+            "pictureEffects": []
+          }
+        }
+      ],
+      "effectStyleList": [
+        {
+          "effects": []
+        },
+        {
+          "effects": []
+        },
+        {
+          "effects": [
+            {
+              "type": 1,
+              "shadow": {
+                "color": {
+                  "type": 1,
+                  "value": "000000",
+                  "transform": {
+                    "alpha": 63000
+                  }
+                },
+                "blurRadius": 57150,
+                "distance": 19050,
+                "direction": 5400000
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "contentReferences": [],
+    "images": [],
+    "people": [
+      {
+        "id": "{1D1139C6-2EB4-49B2-A371-00C1DF176524}",
+        "displayName": "Ruggero Gargiulo"
+      }
+    ],
+    "threads": [],
+    "notes": [],
+    "slicerCaches": [],
+    "pivotCaches": [],
+    "timelineCaches": [],
+    "textStyles": [],
+    "codeEnvironments": [],
+    "codeBlocks": []
+  }
+}

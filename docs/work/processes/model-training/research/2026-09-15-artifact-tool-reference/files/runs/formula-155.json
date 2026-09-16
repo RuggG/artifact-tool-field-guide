@@ -1,0 +1,37 @@
+{
+  "name": "fx.XIRR",
+  "category": "financial",
+  "examples": [
+    {
+      "formula": "=XIRR(A1:A5, DATE(2024, 1, 1), A1)",
+      "value": "#NUM!",
+      "projection": [
+        [
+          "#NUM!",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 13
+    }
+  ]
+}

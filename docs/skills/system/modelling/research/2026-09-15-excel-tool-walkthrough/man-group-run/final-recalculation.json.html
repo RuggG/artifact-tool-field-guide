@@ -1,0 +1,132 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>final-recalculation.json · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="final-recalculation.json">Raw file</a> · <a data-public-raw download href="final-recalculation.json">Download</a></p><article><h1>final-recalculation.json</h1><pre class="public-code"><code>{
+  &quot;id&quot;: &quot;final-recalculation&quot;,
+  &quot;input&quot;: &quot;wb.recalculate();\nreturn {restoredBase: readState(), summary: {\n  range: \&quot;K13:M20\&quot;, values: wb.worksheets.getItem(\&quot;Summary\&quot;).getRange(\&quot;K13:M20\&quot;).values,\n  formulas: wb.worksheets.getItem(\&quot;Summary\&quot;).getRange(\&quot;K13:M20\&quot;).formulas\n}};&quot;,
+  &quot;elapsedMs&quot;: 0,
+  &quot;result&quot;: {
+    &quot;restoredBase&quot;: {
+      &quot;baseFeeMargin&quot;: {
+        &quot;sheet&quot;: &quot;Assumptions&quot;,
+        &quot;cell&quot;: &quot;W26&quot;,
+        &quot;value&quot;: 56,
+        &quot;formula&quot;: &quot;=$D$50&quot;
+      },
+      &quot;activeFeeMargin&quot;: {
+        &quot;sheet&quot;: &quot;Assumptions&quot;,
+        &quot;cell&quot;: &quot;W25&quot;,
+        &quot;value&quot;: 56,
+        &quot;formula&quot;: &quot;=IF(CHOOSE($D$4,ISBLANK(W26),ISBLANK(W27),ISBLANK(W28),ISBLANK(W29)),NA(),CHOOSE($D$4,W26,W27,W28,W29))&quot;
+      },
+      &quot;q4AverageAum&quot;: {
+        &quot;sheet&quot;: &quot;Fee engine&quot;,
+        &quot;cell&quot;: &quot;W18&quot;,
+        &quot;value&quot;: 290.5116868239257,
+        &quot;formula&quot;: &quot;&quot;
+      },
+      &quot;q4ManagementFees&quot;: {
+        &quot;sheet&quot;: &quot;Fee engine&quot;,
+        &quot;cell&quot;: &quot;W27&quot;,
+        &quot;value&quot;: 406.716361553496,
+        &quot;formula&quot;: &quot;=W18*Assumptions!$D$49*W26/Assumptions!$D$60*Assumptions!$D$48&quot;
+      },
+      &quot;fy2027ManagementFees&quot;: {
+        &quot;sheet&quot;: &quot;Summary&quot;,
+        &quot;cell&quot;: &quot;M13&quot;,
+        &quot;value&quot;: 1568.3078736933392,
+        &quot;formula&quot;: &quot;=&#x27;Fee engine&#x27;!M95&quot;
+      },
+      &quot;fy2027OperatingProfit&quot;: {
+        &quot;sheet&quot;: &quot;Summary&quot;,
+        &quot;cell&quot;: &quot;M20&quot;,
+        &quot;value&quot;: 792.7541060612962,
+        &quot;formula&quot;: &quot;=&#x27;Fee engine&#x27;!M101&quot;
+      }
+    },
+    &quot;summary&quot;: {
+      &quot;range&quot;: &quot;K13:M20&quot;,
+      &quot;values&quot;: [
+        [
+          1354.9429499999997,
+          764.7950618437496,
+          1568.3078736933392
+        ],
+        [
+          421,
+          67,
+          281
+        ],
+        [
+          37,
+          19,
+          38
+        ],
+        [
+          2,
+          1,
+          2
+        ],
+        [
+          1814.9429499999997,
+          851.7950618437496,
+          1889.307873693339
+        ],
+        [
+          null,
+          null,
+          null
+        ],
+        [
+          -1124.404322034071,
+          -498.5594068245066,
+          -1096.553767632043
+        ],
+        [
+          690.5386279659288,
+          353.2356550192431,
+          792.7541060612962
+        ]
+      ],
+      &quot;formulas&quot;: [
+        [
+          &quot;=&#x27;Fee engine&#x27;!K95&quot;,
+          &quot;=&#x27;Fee engine&#x27;!L95&quot;,
+          &quot;=&#x27;Fee engine&#x27;!M95&quot;
+        ],
+        [
+          &quot;=&#x27;Fee engine&#x27;!K96&quot;,
+          &quot;=&#x27;Fee engine&#x27;!L96&quot;,
+          &quot;=&#x27;Fee engine&#x27;!M96&quot;
+        ],
+        [
+          &quot;=&#x27;Fee engine&#x27;!K97&quot;,
+          &quot;=&#x27;Fee engine&#x27;!L97&quot;,
+          &quot;=&#x27;Fee engine&#x27;!M97&quot;
+        ],
+        [
+          &quot;=&#x27;Fee engine&#x27;!K98&quot;,
+          &quot;=&#x27;Fee engine&#x27;!L98&quot;,
+          &quot;=&#x27;Fee engine&#x27;!M98&quot;
+        ],
+        [
+          &quot;=&#x27;Fee engine&#x27;!K99&quot;,
+          &quot;=&#x27;Fee engine&#x27;!L99&quot;,
+          &quot;=&#x27;Fee engine&#x27;!M99&quot;
+        ],
+        [
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;&quot;
+        ],
+        [
+          &quot;=&#x27;Fee engine&#x27;!K100&quot;,
+          &quot;=&#x27;Fee engine&#x27;!L100&quot;,
+          &quot;=&#x27;Fee engine&#x27;!M100&quot;
+        ],
+        [
+          &quot;=&#x27;Fee engine&#x27;!K101&quot;,
+          &quot;=&#x27;Fee engine&#x27;!L101&quot;,
+          &quot;=&#x27;Fee engine&#x27;!M101&quot;
+        ]
+      ]
+    }
+  }
+}</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

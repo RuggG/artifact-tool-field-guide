@@ -1,0 +1,163 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>source-receipt.json · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="source-receipt.json">Raw file</a> · <a data-public-raw download href="source-receipt.json">Download</a></p><article><h1>source-receipt.json</h1><pre class="public-code"><code>{
+  &quot;sources&quot;: [
+    {
+      &quot;path&quot;: &quot;2026-09-15-artifact-tool-reference/files/coverage.json&quot;,
+      &quot;sha256&quot;: &quot;d9ab1b208c86852619ca6db1fc08e4a4541312adb2acb0e2ab6c052eafc5b47e&quot;
+    },
+    {
+      &quot;path&quot;: &quot;2026-09-15-artifact-tool-reference/files/runs/api-help.ndjson&quot;,
+      &quot;sha256&quot;: &quot;e1bb566d39941ef4cbf1cea9f261399f2be7ff763bc649c4222b6eb61bfb9556&quot;
+    },
+    {
+      &quot;path&quot;: &quot;2026-09-15-artifact-tool-reference/files/runs/api-example-results.json&quot;,
+      &quot;sha256&quot;: &quot;fd4d455665d9422edb59d842e4828cfa43f18a58f8e98672a4e2e026c396cd29&quot;
+    },
+    {
+      &quot;path&quot;: &quot;2026-09-15-artifact-tool-reference/files/runs/formula-results.json&quot;,
+      &quot;sha256&quot;: &quot;48fc0178317a92c2d63b4a7f59af7b7afeb34f43695b2e73ee14c493c79a0528&quot;
+    },
+    {
+      &quot;path&quot;: &quot;2026-09-15-artifact-tool-reference/files/runs/ops.json&quot;,
+      &quot;sha256&quot;: &quot;77df60d0aa56f220aaecedd546ad27f3e933759dad61c808b52e591124d959b7&quot;
+    },
+    {
+      &quot;path&quot;: &quot;2026-09-15-artifact-tool-reference/files/runs/oracles.json&quot;,
+      &quot;sha256&quot;: &quot;608bd48cde0fccd030802f9faa163cad35f12ad2de1dccc3f48658b991483e4c&quot;
+    },
+    {
+      &quot;path&quot;: &quot;2026-09-15-artifact-tool-reference/files/runs/export-audit.json&quot;,
+      &quot;sha256&quot;: &quot;4480c6554a268987c7b7a5dea7a31520b0164036d47767d1c815cbbc50ed878f&quot;
+    },
+    {
+      &quot;path&quot;: &quot;2026-09-15-artifact-tool-reference/files/runs/sessions.json&quot;,
+      &quot;sha256&quot;: &quot;9d6f79a223a3af1f9bd82a484fc6c5014bc95bf178a2d7d4901ff245980fb924&quot;
+    }
+  ],
+  &quot;counts&quot;: {
+    &quot;families&quot;: 15,
+    &quot;recipes&quot;: 23,
+    &quot;operations&quot;: 42,
+    &quot;apis&quot;: 126,
+    &quot;formulas&quot;: 494,
+    &quot;charts&quot;: 25,
+    &quot;shapes&quot;: 190,
+    &quot;support&quot;: 19
+  },
+  &quot;gridConvention&quot;: &quot;Workbook cell displays project actual saved state; this interface does not run the artifact calculation engine.&quot;,
+  &quot;supportSources&quot;: [
+    {
+      &quot;id&quot;: &quot;support-quick_start_example&quot;,
+      &quot;path&quot;: &quot;../2026-09-15-artifact-tool-reference/files/runs/supplied-examples.json&quot;,
+      &quot;sha256&quot;: &quot;052cd3fcc15f1934983ace6bf378a0af4ce8d2b23b9fd7185951e8744a4f0b00&quot;,
+      &quot;sourceTextSha256&quot;: &quot;a0e23ee3e8d26215abe8c9f891be85133da96eac385824d5f71ed9284c50f688&quot;
+    },
+    {
+      &quot;id&quot;: &quot;support-formula_trace_and_help&quot;,
+      &quot;path&quot;: &quot;../2026-09-15-artifact-tool-reference/files/runs/supplied-examples.json&quot;,
+      &quot;sha256&quot;: &quot;052cd3fcc15f1934983ace6bf378a0af4ce8d2b23b9fd7185951e8744a4f0b00&quot;,
+      &quot;sourceTextSha256&quot;: &quot;c1d6767c52f5ce45d3d0b9d0b12aac16d71d93823efa5852e798b0b6b9ce0e39&quot;
+    },
+    {
+      &quot;id&quot;: &quot;support-chart_suggestions&quot;,
+      &quot;path&quot;: &quot;../2026-09-15-artifact-tool-reference/files/runs/supplied-examples.json&quot;,
+      &quot;sha256&quot;: &quot;052cd3fcc15f1934983ace6bf378a0af4ce8d2b23b9fd7185951e8744a4f0b00&quot;,
+      &quot;sourceTextSha256&quot;: &quot;ffba12b53f41de1aff3e3660f97655338922310b3eaccf5603f5b06cdf5d34d9&quot;
+    },
+    {
+      &quot;id&quot;: &quot;support-inspect_existing_workbooks&quot;,
+      &quot;path&quot;: &quot;../2026-09-15-artifact-tool-reference/files/runs/supplied-examples.json&quot;,
+      &quot;sha256&quot;: &quot;052cd3fcc15f1934983ace6bf378a0af4ce8d2b23b9fd7185951e8744a4f0b00&quot;,
+      &quot;sourceTextSha256&quot;: &quot;1daf6dab3769301960290b17e9821e1f554a4896d531111b83a8f758c5c0f2bc&quot;
+    },
+    {
+      &quot;id&quot;: &quot;support-marker&quot;,
+      &quot;path&quot;: &quot;../2026-09-15-artifact-tool-reference/files/sources/skill/container_tools/mark_artifact_operation_started.mjs&quot;,
+      &quot;sha256&quot;: &quot;20c5a86e596154c0541c7bfc4c52c17d928e22e27c6f0ff936c1c3fe16873c10&quot;,
+      &quot;sourceTextSha256&quot;: &quot;20c5a86e596154c0541c7bfc4c52c17d928e22e27c6f0ff936c1c3fe16873c10&quot;
+    },
+    {
+      &quot;id&quot;: &quot;support-create&quot;,
+      &quot;path&quot;: &quot;../2026-09-15-artifact-tool-reference/files/sources/skill/workflows/create_workflows.md&quot;,
+      &quot;sha256&quot;: &quot;92e3d0910bde06d210718f47f88f24a51d33bf03b4560cca3e280fbcde22a47d&quot;,
+      &quot;sourceTextSha256&quot;: &quot;92e3d0910bde06d210718f47f88f24a51d33bf03b4560cca3e280fbcde22a47d&quot;
+    },
+    {
+      &quot;id&quot;: &quot;support-edit&quot;,
+      &quot;path&quot;: &quot;../2026-09-15-artifact-tool-reference/files/sources/skill/workflows/edit_workflows.md&quot;,
+      &quot;sha256&quot;: &quot;f75917488c75b5a7b9e194c57131163d54ad23405802944e1d59eece990d27d8&quot;,
+      &quot;sourceTextSha256&quot;: &quot;f75917488c75b5a7b9e194c57131163d54ad23405802944e1d59eece990d27d8&quot;
+    },
+    {
+      &quot;id&quot;: &quot;support-style&quot;,
+      &quot;path&quot;: &quot;../2026-09-15-artifact-tool-reference/files/sources/skill/style_guidelines.md&quot;,
+      &quot;sha256&quot;: &quot;52f91ee6bc4c0a3b633b35df33924092a07e48c45cc839942288592989e33063&quot;,
+      &quot;sourceTextSha256&quot;: &quot;52f91ee6bc4c0a3b633b35df33924092a07e48c45cc839942288592989e33063&quot;
+    },
+    {
+      &quot;id&quot;: &quot;support-finance&quot;,
+      &quot;path&quot;: &quot;../2026-09-15-artifact-tool-reference/files/sources/skill/domain_guidance/financial_models.md&quot;,
+      &quot;sha256&quot;: &quot;ff163c47d4bcb14a9bf21cbb8e6fa5d73f407100e818e7a307f062e08d3025f1&quot;,
+      &quot;sourceTextSha256&quot;: &quot;ff163c47d4bcb14a9bf21cbb8e6fa5d73f407100e818e7a307f062e08d3025f1&quot;
+    },
+    {
+      &quot;id&quot;: &quot;support-marketing&quot;,
+      &quot;path&quot;: &quot;../2026-09-15-artifact-tool-reference/files/sources/skill/domain_guidance/marketing_advertising.md&quot;,
+      &quot;sha256&quot;: &quot;bd6a715ac7d9ad2c830dff146e48321ccc4330c0024f471e85be66c5bb65b014&quot;,
+      &quot;sourceTextSha256&quot;: &quot;bd6a715ac7d9ad2c830dff146e48321ccc4330c0024f471e85be66c5bb65b014&quot;
+    },
+    {
+      &quot;id&quot;: &quot;support-healthcare&quot;,
+      &quot;path&quot;: &quot;../2026-09-15-artifact-tool-reference/files/sources/skill/domain_guidance/healthcare.md&quot;,
+      &quot;sha256&quot;: &quot;df5b9dcb9df988c197fcb377e0b9798f582e9cd30d1c103fd7cd8957a215dff9&quot;,
+      &quot;sourceTextSha256&quot;: &quot;df5b9dcb9df988c197fcb377e0b9798f582e9cd30d1c103fd7cd8957a215dff9&quot;
+    },
+    {
+      &quot;id&quot;: &quot;support-science&quot;,
+      &quot;path&quot;: &quot;../2026-09-15-artifact-tool-reference/files/sources/skill/domain_guidance/scientific_research.md&quot;,
+      &quot;sha256&quot;: &quot;a95381e624c4c9562efee3e4a5cdd41bd52e1d3330545ab64d2a85242b10c0af&quot;,
+      &quot;sourceTextSha256&quot;: &quot;a95381e624c4c9562efee3e4a5cdd41bd52e1d3330545ab64d2a85242b10c0af&quot;
+    },
+    {
+      &quot;id&quot;: &quot;support-read-only&quot;,
+      &quot;path&quot;: &quot;../2026-09-15-artifact-tool-reference/files/sources/skill/references/read_only_qna.md&quot;,
+      &quot;sha256&quot;: &quot;687beb1ce4c32164fd8f8f17e0a2c6a4371798ab1d47835a0a74efe7b8f980a6&quot;,
+      &quot;sourceTextSha256&quot;: &quot;687beb1ce4c32164fd8f8f17e0a2c6a4371798ab1d47835a0a74efe7b8f980a6&quot;
+    },
+    {
+      &quot;id&quot;: &quot;support-images&quot;,
+      &quot;path&quot;: &quot;../2026-09-15-artifact-tool-reference/files/sources/skill/references/image-references.md&quot;,
+      &quot;sha256&quot;: &quot;148690f09a1f33a8d61a3f28df8b9c872a6bc16f0eaa2ea561bcc4dcd07bc2cc&quot;,
+      &quot;sourceTextSha256&quot;: &quot;148690f09a1f33a8d61a3f28df8b9c872a6bc16f0eaa2ea561bcc4dcd07bc2cc&quot;
+    },
+    {
+      &quot;id&quot;: &quot;support-template&quot;,
+      &quot;path&quot;: &quot;../2026-09-15-artifact-tool-reference/files/sources/skill/references/template-elicitation.md&quot;,
+      &quot;sha256&quot;: &quot;60b0ea3e373eef4f2a11fa419a7214f6580ac8e9b91028e7ba0968d4106e69ad&quot;,
+      &quot;sourceTextSha256&quot;: &quot;60b0ea3e373eef4f2a11fa419a7214f6580ac8e9b91028e7ba0968d4106e69ad&quot;
+    },
+    {
+      &quot;id&quot;: &quot;support-google&quot;,
+      &quot;path&quot;: &quot;../2026-09-15-artifact-tool-reference/files/sources/skill/routing/google_sheets.md&quot;,
+      &quot;sha256&quot;: &quot;0acafc1a346240b9346c08e67b69ab289286c80d93528583c085444407ffc428&quot;,
+      &quot;sourceTextSha256&quot;: &quot;0acafc1a346240b9346c08e67b69ab289286c80d93528583c085444407ffc428&quot;
+    },
+    {
+      &quot;id&quot;: &quot;support-scenario&quot;,
+      &quot;path&quot;: &quot;../2026-09-15-artifact-tool-reference/files/runs/workflow-example.json&quot;,
+      &quot;sha256&quot;: &quot;6194fbc69a694b6b05abd892a1c081e619a2a02803f10e4739a25c53eacfef0d&quot;,
+      &quot;sourceTextSha256&quot;: &quot;97dda9f39a13606bdbf3c957043ae73b1b0feedf65fa97ab9ab42cdf74ccee1c&quot;
+    },
+    {
+      &quot;id&quot;: &quot;support-sessions&quot;,
+      &quot;path&quot;: &quot;../2026-09-15-artifact-tool-reference/files/runs/sessions.json&quot;,
+      &quot;sha256&quot;: &quot;9d6f79a223a3af1f9bd82a484fc6c5014bc95bf178a2d7d4901ff245980fb924&quot;,
+      &quot;sourceTextSha256&quot;: &quot;cf3b1259cc8c84f35e25db6426930e68a2dc9ee5bbe5a9fd94f2bc5f87b269fa&quot;
+    },
+    {
+      &quot;id&quot;: &quot;support-isolation&quot;,
+      &quot;path&quot;: &quot;../2026-09-15-artifact-tool-reference/files/runs/api-example-results.json&quot;,
+      &quot;sha256&quot;: &quot;fd4d455665d9422edb59d842e4828cfa43f18a58f8e98672a4e2e026c396cd29&quot;,
+      &quot;sourceTextSha256&quot;: &quot;ef2ca97fa646c09e94d5c1597ec743ebbaed14e099357a14addcf86b11b825b0&quot;
+    }
+  ]
+}</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

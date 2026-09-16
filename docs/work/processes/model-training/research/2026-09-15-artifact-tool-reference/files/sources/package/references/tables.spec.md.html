@@ -1,0 +1,36 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Worksheet Tables · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="tables.spec.md">Raw file</a> · <a data-public-raw download href="tables.spec.md">Download</a></p><article><h1 id="worksheet-tables">Worksheet Tables</h1>
+<p>Use <code>sheet.tables</code> to add and edit Excel-style tables.</p>
+<h2 id="add-table">Add Table</h2>
+<pre><code class="language-ts">const table = sheet.tables.add(rangeAddress, hasHeaders, tableName);
+</code></pre>
+<h2 id="add-inline-type">Add Inline Type</h2>
+<pre><code class="language-ts">type WorksheetTableAddArgs = {
+  range: string | Range;
+  hasHeaders?: boolean;
+  name?: string;
+};
+</code></pre>
+<h2 id="rows-and-values">Rows And Values</h2>
+<pre><code class="language-ts">table.rows.add(rowIndex, rowValues);
+table.getRange().values = tableValues;
+</code></pre>
+<h2 id="table-style">Table Style</h2>
+<pre><code class="language-ts">table.name = tableName;
+table.showTotals = showTotals;
+table.style = tableStyleName;
+table.styleOptions = tableStyleOptions;
+</code></pre>
+<h2 id="table-inline-type">Table Inline Type</h2>
+<pre><code class="language-ts">type WorkbookTableStyleOptions = {
+  showHeaders?: boolean;
+  showTotals?: boolean;
+  bandedRows?: boolean;
+  bandedColumns?: boolean;
+  firstColumn?: boolean;
+  lastColumn?: boolean;
+};
+</code></pre>
+<h2 id="delete">Delete</h2>
+<pre><code class="language-ts">table.delete();
+sheet.tables.deleteAll();
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

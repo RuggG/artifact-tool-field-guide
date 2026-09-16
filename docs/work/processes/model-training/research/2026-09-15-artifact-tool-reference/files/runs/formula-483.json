@@ -1,0 +1,37 @@
+{
+  "name": "fx.CONCAT",
+  "category": "text",
+  "examples": [
+    {
+      "formula": "=CONCAT(\"text1\", C1:C5, C1:C5)",
+      "value": "text136912153691215",
+      "projection": [
+        [
+          "text136912153691215",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 10
+    }
+  ]
+}

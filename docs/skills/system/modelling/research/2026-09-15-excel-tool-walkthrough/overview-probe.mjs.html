@@ -1,0 +1,41 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>overview-probe.mjs · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="overview-probe.mjs">Raw file</a> · <a data-public-raw download href="overview-probe.mjs">Download</a></p><article><h1>overview-probe.mjs</h1><pre class="public-code"><code>import fs from &#x27;node:fs/promises&#x27;;
+import path from &#x27;node:path&#x27;;
+import {fileURLToPath} from &#x27;node:url&#x27;;
+import {FileBlob, SpreadsheetFile} from &#x27;@oai/artifact-tool&#x27;;
+
+const here=path.dirname(fileURLToPath(import.meta.url));
+const out=path.join(here,&#x27;overview-probe&#x27;);
+await fs.mkdir(out,{recursive:true});
+const wb=await SpreadsheetFile.importXlsx(await FileBlob.load(path.join(here,&#x27;man-group-run/source.xlsx&#x27;)));
+const report=[];
+const calls=[
+ [&#x27;full-with-preview-caps&#x27;,{kind:&#x27;workbook,sheet,table&#x27;,maxChars:150000,tableMaxRows:4,tableMaxCols:6,tableMaxCellChars:80}],
+ [&#x27;fee-table-tiny-preview&#x27;,{kind:&#x27;table&#x27;,sheetId:&#x27;Fee engine&#x27;,maxChars:150000,tableMaxRows:1,tableMaxCols:1,tableMaxCellChars:1}],
+ [&#x27;fee-table-small-budget&#x27;,{kind:&#x27;table&#x27;,sheetId:&#x27;Fee engine&#x27;,maxChars:1000,tableMaxRows:1,tableMaxCols:1,tableMaxCellChars:1}],
+ [&#x27;fee-table-explicit-range&#x27;,{kind:&#x27;table&#x27;,include:&#x27;values&#x27;,sheetId:&#x27;Fee engine&#x27;,range:&#x27;A1:W109&#x27;,maxChars:1000,tableMaxRows:1,tableMaxCols:1,tableMaxCellChars:1}],
+ [&#x27;metadata-overview&#x27;,{kind:&#x27;workbook,sheet&#x27;,maxChars:14000}],
+ [&#x27;fee-regions-small-preview&#x27;,{kind:&#x27;region&#x27;,sheetId:&#x27;Fee engine&#x27;,range:&#x27;A1:W109&#x27;,maxChars:40000,tableMaxRows:2,tableMaxCols:3,tableMaxCellChars:20}],
+ [&#x27;fee-regions-larger-preview&#x27;,{kind:&#x27;region&#x27;,sheetId:&#x27;Fee engine&#x27;,range:&#x27;A1:W109&#x27;,maxChars:40000,tableMaxRows:4,tableMaxCols:6,tableMaxCellChars:20}]
+];
+for(const [id,input] of calls){
+ const r=await wb.inspect(input);
+ const result={ndjson:r.ndjson,recordCount:r.recordCount,truncated:r.truncated,metadata:r.metadata};
+ const parsed=r.ndjson.split(&#x27;\n&#x27;).filter(Boolean).map(x=&gt;JSON.parse(x));
+ const shapes=parsed.map(x=&gt;{
+  const base={kind:x.kind,sheet:x.sheet||x.name,address:x.address,rows:x.rows,cols:x.cols};
+  if(x.values){
+   const actual=wb.worksheets.getItem(x.sheet).getRange(x.address).values;
+   Object.assign(base,{returnedRows:x.values.length,returnedCols:Math.max(...x.values.map(a=&gt;a.length)),exactlyMatchesDirectValues:JSON.stringify(actual)===JSON.stringify(x.values)});
+  }
+  if(x.preview)Object.assign(base,{previewAddress:x.previewAddress,previewRows:x.preview.length,previewCols:Math.max(...x.preview.map(a=&gt;a.length)),longestPreviewText:Math.max(0,...x.preview.flat().filter(v=&gt;typeof v===&#x27;string&#x27;).map(v=&gt;v.length))});
+  if(x.message)base.message=x.message;
+  return base;
+ });
+ await fs.writeFile(path.join(out,id+&#x27;.json&#x27;),JSON.stringify({input,result},null,2));
+ const summary={id,characters:r.ndjson.length,recordCount:r.recordCount,truncated:r.truncated,records:shapes};
+ report.push(summary);console.log(JSON.stringify(summary));
+}
+const help=wb.help(&#x27;workbook.inspect&#x27;,{include:&#x27;index,notes,examples&#x27;,maxChars:6000});
+await fs.writeFile(path.join(out,&#x27;inspect-help.txt&#x27;),help.ndjson);
+await fs.writeFile(path.join(out,&#x27;report.json&#x27;),JSON.stringify(report,null,2));
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

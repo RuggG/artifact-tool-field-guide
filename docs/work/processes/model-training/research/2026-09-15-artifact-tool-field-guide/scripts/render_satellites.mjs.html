@@ -1,0 +1,46 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>render_satellites.mjs · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="render_satellites.mjs">Raw file</a> · <a data-public-raw download href="render_satellites.mjs">Download</a></p><article><h1>render_satellites.mjs</h1><pre class="public-code"><code>// node render_satellites.mjs /absolute/path/to/marked/lib/marked.esm.js
+// Render saved Markdown at build time, retaining the exact source alongside it.
+import fs from &#x27;node:fs&#x27;;
+import path from &#x27;node:path&#x27;;
+import {fileURLToPath, pathToFileURL} from &#x27;node:url&#x27;;
+const {marked} = await import(pathToFileURL(process.argv[2]).href);
+const home = path.resolve(path.dirname(fileURLToPath(import.meta.url)), &#x27;..&#x27;);
+const file = path.join(home, &#x27;data/satellite-documents.json&#x27;);
+const data = JSON.parse(fs.readFileSync(file, &#x27;utf8&#x27;));
+const escape = s =&gt; s.replace(/[&amp;&lt;&gt;&quot;&#x27;]/g,c=&gt;({&#x27;&amp;&#x27;:&#x27;&amp;amp;&#x27;,&#x27;&lt;&#x27;:&#x27;&amp;lt;&#x27;,&#x27;&gt;&#x27;:&#x27;&amp;gt;&#x27;,&#x27;&quot;&#x27;:&#x27;&amp;quot;&#x27;,&quot;&#x27;&quot;:&#x27;&amp;#39;&#x27;}[c]));
+const slug = s =&gt; s.toLowerCase().replace(/&lt;[^&gt;]*&gt;/g,&#x27;&#x27;).replace(/[^\p{L}\p{N}_\-\s]/gu,&#x27;&#x27;).replace(/\s/g,&#x27;-&#x27;);
+for (const doc of data.documents) {
+  let markdown = doc.markdown;
+  let metadata = &#x27;&#x27;;
+  const front = markdown.match(/^---\r?\n[\s\S]*?\r?\n---(?:\r?\n|$)/);
+  if(front) { metadata = `&lt;details class=&quot;sd-metadata&quot;&gt;&lt;summary&gt;Document metadata&lt;/summary&gt;&lt;pre&gt;${escape(front[0])}&lt;/pre&gt;&lt;/details&gt;`; markdown = markdown.slice(front[0].length); }
+  const used = new Map(); doc.outline = [];
+  const renderer = new marked.Renderer();
+  renderer.heading = function(token) {
+    const label = token.text.replace(/`/g,&#x27;&#x27;).replace(/\*\*/g,&#x27;&#x27;);
+    const root = slug(label), n = used.get(root) || 0; used.set(root,n+1);
+    const anchor = root + (n ? &#x27;-&#x27;+n : &#x27;&#x27;);
+    doc.outline.push({anchor, label, level: token.depth});
+    const level = Math.min(6, token.depth + 1);
+    return `&lt;h${level} id=&quot;sd-${doc.id}-${anchor}&quot;&gt;${this.parser.parseInline(token.tokens)}&lt;/h${level}&gt;\n`;
+  };
+  renderer.link = function(token) {
+    let href = token.href;
+    if(!/^(?:[a-z]+:|\/\/)/i.test(href)) {
+      const [relative, hash] = href.split(&#x27;#&#x27;);
+      const targetPath = relative ? path.posix.normalize(path.posix.join(path.posix.dirname(doc.path), relative)) : doc.path;
+      const target = data.documents.find(d=&gt;d.path===targetPath);
+      if(target) href = `?doc=${target.id}${hash?&#x27;&amp;dsection=&#x27;+encodeURIComponent(hash):&#x27;&#x27;}#satellite-reader`;
+      else href = path.posix.normalize(path.posix.join(path.posix.dirname(doc.source),relative))+(hash?&#x27;#&#x27;+hash:&#x27;&#x27;);
+    }
+    return `&lt;a href=&quot;${escape(href)}&quot;${token.title?&#x27; title=&quot;&#x27;+escape(token.title)+&#x27;&quot;&#x27;:&#x27;&#x27;}&gt;${this.parser.parseInline(token.tokens)}&lt;/a&gt;`;
+  };
+  doc.html = metadata + marked.parse(markdown,{gfm:true,renderer});
+  // Explicit Markdown HTML anchors remain addressable inside the reader.
+  doc.html = doc.html.replace(/&lt;a id=&quot;([^&quot;]+)&quot;/g,(_,id)=&gt;`&lt;a id=&quot;sd-${doc.id}-${id}&quot;`);
+  if(/&lt;(?:script|iframe|object)\b|\son\w+\s*=/i.test(doc.html)) throw new Error(&#x27;Unexpected executable HTML in &#x27;+doc.path);
+}
+data.renderer = &#x27;marked (GitHub-flavoured Markdown); headings and local document links adapted for this reader&#x27;;
+fs.writeFileSync(file,JSON.stringify(data,null,2)+&#x27;\n&#x27;);
+console.log(&#x27;Rendered complete Markdown for &#x27;+data.documents.length+&#x27; documents.&#x27;);
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

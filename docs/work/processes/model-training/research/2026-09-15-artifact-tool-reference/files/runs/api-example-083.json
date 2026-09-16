@@ -1,0 +1,10 @@
+{
+  "index": 83,
+  "name": "range.format.fill.color",
+  "summary": "Update fill via fill.color",
+  "originalCode": "const block = sheet.getRange('A1:B10');\nblock.format.fill.color = '#0055A4';",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

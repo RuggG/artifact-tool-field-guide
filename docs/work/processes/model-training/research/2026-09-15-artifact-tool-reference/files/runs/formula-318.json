@@ -1,0 +1,37 @@
+{
+  "name": "fx.SUBTOTAL",
+  "category": "math-trig",
+  "examples": [
+    {
+      "formula": "=SUBTOTAL(A1, A1, C1:C5, C1:C5)",
+      "value": 1,
+      "projection": [
+        [
+          1,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 14
+    }
+  ]
+}

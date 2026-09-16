@@ -1,0 +1,37 @@
+{
+  "name": "fx.IMABS",
+  "category": "engineering",
+  "examples": [
+    {
+      "formula": "=IMABS(10)",
+      "value": 10,
+      "projection": [
+        [
+          10,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 10
+    }
+  ]
+}

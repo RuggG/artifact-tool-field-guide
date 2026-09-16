@@ -1,0 +1,37 @@
+{
+  "name": "fx.LEFT",
+  "category": "text",
+  "examples": [
+    {
+      "formula": "=LEFT(\"text\", A1)",
+      "value": "t",
+      "projection": [
+        [
+          "t",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 9
+    }
+  ]
+}

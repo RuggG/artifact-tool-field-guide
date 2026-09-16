@@ -1,0 +1,1184 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ops.json · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="ops.json">Raw file</a> · <a data-public-raw download href="ops.json">Download</a></p><article><h1>ops.json</h1><pre class="public-code"><code>[
+  {
+    &quot;id&quot;: &quot;OP-theme.colorScheme.set-0&quot;,
+    &quot;description&quot;: &quot;Replace the workbook theme color scheme snapshot.&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 9,
+    &quot;detail&quot;: {
+      &quot;input&quot;: {
+        &quot;op&quot;: &quot;theme.colorScheme.set&quot;,
+        &quot;scheme&quot;: {
+          &quot;name&quot;: &quot;Ocean&quot;,
+          &quot;themeColors&quot;: {
+            &quot;accent1&quot;: &quot;#0F4C81&quot;,
+            &quot;accent2&quot;: &quot;#00A6A6&quot;,
+            &quot;bg1&quot;: &quot;#FFFFFF&quot;,
+            &quot;tx1&quot;: &quot;#0F172A&quot;
+          }
+        }
+      },
+      &quot;adaptations&quot;: [],
+      &quot;result&quot;: {
+        &quot;idMap&quot;: {},
+        &quot;warnings&quot;: []
+      },
+      &quot;changed&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;OP-sheet.add-0&quot;,
+    &quot;description&quot;: &quot;Add a worksheet to the workbook.&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 6,
+    &quot;detail&quot;: {
+      &quot;input&quot;: {
+        &quot;op&quot;: &quot;sheet.add&quot;,
+        &quot;name&quot;: &quot;Inventory&quot;
+      },
+      &quot;adaptations&quot;: [],
+      &quot;result&quot;: {
+        &quot;idMap&quot;: {},
+        &quot;warnings&quot;: []
+      },
+      &quot;changed&quot;: false
+    }
+  },
+  {
+    &quot;id&quot;: &quot;OP-sheet.set-0&quot;,
+    &quot;description&quot;: &quot;Rename or reorder a worksheet.&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 2,
+    &quot;detail&quot;: {
+      &quot;input&quot;: {
+        &quot;op&quot;: &quot;sheet.set&quot;,
+        &quot;target&quot;: &quot;Sheet1&quot;,
+        &quot;props&quot;: {
+          &quot;name&quot;: &quot;Dashboard&quot;,
+          &quot;index&quot;: 0
+        }
+      },
+      &quot;adaptations&quot;: [],
+      &quot;result&quot;: {
+        &quot;idMap&quot;: {},
+        &quot;warnings&quot;: []
+      },
+      &quot;changed&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;OP-sheet.remove-0&quot;,
+    &quot;description&quot;: &quot;Delete a worksheet by name.&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 2,
+    &quot;detail&quot;: {
+      &quot;input&quot;: {
+        &quot;op&quot;: &quot;sheet.remove&quot;,
+        &quot;target&quot;: &quot;Scratch&quot;
+      },
+      &quot;adaptations&quot;: [],
+      &quot;result&quot;: {
+        &quot;idMap&quot;: {},
+        &quot;warnings&quot;: []
+      },
+      &quot;changed&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;OP-range.values.set-0&quot;,
+    &quot;description&quot;: &quot;Set cell values for a range.&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 1,
+    &quot;detail&quot;: {
+      &quot;input&quot;: {
+        &quot;op&quot;: &quot;range.values.set&quot;,
+        &quot;target&quot;: {
+          &quot;sheet&quot;: &quot;Inventory&quot;,
+          &quot;range&quot;: &quot;A1:C2&quot;
+        },
+        &quot;values&quot;: [
+          [
+            &quot;SKU&quot;,
+            &quot;Color&quot;,
+            &quot;Stock&quot;
+          ],
+          [
+            &quot;100-001&quot;,
+            &quot;Black&quot;,
+            15
+          ]
+        ]
+      },
+      &quot;adaptations&quot;: [],
+      &quot;result&quot;: {
+        &quot;idMap&quot;: {},
+        &quot;warnings&quot;: []
+      },
+      &quot;changed&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;OP-range.formulas.set-0&quot;,
+    &quot;description&quot;: &quot;Set formulas for a range.&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 4,
+    &quot;detail&quot;: {
+      &quot;input&quot;: {
+        &quot;op&quot;: &quot;range.formulas.set&quot;,
+        &quot;target&quot;: {
+          &quot;sheet&quot;: &quot;Inventory&quot;,
+          &quot;range&quot;: &quot;E2&quot;
+        },
+        &quot;formulas&quot;: [
+          [
+            &quot;=AVERAGE(C2:C4)&quot;
+          ]
+        ]
+      },
+      &quot;adaptations&quot;: [],
+      &quot;result&quot;: {
+        &quot;idMap&quot;: {},
+        &quot;warnings&quot;: []
+      },
+      &quot;changed&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;OP-range.merge-0&quot;,
+    &quot;description&quot;: &quot;Merge cells in a range.&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 1,
+    &quot;detail&quot;: {
+      &quot;input&quot;: {
+        &quot;op&quot;: &quot;range.merge&quot;,
+        &quot;target&quot;: {
+          &quot;sheet&quot;: &quot;Report&quot;,
+          &quot;range&quot;: &quot;A1:D1&quot;
+        }
+      },
+      &quot;adaptations&quot;: [],
+      &quot;result&quot;: {
+        &quot;idMap&quot;: {},
+        &quot;warnings&quot;: []
+      },
+      &quot;changed&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;OP-range.unmerge-0&quot;,
+    &quot;description&quot;: &quot;Unmerge any merged blocks intersecting the range.&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 1,
+    &quot;detail&quot;: {
+      &quot;input&quot;: {
+        &quot;op&quot;: &quot;range.unmerge&quot;,
+        &quot;target&quot;: {
+          &quot;sheet&quot;: &quot;Report&quot;,
+          &quot;range&quot;: &quot;A1:D4&quot;
+        }
+      },
+      &quot;adaptations&quot;: [],
+      &quot;result&quot;: {
+        &quot;idMap&quot;: {},
+        &quot;warnings&quot;: []
+      },
+      &quot;changed&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;OP-range.format.set-0&quot;,
+    &quot;description&quot;: &quot;Apply formatting to a range.&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 3,
+    &quot;detail&quot;: {
+      &quot;input&quot;: {
+        &quot;op&quot;: &quot;range.format.set&quot;,
+        &quot;target&quot;: {
+          &quot;sheet&quot;: &quot;Scorecard&quot;,
+          &quot;range&quot;: &quot;A1:C1&quot;
+        },
+        &quot;props&quot;: {
+          &quot;fill&quot;: &quot;accent1&quot;,
+          &quot;font&quot;: {
+            &quot;bold&quot;: true,
+            &quot;size&quot;: 14
+          },
+          &quot;horizontalAlignment&quot;: &quot;center&quot;,
+          &quot;numberFormat&quot;: &quot;$#,##0.00&quot;,
+          &quot;wrapText&quot;: true,
+          &quot;borders&quot;: {
+            &quot;preset&quot;: &quot;outside&quot;,
+            &quot;style&quot;: &quot;solid&quot;,
+            &quot;color&quot;: &quot;accent3&quot;
+          }
+        }
+      },
+      &quot;adaptations&quot;: [],
+      &quot;result&quot;: {
+        &quot;idMap&quot;: {},
+        &quot;warnings&quot;: []
+      },
+      &quot;changed&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;OP-range.format.clear-0&quot;,
+    &quot;description&quot;: &quot;Clear cell formatting for a range.&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 2,
+    &quot;detail&quot;: {
+      &quot;input&quot;: {
+        &quot;op&quot;: &quot;range.format.clear&quot;,
+        &quot;target&quot;: {
+          &quot;sheet&quot;: &quot;Scorecard&quot;,
+          &quot;range&quot;: &quot;A2:C8&quot;
+        }
+      },
+      &quot;adaptations&quot;: [],
+      &quot;result&quot;: {
+        &quot;idMap&quot;: {},
+        &quot;warnings&quot;: []
+      },
+      &quot;changed&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;OP-table.add-0&quot;,
+    &quot;description&quot;: &quot;Create a table from a range.&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 2,
+    &quot;detail&quot;: {
+      &quot;input&quot;: {
+        &quot;op&quot;: &quot;table.add&quot;,
+        &quot;props&quot;: {
+          &quot;range&quot;: {
+            &quot;sheet&quot;: &quot;Inventory&quot;,
+            &quot;range&quot;: &quot;A1:C3&quot;
+          },
+          &quot;hasHeaders&quot;: true,
+          &quot;name&quot;: &quot;InventoryTable&quot;
+        }
+      },
+      &quot;adaptations&quot;: [],
+      &quot;result&quot;: {
+        &quot;idMap&quot;: {},
+        &quot;warnings&quot;: []
+      },
+      &quot;changed&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;OP-table.rows.add-0&quot;,
+    &quot;description&quot;: &quot;Append or insert rows into a table.&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 2,
+    &quot;detail&quot;: {
+      &quot;input&quot;: {
+        &quot;op&quot;: &quot;table.rows.add&quot;,
+        &quot;target&quot;: {
+          &quot;name&quot;: &quot;InventoryTable&quot;,
+          &quot;sheet&quot;: &quot;Inventory&quot;
+        },
+        &quot;props&quot;: {
+          &quot;index&quot;: null,
+          &quot;values&quot;: [
+            [
+              &quot;100-003&quot;,
+              &quot;Denim&quot;,
+              12
+            ]
+          ]
+        }
+      },
+      &quot;adaptations&quot;: [],
+      &quot;result&quot;: {
+        &quot;idMap&quot;: {},
+        &quot;warnings&quot;: []
+      },
+      &quot;changed&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;OP-table.set-0&quot;,
+    &quot;description&quot;: &quot;Update table metadata.&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 1,
+    &quot;detail&quot;: {
+      &quot;input&quot;: {
+        &quot;op&quot;: &quot;table.set&quot;,
+        &quot;target&quot;: {
+          &quot;name&quot;: &quot;InventoryTable&quot;,
+          &quot;sheet&quot;: &quot;Inventory&quot;
+        },
+        &quot;props&quot;: {
+          &quot;name&quot;: &quot;InventoryArchive&quot;
+        }
+      },
+      &quot;adaptations&quot;: [],
+      &quot;result&quot;: {
+        &quot;idMap&quot;: {},
+        &quot;warnings&quot;: []
+      },
+      &quot;changed&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;OP-table.remove-0&quot;,
+    &quot;description&quot;: &quot;Delete a table from a worksheet.&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 2,
+    &quot;detail&quot;: {
+      &quot;input&quot;: {
+        &quot;op&quot;: &quot;table.remove&quot;,
+        &quot;target&quot;: {
+          &quot;name&quot;: &quot;InventoryTable&quot;,
+          &quot;sheet&quot;: &quot;Inventory&quot;
+        }
+      },
+      &quot;adaptations&quot;: [],
+      &quot;result&quot;: {
+        &quot;idMap&quot;: {},
+        &quot;warnings&quot;: []
+      },
+      &quot;changed&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;OP-conditionalformat.add-0&quot;,
+    &quot;description&quot;: &quot;Add a conditional formatting rule to a range.&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 3,
+    &quot;detail&quot;: {
+      &quot;input&quot;: {
+        &quot;op&quot;: &quot;conditionalformat.add&quot;,
+        &quot;target&quot;: {
+          &quot;sheet&quot;: &quot;CF&quot;,
+          &quot;range&quot;: &quot;A1:A3&quot;
+        },
+        &quot;props&quot;: {
+          &quot;rule&quot;: {
+            &quot;type&quot;: &quot;cellIs&quot;,
+            &quot;operator&quot;: &quot;greaterThan&quot;,
+            &quot;formula&quot;: 3,
+            &quot;format&quot;: {
+              &quot;fill&quot;: &quot;accent2&quot;,
+              &quot;font&quot;: {
+                &quot;bold&quot;: true,
+                &quot;color&quot;: &quot;accent3&quot;
+              }
+            }
+          }
+        }
+      },
+      &quot;adaptations&quot;: [],
+      &quot;result&quot;: {
+        &quot;idMap&quot;: {},
+        &quot;warnings&quot;: []
+      },
+      &quot;changed&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;OP-conditionalformat.add-1&quot;,
+    &quot;description&quot;: &quot;Add a conditional formatting rule to a range.&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 1,
+    &quot;detail&quot;: {
+      &quot;input&quot;: {
+        &quot;op&quot;: &quot;conditionalformat.add&quot;,
+        &quot;target&quot;: {
+          &quot;sheet&quot;: &quot;KPIs&quot;,
+          &quot;range&quot;: &quot;F2:F20&quot;
+        },
+        &quot;props&quot;: {
+          &quot;rule&quot;: {
+            &quot;type&quot;: &quot;top10&quot;,
+            &quot;rank&quot;: 10,
+            &quot;percent&quot;: true,
+            &quot;format&quot;: {
+              &quot;fill&quot;: &quot;#DCFCE7&quot;,
+              &quot;font&quot;: {
+                &quot;color&quot;: &quot;#166534&quot;
+              }
+            }
+          }
+        }
+      },
+      &quot;adaptations&quot;: [],
+      &quot;result&quot;: {
+        &quot;idMap&quot;: {},
+        &quot;warnings&quot;: []
+      },
+      &quot;changed&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;OP-conditionalformat.add-2&quot;,
+    &quot;description&quot;: &quot;Add a conditional formatting rule to a range.&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 2,
+    &quot;detail&quot;: {
+      &quot;input&quot;: {
+        &quot;op&quot;: &quot;conditionalformat.add&quot;,
+        &quot;target&quot;: {
+          &quot;sheet&quot;: &quot;KPIs&quot;,
+          &quot;range&quot;: &quot;G2:G20&quot;
+        },
+        &quot;props&quot;: {
+          &quot;rule&quot;: {
+            &quot;type&quot;: &quot;iconSet&quot;,
+            &quot;iconSet&quot;: &quot;5Rating&quot;,
+            &quot;showValue&quot;: false,
+            &quot;reverse&quot;: false,
+            &quot;percent&quot;: true
+          }
+        }
+      },
+      &quot;adaptations&quot;: [],
+      &quot;result&quot;: {
+        &quot;idMap&quot;: {},
+        &quot;warnings&quot;: []
+      },
+      &quot;changed&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;OP-conditionalformat.clear-0&quot;,
+    &quot;description&quot;: &quot;Remove conditional formatting rules from a range.&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 1,
+    &quot;detail&quot;: {
+      &quot;input&quot;: {
+        &quot;op&quot;: &quot;conditionalformat.clear&quot;,
+        &quot;target&quot;: {
+          &quot;sheet&quot;: &quot;CF&quot;,
+          &quot;range&quot;: &quot;A1:A3&quot;
+        }
+      },
+      &quot;adaptations&quot;: [],
+      &quot;result&quot;: {
+        &quot;idMap&quot;: {},
+        &quot;warnings&quot;: []
+      },
+      &quot;changed&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;OP-datavalidation.set-0&quot;,
+    &quot;description&quot;: &quot;Set data validation rules for a range.&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 1,
+    &quot;detail&quot;: {
+      &quot;input&quot;: {
+        &quot;op&quot;: &quot;datavalidation.set&quot;,
+        &quot;target&quot;: {
+          &quot;sheet&quot;: &quot;Validation&quot;,
+          &quot;range&quot;: &quot;B2:B10&quot;
+        },
+        &quot;props&quot;: {
+          &quot;rule&quot;: {
+            &quot;type&quot;: &quot;list&quot;,
+            &quot;values&quot;: [
+              &quot;Dog&quot;,
+              &quot;Cat&quot;,
+              &quot;Bat&quot;
+            ]
+          },
+          &quot;prompt&quot;: {
+            &quot;title&quot;: &quot;Pick an animal&quot;,
+            &quot;show&quot;: true
+          },
+          &quot;errorAlert&quot;: {
+            &quot;title&quot;: &quot;Invalid choice&quot;,
+            &quot;show&quot;: true
+          },
+          &quot;ignoreBlanks&quot;: true,
+          &quot;inCellDropDown&quot;: true
+        }
+      },
+      &quot;adaptations&quot;: [],
+      &quot;result&quot;: {
+        &quot;idMap&quot;: {},
+        &quot;warnings&quot;: []
+      },
+      &quot;changed&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;OP-datavalidation.clear-0&quot;,
+    &quot;description&quot;: &quot;Remove data validation rules from a range.&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 2,
+    &quot;detail&quot;: {
+      &quot;input&quot;: {
+        &quot;op&quot;: &quot;datavalidation.clear&quot;,
+        &quot;target&quot;: {
+          &quot;sheet&quot;: &quot;Validation&quot;,
+          &quot;range&quot;: &quot;B2:B10&quot;
+        }
+      },
+      &quot;adaptations&quot;: [],
+      &quot;result&quot;: {
+        &quot;idMap&quot;: {},
+        &quot;warnings&quot;: []
+      },
+      &quot;changed&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;OP-sparkline.add-0&quot;,
+    &quot;description&quot;: &quot;Create a sparkline group backed by source data.&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 2,
+    &quot;detail&quot;: {
+      &quot;input&quot;: {
+        &quot;op&quot;: &quot;sparkline.add&quot;,
+        &quot;props&quot;: {
+          &quot;uid&quot;: &quot;{8FA89B8F-27A7-4E3D-A756-4CD08F8D7B2B}&quot;,
+          &quot;type&quot;: &quot;line&quot;,
+          &quot;targetRange&quot;: {
+            &quot;sheet&quot;: &quot;KPIs&quot;,
+            &quot;range&quot;: &quot;H2:H3&quot;
+          },
+          &quot;sourceData&quot;: {
+            &quot;sheet&quot;: &quot;KPIs&quot;,
+            &quot;range&quot;: &quot;B2:G3&quot;
+          },
+          &quot;dateAxisRange&quot;: {
+            &quot;sheet&quot;: &quot;KPIs&quot;,
+            &quot;range&quot;: &quot;B1:G1&quot;
+          },
+          &quot;seriesColor&quot;: &quot;accent1&quot;,
+          &quot;markers&quot;: {
+            &quot;show&quot;: true,
+            &quot;high&quot;: true,
+            &quot;low&quot;: true
+          }
+        }
+      },
+      &quot;adaptations&quot;: [],
+      &quot;result&quot;: {
+        &quot;idMap&quot;: {},
+        &quot;warnings&quot;: []
+      },
+      &quot;changed&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;OP-sparkline.set-0&quot;,
+    &quot;description&quot;: &quot;Replace a sparkline group&#x27;s recorded settings.&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 2,
+    &quot;detail&quot;: {
+      &quot;input&quot;: {
+        &quot;op&quot;: &quot;sparkline.set&quot;,
+        &quot;target&quot;: {
+          &quot;sheet&quot;: &quot;KPIs&quot;,
+          &quot;uid&quot;: &quot;{8FA89B8F-27A7-4E3D-A756-4CD08F8D7B2B}&quot;
+        },
+        &quot;props&quot;: {
+          &quot;type&quot;: &quot;line&quot;,
+          &quot;targetRange&quot;: {
+            &quot;sheet&quot;: &quot;KPIs&quot;,
+            &quot;range&quot;: &quot;I2:I5&quot;
+          },
+          &quot;sourceData&quot;: {
+            &quot;sheet&quot;: &quot;KPIs&quot;,
+            &quot;range&quot;: &quot;C2:H5&quot;
+          },
+          &quot;displayHidden&quot;: true,
+          &quot;axis&quot;: {
+            &quot;showAxis&quot;: true,
+            &quot;rightToLeft&quot;: true
+          }
+        }
+      },
+      &quot;adaptations&quot;: [],
+      &quot;result&quot;: {
+        &quot;idMap&quot;: {},
+        &quot;warnings&quot;: []
+      },
+      &quot;changed&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;OP-sparkline.remove-0&quot;,
+    &quot;description&quot;: &quot;Delete a sparkline group by uid.&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 1,
+    &quot;detail&quot;: {
+      &quot;input&quot;: {
+        &quot;op&quot;: &quot;sparkline.remove&quot;,
+        &quot;target&quot;: {
+          &quot;sheet&quot;: &quot;KPIs&quot;,
+          &quot;uid&quot;: &quot;{8FA89B8F-27A7-4E3D-A756-4CD08F8D7B2B}&quot;
+        }
+      },
+      &quot;adaptations&quot;: [],
+      &quot;result&quot;: {
+        &quot;idMap&quot;: {},
+        &quot;warnings&quot;: []
+      },
+      &quot;changed&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;OP-chart.add-0&quot;,
+    &quot;description&quot;: &quot;Add a chart anchored to worksheet cells.&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 4,
+    &quot;detail&quot;: {
+      &quot;input&quot;: {
+        &quot;op&quot;: &quot;chart.add&quot;,
+        &quot;sheet&quot;: &quot;Charts&quot;,
+        &quot;props&quot;: {
+          &quot;chartType&quot;: &quot;line&quot;,
+          &quot;anchor&quot;: {
+            &quot;from&quot;: {
+              &quot;row&quot;: 1,
+              &quot;col&quot;: 1,
+              &quot;rowOffsetPx&quot;: 4,
+              &quot;colOffsetPx&quot;: 8
+            },
+            &quot;extent&quot;: {
+              &quot;widthPx&quot;: 520,
+              &quot;heightPx&quot;: 280
+            }
+          },
+          &quot;title&quot;: &quot;Milky Way Star Birth Rate&quot;,
+          &quot;categories&quot;: [
+            &quot;2020&quot;,
+            &quot;2021&quot;,
+            &quot;2022&quot;,
+            &quot;2023&quot;
+          ],
+          &quot;series&quot;: [
+            {
+              &quot;name&quot;: &quot;Milky Way&quot;,
+              &quot;values&quot;: [
+                1.8,
+                1.9,
+                2,
+                2.2
+              ]
+            }
+          ],
+          &quot;hasLegend&quot;: true,
+          &quot;legend&quot;: {
+            &quot;position&quot;: &quot;bottom&quot;
+          },
+          &quot;dataLabels&quot;: {
+            &quot;showValue&quot;: true
+          }
+        }
+      },
+      &quot;adaptations&quot;: [],
+      &quot;result&quot;: {
+        &quot;idMap&quot;: {},
+        &quot;warnings&quot;: []
+      },
+      &quot;changed&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;OP-chart.set-0&quot;,
+    &quot;description&quot;: &quot;Replace an existing chart&#x27;s workbook-facing snapshot.&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 2,
+    &quot;detail&quot;: {
+      &quot;input&quot;: {
+        &quot;op&quot;: &quot;chart.set&quot;,
+        &quot;target&quot;: {
+          &quot;sheet&quot;: &quot;Charts&quot;,
+          &quot;selector&quot;: {
+            &quot;chartType&quot;: &quot;line&quot;,
+            &quot;title&quot;: &quot;Updated chart&quot;
+          }
+        },
+        &quot;props&quot;: {
+          &quot;chartType&quot;: &quot;line&quot;,
+          &quot;anchor&quot;: {
+            &quot;from&quot;: {
+              &quot;row&quot;: 1,
+              &quot;col&quot;: 5
+            },
+            &quot;extent&quot;: {
+              &quot;widthPx&quot;: 520,
+              &quot;heightPx&quot;: 280
+            }
+          },
+          &quot;title&quot;: &quot;Updated chart&quot;,
+          &quot;categories&quot;: [
+            &quot;Q1&quot;,
+            &quot;Q2&quot;,
+            &quot;Q3&quot;
+          ],
+          &quot;series&quot;: [
+            {
+              &quot;name&quot;: &quot;Revenue&quot;,
+              &quot;values&quot;: [
+                10,
+                12,
+                15
+              ]
+            }
+          ]
+        }
+      },
+      &quot;adaptations&quot;: [],
+      &quot;result&quot;: {
+        &quot;idMap&quot;: {},
+        &quot;warnings&quot;: []
+      },
+      &quot;changed&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;OP-chart.remove-0&quot;,
+    &quot;description&quot;: &quot;Delete a worksheet chart by selector or id.&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 4,
+    &quot;detail&quot;: {
+      &quot;input&quot;: {
+        &quot;op&quot;: &quot;chart.remove&quot;,
+        &quot;target&quot;: {
+          &quot;sheet&quot;: &quot;Charts&quot;,
+          &quot;selector&quot;: {
+            &quot;chartType&quot;: &quot;line&quot;,
+            &quot;title&quot;: &quot;Updated chart&quot;
+          }
+        }
+      },
+      &quot;adaptations&quot;: [],
+      &quot;result&quot;: {
+        &quot;idMap&quot;: {},
+        &quot;warnings&quot;: []
+      },
+      &quot;changed&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;OP-shape.add-0&quot;,
+    &quot;description&quot;: &quot;Add a shape anchored to worksheet cells.&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 2,
+    &quot;detail&quot;: {
+      &quot;input&quot;: {
+        &quot;op&quot;: &quot;shape.add&quot;,
+        &quot;sheet&quot;: &quot;Shapes&quot;,
+        &quot;props&quot;: {
+          &quot;geometry&quot;: &quot;rect&quot;,
+          &quot;anchor&quot;: {
+            &quot;from&quot;: {
+              &quot;row&quot;: 2,
+              &quot;col&quot;: 3
+            },
+            &quot;extent&quot;: {
+              &quot;widthPx&quot;: 260,
+              &quot;heightPx&quot;: 140
+            }
+          },
+          &quot;fill&quot;: &quot;accent1&quot;,
+          &quot;line&quot;: {
+            &quot;style&quot;: &quot;dashed&quot;,
+            &quot;fill&quot;: &quot;accent4&quot;,
+            &quot;width&quot;: 1
+          }
+        }
+      },
+      &quot;adaptations&quot;: [],
+      &quot;result&quot;: {
+        &quot;idMap&quot;: {},
+        &quot;warnings&quot;: []
+      },
+      &quot;changed&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;OP-shape.set-0&quot;,
+    &quot;description&quot;: &quot;Update a worksheet shape&#x27;s recorded properties.&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 1,
+    &quot;detail&quot;: {
+      &quot;input&quot;: {
+        &quot;op&quot;: &quot;shape.set&quot;,
+        &quot;target&quot;: {
+          &quot;sheet&quot;: &quot;Shapes&quot;,
+          &quot;selector&quot;: {
+            &quot;geometry&quot;: &quot;rect&quot;
+          }
+        },
+        &quot;props&quot;: {
+          &quot;fill&quot;: &quot;accent2&quot;,
+          &quot;line&quot;: {
+            &quot;style&quot;: &quot;solid&quot;,
+            &quot;fill&quot;: &quot;accent3&quot;,
+            &quot;width&quot;: 2
+          }
+        }
+      },
+      &quot;adaptations&quot;: [],
+      &quot;result&quot;: {
+        &quot;idMap&quot;: {},
+        &quot;warnings&quot;: []
+      },
+      &quot;changed&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;OP-shape.remove-0&quot;,
+    &quot;description&quot;: &quot;Delete a worksheet shape by selector or id.&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 2,
+    &quot;detail&quot;: {
+      &quot;input&quot;: {
+        &quot;op&quot;: &quot;shape.remove&quot;,
+        &quot;target&quot;: {
+          &quot;sheet&quot;: &quot;Shapes&quot;,
+          &quot;selector&quot;: {
+            &quot;geometry&quot;: &quot;rect&quot;
+          }
+        }
+      },
+      &quot;adaptations&quot;: [],
+      &quot;result&quot;: {
+        &quot;idMap&quot;: {},
+        &quot;warnings&quot;: []
+      },
+      &quot;changed&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;OP-image.add-0&quot;,
+    &quot;description&quot;: &quot;Add an image anchored to worksheet cells.&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 5,
+    &quot;detail&quot;: {
+      &quot;input&quot;: {
+        &quot;op&quot;: &quot;image.add&quot;,
+        &quot;sheet&quot;: &quot;Images&quot;,
+        &quot;props&quot;: {
+          &quot;dataUrl&quot;: &quot;data:image/png;base64,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&quot;,
+          &quot;anchor&quot;: {
+            &quot;from&quot;: {
+              &quot;row&quot;: 1,
+              &quot;col&quot;: 2
+            },
+            &quot;extent&quot;: {
+              &quot;widthPx&quot;: 160,
+              &quot;heightPx&quot;: 120
+            }
+          }
+        }
+      },
+      &quot;adaptations&quot;: [
+        &quot;Replaced placeholder data URL with local synthetic PNG.&quot;
+      ],
+      &quot;result&quot;: {
+        &quot;idMap&quot;: {},
+        &quot;warnings&quot;: []
+      },
+      &quot;changed&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;OP-image.set-0&quot;,
+    &quot;description&quot;: &quot;Update an existing worksheet image reference or anchor.&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 6,
+    &quot;detail&quot;: {
+      &quot;input&quot;: {
+        &quot;op&quot;: &quot;image.set&quot;,
+        &quot;target&quot;: {
+          &quot;sheet&quot;: &quot;Images&quot;,
+          &quot;imageId&quot;: &quot;83af3002-5e7f-4ab6-88c6-f1e67c7be7b9&quot;,
+          &quot;anchor&quot;: {
+            &quot;from&quot;: {
+              &quot;row&quot;: 1,
+              &quot;col&quot;: 2
+            },
+            &quot;extent&quot;: {
+              &quot;widthPx&quot;: 160,
+              &quot;heightPx&quot;: 120
+            }
+          }
+        },
+        &quot;props&quot;: {
+          &quot;anchor&quot;: {
+            &quot;from&quot;: {
+              &quot;row&quot;: 3,
+              &quot;col&quot;: 4
+            },
+            &quot;extent&quot;: {
+              &quot;widthPx&quot;: 180,
+              &quot;heightPx&quot;: 140
+            }
+          }
+        }
+      },
+      &quot;adaptations&quot;: [
+        &quot;Resolved actual image asset ID.&quot;
+      ],
+      &quot;result&quot;: {
+        &quot;idMap&quot;: {},
+        &quot;warnings&quot;: []
+      },
+      &quot;changed&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;OP-image.remove-0&quot;,
+    &quot;description&quot;: &quot;Delete a worksheet image by asset id and anchor.&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 6,
+    &quot;detail&quot;: {
+      &quot;input&quot;: {
+        &quot;op&quot;: &quot;image.remove&quot;,
+        &quot;target&quot;: {
+          &quot;sheet&quot;: &quot;Images&quot;,
+          &quot;imageId&quot;: &quot;ef932ac9-4921-450a-81b8-84982177e80e&quot;,
+          &quot;anchor&quot;: {
+            &quot;from&quot;: {
+              &quot;row&quot;: 1,
+              &quot;col&quot;: 2
+            },
+            &quot;extent&quot;: {
+              &quot;widthPx&quot;: 160,
+              &quot;heightPx&quot;: 120
+            }
+          }
+        }
+      },
+      &quot;adaptations&quot;: [
+        &quot;Resolved actual image asset ID.&quot;
+      ],
+      &quot;result&quot;: {
+        &quot;idMap&quot;: {},
+        &quot;warnings&quot;: []
+      },
+      &quot;changed&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;OP-names.range.add-0&quot;,
+    &quot;description&quot;: &quot;Define a workbook or worksheet named range.&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 1,
+    &quot;detail&quot;: {
+      &quot;input&quot;: {
+        &quot;op&quot;: &quot;names.range.add&quot;,
+        &quot;name&quot;: &quot;SalesRange&quot;,
+        &quot;formula&quot;: &quot;Data!$A$1:$A$3&quot;,
+        &quot;description&quot;: &quot;Input sales data&quot;
+      },
+      &quot;adaptations&quot;: [],
+      &quot;result&quot;: {
+        &quot;idMap&quot;: {},
+        &quot;warnings&quot;: []
+      },
+      &quot;changed&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;OP-names.function.add-0&quot;,
+    &quot;description&quot;: &quot;Define a workbook or worksheet named function (LAMBDA).&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 1,
+    &quot;detail&quot;: {
+      &quot;input&quot;: {
+        &quot;op&quot;: &quot;names.function.add&quot;,
+        &quot;name&quot;: &quot;AddTax&quot;,
+        &quot;lambda&quot;: &quot;LAMBDA(price, tax, price*(1+tax))&quot;,
+        &quot;description&quot;: &quot;Adds tax to a price&quot;,
+        &quot;parameters&quot;: [
+          {
+            &quot;name&quot;: &quot;price&quot;,
+            &quot;description&quot;: &quot;Base price&quot;
+          },
+          {
+            &quot;name&quot;: &quot;tax&quot;,
+            &quot;description&quot;: &quot;Tax rate (e.g. 0.1)&quot;
+          }
+        ],
+        &quot;returns&quot;: &quot;Taxed price&quot;
+      },
+      &quot;adaptations&quot;: [],
+      &quot;result&quot;: {
+        &quot;idMap&quot;: {},
+        &quot;warnings&quot;: []
+      },
+      &quot;changed&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;OP-names.remove-0&quot;,
+    &quot;description&quot;: &quot;Delete a workbook or worksheet scoped defined name.&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 2,
+    &quot;detail&quot;: {
+      &quot;input&quot;: {
+        &quot;op&quot;: &quot;names.remove&quot;,
+        &quot;name&quot;: &quot;SalesRange&quot;
+      },
+      &quot;adaptations&quot;: [],
+      &quot;result&quot;: {
+        &quot;idMap&quot;: {},
+        &quot;warnings&quot;: []
+      },
+      &quot;changed&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;OP-names.remove-1&quot;,
+    &quot;description&quot;: &quot;Delete a workbook or worksheet scoped defined name.&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 2,
+    &quot;detail&quot;: {
+      &quot;input&quot;: {
+        &quot;op&quot;: &quot;names.remove&quot;,
+        &quot;name&quot;: &quot;LocalRange&quot;,
+        &quot;sheet&quot;: &quot;Sheet1&quot;
+      },
+      &quot;adaptations&quot;: [],
+      &quot;result&quot;: {
+        &quot;idMap&quot;: {},
+        &quot;warnings&quot;: []
+      },
+      &quot;changed&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;OP-comments.self.set-0&quot;,
+    &quot;description&quot;: &quot;Set the current comment author identity.&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 2,
+    &quot;detail&quot;: {
+      &quot;input&quot;: {
+        &quot;op&quot;: &quot;comments.self.set&quot;,
+        &quot;person&quot;: {
+          &quot;displayName&quot;: &quot;Artifact Bot&quot;,
+          &quot;initials&quot;: &quot;AB&quot;
+        }
+      },
+      &quot;adaptations&quot;: [],
+      &quot;result&quot;: {
+        &quot;idMap&quot;: {},
+        &quot;warnings&quot;: []
+      },
+      &quot;changed&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;OP-thread.add-0&quot;,
+    &quot;description&quot;: &quot;Create a threaded comment on a cell or range.&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 3,
+    &quot;detail&quot;: {
+      &quot;input&quot;: {
+        &quot;op&quot;: &quot;thread.add&quot;,
+        &quot;target&quot;: {
+          &quot;cell&quot;: {
+            &quot;sheet&quot;: &quot;Sheet1&quot;,
+            &quot;address&quot;: &quot;F5&quot;
+          }
+        },
+        &quot;body&quot;: &quot;Cell comment&quot;
+      },
+      &quot;adaptations&quot;: [],
+      &quot;result&quot;: {
+        &quot;idMap&quot;: {},
+        &quot;warnings&quot;: []
+      },
+      &quot;changed&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;OP-thread.reply-0&quot;,
+    &quot;description&quot;: &quot;Reply to a comment thread.&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 2,
+    &quot;detail&quot;: {
+      &quot;input&quot;: {
+        &quot;op&quot;: &quot;thread.reply&quot;,
+        &quot;target&quot;: &quot;{5E8825DC-66BB-4EC5-9C70-BE97A91D09E6}&quot;,
+        &quot;body&quot;: &quot;Reply on cell&quot;
+      },
+      &quot;adaptations&quot;: [
+        &quot;Resolved actual thread ID.&quot;
+      ],
+      &quot;result&quot;: {
+        &quot;idMap&quot;: {},
+        &quot;warnings&quot;: []
+      },
+      &quot;changed&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;OP-thread.resolve-0&quot;,
+    &quot;description&quot;: &quot;Resolve a comment thread.&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 1,
+    &quot;detail&quot;: {
+      &quot;input&quot;: {
+        &quot;op&quot;: &quot;thread.resolve&quot;,
+        &quot;target&quot;: &quot;{65E93783-C04B-4AAC-B539-326C03F37E67}&quot;
+      },
+      &quot;adaptations&quot;: [
+        &quot;Resolved actual thread ID.&quot;
+      ],
+      &quot;result&quot;: {
+        &quot;idMap&quot;: {},
+        &quot;warnings&quot;: []
+      },
+      &quot;changed&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;OP-thread.reopen-0&quot;,
+    &quot;description&quot;: &quot;Reopen a resolved comment thread.&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 1,
+    &quot;detail&quot;: {
+      &quot;input&quot;: {
+        &quot;op&quot;: &quot;thread.reopen&quot;,
+        &quot;target&quot;: &quot;{E7FC24CF-6DC1-4441-AEF2-9AE4C4E17FFA}&quot;
+      },
+      &quot;adaptations&quot;: [
+        &quot;Resolved actual thread ID.&quot;
+      ],
+      &quot;result&quot;: {
+        &quot;idMap&quot;: {},
+        &quot;warnings&quot;: []
+      },
+      &quot;changed&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;OP-thread.remove-0&quot;,
+    &quot;description&quot;: &quot;Delete a threaded comment.&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 1,
+    &quot;detail&quot;: {
+      &quot;input&quot;: {
+        &quot;op&quot;: &quot;thread.remove&quot;,
+        &quot;target&quot;: &quot;th/{B2B08D4A-848D-4D8E-B6F7-CFD58DA573ED}&quot;
+      },
+      &quot;adaptations&quot;: [
+        &quot;Resolved actual thread ID.&quot;
+      ],
+      &quot;result&quot;: {
+        &quot;idMap&quot;: {},
+        &quot;warnings&quot;: []
+      },
+      &quot;changed&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;OP-invalid&quot;,
+    &quot;description&quot;: &quot;Unknown action handling and mutation atomicity&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 1,
+    &quot;detail&quot;: {
+      &quot;valueAfterFailure&quot;: 2
+    }
+  }
+]</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

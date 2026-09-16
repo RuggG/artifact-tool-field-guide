@@ -1,0 +1,37 @@
+{
+  "name": "fx.SCAN",
+  "category": "logical",
+  "examples": [
+    {
+      "formula": "=SCAN(A1, {1,2;3,4}, A1)",
+      "value": "SCAN is not implemented. initialValue=1, array=1,2,3,4, functionParam=1",
+      "projection": [
+        [
+          "SCAN is not implemented. initialValue=1, array=1,2,3,4, functionParam=1",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 11
+    }
+  ]
+}

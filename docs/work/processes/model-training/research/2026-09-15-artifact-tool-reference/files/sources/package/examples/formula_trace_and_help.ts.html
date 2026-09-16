@@ -1,0 +1,178 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>formula_trace_and_help.ts · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="formula_trace_and_help.ts">Raw file</a> · <a data-public-raw download href="formula_trace_and_help.ts">Download</a></p><article><h1>formula_trace_and_help.ts</h1><pre class="public-code"><code>import { Workbook } from &quot;@oai/artifact-tool&quot;;
+
+function clip(value: string, maxChars: number): string {
+  return value.length &gt; maxChars ? `${value.slice(0, maxChars)}...` : value;
+}
+
+function summarizeTrace(
+  root: any,
+  options: { maxDepth?: number; maxNodes?: number; maxFormulaChars?: number } = {},
+): string[] {
+  if (!root) return [&quot;(no trace returned)&quot;];
+
+  const maxDepth = options.maxDepth ?? 4;
+  const maxNodes = options.maxNodes ?? 30;
+  const maxFormulaChars = options.maxFormulaChars ?? 120;
+  const lines: string[] = [];
+  let nodeCount = 0;
+  let truncated = false;
+
+  function walk(node: any, depth: number): void {
+    if (nodeCount &gt;= maxNodes) {
+      truncated = true;
+      return;
+    }
+
+    nodeCount += 1;
+    const indent = &quot;  &quot;.repeat(depth);
+    const formula = node.formula
+      ? ` formula=${clip(String(node.formula), maxFormulaChars)}`
+      : &quot;&quot;;
+    const error = node.error ? ` error=${node.error}` : &quot;&quot;;
+    lines.push(`${indent}${node.cell} value=${JSON.stringify(node.value)}${formula}${error}`);
+
+    const children = (node.params ?? []) as any[];
+    if (children.length === 0) return;
+    if (depth &gt;= maxDepth) {
+      truncated = true;
+      lines.push(`${indent}  ... ${children.length} precedent(s) not shown`);
+      return;
+    }
+    for (const child of children) {
+      walk(child, depth + 1);
+    }
+  }
+
+  walk(root, 0);
+  if (truncated) lines.push(`... trace summary capped at depth ${maxDepth}, ${maxNodes} nodes`);
+  return lines;
+}
+
+function findTraceNode(root: any, cell: string): any | null {
+  if (!root) return null;
+  if (root.cell === cell) return root;
+  for (const child of (root.params ?? []) as any[]) {
+    const found = findTraceNode(child, cell);
+    if (found) return found;
+  }
+  return null;
+}
+
+function formatNumber(value: unknown): string {
+  if (typeof value !== &quot;number&quot;) return String(value);
+  if (value !== 0 &amp;&amp; Math.abs(value) &lt; 0.01) return Number(value.toPrecision(3)).toString();
+  return value.toLocaleString(&quot;en-US&quot;, { maximumFractionDigits: 2 });
+}
+
+function formatPercent(value: unknown): string {
+  return typeof value === &quot;number&quot; ? `${(value * 100).toFixed(1)}%` : String(value);
+}
+
+function explainRevenueCheck(trace: any): string {
+  const status = findTraceNode(trace, &quot;Checks!F2&quot;)?.value;
+  const difference = findTraceNode(trace, &quot;Checks!D2&quot;)?.value;
+  const actual = findTraceNode(trace, &quot;Checks!B2&quot;)?.value;
+  const expected = findTraceNode(trace, &quot;Checks!C2&quot;)?.value;
+  const tolerance = findTraceNode(trace, &quot;Checks!E2&quot;)?.value;
+  const baseRevenue = findTraceNode(trace, &quot;Inputs!B2&quot;)?.value;
+  const growthRate = findTraceNode(trace, &quot;Inputs!B3&quot;)?.value;
+  const revenue2025 = findTraceNode(trace, &quot;Model!B4&quot;)?.value;
+
+  return [
+    `Checks!F2 returns &quot;${status}&quot; because the absolute difference is within the tolerance.`,
+    `It compares Checks!D2 (${formatNumber(difference)}) against Checks!E2 (${formatNumber(tolerance)}).`,
+    `Checks!D2 is actual revenue minus expected revenue: Checks!B2 (${formatNumber(actual)}) - Checks!C2 (${formatNumber(expected)}).`,
+    `The actual value comes from Model!B5, which compounds Inputs!B2 (${formatNumber(baseRevenue)}) by the growth rate in Inputs!B3 (${formatPercent(growthRate)}) for two years: first to Model!B4 (${formatNumber(revenue2025)}), then to Model!B5 (${formatNumber(actual)}).`,
+    `Caveat: the tiny difference shown is floating-point rounding noise, not a business variance.`,
+  ].join(&quot;\n&quot;);
+}
+
+async function main(): Promise&lt;void&gt; {
+  const workbook = Workbook.create();
+  const inputs = workbook.worksheets.add(&quot;Inputs&quot;);
+  const model = workbook.worksheets.add(&quot;Model&quot;);
+  const checks = workbook.worksheets.add(&quot;Checks&quot;);
+
+  inputs.getRange(&quot;A1:B4&quot;).values = [
+    [&quot;Metric&quot;, &quot;Value&quot;],
+    [&quot;Revenue 2024&quot;, 100],
+    [&quot;Growth Rate&quot;, 0.1],
+    [&quot;Expected Revenue 2026&quot;, 121],
+  ];
+
+  model.getRange(&quot;A1:B5&quot;).values = [
+    [&quot;Metric&quot;, &quot;Value&quot;],
+    [&quot;Revenue 2024&quot;, null],
+    [&quot;Growth Rate&quot;, null],
+    [&quot;Revenue 2025&quot;, null],
+    [&quot;Revenue 2026&quot;, null],
+  ];
+  model.getRange(&quot;B2:B5&quot;).formulas = [
+    [&quot;=Inputs!B2&quot;],
+    [&quot;=Inputs!B3&quot;],
+    [&quot;=B2*(1+B3)&quot;],
+    [&quot;=B4*(1+B3)&quot;],
+  ];
+
+  checks.getRange(&quot;A1:F2&quot;).values = [
+    [&quot;Check&quot;, &quot;Actual&quot;, &quot;Expected&quot;, &quot;Difference&quot;, &quot;Tolerance&quot;, &quot;Status&quot;],
+    [&quot;Revenue 2026 ties to expected case&quot;, null, null, null, 0.001, null],
+  ];
+  checks.getRange(&quot;B2:D2&quot;).formulas = [[&quot;=Model!B5&quot;, &quot;=Inputs!B4&quot;, &quot;=B2-C2&quot;]];
+  checks.getRange(&quot;F2&quot;).formulas = [[&quot;=IF(ABS(D2)&lt;=E2,\&quot;OK\&quot;,\&quot;CHECK\&quot;)&quot;]];
+
+  workbook.recalculate();
+  const trace = workbook.trace(&quot;Checks!F2&quot;);
+
+  console.log(&quot;=== Formula trace for Checks!F2 ===&quot;);
+  console.log(
+    summarizeTrace(trace, {
+      maxDepth: 4,
+      maxNodes: 20,
+    }).join(&quot;\n&quot;),
+  );
+
+  console.log(&quot;\n=== User-facing answer: How is Checks!F2 calculated? ===&quot;);
+  console.log(explainRevenueCheck(trace));
+
+  console.log(&quot;\n=== Exact formula help: XLOOKUP ===&quot;);
+  console.log(
+    workbook.help(&quot;fx.XLOOKUP&quot;, {
+      include: &quot;index,examples,notes&quot;,
+      maxChars: 2500,
+    }).ndjson,
+  );
+
+  console.log(&quot;\n=== Formula category browse: financial ===&quot;);
+  console.log(
+    workbook.help(&quot;fx.*&quot;, {
+      search: &quot;financial&quot;,
+      include: &quot;index,examples&quot;,
+      maxChars: 2500,
+    }).ndjson,
+  );
+
+  console.log(&quot;\n=== Formula category browse: math-trig ===&quot;);
+  console.log(
+    workbook.help(&quot;fx.*&quot;, {
+      search: &quot;math-trig&quot;,
+      include: &quot;index,examples&quot;,
+      maxChars: 2500,
+    }).ndjson,
+  );
+
+  console.log(&quot;\n=== Semantic formula search: lookup with fallback ===&quot;);
+  console.log(
+    workbook.help(&quot;lookup value with fallback&quot;, {
+      search: &quot;XLOOKUP|INDEX|MATCH|IFERROR&quot;,
+      include: &quot;index,examples,notes&quot;,
+      maxChars: 3000,
+    }).ndjson,
+  );
+}
+
+main().catch((error: unknown) =&gt; {
+  console.error(error);
+  process.exit(1);
+});
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

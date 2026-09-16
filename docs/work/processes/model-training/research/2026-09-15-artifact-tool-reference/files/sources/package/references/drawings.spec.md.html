@@ -1,0 +1,122 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Worksheet Drawings · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="drawings.spec.md">Raw file</a> · <a data-public-raw download href="drawings.spec.md">Download</a></p><article><h1 id="worksheet-drawings">Worksheet Drawings</h1>
+<p>Worksheets support charts and shapes anchored to the cell grid.</p>
+<h2 id="units">Units</h2>
+<ul>
+<li>Anchor row and column indexes are zero-based.</li>
+<li>Offsets and extents use pixels.</li>
+<li>Use <code>rowOffsetPx</code>, <code>colOffsetPx</code>, <code>widthPx</code>, and <code>heightPx</code>.</li>
+</ul>
+<h2 id="chart-config">Chart Config</h2>
+<pre><code class="language-ts">const chart = sheet.charts.add(chartType, {
+  from,
+  to,
+  extent,
+  title,
+  titleTextStyle,
+  categories,
+  series,
+  hasLegend,
+  legend,
+  xAxis,
+  yAxis,
+  dataLabels,
+  dataTable,
+});
+</code></pre>
+<h2 id="chart-inline-types">Chart Inline Types</h2>
+<pre><code class="language-ts">type WorksheetChartType =
+  | "bar" | "line" | "area" | "pie" | "doughnut" | "scatter"
+  | "bubble" | "radar" | "stock" | "treemap" | "sunburst" | "histogram"
+  | "boxWhisker" | "waterfall" | "funnel" | "map";
+
+type WorksheetChartConfig = {
+  from?: { row: number; col: number; rowOffsetPx?: number; colOffsetPx?: number };
+  to?: { row: number; col: number; rowOffsetPx?: number; colOffsetPx?: number };
+  extent?: { widthPx?: number; heightPx?: number };
+  title?: string;
+  titleTextStyle?: TextStyleConfig;
+  categories?: string[];
+  series?: Array&lt;{ name: string; values?: number[]; categories?: string[]; fill?: FillConfig; line?: LineConfig }&gt;;
+  hasLegend?: boolean;
+  legend?: { position?: "left" | "top" | "topRight" | "right" | "bottom"; overlay?: boolean; textStyle?: TextStyleConfig };
+  xAxis?: ChartAxisConfig;
+  yAxis?: ChartAxisConfig;
+  dataLabels?: { showValue?: boolean; position?: "center" | "inEnd" | "outEnd"; textStyle?: TextStyleConfig };
+  dataTable?: { visible?: boolean; showLegendKey?: boolean; textStyle?: TextStyleConfig };
+};
+
+type TextStyleConfig = {
+  bold?: boolean;
+  italic?: boolean;
+  fontSize?: number;
+  color?: ColorConfig;
+  fill?: FillConfig;
+  alignment?: "left" | "center" | "right" | "justify";
+};
+
+type ChartAxisConfig = {
+  title?: string | { text?: string; textStyle?: TextStyleConfig };
+  min?: number;
+  max?: number;
+  numberFormatCode?: string;
+  position?: "left" | "right" | "top" | "bottom";
+  tickLabelPosition?: "high" | "low" | "nextTo" | string;
+  textStyle?: TextStyleConfig;
+  line?: LineConfig;
+  majorGridlines?: LineConfig | null;
+  minorGridlines?: LineConfig | null;
+};
+</code></pre>
+<h2 id="chart-from-range">Chart From Range</h2>
+<pre><code class="language-ts">const chart = sheet.charts.add(chartType, sourceRange, seriesBy);
+chart.setPosition(startRange, endRange);
+chart.width = widthPx;
+chart.height = heightPx;
+</code></pre>
+<h2 id="shape-config">Shape Config</h2>
+<pre><code class="language-ts">const shape = sheet.shapes.add({
+  geometry,
+  anchor,
+  fill,
+  line,
+  name,
+});
+</code></pre>
+<h2 id="shape-inline-type">Shape Inline Type</h2>
+<pre><code class="language-ts">type WorksheetShapeConfig = {
+  geometry: string; // common: "rect", "roundRect", "ellipse", "textbox"; full list is the slide shape preset list
+  anchor?: DrawingAnchorConfig;
+  fill?: FillConfig;
+  line?: LineConfig;
+  name?: string;
+};
+
+type DrawingAnchorConfig = {
+  from: { row: number; col: number; rowOffsetPx?: number; colOffsetPx?: number };
+  to?: { row: number; col: number; rowOffsetPx?: number; colOffsetPx?: number };
+  extent?: { widthPx?: number; heightPx?: number };
+};
+</code></pre>
+<h2 id="rebuild-and-layout">Rebuild And Layout</h2>
+<pre><code class="language-ts">sheet.deleteAllDrawings();
+
+const drawings = [...sheet.charts.items, ...sheet.shapes.items];
+sheet.autoLayoutDrawings(drawings, {
+  direction,
+  frame,
+  gap,
+  padding,
+});
+</code></pre>
+<h2 id="auto-layout-inline-type">Auto Layout Inline Type</h2>
+<pre><code class="language-ts">type WorksheetDrawingAutoLayoutOptions = {
+  direction?: "vertical" | "horizontal" | "grid";
+  align?: "start" | "center" | "end";
+  columns?: number; // used for grid
+  gap?: number;
+  padding?: number;
+  frame?:
+    | { left: number; top: number; width: number; height: number }
+    | { startCell: string; width: number; height: number };
+};
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

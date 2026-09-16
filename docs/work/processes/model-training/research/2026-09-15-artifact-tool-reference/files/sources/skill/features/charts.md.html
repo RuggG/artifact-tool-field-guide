@@ -1,0 +1,42 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Charts · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="charts.md">Raw file</a> · <a data-public-raw download href="charts.md">Download</a></p><article><h1 id="charts">Charts</h1>
+<p>Use a chart when it clarifies a comparison, trend, distribution, or relationship; otherwise prefer a compact table or summary. Give each chart a distinct analytical purpose. Create native, editable workbook charts, not static images.</p>
+<p>Follow Tufte's principles: graphical integrity, clear comparisons, and minimal non-data ink while retaining useful context and readability.</p>
+<h2 id="choose-the-chart">Choose the chart</h2>
+<p>The available API may not support all chart types; always reference the spreadsheet authoring API documentation for chart and export support.</p>
+<p>These are defaults, not restrictions; choose what makes the comparison or relationship clearest:</p>
+<ul>
+<li>Comparisons/rankings: bar or column; sort rankings by descending value.</li>
+<li>Time trends: line in chronological order; area only when the filled volume adds meaning.</li>
+<li>Distributions: histogram for shape; box-and-whisker for median, spread, and outliers. If unsupported in the available API, use formula-backed bins with bars or a summary table.</li>
+<li>Relationships between numeric variables: scatter.</li>
+<li>Part-to-whole: sorted bar or compact table; pie/doughnut for a few slices when rough share is enough.</li>
+<li>Exact values: table. Single metric with context: compact KPI plus a small trend/sparkline.</li>
+</ul>
+<h2 id="keep-data-auditable">Keep data auditable</h2>
+<ul>
+<li>Bind series directly to source cells so edits update charts; use expandable ranges where supported and useful. Derived values must use formulas; raw inputs need not.</li>
+<li>Use compact, formula-backed helper ranges only for reshaping, date grouping, shorter labels, render/export workarounds, or useful tables that drive charts, within the authorized edit scope. Keep source tables legible and retain full labels. Group crowded dates by Year, Quarter, Month, or Week when appropriate.</li>
+<li>Preserve missing values as blanks, not invented zeros, including in helpers. Keep category and series ranges aligned; disclose omitted observations and aggregation that affects interpretation.</li>
+<li>Show enough context for fair comparisons; do not cherry-pick periods or omit relevant baselines. Keep comparable charts consistent in scales, units, colors, and date ranges.</li>
+</ul>
+<h2 id="format-and-place">Format and place</h2>
+<ul>
+<li>Preserve process order for workflows.</li>
+<li>Place charts near the data they explain, aligned with related charts, with whitespace and no overlap with data, controls, notes, or other charts.</li>
+<li>Size to rendered content: compact for few marks, larger only for dense data, labels, or legends. Shrink obvious unused space during visual QA.</li>
+<li>Match workbook typography and title hierarchy. Use plain titles, e.g. <code>Profit by Category ($bn)</code>, no larger than section labels. Avoid placeholder titles.</li>
+<li>Use plain, human-readable chart titles and units; write <code>($K)</code>, <code>($M)</code>, or <code>(USD thousands/millions)</code>, never <code>($000)</code>.</li>
+<li>Show units in titles, axes, or labels. Set axis number formats explicitly; do not assume source-cell formats carry over. Derive display units from stored units and verify actual ticks (e.g. 1,500,000 dollars displays as <code>$1.5M</code>). Never rescale source values or apply scaling twice to fix presentation.</li>
+<li>Include zero on bar/column and area value axes. Line/scatter axes may use a narrower range when useful; make bounds and any logarithmic scale clear. Avoid scales or 3-D effects that exaggerate differences.</li>
+<li>Add axis titles only when meaning or units are unclear. Label values selectively when exact numbers matter or axes are hard to read; avoid labeling every point on dense lines. Prefer direct labels for a few series; when a legend is needed, place it above the plot without crowding the title or data, unless the reference specifies otherwise.</li>
+<li>Use the workbook or supplied brand palette consistently for meaning; match the same business item across charts and tables, and preserve meaningful warning/status colors. Keep single-series charts one color unless highlighting meaningful differences. Use a contrasting neutral or palette color for reference/target series; add a dashed line when it helps distinguish the reference. For line charts, set the line stroke explicitly; <code>series.fill</code> alone may color a preview without setting the exported line. With the artifact tool, use <code>series.line = { fill: color, style: 'solid', width: 2 };</code> (or <code>style: 'dashed'</code> for a reference). Avoid unnecessary gradients, heavy borders, excessive gridlines, and decorative effects unless requested; retain useful reference lines.</li>
+</ul>
+<h2 id="verify-and-repair">Verify and repair</h2>
+<ul>
+<li>Before creation, verify source ranges/formulas, headers, categories, series names/values, orientation, and point counts. Repeat these checks after creation or editing, and verify expected chart count and bindings. Exclude headers from values; catch stale/disconnected ranges, formula errors, and categories misread as series.</li>
+<li>Render and inspect at normal zoom: correct values/units, readable titles, ticks, labels, and legends; no blank charts, clipping, crowding, duplicates, or overlaps.</li>
+<li>Verify saved/exported series colors and line strokes against the intended palette using the exported file's chart properties or target application; a correctly colored authoring preview is not enough.</li>
+<li>If categories become series, points disappear, or numeric/date labels or blanks misrender, normalize a formula-backed helper range with explicit labels (e.g. <code>Jan 2025</code>) and rebuild once. If the requested type cannot be delivered, disclose the limitation and use the closest clear supported alternative; do not claim the original requirement passed.</li>
+</ul>
+<h2 id="edit-existing-charts">Edit existing charts</h2>
+<p>First inspect the chart object, source ranges/formulas, and rendered output. Preserve layout and style unless redesign is requested; move or resize minimally to resolve overlap. Apply the verification above after editing. Leave unrelated pre-existing errors unchanged unless they break the requested chart or the user requests an audit/repair.</p></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

@@ -1,0 +1,37 @@
+{
+  "name": "fx.BITXOR",
+  "category": "engineering",
+  "examples": [
+    {
+      "formula": "=BITXOR(10, 20)",
+      "value": 30,
+      "projection": [
+        [
+          30,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 13
+    }
+  ]
+}

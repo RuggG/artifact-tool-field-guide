@@ -1,0 +1,37 @@
+{
+  "name": "fx.SUM",
+  "category": "math-trig",
+  "examples": [
+    {
+      "formula": "=SUM(10, C1:C5, 20, C1:C5)",
+      "value": 120,
+      "projection": [
+        [
+          120,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 12
+    }
+  ]
+}

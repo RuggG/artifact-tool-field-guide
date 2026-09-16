@@ -1,0 +1,46 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>common_work.py · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="common_work.py">Raw file</a> · <a data-public-raw download href="common_work.py">Download</a></p><article><h1>common_work.py</h1><pre class="public-code"><code>&quot;&quot;&quot;Page-local adapter for the practical selection and its retained recordings.&quot;&quot;&quot;
+import json
+from pathlib import Path
+from pagekit_components import ComponentResult
+
+HERE = Path(__file__).resolve().parent
+
+
+def render(payload, *, body, context):
+    inspection = json.loads((HERE.parent / &#x27;data/inspection.json&#x27;).read_text())
+    reads = json.loads((HERE.parent / &#x27;data/reads.json&#x27;).read_text())
+    def state(id, label, *actions):
+        return dict(id=id,label=label,status=&#x27;supported&#x27;,actions=list(actions))
+    def click(selector):
+        return dict(action=&#x27;click&#x27;,selector=selector)
+    states = [state(&#x27;default&#x27;,&#x27;Sheet inventory from the Man Group workbook&#x27;)]
+    for id,label in [(&#x27;values&#x27;,&#x27;An edit and separate checks&#x27;),(&#x27;trace&#x27;,&#x27;Formula dependency tree&#x27;),(&#x27;table&#x27;,&#x27;A native Excel Table&#x27;),(&#x27;render&#x27;,&#x27;Recorded image output&#x27;)]:
+        states.append(state(id,label,dict(action=&#x27;select&#x27;,selector=&#x27;#af-common-jump&#x27;,value=id)))
+    choose = lambda selector, value: dict(action=&#x27;select&#x27;,selector=selector,value=value)
+    states += [
+        state(&#x27;grid&#x27;,&#x27;Full Fee engine grid&#x27;,choose(&#x27;#af-common-jump&#x27;,&#x27;grids&#x27;)),
+        state(&#x27;preview&#x27;,&#x27;One-cell preview with outer truncated false&#x27;,choose(&#x27;#af-common-jump&#x27;,&#x27;grids&#x27;),choose(&#x27;#ix-budget&#x27;,&#x27;1000&#x27;)),
+        state(&#x27;range&#x27;,&#x27;A complete narrow range&#x27;,choose(&#x27;#af-common-jump&#x27;,&#x27;grids&#x27;),choose(&#x27;#ix-scope&#x27;,&#x27;range&#x27;)),
+        state(&#x27;regions&#x27;,&#x27;Detected blocks and preview footprints&#x27;,choose(&#x27;#af-common-jump&#x27;,&#x27;regions&#x27;)),
+        state(&#x27;search&#x27;,&#x27;Match limits and notices&#x27;,choose(&#x27;#af-common-jump&#x27;,&#x27;search&#x27;),choose(&#x27;#ix-preset&#x27;,&#x27;match-limit&#x27;)),
+        state(&#x27;formulas&#x27;,&#x27;Formula record limits&#x27;,choose(&#x27;#ix-mode&#x27;,&#x27;formulas&#x27;)),
+        state(&#x27;raw&#x27;,&#x27;Complete inspection return&#x27;,click(&#x27;[data-ix-view=&quot;raw&quot;]&#x27;)),
+        state(&#x27;tree&#x27;,&#x27;Expandable inspection response&#x27;,click(&#x27;[data-ix-view=&quot;tree&quot;]&#x27;)),
+    ]
+    for entry in states:
+        if entry[&#x27;id&#x27;] in {&#x27;grid&#x27;,&#x27;preview&#x27;,&#x27;range&#x27;,&#x27;regions&#x27;,&#x27;search&#x27;,&#x27;formulas&#x27;,&#x27;raw&#x27;,&#x27;tree&#x27;}:
+            entry[&#x27;selector&#x27;] = &#x27;#cw-inspection .ix-response&#x27;
+    states.append(dict(state(&#x27;coverage&#x27;,&#x27;All six sheet coverage maps&#x27;), selector=&#x27;#cw-inspection .ix-coverage&#x27;))
+    states.append(dict(state(&#x27;coverage-one&#x27;,&#x27;Focus one coverage map without changing the request&#x27;,choose(&#x27;#ix-sheet&#x27;,&#x27;Fee engine&#x27;)), selector=&#x27;#cw-inspection .ix-coverage&#x27;))
+    for method in [&#x27;values&#x27;,&#x27;formulas&#x27;,&#x27;both&#x27;,&#x27;paired&#x27;,&#x27;details&#x27;,&#x27;inspect&#x27;,&#x27;search&#x27;]:
+        states.append(dict(state(&#x27;read-&#x27;+method,&#x27;Read cells: &#x27;+method,choose(&#x27;#af-common-jump&#x27;,&#x27;ranges&#x27;),choose(&#x27;#rx-method&#x27;,method)),selector=&#x27;#cw-reads .rx-response&#x27;))
+    for scope in [&#x27;cell&#x27;,&#x27;row&#x27;,&#x27;column&#x27;,&#x27;index&#x27;,&#x27;separate&#x27;,&#x27;sheet&#x27;,&#x27;workbook&#x27;]:
+        states.append(dict(state(&#x27;read-scope-&#x27;+scope,&#x27;Read cells: &#x27;+scope,choose(&#x27;#af-common-jump&#x27;,&#x27;ranges&#x27;),choose(&#x27;#rx-method&#x27;,&#x27;paired&#x27;),choose(&#x27;#rx-scope&#x27;,scope)),selector=&#x27;#cw-reads .rx-response&#x27;))
+    for view in [&#x27;raw&#x27;,&#x27;tree&#x27;]:
+        states.append(dict(state(&#x27;read-&#x27;+view,&#x27;Reading response: &#x27;+view,choose(&#x27;#af-common-jump&#x27;,&#x27;ranges&#x27;),click(&#x27;[data-rx-view=&quot;&#x27;+view+&#x27;&quot;]&#x27;)),selector=&#x27;#cw-reads .rx-response&#x27;))
+    reads_safe=json.dumps(reads,ensure_ascii=False,separators=(&#x27;,&#x27;,&#x27;:&#x27;)).replace(&#x27;&lt;&#x27;,&#x27;\\u003c&#x27;).replace(&#x27;\u2028&#x27;,&#x27;\\u2028&#x27;).replace(&#x27;\u2029&#x27;,&#x27;\\u2029&#x27;)
+    safe=json.dumps(payload,ensure_ascii=False,separators=(&#x27;,&#x27;,&#x27;:&#x27;)).replace(&#x27;&lt;&#x27;,&#x27;\\u003c&#x27;).replace(&#x27;\u2028&#x27;,&#x27;\\u2028&#x27;).replace(&#x27;\u2029&#x27;,&#x27;\\u2029&#x27;)
+    inspect_safe=json.dumps(inspection,ensure_ascii=False,separators=(&#x27;,&#x27;,&#x27;:&#x27;)).replace(&#x27;&lt;&#x27;,&#x27;\\u003c&#x27;).replace(&#x27;\u2028&#x27;,&#x27;\\u2028&#x27;).replace(&#x27;\u2029&#x27;,&#x27;\\u2029&#x27;)
+    html=&#x27;&lt;div class=&quot;af-guide af-common&quot; id=&quot;af-common&quot;&gt;&lt;p&gt;Loading the saved practical examples. These controls do not execute workbook edits.&lt;/p&gt;&lt;noscript&gt;Enable JavaScript to explore the examples; the surrounding explanation and source links remain readable.&lt;/noscript&gt;&lt;/div&gt;&#x27;
+    return ComponentResult(html,dependencies=[dict(id=&#x27;artifact-common-data&#x27;,kind=&#x27;js&#x27;,content=&#x27;window.ArtifactCommonWorkData=&#x27;+safe+&#x27;;&#x27;),dict(id=&#x27;artifact-inspection-data&#x27;,kind=&#x27;js&#x27;,content=&#x27;window.ArtifactInspectionData=&#x27;+inspect_safe+&#x27;;&#x27;),dict(id=&#x27;artifact-reads-data&#x27;,kind=&#x27;js&#x27;,content=&#x27;window.ArtifactReadsData=&#x27;+reads_safe+&#x27;;&#x27;),dict(id=&#x27;artifact-reads-css&#x27;,kind=&#x27;css&#x27;,path=str(HERE/&#x27;reads.css&#x27;)),dict(id=&#x27;artifact-reads-js&#x27;,kind=&#x27;js&#x27;,path=str(HERE/&#x27;reads.js&#x27;)),dict(id=&#x27;artifact-guide-css&#x27;,kind=&#x27;css&#x27;,path=str(HERE/&#x27;explorer.css&#x27;)),dict(id=&#x27;artifact-common-css&#x27;,kind=&#x27;css&#x27;,path=str(HERE/&#x27;common-work.css&#x27;)),dict(id=&#x27;artifact-inspection-css&#x27;,kind=&#x27;css&#x27;,path=str(HERE/&#x27;inspection.css&#x27;)),dict(id=&#x27;artifact-inspection-js&#x27;,kind=&#x27;js&#x27;,path=str(HERE/&#x27;inspection.js&#x27;)),dict(id=&#x27;artifact-common-js&#x27;,kind=&#x27;js&#x27;,path=str(HERE/&#x27;common-work.js&#x27;))],exhibits=[dict(id=&#x27;af-common&#x27;,kind=&#x27;interactive-reference&#x27;,label=&#x27;23 common actions, 47 inspection and 38 reading comparisons&#x27;,evidence=dict(format=&#x27;json&#x27;,data=dict(common=payload,inspection=inspection,reads=reads),source=&#x27;data/common-work.json; data/inspection.json; data/reads.json&#x27;),states=states)])
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

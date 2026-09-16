@@ -1,0 +1,220 @@
+[
+  {
+    "id": "V01",
+    "description": "Replicated CRDT edits from a shared initialization update",
+    "status": "pass",
+    "ms": 11,
+    "detail": {
+      "baselineUpdates": [
+        5761
+      ],
+      "sheets": [
+        "Data"
+      ],
+      "value": 99
+    }
+  },
+  {
+    "id": "V02",
+    "description": "Correct raw-note config and Excel note preservation",
+    "status": "pass",
+    "ms": 286,
+    "detail": {
+      "id": "synthetic-note",
+      "target": {
+        "cell": {
+          "sheetName": "Data",
+          "sheetId": "1",
+          "address": "A1"
+        }
+      },
+      "authorId": "{069BF49E-8F04-4036-917B-00633CDA01A2}",
+      "createdAt": "2026-09-15T17:28:16.054Z",
+      "body": {
+        "plainText": "Synthetic cell note"
+      }
+    }
+  },
+  {
+    "id": "V03",
+    "description": "Unsupported operations return warnings; batches retain earlier changes",
+    "status": "pass",
+    "ms": 1,
+    "detail": {
+      "result": {
+        "idMap": {},
+        "warnings": [
+          "TODO: invalid.action is not implemented yet.",
+          "TODO: note.add is not implemented yet."
+        ]
+      },
+      "value": 2,
+      "notes": 0
+    }
+  },
+  {
+    "id": "V04",
+    "description": "Fresh structured formula after table totals flag and saved-file reload",
+    "status": "pass",
+    "ms": 149,
+    "detail": {
+      "before": 9,
+      "after": [
+        [
+          9
+        ],
+        [
+          5
+        ]
+      ],
+      "reimport": [
+        [
+          5
+        ],
+        [
+          5
+        ]
+      ]
+    }
+  },
+  {
+    "id": "V05",
+    "description": "Slicer select/clear, pivot refresh, layout and export",
+    "status": "pass",
+    "ms": 67,
+    "detail": {
+      "before": [
+        [
+          "Row Labels",
+          "Sum of Sales",
+          null
+        ],
+        [
+          "North",
+          40,
+          null
+        ],
+        [
+          "South",
+          60,
+          null
+        ],
+        [
+          "Grand Total",
+          100,
+          null
+        ],
+        [
+          null,
+          null,
+          null
+        ]
+      ],
+      "selected": [
+        [
+          "Row Labels",
+          "Sum of Sales",
+          null
+        ],
+        [
+          "North",
+          40,
+          null
+        ],
+        [
+          "Grand Total",
+          40,
+          null
+        ],
+        [
+          "Grand Total",
+          100,
+          null
+        ],
+        [
+          null,
+          null,
+          null
+        ]
+      ],
+      "refreshed": [
+        [
+          "Row Labels",
+          "Sum of Sales",
+          null
+        ],
+        [
+          "North",
+          130,
+          null
+        ],
+        [
+          "South",
+          60,
+          null
+        ],
+        [
+          "Grand Total",
+          190,
+          null
+        ],
+        [
+          null,
+          null,
+          null
+        ]
+      ],
+      "layout": "Compact"
+    }
+  },
+  {
+    "id": "V06",
+    "description": "Read-only public static session wrapper types and file APIs",
+    "status": "pass",
+    "ms": 0,
+    "detail": {
+      "Workbook": {
+        "run": {
+          "type": "function",
+          "source": "run(t,n,r){return e.session.run(t,n,r)}"
+        },
+        "create": {
+          "type": "function",
+          "source": "create(){if(arguments.length>0){throw new Error(\"Workbook.create() does not accept worksheet names; add worksheets with workbook.worksheets.add(name).\")}return new e({sheets:[],styles:void 0,theme:void 0,contentReferences:[],images:[],people:[],threads:[],notes:[],slicerCaches:[],pivotCaches:[],timelineCaches:[],textStyles:[],codeEnvironments:[],codeBlocks:[]})}"
+        },
+        "load": {
+          "type": "function",
+          "source": "load(t,n){const r=_So(n);if(r){const i=pfr(t,r);if(!i.valid){throw new Bae(i)}}return new e(t)}"
+        },
+        "fromGoogleSheets": {
+          "type": "function",
+          "source": "async fromGoogleSheets(t){return gze().loadWorkbook(t)}"
+        },
+        "fromMarkdown": {
+          "type": "function",
+          "source": "async fromMarkdown(t,n){const{buildTableValuesFromMarkdown:r,sanitizeSheetName:i}=await a0r();const o=r(t);const a=n?.format??true;const s=e.create();const l=s.worksheets.add(i(n?.sheetName));const u=o.reduce((d,f)=>Math.max(d,f.length),0);if(u===0){return s}for(let d=0;d<o.length;d+=1){const f=o[d]??[];const h=f.slice();while(h.length<u){h.push(\"\")}const m=`${Cf(0)}${d+1}`;const g=`${Cf(u-1)}${d+1}`;const b=u===1?m:`${m}:${g}`;l.getRange(b).values=[h]}if(o.length>0&&u>0){const d=`${Cf(0)}1`;const f=`${Cf(u-1)}${o.length}`;const h=u===1&&o.length===1?d:`${d}:${f}`;if(a){l.tables.add(h,true)}l.getRange(h).format.autofitColumns()}return s}"
+        },
+        "fromCSV": {
+          "type": "function",
+          "source": "async fromCSV(t,n){const{planCsvImport:r}=await f_t();const i=r(t,n);const o=e.create();const a=o.worksheets.add(i.sheetName);if(i.values.length>0&&i.rangeRef){const s=i.rangeRef;o.record(()=>{a.getRange(s).values=i.values})}return o}"
+        },
+        "session": {
+          "type": "object"
+        }
+      },
+      "SpreadsheetFile": [
+        "length",
+        "name",
+        "prototype",
+        "importXlsx",
+        "exportXlsx"
+      ],
+      "FileBlob": [
+        "length",
+        "name",
+        "prototype",
+        "load"
+      ]
+    }
+  }
+]

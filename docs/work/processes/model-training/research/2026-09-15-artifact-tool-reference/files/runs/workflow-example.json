@@ -1,0 +1,57 @@
+{
+  "captures": [
+    {
+      "price": 8,
+      "values": [
+        [
+          16
+        ],
+        [
+          24
+        ]
+      ]
+    },
+    {
+      "price": 10,
+      "values": [
+        [
+          20
+        ],
+        [
+          30
+        ]
+      ]
+    },
+    {
+      "price": 12,
+      "values": [
+        [
+          24
+        ],
+        [
+          36
+        ]
+      ]
+    }
+  ],
+  "restored": [
+    [
+      10
+    ],
+    [
+      10
+    ]
+  ],
+  "independentClone": true,
+  "errorScan": [],
+  "customShapeId": "h2orqa",
+  "reimportedShapes": 1,
+  "reimportedValues": [
+    [
+      20
+    ],
+    [
+      30
+    ]
+  ]
+}

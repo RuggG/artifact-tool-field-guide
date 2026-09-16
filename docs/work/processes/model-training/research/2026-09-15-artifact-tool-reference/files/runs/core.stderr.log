@@ -1,0 +1,4 @@
+[granola:validation] Worksheet "Data" already exists. Returning existing worksheet.
+Worksheet "Missing" is missing a required sheetId.
+Range.values shrank from Data!D1:E2 to Data!D1:F1 (2x2 -> 1x3).
+Worksheet "Missing" is missing a required sheetId.

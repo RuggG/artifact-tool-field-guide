@@ -1,0 +1,37 @@
+{
+  "name": "fx.COMBIN",
+  "category": "math-trig",
+  "examples": [
+    {
+      "formula": "=COMBIN(10, 10)",
+      "value": 1,
+      "projection": [
+        [
+          1,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 10
+    }
+  ]
+}

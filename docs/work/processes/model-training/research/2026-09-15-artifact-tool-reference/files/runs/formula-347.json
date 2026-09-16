@@ -1,0 +1,37 @@
+{
+  "name": "fx.RANDARRAY",
+  "category": "math-trig",
+  "examples": [
+    {
+      "formula": "=RANDARRAY(A1)",
+      "value": 0.345885927460773,
+      "projection": [
+        [
+          0.345885927460773,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 11
+    }
+  ]
+}

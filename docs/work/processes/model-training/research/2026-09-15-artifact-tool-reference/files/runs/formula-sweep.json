@@ -1,0 +1,4448 @@
+[
+  {
+    "name": "fx.VAR",
+    "index": 1,
+    "ms": 555,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.VARP",
+    "index": 3,
+    "ms": 557,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.STDEVP",
+    "index": 2,
+    "ms": 562,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.STDEV",
+    "index": 0,
+    "ms": 574,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.BINOMDIST",
+    "index": 7,
+    "ms": 488,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.BETAINV",
+    "index": 6,
+    "ms": 504,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.BETADIST",
+    "index": 5,
+    "ms": 516,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.RANK",
+    "index": 4,
+    "ms": 529,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.CHIINV",
+    "index": 9,
+    "ms": 435,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.CRITBINOM",
+    "index": 11,
+    "ms": 432,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.CONFIDENCE",
+    "index": 10,
+    "ms": 453,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.CHIDIST",
+    "index": 8,
+    "ms": 474,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.EXPONDIST",
+    "index": 12,
+    "ms": 386,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.FLOOR",
+    "index": 15,
+    "ms": 427,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.FDIST",
+    "index": 13,
+    "ms": 451,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.FINV",
+    "index": 14,
+    "ms": 462,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.GAMMADIST",
+    "index": 16,
+    "ms": 437,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.CEILING",
+    "index": 18,
+    "ms": 433,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.GAMMAINV",
+    "index": 17,
+    "ms": 443,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.HYPGEOMDIST",
+    "index": 19,
+    "ms": 429,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.LOGNORMDIST",
+    "index": 20,
+    "ms": 455,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.LOGINV",
+    "index": 21,
+    "ms": 452,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.NEGBINOMDIST",
+    "index": 22,
+    "ms": 450,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.NORMDIST",
+    "index": 23,
+    "ms": 449,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.NORMSDIST",
+    "index": 24,
+    "ms": 523,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.POISSON",
+    "index": 27,
+    "ms": 499,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.NORMSINV",
+    "index": 26,
+    "ms": 517,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.NORMINV",
+    "index": 25,
+    "ms": 536,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.TDIST",
+    "index": 28,
+    "ms": 476,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.WEIBULL",
+    "index": 29,
+    "ms": 449,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.CHITEST",
+    "index": 30,
+    "ms": 450,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.COVAR",
+    "index": 31,
+    "ms": 445,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.FORECAST",
+    "index": 32,
+    "ms": 466,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.TTEST",
+    "index": 34,
+    "ms": 455,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ZTEST",
+    "index": 35,
+    "ms": 446,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.FTEST",
+    "index": 33,
+    "ms": 465,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.QUARTILE",
+    "index": 36,
+    "ms": 509,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.PERCENTRANK",
+    "index": 38,
+    "ms": 505,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.MODE",
+    "index": 39,
+    "ms": 504,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.PERCENTILE",
+    "index": 37,
+    "ms": 518,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.TINV",
+    "index": 40,
+    "ms": 426,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.CUBEVALUE",
+    "index": 42,
+    "ms": 433,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.CONCATENATE",
+    "index": 41,
+    "ms": 443,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.CUBEMEMBER",
+    "index": 43,
+    "ms": 431,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.CUBESET",
+    "index": 47,
+    "ms": 448,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.CUBEMEMBERPROPERTY",
+    "index": 44,
+    "ms": 486,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.CUBEKPIMEMBER",
+    "index": 46,
+    "ms": 470,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.CUBERANKEDMEMBER",
+    "index": 45,
+    "ms": 507,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.CUBESETCOUNT",
+    "index": 48,
+    "ms": 384,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.DSUM",
+    "index": 50,
+    "ms": 403,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.DCOUNT",
+    "index": 49,
+    "ms": 422,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.DAVERAGE",
+    "index": 51,
+    "ms": 396,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.DMIN",
+    "index": 52,
+    "ms": 411,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.DMAX",
+    "index": 53,
+    "ms": 378,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.DSTDEV",
+    "index": 54,
+    "ms": 382,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.DVAR",
+    "index": 55,
+    "ms": 409,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.DPRODUCT",
+    "index": 56,
+    "ms": 552,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.DSTDEVP",
+    "index": 57,
+    "ms": 561,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.DVARP",
+    "index": 58,
+    "ms": 562,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.DCOUNTA",
+    "index": 59,
+    "ms": 582,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.DGET",
+    "index": 60,
+    "ms": 438,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.DATE",
+    "index": 61,
+    "ms": 438,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.TIME",
+    "index": 62,
+    "ms": 455,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.DAY",
+    "index": 63,
+    "ms": 443,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.MONTH",
+    "index": 64,
+    "ms": 435,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.YEAR",
+    "index": 65,
+    "ms": 432,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.WEEKDAY",
+    "index": 66,
+    "ms": 447,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.HOUR",
+    "index": 67,
+    "ms": 455,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.MINUTE",
+    "index": 68,
+    "ms": 447,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.SECOND",
+    "index": 69,
+    "ms": 438,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.NOW",
+    "index": 70,
+    "ms": 478,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.DATEVALUE",
+    "index": 71,
+    "ms": 436,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.DAYS360",
+    "index": 73,
+    "ms": 358,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.TIMEVALUE",
+    "index": 72,
+    "ms": 382,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.TODAY",
+    "index": 74,
+    "ms": 410,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.EDATE",
+    "index": 75,
+    "ms": 419,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.EOMONTH",
+    "index": 76,
+    "ms": 501,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.YEARFRAC",
+    "index": 77,
+    "ms": 491,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.WEEKNUM",
+    "index": 78,
+    "ms": 543,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.WORKDAY",
+    "index": 79,
+    "ms": 530,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.NETWORKDAYS",
+    "index": 80,
+    "ms": 531,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.NETWORKDAYS.INTL",
+    "index": 81,
+    "ms": 546,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.WORKDAY.INTL",
+    "index": 82,
+    "ms": 463,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.DAYS",
+    "index": 83,
+    "ms": 485,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ISOWEEKNUM",
+    "index": 84,
+    "ms": 439,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.HEX2BIN",
+    "index": 85,
+    "ms": 447,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.HEX2DEC",
+    "index": 86,
+    "ms": 433,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.HEX2OCT",
+    "index": 87,
+    "ms": 406,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.DEC2BIN",
+    "index": 88,
+    "ms": 446,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.DEC2HEX",
+    "index": 89,
+    "ms": 435,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.DEC2OCT",
+    "index": 90,
+    "ms": 388,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.OCT2BIN",
+    "index": 91,
+    "ms": 398,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.OCT2HEX",
+    "index": 92,
+    "ms": 449,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.OCT2DEC",
+    "index": 93,
+    "ms": 441,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.BIN2OCT",
+    "index": 95,
+    "ms": 464,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.BIN2DEC",
+    "index": 94,
+    "ms": 491,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.BIN2HEX",
+    "index": 96,
+    "ms": 529,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.IMSUB",
+    "index": 97,
+    "ms": 564,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.IMDIV",
+    "index": 98,
+    "ms": 516,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.IMPOWER",
+    "index": 99,
+    "ms": 521,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.IMABS",
+    "index": 100,
+    "ms": 447,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.IMLN",
+    "index": 102,
+    "ms": 449,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.IMSQRT",
+    "index": 101,
+    "ms": 476,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.IMLOG2",
+    "index": 103,
+    "ms": 468,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.IMLOG10",
+    "index": 104,
+    "ms": 481,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.IMCOS",
+    "index": 106,
+    "ms": 457,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.IMSIN",
+    "index": 105,
+    "ms": 470,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.IMEXP",
+    "index": 107,
+    "ms": 483,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.IMARGUMENT",
+    "index": 108,
+    "ms": 440,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.IMCONJUGATE",
+    "index": 109,
+    "ms": 415,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.IMAGINARY",
+    "index": 110,
+    "ms": 428,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.IMREAL",
+    "index": 111,
+    "ms": 463,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.COMPLEX",
+    "index": 112,
+    "ms": 482,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.IMSUM",
+    "index": 113,
+    "ms": 479,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.IMPRODUCT",
+    "index": 114,
+    "ms": 473,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.DELTA",
+    "index": 115,
+    "ms": 477,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.GESTEP",
+    "index": 116,
+    "ms": 425,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ERF",
+    "index": 117,
+    "ms": 483,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ERFC",
+    "index": 118,
+    "ms": 486,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.BESSELJ",
+    "index": 119,
+    "ms": 501,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.BESSELI",
+    "index": 122,
+    "ms": 407,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.BESSELK",
+    "index": 120,
+    "ms": 502,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.BESSELY",
+    "index": 121,
+    "ms": 425,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.CONVERT",
+    "index": 123,
+    "ms": 449,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ERF.PRECISE",
+    "index": 124,
+    "ms": 371,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ERFC.PRECISE",
+    "index": 125,
+    "ms": 388,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.IMTAN",
+    "index": 126,
+    "ms": 388,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.IMCOT",
+    "index": 127,
+    "ms": 364,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.IMSEC",
+    "index": 130,
+    "ms": 434,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.IMCSC",
+    "index": 128,
+    "ms": 456,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.IMCSCH",
+    "index": 129,
+    "ms": 440,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.IMSECH",
+    "index": 131,
+    "ms": 517,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.BITOR",
+    "index": 133,
+    "ms": 477,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.BITAND",
+    "index": 132,
+    "ms": 482,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.BITXOR",
+    "index": 134,
+    "ms": 486,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.BITLSHIFT",
+    "index": 135,
+    "ms": 450,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.BITRSHIFT",
+    "index": 136,
+    "ms": 454,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.IMCOSH",
+    "index": 138,
+    "ms": 443,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.IMSINH",
+    "index": 137,
+    "ms": 465,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.NPV",
+    "index": 139,
+    "ms": 523,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.PV",
+    "index": 140,
+    "ms": 515,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.FV",
+    "index": 141,
+    "ms": 521,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.NPER",
+    "index": 142,
+    "ms": 545,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.PMT",
+    "index": 143,
+    "ms": 461,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.MIRR",
+    "index": 145,
+    "ms": 393,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.RATE",
+    "index": 144,
+    "ms": 404,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.IRR",
+    "index": 146,
+    "ms": 390,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.SLN",
+    "index": 147,
+    "ms": 394,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.SYD",
+    "index": 148,
+    "ms": 511,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.DDB",
+    "index": 149,
+    "ms": 520,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.IPMT",
+    "index": 150,
+    "ms": 515,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.PPMT",
+    "index": 151,
+    "ms": 572,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.DB",
+    "index": 153,
+    "ms": 465,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.VDB",
+    "index": 152,
+    "ms": 482,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ISPMT",
+    "index": 154,
+    "ms": 477,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.XIRR",
+    "index": 155,
+    "ms": 463,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.PRICEMAT",
+    "index": 157,
+    "ms": 514,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.XNPV",
+    "index": 156,
+    "ms": 522,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.YIELDMAT",
+    "index": 158,
+    "ms": 496,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.INTRATE",
+    "index": 159,
+    "ms": 537,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.PRICEDISC",
+    "index": 162,
+    "ms": 435,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.DISC",
+    "index": 161,
+    "ms": 486,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.RECEIVED",
+    "index": 160,
+    "ms": 498,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.YIELDDISC",
+    "index": 163,
+    "ms": 433,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.TBILLEQ",
+    "index": 164,
+    "ms": 395,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.TBILLYIELD",
+    "index": 166,
+    "ms": 385,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.TBILLPRICE",
+    "index": 165,
+    "ms": 401,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.PRICE",
+    "index": 167,
+    "ms": 475,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.YIELD",
+    "index": 168,
+    "ms": 524,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.DOLLARDE",
+    "index": 169,
+    "ms": 499,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.DOLLARFR",
+    "index": 170,
+    "ms": 534,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.NOMINAL",
+    "index": 171,
+    "ms": 508,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.EFFECT",
+    "index": 172,
+    "ms": 500,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.CUMPRINC",
+    "index": 173,
+    "ms": 502,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.CUMIPMT",
+    "index": 174,
+    "ms": 490,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.COUPDAYBS",
+    "index": 175,
+    "ms": 532,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.COUPDAYSNC",
+    "index": 177,
+    "ms": 487,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.COUPDAYS",
+    "index": 176,
+    "ms": 518,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.COUPNCD",
+    "index": 178,
+    "ms": 503,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.COUPNUM",
+    "index": 179,
+    "ms": 490,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.COUPPCD",
+    "index": 180,
+    "ms": 454,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.DURATION",
+    "index": 181,
+    "ms": 457,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.MDURATION",
+    "index": 182,
+    "ms": 437,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ODDLPRICE",
+    "index": 183,
+    "ms": 368,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ODDLYIELD",
+    "index": 184,
+    "ms": 458,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ODDFPRICE",
+    "index": 185,
+    "ms": 445,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ODDFYIELD",
+    "index": 186,
+    "ms": 447,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.AMORLINC",
+    "index": 187,
+    "ms": 519,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ACCRINTM",
+    "index": 189,
+    "ms": 488,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.FVSCHEDULE",
+    "index": 190,
+    "ms": 484,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ACCRINT",
+    "index": 188,
+    "ms": 508,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.PDURATION",
+    "index": 191,
+    "ms": 473,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ISNA",
+    "index": 194,
+    "ms": 431,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.RRI",
+    "index": 192,
+    "ms": 461,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.STOCKHISTORY",
+    "index": 193,
+    "ms": 465,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ISERROR",
+    "index": 195,
+    "ms": 541,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.NA",
+    "index": 196,
+    "ms": 465,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ISREF",
+    "index": 198,
+    "ms": 478,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.TYPE",
+    "index": 197,
+    "ms": 507,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ISERR",
+    "index": 199,
+    "ms": 586,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ISTEXT",
+    "index": 200,
+    "ms": 620,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ISNUMBER",
+    "index": 201,
+    "ms": 598,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ISBLANK",
+    "index": 202,
+    "ms": 618,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.N",
+    "index": 203,
+    "ms": 485,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ISNONTEXT",
+    "index": 204,
+    "ms": 459,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ISLOGICAL",
+    "index": 205,
+    "ms": 446,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ERROR.TYPE",
+    "index": 206,
+    "ms": 448,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ISEVEN",
+    "index": 207,
+    "ms": 433,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ISODD",
+    "index": 208,
+    "ms": 444,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.SHEET",
+    "index": 209,
+    "ms": 457,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.SHEETS",
+    "index": 210,
+    "ms": 459,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ISFORMULA",
+    "index": 211,
+    "ms": 541,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ISOMITTED",
+    "index": 212,
+    "ms": 516,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.IF",
+    "index": 213,
+    "ms": 524,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.TRUE",
+    "index": 214,
+    "ms": 549,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.FALSE",
+    "index": 215,
+    "ms": 408,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.AND",
+    "index": 216,
+    "ms": 433,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.OR",
+    "index": 217,
+    "ms": 443,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.NOT",
+    "index": 218,
+    "ms": 444,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.IFERROR",
+    "index": 219,
+    "ms": 447,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.XOR",
+    "index": 220,
+    "ms": 502,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.IFNA",
+    "index": 221,
+    "ms": 486,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.IFS",
+    "index": 222,
+    "ms": 481,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.SWITCH",
+    "index": 223,
+    "ms": 443,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.LET",
+    "index": 224,
+    "ms": 370,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.LAMBDA",
+    "index": 225,
+    "ms": 398,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.MAKEARRAY",
+    "index": 226,
+    "ms": 420,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.MAP",
+    "index": 227,
+    "ms": 488,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.REDUCE",
+    "index": 228,
+    "ms": 489,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.SCAN",
+    "index": 229,
+    "ms": 480,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.BYROW",
+    "index": 230,
+    "ms": 478,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.BYCOL",
+    "index": 231,
+    "ms": 499,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.COLUMN",
+    "index": 233,
+    "ms": 464,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ROW",
+    "index": 232,
+    "ms": 511,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.LOOKUP",
+    "index": 234,
+    "ms": 496,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.INDEX",
+    "index": 235,
+    "ms": 435,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.MATCH",
+    "index": 236,
+    "ms": 425,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.AREAS",
+    "index": 237,
+    "ms": 439,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ROWS",
+    "index": 238,
+    "ms": 457,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.COLUMNS",
+    "index": 239,
+    "ms": 501,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.OFFSET",
+    "index": 240,
+    "ms": 435,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.TRANSPOSE",
+    "index": 241,
+    "ms": 484,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.CHOOSE",
+    "index": 242,
+    "ms": 456,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.HLOOKUP",
+    "index": 243,
+    "ms": 451,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.VLOOKUP",
+    "index": 244,
+    "ms": 439,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.INDIRECT",
+    "index": 245,
+    "ms": 458,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ADDRESS",
+    "index": 246,
+    "ms": 486,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.GETPIVOTDATA",
+    "index": 247,
+    "ms": 462,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.HYPERLINK",
+    "index": 248,
+    "ms": 456,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.FORMULATEXT",
+    "index": 249,
+    "ms": 527,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.FIELDVALUE",
+    "index": 250,
+    "ms": 467,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.FILTER",
+    "index": 251,
+    "ms": 488,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.SORT",
+    "index": 252,
+    "ms": 490,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.UNIQUE",
+    "index": 253,
+    "ms": 444,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.XMATCH",
+    "index": 254,
+    "ms": 432,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.XLOOKUP",
+    "index": 255,
+    "ms": 420,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.SORTBY",
+    "index": 256,
+    "ms": 434,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.WRAPROWS",
+    "index": 257,
+    "ms": 412,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.VSTACK",
+    "index": 258,
+    "ms": 407,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.HSTACK",
+    "index": 259,
+    "ms": 407,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.CHOOSEROWS",
+    "index": 260,
+    "ms": 434,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.CHOOSECOLS",
+    "index": 261,
+    "ms": 440,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.TOCOL",
+    "index": 262,
+    "ms": 438,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.TOROW",
+    "index": 263,
+    "ms": 482,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.WRAPCOLS",
+    "index": 264,
+    "ms": 496,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.EXPAND",
+    "index": 265,
+    "ms": 491,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.TAKE",
+    "index": 266,
+    "ms": 503,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.DROP",
+    "index": 267,
+    "ms": 487,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.PY",
+    "index": 268,
+    "ms": 529,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.IMAGE",
+    "index": 269,
+    "ms": 543,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.GROUPBY",
+    "index": 270,
+    "ms": 491,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.PIVOTBY",
+    "index": 271,
+    "ms": 476,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.TRIMRANGE",
+    "index": 272,
+    "ms": 454,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.SIN",
+    "index": 274,
+    "ms": 453,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.SUM",
+    "index": 273,
+    "ms": 462,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.COS",
+    "index": 275,
+    "ms": 433,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.TAN",
+    "index": 276,
+    "ms": 421,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.PI",
+    "index": 278,
+    "ms": 388,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ATAN",
+    "index": 277,
+    "ms": 403,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.SQRT",
+    "index": 279,
+    "ms": 438,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.EXP",
+    "index": 280,
+    "ms": 513,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.LN",
+    "index": 281,
+    "ms": 483,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.LOG10",
+    "index": 282,
+    "ms": 510,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ABS",
+    "index": 283,
+    "ms": 499,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.INT",
+    "index": 284,
+    "ms": 541,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.SIGN",
+    "index": 285,
+    "ms": 573,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ROUND",
+    "index": 286,
+    "ms": 557,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.MOD",
+    "index": 287,
+    "ms": 585,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.RAND",
+    "index": 288,
+    "ms": 539,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ATAN2",
+    "index": 289,
+    "ms": 515,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ASIN",
+    "index": 290,
+    "ms": 517,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ACOS",
+    "index": 291,
+    "ms": 472,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.LOG",
+    "index": 292,
+    "ms": 463,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.MDETERM",
+    "index": 293,
+    "ms": 448,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.MINVERSE",
+    "index": 294,
+    "ms": 459,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.MMULT",
+    "index": 295,
+    "ms": 412,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.PRODUCT",
+    "index": 296,
+    "ms": 438,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.FACT",
+    "index": 297,
+    "ms": 422,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.TRUNC",
+    "index": 298,
+    "ms": 454,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ROUNDUP",
+    "index": 299,
+    "ms": 449,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ROUNDDOWN",
+    "index": 300,
+    "ms": 436,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.SUMPRODUCT",
+    "index": 301,
+    "ms": 457,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.SINH",
+    "index": 302,
+    "ms": 466,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.COSH",
+    "index": 303,
+    "ms": 503,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.TANH",
+    "index": 304,
+    "ms": 476,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ASINH",
+    "index": 305,
+    "ms": 489,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ACOSH",
+    "index": 306,
+    "ms": 438,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ATANH",
+    "index": 307,
+    "ms": 474,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.COMBIN",
+    "index": 308,
+    "ms": 499,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.EVEN",
+    "index": 309,
+    "ms": 487,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ODD",
+    "index": 310,
+    "ms": 463,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.SUMXMY2",
+    "index": 311,
+    "ms": 459,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.SUMX2MY2",
+    "index": 312,
+    "ms": 465,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.SUMX2PY2",
+    "index": 313,
+    "ms": 459,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.SUMSQ",
+    "index": 314,
+    "ms": 494,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.POWER",
+    "index": 315,
+    "ms": 494,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.RADIANS",
+    "index": 316,
+    "ms": 503,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.DEGREES",
+    "index": 317,
+    "ms": 533,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.SUBTOTAL",
+    "index": 318,
+    "ms": 507,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.SUMIF",
+    "index": 319,
+    "ms": 490,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ROMAN",
+    "index": 320,
+    "ms": 481,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.SERIESSUM",
+    "index": 321,
+    "ms": 493,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.FACTDOUBLE",
+    "index": 322,
+    "ms": 522,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.SQRTPI",
+    "index": 323,
+    "ms": 456,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.QUOTIENT",
+    "index": 324,
+    "ms": 509,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.MROUND",
+    "index": 325,
+    "ms": 491,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.RANDBETWEEN",
+    "index": 326,
+    "ms": 495,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.GCD",
+    "index": 327,
+    "ms": 517,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.MULTINOMIAL",
+    "index": 328,
+    "ms": 456,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.LCM",
+    "index": 329,
+    "ms": 486,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.SUMIFS",
+    "index": 330,
+    "ms": 491,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.AGGREGATE",
+    "index": 331,
+    "ms": 466,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ACOT",
+    "index": 332,
+    "ms": 522,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ACOTH",
+    "index": 333,
+    "ms": 460,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.COT",
+    "index": 334,
+    "ms": 476,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.COTH",
+    "index": 335,
+    "ms": 477,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.CSC",
+    "index": 336,
+    "ms": 470,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.CSCH",
+    "index": 337,
+    "ms": 458,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.SEC",
+    "index": 338,
+    "ms": 480,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.SECH",
+    "index": 339,
+    "ms": 520,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.COMBINA",
+    "index": 340,
+    "ms": 513,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.BASE",
+    "index": 341,
+    "ms": 520,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.DECIMAL",
+    "index": 342,
+    "ms": 568,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.MUNIT",
+    "index": 343,
+    "ms": 544,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ARABIC",
+    "index": 344,
+    "ms": 543,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.CEILING.MATH",
+    "index": 345,
+    "ms": 524,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.FLOOR.MATH",
+    "index": 346,
+    "ms": 490,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.RANDARRAY",
+    "index": 347,
+    "ms": 495,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.SEQUENCE",
+    "index": 348,
+    "ms": 492,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.PERCENTOF",
+    "index": 349,
+    "ms": 496,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.COUNT",
+    "index": 350,
+    "ms": 580,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.AVERAGE",
+    "index": 351,
+    "ms": 521,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.MAX",
+    "index": 353,
+    "ms": 448,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.MIN",
+    "index": 352,
+    "ms": 473,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.LINEST",
+    "index": 354,
+    "ms": 399,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.TREND",
+    "index": 355,
+    "ms": 413,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.LOGEST",
+    "index": 356,
+    "ms": 403,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.GROWTH",
+    "index": 357,
+    "ms": 441,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.COUNTA",
+    "index": 358,
+    "ms": 466,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.MEDIAN",
+    "index": 359,
+    "ms": 582,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.FREQUENCY",
+    "index": 360,
+    "ms": 592,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.AVEDEV",
+    "index": 361,
+    "ms": 602,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.GAMMALN",
+    "index": 362,
+    "ms": 545,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.FISHER",
+    "index": 363,
+    "ms": 500,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.FISHERINV",
+    "index": 364,
+    "ms": 531,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.STANDARDIZE",
+    "index": 365,
+    "ms": 510,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.PERMUT",
+    "index": 366,
+    "ms": 523,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.CORREL",
+    "index": 367,
+    "ms": 574,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.INTERCEPT",
+    "index": 368,
+    "ms": 586,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.PEARSON",
+    "index": 369,
+    "ms": 618,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.RSQ",
+    "index": 370,
+    "ms": 597,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.STEYX",
+    "index": 371,
+    "ms": 533,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.SLOPE",
+    "index": 372,
+    "ms": 469,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.PROB",
+    "index": 373,
+    "ms": 464,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.DEVSQ",
+    "index": 374,
+    "ms": 440,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.GEOMEAN",
+    "index": 375,
+    "ms": 423,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.HARMEAN",
+    "index": 376,
+    "ms": 482,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.KURT",
+    "index": 377,
+    "ms": 516,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.SKEW",
+    "index": 378,
+    "ms": 546,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.LARGE",
+    "index": 379,
+    "ms": 560,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.SMALL",
+    "index": 380,
+    "ms": 562,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.TRIMMEAN",
+    "index": 381,
+    "ms": 557,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.COUNTIF",
+    "index": 382,
+    "ms": 543,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.COUNTBLANK",
+    "index": 383,
+    "ms": 497,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.AVERAGEA",
+    "index": 384,
+    "ms": 520,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.MAXA",
+    "index": 385,
+    "ms": 564,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.MINA",
+    "index": 386,
+    "ms": 553,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.STDEVPA",
+    "index": 387,
+    "ms": 541,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.VARPA",
+    "index": 388,
+    "ms": 461,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.STDEVA",
+    "index": 389,
+    "ms": 505,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.VARA",
+    "index": 390,
+    "ms": 489,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.COUNTIFS",
+    "index": 391,
+    "ms": 493,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.AVERAGEIF",
+    "index": 392,
+    "ms": 496,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.AVERAGEIFS",
+    "index": 393,
+    "ms": 533,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.BINOM.DIST",
+    "index": 394,
+    "ms": 547,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.BINOM.INV",
+    "index": 395,
+    "ms": 480,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.CONFIDENCE.NORM",
+    "index": 396,
+    "ms": 483,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.CONFIDENCE.T",
+    "index": 397,
+    "ms": 374,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.CHISQ.TEST",
+    "index": 398,
+    "ms": 406,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.F.TEST",
+    "index": 399,
+    "ms": 456,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.COVARIANCE.P",
+    "index": 400,
+    "ms": 505,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.COVARIANCE.S",
+    "index": 401,
+    "ms": 536,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.EXPON.DIST",
+    "index": 402,
+    "ms": 566,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.GAMMA.DIST",
+    "index": 403,
+    "ms": 561,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.GAMMA.INV",
+    "index": 404,
+    "ms": 527,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.MODE.MULT",
+    "index": 405,
+    "ms": 506,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.MODE.SNGL",
+    "index": 406,
+    "ms": 501,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.NORM.DIST",
+    "index": 407,
+    "ms": 441,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.NORM.INV",
+    "index": 408,
+    "ms": 543,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.PERCENTILE.EXC",
+    "index": 409,
+    "ms": 528,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.PERCENTILE.INC",
+    "index": 410,
+    "ms": 690,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.PERCENTRANK.EXC",
+    "index": 411,
+    "ms": 740,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.PERCENTRANK.INC",
+    "index": 412,
+    "ms": 830,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.POISSON.DIST",
+    "index": 413,
+    "ms": 848,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.QUARTILE.EXC",
+    "index": 414,
+    "ms": 673,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.QUARTILE.INC",
+    "index": 415,
+    "ms": 663,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.RANK.AVG",
+    "index": 416,
+    "ms": 602,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.RANK.EQ",
+    "index": 417,
+    "ms": 561,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.STDEV.S",
+    "index": 418,
+    "ms": 601,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.STDEV.P",
+    "index": 419,
+    "ms": 579,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.T.DIST",
+    "index": 420,
+    "ms": 539,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.T.DIST.2T",
+    "index": 421,
+    "ms": 525,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.T.DIST.RT",
+    "index": 422,
+    "ms": 604,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.T.INV",
+    "index": 423,
+    "ms": 643,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.T.INV.2T",
+    "index": 424,
+    "ms": 678,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.VAR.S",
+    "index": 425,
+    "ms": 672,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.VAR.P",
+    "index": 426,
+    "ms": 610,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.WEIBULL.DIST",
+    "index": 427,
+    "ms": 548,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.BETA.DIST",
+    "index": 428,
+    "ms": 464,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.BETA.INV",
+    "index": 429,
+    "ms": 470,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.CHISQ.DIST",
+    "index": 430,
+    "ms": 453,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.CHISQ.DIST.RT",
+    "index": 431,
+    "ms": 452,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.CHISQ.INV",
+    "index": 432,
+    "ms": 495,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.CHISQ.INV.RT",
+    "index": 433,
+    "ms": 527,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.F.DIST",
+    "index": 434,
+    "ms": 480,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.F.DIST.RT",
+    "index": 435,
+    "ms": 491,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.F.INV",
+    "index": 436,
+    "ms": 399,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.F.INV.RT",
+    "index": 437,
+    "ms": 381,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.HYPGEOM.DIST",
+    "index": 438,
+    "ms": 380,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.LOGNORM.DIST",
+    "index": 439,
+    "ms": 379,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.LOGNORM.INV",
+    "index": 440,
+    "ms": 421,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.NEGBINOM.DIST",
+    "index": 441,
+    "ms": 464,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.NORM.S.DIST",
+    "index": 442,
+    "ms": 522,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.NORM.S.INV",
+    "index": 443,
+    "ms": 604,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.T.TEST",
+    "index": 444,
+    "ms": 520,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.Z.TEST",
+    "index": 445,
+    "ms": 506,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.GAMMALN.PRECISE",
+    "index": 446,
+    "ms": 441,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.PERMUTATIONA",
+    "index": 447,
+    "ms": 465,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.BINOM.DIST.RANGE",
+    "index": 448,
+    "ms": 474,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.GAMMA",
+    "index": 449,
+    "ms": 514,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.SKEW.P",
+    "index": 450,
+    "ms": 589,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.GAUSS",
+    "index": 451,
+    "ms": 574,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.PHI",
+    "index": 452,
+    "ms": 543,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.FORECAST.LINEAR",
+    "index": 453,
+    "ms": 527,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.MAXIFS",
+    "index": 454,
+    "ms": 500,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.MINIFS",
+    "index": 455,
+    "ms": 422,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.DOLLAR",
+    "index": 456,
+    "ms": 415,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.FIXED",
+    "index": 457,
+    "ms": 398,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.REPT",
+    "index": 458,
+    "ms": 388,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.LEN",
+    "index": 460,
+    "ms": 458,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.MID",
+    "index": 459,
+    "ms": 478,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.VALUE",
+    "index": 461,
+    "ms": 579,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.TEXT",
+    "index": 462,
+    "ms": 569,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.CHAR",
+    "index": 464,
+    "ms": 522,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.SEARCH",
+    "index": 463,
+    "ms": 542,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.LOWER",
+    "index": 465,
+    "ms": 501,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.UPPER",
+    "index": 466,
+    "ms": 532,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.PROPER",
+    "index": 467,
+    "ms": 540,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.LEFT",
+    "index": 468,
+    "ms": 540,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.RIGHT",
+    "index": 469,
+    "ms": 534,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.EXACT",
+    "index": 470,
+    "ms": 514,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.TRIM",
+    "index": 471,
+    "ms": 444,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.REPLACE",
+    "index": 472,
+    "ms": 443,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.SUBSTITUTE",
+    "index": 473,
+    "ms": 435,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.CODE",
+    "index": 474,
+    "ms": 438,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.FIND",
+    "index": 475,
+    "ms": 425,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.T",
+    "index": 476,
+    "ms": 415,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.CLEAN",
+    "index": 477,
+    "ms": 437,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.BAHTTEXT",
+    "index": 478,
+    "ms": 450,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.UNICHAR",
+    "index": 479,
+    "ms": 472,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.UNICODE",
+    "index": 480,
+    "ms": 499,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.NUMBERVALUE",
+    "index": 481,
+    "ms": 483,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.TEXTJOIN",
+    "index": 482,
+    "ms": 502,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.CONCAT",
+    "index": 483,
+    "ms": 480,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.TEXTBEFORE",
+    "index": 484,
+    "ms": 473,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.TEXTAFTER",
+    "index": 485,
+    "ms": 474,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.TEXTSPLIT",
+    "index": 486,
+    "ms": 934,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.VALUETOTEXT",
+    "index": 487,
+    "ms": 977,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.ARRAYTOTEXT",
+    "index": 488,
+    "ms": 957,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.TRANSLATE",
+    "index": 489,
+    "ms": 930,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.DETECTLANGUAGE",
+    "index": 490,
+    "ms": 573,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.REGEXTEST",
+    "index": 491,
+    "ms": 556,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.REGEXREPLACE",
+    "index": 492,
+    "ms": 556,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  },
+  {
+    "name": "fx.REGEXEXTRACT",
+    "index": 493,
+    "ms": 474,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "stderr": ""
+  }
+]

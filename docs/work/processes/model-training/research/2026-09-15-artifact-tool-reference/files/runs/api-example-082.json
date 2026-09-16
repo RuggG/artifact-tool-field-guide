@@ -1,0 +1,10 @@
+{
+  "index": 82,
+  "name": "range.format.fill",
+  "summary": "Clear a range's fill",
+  "originalCode": "sheet.getRange('A2:C10').format.fill = null;",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

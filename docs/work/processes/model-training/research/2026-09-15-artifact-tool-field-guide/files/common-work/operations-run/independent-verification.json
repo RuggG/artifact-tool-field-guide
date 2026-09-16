@@ -1,0 +1,35 @@
+{
+  "sourceSha256": "b7ff5c92bf7562fa6fe3f253fdf7b40fd5f6659e8638310314c6b035ef02c181",
+  "downloadOriginalUnchanged": true,
+  "originalSheetOrderPreserved": true,
+  "newSheets": [
+    "Fee lab"
+  ],
+  "originalFormulaOrLiteralChanges": [],
+  "originalCachedValueChanges": [],
+  "originalNumberFormatChanges": [],
+  "nativePackage": {
+    "zipIntegrityError": null,
+    "formalTableFiles": [
+      "xl/tables/table1.xml"
+    ],
+    "chartFiles": [
+      "xl/drawings/charts/chart1.xml",
+      "xl/drawings/charts/chart2.xml"
+    ],
+    "annotationPartFiles": [
+      "xl/comments1.xml",
+      "xl/threadedcomments/threadedcomment.xml",
+      "xl/comments2.xml",
+      "xl/threadedcomments/threadedcomment2.xml",
+      "xl/comments3.xml",
+      "xl/threadedcomments/threadedcomment3.xml"
+    ]
+  },
+  "feeLab": {
+    "margin": 60,
+    "quarterOne": 435.76753023588856,
+    "annualFees": 1796.06293876048
+  },
+  "engine": "Independent file read using openpyxl 3.1.5 and ZIP/XML; Microsoft Excel application not opened."
+}

@@ -1,0 +1,163 @@
+{
+  "sources": [
+    {
+      "path": "2026-09-15-artifact-tool-reference/files/coverage.json",
+      "sha256": "d9ab1b208c86852619ca6db1fc08e4a4541312adb2acb0e2ab6c052eafc5b47e"
+    },
+    {
+      "path": "2026-09-15-artifact-tool-reference/files/runs/api-help.ndjson",
+      "sha256": "e1bb566d39941ef4cbf1cea9f261399f2be7ff763bc649c4222b6eb61bfb9556"
+    },
+    {
+      "path": "2026-09-15-artifact-tool-reference/files/runs/api-example-results.json",
+      "sha256": "fd4d455665d9422edb59d842e4828cfa43f18a58f8e98672a4e2e026c396cd29"
+    },
+    {
+      "path": "2026-09-15-artifact-tool-reference/files/runs/formula-results.json",
+      "sha256": "48fc0178317a92c2d63b4a7f59af7b7afeb34f43695b2e73ee14c493c79a0528"
+    },
+    {
+      "path": "2026-09-15-artifact-tool-reference/files/runs/ops.json",
+      "sha256": "77df60d0aa56f220aaecedd546ad27f3e933759dad61c808b52e591124d959b7"
+    },
+    {
+      "path": "2026-09-15-artifact-tool-reference/files/runs/oracles.json",
+      "sha256": "608bd48cde0fccd030802f9faa163cad35f12ad2de1dccc3f48658b991483e4c"
+    },
+    {
+      "path": "2026-09-15-artifact-tool-reference/files/runs/export-audit.json",
+      "sha256": "4480c6554a268987c7b7a5dea7a31520b0164036d47767d1c815cbbc50ed878f"
+    },
+    {
+      "path": "2026-09-15-artifact-tool-reference/files/runs/sessions.json",
+      "sha256": "9d6f79a223a3af1f9bd82a484fc6c5014bc95bf178a2d7d4901ff245980fb924"
+    }
+  ],
+  "counts": {
+    "families": 15,
+    "recipes": 23,
+    "operations": 42,
+    "apis": 126,
+    "formulas": 494,
+    "charts": 25,
+    "shapes": 190,
+    "support": 19
+  },
+  "gridConvention": "Workbook cell displays project actual saved state; this interface does not run the artifact calculation engine.",
+  "supportSources": [
+    {
+      "id": "support-quick_start_example",
+      "path": "../2026-09-15-artifact-tool-reference/files/runs/supplied-examples.json",
+      "sha256": "052cd3fcc15f1934983ace6bf378a0af4ce8d2b23b9fd7185951e8744a4f0b00",
+      "sourceTextSha256": "a0e23ee3e8d26215abe8c9f891be85133da96eac385824d5f71ed9284c50f688"
+    },
+    {
+      "id": "support-formula_trace_and_help",
+      "path": "../2026-09-15-artifact-tool-reference/files/runs/supplied-examples.json",
+      "sha256": "052cd3fcc15f1934983ace6bf378a0af4ce8d2b23b9fd7185951e8744a4f0b00",
+      "sourceTextSha256": "c1d6767c52f5ce45d3d0b9d0b12aac16d71d93823efa5852e798b0b6b9ce0e39"
+    },
+    {
+      "id": "support-chart_suggestions",
+      "path": "../2026-09-15-artifact-tool-reference/files/runs/supplied-examples.json",
+      "sha256": "052cd3fcc15f1934983ace6bf378a0af4ce8d2b23b9fd7185951e8744a4f0b00",
+      "sourceTextSha256": "ffba12b53f41de1aff3e3660f97655338922310b3eaccf5603f5b06cdf5d34d9"
+    },
+    {
+      "id": "support-inspect_existing_workbooks",
+      "path": "../2026-09-15-artifact-tool-reference/files/runs/supplied-examples.json",
+      "sha256": "052cd3fcc15f1934983ace6bf378a0af4ce8d2b23b9fd7185951e8744a4f0b00",
+      "sourceTextSha256": "1daf6dab3769301960290b17e9821e1f554a4896d531111b83a8f758c5c0f2bc"
+    },
+    {
+      "id": "support-marker",
+      "path": "../2026-09-15-artifact-tool-reference/files/sources/skill/container_tools/mark_artifact_operation_started.mjs",
+      "sha256": "20c5a86e596154c0541c7bfc4c52c17d928e22e27c6f0ff936c1c3fe16873c10",
+      "sourceTextSha256": "20c5a86e596154c0541c7bfc4c52c17d928e22e27c6f0ff936c1c3fe16873c10"
+    },
+    {
+      "id": "support-create",
+      "path": "../2026-09-15-artifact-tool-reference/files/sources/skill/workflows/create_workflows.md",
+      "sha256": "92e3d0910bde06d210718f47f88f24a51d33bf03b4560cca3e280fbcde22a47d",
+      "sourceTextSha256": "92e3d0910bde06d210718f47f88f24a51d33bf03b4560cca3e280fbcde22a47d"
+    },
+    {
+      "id": "support-edit",
+      "path": "../2026-09-15-artifact-tool-reference/files/sources/skill/workflows/edit_workflows.md",
+      "sha256": "f75917488c75b5a7b9e194c57131163d54ad23405802944e1d59eece990d27d8",
+      "sourceTextSha256": "f75917488c75b5a7b9e194c57131163d54ad23405802944e1d59eece990d27d8"
+    },
+    {
+      "id": "support-style",
+      "path": "../2026-09-15-artifact-tool-reference/files/sources/skill/style_guidelines.md",
+      "sha256": "52f91ee6bc4c0a3b633b35df33924092a07e48c45cc839942288592989e33063",
+      "sourceTextSha256": "52f91ee6bc4c0a3b633b35df33924092a07e48c45cc839942288592989e33063"
+    },
+    {
+      "id": "support-finance",
+      "path": "../2026-09-15-artifact-tool-reference/files/sources/skill/domain_guidance/financial_models.md",
+      "sha256": "ff163c47d4bcb14a9bf21cbb8e6fa5d73f407100e818e7a307f062e08d3025f1",
+      "sourceTextSha256": "ff163c47d4bcb14a9bf21cbb8e6fa5d73f407100e818e7a307f062e08d3025f1"
+    },
+    {
+      "id": "support-marketing",
+      "path": "../2026-09-15-artifact-tool-reference/files/sources/skill/domain_guidance/marketing_advertising.md",
+      "sha256": "bd6a715ac7d9ad2c830dff146e48321ccc4330c0024f471e85be66c5bb65b014",
+      "sourceTextSha256": "bd6a715ac7d9ad2c830dff146e48321ccc4330c0024f471e85be66c5bb65b014"
+    },
+    {
+      "id": "support-healthcare",
+      "path": "../2026-09-15-artifact-tool-reference/files/sources/skill/domain_guidance/healthcare.md",
+      "sha256": "df5b9dcb9df988c197fcb377e0b9798f582e9cd30d1c103fd7cd8957a215dff9",
+      "sourceTextSha256": "df5b9dcb9df988c197fcb377e0b9798f582e9cd30d1c103fd7cd8957a215dff9"
+    },
+    {
+      "id": "support-science",
+      "path": "../2026-09-15-artifact-tool-reference/files/sources/skill/domain_guidance/scientific_research.md",
+      "sha256": "a95381e624c4c9562efee3e4a5cdd41bd52e1d3330545ab64d2a85242b10c0af",
+      "sourceTextSha256": "a95381e624c4c9562efee3e4a5cdd41bd52e1d3330545ab64d2a85242b10c0af"
+    },
+    {
+      "id": "support-read-only",
+      "path": "../2026-09-15-artifact-tool-reference/files/sources/skill/references/read_only_qna.md",
+      "sha256": "687beb1ce4c32164fd8f8f17e0a2c6a4371798ab1d47835a0a74efe7b8f980a6",
+      "sourceTextSha256": "687beb1ce4c32164fd8f8f17e0a2c6a4371798ab1d47835a0a74efe7b8f980a6"
+    },
+    {
+      "id": "support-images",
+      "path": "../2026-09-15-artifact-tool-reference/files/sources/skill/references/image-references.md",
+      "sha256": "148690f09a1f33a8d61a3f28df8b9c872a6bc16f0eaa2ea561bcc4dcd07bc2cc",
+      "sourceTextSha256": "148690f09a1f33a8d61a3f28df8b9c872a6bc16f0eaa2ea561bcc4dcd07bc2cc"
+    },
+    {
+      "id": "support-template",
+      "path": "../2026-09-15-artifact-tool-reference/files/sources/skill/references/template-elicitation.md",
+      "sha256": "60b0ea3e373eef4f2a11fa419a7214f6580ac8e9b91028e7ba0968d4106e69ad",
+      "sourceTextSha256": "60b0ea3e373eef4f2a11fa419a7214f6580ac8e9b91028e7ba0968d4106e69ad"
+    },
+    {
+      "id": "support-google",
+      "path": "../2026-09-15-artifact-tool-reference/files/sources/skill/routing/google_sheets.md",
+      "sha256": "0acafc1a346240b9346c08e67b69ab289286c80d93528583c085444407ffc428",
+      "sourceTextSha256": "0acafc1a346240b9346c08e67b69ab289286c80d93528583c085444407ffc428"
+    },
+    {
+      "id": "support-scenario",
+      "path": "../2026-09-15-artifact-tool-reference/files/runs/workflow-example.json",
+      "sha256": "6194fbc69a694b6b05abd892a1c081e619a2a02803f10e4739a25c53eacfef0d",
+      "sourceTextSha256": "97dda9f39a13606bdbf3c957043ae73b1b0feedf65fa97ab9ab42cdf74ccee1c"
+    },
+    {
+      "id": "support-sessions",
+      "path": "../2026-09-15-artifact-tool-reference/files/runs/sessions.json",
+      "sha256": "9d6f79a223a3af1f9bd82a484fc6c5014bc95bf178a2d7d4901ff245980fb924",
+      "sourceTextSha256": "cf3b1259cc8c84f35e25db6426930e68a2dc9ee5bbe5a9fd94f2bc5f87b269fa"
+    },
+    {
+      "id": "support-isolation",
+      "path": "../2026-09-15-artifact-tool-reference/files/runs/api-example-results.json",
+      "sha256": "fd4d455665d9422edb59d842e4828cfa43f18a58f8e98672a4e2e026c396cd29",
+      "sourceTextSha256": "ef2ca97fa646c09e94d5c1597ec743ebbaed14e099357a14addcf86b11b825b0"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "name": "fx.CSC",
+  "category": "math-trig",
+  "examples": [
+    {
+      "formula": "=CSC(10)",
+      "value": -1.8381639608896658,
+      "projection": [
+        [
+          -1.8381639608896658,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 13
+    }
+  ]
+}

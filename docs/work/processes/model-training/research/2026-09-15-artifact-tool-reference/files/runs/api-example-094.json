@@ -1,0 +1,10 @@
+{
+  "index": 94,
+  "name": "range.format.columnWidth",
+  "summary": "Set column width to 2.75",
+  "originalCode": "sheet.getRange('A1:D10').format.columnWidth = 2.75;",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

@@ -1,0 +1,10 @@
+{
+  "index": 106,
+  "name": "range.getResizedRange",
+  "summary": "Grow a range by one column",
+  "originalCode": "const range = sheet.getRange('B2:D4');\nconst wider = range.getResizedRange(0, 1); // B2:E4",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

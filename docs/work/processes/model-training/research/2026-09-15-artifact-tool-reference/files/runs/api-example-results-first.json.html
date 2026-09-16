@@ -1,0 +1,1436 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>api-example-results-first.json · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="api-example-results-first.json">Raw file</a> · <a data-public-raw download href="api-example-results-first.json">Download</a></p><article><h1>api-example-results-first.json</h1><pre class="public-code"><code>[
+  {
+    &quot;index&quot;: 0,
+    &quot;name&quot;: &quot;worksheet.charts.add&quot;,
+    &quot;summary&quot;: &quot;Create a chart with a manual anchor&quot;,
+    &quot;originalCode&quot;: &quot;const sheet = workbook.worksheets.add(&#x27;Charts&#x27;);\nconst chart = sheet.charts.add(&#x27;line&#x27;, {\n  title: &#x27;Milky Way Star Birth Rate&#x27;,\n  titleTextStyle: { fontSize: 18, bold: true },\n  categories: [&#x27;2020&#x27;, &#x27;2021&#x27;, &#x27;2022&#x27;],\n  series: [\n    { name: &#x27;Milky Way&#x27;, values: [1.8, 1.9, 2.0] },\n  ],\n  hasLegend: true,\n  legend: { position: &#x27;top&#x27; },\n  barOptions: { direction: &#x27;column&#x27;, grouping: &#x27;stacked&#x27;, gapWidth: 120 },\n  dataLabels: { showValue: false },\n  from: { row: 1, col: 1 },\n  extent: { widthPx: 520, heightPx: 280 },\n});&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 1,
+    &quot;name&quot;: &quot;worksheet.charts.add&quot;,
+    &quot;summary&quot;: &quot;Compat range-anchored chart API&quot;,
+    &quot;originalCode&quot;: &quot;const sheet = workbook.worksheets.getItem(&#x27;Charts&#x27;);\nconst range = sheet.getRange(&#x27;A2:B5&#x27;);\nconst chart = sheet.charts.add(&#x27;ColumnClustered&#x27;, range, &#x27;Auto&#x27;);\nchart.title.text = &#x27;Stock Prices and Market Caps&#x27;;\nchart.setPosition(sheet.getRange(&#x27;F2:M10&#x27;));\nchart.width = 500;\nchart.height = 300;\nchart.axes.valueAxis.majorGridlines.format.line.color = &#x27;#CCCCCC&#x27;;&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;executionError&quot;: &quot;Error: Worksheet Charts not found (available: Sheet1, Data)&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 2,
+    &quot;name&quot;: &quot;chart data table&quot;,
+    &quot;summary&quot;: &quot;Data table with optional legend keys&quot;,
+    &quot;originalCode&quot;: &quot;chart.dataTable = { visible: true, showLegendKey: true, textStyle: { fontSize: 10 } };\nchart.dataTable = { visible: true, showLegendKey: false };&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;exportError&quot;: &quot;TypeError: this[#C].toProto is not a function&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 3,
+    &quot;name&quot;: &quot;chart series&quot;,
+    &quot;summary&quot;: &quot;Series + moving-average trendline&quot;,
+    &quot;originalCode&quot;: &quot;const sheet = workbook.worksheets.add(&#x27;Trendlines&#x27;);\nconst chart = sheet.charts.add(&#x27;line&#x27;, { from: { row: 1, col: 1 }, extent: { widthPx: 420, heightPx: 240 } });\nchart.categories = [&#x27;Q1&#x27;, &#x27;Q2&#x27;, &#x27;Q3&#x27;, &#x27;Q4&#x27;];\nconst series = chart.series.add(&#x27;Revenue&#x27;);\nseries.values = [10, 14, 13, 17];\nseries.categories = chart.categories;\nseries.trendlines.add(&#x27;movingAverage&#x27;, { movingAveragePeriod: 3 });&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 4,
+    &quot;name&quot;: &quot;chart title&quot;,
+    &quot;summary&quot;: &quot;Compact title edits&quot;,
+    &quot;originalCode&quot;: &quot;chart.title = &#x27;&#x27;;\nchart.titlePlacement = &#x27;none&#x27;;\nchart.title = &#x27;Sales Data&#x27;;\nchart.titlePlacement = &#x27;aboveChart&#x27;;\nchart.titlePlacement = &#x27;centeredOverlay&#x27;;\nchart.titleTextStyle.bold = true;\nchart.titleTextStyle.fontSize = 18;&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 5,
+    &quot;name&quot;: &quot;chart fills&quot;,
+    &quot;summary&quot;: &quot;Pattern fills (+ Office.js-style aliases)&quot;,
+    &quot;originalCode&quot;: &quot;chart.chartFill = { type: &#x27;solid&#x27;, color: &#x27;background1&#x27;, pattern: { type: &#x27;percent10&#x27;, color: &#x27;accent1&#x27; } };\nchart.plotAreaFill = { type: &#x27;solid&#x27;, color: &#x27;background1&#x27;, pattern: { type: &#x27;diagonalCross&#x27;, color: &#x27;accent2&#x27; } };\n\n// Office.js-style aliases (map to chartFill/plotAreaFill + chartLine/plotAreaLine):\nchart.chartArea.format.fill = { type: &#x27;solid&#x27;, color: &#x27;background1&#x27; };\nchart.plotArea.format.fill.setSolidColor(&#x27;accent2&#x27;);\nchart.plotArea.format.line.visible = false;&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 6,
+    &quot;name&quot;: &quot;chart legend&quot;,
+    &quot;summary&quot;: &quot;Legend on/off + position + style&quot;,
+    &quot;originalCode&quot;: &quot;chart.hasLegend = false;\nchart.hasLegend = true; chart.legend = { position: &#x27;bottom&#x27;, textStyle: { fontSize: 11 }, fill: { type: &#x27;solid&#x27;, color: &#x27;background1&#x27;, pattern: { type: &#x27;zigZag&#x27;, color: &#x27;accent2&#x27; } }, stroke: { fill: &#x27;accent2&#x27;, style: &#x27;solid&#x27;, width: 1 } };&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 7,
+    &quot;name&quot;: &quot;chart barOptions&quot;,
+    &quot;summary&quot;: &quot;Column chart spacing + overlap&quot;,
+    &quot;originalCode&quot;: &quot;chart.barOptions.direction = &#x27;column&#x27;;\nchart.barOptions.grouping = &#x27;clustered&#x27;;\nchart.barOptions.gapWidth = 100;\nchart.barOptions.overlap = -20;\nchart.barOptions.direction = &#x27;column&#x27;;\nchart.barOptions.grouping = &#x27;stacked&#x27;;\nchart.barOptions.gapWidth = 120;&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 8,
+    &quot;name&quot;: &quot;chart axes&quot;,
+    &quot;summary&quot;: &quot;Axis type + presence&quot;,
+    &quot;originalCode&quot;: &quot;chart.xAxis = { axisType: &#x27;textAxis&#x27; };\nchart.xAxis = { axisType: &#x27;dateAxis&#x27; };\nchart.xAxis = { deleted: true, title: &#x27;Years&#x27; };\nchart.yAxis = { deleted: true, title: &#x27;Revenue&#x27; };&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 9,
+    &quot;name&quot;: &quot;chart axes&quot;,
+    &quot;summary&quot;: &quot;Axis titles + text styles (avoid redundant defaults)&quot;,
+    &quot;originalCode&quot;: &quot;chart.xAxis = { title: { text: &#x27;Category&#x27;, textStyle: { fontSize: 14, bold: true } } };\nchart.yAxis = { title: { text: &#x27;Value&#x27;, textStyle: { fontSize: 12, italic: true, fill: &#x27;accent1&#x27; } } };&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 10,
+    &quot;name&quot;: &quot;chart axes&quot;,
+    &quot;summary&quot;: &quot;Axis ordering + crossing&quot;,
+    &quot;originalCode&quot;: &quot;chart.xAxis = { position: &#x27;bottom&#x27;, orientation: &#x27;maxMin&#x27; };\nchart.yAxis = { position: &#x27;left&#x27;, crossBetween: &#x27;between&#x27; };\nchart.yAxis = { crosses: &#x27;autoZero&#x27; };\nchart.yAxis = { crossesAt: 2 };\nchart.yAxis = { crosses: &#x27;max&#x27; };&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 11,
+    &quot;name&quot;: &quot;chart axes&quot;,
+    &quot;summary&quot;: &quot;Tick labels&quot;,
+    &quot;originalCode&quot;: &quot;chart.xAxis = { tickLabelPosition: &#x27;nextTo&#x27; };\nchart.xAxis = { tickLabelPosition: &#x27;high&#x27; };\nchart.xAxis = { tickLabelPosition: &#x27;low&#x27; };\nchart.xAxis = { tickLabelPosition: &#x27;none&#x27;, tickLabelInterval: 2, tickLabelDistanceFromAxis: 10 };&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 12,
+    &quot;name&quot;: &quot;chart axes&quot;,
+    &quot;summary&quot;: &quot;Tick marks + units&quot;,
+    &quot;originalCode&quot;: &quot;chart.xAxis = { majorUnit: 5, minorUnit: 1 };\nchart.xAxis = { majorTickMark: &#x27;outside&#x27;, minorTickMark: &#x27;inside&#x27; };\nchart.yAxis = { majorTickMark: &#x27;cross&#x27;, minorTickMark: &#x27;none&#x27; };&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 13,
+    &quot;name&quot;: &quot;chart axes&quot;,
+    &quot;summary&quot;: &quot;Gridlines + axis lines&quot;,
+    &quot;originalCode&quot;: &quot;chart.yAxis = { majorGridlines: { fill: &#x27;background2&#x27;, style: &#x27;dashed&#x27;, width: 1 }, minorGridlines: { fill: &#x27;background2&#x27;, style: &#x27;dotted&#x27;, width: 0.5 } };\nchart.xAxis = { majorGridlines: { fill: &#x27;background2&#x27;, style: &#x27;solid&#x27;, width: 1 }, minorGridlines: { fill: &#x27;background2&#x27;, style: &#x27;dotted&#x27;, width: 0.5 } };\nchart.xAxis = { line: { fill: &#x27;background2&#x27;, style: &#x27;solid&#x27;, width: 1 } };\nchart.yAxis = { line: { fill: &#x27;background2&#x27;, style: &#x27;solid&#x27;, width: 1 } };\n\n// Hide gridlines:\nchart.yAxis = { majorGridlines: null, minorGridlines: null };\nchart.xAxis = { majorGridlines: null, minorGridlines: null };&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 14,
+    &quot;name&quot;: &quot;chart axes&quot;,
+    &quot;summary&quot;: &quot;Number formats&quot;,
+    &quot;originalCode&quot;: &quot;chart.xAxis = { numberFormatCode: &#x27;0&#x27;, numberFormatSourceLinked: true };&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 15,
+    &quot;name&quot;: &quot;chart axes&quot;,
+    &quot;summary&quot;: &quot;Axis text style&quot;,
+    &quot;originalCode&quot;: &quot;chart.xAxis = { textStyle: { fontSize: 10 } };\nchart.yAxis = { textStyle: { fontSize: 1, fill: &#x27;background1&#x27; } };&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 16,
+    &quot;name&quot;: &quot;categoryAxis&quot;,
+    &quot;summary&quot;: &quot;Show category axis tick labels&quot;,
+    &quot;originalCode&quot;: &quot;chart.xAxis = { deleted: false, tickLabelPosition: &#x27;nextToAxis&#x27; };&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 17,
+    &quot;name&quot;: &quot;valueAxis&quot;,
+    &quot;summary&quot;: &quot;Format value axis gridlines&quot;,
+    &quot;originalCode&quot;: &quot;chart.yAxis = { majorGridlines: { fill: &#x27;background2&#x27;, style: &#x27;dashed&#x27;, width: 1 } };&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 18,
+    &quot;name&quot;: &quot;chart.xAxis&quot;,
+    &quot;summary&quot;: &quot;Make x-axis labels visible&quot;,
+    &quot;originalCode&quot;: &quot;chart.xAxis = { visible: true, tickLabelPosition: &#x27;nextToAxis&#x27; };&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 19,
+    &quot;name&quot;: &quot;chart.yAxis&quot;,
+    &quot;summary&quot;: &quot;Set y-axis title&quot;,
+    &quot;originalCode&quot;: &quot;chart.yAxis = { title: { text: &#x27;Revenue&#x27; } };&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 20,
+    &quot;name&quot;: &quot;chart dataLabels&quot;,
+    &quot;summary&quot;: &quot;Positions + minimal style&quot;,
+    &quot;originalCode&quot;: &quot;chart.dataLabels = { showValue: false, position: undefined };\nchart.dataLabels = { showValue: true, position: &#x27;center&#x27;, textStyle: { fontSize: 9 } };\nchart.dataLabels = { showValue: true, position: &#x27;inEnd&#x27; };\nchart.dataLabels = { showValue: true, position: &#x27;inBase&#x27; };\nchart.dataLabels = { showValue: true, position: &#x27;outEnd&#x27;, textStyle: { bold: true, fontSize: 10 } };&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;exportError&quot;: &quot;TypeError: this[#R].toProto is not a function&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 21,
+    &quot;name&quot;: &quot;chart dataLabels&quot;,
+    &quot;summary&quot;: &quot;Data callout styling (fill + stroke)&quot;,
+    &quot;originalCode&quot;: &quot;chart.dataLabels = { showValue: true, position: &#x27;dataCallout&#x27;, fill: { type: &#x27;solid&#x27;, color: &#x27;background1&#x27;, pattern: { type: &#x27;percent20&#x27;, color: &#x27;accent1&#x27; } }, stroke: { fill: &#x27;accent1&#x27;, style: &#x27;solid&#x27;, width: 1 } };&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;exportError&quot;: &quot;TypeError: this[#R].toProto is not a function&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 22,
+    &quot;name&quot;: &quot;chart dataTable&quot;,
+    &quot;summary&quot;: &quot;Data table with optional legend keys&quot;,
+    &quot;originalCode&quot;: &quot;chart.dataTable = { visible: true, showLegendKey: true, textStyle: { fontSize: 10 }, fill: { type: &#x27;solid&#x27;, color: &#x27;background1&#x27;, pattern: { type: &#x27;smallGrid&#x27;, color: &#x27;accent3&#x27; } } };\nchart.dataTable = { visible: true, showLegendKey: false };&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;exportError&quot;: &quot;TypeError: this[#C].toProto is not a function&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 23,
+    &quot;name&quot;: &quot;chart series&quot;,
+    &quot;summary&quot;: &quot;Series styling via worksheet.charts.add config&quot;,
+    &quot;originalCode&quot;: &quot;const chart = worksheet.charts.add(&#x27;bar&#x27;, { categories: [&#x27;Q1&#x27;,&#x27;Q2&#x27;], series: [{ name: &#x27;2025&#x27;, values: [18, 14], line: { fill: &#x27;#7c3aed&#x27;, style: &#x27;solid&#x27;, width: 2 }, fill: { type: &#x27;solid&#x27;, color: &#x27;#ede9fe&#x27;, pattern: { type: &#x27;smallCheck&#x27;, color: &#x27;#8b5cf6&#x27; } } }, { name: &#x27;2026&#x27;, values: [21, 17], line: { fill: &#x27;#d97706&#x27;, style: &#x27;solid&#x27;, width: 2 }, fill: { type: &#x27;solid&#x27;, color: &#x27;#fef3c7&#x27;, pattern: { type: &#x27;dottedDiamond&#x27;, color: &#x27;#f59e0b&#x27; } } }] });&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 24,
+    &quot;name&quot;: &quot;chart series&quot;,
+    &quot;summary&quot;: &quot;Scatter series with xValues (config)&quot;,
+    &quot;originalCode&quot;: &quot;const chart = worksheet.charts.add(&#x27;scatter&#x27;, { series: [{ name: &#x27;S1&#x27;, xValues: [1, 2, 3, 4], values: [2, 4, 3, 5] }] });&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 25,
+    &quot;name&quot;: &quot;chart series&quot;,
+    &quot;summary&quot;: &quot;Create a series and set categories/values (one-liners)&quot;,
+    &quot;originalCode&quot;: &quot;chart.categories = [&#x27;A&#x27;, &#x27;B&#x27;, &#x27;C&#x27;];\nconst series = chart.series.add(&#x27;S1&#x27;); series.categories = chart.categories; series.values = [1, 2, 3];&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 26,
+    &quot;name&quot;: &quot;chart series&quot;,
+    &quot;summary&quot;: &quot;Series value number format code&quot;,
+    &quot;originalCode&quot;: &quot;chart.series.items[0]!.valuesFormatCode = &#x27;$0.00&#x27;;&quot;,
+    &quot;adaptations&quot;: [
+      &quot;Removed TypeScript non-null assertion after array access.&quot;
+    ],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 27,
+    &quot;name&quot;: &quot;chart series&quot;,
+    &quot;summary&quot;: &quot;Error bars&quot;,
+    &quot;originalCode&quot;: &quot;const series = chart.series.items[0]!;\nseries.errorBars = { type: &#x27;standardError&#x27;, line: { fill: &#x27;accent1&#x27;, style: &#x27;solid&#x27;, width: 1 } };\nseries.errorBars = { type: &#x27;percentage&#x27;, value: 5 };\nseries.errorBars = { type: &#x27;standardDeviation&#x27; };&quot;,
+    &quot;adaptations&quot;: [
+      &quot;Removed TypeScript non-null assertion after array access.&quot;
+    ],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 28,
+    &quot;name&quot;: &quot;chart series&quot;,
+    &quot;summary&quot;: &quot;Trendlines&quot;,
+    &quot;originalCode&quot;: &quot;const series = chart.series.items[0]!;\nseries.trendlines.add(&#x27;linear&#x27;, { forecastForward: 2, forecastBackward: 1, intercept: 0, displayEquation: true, displayRSquared: true, stroke: { fill: &#x27;accent1&#x27;, style: &#x27;dashed&#x27;, width: 1 } });\nseries.trendlines.add(&#x27;polynomial&#x27;, { polynomialOrder: 3 });\nseries.trendlines.add(&#x27;movingAverage&#x27;, { movingAveragePeriod: 5 });\nseries.trendlines.add(&#x27;exponential&#x27;);\nseries.trendlines.clear();&quot;,
+    &quot;adaptations&quot;: [
+      &quot;Removed TypeScript non-null assertion after array access.&quot;
+    ],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 29,
+    &quot;name&quot;: &quot;chart series&quot;,
+    &quot;summary&quot;: &quot;Trendline styling (label fill + line alias)&quot;,
+    &quot;originalCode&quot;: &quot;const trend = series.trendlines.add(&#x27;linear&#x27;, { line: { fill: &#x27;accent5&#x27;, style: &#x27;dashed&#x27;, width: 1 }, label: { fill: { type: &#x27;solid&#x27;, color: &#x27;background1&#x27;, pattern: { type: &#x27;smallCheck&#x27;, color: &#x27;accent6&#x27; } } } });&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 30,
+    &quot;name&quot;: &quot;chart series&quot;,
+    &quot;summary&quot;: &quot;Per-point data label overrides&quot;,
+    &quot;originalCode&quot;: &quot;const series = chart.series.items[1]!;\nconst label0 = series.dataLabelOverrides.add(0);\nlabel0.showValue = true;\nlabel0.position = &#x27;inEnd&#x27;;\nlabel0.textStyle.bold = true;\nlabel0.textStyle.fontSize = 10;&quot;,
+    &quot;adaptations&quot;: [
+      &quot;Removed TypeScript non-null assertion after array access.&quot;
+    ],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 31,
+    &quot;name&quot;: &quot;chart series&quot;,
+    &quot;summary&quot;: &quot;Series styling after creation (one-liners)&quot;,
+    &quot;originalCode&quot;: &quot;chart.series.items[0]!.line = { fill: &#x27;#3b82f6&#x27;, style: &#x27;solid&#x27;, width: 2 };\nchart.series.items[0]!.fill = { type: &#x27;solid&#x27;, color: &#x27;#60a5fa&#x27; };&quot;,
+    &quot;adaptations&quot;: [
+      &quot;Removed TypeScript non-null assertion after array access.&quot;
+    ],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 32,
+    &quot;name&quot;: &quot;chart series&quot;,
+    &quot;summary&quot;: &quot;Outline-only bars (no fill + visible stroke)&quot;,
+    &quot;originalCode&quot;: &quot;const series = chart.series.items[0]!;\nseries.fill = { type: &#x27;none&#x27; };\nseries.stroke = { color: &#x27;accent5&#x27;, style: &#x27;solid&#x27;, weight: 1.5 };\n\n// Equivalent format-style surface (useful for agent code):\nseries.format.fill.clear();\nseries.format.line = { color: &#x27;accent5&#x27;, style: &#x27;solid&#x27;, weight: 1.5 };&quot;,
+    &quot;adaptations&quot;: [
+      &quot;Removed TypeScript non-null assertion after array access.&quot;
+    ],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 33,
+    &quot;name&quot;: &quot;range.conditionalFormats&quot;,
+    &quot;summary&quot;: &quot;Add a color scale rule&quot;,
+    &quot;originalCode&quot;: &quot;const range = sheet.getRange(&#x27;B2:B6&#x27;);\nrange.conditionalFormats.add(&#x27;colorScale&#x27;, {\n  colors: [&#x27;#FCA5A5&#x27;, &#x27;#DC2626&#x27;],\n});&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 34,
+    &quot;name&quot;: &quot;range.conditionalFormats&quot;,
+    &quot;summary&quot;: &quot;Add a 3-stop color scale (min/mid/max)&quot;,
+    &quot;originalCode&quot;: &quot;const range = sheet.getRange(&#x27;B2:B6&#x27;);\nrange.conditionalFormats.add(&#x27;colorScale&#x27;, {\n  criteria: [\n    { type: &#x27;lowestValue&#x27;, color: &#x27;#DC2626&#x27; },\n    { type: &#x27;percentile&#x27;, value: 50, color: &#x27;#FBBF24&#x27; },\n    { type: &#x27;highestValue&#x27;, color: &#x27;#16A34A&#x27; },\n  ],\n});&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 35,
+    &quot;name&quot;: &quot;range.conditionalFormats&quot;,
+    &quot;summary&quot;: &quot;Add a custom formula rule&quot;,
+    &quot;originalCode&quot;: &quot;const range = sheet.getRange(&#x27;B2:B6&#x27;);\nrange.conditionalFormats.add(&#x27;Custom&#x27;, {\n  formula: &#x27;=B2&gt;10&#x27;,\n  format: { fill: &#x27;#FDE68A&#x27;, font: { bold: true } },\n});&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 36,
+    &quot;name&quot;: &quot;range.conditionalFormats&quot;,
+    &quot;summary&quot;: &quot;Add a cell value rule&quot;,
+    &quot;originalCode&quot;: &quot;const range = sheet.getRange(&#x27;B2:B6&#x27;);\nrange.conditionalFormats.addCellIs({\n  operator: &#x27;lessThan&#x27;,\n  formula: 0,\n  format: { fill: &#x27;#F8CBAD&#x27; },\n});&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 37,
+    &quot;name&quot;: &quot;range.conditionalFormats&quot;,
+    &quot;summary&quot;: &quot;Add data bars (color bars) for magnitude&quot;,
+    &quot;originalCode&quot;: &quot;const range = sheet.getRange(&#x27;C2:C10&#x27;);\nrange.conditionalFormats.add(&#x27;dataBar&#x27;, {\n  color: &#x27;accent5&#x27;,\n  gradient: true,\n});&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 38,
+    &quot;name&quot;: &quot;range.conditionalFormats&quot;,
+    &quot;summary&quot;: &quot;Add an icon set for quick up/flat/down signals&quot;,
+    &quot;originalCode&quot;: &quot;const range = sheet.getRange(&#x27;D2:D10&#x27;);\nrange.conditionalFormats.add(&#x27;iconSet&#x27;, {\n  iconSet: &#x27;3Arrows&#x27;,\n  showValue: false,\n  reverse: false,\n  percent: true,\n});&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 39,
+    &quot;name&quot;: &quot;range.conditionalFormats&quot;,
+    &quot;summary&quot;: &quot;Highlight text cells that contain a substring&quot;,
+    &quot;originalCode&quot;: &quot;const range = sheet.getRange(&#x27;E2:E8&#x27;);\nrange.conditionalFormats.add(&#x27;containsText&#x27;, {\n  text: &#x27;late&#x27;,\n  format: { fill: &#x27;#FDE68A&#x27;, font: { color: &#x27;#92400E&#x27;, bold: true } },\n});&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 40,
+    &quot;name&quot;: &quot;range.conditionalFormats&quot;,
+    &quot;summary&quot;: &quot;Highlight dates in a relative time window&quot;,
+    &quot;originalCode&quot;: &quot;const range = sheet.getRange(&#x27;F2:F12&#x27;);\nrange.conditionalFormats.add(&#x27;timePeriod&#x27;, {\n  timePeriod: &#x27;last7Days&#x27;,\n  format: { fill: &#x27;#DBEAFE&#x27;, font: { color: &#x27;#1D4ED8&#x27; } },\n});&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 41,
+    &quot;name&quot;: &quot;range.conditionalFormats&quot;,
+    &quot;summary&quot;: &quot;Highlight top-ranked values by count or percent&quot;,
+    &quot;originalCode&quot;: &quot;const range = sheet.getRange(&#x27;G2:G20&#x27;);\nrange.conditionalFormats.add(&#x27;top10&#x27;, {\n  rank: 10,\n  percent: true,\n  format: { fill: &#x27;#DCFCE7&#x27;, font: { color: &#x27;#166534&#x27; } },\n});&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 42,
+    &quot;name&quot;: &quot;range.conditionalFormats&quot;,
+    &quot;summary&quot;: &quot;Highlight values below or equal to the average&quot;,
+    &quot;originalCode&quot;: &quot;const range = sheet.getRange(&#x27;H2:H20&#x27;);\nrange.conditionalFormats.add(&#x27;aboveAverage&#x27;, {\n  aboveAverage: false,\n  equalAverage: true,\n  format: { fill: &#x27;#FECACA&#x27;, font: { color: &#x27;#991B1B&#x27; } },\n});&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 43,
+    &quot;name&quot;: &quot;range.conditionalFormats.addCustom&quot;,
+    &quot;summary&quot;: &quot;Highlight cells using a custom formula&quot;,
+    &quot;originalCode&quot;: &quot;const range = sheet.getRange(&#x27;F2:F50&#x27;);\nrange.conditionalFormats.addCustom(&#x27;=F2&lt;E2&#x27;, {\n  fill: &#x27;#FECACA&#x27;,\n  font: { color: &#x27;#991B1B&#x27;, bold: true },\n});&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 44,
+    &quot;name&quot;: &quot;range.conditionalFormats.addCustom&quot;,
+    &quot;summary&quot;: &quot;Equivalent add(&#x27;Custom&#x27;, ...) form&quot;,
+    &quot;originalCode&quot;: &quot;const range = sheet.getRange(&#x27;F2:F50&#x27;);\nrange.conditionalFormats.add(&#x27;Custom&#x27;, {\n  formula: &#x27;=F2&lt;E2&#x27;,\n  format: { fill: &#x27;#FECACA&#x27;, font: { color: &#x27;#991B1B&#x27; } },\n});&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 45,
+    &quot;name&quot;: &quot;workbook.export&quot;,
+    &quot;summary&quot;: &quot;Export an editable workbook&quot;,
+    &quot;originalCode&quot;: &quot;const xlsx = await workbook.export({ format: &#x27;xlsx&#x27; });&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 46,
+    &quot;name&quot;: &quot;workbook.render&quot;,
+    &quot;summary&quot;: &quot;Render a range preview&quot;,
+    &quot;originalCode&quot;: &quot;const png = await workbook.render({\n  sheetName: &#x27;Summary&#x27;,\n  range: &#x27;A1:D12&#x27;,\n  format: &#x27;png&#x27;,\n});&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;executionError&quot;: &quot;Error: Sheet \&quot;Summary\&quot; not found&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 47,
+    &quot;name&quot;: &quot;workbook.help&quot;,
+    &quot;summary&quot;: &quot;Get help for a specific enums&quot;,
+    &quot;originalCode&quot;: &quot;workbook.help(\n  &#x27;enum.ShapeGeometry&#x27;,\n  { include: [&#x27;index&#x27;,&#x27;notes&#x27;] },\n)&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 48,
+    &quot;name&quot;: &quot;workbook.help&quot;,
+    &quot;summary&quot;: &quot;Get help for multiple enums&quot;,
+    &quot;originalCode&quot;: &quot;workbook.help(\n  &#x27;enum.*&#x27;,\n  { search: &#x27;ShapeGeometry|LineStyle&#x27;, include: [&#x27;index&#x27;] },\n)&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 49,
+    &quot;name&quot;: &quot;workbook.help&quot;,
+    &quot;summary&quot;: &quot;Get help on specific features by regex search&quot;,
+    &quot;originalCode&quot;: &quot;workbook.help({query: &#x27;*&#x27;, search: &#x27;trendline|trendlines&#x27;, include: [&#x27;index&#x27;,&#x27;examples&#x27;]}).&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;executionError&quot;: &quot;SyntaxError: Unexpected token &#x27;}&#x27;&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 50,
+    &quot;name&quot;: &quot;workbook.help&quot;,
+    &quot;query&quot;: &quot;ranges&quot;,
+    &quot;include&quot;: [
+      &quot;index&quot;,
+      &quot;examples&quot;
+    ],
+    &quot;search&quot;: null,
+    &quot;maxChars&quot;: 1200,
+    &quot;summary&quot;: &quot;Range addressing and value/formula basics&quot;,
+    &quot;worker&quot;: {
+      &quot;name&quot;: &quot;workbook.help&quot;,
+      &quot;index&quot;: 50,
+      &quot;ms&quot;: 370,
+      &quot;code&quot;: 1,
+      &quot;signal&quot;: null,
+      &quot;timedOut&quot;: false,
+      &quot;stderr&quot;: &quot;file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:48\n const code=entry.code.replace(/\\]!(?=[.;,\\)\\[])/g,&#x27;]&#x27;);\n                       ^\n\nTypeError: Cannot read properties of undefined (reading &#x27;replace&#x27;)\n    at file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:48:24\n\nNode.js v24.19.0\n&quot;
+    }
+  },
+  {
+    &quot;index&quot;: 51,
+    &quot;name&quot;: &quot;workbook.help&quot;,
+    &quot;query&quot;: &quot;styles&quot;,
+    &quot;include&quot;: [
+      &quot;index&quot;,
+      &quot;examples&quot;
+    ],
+    &quot;search&quot;: null,
+    &quot;maxChars&quot;: 1200,
+    &quot;summary&quot;: &quot;Formatting ranges (fills, fonts, borders, number formats)&quot;,
+    &quot;worker&quot;: {
+      &quot;name&quot;: &quot;workbook.help&quot;,
+      &quot;index&quot;: 51,
+      &quot;ms&quot;: 355,
+      &quot;code&quot;: 1,
+      &quot;signal&quot;: null,
+      &quot;timedOut&quot;: false,
+      &quot;stderr&quot;: &quot;file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:48\n const code=entry.code.replace(/\\]!(?=[.;,\\)\\[])/g,&#x27;]&#x27;);\n                       ^\n\nTypeError: Cannot read properties of undefined (reading &#x27;replace&#x27;)\n    at file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:48:24\n\nNode.js v24.19.0\n&quot;
+    }
+  },
+  {
+    &quot;index&quot;: 52,
+    &quot;name&quot;: &quot;workbook.help&quot;,
+    &quot;query&quot;: &quot;*&quot;,
+    &quot;include&quot;: [
+      &quot;index&quot;,
+      &quot;examples&quot;,
+      &quot;notes&quot;
+    ],
+    &quot;search&quot;: &quot;tables|sparklines|charts|images|render|validation|conditional|freeze|data_validation&quot;,
+    &quot;maxChars&quot;: 2000,
+    &quot;summary&quot;: &quot;Grep for feature namespaces&quot;,
+    &quot;worker&quot;: {
+      &quot;name&quot;: &quot;workbook.help&quot;,
+      &quot;index&quot;: 52,
+      &quot;ms&quot;: 374,
+      &quot;code&quot;: 1,
+      &quot;signal&quot;: null,
+      &quot;timedOut&quot;: false,
+      &quot;stderr&quot;: &quot;file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:48\n const code=entry.code.replace(/\\]!(?=[.;,\\)\\[])/g,&#x27;]&#x27;);\n                       ^\n\nTypeError: Cannot read properties of undefined (reading &#x27;replace&#x27;)\n    at file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:48:24\n\nNode.js v24.19.0\n&quot;
+    }
+  },
+  {
+    &quot;index&quot;: 53,
+    &quot;name&quot;: &quot;workbook.help&quot;,
+    &quot;query&quot;: &quot;fx.*&quot;,
+    &quot;include&quot;: [
+      &quot;index&quot;,
+      &quot;examples&quot;,
+      &quot;notes&quot;
+    ],
+    &quot;search&quot;: &quot;LET|LAMBDA|XLOOKUP|MAP|BYROW&quot;,
+    &quot;maxChars&quot;: 2000,
+    &quot;summary&quot;: &quot;Browse formula metadata entries&quot;,
+    &quot;worker&quot;: {
+      &quot;name&quot;: &quot;workbook.help&quot;,
+      &quot;index&quot;: 53,
+      &quot;ms&quot;: 475,
+      &quot;code&quot;: 1,
+      &quot;signal&quot;: null,
+      &quot;timedOut&quot;: false,
+      &quot;stderr&quot;: &quot;file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:48\n const code=entry.code.replace(/\\]!(?=[.;,\\)\\[])/g,&#x27;]&#x27;);\n                       ^\n\nTypeError: Cannot read properties of undefined (reading &#x27;replace&#x27;)\n    at file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:48:24\n\nNode.js v24.19.0\n&quot;
+    }
+  },
+  {
+    &quot;index&quot;: 54,
+    &quot;name&quot;: &quot;workbook.resolve&quot;,
+    &quot;id&quot;: &quot;ws/&lt;sheetId&gt;&quot;,
+    &quot;worker&quot;: {
+      &quot;name&quot;: &quot;workbook.resolve&quot;,
+      &quot;index&quot;: 54,
+      &quot;ms&quot;: 486,
+      &quot;code&quot;: 1,
+      &quot;signal&quot;: null,
+      &quot;timedOut&quot;: false,
+      &quot;stderr&quot;: &quot;file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:48\n const code=entry.code.replace(/\\]!(?=[.;,\\)\\[])/g,&#x27;]&#x27;);\n                       ^\n\nTypeError: Cannot read properties of undefined (reading &#x27;replace&#x27;)\n    at file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:48:24\n\nNode.js v24.19.0\n&quot;
+    }
+  },
+  {
+    &quot;index&quot;: 55,
+    &quot;name&quot;: &quot;workbook.resolve&quot;,
+    &quot;id&quot;: &quot;th/&lt;threadId&gt;&quot;,
+    &quot;worker&quot;: {
+      &quot;name&quot;: &quot;workbook.resolve&quot;,
+      &quot;index&quot;: 55,
+      &quot;ms&quot;: 484,
+      &quot;code&quot;: 1,
+      &quot;signal&quot;: null,
+      &quot;timedOut&quot;: false,
+      &quot;stderr&quot;: &quot;file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:48\n const code=entry.code.replace(/\\]!(?=[.;,\\)\\[])/g,&#x27;]&#x27;);\n                       ^\n\nTypeError: Cannot read properties of undefined (reading &#x27;replace&#x27;)\n    at file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:48:24\n\nNode.js v24.19.0\n&quot;
+    }
+  },
+  {
+    &quot;index&quot;: 56,
+    &quot;name&quot;: &quot;workbook.resolve&quot;,
+    &quot;id&quot;: &quot;ch/&lt;chartAnchor&gt;&quot;,
+    &quot;worker&quot;: {
+      &quot;name&quot;: &quot;workbook.resolve&quot;,
+      &quot;index&quot;: 56,
+      &quot;ms&quot;: 490,
+      &quot;code&quot;: 1,
+      &quot;signal&quot;: null,
+      &quot;timedOut&quot;: false,
+      &quot;stderr&quot;: &quot;file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:48\n const code=entry.code.replace(/\\]!(?=[.;,\\)\\[])/g,&#x27;]&#x27;);\n                       ^\n\nTypeError: Cannot read properties of undefined (reading &#x27;replace&#x27;)\n    at file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:48:24\n\nNode.js v24.19.0\n&quot;
+    }
+  },
+  {
+    &quot;index&quot;: 57,
+    &quot;name&quot;: &quot;workbook.recalculate&quot;,
+    &quot;summary&quot;: &quot;Recalculate after writing formulas&quot;,
+    &quot;originalCode&quot;: &quot;const sheet = workbook.worksheets.getItem(&#x27;Sheet1&#x27;);\nsheet.getRange(&#x27;A1:A2&#x27;).values = [[1], [2]];\nsheet.getRange(&#x27;B1&#x27;).formulas = [[&#x27;=SUM(A:A)&#x27;]];\nconst total = sheet.getRange(&#x27;B1&#x27;).values[0]?.[0];&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 58,
+    &quot;name&quot;: &quot;workbook.worksheets.add&quot;,
+    &quot;summary&quot;: &quot;Create a worksheet and write values&quot;,
+    &quot;originalCode&quot;: &quot;const sheet = workbook.worksheets.add(&#x27;DogHealth&#x27;);\nsheet.getRange(&#x27;A1&#x27;).values = [[&#x27;Date&#x27;]];&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 59,
+    &quot;name&quot;: &quot;workbook.worksheets.add&quot;,
+    &quot;summary&quot;: &quot;Create multiple worksheets&quot;,
+    &quot;originalCode&quot;: &quot;const [dataSheet, summarySheet] = workbook.worksheets.add([&#x27;Data&#x27;, &#x27;Summary&#x27;]);&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 60,
+    &quot;name&quot;: &quot;workbook.worksheets.getItem&quot;,
+    &quot;summary&quot;: &quot;Fetch a sheet and write a cell&quot;,
+    &quot;originalCode&quot;: &quot;const sheet = workbook.worksheets.getItem(&#x27;Sheet1&#x27;);\nsheet.getRange(&#x27;A1&#x27;).values = [[&#x27;Hello&#x27;]];&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 61,
+    &quot;name&quot;: &quot;workbook.worksheets.getActiveWorksheet&quot;,
+    &quot;summary&quot;: &quot;Write to the active sheet&quot;,
+    &quot;originalCode&quot;: &quot;const sheet = workbook.worksheets.getActiveWorksheet();\nsheet.getRange(&#x27;A1&#x27;).values = [[&#x27;Active sheet&#x27;]];&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 62,
+    &quot;name&quot;: &quot;workbook.setColorScheme&quot;,
+    &quot;summary&quot;: &quot;Swap the workbook theme palette&quot;,
+    &quot;originalCode&quot;: &quot;// Prefer updating the theme palette over repainting every range.\n// Theme tokens like &#x27;accent1&#x27; will automatically pick up the new palette.\nworkbook.setColorScheme({\n  name: &#x27;Brand&#x27;,\n  themeColors: {\n    accent1: &#x27;#1F6FEB&#x27;,\n    accent2: &#x27;#F97316&#x27;,\n    accent3: &#x27;#16A34A&#x27;,\n    dk1: &#x27;#0B0F19&#x27;,\n    lt1: &#x27;#FFFFFF&#x27;,\n    lt2: &#x27;#E5E7EB&#x27;,\n    hlink: &#x27;#2563EB&#x27;,\n    folHlink: &#x27;#7C3AED&#x27;,\n  },\n});&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 63,
+    &quot;name&quot;: &quot;workbook.setColorScheme&quot;,
+    &quot;summary&quot;: &quot;Style with theme tokens (accent slots)&quot;,
+    &quot;originalCode&quot;: &quot;// Then use theme tokens for styling:\nconst sheet = workbook.worksheets.getItem(&#x27;Sheet1&#x27;);\nconst header = sheet.getRange(&#x27;A1:D1&#x27;);\nheader.format.fill = &#x27;accent1&#x27;;\nheader.format.font = { color: &#x27;lt1&#x27;, bold: true };&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 64,
+    &quot;name&quot;: &quot;workbook.utils&quot;,
+    &quot;summary&quot;: &quot;Convert between 1-based columns and letters&quot;,
+    &quot;originalCode&quot;: &quot;workbook.utils.columnToLetter(1); // \&quot;A\&quot;\nworkbook.utils.columnToLetter(27); // \&quot;AA\&quot;\nworkbook.utils.letterToColumn(&#x27;AA&#x27;); // 27\nworkbook.utils.toA1String(1, 2); // &#x27;B1&#x27;\nworkbook.utils.toA1String(1, 2, 3, 4); // &#x27;B1:D3&#x27;&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 65,
+    &quot;name&quot;: &quot;worksheet.deleteAllDrawings&quot;,
+    &quot;summary&quot;: &quot;Clear drawings before rebuilding a dashboard&quot;,
+    &quot;originalCode&quot;: &quot;sheet.deleteAllDrawings();&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 66,
+    &quot;name&quot;: &quot;worksheet.autoLayoutDrawings&quot;,
+    &quot;summary&quot;: &quot;Stack charts vertically in a dashboard frame&quot;,
+    &quot;originalCode&quot;: &quot;const items = sheet.charts.items;\nsheet.autoLayoutDrawings(items, {\n  direction: &#x27;vertical&#x27;,\n  frame: { startCell: &#x27;A8&#x27;, width: 1200, height: 800 },\n  gap: 24,\n  padding: 32,\n});&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 67,
+    &quot;name&quot;: &quot;worksheet.shapes.add&quot;,
+    &quot;summary&quot;: &quot;Create a rectangle with an explicit extent anchor&quot;,
+    &quot;originalCode&quot;: &quot;const sheet = workbook.worksheets.getItem(&#x27;Shapes&#x27;);\nsheet.shapes.add({\n  geometry: &#x27;rect&#x27;,\n  anchor: {\n    from: { row: 2, col: 3 },\n    extent: { widthPx: 260, heightPx: 140 },\n  },\n  fill: &#x27;accent1&#x27;,\n  line: { style: &#x27;dashed&#x27;, fill: &#x27;accent4&#x27;, width: 1 },\n});&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;executionError&quot;: &quot;Error: Worksheet Shapes not found (available: Sheet1, Data)&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 68,
+    &quot;name&quot;: &quot;worksheet.shapes.add&quot;,
+    &quot;summary&quot;: &quot;Compat add with a range anchor&quot;,
+    &quot;originalCode&quot;: &quot;const sheet = workbook.worksheets.getItem(&#x27;Shapes&#x27;);\nconst star = sheet.shapes.add(&#x27;Star5&#x27;, sheet.getRange(&#x27;G2:L10&#x27;));\nstar.name = &#x27;Star&#x27;;\nstar.fill.color = &#x27;#FFD966&#x27;;\nstar.line.color = &#x27;#C09000&#x27;;&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;executionError&quot;: &quot;Error: Worksheet Shapes not found (available: Sheet1, Data)&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 69,
+    &quot;name&quot;: &quot;formulas&quot;,
+    &quot;originalCode&quot;: &quot;const sheet = workbook.worksheets.add(\&quot;Sheet1\&quot;);\nconst range = sheet.getRange(\&quot;A1:A2\&quot;);\nrange.formulas = [[\&quot;=1+1\&quot;], [\&quot;=SUM(2,3)\&quot;]];\nworkbook.recalculate();\nconst values = range.values;&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 70,
+    &quot;name&quot;: &quot;images&quot;,
+    &quot;summary&quot;: &quot;Place inline SVG without base64 encoding&quot;,
+    &quot;originalCode&quot;: &quot;worksheet.images.add({\n  svg: &#x27;&lt;svg xmlns=\&quot;http://www.w3.org/2000/svg\&quot; viewBox=\&quot;0 0 24 24\&quot;&gt;&lt;circle cx=\&quot;12\&quot; cy=\&quot;12\&quot; r=\&quot;10\&quot; fill=\&quot;#2563eb\&quot;/&gt;&lt;/svg&gt;&#x27;,\n  anchor: { from: { row: 1, col: 1 }, extent: { widthPx: 48, heightPx: 48 } },\n});&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 71,
+    &quot;name&quot;: &quot;workbook.inspect&quot;,
+    &quot;target&quot;: null,
+    &quot;kind&quot;: &quot;sheet,table&quot;,
+    &quot;include&quot;: null,
+    &quot;exclude&quot;: null,
+    &quot;search&quot;: &quot;Revenue&quot;,
+    &quot;maxChars&quot;: 1200,
+    &quot;searchTerm&quot;: null,
+    &quot;sheetId&quot;: null,
+    &quot;range&quot;: null,
+    &quot;offset&quot;: null,
+    &quot;options&quot;: null,
+    &quot;summary&quot;: &quot;Inspect sheets/tables matching Revenue&quot;,
+    &quot;worker&quot;: {
+      &quot;name&quot;: &quot;workbook.inspect&quot;,
+      &quot;index&quot;: 71,
+      &quot;ms&quot;: 444,
+      &quot;code&quot;: 1,
+      &quot;signal&quot;: null,
+      &quot;timedOut&quot;: false,
+      &quot;stderr&quot;: &quot;file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:48\n const code=entry.code.replace(/\\]!(?=[.;,\\)\\[])/g,&#x27;]&#x27;);\n                       ^\n\nTypeError: Cannot read properties of undefined (reading &#x27;replace&#x27;)\n    at file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:48:24\n\nNode.js v24.19.0\n&quot;
+    }
+  },
+  {
+    &quot;index&quot;: 72,
+    &quot;name&quot;: &quot;workbook.inspect&quot;,
+    &quot;target&quot;: null,
+    &quot;kind&quot;: &quot;region&quot;,
+    &quot;include&quot;: null,
+    &quot;exclude&quot;: null,
+    &quot;search&quot;: null,
+    &quot;maxChars&quot;: 2000,
+    &quot;tableMaxRows&quot;: 5,
+    &quot;tableMaxCols&quot;: 6,
+    &quot;tableMaxCellChars&quot;: 80,
+    &quot;searchTerm&quot;: null,
+    &quot;sheetId&quot;: &quot;ws/&lt;sheetId&gt;&quot;,
+    &quot;range&quot;: null,
+    &quot;offset&quot;: null,
+    &quot;options&quot;: null,
+    &quot;summary&quot;: &quot;List data regions with previews for a sheet&quot;,
+    &quot;worker&quot;: {
+      &quot;name&quot;: &quot;workbook.inspect&quot;,
+      &quot;index&quot;: 72,
+      &quot;ms&quot;: 424,
+      &quot;code&quot;: 1,
+      &quot;signal&quot;: null,
+      &quot;timedOut&quot;: false,
+      &quot;stderr&quot;: &quot;file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:48\n const code=entry.code.replace(/\\]!(?=[.;,\\)\\[])/g,&#x27;]&#x27;);\n                       ^\n\nTypeError: Cannot read properties of undefined (reading &#x27;replace&#x27;)\n    at file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:48:24\n\nNode.js v24.19.0\n&quot;
+    }
+  },
+  {
+    &quot;index&quot;: 73,
+    &quot;name&quot;: &quot;workbook.inspect&quot;,
+    &quot;target&quot;: null,
+    &quot;kind&quot;: &quot;table&quot;,
+    &quot;include&quot;: &quot;values&quot;,
+    &quot;exclude&quot;: null,
+    &quot;search&quot;: null,
+    &quot;maxChars&quot;: 2000,
+    &quot;tableMaxRows&quot;: 5,
+    &quot;tableMaxCols&quot;: 6,
+    &quot;tableMaxCellChars&quot;: 80,
+    &quot;searchTerm&quot;: null,
+    &quot;sheetId&quot;: &quot;ws/&lt;sheetId&gt;&quot;,
+    &quot;range&quot;: &quot;A1:D20&quot;,
+    &quot;offset&quot;: null,
+    &quot;options&quot;: null,
+    &quot;summary&quot;: &quot;Preview table values for a range&quot;,
+    &quot;worker&quot;: {
+      &quot;name&quot;: &quot;workbook.inspect&quot;,
+      &quot;index&quot;: 73,
+      &quot;ms&quot;: 426,
+      &quot;code&quot;: 1,
+      &quot;signal&quot;: null,
+      &quot;timedOut&quot;: false,
+      &quot;stderr&quot;: &quot;file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:48\n const code=entry.code.replace(/\\]!(?=[.;,\\)\\[])/g,&#x27;]&#x27;);\n                       ^\n\nTypeError: Cannot read properties of undefined (reading &#x27;replace&#x27;)\n    at file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:48:24\n\nNode.js v24.19.0\n&quot;
+    }
+  },
+  {
+    &quot;index&quot;: 74,
+    &quot;name&quot;: &quot;workbook.inspect&quot;,
+    &quot;target&quot;: null,
+    &quot;kind&quot;: &quot;conditionalFormatting&quot;,
+    &quot;include&quot;: null,
+    &quot;exclude&quot;: null,
+    &quot;search&quot;: &quot;top10&quot;,
+    &quot;maxChars&quot;: 2000,
+    &quot;tableMaxRows&quot;: 5,
+    &quot;tableMaxCols&quot;: 6,
+    &quot;tableMaxCellChars&quot;: 80,
+    &quot;searchTerm&quot;: null,
+    &quot;sheetId&quot;: &quot;ws/&lt;sheetId&gt;&quot;,
+    &quot;range&quot;: &quot;B2:B20&quot;,
+    &quot;offset&quot;: null,
+    &quot;options&quot;: null,
+    &quot;summary&quot;: &quot;List conditional formatting rules for a range&quot;,
+    &quot;worker&quot;: {
+      &quot;name&quot;: &quot;workbook.inspect&quot;,
+      &quot;index&quot;: 74,
+      &quot;ms&quot;: 412,
+      &quot;code&quot;: 1,
+      &quot;signal&quot;: null,
+      &quot;timedOut&quot;: false,
+      &quot;stderr&quot;: &quot;file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:48\n const code=entry.code.replace(/\\]!(?=[.;,\\)\\[])/g,&#x27;]&#x27;);\n                       ^\n\nTypeError: Cannot read properties of undefined (reading &#x27;replace&#x27;)\n    at file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:48:24\n\nNode.js v24.19.0\n&quot;
+    }
+  },
+  {
+    &quot;index&quot;: 75,
+    &quot;name&quot;: &quot;workbook.inspect&quot;,
+    &quot;target&quot;: {
+      &quot;id&quot;: &quot;ws/&lt;sheetId&gt;&quot;,
+      &quot;beforeLines&quot;: 1,
+      &quot;afterLines&quot;: 4
+    },
+    &quot;kind&quot;: null,
+    &quot;include&quot;: null,
+    &quot;exclude&quot;: null,
+    &quot;search&quot;: null,
+    &quot;maxChars&quot;: 2000,
+    &quot;searchTerm&quot;: null,
+    &quot;sheetId&quot;: null,
+    &quot;range&quot;: null,
+    &quot;offset&quot;: null,
+    &quot;options&quot;: null,
+    &quot;summary&quot;: &quot;Window around a sheet record&quot;,
+    &quot;worker&quot;: {
+      &quot;name&quot;: &quot;workbook.inspect&quot;,
+      &quot;index&quot;: 75,
+      &quot;ms&quot;: 418,
+      &quot;code&quot;: 1,
+      &quot;signal&quot;: null,
+      &quot;timedOut&quot;: false,
+      &quot;stderr&quot;: &quot;file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:48\n const code=entry.code.replace(/\\]!(?=[.;,\\)\\[])/g,&#x27;]&#x27;);\n                       ^\n\nTypeError: Cannot read properties of undefined (reading &#x27;replace&#x27;)\n    at file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:48:24\n\nNode.js v24.19.0\n&quot;
+    }
+  },
+  {
+    &quot;index&quot;: 76,
+    &quot;name&quot;: &quot;workbook.inspect&quot;,
+    &quot;target&quot;: null,
+    &quot;kind&quot;: null,
+    &quot;include&quot;: null,
+    &quot;exclude&quot;: null,
+    &quot;search&quot;: null,
+    &quot;maxChars&quot;: 3000,
+    &quot;searchTerm&quot;: &quot;Age&quot;,
+    &quot;sheetId&quot;: null,
+    &quot;range&quot;: null,
+    &quot;offset&quot;: 0,
+    &quot;options&quot;: {
+      &quot;matchCase&quot;: null,
+      &quot;matchEntireCell&quot;: null,
+      &quot;useRegex&quot;: null,
+      &quot;matchFormulas&quot;: true,
+      &quot;ignoreDiacritics&quot;: null,
+      &quot;maxResults&quot;: 20
+    },
+    &quot;summary&quot;: &quot;Find cells matching Age (values or formulas)&quot;,
+    &quot;worker&quot;: {
+      &quot;name&quot;: &quot;workbook.inspect&quot;,
+      &quot;index&quot;: 76,
+      &quot;ms&quot;: 351,
+      &quot;code&quot;: 1,
+      &quot;signal&quot;: null,
+      &quot;timedOut&quot;: false,
+      &quot;stderr&quot;: &quot;file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:48\n const code=entry.code.replace(/\\]!(?=[.;,\\)\\[])/g,&#x27;]&#x27;);\n                       ^\n\nTypeError: Cannot read properties of undefined (reading &#x27;replace&#x27;)\n    at file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:48:24\n\nNode.js v24.19.0\n&quot;
+    }
+  },
+  {
+    &quot;index&quot;: 77,
+    &quot;name&quot;: &quot;range.merge&quot;,
+    &quot;summary&quot;: &quot;Merge a header row&quot;,
+    &quot;originalCode&quot;: &quot;sheet.getRange(&#x27;B1:H1&#x27;).merge();&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 78,
+    &quot;name&quot;: &quot;range.merge&quot;,
+    &quot;summary&quot;: &quot;Merge across rows&quot;,
+    &quot;originalCode&quot;: &quot;sheet.getRange(&#x27;B2:H4&#x27;).merge(true);&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 79,
+    &quot;name&quot;: &quot;range.unmerge&quot;,
+    &quot;summary&quot;: &quot;Remove merges touching a range&quot;,
+    &quot;originalCode&quot;: &quot;sheet.getRange(&#x27;B1:H4&#x27;).unmerge();&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 80,
+    &quot;name&quot;: &quot;range.format.fill&quot;,
+    &quot;summary&quot;: &quot;Apply a solid fill using a theme token&quot;,
+    &quot;originalCode&quot;: &quot;const header = sheet.getRange(&#x27;A1:C1&#x27;);\nheader.format.fill = &#x27;accent1&#x27;;\nheader.format.font = { color: &#x27;lt1&#x27;, bold: true };&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 81,
+    &quot;name&quot;: &quot;range.format.fill&quot;,
+    &quot;summary&quot;: &quot;Apply a theme color transform (LLM-friendly units)&quot;,
+    &quot;originalCode&quot;: &quot;const header = sheet.getRange(&#x27;A1:C1&#x27;);\nheader.format.fill = {\n  type: &#x27;solid&#x27;,\n  color: { type: &#x27;theme&#x27;, value: &#x27;accent1&#x27;, transform: { lighten: 15 } },\n};&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 82,
+    &quot;name&quot;: &quot;range.format.fill&quot;,
+    &quot;summary&quot;: &quot;Clear a range&#x27;s fill&quot;,
+    &quot;originalCode&quot;: &quot;sheet.getRange(&#x27;A2:C10&#x27;).format.fill = null;&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 83,
+    &quot;name&quot;: &quot;range.format.fill.color&quot;,
+    &quot;summary&quot;: &quot;Update fill via fill.color&quot;,
+    &quot;originalCode&quot;: &quot;const block = sheet.getRange(&#x27;A1:B10&#x27;);\nblock.format.fill.color = &#x27;#0055A4&#x27;;&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 84,
+    &quot;name&quot;: &quot;range.format.font&quot;,
+    &quot;summary&quot;: &quot;Bold header styling&quot;,
+    &quot;originalCode&quot;: &quot;const header = sheet.getRange(&#x27;A1:C1&#x27;);\nheader.format.font.bold = true;\nheader.format.font.size = 14;\n// Patch-style assignment is supported too:\nheader.format.font = { color: &#x27;#FFFFFF&#x27;, bold: true };\nheader.format.setFont({ name: &#x27;Calibri&#x27;, italic: true });&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 85,
+    &quot;name&quot;: &quot;range.format.borders&quot;,
+    &quot;summary&quot;: &quot;Apply an outside border preset&quot;,
+    &quot;originalCode&quot;: &quot;const body = sheet.getRange(&#x27;A2:C10&#x27;);\nbody.format.borders = { preset: &#x27;outside&#x27;, style: &#x27;thin&#x27;, color: &#x27;#DDDDDD&#x27; };&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 86,
+    &quot;name&quot;: &quot;range.format.numberFormat&quot;,
+    &quot;summary&quot;: &quot;Format currency values&quot;,
+    &quot;originalCode&quot;: &quot;sheet.getRange(&#x27;B2:B5&#x27;).format.numberFormat = &#x27;\&quot;$\&quot;#,##0.00&#x27;;&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 87,
+    &quot;name&quot;: &quot;range.format.numberFormat&quot;,
+    &quot;summary&quot;: &quot;Assign a per-cell number format matrix&quot;,
+    &quot;originalCode&quot;: &quot;const r = sheet.getRange(&#x27;A1:B2&#x27;);\nr.format.numberFormat = [\n  [&#x27;0&#x27;, &#x27;0.00&#x27;],\n  [&#x27;0&#x27;, &#x27;0.00&#x27;],\n];&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 88,
+    &quot;name&quot;: &quot;range.format.wrapText&quot;,
+    &quot;summary&quot;: &quot;Wrap header text&quot;,
+    &quot;originalCode&quot;: &quot;sheet.getRange(&#x27;A1:D1&#x27;).format.wrapText = true;&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 89,
+    &quot;name&quot;: &quot;range.format.horizontalAlignment&quot;,
+    &quot;summary&quot;: &quot;Center align a header row&quot;,
+    &quot;originalCode&quot;: &quot;sheet.getRange(&#x27;A1:D1&#x27;).format.horizontalAlignment = \&quot;center\&quot;;&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 90,
+    &quot;name&quot;: &quot;range.format.autofitColumns&quot;,
+    &quot;summary&quot;: &quot;Autofit columns for the range&quot;,
+    &quot;originalCode&quot;: &quot;sheet.getRange(&#x27;A1:D20&#x27;).format.autofitColumns();&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 91,
+    &quot;name&quot;: &quot;range.format.autofitRows&quot;,
+    &quot;summary&quot;: &quot;Autofit rows for the range&quot;,
+    &quot;originalCode&quot;: &quot;sheet.getRange(&#x27;A1:D20&#x27;).format.autofitRows();&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 92,
+    &quot;name&quot;: &quot;range.format.rowHeight&quot;,
+    &quot;summary&quot;: &quot;Set row height to 18pt&quot;,
+    &quot;originalCode&quot;: &quot;sheet.getRange(&#x27;A1:D10&#x27;).format.rowHeight = 18;&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 93,
+    &quot;name&quot;: &quot;range.format.rowHeightPx&quot;,
+    &quot;summary&quot;: &quot;Set row height to 24px&quot;,
+    &quot;originalCode&quot;: &quot;sheet.getRange(&#x27;A1:D10&#x27;).format.rowHeightPx = 24;&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 94,
+    &quot;name&quot;: &quot;range.format.columnWidth&quot;,
+    &quot;summary&quot;: &quot;Set column width to 2.75&quot;,
+    &quot;originalCode&quot;: &quot;sheet.getRange(&#x27;A1:D10&#x27;).format.columnWidth = 2.75;&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 95,
+    &quot;name&quot;: &quot;range.format.columnWidthPx&quot;,
+    &quot;summary&quot;: &quot;Set column width to 120px&quot;,
+    &quot;originalCode&quot;: &quot;sheet.getRange(&#x27;A1:D10&#x27;).format.columnWidthPx = 120;&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 96,
+    &quot;name&quot;: &quot;worksheet.getRange&quot;,
+    &quot;summary&quot;: &quot;Create a range from A1 notation&quot;,
+    &quot;originalCode&quot;: &quot;const sheet = workbook.worksheets.getItem(&#x27;Sheet1&#x27;);\nconst range = sheet.getRange(&#x27;A1:C10&#x27;);&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 97,
+    &quot;name&quot;: &quot;worksheet.getCell&quot;,
+    &quot;summary&quot;: &quot;Access a single cell by index&quot;,
+    &quot;originalCode&quot;: &quot;const sheet = workbook.worksheets.getItem(&#x27;Sheet1&#x27;);\nconst cell = sheet.getCell(1, 4);\ncell.values = [[&#x27;Hello&#x27;]];&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 98,
+    &quot;name&quot;: &quot;range.getCell&quot;,
+    &quot;summary&quot;: &quot;Access a cell relative to a range&quot;,
+    &quot;originalCode&quot;: &quot;const range = sheet.getRange(&#x27;B2:D4&#x27;);\nconst cell = range.getCell(2, 2);&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 99,
+    &quot;name&quot;: &quot;range.rowIndex&quot;,
+    &quot;summary&quot;: &quot;Read the range origin row&quot;,
+    &quot;originalCode&quot;: &quot;const range = sheet.getRange(&#x27;B2:D4&#x27;);\nrange.rowIndex; // 1&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 100,
+    &quot;name&quot;: &quot;range.columnIndex&quot;,
+    &quot;summary&quot;: &quot;Read the range origin column&quot;,
+    &quot;originalCode&quot;: &quot;const range = sheet.getRange(&#x27;B2:D4&#x27;);\nrange.columnIndex; // 1&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 101,
+    &quot;name&quot;: &quot;range.getRow&quot;,
+    &quot;summary&quot;: &quot;Select a row inside a block&quot;,
+    &quot;originalCode&quot;: &quot;const range = sheet.getRange(&#x27;B2:D4&#x27;);\nconst row = range.getRow(1); // B3:D3&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 102,
+    &quot;name&quot;: &quot;range.getColumn&quot;,
+    &quot;summary&quot;: &quot;Select a column inside a block&quot;,
+    &quot;originalCode&quot;: &quot;const range = sheet.getRange(&#x27;B2:D4&#x27;);\nconst col = range.getColumn(0); // B2:B4&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 103,
+    &quot;name&quot;: &quot;range.getRangeByIndexes&quot;,
+    &quot;summary&quot;: &quot;Select a sub-rectangle&quot;,
+    &quot;originalCode&quot;: &quot;const range = sheet.getRange(&#x27;B2:D4&#x27;);\nconst sub = range.getRangeByIndexes(1, 1, 2, 2); // C3:D4&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 104,
+    &quot;name&quot;: &quot;range.getOffsetRange&quot;,
+    &quot;summary&quot;: &quot;Shift a block down&quot;,
+    &quot;originalCode&quot;: &quot;const range = sheet.getRange(&#x27;B2:D4&#x27;);\nconst shifted = range.getOffsetRange(1, 0); // B3:D5&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 105,
+    &quot;name&quot;: &quot;range.getOffsetRange&quot;,
+    &quot;summary&quot;: &quot;Build a small window relative to a block&quot;,
+    &quot;originalCode&quot;: &quot;const range = sheet.getRange(&#x27;B2:D4&#x27;);\nconst window = range.getOffsetRange(-1, 0, 1, 3); // B1:D1&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 106,
+    &quot;name&quot;: &quot;range.getResizedRange&quot;,
+    &quot;summary&quot;: &quot;Grow a range by one column&quot;,
+    &quot;originalCode&quot;: &quot;const range = sheet.getRange(&#x27;B2:D4&#x27;);\nconst wider = range.getResizedRange(0, 1); // B2:E4&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 107,
+    &quot;name&quot;: &quot;range.getResizedRange&quot;,
+    &quot;summary&quot;: &quot;Shrink a range by one row and one column&quot;,
+    &quot;originalCode&quot;: &quot;const range = sheet.getRange(&#x27;B2:D4&#x27;);\nconst smaller = range.getResizedRange(-1, -1); // B2:C3&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 108,
+    &quot;name&quot;: &quot;range.getResizeRange&quot;,
+    &quot;summary&quot;: &quot;Resize to a specific shape&quot;,
+    &quot;originalCode&quot;: &quot;const range = sheet.getRange(&#x27;B2:D4&#x27;);\nconst block = range.getResizeRange(5, 2); // B2:C6&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 109,
+    &quot;name&quot;: &quot;range.write&quot;,
+    &quot;summary&quot;: &quot;Write a matrix without computing the end cell&quot;,
+    &quot;originalCode&quot;: &quot;const anchor = sheet.getRange(&#x27;B2&#x27;);\nconst block = anchor.write([[&#x27;A&#x27;,&#x27;B&#x27;],[1,2],[3,4]]);\n// block is the resized range (B2:C4)\nblock.format.autofitColumns();&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 110,
+    &quot;name&quot;: &quot;range.values&quot;,
+    &quot;summary&quot;: &quot;Write a values grid&quot;,
+    &quot;originalCode&quot;: &quot;const range = sheet.getRange(&#x27;A1:C2&#x27;);\nrange.values = [[&#x27;Date&#x27;, &#x27;Dog&#x27;, &#x27;HR&#x27;], [&#x27;2025-01-02&#x27;, &#x27;Nova&#x27;, 58]];&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 111,
+    &quot;name&quot;: &quot;range.formulas&quot;,
+    &quot;summary&quot;: &quot;Write a formula and recalculate&quot;,
+    &quot;originalCode&quot;: &quot;sheet.getRange(&#x27;A1:A3&#x27;).values = [[5], [2], [3]];\nsheet.getRange(&#x27;B1&#x27;).formulas = [[&#x27;=SUM(A:A)&#x27;]];\nworkbook.recalculate();\nconst total = sheet.getRange(&#x27;B1&#x27;).values[0]?.[0];&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 112,
+    &quot;name&quot;: &quot;range.clear&quot;,
+    &quot;summary&quot;: &quot;Clear contents&quot;,
+    &quot;originalCode&quot;: &quot;sheet.getRange(&#x27;A1:C10&#x27;).clear();&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 113,
+    &quot;name&quot;: &quot;range.clear&quot;,
+    &quot;summary&quot;: &quot;Clear contents and formats&quot;,
+    &quot;originalCode&quot;: &quot;sheet.getRange(&#x27;A1:C10&#x27;).clear({ applyTo: &#x27;all&#x27; });&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 114,
+    &quot;name&quot;: &quot;range.fillDown&quot;,
+    &quot;summary&quot;: &quot;Fill down like Excel drag-fill&quot;,
+    &quot;originalCode&quot;: &quot;const r = sheet.getRange(&#x27;B2:B10&#x27;);\nr.getCell(0, 0).formulasR1C1 = [[&#x27;=RC[-1]*2&#x27;]];\nr.fillDown();&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 115,
+    &quot;name&quot;: &quot;range.fillRight&quot;,
+    &quot;summary&quot;: &quot;Fill right like Excel drag-fill&quot;,
+    &quot;originalCode&quot;: &quot;const r = sheet.getRange(&#x27;B2:F2&#x27;);\nr.getCell(0, 0).formulasR1C1 = [[&#x27;=RC[-1]*2&#x27;]];\nr.fillRight();&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 116,
+    &quot;name&quot;: &quot;range.fillFrom&quot;,
+    &quot;summary&quot;: &quot;Extend a block downward from a source selection&quot;,
+    &quot;originalCode&quot;: &quot;const seed = sheet.getRange(&#x27;B2:C3&#x27;);\nconst target = sheet.getRange(&#x27;B2:C8&#x27;);\ntarget.fillFrom(seed);&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 117,
+    &quot;name&quot;: &quot;range.copyFrom&quot;,
+    &quot;summary&quot;: &quot;Fill a block of formulas using copyFrom&quot;,
+    &quot;originalCode&quot;: &quot;// Excel-like drag-fill across a whole block (no manual 2D matrix)\nconst grid = sheet.getRange(&#x27;B3:AF17&#x27;);\nconst seed = sheet.getRange(&#x27;B3&#x27;);\nseed.formulasR1C1 = [[&#x27;=RC[-1]*2&#x27;]];\ngrid.copyFrom(seed, &#x27;formulas&#x27;);&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 118,
+    &quot;name&quot;: &quot;worksheet.sparklines.add&quot;,
+    &quot;summary&quot;: &quot;Add a line sparkline group&quot;,
+    &quot;originalCode&quot;: &quot;sheet.getRange(&#x27;A1:A6&#x27;).values = [[1],[2],[3],[2],[4],[6]];\nconst group = sheet.sparklines.add({\n  type: &#x27;line&#x27;,\n  sourceData: sheet.getRange(&#x27;A1:A6&#x27;),\n  targetRange: sheet.getRange(&#x27;B1:B6&#x27;),\n});\ngroup.displayXAxis = true;&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 119,
+    &quot;name&quot;: &quot;formatting-quick-reference&quot;,
+    &quot;summary&quot;: &quot;Formatting quick reference&quot;,
+    &quot;originalCode&quot;: &quot;const range = sheet.getRange(&#x27;A1:D10&#x27;);\n\n// Fill + font\nrange.format.fill = &#x27;lt2&#x27;;\nrange.format.font = { name: &#x27;Calibri&#x27;, size: 11, color: &#x27;tx1&#x27; };\n\n// Bulk format (single object assignment)\nrange.format = {\n  fill: &#x27;lt2&#x27;,\n  font: { name: &#x27;Calibri&#x27;, size: 11, color: &#x27;tx1&#x27; },\n  borders: { preset: &#x27;outside&#x27;, style: &#x27;thin&#x27;, color: &#x27;#D1D5DB&#x27; },\n  horizontalAlignment: &#x27;center&#x27;,\n  verticalAlignment: &#x27;center&#x27;,\n  wrapText: true,\n};\n\n// Theme token + transform (prefer this over manual hex shading)\nrange.getRow(0).format.fill = {\n  type: &#x27;solid&#x27;,\n  color: { type: &#x27;theme&#x27;, value: &#x27;accent1&#x27;, transform: { darken: 10 } },\n};\n\n// Borders (edge + inside presets or per-edge)\nrange.format.borders = { preset: &#x27;outside&#x27;, style: &#x27;thin&#x27;, color: &#x27;#D1D5DB&#x27; };\nrange.format.borders.getItem(&#x27;EdgeBottom&#x27;).style = &#x27;thin&#x27;;\nrange.format.borders.getItem(&#x27;EdgeBottom&#x27;).color = &#x27;#D1D5DB&#x27;;\n\n// Alignment + wrapping\nrange.format.horizontalAlignment = &#x27;center&#x27;;\nrange.format.verticalAlignment = &#x27;center&#x27;;\nrange.format.wrapText = true;\n\n// Autofit\nrange.format.autofitColumns();\nrange.format.autofitRows();\n\n// Number formats\nrange.format.numberFormat = &#x27;0.00&#x27;;\nsheet.getRange(&#x27;E1:F2&#x27;).format.numberFormat = [[&#x27;0&#x27;, &#x27;0.00&#x27;], [&#x27;0&#x27;, &#x27;0.00&#x27;]];&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 120,
+    &quot;name&quot;: &quot;range.dataValidation&quot;,
+    &quot;summary&quot;: &quot;Create a list validation rule&quot;,
+    &quot;originalCode&quot;: &quot;const range = sheet.getRange(&#x27;B2:B6&#x27;);\nrange.dataValidation = {\n  allowBlank: true,\n  list: { inCellDropDown: true, source: [&#x27;Run&#x27;, &#x27;Bike&#x27;, &#x27;Rest&#x27;] },\n};&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 121,
+    &quot;name&quot;: &quot;range.dataValidation&quot;,
+    &quot;summary&quot;: &quot;Require whole numbers between 1 and 100&quot;,
+    &quot;originalCode&quot;: &quot;const range = sheet.getRange(&#x27;C2:C100&#x27;);\nrange.dataValidation = {\n  rule: { type: &#x27;whole&#x27;, operator: &#x27;between&#x27;, formula1: 1, formula2: 100 },\n  errorAlert: {\n    style: &#x27;stop&#x27;,\n    title: &#x27;Invalid value&#x27;,\n    message: &#x27;Enter a whole number between 1 and 100.&#x27;,\n  },\n};&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 122,
+    &quot;name&quot;: &quot;range.dataValidation&quot;,
+    &quot;summary&quot;: &quot;Constrain dates to a specific year&quot;,
+    &quot;originalCode&quot;: &quot;const range = sheet.getRange(&#x27;D2:D200&#x27;);\nrange.dataValidation = {\n  rule: {\n    type: &#x27;date&#x27;,\n    operator: &#x27;between&#x27;,\n    formula1: &#x27;=DATE(2026,1,1)&#x27;,\n    formula2: &#x27;=DATE(2026,12,31)&#x27;,\n  },\n};&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 123,
+    &quot;name&quot;: &quot;worksheet.freezePanes&quot;,
+    &quot;summary&quot;: &quot;Freeze header row and first two columns&quot;,
+    &quot;originalCode&quot;: &quot;const sheet = workbook.worksheets.getItem(&#x27;Data&#x27;);\nsheet.freezePanes.freezeRows(1);\nsheet.freezePanes.freezeColumns(2);&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 124,
+    &quot;name&quot;: &quot;worksheet.getUsedRange&quot;,
+    &quot;summary&quot;: &quot;Clear the used range&quot;,
+    &quot;originalCode&quot;: &quot;const sheet = workbook.worksheets.getItem(&#x27;Sheet1&#x27;);\nconst used = sheet.getUsedRange();\nused.clear({ applyTo: &#x27;all&#x27; });&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  },
+  {
+    &quot;index&quot;: 125,
+    &quot;name&quot;: &quot;worksheet.reset&quot;,
+    &quot;summary&quot;: &quot;Reset a worksheet for a clean rebuild&quot;,
+    &quot;originalCode&quot;: &quot;const sheet = workbook.worksheets.getItem(&#x27;Sheet1&#x27;);\nsheet.reset();&quot;,
+    &quot;adaptations&quot;: [],
+    &quot;execution&quot;: &quot;completed&quot;,
+    &quot;export&quot;: &quot;completed&quot;,
+    &quot;logs&quot;: []
+  }
+]</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

@@ -1,0 +1,37 @@
+{
+  "name": "fx.MMULT",
+  "category": "math-trig",
+  "examples": [
+    {
+      "formula": "=MMULT({1,2;3,4}, {1,2;3,4})",
+      "value": 7,
+      "projection": [
+        [
+          7,
+          10,
+          null,
+          null
+        ],
+        [
+          15,
+          22,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 9
+    }
+  ]
+}

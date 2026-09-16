@@ -1,0 +1,10 @@
+{
+  "index": 8,
+  "name": "chart axes",
+  "summary": "Axis type + presence",
+  "originalCode": "chart.xAxis = { axisType: 'textAxis' };\nchart.xAxis = { axisType: 'dateAxis' };\nchart.xAxis = { deleted: true, title: 'Years' };\nchart.yAxis = { deleted: true, title: 'Revenue' };",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

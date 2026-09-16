@@ -1,0 +1,25 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Text Formulas · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="text.md">Raw file</a> · <a data-public-raw download href="text.md">Download</a></p><article><h1 id="text-formulas">Text Formulas</h1>
+<p>Text formulas transform, search, split, join, format, and extract strings.</p>
+<h2 id="formula-pattern">Formula Pattern</h2>
+<pre><code class="language-ts">const formulaBlock = sheet.getRange(outputRange).write({
+  formulas: formulaMatrix,
+});
+workbook.recalculate();
+const results = formulaBlock.values;
+</code></pre>
+<h2 id="common-shapes">Common Shapes</h2>
+<pre><code class="language-ts">const formulas = [
+  `=TEXT(${valueRef},${formatRef})`,
+  `=CONCAT(${rangeRef})`,
+  `=TEXTJOIN(${delimiterRef},${ignoreEmptyRef},${rangeRef})`,
+  `=LEFT(${textRef},${countRef})`,
+  `=RIGHT(${textRef},${countRef})`,
+  `=MID(${textRef},${startRef},${countRef})`,
+  `=FIND(${needleRef},${textRef})`,
+  `=SEARCH(${needleRef},${textRef})`,
+  `=SUBSTITUTE(${textRef},${oldTextRef},${newTextRef})`,
+  `=TEXTSPLIT(${textRef},${delimiterRef})`,
+];
+</code></pre>
+<h2 id="coverage">Coverage</h2>
+<p>Supported families include length, casing, replacement, extraction, joining, splitting, number-to-text formatting, Unicode helpers, and regex helpers.</p></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

@@ -1,0 +1,37 @@
+{
+  "name": "fx.WEIBULL",
+  "category": "compatibility",
+  "examples": [
+    {
+      "formula": "=WEIBULL(A1, A1, A1, A1)",
+      "value": "WEIBULL is not implemented. x=1, alpha=1, beta=1, cumulative=1",
+      "projection": [
+        [
+          "WEIBULL is not implemented. x=1, alpha=1, beta=1, cumulative=1",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 10
+    }
+  ]
+}

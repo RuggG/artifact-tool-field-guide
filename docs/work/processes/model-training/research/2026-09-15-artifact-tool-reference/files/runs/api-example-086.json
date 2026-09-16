@@ -1,0 +1,10 @@
+{
+  "index": 86,
+  "name": "range.format.numberFormat",
+  "summary": "Format currency values",
+  "originalCode": "sheet.getRange('B2:B5').format.numberFormat = '\"$\"#,##0.00';",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

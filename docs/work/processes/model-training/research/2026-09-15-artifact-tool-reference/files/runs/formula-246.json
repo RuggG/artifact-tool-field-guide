@@ -1,0 +1,37 @@
+{
+  "name": "fx.ADDRESS",
+  "category": "lookup-reference",
+  "examples": [
+    {
+      "formula": "=ADDRESS(A1, A1, A1)",
+      "value": "$A$1",
+      "projection": [
+        [
+          "$A$1",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 11
+    }
+  ]
+}

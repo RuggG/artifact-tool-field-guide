@@ -1,0 +1,10 @@
+{
+  "index": 97,
+  "name": "worksheet.getCell",
+  "summary": "Access a single cell by index",
+  "originalCode": "const sheet = workbook.worksheets.getItem('Sheet1');\nconst cell = sheet.getCell(1, 4);\ncell.values = [['Hello']];",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

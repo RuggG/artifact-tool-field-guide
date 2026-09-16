@@ -1,0 +1,21 @@
+{
+  "checked_at": "2026-09-16T21:37:48.030426+00:00",
+  "static_files_checked": 1359,
+  "missing_files": [],
+  "private_links": [],
+  "interaction_states": 139,
+  "browser_links_observed": 5167,
+  "browser_errors": [],
+  "failed_requests": [],
+  "lynott_hub_requests": [],
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "width": 390,
+      "height": 844
+    }
+  ]
+}

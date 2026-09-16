@@ -1,0 +1,37 @@
+{
+  "name": "fx.HYPGEOMDIST",
+  "category": "compatibility",
+  "examples": [
+    {
+      "formula": "=HYPGEOMDIST(A1, 10, A1, 10)",
+      "value": 1,
+      "projection": [
+        [
+          1,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 12
+    }
+  ]
+}

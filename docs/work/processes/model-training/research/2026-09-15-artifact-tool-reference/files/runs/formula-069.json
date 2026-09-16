@@ -1,0 +1,37 @@
+{
+  "name": "fx.SECOND",
+  "category": "date-time",
+  "examples": [
+    {
+      "formula": "=SECOND(10)",
+      "value": 0,
+      "projection": [
+        [
+          0,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 9
+    }
+  ]
+}

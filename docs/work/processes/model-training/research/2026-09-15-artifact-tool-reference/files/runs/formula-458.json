@@ -1,0 +1,37 @@
+{
+  "name": "fx.REPT",
+  "category": "text",
+  "examples": [
+    {
+      "formula": "=REPT(\"text\", TIME(9, 0, 0))",
+      "value": "Invalid array length",
+      "projection": [
+        [
+          "Invalid array length",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 8
+    }
+  ]
+}

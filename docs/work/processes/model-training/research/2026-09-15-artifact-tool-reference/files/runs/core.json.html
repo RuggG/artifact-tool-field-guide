@@ -1,0 +1,1127 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>core.json · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="core.json">Raw file</a> · <a data-public-raw download href="core.json">Download</a></p><article><h1>core.json</h1><pre class="public-code"><code>[
+  {
+    &quot;id&quot;: &quot;C01&quot;,
+    &quot;description&quot;: &quot;Workbook create, aliases, worksheet collection lifecycle&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 5,
+    &quot;detail&quot;: {
+      &quot;count&quot;: 2,
+      &quot;index&quot;: 1,
+      &quot;first&quot;: &quot;Beta&quot;,
+      &quot;nameAt0&quot;: &quot;Beta&quot;,
+      &quot;id&quot;: &quot;xdo4zf&quot;,
+      &quot;sheetId&quot;: &quot;1&quot;,
+      &quot;tabColor&quot;: {}
+    }
+  },
+  {
+    &quot;id&quot;: &quot;C02&quot;,
+    &quot;description&quot;: &quot;Worksheet duplicate and missing lookups&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 1,
+    &quot;detail&quot;: {
+      &quot;sameId&quot;: true,
+      &quot;count&quot;: 1,
+      &quot;missing&quot;: {}
+    }
+  },
+  {
+    &quot;id&quot;: &quot;C03&quot;,
+    &quot;description&quot;: &quot;Typed matrices, one-dimensional rows/columns, dates, literal formula text&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 4,
+    &quot;detail&quot;: {
+      &quot;values&quot;: [
+        [
+          12,
+          true,
+          null
+        ],
+        [
+          &quot;2026-01-01T00:00:00.000Z&quot;,
+          5,
+          &quot;=2+3&quot;
+        ]
+      ],
+      &quot;formulas&quot;: [
+        [
+          &quot;&quot;,
+          &quot;&quot;,
+          &quot;&quot;
+        ],
+        [
+          &quot;&quot;,
+          &quot;=2+3&quot;,
+          &quot;&quot;
+        ]
+      ],
+      &quot;rows&quot;: [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          null,
+          null
+        ],
+        [
+          5,
+          null,
+          null
+        ],
+        [
+          6,
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  {
+    &quot;id&quot;: &quot;C04&quot;,
+    &quot;description&quot;: &quot;Broadcast values versus formula assignment&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 1,
+    &quot;detail&quot;: {
+      &quot;formulas&quot;: [
+        [
+          &quot;=1+1&quot;,
+          &quot;&quot;
+        ],
+        [
+          &quot;&quot;,
+          &quot;&quot;
+        ]
+      ],
+      &quot;values&quot;: [
+        [
+          2,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  {
+    &quot;id&quot;: &quot;C05&quot;,
+    &quot;description&quot;: &quot;Single-cell expansion and write resizing&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 1,
+    &quot;detail&quot;: {
+      &quot;rejected&quot;: &quot;Error: Range.write would overwrite existing values in Data!A1. Pass overwrite: &#x27;allow&#x27; to proceed.&quot;,
+      &quot;expanded&quot;: [
+        [
+          5,
+          6
+        ],
+        [
+          7,
+          8
+        ]
+      ]
+    }
+  },
+  {
+    &quot;id&quot;: &quot;C06&quot;,
+    &quot;description&quot;: &quot;Write clear and resize:none boundary&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 1,
+    &quot;detail&quot;: {
+      &quot;values&quot;: [
+        [
+          9,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ]
+    }
+  },
+  {
+    &quot;id&quot;: &quot;C07&quot;,
+    &quot;description&quot;: &quot;Index/address/navigation conventions&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 1,
+    &quot;detail&quot;: {
+      &quot;address&quot;: &quot;C3:E5&quot;,
+      &quot;getAddress&quot;: &quot;C3:E5&quot;,
+      &quot;rowIndex&quot;: 2,
+      &quot;columnIndex&quot;: 2,
+      &quot;rowCount&quot;: 3,
+      &quot;columnCount&quot;: 3,
+      &quot;relativeA1&quot;: &quot;A1&quot;,
+      &quot;byIndex&quot;: &quot;D4&quot;,
+      &quot;offset&quot;: &quot;E4:G6&quot;,
+      &quot;offsetAlias&quot;: &quot;E4:G6&quot;,
+      &quot;resize&quot;: &quot;C3:D4&quot;,
+      &quot;resized&quot;: &quot;C3:F6&quot;,
+      &quot;resizeAlias&quot;: &quot;C3:D4&quot;,
+      &quot;current&quot;: &quot;C3:E5&quot;,
+      &quot;used&quot;: &quot;C3:E5&quot;
+    }
+  },
+  {
+    &quot;id&quot;: &quot;C08&quot;,
+    &quot;description&quot;: &quot;Fill down/right shifts relative and preserves anchored references&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 1,
+    &quot;detail&quot;: {
+      &quot;down&quot;: [
+        [
+          6
+        ],
+        [
+          9
+        ],
+        [
+          12
+        ]
+      ],
+      &quot;right&quot;: [
+        [
+          &quot;=A1*2&quot;,
+          &quot;=B1*2&quot;,
+          &quot;=C1*2&quot;
+        ]
+      ]
+    }
+  },
+  {
+    &quot;id&quot;: &quot;C09&quot;,
+    &quot;description&quot;: &quot;R1C1, copy all/values/formulas, fillFrom&quot;,
+    &quot;status&quot;: &quot;fail&quot;,
+    &quot;ms&quot;: 1,
+    &quot;error&quot;: &quot;Error: Range.fillFrom requires destination to extend source in exactly one direction while sharing the other axis. Source is C1:C2, destination is G1:G2.&quot;,
+    &quot;stack&quot;: [
+      &quot;Error: Range.fillFrom requires destination to extend source in exactly one direction while sharing the other axis. Source is C1:C2, destination is G1:G2.&quot;,
+      &quot;    at HWn (file:///Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/dist/artifact_tool.mjs:3101:178395)&quot;,
+      &quot;    at file:///Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/dist/artifact_tool.mjs:3101:204860&quot;,
+      &quot;    at file:///Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/dist/artifact_tool.mjs:3124:60457&quot;,
+      &quot;    at ju (file:///Users/ruggerogargiulo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/dist/artifact_tool.mjs:3065:639184)&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;C10&quot;,
+    &quot;description&quot;: &quot;Clear modes retain appropriate contents/styles; null removes values&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 1,
+    &quot;detail&quot;: {
+      &quot;values&quot;: [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  {
+    &quot;id&quot;: &quot;C11&quot;,
+    &quot;description&quot;: &quot;Merge, across merge, worksheet merge aliases&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 362,
+    &quot;detail&quot;: {}
+  },
+  {
+    &quot;id&quot;: &quot;C12&quot;,
+    &quot;description&quot;: &quot;Formatting, theme, sizing, autofit and format matrices&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 190,
+    &quot;detail&quot;: {
+      &quot;rowHeight&quot;: 22.5,
+      &quot;columnWidth&quot;: 14.44,
+      &quot;numberFormat&quot;: &quot;#,##0.00;(#,##0.00)&quot;,
+      &quot;theme&quot;: {
+        &quot;name&quot;: &quot;ChatGPT&quot;,
+        &quot;colorScheme&quot;: {
+          &quot;name&quot;: &quot;Probe&quot;,
+          &quot;colors&quot;: [
+            {
+              &quot;name&quot;: &quot;accent1&quot;,
+              &quot;color&quot;: {
+                &quot;type&quot;: 1,
+                &quot;value&quot;: &quot;123456&quot;
+              }
+            },
+            {
+              &quot;name&quot;: &quot;accent2&quot;,
+              &quot;color&quot;: {
+                &quot;type&quot;: 1,
+                &quot;value&quot;: &quot;007755&quot;
+              }
+            },
+            {
+              &quot;name&quot;: &quot;accent3&quot;,
+              &quot;color&quot;: {
+                &quot;type&quot;: 1,
+                &quot;value&quot;: &quot;196B24&quot;,
+                &quot;transform&quot;: {}
+              }
+            },
+            {
+              &quot;name&quot;: &quot;accent4&quot;,
+              &quot;color&quot;: {
+                &quot;type&quot;: 1,
+                &quot;value&quot;: &quot;0F9ED5&quot;,
+                &quot;transform&quot;: {}
+              }
+            },
+            {
+              &quot;name&quot;: &quot;accent5&quot;,
+              &quot;color&quot;: {
+                &quot;type&quot;: 1,
+                &quot;value&quot;: &quot;A02B93&quot;,
+                &quot;transform&quot;: {}
+              }
+            },
+            {
+              &quot;name&quot;: &quot;accent6&quot;,
+              &quot;color&quot;: {
+                &quot;type&quot;: 1,
+                &quot;value&quot;: &quot;4EA72E&quot;,
+                &quot;transform&quot;: {}
+              }
+            },
+            {
+              &quot;name&quot;: &quot;dk1&quot;,
+              &quot;color&quot;: {
+                &quot;type&quot;: 3,
+                &quot;value&quot;: &quot;windowText&quot;,
+                &quot;lastColor&quot;: &quot;000000&quot;,
+                &quot;transform&quot;: {}
+              }
+            },
+            {
+              &quot;name&quot;: &quot;lt1&quot;,
+              &quot;color&quot;: {
+                &quot;type&quot;: 3,
+                &quot;value&quot;: &quot;window&quot;,
+                &quot;lastColor&quot;: &quot;FFFFFF&quot;,
+                &quot;transform&quot;: {}
+              }
+            },
+            {
+              &quot;name&quot;: &quot;dk2&quot;,
+              &quot;color&quot;: {
+                &quot;type&quot;: 1,
+                &quot;value&quot;: &quot;0E2841&quot;,
+                &quot;transform&quot;: {}
+              }
+            },
+            {
+              &quot;name&quot;: &quot;lt2&quot;,
+              &quot;color&quot;: {
+                &quot;type&quot;: 1,
+                &quot;value&quot;: &quot;E8E8E8&quot;,
+                &quot;transform&quot;: {}
+              }
+            },
+            {
+              &quot;name&quot;: &quot;hlink&quot;,
+              &quot;color&quot;: {
+                &quot;type&quot;: 1,
+                &quot;value&quot;: &quot;467886&quot;,
+                &quot;transform&quot;: {}
+              }
+            },
+            {
+              &quot;name&quot;: &quot;folHlink&quot;,
+              &quot;color&quot;: {
+                &quot;type&quot;: 1,
+                &quot;value&quot;: &quot;96607D&quot;,
+                &quot;transform&quot;: {}
+              }
+            },
+            {
+              &quot;name&quot;: &quot;bg1&quot;,
+              &quot;color&quot;: {
+                &quot;type&quot;: 1,
+                &quot;value&quot;: &quot;FFFFFF&quot;
+              }
+            },
+            {
+              &quot;name&quot;: &quot;tx1&quot;,
+              &quot;color&quot;: {
+                &quot;type&quot;: 1,
+                &quot;value&quot;: &quot;000000&quot;
+              }
+            }
+          ]
+        },
+        &quot;backgroundFillStyleList&quot;: [
+          {
+            &quot;type&quot;: 1,
+            &quot;color&quot;: {
+              &quot;type&quot;: 2,
+              &quot;value&quot;: &quot;phClr&quot;,
+              &quot;transform&quot;: {}
+            },
+            &quot;gradientStops&quot;: [],
+            &quot;pictureEffects&quot;: []
+          },
+          {
+            &quot;type&quot;: 1,
+            &quot;color&quot;: {
+              &quot;type&quot;: 2,
+              &quot;value&quot;: &quot;phClr&quot;,
+              &quot;transform&quot;: {
+                &quot;tint&quot;: 95000,
+                &quot;satMod&quot;: 170000
+              }
+            },
+            &quot;gradientStops&quot;: [],
+            &quot;pictureEffects&quot;: []
+          },
+          {
+            &quot;type&quot;: 2,
+            &quot;gradientStops&quot;: [
+              {
+                &quot;position&quot;: 0,
+                &quot;color&quot;: {
+                  &quot;type&quot;: 2,
+                  &quot;value&quot;: &quot;phClr&quot;,
+                  &quot;transform&quot;: {
+                    &quot;tint&quot;: 93000,
+                    &quot;shade&quot;: 98000,
+                    &quot;lumMod&quot;: 102000,
+                    &quot;satMod&quot;: 150000
+                  }
+                }
+              },
+              {
+                &quot;position&quot;: 50000,
+                &quot;color&quot;: {
+                  &quot;type&quot;: 2,
+                  &quot;value&quot;: &quot;phClr&quot;,
+                  &quot;transform&quot;: {
+                    &quot;tint&quot;: 98000,
+                    &quot;shade&quot;: 90000,
+                    &quot;lumMod&quot;: 103000,
+                    &quot;satMod&quot;: 130000
+                  }
+                }
+              },
+              {
+                &quot;position&quot;: 100000,
+                &quot;color&quot;: {
+                  &quot;type&quot;: 2,
+                  &quot;value&quot;: &quot;phClr&quot;,
+                  &quot;transform&quot;: {
+                    &quot;shade&quot;: 63000,
+                    &quot;satMod&quot;: 120000
+                  }
+                }
+              }
+            ],
+            &quot;pictureEffects&quot;: [],
+            &quot;gradientKind&quot;: 1,
+            &quot;angleDeg&quot;: 90,
+            &quot;isScaled&quot;: false
+          }
+        ],
+        &quot;fillStyleList&quot;: [
+          {
+            &quot;type&quot;: 1,
+            &quot;color&quot;: {
+              &quot;type&quot;: 2,
+              &quot;value&quot;: &quot;phClr&quot;,
+              &quot;transform&quot;: {}
+            },
+            &quot;gradientStops&quot;: [],
+            &quot;pictureEffects&quot;: []
+          },
+          {
+            &quot;type&quot;: 2,
+            &quot;gradientStops&quot;: [
+              {
+                &quot;position&quot;: 0,
+                &quot;color&quot;: {
+                  &quot;type&quot;: 2,
+                  &quot;value&quot;: &quot;phClr&quot;,
+                  &quot;transform&quot;: {
+                    &quot;lumMod&quot;: 110000,
+                    &quot;satMod&quot;: 105000,
+                    &quot;tint&quot;: 67000
+                  }
+                }
+              },
+              {
+                &quot;position&quot;: 50000,
+                &quot;color&quot;: {
+                  &quot;type&quot;: 2,
+                  &quot;value&quot;: &quot;phClr&quot;,
+                  &quot;transform&quot;: {
+                    &quot;lumMod&quot;: 105000,
+                    &quot;satMod&quot;: 103000,
+                    &quot;tint&quot;: 73000
+                  }
+                }
+              },
+              {
+                &quot;position&quot;: 100000,
+                &quot;color&quot;: {
+                  &quot;type&quot;: 2,
+                  &quot;value&quot;: &quot;phClr&quot;,
+                  &quot;transform&quot;: {
+                    &quot;lumMod&quot;: 105000,
+                    &quot;satMod&quot;: 109000,
+                    &quot;tint&quot;: 81000
+                  }
+                }
+              }
+            ],
+            &quot;pictureEffects&quot;: [],
+            &quot;gradientKind&quot;: 1,
+            &quot;angleDeg&quot;: 90,
+            &quot;isScaled&quot;: false
+          },
+          {
+            &quot;type&quot;: 2,
+            &quot;gradientStops&quot;: [
+              {
+                &quot;position&quot;: 0,
+                &quot;color&quot;: {
+                  &quot;type&quot;: 2,
+                  &quot;value&quot;: &quot;phClr&quot;,
+                  &quot;transform&quot;: {
+                    &quot;satMod&quot;: 103000,
+                    &quot;lumMod&quot;: 102000,
+                    &quot;tint&quot;: 94000
+                  }
+                }
+              },
+              {
+                &quot;position&quot;: 50000,
+                &quot;color&quot;: {
+                  &quot;type&quot;: 2,
+                  &quot;value&quot;: &quot;phClr&quot;,
+                  &quot;transform&quot;: {
+                    &quot;satMod&quot;: 110000,
+                    &quot;lumMod&quot;: 100000,
+                    &quot;shade&quot;: 100000
+                  }
+                }
+              },
+              {
+                &quot;position&quot;: 100000,
+                &quot;color&quot;: {
+                  &quot;type&quot;: 2,
+                  &quot;value&quot;: &quot;phClr&quot;,
+                  &quot;transform&quot;: {
+                    &quot;lumMod&quot;: 99000,
+                    &quot;satMod&quot;: 120000,
+                    &quot;shade&quot;: 78000
+                  }
+                }
+              }
+            ],
+            &quot;pictureEffects&quot;: [],
+            &quot;gradientKind&quot;: 1,
+            &quot;angleDeg&quot;: 90,
+            &quot;isScaled&quot;: false
+          }
+        ],
+        &quot;lineStyleList&quot;: [
+          {
+            &quot;style&quot;: 1,
+            &quot;widthEmu&quot;: 12700,
+            &quot;fill&quot;: {
+              &quot;type&quot;: 1,
+              &quot;color&quot;: {
+                &quot;type&quot;: 2,
+                &quot;value&quot;: &quot;phClr&quot;,
+                &quot;transform&quot;: {}
+              },
+              &quot;gradientStops&quot;: [],
+              &quot;pictureEffects&quot;: []
+            }
+          },
+          {
+            &quot;style&quot;: 1,
+            &quot;widthEmu&quot;: 19050,
+            &quot;fill&quot;: {
+              &quot;type&quot;: 1,
+              &quot;color&quot;: {
+                &quot;type&quot;: 2,
+                &quot;value&quot;: &quot;phClr&quot;,
+                &quot;transform&quot;: {}
+              },
+              &quot;gradientStops&quot;: [],
+              &quot;pictureEffects&quot;: []
+            }
+          },
+          {
+            &quot;style&quot;: 1,
+            &quot;widthEmu&quot;: 25400,
+            &quot;fill&quot;: {
+              &quot;type&quot;: 1,
+              &quot;color&quot;: {
+                &quot;type&quot;: 2,
+                &quot;value&quot;: &quot;phClr&quot;,
+                &quot;transform&quot;: {}
+              },
+              &quot;gradientStops&quot;: [],
+              &quot;pictureEffects&quot;: []
+            }
+          }
+        ],
+        &quot;effectStyleList&quot;: [
+          {
+            &quot;effects&quot;: []
+          },
+          {
+            &quot;effects&quot;: []
+          },
+          {
+            &quot;effects&quot;: [
+              {
+                &quot;type&quot;: 1,
+                &quot;shadow&quot;: {
+                  &quot;color&quot;: {
+                    &quot;type&quot;: 1,
+                    &quot;value&quot;: &quot;000000&quot;,
+                    &quot;transform&quot;: {
+                      &quot;alpha&quot;: 63000
+                    }
+                  },
+                  &quot;blurRadius&quot;: 57150,
+                  &quot;distance&quot;: 19050,
+                  &quot;direction&quot;: 5400000
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    &quot;id&quot;: &quot;C13&quot;,
+    &quot;description&quot;: &quot;Theme/RGB transformed colors, gradient fills, borders and alignments&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 22,
+    &quot;detail&quot;: {
+      &quot;accepted&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;C14&quot;,
+    &quot;description&quot;: &quot;Freeze rows and columns, unfreeze, worksheet reset&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 12,
+    &quot;detail&quot;: {
+      &quot;reset&quot;: true
+    }
+  },
+  {
+    &quot;id&quot;: &quot;C15&quot;,
+    &quot;description&quot;: &quot;Named range calculation, scopes and deletion&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 17,
+    &quot;detail&quot;: {
+      &quot;address&quot;: &quot;A1:A3&quot;
+    }
+  },
+  {
+    &quot;id&quot;: &quot;C16&quot;,
+    &quot;description&quot;: &quot;Named LAMBDA functions and prefixed variables&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 11,
+    &quot;detail&quot;: {
+      &quot;value&quot;: &quot;#NAME?&quot;,
+      &quot;names&quot;: &quot;{\&quot;kind\&quot;:\&quot;definedName\&quot;,\&quot;name\&quot;:\&quot;AddTax\&quot;,\&quot;scope\&quot;:\&quot;workbook\&quot;}&quot;
+    }
+  },
+  {
+    &quot;id&quot;: &quot;C17&quot;,
+    &quot;description&quot;: &quot;Threaded cell/range comments, reply, reactions and state&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 28,
+    &quot;detail&quot;: {
+      &quot;inspect&quot;: &quot;{\&quot;kind\&quot;:\&quot;thread\&quot;,\&quot;id\&quot;:\&quot;th/{395A0A20-231A-4828-9E91-D8E5C3D9E552}\&quot;,\&quot;sheet\&quot;:\&quot;Data\&quot;,\&quot;target\&quot;:\&quot;A1\&quot;,\&quot;status\&quot;:\&quot;1\&quot;,\&quot;text\&quot;:\&quot;Synthetic review\&quot;,\&quot;comments\&quot;:[{\&quot;id\&quot;:\&quot;{395A0A20-231A-4828-9E91-D8E5C3D9E552}\&quot;,\&quot;text\&quot;:\&quot;Synthetic review\&quot;,\&quot;authorId\&quot;:\&quot;{1B2931D3-F392-4E97-BB3D-87680D956BAE}\&quot;,\&quot;createdAt\&quot;:\&quot;2026-09-15T17:15:14.635Z\&quot;},{\&quot;id\&quot;:\&quot;{312D6596-1E4F-459E-B41E-58AD9AB19E5E}\&quot;,\&quot;text\&quot;:\&quot;Checked\&quot;,\&quot;authorId\&quot;:\&quot;{1B2931D3-F392-4E97-BB3D-87680D956BAE}\&quot;,\&quot;createdAt\&quot;:\&quot;2026-09-15T17:15:14.635Z\&quot;}]}\n{\&quot;kind\&quot;:\&quot;thread\&quot;,\&quot;id\&quot;:\&quot;th/{36BD5F07-B3F3-4056-9618-506AAF275C4A}\&quot;,\&quot;sheet\&quot;:\&quot;Data\&quot;,\&quot;target\&quot;:\&quot;A2:B2\&quot;,\&quot;status\&quot;:\&quot;1\&quot;,\&quot;text\&quot;:\&quot;Range review\&quot;,\&quot;comments\&quot;:[{\&quot;id\&quot;:\&quot;{36BD5F07-B3F3-4056-9618-506AAF275C4A}\&quot;,\&quot;text\&quot;:\&quot;Range review\&quot;,\&quot;authorId\&quot;:\&quot;{1B2931D3-F392-4E97-BB3D-87680D956BAE}\&quot;,\&quot;createdAt\&quot;:\&quot;2026-09-15T17:15:14.635Z\&quot;}]}&quot;
+    }
+  },
+  {
+    &quot;id&quot;: &quot;C18&quot;,
+    &quot;description&quot;: &quot;Tables create, append, style, header/totals and delete&quot;,
+    &quot;status&quot;: &quot;fail&quot;,
+    &quot;ms&quot;: 1,
+    &quot;error&quot;: &quot;AssertionError [ERR_ASSERTION]: 5 != 9&quot;,
+    &quot;stack&quot;: [
+      &quot;AssertionError [ERR_ASSERTION]: 5 != 9&quot;,
+      &quot;    at close (file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:12:36)&quot;,
+      &quot;    at file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:135:67&quot;,
+      &quot;    at test (file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:16:86)&quot;,
+      &quot;    at file:///Users/ruggerogargiulo/repos/lynott-hub-rg/work/processes/model-training/research/2026-09-15-artifact-tool-reference/explore.mjs:132:7&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;C19&quot;,
+    &quot;description&quot;: &quot;Headerless table and overlap acceptance boundary&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 0,
+    &quot;detail&quot;: {
+      &quot;headerless&quot;: [
+        [
+          &quot;A&quot;,
+          1
+        ],
+        [
+          &quot;B&quot;,
+          3
+        ],
+        [
+          &quot;C&quot;,
+          5
+        ]
+      ],
+      &quot;overlap&quot;: &quot;accepted&quot;
+    }
+  },
+  {
+    &quot;id&quot;: &quot;C20&quot;,
+    &quot;description&quot;: &quot;CSV quote/newline parsing and string typing&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 6,
+    &quot;detail&quot;: {
+      &quot;before&quot;: [
+        [
+          &quot;Name&quot;,
+          &quot;Qty&quot;,
+          &quot;Note&quot;
+        ],
+        [
+          &quot;North, Ltd&quot;,
+          &quot;2&quot;,
+          &quot;Line 1\nLine 2&quot;
+        ],
+        [
+          &quot;South&quot;,
+          &quot;03&quot;,
+          &quot;plain&quot;
+        ]
+      ],
+      &quot;converted&quot;: 5,
+      &quot;append&quot;: &quot;accepted&quot;
+    }
+  },
+  {
+    &quot;id&quot;: &quot;C21&quot;,
+    &quot;description&quot;: &quot;Instance CSV and Markdown import&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 34,
+    &quot;detail&quot;: {
+      &quot;instanceRange&quot;: &quot;A1:B2&quot;,
+      &quot;instanceSheet&quot;: &quot;CSV&quot;,
+      &quot;markdown&quot;: [
+        [
+          &quot;Name&quot;,
+          &quot;Value&quot;
+        ],
+        [
+          &quot;Alpha&quot;,
+          &quot;10&quot;
+        ],
+        [
+          &quot;Beta&quot;,
+          &quot;20&quot;
+        ]
+      ],
+      &quot;tableCount&quot;: 1
+    }
+  },
+  {
+    &quot;id&quot;: &quot;C22&quot;,
+    &quot;description&quot;: &quot;HTML copy/paste values versus formulas&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 9,
+    &quot;detail&quot;: {
+      &quot;result&quot;: {
+        &quot;range&quot;: &quot;C3:D4&quot;,
+        &quot;selectionRect&quot;: {
+          &quot;r1&quot;: 2,
+          &quot;c1&quot;: 2,
+          &quot;r2&quot;: 3,
+          &quot;c2&quot;: 3
+        }
+      },
+      &quot;values&quot;: [
+        [
+          &quot;Qty&quot;,
+          &quot;Double&quot;
+        ],
+        [
+          5,
+          0
+        ]
+      ],
+      &quot;formulas&quot;: [
+        [
+          &quot;&quot;,
+          &quot;&quot;
+        ],
+        [
+          &quot;&quot;,
+          &quot;=A2*2&quot;
+        ]
+      ],
+      &quot;htmlLength&quot;: 1287
+    }
+  },
+  {
+    &quot;id&quot;: &quot;C23&quot;,
+    &quot;description&quot;: &quot;Serialize/load, validated load, constructor and utilities&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 1,
+    &quot;detail&quot;: {
+      &quot;protoKeys&quot;: [
+        &quot;id&quot;,
+        &quot;sheets&quot;,
+        &quot;styles&quot;,
+        &quot;featurePropertyBags&quot;,
+        &quot;theme&quot;,
+        &quot;contentReferences&quot;,
+        &quot;images&quot;,
+        &quot;people&quot;,
+        &quot;threads&quot;,
+        &quot;notes&quot;,
+        &quot;slicerCaches&quot;,
+        &quot;pivotCaches&quot;,
+        &quot;timelineCaches&quot;,
+        &quot;metadata&quot;,
+        &quot;definedNames&quot;,
+        &quot;textStyles&quot;,
+        &quot;codeEnvironments&quot;,
+        &quot;codeBlocks&quot;
+      ],
+      &quot;address&quot;: &quot;A1:B3&quot;,
+      &quot;fillRight&quot;: [
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      &quot;fillDown&quot;: [
+        [
+          1
+        ],
+        [
+          1
+        ],
+        [
+          1
+        ]
+      ]
+    }
+  },
+  {
+    &quot;id&quot;: &quot;C24&quot;,
+    &quot;description&quot;: &quot;Cross-sheet dependencies, recalculation, trace and stats&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 1,
+    &quot;detail&quot;: {
+      &quot;trace&quot;: {
+        &quot;cell&quot;: &quot;Build!A1&quot;,
+        &quot;sheetName&quot;: &quot;Build&quot;,
+        &quot;address&quot;: &quot;A1&quot;,
+        &quot;formula&quot;: &quot;=&#x27;Input&#x27;!B1*(1+&#x27;Input&#x27;!B2)&quot;,
+        &quot;value&quot;: 120,
+        &quot;params&quot;: [
+          {
+            &quot;cell&quot;: &quot;Input!B1&quot;,
+            &quot;sheetName&quot;: &quot;Input&quot;,
+            &quot;address&quot;: &quot;B1&quot;,
+            &quot;formula&quot;: null,
+            &quot;value&quot;: 100,
+            &quot;params&quot;: []
+          },
+          {
+            &quot;cell&quot;: &quot;Input!B2&quot;,
+            &quot;sheetName&quot;: &quot;Input&quot;,
+            &quot;address&quot;: &quot;B2&quot;,
+            &quot;formula&quot;: null,
+            &quot;value&quot;: 0.2,
+            &quot;params&quot;: []
+          }
+        ]
+      },
+      &quot;stats&quot;: {},
+      &quot;badTrace&quot;: null
+    }
+  },
+  {
+    &quot;id&quot;: &quot;C25&quot;,
+    &quot;description&quot;: &quot;Dynamic arrays, spill descriptors and obstruction&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 2,
+    &quot;detail&quot;: {
+      &quot;before&quot;: {
+        &quot;formulas&quot;: [
+          [
+            &quot;=SEQUENCE(3,2)&quot;,
+            &quot;&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;&quot;
+          ],
+          [
+            &quot;&quot;,
+            &quot;&quot;
+          ]
+        ],
+        &quot;display&quot;: [
+          [
+            &quot;=SEQUENCE(3,2)&quot;,
+            &quot;=SEQUENCE(3,2)&quot;
+          ],
+          [
+            &quot;=SEQUENCE(3,2)&quot;,
+            &quot;=SEQUENCE(3,2)&quot;
+          ],
+          [
+            &quot;=SEQUENCE(3,2)&quot;,
+            &quot;=SEQUENCE(3,2)&quot;
+          ]
+        ],
+        &quot;infos&quot;: [
+          [
+            {
+              &quot;kind&quot;: &quot;stored&quot;,
+              &quot;formula&quot;: &quot;=SEQUENCE(3,2)&quot;,
+              &quot;display&quot;: &quot;=SEQUENCE(3,2)&quot;,
+              &quot;isEditable&quot;: true
+            },
+            {
+              &quot;kind&quot;: &quot;projected&quot;,
+              &quot;source&quot;: &quot;spill&quot;,
+              &quot;display&quot;: &quot;=SEQUENCE(3,2)&quot;,
+              &quot;anchor&quot;: &quot;Data!A1&quot;,
+              &quot;ref&quot;: &quot;Data!A1:B3&quot;,
+              &quot;isEditable&quot;: false
+            }
+          ],
+          [
+            {
+              &quot;kind&quot;: &quot;projected&quot;,
+              &quot;source&quot;: &quot;spill&quot;,
+              &quot;display&quot;: &quot;=SEQUENCE(3,2)&quot;,
+              &quot;anchor&quot;: &quot;Data!A1&quot;,
+              &quot;ref&quot;: &quot;Data!A1:B3&quot;,
+              &quot;isEditable&quot;: false
+            },
+            {
+              &quot;kind&quot;: &quot;projected&quot;,
+              &quot;source&quot;: &quot;spill&quot;,
+              &quot;display&quot;: &quot;=SEQUENCE(3,2)&quot;,
+              &quot;anchor&quot;: &quot;Data!A1&quot;,
+              &quot;ref&quot;: &quot;Data!A1:B3&quot;,
+              &quot;isEditable&quot;: false
+            }
+          ],
+          [
+            {
+              &quot;kind&quot;: &quot;projected&quot;,
+              &quot;source&quot;: &quot;spill&quot;,
+              &quot;display&quot;: &quot;=SEQUENCE(3,2)&quot;,
+              &quot;anchor&quot;: &quot;Data!A1&quot;,
+              &quot;ref&quot;: &quot;Data!A1:B3&quot;,
+              &quot;isEditable&quot;: false
+            },
+            {
+              &quot;kind&quot;: &quot;projected&quot;,
+              &quot;source&quot;: &quot;spill&quot;,
+              &quot;display&quot;: &quot;=SEQUENCE(3,2)&quot;,
+              &quot;anchor&quot;: &quot;Data!A1&quot;,
+              &quot;ref&quot;: &quot;Data!A1:B3&quot;,
+              &quot;isEditable&quot;: false
+            }
+          ]
+        ]
+      },
+      &quot;childEdit&quot;: &quot;accepted&quot;,
+      &quot;blocked&quot;: [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          5,
+          6
+        ]
+      ]
+    }
+  },
+  {
+    &quot;id&quot;: &quot;C26&quot;,
+    &quot;description&quot;: &quot;Inspection kind families, bounding, regex error search and resolve&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 2,
+    &quot;detail&quot;: {
+      &quot;sheet&quot;: &quot;{\&quot;kind\&quot;:\&quot;sheet\&quot;,\&quot;id\&quot;:\&quot;ws/1gz30i\&quot;,\&quot;name\&quot;:\&quot;Data\&quot;,\&quot;index\&quot;:0,\&quot;range\&quot;:\&quot;A1:B3\&quot;,\&quot;address\&quot;:\&quot;A1:B3\&quot;}&quot;,
+      &quot;find&quot;: {
+        &quot;matches&quot;: [
+          {
+            &quot;kind&quot;: &quot;match&quot;,
+            &quot;sheet&quot;: &quot;Data&quot;,
+            &quot;address&quot;: &quot;A2&quot;,
+            &quot;value&quot;: &quot;East&quot;,
+            &quot;formula&quot;: null,
+            &quot;match&quot;: &quot;value&quot;
+          }
+        ],
+        &quot;truncated&quot;: false,
+        &quot;offset&quot;: 0,
+        &quot;limit&quot;: 2,
+        &quot;total&quot;: 1,
+        &quot;notices&quot;: []
+      },
+      &quot;errorMatch&quot;: &quot;{\&quot;kind\&quot;:\&quot;match\&quot;,\&quot;sheet\&quot;:\&quot;Data\&quot;,\&quot;address\&quot;:\&quot;B3\&quot;,\&quot;value\&quot;:\&quot;#DIV/0!\&quot;,\&quot;formula\&quot;:\&quot;1/0\&quot;,\&quot;match\&quot;:\&quot;value\&quot;}&quot;
+    }
+  },
+  {
+    &quot;id&quot;: &quot;C27&quot;,
+    &quot;description&quot;: &quot;Error scan versus missing-data and full-column boundaries&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 2,
+    &quot;detail&quot;: [
+      {
+        &quot;formula&quot;: &quot;=COUNTIF(A1:A4,\&quot;\&quot;)&quot;,
+        &quot;value&quot;: 0
+      },
+      {
+        &quot;formula&quot;: &quot;=COUNTIFS(A1:A4,\&quot;\&quot;)&quot;,
+        &quot;value&quot;: 0
+      },
+      {
+        &quot;formula&quot;: &quot;=COUNTBLANK(A1:A4)&quot;,
+        &quot;value&quot;: 1
+      },
+      {
+        &quot;formula&quot;: &quot;=SUMIFS(B:B,A:A,\&quot;x\&quot;)&quot;,
+        &quot;value&quot;: &quot;#VALUE!&quot;
+      },
+      {
+        &quot;formula&quot;: &quot;=SUMIFS(B1:B4,A1:A4,\&quot;x\&quot;)&quot;,
+        &quot;value&quot;: 3
+      },
+      {
+        &quot;formula&quot;: &quot;=ROWS(A:A)&quot;,
+        &quot;value&quot;: 4
+      },
+      {
+        &quot;formula&quot;: &quot;=1/0&quot;,
+        &quot;value&quot;: &quot;#DIV/0!&quot;
+      },
+      {
+        &quot;formula&quot;: &quot;=NA()&quot;,
+        &quot;value&quot;: &quot;#N/A&quot;
+      },
+      {
+        &quot;formula&quot;: &quot;=MISSINGFUNCTION(1)&quot;,
+        &quot;value&quot;: &quot;#NAME?&quot;
+      }
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;C28&quot;,
+    &quot;description&quot;: &quot;Recorded patch/replay and patch input envelope&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 6,
+    &quot;detail&quot;: {
+      &quot;result&quot;: &quot;done&quot;,
+      &quot;patch&quot;: [
+        {
+          &quot;op&quot;: &quot;range.values.set&quot;,
+          &quot;target&quot;: {
+            &quot;sheet&quot;: &quot;Data&quot;,
+            &quot;range&quot;: &quot;A1&quot;
+          },
+          &quot;values&quot;: [
+            [
+              2
+            ]
+          ]
+        },
+        {
+          &quot;op&quot;: &quot;range.formulas.set&quot;,
+          &quot;target&quot;: {
+            &quot;sheet&quot;: &quot;Data&quot;,
+            &quot;range&quot;: &quot;B1&quot;
+          },
+          &quot;formulas&quot;: [
+            [
+              &quot;=A1*3&quot;
+            ]
+          ]
+        }
+      ],
+      &quot;idMap&quot;: {},
+      &quot;crdtBytes&quot;: 104,
+      &quot;applied&quot;: {
+        &quot;idMap&quot;: {},
+        &quot;warnings&quot;: []
+      }
+    }
+  },
+  {
+    &quot;id&quot;: &quot;C29&quot;,
+    &quot;description&quot;: &quot;Collaborative state, CRDT subscription and replica application&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 2,
+    &quot;detail&quot;: {
+      &quot;ready&quot;: true,
+      &quot;updates&quot;: [
+        {
+          &quot;bytes&quot;: 45,
+          &quot;origin&quot;: &quot;[object Object]&quot;
+        },
+        {
+          &quot;bytes&quot;: 63,
+          &quot;origin&quot;: &quot;[object Object]&quot;
+        }
+      ],
+      &quot;recordedBytes&quot;: 79,
+      &quot;replicaValue&quot;: 1
+    }
+  },
+  {
+    &quot;id&quot;: &quot;C30&quot;,
+    &quot;description&quot;: &quot;Native export and import preserve values, formulas and update behavior&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;ms&quot;: 216,
+    &quot;detail&quot;: {
+      &quot;formulas&quot;: [
+        [
+          &quot;=A2*B2&quot;
+        ],
+        [
+          &quot;=A3*B3&quot;
+        ]
+      ],
+      &quot;values&quot;: [
+        [
+          40
+        ],
+        [
+          30
+        ]
+      ]
+    }
+  }
+]</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

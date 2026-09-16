@@ -1,0 +1,10 @@
+{
+  "index": 6,
+  "name": "chart legend",
+  "summary": "Legend on/off + position + style",
+  "originalCode": "chart.hasLegend = false;\nchart.hasLegend = true; chart.legend = { position: 'bottom', textStyle: { fontSize: 11 }, fill: { type: 'solid', color: 'background1', pattern: { type: 'zigZag', color: 'accent2' } }, stroke: { fill: 'accent2', style: 'solid', width: 1 } };",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

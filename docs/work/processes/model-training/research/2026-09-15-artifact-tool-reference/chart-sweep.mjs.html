@@ -1,0 +1,18 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>chart-sweep.mjs · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="chart-sweep.mjs">Raw file</a> · <a data-public-raw download href="chart-sweep.mjs">Download</a></p><article><h1>chart-sweep.mjs</h1><pre class="public-code"><code>import fs from &#x27;node:fs/promises&#x27;;
+import path from &#x27;node:path&#x27;;
+import {fileURLToPath} from &#x27;node:url&#x27;;
+import {spawn} from &#x27;node:child_process&#x27;;
+const root=path.dirname(fileURLToPath(import.meta.url)),out=path.join(root,&#x27;files/runs&#x27;);
+const types=(await fs.readFile(path.join(out,&#x27;enums-help.ndjson&#x27;),&#x27;utf8&#x27;)).trim().split(&#x27;\n&#x27;).map(JSON.parse).find(x=&gt;x.name===&#x27;enum.ChartType&#x27;).values;
+const runs=[];
+for(const id of [&#x27;F01&#x27;,&#x27;F02&#x27;,&#x27;F03&#x27;,&#x27;F04&#x27;,&#x27;F05&#x27;,&#x27;F06&#x27;,&#x27;F07&#x27;,...types.map(x=&gt;&#x27;CH-&#x27;+x),&#x27;F08&#x27;,&#x27;F09&#x27;]){
+ const result=await new Promise(resolve=&gt;{
+  const child=spawn(process.execPath,[path.join(root,&#x27;explore.mjs&#x27;),&#x27;features&#x27;],{cwd:root,env:{...process.env,PROBE_FILTER:&#x27;^&#x27;+id+&#x27;$&#x27;,RUN_LABEL:&#x27;bounded-&#x27;+id},stdio:[&#x27;ignore&#x27;,&#x27;pipe&#x27;,&#x27;pipe&#x27;]});
+  let stdout=&#x27;&#x27;,stderr=&#x27;&#x27;,timedOut=false;
+  child.stdout.on(&#x27;data&#x27;,x=&gt;stdout+=x);child.stderr.on(&#x27;data&#x27;,x=&gt;stderr+=x);
+  const timer=setTimeout(()=&gt;{timedOut=true;child.kill(&#x27;SIGKILL&#x27;);},10000);
+  child.on(&#x27;close&#x27;,(code,signal)=&gt;{clearTimeout(timer);resolve({id,code,signal,timedOut,stdout,stderr});});
+ });runs.push(result);await fs.writeFile(path.join(out,&#x27;chart-sweep.json&#x27;),JSON.stringify(runs,null,2));
+ console.log(JSON.stringify({id,timedOut:result.timedOut,code:result.code}));
+}
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

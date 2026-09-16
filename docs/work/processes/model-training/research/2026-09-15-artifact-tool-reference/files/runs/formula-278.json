@@ -1,0 +1,37 @@
+{
+  "name": "fx.PI",
+  "category": "math-trig",
+  "examples": [
+    {
+      "formula": "=PI()",
+      "value": 3.141592653589793,
+      "projection": [
+        [
+          3.141592653589793,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 10
+    }
+  ]
+}

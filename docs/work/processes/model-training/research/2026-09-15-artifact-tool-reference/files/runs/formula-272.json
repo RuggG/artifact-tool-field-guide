@@ -1,0 +1,37 @@
+{
+  "name": "fx.TRIMRANGE",
+  "category": "lookup-reference",
+  "examples": [
+    {
+      "formula": "=TRIMRANGE(A1:A5, A1)",
+      "value": "TRIMRANGE is not implemented. range=1,2,3,4,5, rowTrimMode=1, colTrimMode=undefined",
+      "projection": [
+        [
+          "TRIMRANGE is not implemented. range=1,2,3,4,5, rowTrimMode=1, colTrimMode=undefined",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 7
+    }
+  ]
+}

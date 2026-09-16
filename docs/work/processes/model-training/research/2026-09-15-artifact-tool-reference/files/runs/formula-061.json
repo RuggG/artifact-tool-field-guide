@@ -1,0 +1,37 @@
+{
+  "name": "fx.DATE",
+  "category": "date-time",
+  "examples": [
+    {
+      "formula": "=DATE(A1, A1, A1)",
+      "value": 367,
+      "projection": [
+        [
+          367,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 12
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "name": "fx.YIELDMAT",
+  "category": "financial",
+  "examples": [
+    {
+      "formula": "=YIELDMAT(A1, A1, TRUE, A1)",
+      "value": "#NUM!",
+      "projection": [
+        [
+          "#NUM!",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 12
+    }
+  ]
+}

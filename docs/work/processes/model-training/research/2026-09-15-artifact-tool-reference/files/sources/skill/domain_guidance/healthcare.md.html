@@ -1,0 +1,38 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>healthcare.md · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="healthcare.md">Raw file</a> · <a data-public-raw download href="healthcare.md">Download</a></p><article><h2 id="healthcare-clinicaladministrative-spreadsheets">Healthcare (clinical/administrative) spreadsheets</h2>
+<p>Use for clinical records, care delivery, patient/encounter analysis and healthcare administration tasks, not every workbook at a healthcare organization. Follow <a href="../SKILL.md#domain-requirements">Domain Requirements</a>: financial forecasts, budgets, cash planning and valuation use Finance guidance, with relevant healthcare definitions, protocols and units added when needed.</p>
+<p>If any specific rule conflicts with user's request or reference, always prioritize the user's request first, then reference/template then general defaults.
+Use <a href="../style_guidelines.md">Style guidance</a> for shared formatting; apply the healthcare requirements below only where the task needs them.</p>
+<p>For read-only questions, inspect relevant source records, calculations, definitions, units, periods and protocols without modifying/exporting, changing inputs, adding helper fields/checks or refreshing sources. Report gaps and failed checks rather than repairing them. Authoring defaults apply only to requested creation or edits; preserve original source records and narrow-edit scope.</p>
+<h3 id="tab-structure">Tab structure</h3>
+<ul>
+<li>Keep raw clinical/administrative records distinct from calculations and reports. These are roles, not a mandatory three-tab template: use separate tabs when different datasets, access, refresh or review needs justify them; otherwise use clearly separated regions without changing original records.</li>
+<li>In a clinical context, you might have one sheet for patient-level data (each row = one patient or encounter), and another that summarizes by clinic or month.</li>
+<li>A staff list and appointment schedule may need separate tabs when their records or update owners differ.</li>
+<li>Name each tab descriptively, such as “Appointments_RawData”, “Clinic KPI Dashboard”.</li>
+</ul>
+<h3 id="formatting">Formatting</h3>
+<ul>
+<li>Highlight fields staff actually need to complete, following the reference's input styling. Record-only fields may be useful without feeding formulas, but their purpose must be clear; do not add unused input-looking placeholders.</li>
+<li>When the requested workflow needs clinical or follow-up flags, use only source/protocol-defined thresholds and preserve their severity meanings. Use bounded conditional formatting and include a legend when its meaning is not already clear.</li>
+<li>Use clear data formatting (e.g. YYYY-MM-DD or MM/DD/YYYY as required), identifiers (like medical record numbers), and units for all measurements (e.g. weight in kg, temperature in °C).</li>
+<li>For intended printed or urgent use, keep identifiers and relevant clinical information scannable without crowding. Follow <a href="../style_guidelines.md#freeze-panes">Freeze panes</a> for long lists.</li>
+</ul>
+<h3 id="formulas">Formulas</h3>
+<ul>
+<li>For clinical indicators such as average length of stay or readmission rates, preserve the source definitions, periods and denominators. Use <a href="../SKILL.md#choosing-formulas-and-excel-tools">Choosing Formulas and Excel Tools</a> for aggregation.</li>
+<li>Where calculations involve thresholds or guidelines (say, flagging patients with BMI over a certain value), consider referencing those thresholds from a single cell named “BMI_threshold” so that it’s clear and adjustable, rather than embedding the number in multiple formulas.</li>
+<li>Follow <a href="../SKILL.md#checks-and-audit">Checks and Audit</a> for relevant completeness and reconciliation checks. Independently verify critical clinical calculations against an authoritative source or qualified review and state when that verification is unavailable. Use only source-supported thresholds and definitions; do not invent clinical advice or change source protocols.</li>
+</ul>
+<h3 id="raw-data-and-outputs">Raw data and outputs</h3>
+<ul>
+<li>Never alter or delete original healthcare data</li>
+<li>For data entries that need correction (e.g., a misspelled diagnosis or an out-of-range age), consider doing it via a data validation process or noting corrections in a separate column (“Corrected value”) rather than overwriting, or maintain an audit log of changes.</li>
+</ul>
+<h3 id="metadata-units-and-codes">Metadata, units, and codes</h3>
+<ul>
+<li>Healthcare data is full of codes and units, which must be documented.</li>
+<li>Always provide the units for each metric (e.g., blood glucose “mg/dL”, heart rate “bpm”).</li>
+<li>Include normal or target ranges only when the clinical task needs them and an applicable source/protocol supplies the range and context; do not infer a universal range.</li>
+<li>Keep code definitions available in a labeled region or a separate Codebook sheet when its size, reuse or review purpose warrants it; preserve existing definitions and source codes.</li>
+<li>If the main data uses abbreviations (like “M”/“F” for sex or clinic codes like “NYC” for New York Clinic), ensure there is a legend or the full term in the header (“Sex (M/F)” is clear).</li>
+</ul></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

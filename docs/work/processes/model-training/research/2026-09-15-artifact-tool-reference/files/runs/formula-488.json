@@ -1,0 +1,37 @@
+{
+  "name": "fx.ARRAYTOTEXT",
+  "category": "text",
+  "examples": [
+    {
+      "formula": "=ARRAYTOTEXT({1,2;3,4}, \"#,##0.00\")",
+      "value": "#VALUE!",
+      "projection": [
+        [
+          "#VALUE!",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 17
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "index": 19,
+  "name": "chart.yAxis",
+  "summary": "Set y-axis title",
+  "originalCode": "chart.yAxis = { title: { text: 'Revenue' } };",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

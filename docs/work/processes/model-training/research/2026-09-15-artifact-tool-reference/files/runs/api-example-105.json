@@ -1,0 +1,10 @@
+{
+  "index": 105,
+  "name": "range.getOffsetRange",
+  "summary": "Build a small window relative to a block",
+  "originalCode": "const range = sheet.getRange('B2:D4');\nconst window = range.getOffsetRange(-1, 0, 1, 3); // B1:D1",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

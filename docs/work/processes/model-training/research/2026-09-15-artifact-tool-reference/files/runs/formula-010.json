@@ -1,0 +1,37 @@
+{
+  "name": "fx.CONFIDENCE",
+  "category": "compatibility",
+  "examples": [
+    {
+      "formula": "=CONFIDENCE(A1, A1, A1)",
+      "value": "CONFIDENCE is not implemented. alpha=1, standardDev=1, size=1",
+      "projection": [
+        [
+          "CONFIDENCE is not implemented. alpha=1, standardDev=1, size=1",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 10
+    }
+  ]
+}

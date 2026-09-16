@@ -1,0 +1,37 @@
+{
+  "name": "fx.POISSON",
+  "category": "compatibility",
+  "examples": [
+    {
+      "formula": "=POISSON(A1, A1, A1)",
+      "value": "POISSON is not implemented. x=1, mean=1, cumulative=1",
+      "projection": [
+        [
+          "POISSON is not implemented. x=1, mean=1, cumulative=1",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 9
+    }
+  ]
+}

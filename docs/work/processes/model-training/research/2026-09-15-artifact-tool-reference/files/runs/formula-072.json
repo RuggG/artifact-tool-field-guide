@@ -1,0 +1,37 @@
+{
+  "name": "fx.TIMEVALUE",
+  "category": "date-time",
+  "examples": [
+    {
+      "formula": "=TIMEVALUE(TIME(9, 0, 0))",
+      "value": 0.375,
+      "projection": [
+        [
+          0.375,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 14
+    }
+  ]
+}

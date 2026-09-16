@@ -1,0 +1,10 @@
+{
+  "index": 64,
+  "name": "workbook.utils",
+  "summary": "Convert between 1-based columns and letters",
+  "originalCode": "workbook.utils.columnToLetter(1); // \"A\"\nworkbook.utils.columnToLetter(27); // \"AA\"\nworkbook.utils.letterToColumn('AA'); // 27\nworkbook.utils.toA1String(1, 2); // 'B1'\nworkbook.utils.toA1String(1, 2, 3, 4); // 'B1:D3'",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

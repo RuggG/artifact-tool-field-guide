@@ -1,0 +1,9 @@
+{
+  "index": 69,
+  "name": "formulas",
+  "originalCode": "const sheet = workbook.worksheets.add(\"Sheet1\");\nconst range = sheet.getRange(\"A1:A2\");\nrange.formulas = [[\"=1+1\"], [\"=SUM(2,3)\"]];\nworkbook.recalculate();\nconst values = range.values;",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

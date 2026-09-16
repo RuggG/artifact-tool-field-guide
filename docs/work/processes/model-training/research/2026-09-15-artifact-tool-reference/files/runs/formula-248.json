@@ -1,0 +1,37 @@
+{
+  "name": "fx.HYPERLINK",
+  "category": "lookup-reference",
+  "examples": [
+    {
+      "formula": "=HYPERLINK(A1, A1)",
+      "value": "HYPERLINK is not implemented. linkLocation=1, friendlyName=1",
+      "projection": [
+        [
+          "HYPERLINK is not implemented. linkLocation=1, friendlyName=1",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 11
+    }
+  ]
+}

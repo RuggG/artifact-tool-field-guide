@@ -1,0 +1,10 @@
+{
+  "index": 62,
+  "name": "workbook.setColorScheme",
+  "summary": "Swap the workbook theme palette",
+  "originalCode": "// Prefer updating the theme palette over repainting every range.\n// Theme tokens like 'accent1' will automatically pick up the new palette.\nworkbook.setColorScheme({\n  name: 'Brand',\n  themeColors: {\n    accent1: '#1F6FEB',\n    accent2: '#F97316',\n    accent3: '#16A34A',\n    dk1: '#0B0F19',\n    lt1: '#FFFFFF',\n    lt2: '#E5E7EB',\n    hlink: '#2563EB',\n    folHlink: '#7C3AED',\n  },\n});",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

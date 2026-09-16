@@ -1,0 +1,12 @@
+{
+  "index": 28,
+  "name": "chart series",
+  "summary": "Trendlines",
+  "originalCode": "const series = chart.series.items[0]!;\nseries.trendlines.add('linear', { forecastForward: 2, forecastBackward: 1, intercept: 0, displayEquation: true, displayRSquared: true, stroke: { fill: 'accent1', style: 'dashed', width: 1 } });\nseries.trendlines.add('polynomial', { polynomialOrder: 3 });\nseries.trendlines.add('movingAverage', { movingAveragePeriod: 5 });\nseries.trendlines.add('exponential');\nseries.trendlines.clear();",
+  "adaptations": [
+    "Removed TypeScript non-null assertion after array access."
+  ],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

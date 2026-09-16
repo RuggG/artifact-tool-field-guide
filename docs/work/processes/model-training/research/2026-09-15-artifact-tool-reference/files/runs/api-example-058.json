@@ -1,0 +1,10 @@
+{
+  "index": 58,
+  "name": "workbook.worksheets.add",
+  "summary": "Create a worksheet and write values",
+  "originalCode": "const sheet = workbook.worksheets.add('DogHealth');\nsheet.getRange('A1').values = [['Date']];",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

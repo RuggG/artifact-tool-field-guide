@@ -1,0 +1,37 @@
+{
+  "name": "fx.STDEVP",
+  "category": "compatibility",
+  "examples": [
+    {
+      "formula": "=STDEVP(10, C1:C5, 20, C1:C5)",
+      "value": 4.915960401250875,
+      "projection": [
+        [
+          4.915960401250875,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 12
+    }
+  ]
+}

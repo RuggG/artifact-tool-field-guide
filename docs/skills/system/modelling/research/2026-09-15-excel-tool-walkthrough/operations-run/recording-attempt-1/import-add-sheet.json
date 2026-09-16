@@ -1,0 +1,43 @@
+{
+  "id": "import-add-sheet",
+  "operation": "wb = await SpreadsheetFile.importXlsx(await FileBlob.load(source));\nlab = wb.worksheets.add(\"Fee lab\");\nreturn lab;",
+  "checkInput": {
+    "before": "",
+    "after": "return await names(wb);"
+  },
+  "startedAt": "2026-09-15T16:53:20.949Z",
+  "libraryReturn": {
+    "type": "Worksheet object",
+    "representation": "Object contents are read separately in the agent checks."
+  },
+  "elapsedMs": 1565,
+  "after": {
+    "recordCount": 7,
+    "truncated": false,
+    "metadata": {
+      "revision": "eund71",
+      "target": {
+        "id": "wb/c22l93",
+        "beforeLines": 0,
+        "afterLines": 0
+      },
+      "kind": {
+        "requested": "sheet",
+        "tokens": [
+          "sheet"
+        ]
+      },
+      "include": {
+        "requested": "id,name",
+        "tokens": [
+          "id",
+          "name"
+        ]
+      },
+      "exclude": {
+        "tokens": []
+      },
+      "notices": []
+    }
+  }
+}

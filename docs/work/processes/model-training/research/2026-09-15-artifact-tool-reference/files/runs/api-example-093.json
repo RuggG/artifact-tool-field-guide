@@ -1,0 +1,10 @@
+{
+  "index": 93,
+  "name": "range.format.rowHeightPx",
+  "summary": "Set row height to 24px",
+  "originalCode": "sheet.getRange('A1:D10').format.rowHeightPx = 24;",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

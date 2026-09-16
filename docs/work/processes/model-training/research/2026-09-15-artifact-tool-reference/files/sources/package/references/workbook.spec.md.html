@@ -1,0 +1,27 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>workbook.spec.md · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="workbook.spec.md">Raw file</a> · <a data-public-raw download href="workbook.spec.md">Download</a></p><article><h2 id="workbook-api">Workbook API</h2>
+<p>Use <code>Workbook</code> to create, edit, recalculate, and export spreadsheet artifacts.</p>
+<h3 id="quick-start">Quick start</h3>
+<pre><code class="language-ts">import { Workbook } from "@oai/artifact-tool";
+
+const workbook = Workbook.create();
+const sheet = workbook.worksheets.add("Sheet1");
+
+sheet.getRange("A1").values = [["Hello"]];
+workbook.recalculate();
+
+const proto = workbook.toProto();
+</code></pre>
+<h3 id="workbook-lifecycle">Workbook lifecycle</h3>
+<ul>
+<li><code>Workbook.create()</code> — start a new workbook.</li>
+<li><code>new Workbook(proto)</code> — hydrate from an existing artifact, edit, then <code>toProto()</code> again.</li>
+<li><code>workbook.recalculate()</code> — evaluate formulas.</li>
+<li><code>workbook.toProto()</code> — produce the protobuf-like JSON artifact.</li>
+</ul>
+<h3 id="worksheets">Worksheets</h3>
+<ul>
+<li><code>workbook.worksheets.add(name)</code> — add (or return) a worksheet by name.</li>
+<li><code>workbook.worksheets.getItem(name | index)</code> — fetch by name or index.</li>
+<li><code>workbook.worksheets.getActiveWorksheet()</code> — fetch the active worksheet.</li>
+<li><code>workbook.worksheets.count</code> — number of sheets.</li>
+</ul></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

@@ -1,0 +1,13 @@
+{
+  "index": 75,
+  "name": "workbook.inspect",
+  "summary": "Window around a sheet record",
+  "adaptations": [
+    "Mapped structured example fields to the corresponding public method; replaced placeholder anchors with actual fixture IDs."
+  ],
+  "execution": "completed",
+  "export": "completed",
+  "logs": [
+    "{\"recordCount\":6,\"truncated\":false,\"metadata\":{\"revision\":\"p4eqyg\",\"target\":{\"id\":\"ws/x523ab\",\"beforeLines\":1,\"afterLines\":4},\"kind\":{\"tokens\":[\"workbook\",\"sheet\",\"table\",\"formula\",\"thread\"]},\"include\":{\"tokens\":[]},\"exclude\":{\"tokens\":[]},\"notices\":[]}}"
+  ]
+}

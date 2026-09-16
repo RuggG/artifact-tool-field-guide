@@ -1,0 +1,13 @@
+{"kind":"workbook","id":"wb/mmhhpk","sheets":1,"tables":1}
+{"kind":"definedName","name":"SalesRange","scope":"workbook","formula":"=Data!$A$1:$A$3"}
+{"kind":"definedName","name":"LocalRange","scope":"Data","formula":"=Data!$A$2:$A$3"}
+{"kind":"sheet","id":"ws/pp7q1c","name":"Data","index":0,"range":"A1:B3","address":"A1:B3","tables":1,"formulas":2}
+{"kind":"table","sheet":"Data","address":"A1:B3","rows":3,"cols":2,"values":[[1,6],[2,5],[3,null]]}
+{"kind":"region","sheet":"Data","address":"A1:B3","rows":3,"cols":2,"nonEmpty":5,"blank":1,"text":5,"maxTextLength":1,"preview":[["1","6"],["2","5"],["3",null]],"previewAddress":"A1:B3","previewRows":3,"previewCols":2}
+{"kind":"formula","sheet":"Data","address":"B1","formula":"=SUM(SalesRange)"}
+{"kind":"formula","sheet":"Data","address":"B2","formula":"=SUM(LocalRange)"}
+{"kind":"computedStyle","sheet":"Data","for":"A1","style":{"fill":{"type":3,"gradientStops":[],"pattern":{"patternType":1},"pictureEffects":[]},"font":{"fontSize":11,"typeface":"Carlito"},"border":{},"wrapText":false,"horizontalAlignment":"general","styleId":0}}
+{"kind":"computedStyle","sheet":"Data","for":"B1","style":{"fill":{"type":3,"gradientStops":[],"pattern":{"patternType":1},"pictureEffects":[]},"font":{"fontSize":11,"typeface":"Carlito"},"border":{},"wrapText":false,"horizontalAlignment":"general","styleId":0}}
+{"kind":"computedStyle","sheet":"Data","for":"A2","style":{"fill":{"type":3,"gradientStops":[],"pattern":{"patternType":1},"pictureEffects":[]},"font":{"fontSize":11,"typeface":"Carlito"},"border":{},"wrapText":false,"horizontalAlignment":"general","styleId":0}}
+{"kind":"computedStyle","sheet":"Data","for":"B2","style":{"fill":{"type":3,"gradientStops":[],"pattern":{"patternType":1},"pictureEffects":[]},"font":{"fontSize":11,"typeface":"Carlito"},"border":{},"wrapText":false,"horizontalAlignment":"general","styleId":0}}
+{"kind":"computedStyle","sheet":"Data","for":"A3","style":{"fill":{"type":3,"gradientStops":[],"pattern":{"patternType":1},"pictureEffects":[]},"font":{"fontSize":11,"typeface":"Carlito"},"border":{},"wrapText":false,"horizontalAlignment":"general","styleId":0}}

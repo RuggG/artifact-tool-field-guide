@@ -1,0 +1,37 @@
+{
+  "name": "fx.NORM.DIST",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=NORM.DIST(A1, A1, A1, A1)",
+      "value": 0.5,
+      "projection": [
+        [
+          0.5,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 13
+    }
+  ]
+}

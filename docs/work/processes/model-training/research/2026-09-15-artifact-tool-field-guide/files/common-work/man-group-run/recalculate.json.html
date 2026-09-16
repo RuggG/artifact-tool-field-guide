@@ -1,0 +1,84 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>recalculate.json · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="recalculate.json">Raw file</a> · <a data-public-raw download href="recalculate.json">Download</a></p><article><h1>recalculate.json</h1><pre class="public-code"><code>{
+  &quot;id&quot;: &quot;recalculate&quot;,
+  &quot;input&quot;: &quot;const before = readState();\nconst nativeReturn = wb.recalculate();\nreturn {nativeReturn: nativeReturn === undefined ? \&quot;undefined\&quot; : nativeReturn, before, after: readState()};&quot;,
+  &quot;elapsedMs&quot;: 0,
+  &quot;result&quot;: {
+    &quot;nativeReturn&quot;: &quot;undefined&quot;,
+    &quot;before&quot;: {
+      &quot;baseFeeMargin&quot;: {
+        &quot;sheet&quot;: &quot;Assumptions&quot;,
+        &quot;cell&quot;: &quot;W26&quot;,
+        &quot;value&quot;: 51,
+        &quot;formula&quot;: &quot;&quot;
+      },
+      &quot;activeFeeMargin&quot;: {
+        &quot;sheet&quot;: &quot;Assumptions&quot;,
+        &quot;cell&quot;: &quot;W25&quot;,
+        &quot;value&quot;: 56,
+        &quot;formula&quot;: &quot;&quot;
+      },
+      &quot;q4AverageAum&quot;: {
+        &quot;sheet&quot;: &quot;Fee engine&quot;,
+        &quot;cell&quot;: &quot;W18&quot;,
+        &quot;value&quot;: 290.5116868239257,
+        &quot;formula&quot;: &quot;&quot;
+      },
+      &quot;q4ManagementFees&quot;: {
+        &quot;sheet&quot;: &quot;Fee engine&quot;,
+        &quot;cell&quot;: &quot;W27&quot;,
+        &quot;value&quot;: 406.716361553496,
+        &quot;formula&quot;: &quot;=W18*Assumptions!$D$49*W26/Assumptions!$D$60*Assumptions!$D$48&quot;
+      },
+      &quot;fy2027ManagementFees&quot;: {
+        &quot;sheet&quot;: &quot;Summary&quot;,
+        &quot;cell&quot;: &quot;M13&quot;,
+        &quot;value&quot;: 1568.3078736933392,
+        &quot;formula&quot;: &quot;=&#x27;Fee engine&#x27;!M95&quot;
+      },
+      &quot;fy2027OperatingProfit&quot;: {
+        &quot;sheet&quot;: &quot;Summary&quot;,
+        &quot;cell&quot;: &quot;M20&quot;,
+        &quot;value&quot;: 792.7541060612962,
+        &quot;formula&quot;: &quot;=&#x27;Fee engine&#x27;!M101&quot;
+      }
+    },
+    &quot;after&quot;: {
+      &quot;baseFeeMargin&quot;: {
+        &quot;sheet&quot;: &quot;Assumptions&quot;,
+        &quot;cell&quot;: &quot;W26&quot;,
+        &quot;value&quot;: 51,
+        &quot;formula&quot;: &quot;&quot;
+      },
+      &quot;activeFeeMargin&quot;: {
+        &quot;sheet&quot;: &quot;Assumptions&quot;,
+        &quot;cell&quot;: &quot;W25&quot;,
+        &quot;value&quot;: 56,
+        &quot;formula&quot;: &quot;&quot;
+      },
+      &quot;q4AverageAum&quot;: {
+        &quot;sheet&quot;: &quot;Fee engine&quot;,
+        &quot;cell&quot;: &quot;W18&quot;,
+        &quot;value&quot;: 290.5116868239257,
+        &quot;formula&quot;: &quot;&quot;
+      },
+      &quot;q4ManagementFees&quot;: {
+        &quot;sheet&quot;: &quot;Fee engine&quot;,
+        &quot;cell&quot;: &quot;W27&quot;,
+        &quot;value&quot;: 406.716361553496,
+        &quot;formula&quot;: &quot;=W18*Assumptions!$D$49*W26/Assumptions!$D$60*Assumptions!$D$48&quot;
+      },
+      &quot;fy2027ManagementFees&quot;: {
+        &quot;sheet&quot;: &quot;Summary&quot;,
+        &quot;cell&quot;: &quot;M13&quot;,
+        &quot;value&quot;: 1568.3078736933392,
+        &quot;formula&quot;: &quot;=&#x27;Fee engine&#x27;!M95&quot;
+      },
+      &quot;fy2027OperatingProfit&quot;: {
+        &quot;sheet&quot;: &quot;Summary&quot;,
+        &quot;cell&quot;: &quot;M20&quot;,
+        &quot;value&quot;: 792.7541060612962,
+        &quot;formula&quot;: &quot;=&#x27;Fee engine&#x27;!M101&quot;
+      }
+    }
+  }
+}</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

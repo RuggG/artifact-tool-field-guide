@@ -1,0 +1,25 @@
+[
+  {
+    "id": "F05",
+    "description": "Data table older body-only and one-variable documentation",
+    "status": "pass",
+    "ms": 7,
+    "detail": {
+      "body": "Error: Data table range needs a top-left formula cell. \"F5\" is empty. Did you mean \"E4:H7\"?",
+      "one": [
+        [
+          20,
+          1,
+          2,
+          3
+        ],
+        [
+          null,
+          10,
+          20,
+          30
+        ]
+      ]
+    }
+  }
+]

@@ -1,0 +1,31 @@
+{
+  "id": "regions",
+  "input": "return await wb.inspect({\n  kind: \"region\", sheetId: \"Summary\", range: \"C7:M28\",\n  maxChars: 10000, tableMaxRows: 8, tableMaxCols: 6\n});",
+  "elapsedMs": 2,
+  "result": {
+    "ndjson": "{\"kind\":\"region\",\"sheet\":\"Summary\",\"address\":\"C22:M28\",\"rows\":7,\"cols\":11,\"nonEmpty\":77,\"text\":77,\"maxTextLength\":29,\"preview\":[[\"Management-fee PBT, USD m\",\"133\",\"280\",\"162.99999999999997\",\"323\",\"129.99999999999994\"],[\"Performance / seed PBT, USD m\",\"3.9999999999999964\",\"60.000000000000007\",\"94\",\"150\",\"16.000000000000007\"],[\"Core total PBT, USD m\",\"136.99999999999997\",\"340\",\"257\",\"473\",\"145.99999999999994\"],[\"Core tax expense, USD m\",\"-28.999999999999996\",\"-69\",\"-53\",\"-92\",\"-32.999999999999986\"],[\"Core profit after tax, USD m\",\"107.99999999999997\",\"271\",\"203.99999999999997\",\"381\",\"112.99999999999994\"],[\"Diluted weighted shares, m\",\"1217\",\"1207.0554419999999\",\"1192\",\"1189.0758450000001\",\"1168\"],[\"Core diluted EPS, US cents\",\"8.8742810188989285\",\"22.451329953077668\",\"17.114093959731541\",\"32.041690326322289\",\"9.6746575342465704\"]],\"previewAddress\":\"C22:H28\",\"previewRows\":7,\"previewCols\":6}\n{\"kind\":\"region\",\"sheet\":\"Summary\",\"address\":\"C13:M17\",\"rows\":5,\"cols\":11,\"nonEmpty\":55,\"text\":55,\"maxTextLength\":28,\"preview\":[[\"Net management fees, USD m\",\"460\",\"963\",\"551\",\"1097\",\"516.99999999999989\"],[\"Performance fees, USD m\",\"32\",\"180\",\"170\",\"310\",\"67\"],[\"Seed gains, USD m\",\"19\",\"48\",\"39\",\"50\",\"19\"],[\"Rental / other income, USD m\",\"2\",\"5\",\"1\",\"2\",\"1\"],[\"Core net revenue, USD m\",\"513\",\"1196\",\"761\",\"1459\",\"604\"]],\"previewAddress\":\"C13:H17\",\"previewRows\":5,\"previewCols\":6}\n{\"kind\":\"region\",\"sheet\":\"Summary\",\"address\":\"C7:M11\",\"rows\":5,\"cols\":11,\"nonEmpty\":53,\"blank\":2,\"text\":53,\"maxTextLength\":33,\"preview\":[[null,\"H1:23\",\"FY:23\",\"H1:24\",\"FY:24\",\"H1:25\"],[null,\"Actual\",\"Actual\",\"Actual\",\"Actual\",\"Actual\"],[\"Closing AUM, USD bn\",\"151.69999999999999\",\"167.49999999999997\",\"178.20000000000002\",\"168.60000000000002\",\"193.3\"],[\"Net flows, USD bn\",\"2.6\",\"3\",\"0.89999999999999991\",\"-3.3\",\"17.600000000000001\"],[\"Implied net fee margin, annual bp\",\"62.970568104038328\",\"62.838499184339312\",\"63.233395495624734\",\"62.969075123771269\",\"58.492433884881883\"]],\"previewAddress\":\"C7:H11\",\"previewRows\":5,\"previewCols\":6}\n{\"kind\":\"region\",\"sheet\":\"Summary\",\"address\":\"C19:M20\",\"rows\":2,\"cols\":11,\"nonEmpty\":22,\"text\":22,\"maxTextLength\":28,\"preview\":[[\"Core operating costs, USD m\",\"-370\",\"-834\",\"-487\",\"-960.00000000000011\",\"-449\"],[\"Core operating profit, USD m\",\"142.99999999999997\",\"362.00000000000006\",\"274\",\"498.99999999999994\",\"154.99999999999997\"]],\"previewAddress\":\"C19:H20\",\"previewRows\":2,\"previewCols\":6}",
+    "recordCount": 4,
+    "truncated": false,
+    "metadata": {
+      "revision": "fusuzs",
+      "target": {
+        "id": "wb/vewvx1",
+        "beforeLines": 0,
+        "afterLines": 0
+      },
+      "kind": {
+        "requested": "region",
+        "tokens": [
+          "region"
+        ]
+      },
+      "include": {
+        "tokens": []
+      },
+      "exclude": {
+        "tokens": []
+      },
+      "notices": []
+    }
+  }
+}

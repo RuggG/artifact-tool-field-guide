@@ -1,0 +1,618 @@
+[
+  {
+    "name": "comments",
+    "completed": true,
+    "sheets": [
+      {
+        "name": "Data",
+        "charts": 0,
+        "images": 0,
+        "shapes": 0,
+        "tables": 0,
+        "sparklines": 0
+      }
+    ],
+    "inspection": {
+      "recordCount": 2,
+      "truncated": false,
+      "metadata": {
+        "revision": "2wcvgz",
+        "target": {
+          "id": "wb/wkwpx8",
+          "beforeLines": 0,
+          "afterLines": 0
+        },
+        "kind": {
+          "requested": "definedName,thread",
+          "tokens": [
+            "definedName",
+            "thread"
+          ]
+        },
+        "include": {
+          "tokens": []
+        },
+        "exclude": {
+          "tokens": []
+        },
+        "notices": []
+      }
+    }
+  },
+  {
+    "name": "native-note",
+    "completed": true,
+    "sheets": [
+      {
+        "name": "Data",
+        "charts": 0,
+        "images": 0,
+        "shapes": 0,
+        "tables": 0,
+        "sparklines": 0
+      }
+    ],
+    "inspection": {
+      "recordCount": 1,
+      "truncated": false,
+      "metadata": {
+        "revision": "ye3c8z",
+        "target": {
+          "id": "wb/78b7n7",
+          "beforeLines": 0,
+          "afterLines": 0
+        },
+        "kind": {
+          "requested": "definedName,thread",
+          "tokens": [
+            "definedName",
+            "thread"
+          ]
+        },
+        "include": {
+          "tokens": []
+        },
+        "exclude": {
+          "tokens": []
+        },
+        "notices": []
+      }
+    }
+  },
+  {
+    "name": "sparklines",
+    "completed": true,
+    "sheets": [
+      {
+        "name": "Data",
+        "charts": 0,
+        "images": 0,
+        "shapes": 0,
+        "tables": 0,
+        "sparklines": 3
+      }
+    ],
+    "inspection": {
+      "recordCount": 1,
+      "truncated": false,
+      "metadata": {
+        "revision": "a00oxi",
+        "target": {
+          "id": "wb/g9dgv5",
+          "beforeLines": 0,
+          "afterLines": 0
+        },
+        "kind": {
+          "requested": "definedName,thread",
+          "tokens": [
+            "definedName",
+            "thread"
+          ]
+        },
+        "include": {
+          "tokens": []
+        },
+        "exclude": {
+          "tokens": []
+        },
+        "notices": []
+      }
+    }
+  },
+  {
+    "name": "validations",
+    "completed": true,
+    "sheets": [
+      {
+        "name": "Validation",
+        "charts": 0,
+        "images": 0,
+        "shapes": 0,
+        "tables": 0,
+        "sparklines": 0
+      }
+    ],
+    "inspection": {
+      "recordCount": 1,
+      "truncated": false,
+      "metadata": {
+        "revision": "871eng",
+        "target": {
+          "id": "wb/rt9t7u",
+          "beforeLines": 0,
+          "afterLines": 0
+        },
+        "kind": {
+          "requested": "definedName,thread",
+          "tokens": [
+            "definedName",
+            "thread"
+          ]
+        },
+        "include": {
+          "tokens": []
+        },
+        "exclude": {
+          "tokens": []
+        },
+        "notices": []
+      }
+    }
+  },
+  {
+    "name": "conditional-formats",
+    "completed": true,
+    "sheets": [
+      {
+        "name": "CF",
+        "charts": 0,
+        "images": 0,
+        "shapes": 0,
+        "tables": 0,
+        "sparklines": 0
+      }
+    ],
+    "inspection": {
+      "recordCount": 1,
+      "truncated": false,
+      "metadata": {
+        "revision": "rch1pa",
+        "target": {
+          "id": "wb/pp06xc",
+          "beforeLines": 0,
+          "afterLines": 0
+        },
+        "kind": {
+          "requested": "definedName,thread",
+          "tokens": [
+            "definedName",
+            "thread"
+          ]
+        },
+        "include": {
+          "tokens": []
+        },
+        "exclude": {
+          "tokens": []
+        },
+        "notices": []
+      }
+    }
+  },
+  {
+    "name": "images",
+    "completed": true,
+    "sheets": [
+      {
+        "name": "Images",
+        "charts": 0,
+        "images": 5,
+        "shapes": 0,
+        "tables": 0,
+        "sparklines": 0
+      }
+    ],
+    "inspection": {
+      "recordCount": 1,
+      "truncated": false,
+      "metadata": {
+        "revision": "fp4ikx",
+        "target": {
+          "id": "wb/9w8qyh",
+          "beforeLines": 0,
+          "afterLines": 0
+        },
+        "kind": {
+          "requested": "definedName,thread",
+          "tokens": [
+            "definedName",
+            "thread"
+          ]
+        },
+        "include": {
+          "tokens": []
+        },
+        "exclude": {
+          "tokens": []
+        },
+        "notices": []
+      }
+    }
+  },
+  {
+    "name": "shapes",
+    "completed": true,
+    "sheets": [
+      {
+        "name": "Shapes",
+        "charts": 0,
+        "images": 0,
+        "shapes": 4,
+        "tables": 0,
+        "sparklines": 0
+      }
+    ],
+    "inspection": {
+      "recordCount": 1,
+      "truncated": false,
+      "metadata": {
+        "revision": "mvu9k6",
+        "target": {
+          "id": "wb/30n1vn",
+          "beforeLines": 0,
+          "afterLines": 0
+        },
+        "kind": {
+          "requested": "definedName,thread",
+          "tokens": [
+            "definedName",
+            "thread"
+          ]
+        },
+        "include": {
+          "tokens": []
+        },
+        "exclude": {
+          "tokens": []
+        },
+        "notices": []
+      }
+    }
+  },
+  {
+    "name": "chart-settings",
+    "completed": true,
+    "sheets": [
+      {
+        "name": "Charts",
+        "charts": 1,
+        "images": 0,
+        "shapes": 0,
+        "tables": 0,
+        "sparklines": 0
+      }
+    ],
+    "inspection": {
+      "recordCount": 1,
+      "truncated": false,
+      "metadata": {
+        "revision": "mrwuib",
+        "target": {
+          "id": "wb/vqtmar",
+          "beforeLines": 0,
+          "afterLines": 0
+        },
+        "kind": {
+          "requested": "definedName,thread",
+          "tokens": [
+            "definedName",
+            "thread"
+          ]
+        },
+        "include": {
+          "tokens": []
+        },
+        "exclude": {
+          "tokens": []
+        },
+        "notices": []
+      }
+    }
+  },
+  {
+    "name": "names",
+    "completed": true,
+    "sheets": [
+      {
+        "name": "Data",
+        "charts": 0,
+        "images": 0,
+        "shapes": 0,
+        "tables": 0,
+        "sparklines": 0
+      }
+    ],
+    "inspection": {
+      "recordCount": 2,
+      "truncated": false,
+      "metadata": {
+        "revision": "h8bc08",
+        "target": {
+          "id": "wb/hf0hwl",
+          "beforeLines": 0,
+          "afterLines": 0
+        },
+        "kind": {
+          "requested": "definedName,thread",
+          "tokens": [
+            "definedName",
+            "thread"
+          ]
+        },
+        "include": {
+          "tokens": []
+        },
+        "exclude": {
+          "tokens": []
+        },
+        "notices": []
+      }
+    }
+  },
+  {
+    "name": "named-function-variants",
+    "completed": true,
+    "sheets": [
+      {
+        "name": "Data",
+        "charts": 0,
+        "images": 0,
+        "shapes": 0,
+        "tables": 0,
+        "sparklines": 0
+      }
+    ],
+    "inspection": {
+      "recordCount": 3,
+      "truncated": false,
+      "metadata": {
+        "revision": "wjgfvh",
+        "target": {
+          "id": "wb/3cqno9",
+          "beforeLines": 0,
+          "afterLines": 0
+        },
+        "kind": {
+          "requested": "definedName,thread",
+          "tokens": [
+            "definedName",
+            "thread"
+          ]
+        },
+        "include": {
+          "tokens": []
+        },
+        "exclude": {
+          "tokens": []
+        },
+        "notices": []
+      }
+    }
+  },
+  {
+    "name": "data-table",
+    "completed": true,
+    "sheets": [
+      {
+        "name": "Sensitivity",
+        "charts": 0,
+        "images": 0,
+        "shapes": 0,
+        "tables": 0,
+        "sparklines": 0
+      }
+    ],
+    "inspection": {
+      "recordCount": 1,
+      "truncated": false,
+      "metadata": {
+        "revision": "0l7se0",
+        "target": {
+          "id": "wb/kufoxs",
+          "beforeLines": 0,
+          "afterLines": 0
+        },
+        "kind": {
+          "requested": "definedName,thread",
+          "tokens": [
+            "definedName",
+            "thread"
+          ]
+        },
+        "include": {
+          "tokens": []
+        },
+        "exclude": {
+          "tokens": []
+        },
+        "notices": []
+      }
+    }
+  },
+  {
+    "name": "one-variable-data-tables",
+    "completed": true,
+    "sheets": [
+      {
+        "name": "OneVariable",
+        "charts": 0,
+        "images": 0,
+        "shapes": 0,
+        "tables": 0,
+        "sparklines": 0
+      }
+    ],
+    "inspection": {
+      "recordCount": 1,
+      "truncated": false,
+      "metadata": {
+        "revision": "nk0m4y",
+        "target": {
+          "id": "wb/eorutd",
+          "beforeLines": 0,
+          "afterLines": 0
+        },
+        "kind": {
+          "requested": "definedName,thread",
+          "tokens": [
+            "definedName",
+            "thread"
+          ]
+        },
+        "include": {
+          "tokens": []
+        },
+        "exclude": {
+          "tokens": []
+        },
+        "notices": []
+      }
+    }
+  },
+  {
+    "name": "pivot-slicer",
+    "completed": true,
+    "sheets": [
+      {
+        "name": "Data",
+        "charts": 0,
+        "images": 0,
+        "shapes": 0,
+        "tables": 0,
+        "sparklines": 0
+      },
+      {
+        "name": "Pivot",
+        "charts": 0,
+        "images": 0,
+        "shapes": 0,
+        "tables": 0,
+        "sparklines": 0
+      }
+    ],
+    "inspection": {
+      "recordCount": 1,
+      "truncated": false,
+      "metadata": {
+        "revision": "t0yxip",
+        "target": {
+          "id": "wb/00dnrz",
+          "beforeLines": 0,
+          "afterLines": 0
+        },
+        "kind": {
+          "requested": "definedName,thread",
+          "tokens": [
+            "definedName",
+            "thread"
+          ]
+        },
+        "include": {
+          "tokens": []
+        },
+        "exclude": {
+          "tokens": []
+        },
+        "notices": []
+      }
+    }
+  },
+  {
+    "name": "slicer-filter",
+    "completed": true,
+    "sheets": [
+      {
+        "name": "Data",
+        "charts": 0,
+        "images": 0,
+        "shapes": 0,
+        "tables": 0,
+        "sparklines": 0
+      },
+      {
+        "name": "Pivot",
+        "charts": 0,
+        "images": 0,
+        "shapes": 0,
+        "tables": 0,
+        "sparklines": 0
+      }
+    ],
+    "inspection": {
+      "recordCount": 1,
+      "truncated": false,
+      "metadata": {
+        "revision": "8owegc",
+        "target": {
+          "id": "wb/53c7pk",
+          "beforeLines": 0,
+          "afterLines": 0
+        },
+        "kind": {
+          "requested": "definedName,thread",
+          "tokens": [
+            "definedName",
+            "thread"
+          ]
+        },
+        "include": {
+          "tokens": []
+        },
+        "exclude": {
+          "tokens": []
+        },
+        "notices": []
+      }
+    }
+  },
+  {
+    "name": "table-total-fresh-formula",
+    "completed": true,
+    "sheets": [
+      {
+        "name": "Data",
+        "charts": 0,
+        "images": 0,
+        "shapes": 0,
+        "tables": 1,
+        "sparklines": 0
+      }
+    ],
+    "inspection": {
+      "recordCount": 1,
+      "truncated": false,
+      "metadata": {
+        "revision": "hk67nj",
+        "target": {
+          "id": "wb/s715xx",
+          "beforeLines": 0,
+          "afterLines": 0
+        },
+        "kind": {
+          "requested": "definedName,thread",
+          "tokens": [
+            "definedName",
+            "thread"
+          ]
+        },
+        "include": {
+          "tokens": []
+        },
+        "exclude": {
+          "tokens": []
+        },
+        "notices": []
+      }
+    }
+  }
+]

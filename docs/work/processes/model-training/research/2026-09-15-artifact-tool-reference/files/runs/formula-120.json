@@ -1,0 +1,37 @@
+{
+  "name": "fx.BESSELK",
+  "category": "engineering",
+  "examples": [
+    {
+      "formula": "=BESSELK(A1, A1)",
+      "value": 0.6019072316669057,
+      "projection": [
+        [
+          0.6019072316669057,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 13
+    }
+  ]
+}

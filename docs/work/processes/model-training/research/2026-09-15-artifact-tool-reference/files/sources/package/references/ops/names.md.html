@@ -1,0 +1,54 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>names ops · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="names.md">Raw file</a> · <a data-public-raw download href="names.md">Download</a></p><article><h1 id="names-ops">names ops</h1>
+<p>Ops in the <code>names.*</code> namespace for <code>Workbook.apply</code>.</p>
+<h2 id="ops-index">Ops index</h2>
+<ul>
+<li><code>names.function.add</code>: Define a workbook or worksheet named function (LAMBDA).</li>
+<li><code>names.range.add</code>: Define a workbook or worksheet named range.</li>
+</ul>
+<h2 id="namesfunctionadd"><code>names.function.add</code></h2>
+<p>Define a workbook or worksheet named function (LAMBDA).</p>
+<p><strong>Required fields</strong>
+- <code>lambda</code>
+- <code>name</code>
+- <code>op</code></p>
+<p><strong>Optional fields</strong>
+- <code>description</code>
+- <code>parameters</code>
+- <code>returns</code>
+- <code>sheet</code></p>
+<p><strong>Examples</strong></p>
+<pre><code class="language-json">{
+  "op": "names.function.add",
+  "name": "AddTax",
+  "lambda": "LAMBDA(price, tax, price*(1+tax))",
+  "description": "Adds tax to a price",
+  "parameters": [
+    {
+      "name": "price",
+      "description": "Base price"
+    },
+    {
+      "name": "tax",
+      "description": "Tax rate (e.g. 0.1)"
+    }
+  ],
+  "returns": "Taxed price"
+}
+</code></pre>
+<h2 id="namesrangeadd"><code>names.range.add</code></h2>
+<p>Define a workbook or worksheet named range.</p>
+<p><strong>Required fields</strong>
+- <code>formula</code>
+- <code>name</code>
+- <code>op</code></p>
+<p><strong>Optional fields</strong>
+- <code>description</code>
+- <code>sheet</code></p>
+<p><strong>Examples</strong></p>
+<pre><code class="language-json">{
+  "op": "names.range.add",
+  "name": "SalesRange",
+  "formula": "Data!$A$1:$A$3",
+  "description": "Input sales data"
+}
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

@@ -1,0 +1,6 @@
+{"kind":"workbook","id":"wb/8ws9uj","sheets":1}
+{"kind":"sheet","id":"ws/62xvz4","name":"Shapes","index":0}
+{"kind":"drawing","sheet":"Shapes","drawingType":"shape","id":"89trbd","name":"Shape0","geometry":"textbox","anchor":{"from":{"row":4,"col":1,"rowOffsetEmu":128588,"colOffsetEmu":628650,"rowOffsetPx":14,"colOffsetPx":66},"extent":{"widthEmu":1714500,"widthPx":180,"heightEmu":619125,"heightPx":65}}}
+{"kind":"drawing","sheet":"Shapes","drawingType":"shape","id":"endnw2","name":"Shape1","geometry":"roundRect","anchor":{"from":{"row":4,"col":5,"rowOffsetEmu":128588,"colOffsetEmu":671703,"rowOffsetPx":14,"colOffsetPx":71},"extent":{"widthEmu":1714500,"widthPx":180,"heightEmu":619125,"heightPx":65}}}
+{"kind":"drawing","sheet":"Shapes","drawingType":"shape","id":"qr100e","name":"Shape2","geometry":"ellipse","anchor":{"from":{"row":14,"col":1,"rowOffsetEmu":14288,"colOffsetEmu":628650,"rowOffsetPx":2,"colOffsetPx":66},"extent":{"widthEmu":1714500,"widthPx":180,"heightEmu":619125,"heightPx":65}}}
+{"kind":"drawing","sheet":"Shapes","drawingType":"shape","id":"kehkco","name":"Shape3","geometry":"textbox","anchor":{"from":{"row":14,"col":5,"rowOffsetEmu":14288,"colOffsetEmu":671703,"rowOffsetPx":2,"colOffsetPx":71},"extent":{"widthEmu":1714500,"widthPx":180,"heightEmu":619125,"heightPx":65}}}

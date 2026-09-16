@@ -1,0 +1,33 @@
+{
+  "input": {
+    "kind": "workbook,sheet",
+    "maxChars": 14000
+  },
+  "result": {
+    "ndjson": "{\"kind\":\"workbook\",\"id\":\"wb/86tsfq\",\"sheets\":6}\n{\"kind\":\"sheet\",\"id\":\"ws/8j14mc\",\"name\":\"Summary\",\"index\":0,\"range\":\"A1:M57\",\"address\":\"A1:M57\"}\n{\"kind\":\"sheet\",\"id\":\"ws/drlz5k\",\"name\":\"Assumptions\",\"index\":1,\"range\":\"A1:W67\",\"address\":\"A1:W67\"}\n{\"kind\":\"sheet\",\"id\":\"ws/jcz43f\",\"name\":\"Fee engine\",\"index\":2,\"range\":\"A1:W109\",\"address\":\"A1:W109\"}\n{\"kind\":\"sheet\",\"id\":\"ws/44tvh3\",\"name\":\"Disclosures\",\"index\":3,\"range\":\"A1:Q125\",\"address\":\"A1:Q125\"}\n{\"kind\":\"sheet\",\"id\":\"ws/h3hgsv\",\"name\":\"Checks\",\"index\":4,\"range\":\"A1:W59\",\"address\":\"A1:W59\"}\n{\"kind\":\"sheet\",\"id\":\"ws/9b1p4j\",\"name\":\"Readme\",\"index\":5,\"range\":\"A1:D28\",\"address\":\"A1:D28\"}",
+    "recordCount": 7,
+    "truncated": false,
+    "metadata": {
+      "revision": "crcz7k",
+      "target": {
+        "id": "wb/86tsfq",
+        "beforeLines": 0,
+        "afterLines": 0
+      },
+      "kind": {
+        "requested": "workbook,sheet",
+        "tokens": [
+          "workbook",
+          "sheet"
+        ]
+      },
+      "include": {
+        "tokens": []
+      },
+      "exclude": {
+        "tokens": []
+      },
+      "notices": []
+    }
+  }
+}

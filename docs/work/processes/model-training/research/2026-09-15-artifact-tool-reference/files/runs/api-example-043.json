@@ -1,0 +1,10 @@
+{
+  "index": 43,
+  "name": "range.conditionalFormats.addCustom",
+  "summary": "Highlight cells using a custom formula",
+  "originalCode": "const range = sheet.getRange('F2:F50');\nrange.conditionalFormats.addCustom('=F2<E2', {\n  fill: '#FECACA',\n  font: { color: '#991B1B', bold: true },\n});",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

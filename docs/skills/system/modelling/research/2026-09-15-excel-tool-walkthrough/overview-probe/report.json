@@ -1,0 +1,346 @@
+[
+  {
+    "id": "full-with-preview-caps",
+    "characters": 70074,
+    "recordCount": 13,
+    "truncated": false,
+    "records": [
+      {
+        "kind": "workbook"
+      },
+      {
+        "kind": "sheet",
+        "sheet": "Summary",
+        "address": "A1:M57"
+      },
+      {
+        "kind": "table",
+        "sheet": "Summary",
+        "address": "A1:M57",
+        "rows": 57,
+        "cols": 13,
+        "returnedRows": 57,
+        "returnedCols": 13,
+        "exactlyMatchesDirectValues": true
+      },
+      {
+        "kind": "sheet",
+        "sheet": "Assumptions",
+        "address": "A1:W67"
+      },
+      {
+        "kind": "table",
+        "sheet": "Assumptions",
+        "address": "A1:W67",
+        "rows": 67,
+        "cols": 23,
+        "returnedRows": 67,
+        "returnedCols": 23,
+        "exactlyMatchesDirectValues": true
+      },
+      {
+        "kind": "sheet",
+        "sheet": "Fee engine",
+        "address": "A1:W109"
+      },
+      {
+        "kind": "table",
+        "sheet": "Fee engine",
+        "address": "A1:W109",
+        "rows": 109,
+        "cols": 23,
+        "returnedRows": 109,
+        "returnedCols": 23,
+        "exactlyMatchesDirectValues": true
+      },
+      {
+        "kind": "sheet",
+        "sheet": "Disclosures",
+        "address": "A1:Q125"
+      },
+      {
+        "kind": "table",
+        "sheet": "Disclosures",
+        "address": "A1:Q125",
+        "rows": 125,
+        "cols": 17,
+        "returnedRows": 125,
+        "returnedCols": 17,
+        "exactlyMatchesDirectValues": true
+      },
+      {
+        "kind": "sheet",
+        "sheet": "Checks",
+        "address": "A1:W59"
+      },
+      {
+        "kind": "table",
+        "sheet": "Checks",
+        "address": "A1:W59",
+        "rows": 59,
+        "cols": 23,
+        "returnedRows": 59,
+        "returnedCols": 23,
+        "exactlyMatchesDirectValues": true
+      },
+      {
+        "kind": "sheet",
+        "sheet": "Readme",
+        "address": "A1:D28"
+      },
+      {
+        "kind": "table",
+        "sheet": "Readme",
+        "address": "A1:D28",
+        "rows": 28,
+        "cols": 4,
+        "returnedRows": 28,
+        "returnedCols": 4,
+        "exactlyMatchesDirectValues": true
+      }
+    ]
+  },
+  {
+    "id": "fee-table-tiny-preview",
+    "characters": 24242,
+    "recordCount": 1,
+    "truncated": false,
+    "records": [
+      {
+        "kind": "table",
+        "sheet": "Fee engine",
+        "address": "A1:W109",
+        "rows": 109,
+        "cols": 23,
+        "returnedRows": 109,
+        "returnedCols": 23,
+        "exactlyMatchesDirectValues": true
+      }
+    ]
+  },
+  {
+    "id": "fee-table-small-budget",
+    "characters": 191,
+    "recordCount": 1,
+    "truncated": false,
+    "records": [
+      {
+        "kind": "table",
+        "sheet": "Fee engine",
+        "address": "A1:W109",
+        "rows": 109,
+        "cols": 23,
+        "returnedRows": 1,
+        "returnedCols": 1,
+        "exactlyMatchesDirectValues": false
+      }
+    ]
+  },
+  {
+    "id": "fee-table-explicit-range",
+    "characters": 191,
+    "recordCount": 1,
+    "truncated": false,
+    "records": [
+      {
+        "kind": "table",
+        "sheet": "Fee engine",
+        "address": "A1:W109",
+        "rows": 109,
+        "cols": 23,
+        "returnedRows": 1,
+        "returnedCols": 1,
+        "exactlyMatchesDirectValues": false
+      }
+    ]
+  },
+  {
+    "id": "metadata-overview",
+    "characters": 642,
+    "recordCount": 7,
+    "truncated": false,
+    "records": [
+      {
+        "kind": "workbook"
+      },
+      {
+        "kind": "sheet",
+        "sheet": "Summary",
+        "address": "A1:M57"
+      },
+      {
+        "kind": "sheet",
+        "sheet": "Assumptions",
+        "address": "A1:W67"
+      },
+      {
+        "kind": "sheet",
+        "sheet": "Fee engine",
+        "address": "A1:W109"
+      },
+      {
+        "kind": "sheet",
+        "sheet": "Disclosures",
+        "address": "A1:Q125"
+      },
+      {
+        "kind": "sheet",
+        "sheet": "Checks",
+        "address": "A1:W59"
+      },
+      {
+        "kind": "sheet",
+        "sheet": "Readme",
+        "address": "A1:D28"
+      }
+    ]
+  },
+  {
+    "id": "fee-regions-small-preview",
+    "characters": 1707,
+    "recordCount": 6,
+    "truncated": false,
+    "records": [
+      {
+        "kind": "region",
+        "sheet": "Fee engine",
+        "address": "C62:W82",
+        "rows": 21,
+        "cols": 21,
+        "previewAddress": "C62:E63",
+        "previewRows": 2,
+        "previewCols": 3,
+        "longestPreviewText": 20
+      },
+      {
+        "kind": "region",
+        "sheet": "Fee engine",
+        "address": "C4:W20",
+        "rows": 17,
+        "cols": 21,
+        "previewAddress": "C4:E5",
+        "previewRows": 2,
+        "previewCols": 3,
+        "longestPreviewText": 20
+      },
+      {
+        "kind": "region",
+        "sheet": "Fee engine",
+        "address": "C46:W60",
+        "rows": 15,
+        "cols": 21,
+        "previewAddress": "C46:E47",
+        "previewRows": 2,
+        "previewCols": 3,
+        "longestPreviewText": 20
+      },
+      {
+        "kind": "region",
+        "sheet": "Fee engine",
+        "address": "C85:W109",
+        "rows": 25,
+        "cols": 21,
+        "previewAddress": "C85:E86",
+        "previewRows": 2,
+        "previewCols": 3,
+        "longestPreviewText": 20
+      },
+      {
+        "kind": "region",
+        "sheet": "Fee engine",
+        "address": "C33:W44",
+        "rows": 12,
+        "cols": 21,
+        "previewAddress": "C33:E34",
+        "previewRows": 2,
+        "previewCols": 3,
+        "longestPreviewText": 20
+      },
+      {
+        "kind": "region",
+        "sheet": "Fee engine",
+        "address": "C23:W31",
+        "rows": 9,
+        "cols": 21,
+        "previewAddress": "C23:E24",
+        "previewRows": 2,
+        "previewCols": 3,
+        "longestPreviewText": 20
+      }
+    ]
+  },
+  {
+    "id": "fee-regions-larger-preview",
+    "characters": 3075,
+    "recordCount": 6,
+    "truncated": false,
+    "records": [
+      {
+        "kind": "region",
+        "sheet": "Fee engine",
+        "address": "C62:W82",
+        "rows": 21,
+        "cols": 21,
+        "previewAddress": "C62:H65",
+        "previewRows": 4,
+        "previewCols": 6,
+        "longestPreviewText": 20
+      },
+      {
+        "kind": "region",
+        "sheet": "Fee engine",
+        "address": "C4:W20",
+        "rows": 17,
+        "cols": 21,
+        "previewAddress": "C4:H7",
+        "previewRows": 4,
+        "previewCols": 6,
+        "longestPreviewText": 20
+      },
+      {
+        "kind": "region",
+        "sheet": "Fee engine",
+        "address": "C46:W60",
+        "rows": 15,
+        "cols": 21,
+        "previewAddress": "C46:H49",
+        "previewRows": 4,
+        "previewCols": 6,
+        "longestPreviewText": 20
+      },
+      {
+        "kind": "region",
+        "sheet": "Fee engine",
+        "address": "C85:W109",
+        "rows": 25,
+        "cols": 21,
+        "previewAddress": "C85:H88",
+        "previewRows": 4,
+        "previewCols": 6,
+        "longestPreviewText": 20
+      },
+      {
+        "kind": "region",
+        "sheet": "Fee engine",
+        "address": "C33:W44",
+        "rows": 12,
+        "cols": 21,
+        "previewAddress": "C33:H36",
+        "previewRows": 4,
+        "previewCols": 6,
+        "longestPreviewText": 20
+      },
+      {
+        "kind": "region",
+        "sheet": "Fee engine",
+        "address": "C23:W31",
+        "rows": 9,
+        "cols": 21,
+        "previewAddress": "C23:H26",
+        "previewRows": 4,
+        "previewCols": 6,
+        "longestPreviewText": 20
+      }
+    ]
+  }
+]

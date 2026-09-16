@@ -1,0 +1,37 @@
+{
+  "name": "fx.ASIN",
+  "category": "math-trig",
+  "examples": [
+    {
+      "formula": "=ASIN(10)",
+      "value": "#NUM!",
+      "projection": [
+        [
+          "#NUM!",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 11
+    }
+  ]
+}

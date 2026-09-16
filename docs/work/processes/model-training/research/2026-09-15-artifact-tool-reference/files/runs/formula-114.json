@@ -1,0 +1,37 @@
+{
+  "name": "fx.IMPRODUCT",
+  "category": "engineering",
+  "examples": [
+    {
+      "formula": "=IMPRODUCT(10, C1:C5, 10, C1:C5)",
+      "value": "#VALUE!",
+      "projection": [
+        [
+          "#VALUE!",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 10
+    }
+  ]
+}

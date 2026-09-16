@@ -1,0 +1,10 @@
+{
+  "index": 80,
+  "name": "range.format.fill",
+  "summary": "Apply a solid fill using a theme token",
+  "originalCode": "const header = sheet.getRange('A1:C1');\nheader.format.fill = 'accent1';\nheader.format.font = { color: 'lt1', bold: true };",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

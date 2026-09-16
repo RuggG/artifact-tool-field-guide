@@ -1,0 +1,37 @@
+{
+  "name": "fx.T",
+  "category": "text",
+  "examples": [
+    {
+      "formula": "=T(A1:A5)",
+      "value": "",
+      "projection": [
+        [
+          "",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 8
+    }
+  ]
+}

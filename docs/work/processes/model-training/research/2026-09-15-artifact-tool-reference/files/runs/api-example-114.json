@@ -1,0 +1,10 @@
+{
+  "index": 114,
+  "name": "range.fillDown",
+  "summary": "Fill down like Excel drag-fill",
+  "originalCode": "const r = sheet.getRange('B2:B10');\nr.getCell(0, 0).formulasR1C1 = [['=RC[-1]*2']];\nr.fillDown();",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

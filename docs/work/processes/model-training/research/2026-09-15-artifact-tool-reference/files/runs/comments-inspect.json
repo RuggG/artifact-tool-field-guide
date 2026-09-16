@@ -1,0 +1,25 @@
+{
+  "recordCount": 2,
+  "truncated": false,
+  "metadata": {
+    "revision": "g4jxie",
+    "target": {
+      "id": "wb/ke2exf",
+      "beforeLines": 0,
+      "afterLines": 0
+    },
+    "kind": {
+      "requested": "thread",
+      "tokens": [
+        "thread"
+      ]
+    },
+    "include": {
+      "tokens": []
+    },
+    "exclude": {
+      "tokens": []
+    },
+    "notices": []
+  }
+}

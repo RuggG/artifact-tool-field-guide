@@ -1,0 +1,12 @@
+{
+  "index": 56,
+  "name": "workbook.resolve",
+  "adaptations": [
+    "Mapped structured example fields to the corresponding public method; replaced placeholder anchors with actual fixture IDs."
+  ],
+  "execution": "completed",
+  "export": "completed",
+  "logs": [
+    "q0xdu5"
+  ]
+}

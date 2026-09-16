@@ -1,0 +1,85 @@
+{
+  "id": "chart-input-change",
+  "operation": "lab.getRange(\"C4\").values = [[60]];",
+  "checkInput": {
+    "before": "return {fees:grid(lab,\"F9:F12\"),bindings:chart.series.items.map(s=>s.formula)};",
+    "after": "return {fees:grid(lab,\"F9:F12\"),bindings:chart.series.items.map(s=>s.formula)};"
+  },
+  "startedAt": "2026-09-15T16:53:24.097Z",
+  "before": {
+    "fees": {
+      "address": "F9:F12",
+      "values": [
+        [
+          370.40240070050527
+        ],
+        [
+          377.81044871451536
+        ],
+        [
+          385.3666576888057
+        ],
+        [
+          393.0739908425818
+        ]
+      ],
+      "formulas": [
+        [
+          "=IF(ISBLANK($C$4),NA(),C9*1000*D9/10000*E9)"
+        ],
+        [
+          "=IF(ISBLANK($C$4),NA(),C10*1000*D10/10000*E10)"
+        ],
+        [
+          "=IF(ISBLANK($C$4),NA(),C11*1000*D11/10000*E11)"
+        ],
+        [
+          "=IF(ISBLANK($C$4),NA(),C12*1000*D12/10000*E12)"
+        ]
+      ]
+    },
+    "bindings": [
+      "'Fee lab'!$F$9:$F$12"
+    ]
+  },
+  "libraryReturn": {
+    "javascriptType": "undefined"
+  },
+  "elapsedMs": 0,
+  "after": {
+    "fees": {
+      "address": "F9:F12",
+      "values": [
+        [
+          435.76753023588856
+        ],
+        [
+          444.48288084060624
+        ],
+        [
+          453.37253845741844
+        ],
+        [
+          462.4399892265668
+        ]
+      ],
+      "formulas": [
+        [
+          "=IF(ISBLANK($C$4),NA(),C9*1000*D9/10000*E9)"
+        ],
+        [
+          "=IF(ISBLANK($C$4),NA(),C10*1000*D10/10000*E10)"
+        ],
+        [
+          "=IF(ISBLANK($C$4),NA(),C11*1000*D11/10000*E11)"
+        ],
+        [
+          "=IF(ISBLANK($C$4),NA(),C12*1000*D12/10000*E12)"
+        ]
+      ]
+    },
+    "bindings": [
+      "'Fee lab'!$F$9:$F$12"
+    ]
+  }
+}

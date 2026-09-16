@@ -1,0 +1,37 @@
+{
+  "name": "fx.CUMIPMT",
+  "category": "financial",
+  "examples": [
+    {
+      "formula": "=CUMIPMT(A1, A1, A1, A1)",
+      "value": "#NUM!",
+      "projection": [
+        [
+          "#NUM!",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 11
+    }
+  ]
+}

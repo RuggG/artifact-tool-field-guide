@@ -1,0 +1,37 @@
+{
+  "name": "fx.GEOMEAN",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=GEOMEAN(10, C1:C5, 20, C1:C5)",
+      "value": 8.627475862383067,
+      "projection": [
+        [
+          8.627475862383067,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 9
+    }
+  ]
+}

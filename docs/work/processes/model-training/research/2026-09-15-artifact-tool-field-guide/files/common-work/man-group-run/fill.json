@@ -1,0 +1,53 @@
+{
+  "id": "fill",
+  "input": "const sheet = wb.worksheets.getItem(\"Assumptions\");\nconst range = sheet.getRange(\"R25:W25\");\nconst before = {values: range.values, formulas: range.formulas};\nrange.fillRight();\nreturn {sheet: \"Assumptions\", range: \"R25:W25\", before, after: {values: range.values, formulas: range.formulas}};",
+  "elapsedMs": 1,
+  "result": {
+    "sheet": "Assumptions",
+    "range": "R25:W25",
+    "before": {
+      "values": [
+        [
+          56,
+          56,
+          56,
+          56,
+          56,
+          51
+        ]
+      ],
+      "formulas": [
+        [
+          "=IF(CHOOSE($D$4,ISBLANK(R26),ISBLANK(R27),ISBLANK(R28),ISBLANK(R29)),NA(),CHOOSE($D$4,R26,R27,R28,R29))",
+          "",
+          "",
+          "",
+          "",
+          "=IF(CHOOSE($D$4,ISBLANK(W26),ISBLANK(W27),ISBLANK(W28),ISBLANK(W29)),NA(),CHOOSE($D$4,W26,W27,W28,W29))"
+        ]
+      ]
+    },
+    "after": {
+      "values": [
+        [
+          56,
+          56,
+          56,
+          56,
+          56,
+          51
+        ]
+      ],
+      "formulas": [
+        [
+          "=IF(CHOOSE($D$4,ISBLANK(R26),ISBLANK(R27),ISBLANK(R28),ISBLANK(R29)),NA(),CHOOSE($D$4,R26,R27,R28,R29))",
+          "=IF(CHOOSE($D$4,ISBLANK(S26),ISBLANK(S27),ISBLANK(S28),ISBLANK(S29)),NA(),CHOOSE($D$4,S26,S27,S28,S29))",
+          "=IF(CHOOSE($D$4,ISBLANK(T26),ISBLANK(T27),ISBLANK(T28),ISBLANK(T29)),NA(),CHOOSE($D$4,T26,T27,T28,T29))",
+          "=IF(CHOOSE($D$4,ISBLANK(U26),ISBLANK(U27),ISBLANK(U28),ISBLANK(U29)),NA(),CHOOSE($D$4,U26,U27,U28,U29))",
+          "=IF(CHOOSE($D$4,ISBLANK(V26),ISBLANK(V27),ISBLANK(V28),ISBLANK(V29)),NA(),CHOOSE($D$4,V26,V27,V28,V29))",
+          "=IF(CHOOSE($D$4,ISBLANK(W26),ISBLANK(W27),ISBLANK(W28),ISBLANK(W29)),NA(),CHOOSE($D$4,W26,W27,W28,W29))"
+        ]
+      ]
+    }
+  }
+}

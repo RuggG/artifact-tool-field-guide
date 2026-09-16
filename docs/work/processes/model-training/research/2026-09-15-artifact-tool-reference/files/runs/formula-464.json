@@ -1,0 +1,37 @@
+{
+  "name": "fx.CHAR",
+  "category": "text",
+  "examples": [
+    {
+      "formula": "=CHAR(10)",
+      "value": "\n",
+      "projection": [
+        [
+          "\n",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 11
+    }
+  ]
+}

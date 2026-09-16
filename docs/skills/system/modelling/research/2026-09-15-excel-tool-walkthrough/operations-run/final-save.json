@@ -1,0 +1,206 @@
+{
+  "id": "final-save",
+  "operation": "wb.recalculate();\nconst file = await SpreadsheetFile.exportXlsx(wb);\nreturn await file.save(out);",
+  "checkInput": {
+    "before": "return {diskSha256:await sha(out),memory:labRead()};",
+    "after": "const reopened=await SpreadsheetFile.importXlsx(await FileBlob.load(out));const sheet=reopened.worksheets.getItem(\"Fee lab\");return {file:path.basename(out),bytes:(await fs.stat(out)).size,sha256:await sha(out),reopened:grid(sheet,\"B9:F12\"),reopenedMargin:cell(sheet,\"C4\"),reopenedTableCount:sheet.tables.items.length,sourceUnchanged:sourceHash===await sha(source),checkErrorScan:await inspect(reopened,{kind:\"match\",sheetId:\"Fee lab\",range:\"B4:F24\",searchTerm:\"#REF!|#DIV/0!|#VALUE!|#N/A|#NAME\\\\?\",options:{useRegex:true,maxResults:20},maxChars:3000})};"
+  },
+  "startedAt": "2026-09-15T16:55:21.036Z",
+  "before": {
+    "diskSha256": "f99afe138a4ced57579120bb515ccdb29c9ddfc016d1302126833a2516e646ae",
+    "memory": {
+      "margin": {
+        "address": "C4",
+        "value": 60,
+        "formula": ""
+      },
+      "growth": {
+        "address": "C5",
+        "value": 0.02,
+        "formula": ""
+      },
+      "quarters": {
+        "address": "B9:F12",
+        "values": [
+          [
+            "Quarter 1",
+            290.5116868239257,
+            60,
+            0.25,
+            435.76753023588856
+          ],
+          [
+            "Quarter 2",
+            296.3219205604042,
+            60,
+            0.25,
+            444.48288084060624
+          ],
+          [
+            "Quarter 3",
+            302.2483589716123,
+            60,
+            0.25,
+            453.37253845741844
+          ],
+          [
+            "Quarter 4",
+            308.29332615104454,
+            60,
+            0.25,
+            462.4399892265668
+          ]
+        ],
+        "formulas": [
+          [
+            "",
+            "='Fee engine'!W18",
+            "=$C$4",
+            "",
+            "=IF(ISBLANK($C$4),NA(),C9*1000*D9/10000*E9)"
+          ],
+          [
+            "",
+            "=C9*(1+$C$5)",
+            "=$C$4",
+            "",
+            "=IF(ISBLANK($C$4),NA(),C10*1000*D10/10000*E10)"
+          ],
+          [
+            "",
+            "=C10*(1+$C$5)",
+            "=$C$4",
+            "",
+            "=IF(ISBLANK($C$4),NA(),C11*1000*D11/10000*E11)"
+          ],
+          [
+            "",
+            "=C11*(1+$C$5)",
+            "=$C$4",
+            "",
+            "=IF(ISBLANK($C$4),NA(),C12*1000*D12/10000*E12)"
+          ]
+        ]
+      },
+      "annual": {
+        "address": "C15",
+        "value": 1796.06293876048,
+        "formula": "=SUM(F9:F12)"
+      }
+    }
+  },
+  "libraryReturn": {
+    "javascriptType": "undefined"
+  },
+  "elapsedMs": 264,
+  "after": {
+    "file": "man-group-operations.xlsx",
+    "bytes": 111215,
+    "sha256": "df15d8133fba3821c4dc7cfe942ea03a61e0dfeb395f2141668b4fdc22a76905",
+    "reopened": {
+      "address": "B9:F12",
+      "values": [
+        [
+          "Quarter 1",
+          290.5116868239257,
+          60,
+          0.25,
+          435.76753023588856
+        ],
+        [
+          "Quarter 2",
+          296.3219205604042,
+          60,
+          0.25,
+          444.48288084060624
+        ],
+        [
+          "Quarter 3",
+          302.2483589716123,
+          60,
+          0.25,
+          453.37253845741844
+        ],
+        [
+          "Quarter 4",
+          308.29332615104454,
+          60,
+          0.25,
+          462.4399892265668
+        ]
+      ],
+      "formulas": [
+        [
+          "",
+          "='Fee engine'!W18",
+          "=$C$4",
+          "",
+          "=IF(ISBLANK($C$4),NA(),C9*1000*D9/10000*E9)"
+        ],
+        [
+          "",
+          "=C9*(1+$C$5)",
+          "=$C$4",
+          "",
+          "=IF(ISBLANK($C$4),NA(),C10*1000*D10/10000*E10)"
+        ],
+        [
+          "",
+          "=C10*(1+$C$5)",
+          "=$C$4",
+          "",
+          "=IF(ISBLANK($C$4),NA(),C11*1000*D11/10000*E11)"
+        ],
+        [
+          "",
+          "=C11*(1+$C$5)",
+          "=$C$4",
+          "",
+          "=IF(ISBLANK($C$4),NA(),C12*1000*D12/10000*E12)"
+        ]
+      ]
+    },
+    "reopenedMargin": {
+      "address": "C4",
+      "value": 60,
+      "formula": ""
+    },
+    "reopenedTableCount": 1,
+    "sourceUnchanged": true,
+    "checkErrorScan": {
+      "ndjson": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}",
+      "recordCount": 1,
+      "truncated": false,
+      "metadata": {
+        "revision": "wkjet5",
+        "target": {
+          "id": "wb/b2yvzh",
+          "beforeLines": 0,
+          "afterLines": 0
+        },
+        "kind": {
+          "requested": "match",
+          "tokens": [
+            "match"
+          ]
+        },
+        "include": {
+          "requested": {
+            "javascriptType": "undefined"
+          },
+          "tokens": []
+        },
+        "exclude": {
+          "requested": {
+            "javascriptType": "undefined"
+          },
+          "tokens": []
+        },
+        "search": {
+          "javascriptType": "undefined"
+        },
+        "notices": []
+      }
+    }
+  }
+}

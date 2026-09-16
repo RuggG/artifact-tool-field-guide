@@ -1,0 +1,98 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>chart_suggestions.ts · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="chart_suggestions.ts">Raw file</a> · <a data-public-raw download href="chart_suggestions.ts">Download</a></p><article><h1>chart_suggestions.ts</h1><pre class="public-code"><code>import fs from &quot;node:fs/promises&quot;;
+
+import { SpreadsheetFile, Workbook, ChartDataLabels } from &quot;@oai/artifact-tool&quot;;
+
+async function buildChartSuggestionWorkbook(outputDir: string): Promise&lt;void&gt; {
+  await fs.mkdir(outputDir, { recursive: true });
+
+  const workbook = Workbook.create();
+  const sheet = workbook.worksheets.add(&quot;Charts&quot;);
+  sheet.showGridLines = false;
+
+  sheet.getRange(&quot;A1:C5&quot;).values = [
+    [&quot;Month&quot;, &quot;Revenue&quot;, &quot;EBITDA&quot;],
+    [&quot;Jan&quot;, 100000, 18000],
+    [&quot;Feb&quot;, 121000, 23000],
+    [&quot;Mar&quot;, 132000, 28000],
+    [&quot;Apr&quot;, 149000, 34000],
+  ];
+  sheet.getRange(&quot;A1:C1&quot;).format = {
+    fill: &quot;#0F766E&quot;,
+    font: { bold: true, color: &quot;#FFFFFF&quot; },
+  };
+  sheet.getRange(&quot;B2:C5&quot;).format.numberFormat = &quot;$#,##0&quot;;
+  sheet.getRange(&quot;A:C&quot;).format.columnWidthPx = 96;
+
+  // Fast chart path: chart a continuous helper range. The helper range is
+  // formula-backed so edits to the source table update the chart.
+  sheet.getRange(&quot;F1:H1&quot;).values = [[&quot;Month&quot;, &quot;Revenue&quot;, &quot;EBITDA&quot;]];
+  sheet.getRange(&quot;F2:H2&quot;).formulas = [[&quot;=A2&quot;, &quot;=B2&quot;, &quot;=C2&quot;]];
+  sheet.getRange(&quot;F2:H5&quot;).fillDown();
+  const lineChart = sheet.charts.add(&quot;line&quot;, sheet.getRange(&quot;F1:H5&quot;));
+  lineChart.setPosition(&quot;J1&quot;, &quot;Q15&quot;);
+  lineChart.title = &quot;Revenue and EBITDA Trend&quot;;
+  lineChart.titleTextStyle.fontSize = 12;
+  lineChart.hasLegend = true;
+  lineChart.xAxis = { axisType: &quot;textAxis&quot; };
+  lineChart.yAxis = { numberFormatCode: &quot;$#,##0&quot; };
+
+  const scatterPlot = sheet.charts.add(&quot;scatter&quot;, sheet.getRange(&quot;F1:H5&quot;));
+  scatterPlot.setPosition(&quot;J1&quot;, &quot;Q15&quot;);
+  scatterPlot.title = &quot;Revenue and EBITDA Trend Scatter&quot;;
+  scatterPlot.titleTextStyle.fontSize = 12;
+  scatterPlot.hasLegend = true;
+  scatterPlot.xAxis = { axisType: &quot;textAxis&quot; };
+  scatterPlot.yAxis = { numberFormatCode: &quot;$#,##0&quot; };
+  scatterPlot.dataLabels = new ChartDataLabels({showValue: true, position: &#x27;above&#x27; });
+
+  // Advanced path: manually define a single series by formula.
+  const barChart = sheet.charts.add(&quot;bar&quot;, {
+    title: &quot;EBITDA by Month&quot;,
+    hasLegend: false,
+  });
+  const series = barChart.series.add(&quot;EBITDA&quot;);
+  series.categoryFormula = &quot;&#x27;Charts&#x27;!$A$2:$A$5&quot;;
+  series.formula = &quot;&#x27;Charts&#x27;!$C$2:$C$5&quot;;
+  series.fill = &quot;#F472B6&quot;;
+  barChart.setPosition(&quot;J18&quot;, &quot;Q32&quot;);
+  barChart.title = &quot;EBITDA by Month&quot;;
+  barChart.titleTextStyle.fontSize = 12;
+  barChart.xAxis = { axisType: &quot;textAxis&quot;, textStyle: { fontSize: 10} };
+  barChart.yAxis = { numberFormatCode: &quot;$#,##0&quot;, textStyle: { fontSize: 10} };
+
+  barChart.xAxis.title.text = &quot;EBITDA&quot;;  
+
+  barChart.yAxis.title.text = &quot;Month&quot;;
+  barChart.yAxis.min = 10_000;
+  barChart.yAxis.max = 40_000;
+  barChart.yAxis.majorUnit = 5;
+  // TODO @vicky set default title text to be size 12
+
+  // setData replaces the chart source range; use it when a chart exists before
+  // the final source range is known.
+  lineChart.setData(sheet.getRange(&quot;F1:H5&quot;));
+
+  const preview = await workbook.render({
+    sheetName: &quot;Charts&quot;,
+    autoCrop: &quot;all&quot;,
+    scale: 1,
+    format: &quot;png&quot;,
+  });
+  await fs.writeFile(
+    `${outputDir}/typescript_chart_suggestions.png`,
+    new Uint8Array(await preview.arrayBuffer()),
+  );
+
+  const xlsx = await SpreadsheetFile.exportXlsx(workbook);
+  await xlsx.save(`${outputDir}/typescript_chart_suggestions.xlsx`);
+
+  console.log(`Rendered ${outputDir}/typescript_chart_suggestions.png`);
+  console.log(`Saved ${outputDir}/typescript_chart_suggestions.xlsx`);
+}
+
+const outputDir = process.argv[2] ?? &quot;output/chart_suggestions&quot;;
+buildChartSuggestionWorkbook(outputDir).catch((error: unknown) =&gt; {
+  console.error(error);
+  process.exit(1);
+});
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

@@ -1,0 +1,10 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>api-example-117.json · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="api-example-117.json">Raw file</a> · <a data-public-raw download href="api-example-117.json">Download</a></p><article><h1>api-example-117.json</h1><pre class="public-code"><code>{
+  &quot;index&quot;: 117,
+  &quot;name&quot;: &quot;range.copyFrom&quot;,
+  &quot;summary&quot;: &quot;Fill a block of formulas using copyFrom&quot;,
+  &quot;originalCode&quot;: &quot;// Excel-like drag-fill across a whole block (no manual 2D matrix)\nconst grid = sheet.getRange(&#x27;B3:AF17&#x27;);\nconst seed = sheet.getRange(&#x27;B3&#x27;);\nseed.formulasR1C1 = [[&#x27;=RC[-1]*2&#x27;]];\ngrid.copyFrom(seed, &#x27;formulas&#x27;);&quot;,
+  &quot;adaptations&quot;: [],
+  &quot;execution&quot;: &quot;completed&quot;,
+  &quot;export&quot;: &quot;completed&quot;,
+  &quot;logs&quot;: []
+}</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

@@ -1,0 +1,37 @@
+{
+  "name": "fx.LARGE",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=LARGE({1,2;3,4}, A1)",
+      "value": 4,
+      "projection": [
+        [
+          4,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 17
+    }
+  ]
+}

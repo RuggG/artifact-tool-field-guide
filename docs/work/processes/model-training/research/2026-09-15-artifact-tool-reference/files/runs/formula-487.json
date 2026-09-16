@@ -1,0 +1,37 @@
+{
+  "name": "fx.VALUETOTEXT",
+  "category": "text",
+  "examples": [
+    {
+      "formula": "=VALUETOTEXT(A1:A5, \"#,##0.00\")",
+      "value": "#VALUE!",
+      "projection": [
+        [
+          "#VALUE!",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 13
+    }
+  ]
+}

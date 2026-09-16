@@ -1,0 +1,37 @@
+{
+  "name": "fx.AVERAGE",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=AVERAGE(A2:A6, 10, 12)",
+      "value": 6,
+      "projection": [
+        [
+          6,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 13
+    }
+  ]
+}

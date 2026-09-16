@@ -1,0 +1,10 @@
+{
+  "index": 5,
+  "name": "chart fills",
+  "summary": "Pattern fills (+ Office.js-style aliases)",
+  "originalCode": "chart.chartFill = { type: 'solid', color: 'background1', pattern: { type: 'percent10', color: 'accent1' } };\nchart.plotAreaFill = { type: 'solid', color: 'background1', pattern: { type: 'diagonalCross', color: 'accent2' } };\n\n// Office.js-style aliases (map to chartFill/plotAreaFill + chartLine/plotAreaLine):\nchart.chartArea.format.fill = { type: 'solid', color: 'background1' };\nchart.plotArea.format.fill.setSolidColor('accent2');\nchart.plotArea.format.line.visible = false;",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

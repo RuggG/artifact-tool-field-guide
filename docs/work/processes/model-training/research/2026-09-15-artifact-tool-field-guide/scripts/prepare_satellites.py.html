@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>prepare_satellites.py · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="prepare_satellites.py">Raw file</a> · <a data-public-raw download href="prepare_satellites.py">Download</a></p><article><h1>prepare_satellites.py</h1><pre class="public-code"><code>&quot;&quot;&quot;Freeze the complete skill-document catalogue and reproducible token counts.
+
+Run with a Python environment containing tiktoken, then render_satellites.mjs.
+Counts cover each original UTF-8 Markdown file, including metadata and code.
+&quot;&quot;&quot;
+import hashlib
+import importlib.metadata
+import json
+from pathlib import Path
+import tiktoken
+
+HOME = Path(__file__).resolve().parents[1]
+SOURCE = HOME.parent / &#x27;2026-09-15-artifact-tool-reference/files/sources/skill&#x27;
+GROUPS = [
+    (&#x27;foundation&#x27;, &#x27;Structure, style and finance&#x27;, &#x27;Start here to understand how the agent builds and presents a workbook.&#x27;),
+    (&#x27;task&#x27;, &#x27;Guidance for a particular task&#x27;, &#x27;Read when charts, references, templates or workbook questions are involved.&#x27;),
+    (&#x27;technical&#x27;, &#x27;API and delivery references&#x27;, &#x27;Call patterns, specialist features and the Google Sheets handoff.&#x27;),
+    (&#x27;other&#x27;, &#x27;Other domain guides&#x27;, &#x27;Included for reference; use only when their requirements fit the work.&#x27;),
+]
+ROWS = [
+    (&#x27;main&#x27;, &#x27;foundation&#x27;, &#x27;Main spreadsheet skill&#x27;, &#x27;SKILL.md&#x27;, &#x27;The entry point: workbook structure, formulas, sources, verification and which supporting documents to read.&#x27;, &#x27;Start here; it routes the agent to the other documents.&#x27;),
+    (&#x27;style&#x27;, &#x27;foundation&#x27;, &#x27;Style and layout&#x27;, &#x27;style_guidelines.md&#x27;, &#x27;Tab colours, sheet layout, typography, number formats, spacing, panes and editable-input cues.&#x27;, &#x27;Required formatting guidance; preserve user and reference conventions.&#x27;),
+    (&#x27;finance&#x27;, &#x27;foundation&#x27;, &#x27;Finance guidance&#x27;, &#x27;domain_guidance/financial_models.md&#x27;, &#x27;Financial periods, assumptions, scenarios, operating schedules, presentation and audit checks.&#x27;, &#x27;For financial work in any industry; read the relevant requirements.&#x27;),
+    (&#x27;create&#x27;, &#x27;foundation&#x27;, &#x27;Creating a workbook&#x27;, &#x27;workflows/create_workflows.md&#x27;, &#x27;Choose the audience, outputs and logical structure before adding sheets and content.&#x27;, &#x27;Required workflow for new files.&#x27;),
+    (&#x27;edit&#x27;, &#x27;foundation&#x27;, &#x27;Editing a workbook&#x27;, &#x27;workflows/edit_workflows.md&#x27;, &#x27;Inspect the existing design, make focused changes and preserve unrelated content and native features.&#x27;, &#x27;Required workflow for existing files and follow-ups.&#x27;),
+    (&#x27;charts&#x27;, &#x27;task&#x27;, &#x27;Charts&#x27;, &#x27;features/charts.md&#x27;, &#x27;Choose a useful chart, bind its data, set honest axes and labels, place it and verify export.&#x27;, &#x27;When creating or editing charts.&#x27;),
+    (&#x27;images&#x27;, &#x27;task&#x27;, &#x27;Working from a screenshot&#x27;, &#x27;references/image-references.md&#x27;, &#x27;Recreate the intended appearance while retaining real numbers, dates and justified formulas.&#x27;, &#x27;When an image or screenshot is supplied as a reference.&#x27;),
+    (&#x27;questions&#x27;, &#x27;task&#x27;, &#x27;Questions and audits&#x27;, &#x27;references/read_only_qna.md&#x27;, &#x27;Locate the right cells, follow formulas and reconcile an answer without changing the workbook.&#x27;, &#x27;For read-only questions and audits.&#x27;),
+    (&#x27;templates&#x27;, &#x27;task&#x27;, &#x27;Choosing a template&#x27;, &#x27;references/template-elicitation.md&#x27;, &#x27;When to offer the template picker, how to use its choice and when to continue without a template.&#x27;, &#x27;When no template, reference or visual direction has been supplied, subject to the documented exceptions.&#x27;),
+    (&#x27;api&#x27;, &#x27;technical&#x27;, &#x27;API Quick Start&#x27;, &#x27;artifact_tool_docs/API_QUICK_START.md&#x27;, &#x27;Imports, workbook calls, recommended patterns, examples and known limitations.&#x27;, &#x27;The main skill requires reading this API guide in full before starting the task.&#x27;),
+    (&#x27;sensitivity&#x27;, &#x27;technical&#x27;, &#x27;What-If Data Tables&#x27;, &#x27;artifact_tool_docs/DATA_TABLES.md&#x27;, &#x27;Set up two-input sensitivity analysis; these are different from ordinary named Excel Tables.&#x27;, &#x27;Before creating a native What-If Data Table.&#x27;),
+    (&#x27;sparklines&#x27;, &#x27;technical&#x27;, &#x27;Sparklines&#x27;, &#x27;artifact_tool_docs/SPARKLINES.md&#x27;, &#x27;Create and configure miniature charts inside cells.&#x27;, &#x27;Feature reference linked from the API Quick Start.&#x27;),
+    (&#x27;google&#x27;, &#x27;technical&#x27;, &#x27;Google Sheets routing&#x27;, &#x27;routing/google_sheets.md&#x27;, &#x27;Choose the creation/import or editing workflow when the destination is Google Sheets.&#x27;, &#x27;When working with Google Sheets.&#x27;),
+    (&#x27;healthcare&#x27;, &#x27;other&#x27;, &#x27;Healthcare&#x27;, &#x27;domain_guidance/healthcare.md&#x27;, &#x27;Clinical and administrative records, units, codes and supplied protocols.&#x27;, &#x27;Only when relevant to the task; a company\u2019s industry does not dictate the workbook design.&#x27;),
+    (&#x27;marketing&#x27;, &#x27;other&#x27;, &#x27;Marketing and advertising&#x27;, &#x27;domain_guidance/marketing_advertising.md&#x27;, &#x27;Campaign definitions, metrics, original extracts and supported targets.&#x27;, &#x27;Only when relevant to the task.&#x27;),
+    (&#x27;science&#x27;, &#x27;other&#x27;, &#x27;Scientific research&#x27;, &#x27;domain_guidance/scientific_research.md&#x27;, &#x27;Observations, units, reproducible processing and requested uncertainty or checks.&#x27;, &#x27;Only when relevant to the task.&#x27;),
+]
+
+def main():
+    encoding = tiktoken.get_encoding(&#x27;o200k_base&#x27;)
+    docs = []
+    for id, group, title, path, summary, when in ROWS:
+        source_bytes = (SOURCE / path).read_bytes()
+        raw = source_bytes.decode(&#x27;utf-8&#x27;)
+        docs.append(dict(id=id, group=group, title=title, path=path, summary=summary, when=when,
+                         source=&#x27;../2026-09-15-artifact-tool-reference/files/sources/skill/&#x27; + path,
+                         markdown=raw, tokens=len(encoding.encode(raw, disallowed_special=())),
+                         words=len(raw.split()), characters=len(raw), bytes=len(source_bytes),
+                         sha256=hashlib.sha256(source_bytes).hexdigest()))
+    expected = {str(p.relative_to(SOURCE)) for p in SOURCE.rglob(&#x27;*.md&#x27;)}
+    assert {d[&#x27;path&#x27;] for d in docs} == expected, &#x27;Catalogue must contain every saved Markdown document.&#x27;
+    result = dict(captured=&#x27;2026-09-15&#x27;, counted=&#x27;2026-09-16&#x27;, encoding=encoding.name,
+                  tokenizer=&#x27;tiktoken&#x27;, tokenizerVersion=importlib.metadata.version(&#x27;tiktoken&#x27;),
+                  countScope=&#x27;Complete raw Markdown, including front matter, code, links and whitespace. Counts are exact for o200k_base, not a model-specific prompt or billing measurement.&#x27;,
+                  groups=[dict(id=id, title=title, summary=summary) for id, title, summary in GROUPS],
+                  documents=docs, totals={k: sum(d[k] for d in docs) for k in (&#x27;tokens&#x27;,&#x27;words&#x27;,&#x27;characters&#x27;,&#x27;bytes&#x27;)})
+    (HOME / &#x27;data/satellite-documents.json&#x27;).write_text(json.dumps(result, ensure_ascii=False, indent=2) + &#x27;\n&#x27;)
+    print(f&#x27;{len(docs)} documents; {result[&quot;totals&quot;][&quot;tokens&quot;]:,} o200k_base tokens&#x27;)
+
+if __name__ == &#x27;__main__&#x27;:
+    main()
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

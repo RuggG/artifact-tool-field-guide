@@ -1,0 +1,10 @@
+{
+  "index": 111,
+  "name": "range.formulas",
+  "summary": "Write a formula and recalculate",
+  "originalCode": "sheet.getRange('A1:A3').values = [[5], [2], [3]];\nsheet.getRange('B1').formulas = [['=SUM(A:A)']];\nworkbook.recalculate();\nconst total = sheet.getRange('B1').values[0]?.[0];",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

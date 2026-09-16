@@ -1,0 +1,37 @@
+{
+  "name": "fx.GAMMAINV",
+  "category": "compatibility",
+  "examples": [
+    {
+      "formula": "=GAMMAINV(A1, A1, A1)",
+      "value": 101,
+      "projection": [
+        [
+          101,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 14
+    }
+  ]
+}

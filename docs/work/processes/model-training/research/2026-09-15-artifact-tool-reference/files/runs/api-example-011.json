@@ -1,0 +1,10 @@
+{
+  "index": 11,
+  "name": "chart axes",
+  "summary": "Tick labels",
+  "originalCode": "chart.xAxis = { tickLabelPosition: 'nextTo' };\nchart.xAxis = { tickLabelPosition: 'high' };\nchart.xAxis = { tickLabelPosition: 'low' };\nchart.xAxis = { tickLabelPosition: 'none', tickLabelInterval: 2, tickLabelDistanceFromAxis: 10 };",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

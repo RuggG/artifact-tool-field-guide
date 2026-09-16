@@ -1,0 +1,184 @@
+{
+  "id": "edit-without-saving",
+  "operation": "lab.getRange(\"C4\").values = [[51]];",
+  "checkInput": {
+    "before": "return {diskSha256:await sha(out),memory:labRead()};",
+    "after": "return {diskSha256:await sha(out),memory:labRead(),onDisk:cell((await SpreadsheetFile.importXlsx(await FileBlob.load(out))).worksheets.getItem(\"Fee lab\"),\"C4\")};"
+  },
+  "startedAt": "2026-09-15T16:53:23.392Z",
+  "before": {
+    "diskSha256": "5748df0b26564b31e20b8a0c66e46ab604775e042a17ed220ba27f8b56d5a8aa",
+    "memory": {
+      "margin": {
+        "address": "C4",
+        "value": 56,
+        "formula": ""
+      },
+      "growth": {
+        "address": "C5",
+        "value": 0.02,
+        "formula": ""
+      },
+      "quarters": {
+        "address": "B9:F12",
+        "values": [
+          [
+            "Quarter 1",
+            290.5116868239257,
+            56,
+            0.25,
+            406.716361553496
+          ],
+          [
+            "Quarter 2",
+            296.3219205604042,
+            56,
+            0.25,
+            414.8506887845659
+          ],
+          [
+            "Quarter 3",
+            302.2483589716123,
+            56,
+            0.25,
+            423.1477025602572
+          ],
+          [
+            "Quarter 4",
+            308.29332615104454,
+            56,
+            0.25,
+            431.61065661146233
+          ]
+        ],
+        "formulas": [
+          [
+            "",
+            "='Fee engine'!W18",
+            "=$C$4",
+            "",
+            "=C9*1000*D9/10000*E9"
+          ],
+          [
+            "",
+            "=C9*(1+$C$5)",
+            "=$C$4",
+            "",
+            "=C10*1000*D10/10000*E10"
+          ],
+          [
+            "",
+            "=C10*(1+$C$5)",
+            "=$C$4",
+            "",
+            "=C11*1000*D11/10000*E11"
+          ],
+          [
+            "",
+            "=C11*(1+$C$5)",
+            "=$C$4",
+            "",
+            "=C12*1000*D12/10000*E12"
+          ]
+        ]
+      },
+      "annual": {
+        "address": "C15",
+        "value": 1676.3254095097814,
+        "formula": "=SUM(F9:F12)"
+      }
+    }
+  },
+  "libraryReturn": {
+    "javascriptType": "undefined"
+  },
+  "elapsedMs": 0,
+  "after": {
+    "diskSha256": "5748df0b26564b31e20b8a0c66e46ab604775e042a17ed220ba27f8b56d5a8aa",
+    "memory": {
+      "margin": {
+        "address": "C4",
+        "value": 51,
+        "formula": ""
+      },
+      "growth": {
+        "address": "C5",
+        "value": 0.02,
+        "formula": ""
+      },
+      "quarters": {
+        "address": "B9:F12",
+        "values": [
+          [
+            "Quarter 1",
+            290.5116868239257,
+            51,
+            0.25,
+            370.40240070050527
+          ],
+          [
+            "Quarter 2",
+            296.3219205604042,
+            51,
+            0.25,
+            377.81044871451536
+          ],
+          [
+            "Quarter 3",
+            302.2483589716123,
+            51,
+            0.25,
+            385.3666576888057
+          ],
+          [
+            "Quarter 4",
+            308.29332615104454,
+            51,
+            0.25,
+            393.0739908425818
+          ]
+        ],
+        "formulas": [
+          [
+            "",
+            "='Fee engine'!W18",
+            "=$C$4",
+            "",
+            "=C9*1000*D9/10000*E9"
+          ],
+          [
+            "",
+            "=C9*(1+$C$5)",
+            "=$C$4",
+            "",
+            "=C10*1000*D10/10000*E10"
+          ],
+          [
+            "",
+            "=C10*(1+$C$5)",
+            "=$C$4",
+            "",
+            "=C11*1000*D11/10000*E11"
+          ],
+          [
+            "",
+            "=C11*(1+$C$5)",
+            "=$C$4",
+            "",
+            "=C12*1000*D12/10000*E12"
+          ]
+        ]
+      },
+      "annual": {
+        "address": "C15",
+        "value": 1526.6534979464082,
+        "formula": "=SUM(F9:F12)"
+      }
+    },
+    "onDisk": {
+      "address": "C4",
+      "value": 56,
+      "formula": ""
+    }
+  }
+}

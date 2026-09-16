@@ -1,0 +1,10 @@
+{
+  "index": 89,
+  "name": "range.format.horizontalAlignment",
+  "summary": "Center align a header row",
+  "originalCode": "sheet.getRange('A1:D1').format.horizontalAlignment = \"center\";",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

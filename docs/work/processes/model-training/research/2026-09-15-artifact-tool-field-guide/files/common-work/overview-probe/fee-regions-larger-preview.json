@@ -1,0 +1,37 @@
+{
+  "input": {
+    "kind": "region",
+    "sheetId": "Fee engine",
+    "range": "A1:W109",
+    "maxChars": 40000,
+    "tableMaxRows": 4,
+    "tableMaxCols": 6,
+    "tableMaxCellChars": 20
+  },
+  "result": {
+    "ndjson": "{\"kind\":\"region\",\"sheet\":\"Fee engine\",\"address\":\"C62:W82\",\"rows\":21,\"cols\":21,\"nonEmpty\":301,\"blank\":140,\"text\":301,\"maxTextLength\":41,\"preview\":[[\"HISTORICAL ALLOCA...\",null,null,null,null,null],[\"Quarter share of ...\",\"0.49281314168377827\",\"0.50718685831622179\",\"0.48768703241895267\",\"0.51231296758104738\",\"0.49232534786974608\"],[\"Quarter share of ...\",\"0.1\",\"0.9\",\"0.1\",\"0.9\",\"0.1\"],[\"Half-year net man...\",\"460\",\"460\",\"503\",\"503\",\"551\"]],\"previewAddress\":\"C62:H65\",\"previewRows\":4,\"previewCols\":6}\n{\"kind\":\"region\",\"sheet\":\"Fee engine\",\"address\":\"C4:W20\",\"rows\":17,\"cols\":21,\"nonEmpty\":295,\"blank\":62,\"text\":295,\"maxTextLength\":63,\"preview\":[[\"Case selected\",\"Base\",null,null,null,null],[\"USD bn AUM | USD ...\",null,null,null,null,null],[null,\"45016\",\"45107\",\"45199\",\"45291\",\"45382\"],[null,\"Q1:23\",\"Q2:23\",\"Q3:23\",\"Q4:23\",\"Q1:24\"]],\"previewAddress\":\"C4:H7\",\"previewRows\":4,\"previewCols\":6}\n{\"kind\":\"region\",\"sheet\":\"Fee engine\",\"address\":\"C46:W60\",\"rows\":15,\"cols\":21,\"nonEmpty\":295,\"blank\":20,\"text\":295,\"maxTextLength\":41,\"preview\":[[\"PROFIT | FUNDING,...\",null,null,null,null,null],[\"Management-fee fi...\",\"-0.5\",\"-0.5\",\"-4\",\"-4\",\"-4\"],[\"Performance / see...\",\"-2.5\",\"-2.5\",\"-3.5\",\"-3.5\",\"-3.5\"],[\"Third-party profi...\",\"0\",\"0\",\"-0.5\",\"-0.5\",\"-0.5\"]],\"previewAddress\":\"C46:H49\",\"previewRows\":4,\"previewCols\":6}\n{\"kind\":\"region\",\"sheet\":\"Fee engine\",\"address\":\"C85:W109\",\"rows\":25,\"cols\":21,\"nonEmpty\":264,\"blank\":261,\"text\":264,\"maxTextLength\":51,\"preview\":[[\"H1 / FY ROLLUPS |...\",null,null,null,null,null],[null,\"H1:23\",\"FY:23\",\"H1:24\",\"FY:24\",\"H1:25\"],[\"Closing fee-payin...\",\"151.69999999999999\",\"167.49999999999997\",\"178.20000000000002\",\"168.60000000000002\",\"193.3\"],[\"Average AUM: open...\",\"146.1\",\"153.25\",\"174.27499999999998\",\"174.21249999999998\",\"176.77500000000003\"]],\"previewAddress\":\"C85:H88\",\"previewRows\":4,\"previewCols\":6}\n{\"kind\":\"region\",\"sheet\":\"Fee engine\",\"address\":\"C33:W44\",\"rows\":12,\"cols\":21,\"nonEmpty\":232,\"blank\":20,\"text\":232,\"maxTextLength\":49,\"preview\":[[\"COSTS | FIXED CAP...\",null,null,null,null,null],[\"Fixed compensation\",\"-59\",\"-59\",\"-60.5\",\"-60.5\",\"-67\"],[\"Variable manageme...\",\"-47.802874743326491\",\"-49.197125256673516\",\"-50.231764339152122\",\"-52.768235660847878\",\"-57.602065700760292\"],[\"Variable performa...\",\"-2.6352941176470588\",\"-23.71764705882353\",\"-9.5322033898305083\",\"-85.78983050847458\",\"-8.7033492822966512\"]],\"previewAddress\":\"C33:H36\",\"previewRows\":4,\"previewCols\":6}\n{\"kind\":\"region\",\"sheet\":\"Fee engine\",\"address\":\"C23:W31\",\"rows\":9,\"cols\":21,\"nonEmpty\":169,\"blank\":20,\"text\":169,\"maxTextLength\":42,\"preview\":[[\"REVENUE | RECURRI...\",null,null,null,null,null],[\"Gross management ...\",\"234.57905544147843\",\"241.42094455852157\",\"253.10956982543644\",\"265.89043017456356\",\"279.64079759001578\"],[\"Distribution cost...\",\"-7.8850102669404523\",\"-8.1149897330595486\",\"-7.8029925187032427\",\"-8.1970074812967582\",\"-8.3695309137856828\"],[\"Net management-fe...\",\"62.970568104038328\",\"62.970568104038328\",\"62.718204488778063\",\"62.718204488778063\",\"63.233395495624741\"]],\"previewAddress\":\"C23:H26\",\"previewRows\":4,\"previewCols\":6}",
+    "recordCount": 6,
+    "truncated": false,
+    "metadata": {
+      "revision": "vheuja",
+      "target": {
+        "id": "wb/p6ah5a",
+        "beforeLines": 0,
+        "afterLines": 0
+      },
+      "kind": {
+        "requested": "region",
+        "tokens": [
+          "region"
+        ]
+      },
+      "include": {
+        "tokens": []
+      },
+      "exclude": {
+        "tokens": []
+      },
+      "notices": []
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "name": "fx.REGEXREPLACE",
+  "category": "text",
+  "examples": [
+    {
+      "formula": "=REGEXREPLACE(\"text\", A1, A1)",
+      "value": "text",
+      "projection": [
+        [
+          "text",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 12
+    }
+  ]
+}

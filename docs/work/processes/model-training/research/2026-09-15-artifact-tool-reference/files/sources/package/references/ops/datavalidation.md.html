@@ -1,0 +1,51 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>datavalidation ops · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="datavalidation.md">Raw file</a> · <a data-public-raw download href="datavalidation.md">Download</a></p><article><h1 id="datavalidation-ops">datavalidation ops</h1>
+<p>Ops in the <code>datavalidation.*</code> namespace for <code>Workbook.apply</code>.</p>
+<h2 id="ops-index">Ops index</h2>
+<ul>
+<li><code>datavalidation.set</code>: Set data validation rules for a range.</li>
+</ul>
+<h2 id="datavalidationset"><code>datavalidation.set</code></h2>
+<p>Set data validation rules for a range.</p>
+<p><strong>Required fields</strong>
+- <code>op</code>
+- <code>props</code>
+- <code>target</code>
+- <code>props.rule</code></p>
+<p><strong>Optional fields</strong>
+- <code>props.errorAlert</code>
+- <code>props.ignoreBlanks</code>
+- <code>props.inCellDropDown</code>
+- <code>props.prompt</code></p>
+<p><strong>Enums</strong>
+- <code>props.errorAlert.style</code>: See <a href="../enums.md">enums</a>.
+- <code>props.rule.operator</code>: See <a href="../enums.md">enums</a>.
+- <code>props.rule.type</code>: See <a href="../enums.md">enums</a>.</p>
+<p><strong>Examples</strong></p>
+<pre><code class="language-json">{
+  "op": "datavalidation.set",
+  "target": {
+    "sheet": "Validation",
+    "range": "B2:B10"
+  },
+  "props": {
+    "rule": {
+      "type": "list",
+      "values": [
+        "Dog",
+        "Cat",
+        "Bat"
+      ]
+    },
+    "prompt": {
+      "title": "Pick an animal",
+      "show": true
+    },
+    "errorAlert": {
+      "title": "Invalid choice",
+      "show": true
+    },
+    "ignoreBlanks": true,
+    "inCellDropDown": true
+  }
+}
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

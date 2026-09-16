@@ -1,0 +1,37 @@
+{
+  "name": "fx.COSH",
+  "category": "math-trig",
+  "examples": [
+    {
+      "formula": "=COSH(10)",
+      "value": 11013.232920103324,
+      "projection": [
+        [
+          11013.232920103324,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 13
+    }
+  ]
+}

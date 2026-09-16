@@ -1,0 +1,37 @@
+{
+  "name": "fx.TRANSLATE",
+  "category": "text",
+  "examples": [
+    {
+      "formula": "=TRANSLATE(\"text\", A1)",
+      "value": "TRANSLATE is not implemented. text=text, sourceLanguage=1, targetLanguage=undefined",
+      "projection": [
+        [
+          "TRANSLATE is not implemented. text=text, sourceLanguage=1, targetLanguage=undefined",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 11
+    }
+  ]
+}

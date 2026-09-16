@@ -1,0 +1,37 @@
+{
+  "name": "fx.MODE.MULT",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=MODE.MULT(10, C1:C5, 20, C1:C5)",
+      "value": 3,
+      "projection": [
+        [
+          3,
+          null,
+          null,
+          null
+        ],
+        [
+          6,
+          null,
+          null,
+          null
+        ],
+        [
+          9,
+          null,
+          null,
+          null
+        ],
+        [
+          12,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 8
+    }
+  ]
+}

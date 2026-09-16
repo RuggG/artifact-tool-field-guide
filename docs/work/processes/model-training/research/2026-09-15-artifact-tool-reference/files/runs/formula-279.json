@@ -1,0 +1,37 @@
+{
+  "name": "fx.SQRT",
+  "category": "math-trig",
+  "examples": [
+    {
+      "formula": "=SQRT(10)",
+      "value": 3.1622776601683795,
+      "projection": [
+        [
+          3.1622776601683795,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 13
+    }
+  ]
+}

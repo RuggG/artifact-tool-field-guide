@@ -1,0 +1,37 @@
+{
+  "name": "fx.CEILING",
+  "category": "compatibility",
+  "examples": [
+    {
+      "formula": "=CEILING(10, A1)",
+      "value": 10,
+      "projection": [
+        [
+          10,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 13
+    }
+  ]
+}

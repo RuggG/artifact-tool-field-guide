@@ -1,0 +1,10 @@
+{
+  "index": 95,
+  "name": "range.format.columnWidthPx",
+  "summary": "Set column width to 120px",
+  "originalCode": "sheet.getRange('A1:D10').format.columnWidthPx = 120;",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

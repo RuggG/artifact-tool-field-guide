@@ -1,0 +1,37 @@
+{
+  "name": "fx.SWITCH",
+  "category": "logical",
+  "examples": [
+    {
+      "formula": "=SWITCH(A1, A1:A5, A1, C1:C5)",
+      "value": "#N/A",
+      "projection": [
+        [
+          "#N/A",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 9
+    }
+  ]
+}

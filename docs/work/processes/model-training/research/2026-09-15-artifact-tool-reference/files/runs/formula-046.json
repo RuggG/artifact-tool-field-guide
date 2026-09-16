@@ -1,0 +1,37 @@
+{
+  "name": "fx.CUBEKPIMEMBER",
+  "category": "cube",
+  "examples": [
+    {
+      "formula": "=CUBEKPIMEMBER(A1, A1, A1)",
+      "value": "CUBEKPIMEMBER is not implemented. connection=1, kpiName=1, kpiProperty=1, caption=undefined",
+      "projection": [
+        [
+          "CUBEKPIMEMBER is not implemented. connection=1, kpiName=1, kpiProperty=1, caption=undefined",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 10
+    }
+  ]
+}

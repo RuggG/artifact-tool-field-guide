@@ -1,0 +1,380 @@
+{
+  "groups": [
+    [
+      "files",
+      "Open and save"
+    ],
+    [
+      "inspect",
+      "Inspect and locate"
+    ],
+    [
+      "read",
+      "Read and calculate"
+    ],
+    [
+      "edit",
+      "Edit cells and sheets"
+    ],
+    [
+      "tables",
+      "Work with Tables"
+    ],
+    [
+      "visual",
+      "Charts and images"
+    ]
+  ],
+  "operations": [
+    {
+      "id": "create",
+      "group": "files",
+      "label": "Create a workbook",
+      "api": "Workbook.create()",
+      "does": "Start a new workbook in memory; add sheets and cells to build it out.",
+      "supply": "No existing file is needed. Give each new sheet a name.",
+      "returns": "A workbook object. Adding a sheet returns a worksheet object that later calls can use.",
+      "agent": "Choose the layout, financial rules and content; export and save when a file is needed.",
+      "detail": "A workbook is the whole spreadsheet document. A sheet, worksheet or tab is one page of cells inside it.",
+      "examples": [
+        "op:new-workbook"
+      ]
+    },
+    {
+      "id": "import",
+      "group": "files",
+      "label": "Open an existing file",
+      "api": "SpreadsheetFile.importXlsx(...)",
+      "does": "Load an .xlsx file into a workbook object that the library can read and edit.",
+      "supply": "The file bytes, loaded with FileBlob.load(path).",
+      "returns": "A workbook object in memory, separate from the source file and any Microsoft Excel window.",
+      "agent": "Check that the imported formulas and features needed for the task survived. Save changes explicitly.",
+      "detail": "The examples combine import with a subsequent action. Their final return reflects that whole code block. Reopening a saved file starts another in-memory working copy.",
+      "examples": [
+        "op:reopen-and-edit",
+        "op:import-add-sheet"
+      ]
+    },
+    {
+      "id": "save",
+      "group": "files",
+      "label": "Export and save",
+      "api": "SpreadsheetFile.exportXlsx(wb) → file.save(path)",
+      "does": "Turn the current workbook into an Excel file and write it to disk.",
+      "supply": "The workbook object and a destination path.",
+      "returns": "Export creates a file object. Saving writes it; the tested save call returns undefined, with no verification report.",
+      "agent": "Choose when and where to save; separately reopen or compare the output if assurance is needed.",
+      "detail": "Edits in memory do not update a previously saved file. An already-open Excel window does not show this working copy live.",
+      "examples": [
+        "op:final-save",
+        "op:checkpoint-save",
+        "op:edit-without-saving",
+        "old:export"
+      ]
+    },
+    {
+      "id": "runner",
+      "group": "files",
+      "label": "Run the script",
+      "api": "Codex command tool → Node.js",
+      "does": "Execute a program that calls the spreadsheet library. This is the outer tool, rather than a spreadsheet operation.",
+      "supply": "A command, working directory and wait/output allowances.",
+      "returns": "Process status, printed output and an exit code; a running process may first return a session ID for later polling.",
+      "agent": "Write the program and decide what to print or save. A successful process exit is not proof of a correct model.",
+      "detail": "The library functions on this page are JavaScript calls, not individual Excel MCP tools. The agent can put many operations in one script.",
+      "examples": [
+        "old:runner"
+      ]
+    },
+    {
+      "id": "map",
+      "group": "inspect",
+      "label": "List workbook and tabs",
+      "api": "wb.inspect({kind: \"workbook,sheet\", …})",
+      "does": "Get a structural map without reading all cell contents.",
+      "supply": "The record types and response allowance; optionally request sheet records alone.",
+      "returns": "Workbook counts plus sheet names, IDs and occupied ranges. No cell-value grids for this kind selection.",
+      "agent": "Choose which sheet or area to read next. This is an inventory, not a written explanation of the financial model.",
+      "detail": "inspect is one function with several output choices. “kind” selects the type of records; the adjacent operations use other settings of the same function.",
+      "examples": [
+        "lab:map",
+        "old:sheets"
+      ]
+    },
+    {
+      "id": "grids",
+      "group": "inspect",
+      "label": "Read broad value grids",
+      "api": "wb.inspect({kind: \"table\", …})",
+      "does": "Request cell values for a sheet or combine value grids with a workbook inventory.",
+      "supply": "kind, optional sheet/range, maxChars and fallback preview sizes.",
+      "returns": "Grid dimensions and cell values; possibly full occupied rectangles, sampled values, or omitted records when the response is too large. These are values, not formula text.",
+      "agent": "Notice truncation, narrow the request when useful, and interpret the numbers.",
+      "detail": "Here “table” means an inspection grid, not a named Excel Table. tableMaxRows/Cols are fallback preview limits in the tested runtime: a grid that fits may be returned in full. valuesTruncated means sampled values; outer truncated means omitted records.",
+      "examples": [
+        "lab:tab-full",
+        "lab:tab-small",
+        "lab:broad",
+        "lab:all"
+      ]
+    },
+    {
+      "id": "regions",
+      "group": "inspect",
+      "label": "Find populated blocks",
+      "api": "wb.inspect({kind: \"region\", …})",
+      "does": "Locate populated blocks within an area and preview their contents.",
+      "supply": "A sheet, a search rectangle and preview dimensions.",
+      "returns": "Block addresses, sizes, population counts and sample cell values.",
+      "agent": "Judge what each block represents and choose a tighter read when needed.",
+      "detail": "A range is any chosen rectangle of cells, such as A1:D10. A region is a block identified by inspection; it is not another tab. The two Fee engine examples change only preview size.",
+      "examples": [
+        "lab:blocks-small",
+        "lab:blocks-large",
+        "old:regions"
+      ]
+    },
+    {
+      "id": "search",
+      "group": "inspect",
+      "label": "Search labels and text",
+      "api": "wb.inspect({kind: \"match\", …})",
+      "does": "Find candidate cells by literal text or a regular-expression pattern.",
+      "supply": "Search text/pattern, where to look, match count and response allowance.",
+      "returns": "Matching cell addresses and content, plus a limit notice when applicable.",
+      "agent": "Interpret the match in context. The agent must decide whether “operating result” answers a request about “profit”.",
+      "detail": "This is text matching, not a demonstrated semantic index of the model. A regex is a pattern: management.*fee means “management”, then any characters, then “fee”.",
+      "examples": [
+        "lab:search-text",
+        "lab:search-pattern"
+      ]
+    },
+    {
+      "id": "ranges",
+      "group": "read",
+      "label": "Read values and formulas",
+      "api": "range.values · range.formulas",
+      "does": "Read an exact cell or rectangle, including the formula text behind its results.",
+      "supply": "A sheet and cell address or rectangle.",
+      "returns": "Aligned two-dimensional arrays: one for values, another for formula strings. A one-cell read is still a small grid.",
+      "agent": "Choose the addresses; add labels, compare results or assemble a report if needed.",
+      "detail": "A value is the cell’s result; a formula is its calculation rule, such as =SUM(A1:A3). The example script packages both getters together and adds the sheet/range labels.",
+      "examples": [
+        "old:ranges"
+      ]
+    },
+    {
+      "id": "trace",
+      "group": "read",
+      "label": "Trace dependencies",
+      "api": "wb.trace(cell)",
+      "does": "Follow a result upstream through the cells used in its calculation.",
+      "supply": "The starting cell, including its sheet.",
+      "returns": "A nested tree of cells, values, formulas and their input branches.",
+      "agent": "Interpret the chain and check missing or unexpected branches. A tree is evidence about the imported calculation graph, not an all-model audit.",
+      "detail": "A dependency is a cell used by another cell’s formula. This traces inputs upstream; it is not a report that every downstream output recalculated successfully.",
+      "examples": [
+        "old:trace"
+      ]
+    },
+    {
+      "id": "recalculate",
+      "group": "read",
+      "label": "Recalculate",
+      "api": "wb.recalculate()",
+      "does": "Ask the library’s calculation engine to update the workbook.",
+      "supply": "The in-memory workbook; no extra parameters in the tested call.",
+      "returns": "Undefined in this run: no automatic list of changed cells or dependency-success report.",
+      "agent": "Read the relevant outputs, compare with expectations, and check errors separately.",
+      "detail": "Fresh formulas updated automatically after an input edit in our small example. An explicit recalculation does not repair dependencies missing during import. This is the library’s engine, not native Microsoft Excel.",
+      "examples": [
+        "op:new-recalculation",
+        "old:recalculate"
+      ]
+    },
+    {
+      "id": "sheet",
+      "group": "edit",
+      "label": "Add a sheet",
+      "api": "wb.worksheets.add(name)",
+      "does": "Add a tab to the workbook and use it as a new working area.",
+      "supply": "A sheet name, followed by whichever cells and formatting to populate.",
+      "returns": "A worksheet object for subsequent range, table and chart operations.",
+      "agent": "Choose where the new work belongs and link it to the existing model if needed.",
+      "detail": "Adding a tab does not automatically populate it. The Fee lab example was deliberately created as an illustrative schedule alongside the six original sheets.",
+      "examples": [
+        "op:import-add-sheet",
+        "op:add-linked-build"
+      ]
+    },
+    {
+      "id": "values",
+      "group": "edit",
+      "label": "Write or replace values",
+      "api": "range.values = [[…]]",
+      "does": "Put literal numbers, text or blanks into chosen cells.",
+      "supply": "The destination range and a matching grid of values.",
+      "returns": "The cells change. The assignment does not provide a model-health report or a before/after comparison.",
+      "agent": "Choose the right cells and units; read affected results and decide whether the change behaved as intended.",
+      "detail": "Writing a value can replace an existing formula. The examples distinguish an unsaved edit, a deliberate zero and a change that exposed an imported dependency problem.",
+      "examples": [
+        "op:edit-without-saving",
+        "op:zero-input",
+        "op:restore-valid-input",
+        "old:value-edit"
+      ]
+    },
+    {
+      "id": "formulas",
+      "group": "edit",
+      "label": "Write formulas",
+      "api": "range.formulas = [[\"=…\"]]",
+      "does": "Create a calculation, link sheets, or replace an existing formula.",
+      "supply": "Destination cells and formula strings with the intended references.",
+      "returns": "Formulas are stored and calculated. Read values/formulas separately to see the result.",
+      "agent": "Supply the financial logic, reference rules and missing-input behavior; test representative inputs.",
+      "detail": "Blank-versus-zero handling comes from the formula the agent writes. In the example, an explicit IF/ISBLANK guard makes missing data #N/A while accepting a deliberate zero.",
+      "examples": [
+        "op:new-formula",
+        "op:add-linked-build",
+        "op:guard-missing-input",
+        "old:formula-edit"
+      ]
+    },
+    {
+      "id": "fill",
+      "group": "edit",
+      "label": "Fill, copy or rebuild formulas",
+      "api": "range.fillDown() · fillRight() · copyFrom(...)",
+      "does": "Extend formulas to nearby cells or copy selected content from another range.",
+      "supply": "Source/destination ranges, fill direction or copy mode.",
+      "returns": "The destination changes; later getters show the resulting formulas and values.",
+      "agent": "Check relative versus fixed references and whether the selected range is appropriate.",
+      "detail": "Relative references move when copied; $-fixed references stay anchored. Rebuilding cleared formulas is a new instruction sequence, not a demonstrated Undo operation.",
+      "examples": [
+        "op:rebuild-formulas",
+        "old:fill",
+        "old:copy"
+      ]
+    },
+    {
+      "id": "format",
+      "group": "edit",
+      "label": "Format cells",
+      "api": "range.format · range.setNumberFormat(...)",
+      "does": "Set fonts, fills, sizes, number formats and other presentation properties.",
+      "supply": "The range and desired formatting properties.",
+      "returns": "Formatting changes on the workbook object. Property assignments do not return a visual-quality judgment.",
+      "agent": "Render the relevant area and inspect readability, clipping and units.",
+      "detail": "Number formatting controls how a value looks; it does not change the underlying calculation. A cell may display two decimals while retaining more precision.",
+      "examples": [
+        "op:format-cells"
+      ]
+    },
+    {
+      "id": "clear",
+      "group": "edit",
+      "label": "Clear cell contents",
+      "api": "range.clear({…})",
+      "does": "Remove values or formulas from a selected range.",
+      "supply": "The range and the clear option; these examples clear contents.",
+      "returns": "Cell contents disappear. With contents-only clearing, formatting remains.",
+      "agent": "Check dependent outputs and whether blank now means missing, zero or something else in the formulas.",
+      "detail": "Clearing cells does not delete a worksheet or remove the rows themselves. In this example, clearing the quarterly formulas makes their SUM total zero: a plausible-looking result can still be incomplete.",
+      "examples": [
+        "op:clear-formulas",
+        "op:blank-input"
+      ]
+    },
+    {
+      "id": "table",
+      "group": "tables",
+      "label": "Create a formal Table",
+      "api": "sheet.tables.add(range, hasHeaders, name)",
+      "does": "Define a named Excel Table over an existing block of cells.",
+      "supply": "The rectangle, whether it includes headers, and the Table name.",
+      "returns": "A Table object. Its values, range and row count can be inspected separately.",
+      "agent": "Choose the correct rectangle and check it does not overlap an existing Table.",
+      "detail": "A formal Excel Table is a named spreadsheet feature inside a tab. It is different from the “table” records returned by inspect. The API accepted an overlapping Table in our unsaved probe, so the documented overlap check is agent work.",
+      "examples": [
+        "op:add-table",
+        "op:recreate-table",
+        "op:overlap-table"
+      ]
+    },
+    {
+      "id": "table-row",
+      "group": "tables",
+      "label": "Append a Table row",
+      "api": "table.rows.add(...)",
+      "does": "Add a row of data to a formal Excel Table.",
+      "supply": "The insertion position or append choice and the row’s values.",
+      "returns": "The Table expands. The tested call returned undefined; a separate read shows the new row.",
+      "agent": "Check the values landed in the intended columns and that any related calculations use them.",
+      "detail": "Appending a Table row is distinct from writing into arbitrary cells below a block. This example adds the Stress scenario to FeeScenarioInputs.",
+      "examples": [
+        "op:append-table-row"
+      ]
+    },
+    {
+      "id": "table-delete",
+      "group": "tables",
+      "label": "Remove a Table",
+      "api": "table.delete()",
+      "does": "Remove the formal Table object from the sheet.",
+      "supply": "The Table to delete.",
+      "returns": "The Table is removed; in the tested case its underlying cell values remain.",
+      "agent": "Decide whether the cells also need clearing and check references that relied on the Table.",
+      "detail": "Deleting a Table is not the same as deleting its data. Recreating it means calling tables.add again over the retained cells.",
+      "examples": [
+        "op:delete-table"
+      ]
+    },
+    {
+      "id": "chart",
+      "group": "visual",
+      "label": "Create or update a chart",
+      "api": "sheet.charts.add(...) · chart properties",
+      "does": "Create a chart with cell references for its categories and series; configure its appearance.",
+      "supply": "Chart type, source ranges, title, styling and placement.",
+      "returns": "A chart object. Source-cell changes can then change what the chart displays.",
+      "agent": "Choose a useful chart and valid source ranges; render and judge the result.",
+      "detail": "A cell-bound chart follows its referenced values. The before/after experiment changes the fee assumption while leaving those series references unchanged.",
+      "examples": [
+        "op:add-chart",
+        "op:chart-input-change",
+        "op:recreate-chart"
+      ]
+    },
+    {
+      "id": "chart-delete",
+      "group": "visual",
+      "label": "Remove charts",
+      "api": "sheet.charts.deleteAll()",
+      "does": "Remove charts from a selected sheet.",
+      "supply": "The sheet whose chart collection should be cleared.",
+      "returns": "The chart objects disappear. Their source calculations remain in this example.",
+      "agent": "Confirm the intended charts were removed; rebuild by creating them again if wanted.",
+      "detail": "This demonstrated call deletes all charts on the chosen sheet. It does not erase the cells that supplied their data.",
+      "examples": [
+        "op:delete-chart"
+      ]
+    },
+    {
+      "id": "render",
+      "group": "visual",
+      "label": "Render an image",
+      "api": "wb.render({sheetName, range, …})",
+      "does": "Generate a picture of a selected workbook area.",
+      "supply": "A sheet, cell range and image settings such as scale and PNG format.",
+      "returns": "An image blob. Writing the bytes to a PNG and opening that image are separate actions.",
+      "agent": "Look at the image and judge labels, layout and charts. Producing pixels does not itself perform that review.",
+      "detail": "Rendering reads the in-memory workbook. It does not take a screenshot of a live Excel window and does not save an .xlsx file.",
+      "examples": [
+        "op:render-before",
+        "op:render-after",
+        "old:render"
+      ]
+    }
+  ]
+}

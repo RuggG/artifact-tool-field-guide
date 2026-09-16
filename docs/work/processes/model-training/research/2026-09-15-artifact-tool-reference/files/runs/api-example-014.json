@@ -1,0 +1,10 @@
+{
+  "index": 14,
+  "name": "chart axes",
+  "summary": "Number formats",
+  "originalCode": "chart.xAxis = { numberFormatCode: '0', numberFormatSourceLinked: true };",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

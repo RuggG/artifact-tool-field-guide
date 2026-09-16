@@ -1,0 +1,37 @@
+{
+  "name": "fx.FIXED",
+  "category": "text",
+  "examples": [
+    {
+      "formula": "=FIXED(10, A1)",
+      "value": "10.0",
+      "projection": [
+        [
+          "10.0",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 11
+    }
+  ]
+}

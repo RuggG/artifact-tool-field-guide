@@ -1,0 +1,10 @@
+{
+  "index": 101,
+  "name": "range.getRow",
+  "summary": "Select a row inside a block",
+  "originalCode": "const range = sheet.getRange('B2:D4');\nconst row = range.getRow(1); // B3:D3",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

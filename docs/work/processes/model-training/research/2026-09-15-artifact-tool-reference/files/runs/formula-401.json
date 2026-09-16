@@ -1,0 +1,37 @@
+{
+  "name": "fx.COVARIANCE.S",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=COVARIANCE.S({1,2;3,4}, {1,2;3,4})",
+      "value": 1.6666666666666667,
+      "projection": [
+        [
+          1.6666666666666667,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 14
+    }
+  ]
+}

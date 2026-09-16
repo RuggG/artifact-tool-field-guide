@@ -1,0 +1,37 @@
+{
+  "name": "fx.TEXTJOIN",
+  "category": "text",
+  "examples": [
+    {
+      "formula": "=TEXTJOIN(\",\", A1, \"text1\", C1:C5)",
+      "value": "text1,3,6,9,12,15",
+      "projection": [
+        [
+          "text1,3,6,9,12,15",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 12
+    }
+  ]
+}

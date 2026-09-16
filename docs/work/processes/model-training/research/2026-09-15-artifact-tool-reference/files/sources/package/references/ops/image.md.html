@@ -1,0 +1,40 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>image ops · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="image.md">Raw file</a> · <a data-public-raw download href="image.md">Download</a></p><article><h1 id="image-ops">image ops</h1>
+<p>Ops in the <code>image.*</code> namespace for <code>Workbook.apply</code>.</p>
+<h2 id="ops-index">Ops index</h2>
+<ul>
+<li><code>image.add</code>: Add an image anchored to worksheet cells.</li>
+</ul>
+<h2 id="imageadd"><code>image.add</code></h2>
+<p>Add an image anchored to worksheet cells.</p>
+<p><strong>Required fields</strong>
+- <code>op</code>
+- <code>props</code>
+- <code>sheet</code></p>
+<p><strong>Optional fields</strong>
+- <code>as</code>
+- <code>props.alt</code>
+- <code>props.anchor</code>
+- <code>props.contentType</code>
+- <code>props.dataUrl</code>
+- <code>props.path</code>
+- <code>props.prompt</code>
+- <code>props.uri</code></p>
+<p><strong>Examples</strong></p>
+<pre><code class="language-json">{
+  "op": "image.add",
+  "sheet": "Images",
+  "props": {
+    "dataUrl": "data:image/png;base64,...",
+    "anchor": {
+      "from": {
+        "row": 1,
+        "col": 2
+      },
+      "extent": {
+        "widthPx": 160,
+        "heightPx": 120
+      }
+    }
+  }
+}
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

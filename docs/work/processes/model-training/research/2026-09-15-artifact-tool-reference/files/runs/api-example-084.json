@@ -1,0 +1,10 @@
+{
+  "index": 84,
+  "name": "range.format.font",
+  "summary": "Bold header styling",
+  "originalCode": "const header = sheet.getRange('A1:C1');\nheader.format.font.bold = true;\nheader.format.font.size = 14;\n// Patch-style assignment is supported too:\nheader.format.font = { color: '#FFFFFF', bold: true };\nheader.format.setFont({ name: 'Calibri', italic: true });",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

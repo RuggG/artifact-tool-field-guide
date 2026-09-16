@@ -1,0 +1,72 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>thread ops · Artifact Tool field guide</title><link rel="stylesheet" href="/artifact-tool-field-guide/assets/public.css"></head><body class="public-reader"><header class="public-top"><a class="public-brand" href="/artifact-tool-field-guide/">Artifact Tool: OpenAI&#x27;s Modeling Engine</a><nav aria-label="Public guide"><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#common-work">Explore</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html#satellite-documents">Documents</a><a href="/artifact-tool-field-guide/work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html">Reference</a><a href="/artifact-tool-field-guide/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html">Walkthrough</a><a href="https://github.com/RuggG/artifact-tool-field-guide">GitHub</a></nav></header><main class="public-document"><p class="public-filebar"><a data-public-raw href="thread.md">Raw file</a> · <a data-public-raw download href="thread.md">Download</a></p><article><h1 id="thread-ops">thread ops</h1>
+<p>Ops in the <code>thread.*</code> namespace for <code>Workbook.apply</code>.</p>
+<h2 id="ops-index">Ops index</h2>
+<ul>
+<li><code>thread.add</code>: Create a threaded comment on a cell or range.</li>
+<li><code>thread.reopen</code>: Reopen a resolved comment thread.</li>
+<li><code>thread.reply</code>: Reply to a comment thread.</li>
+<li><code>thread.resolve</code>: Resolve a comment thread.</li>
+</ul>
+<h2 id="threadadd"><code>thread.add</code></h2>
+<p>Create a threaded comment on a cell or range.</p>
+<p><strong>Required fields</strong>
+- <code>body</code>
+- <code>op</code>
+- <code>target</code></p>
+<p><strong>Optional fields</strong>
+- <code>author</code>
+- <code>createdAt</code></p>
+<p><strong>Examples</strong></p>
+<pre><code class="language-json">{
+  "op": "thread.add",
+  "target": {
+    "cell": {
+      "sheet": "Sheet1",
+      "address": "F5"
+    }
+  },
+  "body": "Cell comment"
+}
+</code></pre>
+<h2 id="threadreopen"><code>thread.reopen</code></h2>
+<p>Reopen a resolved comment thread.</p>
+<p><strong>Required fields</strong>
+- <code>op</code>
+- <code>target</code></p>
+<p><strong>Optional fields</strong>
+- (none)</p>
+<p><strong>Examples</strong></p>
+<pre><code class="language-json">{
+  "op": "thread.reopen",
+  "target": "threadId"
+}
+</code></pre>
+<h2 id="threadreply"><code>thread.reply</code></h2>
+<p>Reply to a comment thread.</p>
+<p><strong>Required fields</strong>
+- <code>body</code>
+- <code>op</code>
+- <code>target</code></p>
+<p><strong>Optional fields</strong>
+- <code>author</code>
+- <code>createdAt</code></p>
+<p><strong>Examples</strong></p>
+<pre><code class="language-json">{
+  "op": "thread.reply",
+  "target": "threadId",
+  "body": "Reply on cell"
+}
+</code></pre>
+<h2 id="threadresolve"><code>thread.resolve</code></h2>
+<p>Resolve a comment thread.</p>
+<p><strong>Required fields</strong>
+- <code>op</code>
+- <code>target</code></p>
+<p><strong>Optional fields</strong>
+- (none)</p>
+<p><strong>Examples</strong></p>
+<pre><code class="language-json">{
+  "op": "thread.resolve",
+  "target": "threadId"
+}
+</code></pre></article></main><script src="/artifact-tool-field-guide/assets/public.js" defer></script></body></html>

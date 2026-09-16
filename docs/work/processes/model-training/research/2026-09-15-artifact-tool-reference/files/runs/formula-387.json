@@ -1,0 +1,37 @@
+{
+  "name": "fx.STDEVPA",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=STDEVPA(A1:A5, C1:C5, B1:B5, C1:C5)",
+      "value": 4.205650960315181,
+      "projection": [
+        [
+          4.205650960315181,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 12
+    }
+  ]
+}

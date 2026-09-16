@@ -1,0 +1,20 @@
+{
+  "markdownBytes": 584006,
+  "wordsIncludingAppendices": 67305,
+  "sourceHashesVerified": 73,
+  "brokenLocalLinks": [],
+  "apiExamples": 126,
+  "formulaRecords": 494,
+  "operationCommands": 39,
+  "xlsxXmlParseFailures": 0,
+  "visuallyReviewed": [
+    "formatting.png",
+    "conditional-formats.png",
+    "chart-settings.png",
+    "sparklines.png",
+    "Shapes-1.png",
+    "workflow-example.png"
+  ],
+  "nativeExcelTested": false,
+  "googleSheetsServiceTested": false
+}

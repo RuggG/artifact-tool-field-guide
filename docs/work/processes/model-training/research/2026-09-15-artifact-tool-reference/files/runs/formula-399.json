@@ -1,0 +1,37 @@
+{
+  "name": "fx.F.TEST",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=F.TEST({1,2;3,4}, {1,2;3,4})",
+      "value": "#NUM!",
+      "projection": [
+        [
+          "#NUM!",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 9
+    }
+  ]
+}

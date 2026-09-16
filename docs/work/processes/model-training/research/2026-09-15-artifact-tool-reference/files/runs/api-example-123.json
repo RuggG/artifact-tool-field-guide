@@ -1,0 +1,10 @@
+{
+  "index": 123,
+  "name": "worksheet.freezePanes",
+  "summary": "Freeze header row and first two columns",
+  "originalCode": "const sheet = workbook.worksheets.getItem('Data');\nsheet.freezePanes.freezeRows(1);\nsheet.freezePanes.freezeColumns(2);",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}

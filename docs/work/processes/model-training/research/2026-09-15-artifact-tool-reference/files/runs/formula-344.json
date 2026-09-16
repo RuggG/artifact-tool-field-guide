@@ -1,0 +1,37 @@
+{
+  "name": "fx.ARABIC",
+  "category": "math-trig",
+  "examples": [
+    {
+      "formula": "=ARABIC(\"text\")",
+      "value": "#VALUE!",
+      "projection": [
+        [
+          "#VALUE!",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 12
+    }
+  ]
+}

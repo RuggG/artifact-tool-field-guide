@@ -1,0 +1,37 @@
+{
+  "name": "fx.MIN",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=MIN(A2:A10, 0, C2:C4)",
+      "value": 0,
+      "projection": [
+        [
+          0,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 9
+    }
+  ]
+}

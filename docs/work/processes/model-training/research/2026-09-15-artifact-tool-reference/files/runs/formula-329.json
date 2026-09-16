@@ -1,0 +1,37 @@
+{
+  "name": "fx.LCM",
+  "category": "math-trig",
+  "examples": [
+    {
+      "formula": "=LCM(10, C1:C5, 20, C1:C5)",
+      "value": 180,
+      "projection": [
+        [
+          180,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 10
+    }
+  ]
+}

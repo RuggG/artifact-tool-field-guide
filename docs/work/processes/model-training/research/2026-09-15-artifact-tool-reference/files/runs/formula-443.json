@@ -1,0 +1,37 @@
+{
+  "name": "fx.NORM.S.INV",
+  "category": "statistical",
+  "examples": [
+    {
+      "formula": "=NORM.S.INV(A1)",
+      "value": 141.4213562373095,
+      "projection": [
+        [
+          141.4213562373095,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 8
+    }
+  ]
+}

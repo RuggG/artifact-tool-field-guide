@@ -1,0 +1,37 @@
+{
+  "name": "fx.SEC",
+  "category": "math-trig",
+  "examples": [
+    {
+      "formula": "=SEC(10)",
+      "value": -1.1917935066878957,
+      "projection": [
+        [
+          -1.1917935066878957,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 12
+    }
+  ]
+}

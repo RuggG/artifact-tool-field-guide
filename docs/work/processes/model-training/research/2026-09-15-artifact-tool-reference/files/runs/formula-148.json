@@ -1,0 +1,37 @@
+{
+  "name": "fx.SYD",
+  "category": "financial",
+  "examples": [
+    {
+      "formula": "=SYD(A1, A1, A1, A1)",
+      "value": 0,
+      "projection": [
+        [
+          0,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "ms": 15
+    }
+  ]
+}

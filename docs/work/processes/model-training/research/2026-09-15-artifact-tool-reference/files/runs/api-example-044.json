@@ -1,0 +1,10 @@
+{
+  "index": 44,
+  "name": "range.conditionalFormats.addCustom",
+  "summary": "Equivalent add('Custom', ...) form",
+  "originalCode": "const range = sheet.getRange('F2:F50');\nrange.conditionalFormats.add('Custom', {\n  formula: '=F2<E2',\n  format: { fill: '#FECACA', font: { color: '#991B1B' } },\n});",
+  "adaptations": [],
+  "execution": "completed",
+  "export": "completed",
+  "logs": []
+}
