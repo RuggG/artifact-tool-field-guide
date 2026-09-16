@@ -17,7 +17,7 @@
     <p class="sd-when"><strong>When the agent reads it:</strong> ${esc(d.when)}</p>
     <div class="sd-toolbar"><div class="sd-views" role="group" aria-label="Document view"><button type="button" data-sd-view="readable" aria-pressed="${view==='readable'}">Rendered</button><button type="button" data-sd-view="raw" aria-pressed="${view==='raw'}">Raw Markdown</button></div><div class="sd-links"><a href="#af-satellites" data-sd-back>All documents ↑</a><a href="${esc(d.source)}" target="_blank" rel="noopener">Source file ↗</a><button type="button" data-sd-download>Download .md</button></div></div>
     ${view==='readable'?`<details class="sd-outline"><summary>Contents · ${d.outline.length} headings</summary><nav aria-label="Document contents">${outline}</nav></details><article class="sd-document" aria-label="Full document">${d.html}</article>`:`<pre class="sd-raw" aria-label="Complete original Markdown">${esc(d.markdown)}</pre>`}
-    <p class="sd-source-note">Complete saved document from 15 September 2026. “Saved” means a study snapshot, not a retired skill. Counts cover the original Markdown. Words are whitespace-separated; characters include spaces and line breaks.</p>`;
+    <p class="sd-source-note">Source copy: 15 September 2026. Counts include the original Markdown formatting, spaces and line breaks.</p>`;
    reader.querySelectorAll('.sd-document table').forEach(t=>{const w=document.createElement('div');w.className='sd-table-scroll';w.tabIndex=0;w.setAttribute('role','region');w.setAttribute('aria-label','Scrollable document table');t.before(w);w.append(t)});
   }
   function openParents(el){for(let p=el.parentElement;p;p=p.parentElement)if(p.tagName==='DETAILS')p.open=true}

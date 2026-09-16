@@ -197,7 +197,7 @@
       "supply": "A sheet name, followed by whichever cells and formatting to populate.",
       "returns": "A worksheet object for subsequent range, table and chart operations.",
       "agent": "Choose where the new work belongs and link it to the existing model if needed.",
-      "detail": "Adding a tab does not automatically populate it. The Fee lab example was deliberately created as an illustrative schedule alongside the six original sheets.",
+      "detail": "Adding a tab creates an empty sheet. The Fee lab example then writes a schedule alongside the six existing sheets.",
       "examples": [
         "op:import-add-sheet",
         "op:add-linked-build"
@@ -1263,7 +1263,7 @@
         }
       },
       "checkHelpers": "const cell=(sheet,address)=>({address,value:sheet.getRange(address).values[0][0],formula:sheet.getRange(address).formulas[0][0]});\nconst grid=(sheet,address)=>({address,values:sheet.getRange(address).values,formulas:sheet.getRange(address).formulas});\nconst labRead=()=>({margin:cell(lab,'C4'),growth:cell(lab,'C5'),quarters:grid(lab,'B9:F12'),annual:cell(lab,'C15')});\nconst inspect=async (book,args)=>{const r=await book.inspect(args);return {ndjson:r.ndjson,recordCount:r.recordCount,truncated:r.truncated,metadata:r.metadata};};\nconst names=async book=>await inspect(book,{kind:'sheet',include:'id,name',maxChars:5000});\n",
-      "note": "The agent chooses the assumptions, financial logic and cell references. These illustrative quarters are not investment forecasts.",
+      "note": "The example sets the assumptions, financial logic and cell references explicitly.",
       "image": "",
       "links": [
         [
@@ -1637,7 +1637,7 @@
         }
       },
       "checkHelpers": "const cell=(sheet,address)=>({address,value:sheet.getRange(address).values[0][0],formula:sheet.getRange(address).formulas[0][0]});\nconst grid=(sheet,address)=>({address,values:sheet.getRange(address).values,formulas:sheet.getRange(address).formulas});\nconst labRead=()=>({margin:cell(lab,'C4'),growth:cell(lab,'C5'),quarters:grid(lab,'B9:F12'),annual:cell(lab,'C15')});\nconst inspect=async (book,args)=>{const r=await book.inspect(args);return {ndjson:r.ndjson,recordCount:r.recordCount,truncated:r.truncated,metadata:r.metadata};};\nconst names=async book=>await inspect(book,{kind:'sheet',include:'id,name',maxChars:5000});\n",
-      "note": "Clearing cells is different from deleting an entire row or tab. A zero total does not prove a model is healthy.",
+      "note": "Clearing contents leaves the cells in place; deleting a row or tab changes the workbook structure.",
       "image": "",
       "links": [
         [
@@ -3011,7 +3011,7 @@
         }
       },
       "checkHelpers": "const cell=(sheet,address)=>({address,value:sheet.getRange(address).values[0][0],formula:sheet.getRange(address).formulas[0][0]});\nconst grid=(sheet,address)=>({address,values:sheet.getRange(address).values,formulas:sheet.getRange(address).formulas});\nconst labRead=()=>({margin:cell(lab,'C4'),growth:cell(lab,'C5'),quarters:grid(lab,'B9:F12'),annual:cell(lab,'C15')});\nconst inspect=async (book,args)=>{const r=await book.inspect(args);return {ndjson:r.ndjson,recordCount:r.recordCount,truncated:r.truncated,metadata:r.metadata};};\nconst names=async book=>await inspect(book,{kind:'sheet',include:'id,name',maxChars:5000});\n",
-      "note": "The guide explicitly says to check for overlaps because the API does not reject them. Acceptance in memory does not establish that this is a valid Excel file.",
+      "note": "The API accepts overlapping table ranges. Check their addresses before creating tables to avoid conflicts in Excel.",
       "image": "",
       "links": [
         [
@@ -3444,7 +3444,7 @@
       "checks": null,
       "checkCode": "",
       "checkHelpers": "",
-      "note": " The messages such as “saved: overview.json” were printed by our recording helper. They are not independent guarantees from Excel. The program runs in Node. No Excel window or connected add-in session is involved in these calls.",
+      "note": "The program runs in Node. Messages such as “saved: overview.json” come from the script’s recording helper.",
       "image": "",
       "links": [
         [
@@ -3518,7 +3518,7 @@
       "label": "Populated regions · original model",
       "intent": "Break a known section into manageable blocks so the agent can inspect the relevant part next.",
       "finding": "Within C7:M28 it finds four blocks: headers/AUM, revenue, operating costs/profit, and the PBT-to-EPS bridge. Previews stop at column H even though each region extends to M.",
-      "inputReadable": "<p class=\"xio-input-action\">Identify populated regions and request small previews within a selected part of Summary.</p><dl class=\"xio-input-fields\"><div><dt>Sheet</dt><dd>Summary</dd></div><div><dt>Search area</dt><dd>C7:M28</dd></div><div><dt>Record type</dt><dd>Region</dd></div><div><dt>Preview caps requested</dt><dd>8 rows × 6 columns</dd></div><div><dt>Response cap requested</dt><dd>10,000 characters</dd></div></dl><p class=\"xio-caption\">Plain-English reading of the actual input. Requested limits describe the request, not a guarantee of what the library returns.</p>",
+      "inputReadable": "<p class=\"xio-input-action\">Identify populated regions and request small previews within a selected part of Summary.</p><dl class=\"xio-input-fields\"><div><dt>Sheet</dt><dd>Summary</dd></div><div><dt>Search area</dt><dd>C7:M28</dd></div><div><dt>Record type</dt><dd>Region</dd></div><div><dt>Preview caps requested</dt><dd>8 rows × 6 columns</dd></div><div><dt>Response cap requested</dt><dd>10,000 characters</dd></div></dl><p class=\"xio-caption\">Requested limits: compare these with the returned previews below.</p>",
       "input": "return await wb.inspect({\n  kind: \"region\", sheetId: \"Summary\", range: \"C7:M28\",\n  maxChars: 10000, tableMaxRows: 8, tableMaxCols: 6\n});",
       "outputLabel": "Library response",
       "outputReadable": "<details class=\"record-fold\"><summary>C22:M28<small>7 × 11 · 77 populated</small></summary><p class=\"xio-caption\">Returned preview: C22:H28</p><div class=\"xio-grid-scroll\"><table><thead><tr><th>Cell row</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>H</th></tr></thead><tbody><tr><td>22</td><td><span title=\"Management-fee PBT, USD m\">Management-fee PBT, USD m</span></td><td><span title=\"133\">133</span></td><td><span title=\"280\">280</span></td><td><span title=\"162.99999999999997\">162.99999999999997</span></td><td><span title=\"323\">323</span></td><td><span title=\"129.99999999999994\">129.99999999999994</span></td></tr><tr><td>23</td><td><span title=\"Performance / seed PBT, USD m\">Performance / seed PBT, USD m</span></td><td><span title=\"3.9999999999999964\">3.9999999999999964</span></td><td><span title=\"60.000000000000007\">60.000000000000007</span></td><td><span title=\"94\">94</span></td><td><span title=\"150\">150</span></td><td><span title=\"16.000000000000007\">16.000000000000007</span></td></tr><tr><td>24</td><td><span title=\"Core total PBT, USD m\">Core total PBT, USD m</span></td><td><span title=\"136.99999999999997\">136.99999999999997</span></td><td><span title=\"340\">340</span></td><td><span title=\"257\">257</span></td><td><span title=\"473\">473</span></td><td><span title=\"145.99999999999994\">145.99999999999994</span></td></tr><tr><td>25</td><td><span title=\"Core tax expense, USD m\">Core tax expense, USD m</span></td><td><span title=\"-28.999999999999996\">-28.999999999999996</span></td><td><span title=\"-69\">-69</span></td><td><span title=\"-53\">-53</span></td><td><span title=\"-92\">-92</span></td><td><span title=\"-32.999999999999986\">-32.999999999999986</span></td></tr><tr><td>26</td><td><span title=\"Core profit after tax, USD m\">Core profit after tax, USD m</span></td><td><span title=\"107.99999999999997\">107.99999999999997</span></td><td><span title=\"271\">271</span></td><td><span title=\"203.99999999999997\">203.99999999999997</span></td><td><span title=\"381\">381</span></td><td><span title=\"112.99999999999994\">112.99999999999994</span></td></tr><tr><td>27</td><td><span title=\"Diluted weighted shares, m\">Diluted weighted shares, m</span></td><td><span title=\"1217\">1217</span></td><td><span title=\"1207.0554419999999\">1207.0554419999999</span></td><td><span title=\"1192\">1192</span></td><td><span title=\"1189.0758450000001\">1189.0758450000001</span></td><td><span title=\"1168\">1168</span></td></tr><tr><td>28</td><td><span title=\"Core diluted EPS, US cents\">Core diluted EPS, US cents</span></td><td><span title=\"8.8742810188989285\">8.8742810188989285</span></td><td><span title=\"22.451329953077668\">22.451329953077668</span></td><td><span title=\"17.114093959731541\">17.114093959731541</span></td><td><span title=\"32.041690326322289\">32.041690326322289</span></td><td><span title=\"9.6746575342465704\">9.6746575342465704</span></td></tr></tbody></table></div></details><details class=\"record-fold\"><summary>C13:M17<small>5 × 11 · 55 populated</small></summary><p class=\"xio-caption\">Returned preview: C13:H17</p><div class=\"xio-grid-scroll\"><table><thead><tr><th>Cell row</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>H</th></tr></thead><tbody><tr><td>13</td><td><span title=\"Net management fees, USD m\">Net management fees, USD m</span></td><td><span title=\"460\">460</span></td><td><span title=\"963\">963</span></td><td><span title=\"551\">551</span></td><td><span title=\"1097\">1097</span></td><td><span title=\"516.99999999999989\">516.99999999999989</span></td></tr><tr><td>14</td><td><span title=\"Performance fees, USD m\">Performance fees, USD m</span></td><td><span title=\"32\">32</span></td><td><span title=\"180\">180</span></td><td><span title=\"170\">170</span></td><td><span title=\"310\">310</span></td><td><span title=\"67\">67</span></td></tr><tr><td>15</td><td><span title=\"Seed gains, USD m\">Seed gains, USD m</span></td><td><span title=\"19\">19</span></td><td><span title=\"48\">48</span></td><td><span title=\"39\">39</span></td><td><span title=\"50\">50</span></td><td><span title=\"19\">19</span></td></tr><tr><td>16</td><td><span title=\"Rental / other income, USD m\">Rental / other income, USD m</span></td><td><span title=\"2\">2</span></td><td><span title=\"5\">5</span></td><td><span title=\"1\">1</span></td><td><span title=\"2\">2</span></td><td><span title=\"1\">1</span></td></tr><tr><td>17</td><td><span title=\"Core net revenue, USD m\">Core net revenue, USD m</span></td><td><span title=\"513\">513</span></td><td><span title=\"1196\">1196</span></td><td><span title=\"761\">761</span></td><td><span title=\"1459\">1459</span></td><td><span title=\"604\">604</span></td></tr></tbody></table></div></details><details class=\"record-fold\"><summary>C7:M11<small>5 × 11 · 53 populated</small></summary><p class=\"xio-caption\">Returned preview: C7:H11</p><div class=\"xio-grid-scroll\"><table><thead><tr><th>Cell row</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>H</th></tr></thead><tbody><tr><td>7</td><td><span title=\"None\">—</span></td><td><span title=\"H1:23\">H1:23</span></td><td><span title=\"FY:23\">FY:23</span></td><td><span title=\"H1:24\">H1:24</span></td><td><span title=\"FY:24\">FY:24</span></td><td><span title=\"H1:25\">H1:25</span></td></tr><tr><td>8</td><td><span title=\"None\">—</span></td><td><span title=\"Actual\">Actual</span></td><td><span title=\"Actual\">Actual</span></td><td><span title=\"Actual\">Actual</span></td><td><span title=\"Actual\">Actual</span></td><td><span title=\"Actual\">Actual</span></td></tr><tr><td>9</td><td><span title=\"Closing AUM, USD bn\">Closing AUM, USD bn</span></td><td><span title=\"151.69999999999999\">151.69999999999999</span></td><td><span title=\"167.49999999999997\">167.49999999999997</span></td><td><span title=\"178.20000000000002\">178.20000000000002</span></td><td><span title=\"168.60000000000002\">168.60000000000002</span></td><td><span title=\"193.3\">193.3</span></td></tr><tr><td>10</td><td><span title=\"Net flows, USD bn\">Net flows, USD bn</span></td><td><span title=\"2.6\">2.6</span></td><td><span title=\"3\">3</span></td><td><span title=\"0.89999999999999991\">0.89999999999999991</span></td><td><span title=\"-3.3\">-3.3</span></td><td><span title=\"17.600000000000001\">17.600000000000001</span></td></tr><tr><td>11</td><td><span title=\"Implied net fee margin, annual bp\">Implied net fee margin, annual bp</span></td><td><span title=\"62.970568104038328\">62.970568104038328</span></td><td><span title=\"62.838499184339312\">62.838499184339312</span></td><td><span title=\"63.233395495624734\">63.233395495624734</span></td><td><span title=\"62.969075123771269\">62.969075123771269</span></td><td><span title=\"58.492433884881883\">58.492433884881883</span></td></tr></tbody></table></div></details><details class=\"record-fold\"><summary>C19:M20<small>2 × 11 · 22 populated</small></summary><p class=\"xio-caption\">Returned preview: C19:H20</p><div class=\"xio-grid-scroll\"><table><thead><tr><th>Cell row</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>H</th></tr></thead><tbody><tr><td>19</td><td><span title=\"Core operating costs, USD m\">Core operating costs, USD m</span></td><td><span title=\"-370\">-370</span></td><td><span title=\"-834\">-834</span></td><td><span title=\"-487\">-487</span></td><td><span title=\"-960.00000000000011\">-960.00000000000011</span></td><td><span title=\"-449\">-449</span></td></tr><tr><td>20</td><td><span title=\"Core operating profit, USD m\">Core operating profit, USD m</span></td><td><span title=\"142.99999999999997\">142.99999999999997</span></td><td><span title=\"362.00000000000006\">362.00000000000006</span></td><td><span title=\"274\">274</span></td><td><span title=\"498.99999999999994\">498.99999999999994</span></td><td><span title=\"154.99999999999997\">154.99999999999997</span></td></tr></tbody></table></div></details>",
@@ -3858,7 +3858,7 @@
       "checks": null,
       "checkCode": "",
       "checkHelpers": "",
-      "note": "Rendering returns an image blob. The script saves its bytes and assembles the filename/size report shown here. The file name and byte count are printed by our wrapper after saving the blob. They are not the image itself. The screenshot shows the current values. A plausible-looking image does not establish that every formula recalculates correctly.",
+      "note": "Rendering returns an image blob. The script saves it, then reports the filename and size. The image shows the workbook’s current values.",
       "image": "files/common-work/man-group-run/summary-before.png",
       "links": [
         [
@@ -4382,7 +4382,7 @@
       "checks": null,
       "checkCode": "",
       "checkHelpers": "",
-      "note": "The save returns no report. The script records the filename and size; separate file-reading checks supply the comparison in the readable display. The workbook still has the broader shared-formula import limitation described above. This export is a demonstration copy, not a claimed complete repair. Verification compared formula text and literal cells, cached numbers within 1e-8 absolute / 1e-10 relative tolerance, sheet order and annotation count. Native Excel was not opened for this run.",
+      "note": "Saving returns no report; the script adds the filename, size and file comparisons. Shared-formula import gaps remain in this copy. Checks compare formula text, literal cells, sheet order, annotation count and cached numbers using 1e-8 absolute / 1e-10 relative tolerance.",
       "image": "",
       "links": [
         [
@@ -4443,7 +4443,7 @@
       "checkCode": "",
       "checkReadable": "",
       "checkHelpers": "",
-      "note": "Size of the returned NDJSON text: 642 characters; approximately 248 tokens using o200k_base. This is not a billing count or the size of the whole outer tool response. NDJSON means one JSON record per line.",
+      "note": "Returned NDJSON: 642 characters · approximately 248 tokens.",
       "image": "",
       "links": [
         [
@@ -4493,7 +4493,7 @@
       "checkCode": "",
       "checkReadable": "",
       "checkHelpers": "",
-      "note": "Size of the returned NDJSON text: 7,024 characters; approximately 2,261 tokens using o200k_base. This is not a billing count or the size of the whole outer tool response. NDJSON means one JSON record per line.",
+      "note": "Returned NDJSON: 7,024 characters · approximately 2,261 tokens.",
       "image": "",
       "links": [
         [
@@ -4543,7 +4543,7 @@
       "checkCode": "",
       "checkReadable": "",
       "checkHelpers": "",
-      "note": "Size of the returned NDJSON text: 70,074 characters; approximately 22,430 tokens using o200k_base. This is not a billing count or the size of the whole outer tool response. NDJSON means one JSON record per line.",
+      "note": "Returned NDJSON: 70,074 characters · approximately 22,430 tokens.",
       "image": "",
       "links": [
         [
@@ -4591,7 +4591,7 @@
       "checkCode": "",
       "checkReadable": "",
       "checkHelpers": "",
-      "note": "Size of the returned NDJSON text: 24,242 characters; approximately 9,533 tokens using o200k_base. This is not a billing count or the size of the whole outer tool response. NDJSON means one JSON record per line.",
+      "note": "Returned NDJSON: 24,242 characters · approximately 9,533 tokens.",
       "image": "",
       "links": [
         [
@@ -4639,7 +4639,7 @@
       "checkCode": "",
       "checkReadable": "",
       "checkHelpers": "",
-      "note": "Size of the returned NDJSON text: 191 characters; approximately 57 tokens using o200k_base. This is not a billing count or the size of the whole outer tool response. NDJSON means one JSON record per line.",
+      "note": "Returned NDJSON: 191 characters · approximately 57 tokens.",
       "image": "",
       "links": [
         [
@@ -4687,7 +4687,7 @@
       "checkCode": "",
       "checkReadable": "",
       "checkHelpers": "",
-      "note": "Size of the returned NDJSON text: 1,707 characters; approximately 559 tokens using o200k_base. This is not a billing count or the size of the whole outer tool response. NDJSON means one JSON record per line.",
+      "note": "Returned NDJSON: 1,707 characters · approximately 559 tokens.",
       "image": "",
       "links": [
         [
@@ -4735,7 +4735,7 @@
       "checkCode": "",
       "checkReadable": "",
       "checkHelpers": "",
-      "note": "Size of the returned NDJSON text: 3,075 characters; approximately 1,101 tokens using o200k_base. This is not a billing count or the size of the whole outer tool response. NDJSON means one JSON record per line.",
+      "note": "Returned NDJSON: 3,075 characters · approximately 1,101 tokens.",
       "image": "",
       "links": [
         [
@@ -4783,7 +4783,7 @@
       "checkCode": "",
       "checkReadable": "",
       "checkHelpers": "",
-      "note": "Size of the returned NDJSON text: 4,729 characters; approximately 1,145 tokens using o200k_base. This is not a billing count or the size of the whole outer tool response. NDJSON means one JSON record per line.",
+      "note": "Returned NDJSON: 4,729 characters · approximately 1,145 tokens.",
       "image": "",
       "links": [
         [

@@ -6,8 +6,9 @@ subtitle: Explore the workbook engine through real inputs, readable objects and 
 primary_author: RG
 agent_assistance:
   - Codex — experiments, interactive design and verification
-docver: 8
+docver: 9
 history:
+  - v9 2026-09-17 — Removed repetitive caveats and tightened explanations while preserving specific findings
   - v8 2026-09-16 — Simplified the introduction and organised inspection and reading examples by purpose
   - v7 2026-09-16 — Added the main skill and all 15 satellite documents, with token counts and a full-text Markdown reader
   - v6 2026-09-16 — Added 38 reading comparisons, values and formulas paired by cell, whole-tab and all-tab reads, and full-width results
@@ -53,31 +54,31 @@ A range is simply the cells you name, such as `K13:M20`. Getting that range crea
 
 **To read a whole tab**, the code asks for its used area and reads the cells in it. **To read every tab**, it repeats that for each tab and collects the results. In this workbook those six rectangles contain **14,697 cell positions**, including blank cells with formatting. The inspection route returns **8,383 positions** in smaller rectangles around content. Those are different ways of choosing the area; neither counts every possible empty cell in Excel. The saved all-tab reads contain all six results, and a clearly labelled display selector lets you inspect each one.
 
-Values and formulas are cell contents. These reads do not also return charts, comments or all formatting. Formula results are from the imported workbook; this read-only experiment does not establish that they have been freshly recalculated. Raw also preserves differences in representation: for example, `findCells` returns values as text in these match records, while range reads return numerical values as numbers.
+Values and formulas are cell contents. These reads do not also return charts, comments or all formatting. Formula results here come from the imported workbook; these reads did not check whether they were freshly recalculated. Raw also preserves differences in representation: for example, `findCells` returns values as text in these match records, while range reads return numerical values as numbers.
 
 ### Know what reaches the agent — Structure, cells, previews and output limits {#inspection-visibility}
 
-**Loading a workbook into the engine does not place it all in the agent's conversation.** The code asks for a view of the workbook, receives a result, and chooses what to print or return. Printing only `result.recordCount` gives the agent a count. Printing `result.ndjson` gives it the records, subject to the surrounding tool's output limit. Saving a complete JSON file requires a later read before its contents reach the conversation. This experiment saved complete record payloads, printed short progress summaries and read selected evidence for analysis.
+**Loading a workbook into the engine does not place it all in the agent's conversation.** The code asks for a view of the workbook, receives a result, and chooses what to print or return. Printing only `result.recordCount` gives the agent a count. Printing `result.ndjson` gives it the records, subject to the surrounding tool's output limit. Saving a complete JSON file requires a later read before its contents reach the conversation.
 
 `inspect` is one function with several configurations. `kind` is a comma-separated list of **record types**. These are the engine's tokens or keywords; they are unrelated to language-model token counts. A request can combine types, but the response still depends on its scope, supported types, existing objects and size allowance. Its `ndjson` property is text containing one JSON object per line. Raw displays that NDJSON directly, with long lines wrapped for reading. Tree expands the decoded records. Readable shows all returned records by default, grouped by type. Metadata and the original response envelope have their own disclosures.
 
-| Request | What the recorded call returns | What this does not establish |
+| Request | What comes back | Reading the result |
 | --- | --- | --- |
 | `kind: "workbook,sheet"` | Workbook summary and sheet inventory | No cell-value grid; a sheet address alone does not expose its cells |
 | `kind: "table"` | Value grids for the selected scope, in full or as previews | Formula text, formatting and other objects need their own reads |
 | `kind: "workbook,sheet,table"` | A combined stream of structure and value records | A small allowance can omit later records or reduce a grid to a preview |
 | `kind: "region"` | Detected block addresses, dimensions, population counts and previews | A block's whole rectangle is not included merely because its address appears |
-| `kind: "formula"` | A record for each included formula cell | Formula records do not contain every cell or prove the import preserved every original formula |
+| `kind: "formula"` | A record for each included formula cell | Read values separately; check imported formulas against the source workbook |
 | `kind: "table,formula"` | Value grids plus separate formula records | The two representations can overlap in the cells they cover |
-| `kind: "match"` with `searchTerm` | Matching cells, values/formulas and relevant notices | Matching a label is not a full read of its row, sheet or financial meaning |
+| `kind: "match"` with `searchTerm` | Matching cells, values/formulas and relevant notices | Read the surrounding cells to understand each match |
 | `findCells(...)` | A separate object with matches, total count, offset, limit and truncation | Its result shape and truncation flag differ from `inspect` |
 | `getRange(...).values` and `.formulas` | Two complete matrices for an explicitly chosen rectangle | The surrounding script can still choose to expose only part of them |
 
 **Here, `table` means an inspection value grid.** Direct collection reads found zero native named Excel Tables in the supplied six-sheet workbook. Inspection nevertheless reports six table grids. Creating a native Excel Table is a separate feature in Work with Tables.
 
-The broad full-value request returned **8,383 cell positions across six content rectangles**, checked against direct range reads. This includes blanks inside the rectangles; it does not enumerate Excel's unused rows and columns. `getUsedRange()` also included formatting beyond some of those content extents in this file. The map's grey background comes from the separate full reference read, so it must not be mistaken for information present in a smaller response.
+The broad full-value request returned **8,383 cell positions across six content rectangles**, checked against direct range reads. This includes blanks inside the rectangles; it does not enumerate Excel's unused rows and columns. `getUsedRange()` also included formatting beyond some of those content extents in this file. The map’s grey background shows the full reference area; its coloured cells show the content included in this response.
 
-### Read each limit separately — A false outer flag is not proof of completeness {#inspection-limits}
+### Read each limit separately — Records, previews and text {#inspection-limits}
 
 The recorded Fee engine request makes the distinction concrete. With `maxChars: 150000`, `kind: "table"` returned **109 × 23 = 2,507 values**, despite fallback settings of one row and one column. Changing only `maxChars` to 1,000 returned **`[[null]]`, the blank cell A1**. The record still described `A1:W109`; `valuesTruncated` was true, while the response's outer `truncated` was false.
 
@@ -107,13 +108,13 @@ The recorded Fee engine request makes the distinction concrete. With `maxChars: 
 | `chart` versus `drawing` | Although the archived inspection example uses `chart`, this runtime reported it as an unknown kind and ignored it. The recorded `drawing` request returned chart/shape descriptors. Inspect metadata exposes the discrepancy |
 | `resolve` and `help` | Resolve an inspection anchor to an editable object; use help to discover call contracts. Examples remain in the [full inspection family](?family=inspection&action=#families) |
 
-A useful sequence is **inventory → locate blocks or labels → read the selected range's values and formulas → trace a result if needed**. If the question is “show the whole tab”, request its value grid with adequate space, inspect its actual coverage, and request formula or object information separately when relevant. Completeness is always relative to the requested representation and the imported workbook state.
+A useful sequence is **inventory → locate blocks or labels → read the selected range's values and formulas → trace a result if needed**. If the question is “show the whole tab”, request its value grid with adequate space, inspect its actual coverage, and request formula or object information separately when relevant.
 
-Sources and reproduction: [all 47 captured calls and responses](files/inspection/captures.json), [read-only capture script](scripts/capture_inspection.mjs), [coverage derivation](scripts/prepare_inspection.py), [2,150 checks](data/inspection-checks.json), [archived inspection documentation](../2026-09-15-artifact-tool-reference/files/sources/package/api/references/inspect-help.md) and [quick-start inspection examples](../2026-09-15-artifact-tool-reference/files/sources/package/API_QUICK_START.md). The workbook checksum was unchanged. These checks verify recorded coverage and selected contrasts; they do not certify native Microsoft Excel behavior.
+Sources and reproduction: [all 47 captured calls and responses](files/inspection/captures.json), [read-only capture script](scripts/capture_inspection.mjs), [coverage derivation](scripts/prepare_inspection.py), [2,150 checks](data/inspection-checks.json), [archived inspection documentation](../2026-09-15-artifact-tool-reference/files/sources/package/api/references/inspect-help.md) and [quick-start inspection examples](../2026-09-15-artifact-tool-reference/files/sources/package/API_QUICK_START.md).
 
 ### Understand the selection — Common work, documentation and the full reference {#common-coverage}
 
-**These counts describe different things.** A documentation heading can contain many calls; a practical action can combine several calls; a recorded example shows one specific execution. They should not be added together or treated as competing measures of completeness.
+**These counts describe different things.** A documentation heading can contain many calls; a practical action can combine several calls; a recorded example shows one specific execution.
 
 | Surface | Count | What is being counted |
 | --- | --- | --- |
@@ -125,9 +126,9 @@ Sources and reproduction: [all 47 captured calls and responses](files/inspection
 | Reading comparisons | 38 read-only calls | Values, formulas and combined reads for different cell selections |
 | Full action explorer below | 15 families, 191 examples | API calls, structured operations and guided workflows across the wider library |
 
-**21 of the 23 practical actions use API features named in the package's common section.** This is a feature-level correspondence, not a claim that the quick start gives every argument or validates every example. Detailed inspection modes are also explained earlier in that document. The two remaining entries are **the script runner**, which executes the program outside the library, and **explicit recalculation**, a library control documented elsewhere. Neither is thereby unimportant or discouraged.
+**21 of the 23 practical actions use API features named in the package's common section.** The two remaining entries are **the script runner**, which executes the program outside the library, and **explicit recalculation**, a library control documented elsewhere.
 
-The practical selection is **not the documentation's complete recommendation list**. Common capabilities that do not get a standalone action here remain available in the wider guide:
+Further common capabilities are covered in the wider guide:
 
 | When the task needs… | Continue with… |
 | --- | --- |
@@ -143,19 +144,19 @@ Sources: [package quick start](../2026-09-15-artifact-tool-reference/files/sourc
 
 An **action** is the job you want done, such as “write a formula.” An **API call** is how code asks the library to do it: `sheet.getRange("C5").formulas = [["=C3*C4"]]`. Here `getRange("C5")` obtains a reference to existing cell C5; it does not create another cell or insert content. The assignment writes the formula.
 
-The full reference also uses **operation** for a specific library interface: a structured command passed to `workbook.apply(...)`. Direct API calls and structured operations are two ways of asking the library to act. The practical section predominantly uses direct calls. **Guided** labels an example assembled to teach a workflow; **session** describes a wrapper that keeps or resumes workbook state. Those words are not four equivalent kinds of Excel feature.
+The full reference also uses **operation** for a specific library interface: a structured command passed to `workbook.apply(...)`. Direct API calls and structured operations are two ways of asking the library to act. The practical section predominantly uses direct calls. **Guided** labels an example assembled to teach a workflow; **session** describes a wrapper that keeps or resumes workbook state.
 
-Adding a worksheet creates a named, initially empty tab. Writing its values or formulas is a separate step. A **range** is a reference to a rectangle of cells; shifting or growing that reference changes which cells later calls address. Copying formulas, inserting cells and moving values are separate changes. These distinctions make the smaller practical examples easier to connect to the full API.
+Adding a worksheet creates a named, initially empty tab. Writing its values or formulas is a separate step. A **range** is a reference to a rectangle of cells; shifting or growing that reference changes which cells later calls address. Copying formulas, inserting cells and moving values are separate changes.
 
 ### Learn from the checks — Import, missing inputs and saved files {#common-lessons}
 
 **Imported formulas need a behavior check.** In the original Man Group example, some shared formulas arrived as saved values. Changing the fee-margin assumption from 56 to 51 basis points therefore did not update all dependent outputs. Repairing one formula did not repair the rest of the chain. Open **Read and calculate → Trace dependencies** and **Edit cells and sheets → Write formulas** to see the captured evidence. A dependency trace describes the imported representation; it cannot reveal a formula that the import did not retain.
 
-**Blank and zero need different treatment when the model requires it.** The fee-lab examples show a blank rate producing zero until the agent writes an explicit missing-input guard. A deliberate zero remains a valid input. Open **Write formulas** for the guard and **Clear cell contents** for the blank and **Write or replace values** for the deliberate zero. This is a modelling decision implemented in formula code, not an automatic completeness check.
+**Blank and zero need different treatment when the model requires it.** The fee-lab examples show a blank rate producing zero until the agent writes an explicit missing-input guard. A deliberate zero remains a valid input. Open **Write formulas** for the guard and **Clear cell contents** for the blank and **Write or replace values** for the deliberate zero. The formula decides how to handle the missing input.
 
 **Memory and the saved file are separate.** Open **Write or replace values → Edit without saving**: the in-memory fee margin changes while the saved file and its checksum stay unchanged. Export creates a file object; saving writes it to disk. The save call returns no verification report. Reopening the file and comparing selected cells are additional checks written by the agent.
 
-The [saved Man Group copy with Fee lab](files/common-work/operations-run/man-group-operations.xlsx), [small new fee workbook](files/common-work/operations-run/new-fee-workbook.xlsx) and [independent file checks](files/common-work/operations-run/independent-verification.json) are retained with this guide. The original supplied file was left unchanged. Opening these outputs in native Microsoft Excel was not part of the recorded test.
+The [saved Man Group copy with Fee lab](files/common-work/operations-run/man-group-operations.xlsx), [small new fee workbook](files/common-work/operations-run/new-fee-workbook.xlsx) and [independent file checks](files/common-work/operations-run/independent-verification.json) are available to download.
 
 ## Follow one workbook through eight steps {#walkthrough} {toc=Walkthrough}
 
@@ -172,11 +173,11 @@ data: data/field-guide.json
 
 ### Read the Inspect step — Two calls and a recursive dependency tree {#journey-inspect}
 
-That step makes two separate calls. **`inspect({kind: ...})` requests record types; `trace("Sales!D5")` follows the chosen result back to its inputs.** The older step's displayed input groups their settings for convenience; `trace` is not an option passed to that `inspect` call.
+That step makes two separate calls. **`inspect({kind: ...})` requests record types; `trace("Sales!D5")` follows the chosen result back to its inputs.** The displayed input groups their settings; `trace` is not an option passed to that `inspect` call.
 
-For D5's `=SUM(D2:D3)`, the trace's `params` array contains D2 and D3. D2's `=B2*C2` then has its own `params` containing B2 and C2. The nesting follows the calculation upstream. In this fixture, the typed input cells have `formula: null` and `params: []`: there is no further formula dependency to follow. It does not list every cell that would change downstream if an input changed.
+For D5's `=SUM(D2:D3)`, the trace's `params` array contains D2 and D3. D2's `=B2*C2` then has its own `params` containing B2 and C2. The nesting follows the calculation upstream. In this example, the typed input cells have `formula: null` and `params: []`: there is no further formula dependency to follow. It does not list every cell that would change downstream if an input changed.
 
-**The old step retained inspection metadata and the trace, but omitted the inspection record payload during serialization.** Its `chart` kind was also ignored, as its metadata notice records. The separate workbook state shown in Readable is a saved cell projection, not that inspect response. Use the [new inspection comparisons](?common=map&inspect=map-workbook-150000#common-work) for complete captured NDJSON records, including the supported `drawing` route and the unknown-token example.
+**This step shows the inspection metadata and trace; its saved output omits the inspection records themselves.** Its `chart` kind was also ignored, as its metadata notice records. The separate workbook state shown in Readable is a saved cell projection, not that inspect response. Use the [inspection explorer](?common=map&inspect=map-workbook-150000#common-work) for complete captured NDJSON records, including the supported `drawing` route and the unknown-token example.
 
 ## Find the action that matches your intent {#families} {toc=Action families}
 
@@ -197,7 +198,7 @@ data: data/field-guide.json
 
 **Start with the reader’s question, give each calculation one home, preserve the source facts and check the result in the form you will deliver.** A compact task may fit on one sheet; a larger model needs a clear route from inputs through calculations to outputs. The aim is a workbook that remains understandable when someone changes an input, adds a period or returns next month.
 
-This section synthesizes the **saved spreadsheet skill, its style and domain guides, the library quick start and feature references, and the supplied example scripts**. These are the documents captured for this study on 15 September 2026; “saved” describes the study copy, not an inactive skill. Read the complete skill documents in [Satellite documents](#satellite-documents). **Design defaults** guide judgment; **API contracts** describe how calls behave; **observed corrections** identify where our version 2.8.59 experiments qualify the documentation. A library example demonstrates syntax—it does not prescribe your tabs, colors or business model.
+This section draws on the **spreadsheet skill, its style and domain guides, the library documentation and examples**. Read the full guidance in [Satellite documents](#satellite-documents). Where the tested behaviour differs from the documentation, the relevant topic explains the difference.
 
 | Stage | The decision to make | What should exist before moving on |
 | --- | --- | --- |
@@ -206,7 +207,7 @@ This section synthesizes the **saved spreadsheet skill, its style and domain gui
 | Build | Which facts are typed inputs, and which results are formulas? | Traceable calculations with consistent periods and keys |
 | Present | Which labels, formats, tables or charts help the reader act? | Readable sheets with clear units and editable inputs |
 | Verify | Does the result stay correct after a meaningful change? | Independent checks, inspected formulas and readable renders |
-| Deliver | Does the saved file preserve what matters? | The requested workbook, with tested behavior and limitations stated |
+| Deliver | Does the saved file preserve what matters? | The requested workbook, checked after saving |
 
 For a first build, start with [sheet structure](#practice-structure) and [the authoring workflow](#practice-workflows). For an existing file, start with [preservation](#practice-preservation). For presentation decisions, open [formatting](#practice-formatting) and [charts](#practice-charts). Each topic below explains **what to do, why it matters and how it looks in practice**.
 
@@ -214,11 +215,11 @@ For a first build, start with [sheet structure](#practice-structure) and [the au
 
 **Use this order: the user’s instructions → the supplied or selected reference → relevant domain conventions → general defaults.** A request to match an existing workbook outweighs a generic preference for different colors or tab order. Subject matter alone is not a template: a healthcare company’s valuation is a financial model, while its appointment register is an operational record.
 
-For a new workbook without a reference or visual direction, the skill offers the template picker **when that capability is available**. A declined, unavailable or failed picker is a reason to continue with a sensible design. Template browsing alone does not authorize creating a workbook. Save an uploaded reference as a reusable template only when the user chooses that option.
+For a new workbook without a reference or visual direction, the skill offers a template picker when available. Otherwise, choose a sensible design for the task. An uploaded reference can also become a reusable template if the user wants one.
 
 When reconstructing a screenshot, retain real numeric and date values. Separate visible inputs from rows that clearly calculate sums, ratios or other repeated relationships. Match the visible design without treating compression artifacts or zoom as intentional typography. A static recreation of a calculated total will stop working as soon as the inputs change.
 
-**Keep capability and recommendation separate.** A documented formula may be inappropriate for a simple schedule; an example’s three sheets do not mean your task needs three sheets. Likewise, the presence of a feature in help does not establish that it calculates or survives Excel export.
+**Choose features to suit the task.** Adapt the examples’ layouts and formulas to the workbook you are building; check the relevant catalogue for calculation and export results.
 
 Sources: [spreadsheet skill](../2026-09-15-artifact-tool-reference/files/sources/skill/SKILL.md), [template selection](../2026-09-15-artifact-tool-reference/files/sources/skill/references/template-elicitation.md), [image references](../2026-09-15-artifact-tool-reference/files/sources/skill/references/image-references.md), [library quick start](../2026-09-15-artifact-tool-reference/files/sources/package/API_QUICK_START.md).
 
@@ -233,7 +234,7 @@ Sources: [spreadsheet skill](../2026-09-15-artifact-tool-reference/files/sources
 | Recurring forecast | “Summary” → “Assumptions” → “Revenue build” → “Sources” | Readers see the answer and drivers first; formulas still flow from sources to builds to summary |
 | Larger shared model | Optional Cover first; outputs, assumptions, builds and sources; optional Checks and ReadMe last | Navigation and documentation earn space when complexity or reuse requires them |
 
-These are illustrative layouts, not required sheet names. For a new larger workbook, the skill places **outputs first, assumptions within easy reach, then builds and sources**. A useful Cover comes first; a justified Checks or ReadMe comes last. Preserve an existing workbook’s organization unless the task calls for changing it.
+Adapt these layouts and names to the task. For a new larger workbook, the skill places **outputs first, assumptions within easy reach, then builds and sources**. A useful Cover comes first; a justified Checks or ReadMe comes last. Preserve an existing workbook’s organization unless the task calls for changing it.
 
 **Give every role a clear boundary.** Keep original extracts unchanged; put cleaning and mapping in prepared areas. Assumptions hold forecast drivers. Builds own meaningful steps such as headcount × compensation and opening balance + movements = closing balance. Outputs link to completed results. Do not duplicate a forecast on the Summary sheet or route finished output values back through Assumptions.
 
@@ -243,7 +244,7 @@ Sources: [spreadsheet structure guidance](../2026-09-15-artifact-tool-reference/
 
 ### Name things for the reader — Navigation, labels and provenance {#practice-naming}
 
-**Names should explain purpose.** “Campaigns”, “Appointments”, “Revenue build” and “Forecast variance” tell the reader what to expect. Preserve established names in an existing file. The skill prefers “Forecast review”, “Forecast variance” and “Sensitivity” for those specific jobs; that is an editorial convention, not an API restriction on other words.
+**Names should explain purpose.** “Campaigns”, “Appointments”, “Revenue build” and “Forecast variance” tell the reader what to expect. Preserve established names in an existing file. The skill prefers “Forecast review”, “Forecast variance” and “Sensitivity” for those specific jobs.
 
 Use concise titles and business labels. Include the period, population and units where a reader needs them: “Active customers” must not quietly mean every customer ever recorded. A workflow that needs human input should expose an editable field and say what remains to be supplied. “Missing input: forecast rate” is more useful than a decorative green status badge or an unexplained error code.
 
@@ -282,13 +283,13 @@ Sources: [library quick start](../2026-09-15-artifact-tool-reference/files/sourc
 | `=SUMIFS(Amount,Month,C$4,Item,$A8)` | Sum records matching this period and item | Period header row and item label column remain anchored |
 | `='Revenue build'!E14` | Read a finished result from its owning schedule | The output links to the correct period and metric |
 
-The named ranges in these examples are illustrative and must be defined over aligned records. Use keyed lookups when source and destination row orders differ: anchoring a cell does not align two different item lists. Choose exact versus approximate matching deliberately, and decide whether duplicate keys should be rejected, aggregated or selected according to a defined rule.
+Define the named ranges in these examples over aligned records. Use keyed lookups when source and destination row orders differ: anchoring a cell does not align two different item lists. Choose exact versus approximate matching deliberately, and decide whether duplicate keys should be rejected, aggregated or selected according to a defined rule.
 
 The skill favors `SUM` for totals, direct multiplication for two factors, `PRODUCT` for several factors and `SUMPRODUCT` for aligned weighted calculations. `PRODUCT` ignores blanks and text, so validate required inputs. It favors `SUMIFS`, `COUNTIFS` and `AVERAGEIFS` for new conditional calculations; an existing valid single-condition formula does not need cosmetic replacement. For many editable rules, a mapping table can be clearer than a long nested `IF`, provided it preserves ordering, boundaries and gaps.
 
 **Use the simplest supported formula that preserves the meaning.** The skill does not recommend introducing `LET`, array/spill formulas, `MAP`, `REDUCE` or `LAMBDA` into ordinary new work. That is a design default, not an instruction to remove a user-required or existing formula. If a spill formula is appropriate and verified, the library says to write only its anchor cell. Scalar formulas can be seeded and filled down or right; a one-cell formula matrix does not broadcast like a scalar value assignment.
 
-**Observed correction:** the skill mentions `OFFSET` and `INDIRECT`, but both were unimplemented in this version’s independent checks. Use a verified equivalent such as direct references or an appropriate `CHOOSE` design. A help entry is not a correctness test. The quick start also documents compatibility prefixes for some functions and warns about blank criteria in `COUNTIF`/`COUNTIFS`; our blank-count probe returned 0 where 5 was expected. For an unconditional blank count, it recommends `COUNTBLANK`.
+**Observed correction:** the skill mentions `OFFSET` and `INDIRECT`, but both were unimplemented in this version’s independent checks. Use a verified equivalent such as direct references or an appropriate `CHOOSE` design. The quick start also documents compatibility prefixes for some functions and warns about blank criteria in `COUNTIF`/`COUNTIFS`; our blank-count probe returned 0 where 5 was expected. For an unconditional blank count, it recommends `COUNTBLANK`.
 
 Sources: [formula construction guidance](../2026-09-15-artifact-tool-reference/files/sources/skill/SKILL.md), [quick-start formula limits](../2026-09-15-artifact-tool-reference/files/sources/package/API_QUICK_START.md), [recorded formula checks](../2026-09-15-artifact-tool-reference/README.md). Explore the exact receipts in [Catalogues](#catalogues) and [Boundaries](#boundaries).
 
@@ -329,7 +330,7 @@ In this illustration, `B3` is 1 for Base and 2 for Downside. Historical actuals 
 
 A captured case is a snapshot, not a second live model. Circular formulas that retain their own previous value require an explicit design and verified iteration, convergence and preservation; the skill does not offer them as a default comparison method.
 
-**Observed correction:** the supplied data-table guidance describes two-variable support, but the study successfully exercised one-variable tables in both orientations. Use the recorded examples for the tested range shapes, and keep native Excel behavior marked unverified. Do not silently substitute a static grid when the task requires a native feature.
+**Observed correction:** the supplied data-table guidance describes two-variable support, but the study successfully exercised one-variable tables in both orientations. Use the examples for the working range shapes. Native data tables keep the formula and input mapping; static grids contain only the captured results.
 
 Sources: [scenario guidance](../2026-09-15-artifact-tool-reference/files/sources/skill/SKILL.md), [supplied data-table guide](../2026-09-15-artifact-tool-reference/files/sources/skill/artifact_tool_docs/DATA_TABLES.md), [data-table contract](../2026-09-15-artifact-tool-reference/files/sources/package/references/data-tables.spec.md), [scenario and sensitivity experiments](../2026-09-15-artifact-tool-reference/README.md).
 
@@ -366,7 +367,7 @@ Sources: [missing-data, error and override guidance](../2026-09-15-artifact-tool
 | Inputs and warnings | Restrained input highlighting; warnings visibly distinct with a legend where needed | Editable cells and calculated problems must not be confused |
 | Notes | A concise notes column after a blank spacer, or a separate area for long explanations | Long commentary should not inflate every row of a numeric table |
 
-The documented font fallback is Helvetica Neue → Helvetica → Arial → Aptos, using a family actually available to the renderer and target application. A 10-point body and 14-point title illustrate the scale; they are not universal fixed settings. Freeze only the headers and identifiers needed for the sheet’s scrolling behavior.
+The documented font fallback is Helvetica Neue → Helvetica → Arial → Aptos, using a family actually available to the renderer and target application. For example, pair a 10-point body with a 14-point title, adjusting both for readability. Freeze only the headers and identifiers needed for the sheet’s scrolling behavior.
 
 Use explicit Excel number formats. `#,##0` suits whole counts; `0.0%` suits many analytical rates. Currency usually needs whole units unless cents matter; per-share figures and small percentage differences may justify more precision. Keep the underlying precision intact. Format codes use Excel’s invariant conventions; do not substitute locale punctuation into the code to imitate the screen.
 
@@ -376,7 +377,7 @@ Sources: [shared style guidelines](../2026-09-15-artifact-tool-reference/files/s
 
 ### Give every chart a question — Selection, binding, placement and export {#practice-charts}
 
-**A chart earns its place by answering a distinct question.** Keep exact values in a table when precision matters, and use a native editable chart when the workbook requires one. A preview image alone does not establish an editable Excel chart.
+**Give each chart a distinct question.** Keep exact values in a table when precision matters. Use a native chart for an editable Excel object and a rendered image for a preview.
 
 | Reader’s question | Usual starting point | What to preserve |
 | --- | --- | --- |
@@ -400,7 +401,7 @@ series.line = { fill: color, style: "solid", width: 2 };
 
 Setting a fill alone may not preserve the desired line in Excel. Bind data before applying series styles: `setData` replaces series while preserving chart-level titles and axes. Inspect each series’ value and category formulas; `chart.categories` may be empty even when categories are correctly bound to cells.
 
-**Observed limit:** 16 of 25 chart tokens produced native Excel charts in this study. Nine were omitted, including histogram, box-and-whisker, waterfall, combo and pareto. Use the chart catalogue’s per-type receipt, not a blanket “supported” claim. A formula-backed bin table and bar chart can answer a distribution question, but disclose the change if a native histogram was requested. Some nested chart settings also failed export when replaced with plain objects; use the corrected facade-field examples in the action explorer.
+**Observed limit:** 16 of 25 chart tokens produced native Excel charts in this study. Nine were omitted, including histogram, box-and-whisker, waterfall, combo and pareto. The chart catalogue shows the result for each type. A formula-backed bin table and bar chart offer an alternative for showing a distribution. Some nested chart settings also failed export when replaced with plain objects; use the corrected facade-field examples in the action explorer.
 
 Sources: [chart design guidance](../2026-09-15-artifact-tool-reference/files/sources/skill/features/charts.md), [quick-start chart details](../2026-09-15-artifact-tool-reference/files/sources/package/API_QUICK_START.md), [chart suggestions example](../2026-09-15-artifact-tool-reference/files/sources/package/examples/chart_suggestions.ts), [chart export experiments](../2026-09-15-artifact-tool-reference/README.md).
 
@@ -411,14 +412,14 @@ Sources: [chart design guidance](../2026-09-15-artifact-tool-reference/files/sou
 | Feature | Useful when | Construction and verification habit |
 | --- | --- | --- |
 | Native table | A record list needs structured columns and filters | Give it a unique explicit name, preserve headers and check its range for overlap |
-| Defined name | A reused assumption or range becomes clearer with a stable name | Check its scope and reference after insertions or edits; naming does not validate the referenced data |
+| Defined name | A reused assumption or range becomes clearer with a stable name | Check its scope and reference after insertions or edits |
 | Data validation | People must choose from defined options or enter valid values | Set meaningful prompts and rules; separately validate programmatic writes |
 | Conditional formatting | A real threshold, exception or comparison should be visible | Use the correct range, rule order and business threshold; keep missing values distinguishable |
 | Notes or comments | Provenance or requested collaboration belongs with cells | Keep notes distinct from discussion threads; set the visible author before creating a thread |
 | Sparklines | A compact trend is genuinely useful | Verify native settings; the quick start warns that date-axis ranges are not serialized and manual bounds need care |
 | Images and shapes | A reference or explanation benefits from a drawing | Reserve space and use the documented anchor/creation methods; inspect export preservation |
 
-**Observed corrections:** turning on a table’s totals row reclassified its last data row in our probe; it did not append a fresh row. Reserve or append the required structure and check formulas after a fresh calculation. Pivot and slicer preservation also varied on re-export. Formula summaries can be a practical alternative when the requested task permits them; they do not fulfill an explicit requirement for a native pivot or slicer.
+**Observed corrections:** turning on a table’s totals row reclassified its last data row in our probe; it did not append a fresh row. Reserve or append the required structure and check formulas after a fresh calculation. Pivot and slicer preservation also varied on re-export. Formula summaries are an alternative when interactive pivots or slicers are unnecessary.
 
 The image probe likewise showed that replacing an anchor with a plain object could break export. The broader lesson is to follow the actual object contract rather than assuming every nested facade can be replaced by JSON. Use the family examples for tested creation and update shapes.
 
@@ -440,7 +441,7 @@ The skill also supplies an **operation marker** for its authoring workflow: run 
 
 Use `workbook.record(...)` when the caller needs the returned patch, object-ID map or collaborative update, rather than wrapping every action without a purpose. For a long build, checkpoint exports can isolate which block introduced a serialization problem. After a failure, read the error, look up the exact feature, patch the smallest relevant section and continue from known state. The quick start recommends a bounded help lookup and, if necessary, one reformulation; its examples are alternatives, not a checklist to execute for every task.
 
-**Persistent-session caution from the study:** managed render/export calls return file descriptors, unlike the ordinary in-memory Blob-like results. A failed callback was rolled back in the tested case, but a timeout can leave the mutation outcome uncertain. Inspect the resumed state before retrying. The [Changes & sessions family](#families) and Code & guidance catalogue expose the actual wrappers and receipts.
+**Session recovery:** managed render/export calls return file descriptors, unlike the ordinary in-memory Blob-like results. A failed callback was rolled back in the tested case, but a timeout can leave the mutation outcome uncertain. Inspect the resumed state before retrying. The [Changes & sessions family](#families) and Code & guidance catalogue expose the actual wrappers and receipts.
 
 Sources: [spreadsheet authoring workflow](../2026-09-15-artifact-tool-reference/files/sources/skill/SKILL.md), [create workflow](../2026-09-15-artifact-tool-reference/files/sources/skill/workflows/create_workflows.md), [edit workflow](../2026-09-15-artifact-tool-reference/files/sources/skill/workflows/edit_workflows.md), [read-only guidance](../2026-09-15-artifact-tool-reference/files/sources/skill/references/read_only_qna.md), [recorded edits API](../2026-09-15-artifact-tool-reference/files/sources/package/api/API_DOCS.md), [marker script](../2026-09-15-artifact-tool-reference/files/sources/skill/container_tools/mark_artifact_operation_started.mjs).
 
@@ -448,14 +449,14 @@ Sources: [spreadsheet authoring workflow](../2026-09-15-artifact-tool-reference/
 
 **The supplied scripts teach working patterns as well as calls.** Their sample filenames, local import paths and fixture labels need adapting to the installed runtime and the actual task. Their complete captured code and execution receipts are available under Code & guidance in [Catalogues](#catalogues).
 
-| Supplied example | Reusable method | What not to infer from it |
+| Supplied example | Reusable method | Adapt for your workbook |
 | --- | --- | --- |
-| Quick start | Build rectangular inputs and formulas, apply presentation, render and export | Its particular layout is not a universal workbook template |
-| Inspect existing workbooks | Start with a bounded workbook summary, then sheets, a relevant region, formulas and drawings | Dumping every cell is not necessary to understand a workbook; choose the intended input file explicitly |
-| Formula trace and help | Follow an output through its precedents, cap the printed tree, compare with an independent expectation and tolerance | A sample Checks tab or “OK” label is not required in every deliverable |
-| Chart suggestions | Choose a chart from the data question, bind to cells, then style and position it | A suggested chart type or good preview is not proof of native export support |
+| Quick start | Build rectangular inputs and formulas, apply presentation, render and export | Choose a layout that fits the question |
+| Inspect existing workbooks | Start with a bounded workbook summary, then sheets, a relevant region, formulas and drawings | Choose the input file and the level of detail needed |
+| Formula trace and help | Follow an output through its precedents, cap the printed tree, compare with an independent expectation and tolerance | Choose an independent expected result and a suitable tolerance |
+| Chart suggestions | Choose a chart from the data question, bind to cells, then style and position it | Check the export result for the chosen chart type |
 
-For example, the trace script compares a compounded result close to **121** with an independently entered expectation of **121**, allowing a **0.001** numerical tolerance. It explains the tiny floating-point difference through the input revenue and growth rate. The lesson is to tie tolerance to the quantity being checked and expose the chain of causes, not to copy 0.001 into every financial or scientific test.
+For example, the trace script compares a compounded result close to **121** with an independently entered expectation of **121**, allowing a **0.001** numerical tolerance. It explains the tiny floating-point difference through the input revenue and growth rate. Choose the tolerance to suit the calculation’s units and scale.
 
 For broad discovery, use bounded `inspect` results. Once the target rectangle is known, direct formula getters return its exact matrix. A dependency trace can grow large: cap the displayed depth and node count, and explicitly say when the view is truncated. Keep full underlying evidence available when the truncated portion could affect the answer.
 
@@ -469,7 +470,7 @@ Preserve sheet names and order, formulas, styles, merged regions, validation, co
 
 Avoid sheet-wide auto-fit or broad formatting resets for a narrow edit. Notes and overrides must remain attached to the correct stable record after sorting or refreshing; position alone may not be a safe identity. Report unrelated pre-existing errors rather than silently repairing them beyond the task.
 
-**Separate engine preservation from application preservation.** Compare relevant sheet and object inventories before and after; inspect the changed render and dependent views. Reopening an exported file in Artifact Tool is useful, and examining its XML can verify specific native objects. Neither establishes full Microsoft Excel behavior. If a required native feature cannot be preserved, explain the specific gap before treating a substitute as equivalent.
+**Check what survives the edit.** Compare sheets and objects before and after, inspect the changed views, and reopen the exported file. Its XML shows which native objects were saved; check important interactive behaviours in the target application as well.
 
 Sources: [edit workflow](../2026-09-15-artifact-tool-reference/files/sources/skill/workflows/edit_workflows.md), [inspection example](../2026-09-15-artifact-tool-reference/files/sources/package/examples/inspect_existing_workbooks.ts), [import/export reference](../2026-09-15-artifact-tool-reference/files/sources/package/api/references/import-export.md), [round-trip experiments](../2026-09-15-artifact-tool-reference/README.md).
 
@@ -490,7 +491,7 @@ Use exact comparisons for identifiers, categories and counts. For calculated num
 
 Inspect at normal zoom with the cells unselected: selection can hide the intended fill or contrast. Check wrapped labels, row heights, freeze panes, chart axes and legends. Fix the relevant issue and recheck the affected view; repeated renders of unchanged areas do not add evidence.
 
-Deliver the requested artifact rather than several unexplained “final” variants. State material limits specifically: in this study, native Microsoft Excel behavior and account-backed Google Sheets remain untested. A number-producing function or zero-error XML parse is not a general compatibility certificate.
+Deliver one clearly named final workbook and mention any specific problem that remains.
 
 Sources: [verification guidance](../2026-09-15-artifact-tool-reference/files/sources/skill/SKILL.md), [trace example](../2026-09-15-artifact-tool-reference/files/sources/package/examples/formula_trace_and_help.ts), [chart checks](../2026-09-15-artifact-tool-reference/files/sources/skill/features/charts.md), [recorded boundary cases](#boundaries).
 
@@ -519,7 +520,7 @@ Sources: [financial models](../2026-09-15-artifact-tool-reference/files/sources/
 
 Every document below shows its **token count before you open it**. Select a name to read the complete Markdown as headings, paragraphs, lists, tables and code. The reader also shows word and character counts, a contents list, the original Markdown and a download. Links between these documents keep you in the reader.
 
-These are the study's saved source documents, captured on **15 September 2026**. They were checked against the installed skill on **16 September 2026**. Supporting documents are read when applicable; the combined size does not mean the entire collection is loaded on every task. Template bundles and the library's wider API reference are separate resources, beyond this skill-document collection.
+These source copies were captured on **15 September 2026** and checked against the installed skill on **16 September 2026**. The agent reads supporting documents as needed. Template bundles and the wider library API reference are separate resources.
 
 ::: wide
 ```component satellite-documents-browser
@@ -532,7 +533,7 @@ data: data/satellite-documents.json
 
 *Search every supplied API example and formula, plus charts, shapes, scripts and workflow guidance.*
 
-“Executed” means a call ran. It does not certify every option or prove the result correct. Formula examples use a common numeric fixture; independent expected-result checks, where available, are shown separately. Chart previews and native Excel preservation are reported as different outcomes. **Code & guidance** contains the four executed package examples, the operation marker, eleven supplied guidance documents and three study harnesses; their origins and execution status are labeled.
+Formula examples show their inputs and results, with independent checks where available. Chart examples show the preview and export result. **Code & guidance** contains the package examples, operation marker, supporting guides and scripts used to run the experiments.
 
 ::: wide
 ```component catalogue-browser
@@ -543,7 +544,7 @@ data: data/field-guide.json
 
 ## Check the boundaries that can change the answer {#boundaries} {toc=Boundaries}
 
-*A successful call, a plausible number and a saved file prove different things.*
+*Concrete problems found in calculation, editing and export—and how to handle them.*
 
 These cases explain why the surrounding code matters. A wrapper can validate inputs, retain a checkpoint, inspect warnings, compare independent expectations and reopen an export. The useful workflow is **edit → calculate → inspect → render → export → reopen**, with checks at the boundary that matters.
 
@@ -566,4 +567,4 @@ The preceding research exercised 39 operation commands through 42 examples, 126 
 
 The original [complete Markdown reference](../2026-09-15-artifact-tool-reference/README.md) holds the full settings, supplied contracts, corrected usage and experiment ledger. This page's [data manifest](data/MANIFEST.md), [source receipt](data/source-receipt.json) and [walkthrough data](data/walkthrough.json) explain the frozen inputs and how to reproduce them. The source documents and runnable probes remain with the reference.
 
-Native Microsoft Excel behavior and account-backed Google Sheets were not tested. Rendering and XML inspection do not establish complete application compatibility. The workbook grids in this guide are readable projections of saved cells; the captured PNGs show the package's own rendering.
+Tests used Artifact Tool 2.8.59, its renderer and exported XLSX files. Microsoft Excel itself and connected Google Sheets were not tested.

@@ -5,6 +5,7 @@ This imports saved evidence; it does not execute any workbook code.
 """
 import hashlib
 import json
+import re
 import shutil
 import sys
 from html.parser import HTMLParser
@@ -71,6 +72,34 @@ def main(source):
         ex['links'] = [[label,preserve(path)] for label,path in ex['links']]
         if ex['image']:
             ex['image'] = preserve(ex['image'])
+    # Local guide copy; keep the captured input/output unchanged.
+    notes = {'op:add-linked-build': 'The example sets the assumptions, financial logic and cell references '
+                            'explicitly.',
+     'op:clear-formulas': 'Clearing contents leaves the cells in place; deleting a row or tab changes '
+                          'the workbook structure.',
+     'op:overlap-table': 'The API accepts overlapping table ranges. Check their addresses before '
+                         'creating tables to avoid conflicts in Excel.',
+     'old:runner': 'The program runs in Node. Messages such as “saved: overview.json” come from the '
+                   'script’s recording helper.',
+     'old:render': 'Rendering returns an image blob. The script saves it, then reports the filename '
+                   'and size. The image shows the workbook’s current values.',
+     'old:export': 'Saving returns no report; the script adds the filename, size and file comparisons. '
+                   'Shared-formula import gaps remain in this copy. Checks compare formula text, '
+                   'literal cells, sheet order, annotation count and cached numbers using 1e-8 '
+                   'absolute / 1e-10 relative tolerance.',
+     'old:ranges': 'Values and formulas come from separate native reads. The script pairs them; the '
+                   'readable view adds metric and period labels from the workbook and rounds the '
+                   'numbers. Tree and Raw keep the full captured precision.',
+     'lab:search-pattern': 'The pattern searches across all tabs. The response reports when the match '
+                           'limit is reached; matching cells still need interpretation.'}
+    for key, note in notes.items():
+        data["examples"][key]["note"] = note
+    for ex in data["examples"].values():
+        ex["note"] = re.sub(r"Size of the returned NDJSON text: (.*?) characters; approximately (.*?) tokens using o200k_base\. This is not a billing count or the size of the whole outer tool response\. NDJSON means one JSON record per line\.", r"Returned NDJSON: \1 characters · approximately \2 tokens.", ex["note"])
+        ex["inputReadable"] = ex["inputReadable"].replace("Plain-English reading of the actual input. Requested limits describe the request, not a guarantee of what the library returns.", "Requested limits: compare these with the returned previews below.")
+    for op in data["operations"]:
+        if op["id"] == "sheet":
+            op["detail"] = "Adding a tab creates an empty sheet. The Fee lab example then writes a schedule alongside the six existing sheets."
     for path in ('operations-run/man-group-operations.xlsx','operations-run/new-fee-workbook.xlsx','operations-run/independent-verification.json'):
         preserve(path)
     data['provenance'] = {'sourceUrl':SOURCE_URL,'sourceVersion':7,'packageVersion':'2.8.59','evidenceDate':'2026-09-15','integrationDate':'2026-09-16','sourceHtmlSha256':hashlib.sha256(page.read_bytes()).hexdigest(),'actions':len(data['operations']),'uniqueExamples':len(data['examples']),'exampleAssignments':sum(len(x['examples']) for x in data['operations'])}

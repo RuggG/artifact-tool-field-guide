@@ -1596,7 +1596,7 @@
       &quot;id&quot;: &quot;session-create-and-commit&quot;,
       &quot;title&quot;: &quot;Create a persistent session&quot;,
       &quot;family&quot;: &quot;changes&quot;,
-      &quot;summary&quot;: &quot;A real local MCP session run with synthetic data. Absolute paths in the raw receipt identify the original capture environment.&quot;,
+      &quot;summary&quot;: &quot;Create a session, add data and commit the workbook state.&quot;,
       &quot;kind&quot;: &quot;session&quot;,
       &quot;code&quot;: &quot;const s=workbook.worksheets.add(&#x27;Session&#x27;); s.getRange(&#x27;A1:C2&#x27;).values=[[&#x27;Qty&#x27;,&#x27;Price&#x27;,&#x27;Total&#x27;],[3,4,&#x27;=A2*B2&#x27;]]; return {total:s.getRange(&#x27;C2&#x27;).values,session:session.info};&quot;,
       &quot;input&quot;: {
@@ -1646,7 +1646,7 @@
       &quot;id&quot;: &quot;session-resume-and-edit&quot;,
       &quot;title&quot;: &quot;Resume and edit a session&quot;,
       &quot;family&quot;: &quot;changes&quot;,
-      &quot;summary&quot;: &quot;A real local MCP session run with synthetic data. Absolute paths in the raw receipt identify the original capture environment.&quot;,
+      &quot;summary&quot;: &quot;Reopen the saved session and change values in its workbook.&quot;,
       &quot;kind&quot;: &quot;session&quot;,
       &quot;code&quot;: &quot;const s=workbook.worksheets.getItem(&#x27;Session&#x27;); const before=s.getRange(&#x27;C2&#x27;).values; s.getRange(&#x27;A2&#x27;).values=[[input.qty]]; workbook.recalculate(); return {before,after:s.getRange(&#x27;C2&#x27;).values};&quot;,
       &quot;input&quot;: {
@@ -1697,7 +1697,7 @@
       &quot;id&quot;: &quot;session-managed-outputs&quot;,
       &quot;title&quot;: &quot;Save managed render and export outputs&quot;,
       &quot;family&quot;: &quot;changes&quot;,
-      &quot;summary&quot;: &quot;A real local MCP session run with synthetic data. Absolute paths in the raw receipt identify the original capture environment.&quot;,
+      &quot;summary&quot;: &quot;Render and export from a session; the returned objects identify the saved files.&quot;,
       &quot;kind&quot;: &quot;session&quot;,
       &quot;code&quot;: &quot;const inspection=await workbook.inspect({kind:&#x27;table&#x27;,range:&#x27;Session!A1:C2&#x27;,fileName:&#x27;session-inspect.ndjson&#x27;}); const preview=await workbook.render({sheetName:&#x27;Session&#x27;,range:&#x27;A1:C2&#x27;,fileName:&#x27;session-preview.png&#x27;,scale:2}); const exported=await workbook.export({format:&#x27;xlsx&#x27;,fileName:&#x27;session-probe.xlsx&#x27;}); return {inspection,preview,exported};&quot;,
       &quot;input&quot;: {
@@ -1800,7 +1800,7 @@
       &quot;id&quot;: &quot;session-throw-after-mutation&quot;,
       &quot;title&quot;: &quot;Reopen after a failed edit&quot;,
       &quot;family&quot;: &quot;changes&quot;,
-      &quot;summary&quot;: &quot;A real local MCP session run with synthetic data. Absolute paths in the raw receipt identify the original capture environment.&quot;,
+      &quot;summary&quot;: &quot;Make an edit, then throw an error; inspect the reopened session to see which changes persisted.&quot;,
       &quot;kind&quot;: &quot;session&quot;,
       &quot;code&quot;: &quot;workbook.worksheets.getItem(&#x27;Session&#x27;).getRange(&#x27;A2&#x27;).values=[[999]]; throw new Error(&#x27;Intentional rollback probe&#x27;);&quot;,
       &quot;input&quot;: {
@@ -33057,7 +33057,7 @@
       },
       &quot;image&quot;: &quot;files/chart-line.png&quot;,
       &quot;code&quot;: &quot;sheet.charts.add(\&quot;line\&quot;, range);&quot;,
-      &quot;summary&quot;: &quot;Compare the saved preview with the native Excel-file evidence. The same simple fixture is not suitable for interpreting every chart type.&quot;
+      &quot;summary&quot;: &quot;See the rendered preview and whether this chart type was written to the Excel file.&quot;
     },
     {
       &quot;id&quot;: &quot;chart-pie&quot;,
@@ -33076,7 +33076,7 @@
       },
       &quot;image&quot;: &quot;files/chart-pie.png&quot;,
       &quot;code&quot;: &quot;sheet.charts.add(\&quot;pie\&quot;, range);&quot;,
-      &quot;summary&quot;: &quot;Compare the saved preview with the native Excel-file evidence. The same simple fixture is not suitable for interpreting every chart type.&quot;
+      &quot;summary&quot;: &quot;See the rendered preview and whether this chart type was written to the Excel file.&quot;
     },
     {
       &quot;id&quot;: &quot;chart-bar&quot;,
@@ -33095,7 +33095,7 @@
       },
       &quot;image&quot;: &quot;files/chart-bar.png&quot;,
       &quot;code&quot;: &quot;sheet.charts.add(\&quot;bar\&quot;, range);&quot;,
-      &quot;summary&quot;: &quot;Compare the saved preview with the native Excel-file evidence. The same simple fixture is not suitable for interpreting every chart type.&quot;
+      &quot;summary&quot;: &quot;See the rendered preview and whether this chart type was written to the Excel file.&quot;
     },
     {
       &quot;id&quot;: &quot;chart-doughnut&quot;,
@@ -33114,7 +33114,7 @@
       },
       &quot;image&quot;: &quot;files/chart-doughnut.png&quot;,
       &quot;code&quot;: &quot;sheet.charts.add(\&quot;doughnut\&quot;, range);&quot;,
-      &quot;summary&quot;: &quot;Compare the saved preview with the native Excel-file evidence. The same simple fixture is not suitable for interpreting every chart type.&quot;
+      &quot;summary&quot;: &quot;See the rendered preview and whether this chart type was written to the Excel file.&quot;
     },
     {
       &quot;id&quot;: &quot;chart-scatter&quot;,
@@ -33133,7 +33133,7 @@
       },
       &quot;image&quot;: &quot;files/chart-scatter.png&quot;,
       &quot;code&quot;: &quot;sheet.charts.add(\&quot;scatter\&quot;, range);&quot;,
-      &quot;summary&quot;: &quot;Compare the saved preview with the native Excel-file evidence. The same simple fixture is not suitable for interpreting every chart type.&quot;
+      &quot;summary&quot;: &quot;See the rendered preview and whether this chart type was written to the Excel file.&quot;
     },
     {
       &quot;id&quot;: &quot;chart-bubble&quot;,
@@ -33152,7 +33152,7 @@
       },
       &quot;image&quot;: &quot;files/chart-bubble.png&quot;,
       &quot;code&quot;: &quot;sheet.charts.add(\&quot;bubble\&quot;, range);&quot;,
-      &quot;summary&quot;: &quot;Compare the saved preview with the native Excel-file evidence. The same simple fixture is not suitable for interpreting every chart type.&quot;
+      &quot;summary&quot;: &quot;See the rendered preview and whether this chart type was written to the Excel file.&quot;
     },
     {
       &quot;id&quot;: &quot;chart-radar&quot;,
@@ -33171,7 +33171,7 @@
       },
       &quot;image&quot;: &quot;files/chart-radar.png&quot;,
       &quot;code&quot;: &quot;sheet.charts.add(\&quot;radar\&quot;, range);&quot;,
-      &quot;summary&quot;: &quot;Compare the saved preview with the native Excel-file evidence. The same simple fixture is not suitable for interpreting every chart type.&quot;
+      &quot;summary&quot;: &quot;See the rendered preview and whether this chart type was written to the Excel file.&quot;
     },
     {
       &quot;id&quot;: &quot;chart-treemap&quot;,
@@ -33188,7 +33188,7 @@
       },
       &quot;image&quot;: &quot;files/chart-treemap.png&quot;,
       &quot;code&quot;: &quot;sheet.charts.add(\&quot;treemap\&quot;, range);&quot;,
-      &quot;summary&quot;: &quot;Compare the saved preview with the native Excel-file evidence. The same simple fixture is not suitable for interpreting every chart type.&quot;
+      &quot;summary&quot;: &quot;See the rendered preview and whether this chart type was written to the Excel file.&quot;
     },
     {
       &quot;id&quot;: &quot;chart-sunburst&quot;,
@@ -33205,7 +33205,7 @@
       },
       &quot;image&quot;: &quot;files/chart-sunburst.png&quot;,
       &quot;code&quot;: &quot;sheet.charts.add(\&quot;sunburst\&quot;, range);&quot;,
-      &quot;summary&quot;: &quot;Compare the saved preview with the native Excel-file evidence. The same simple fixture is not suitable for interpreting every chart type.&quot;
+      &quot;summary&quot;: &quot;See the rendered preview and whether this chart type was written to the Excel file.&quot;
     },
     {
       &quot;id&quot;: &quot;chart-map&quot;,
@@ -33222,7 +33222,7 @@
       },
       &quot;image&quot;: &quot;files/chart-map.png&quot;,
       &quot;code&quot;: &quot;sheet.charts.add(\&quot;map\&quot;, range);&quot;,
-      &quot;summary&quot;: &quot;Compare the saved preview with the native Excel-file evidence. The same simple fixture is not suitable for interpreting every chart type.&quot;
+      &quot;summary&quot;: &quot;See the rendered preview and whether this chart type was written to the Excel file.&quot;
     },
     {
       &quot;id&quot;: &quot;chart-waterfall&quot;,
@@ -33239,7 +33239,7 @@
       },
       &quot;image&quot;: &quot;files/chart-waterfall.png&quot;,
       &quot;code&quot;: &quot;sheet.charts.add(\&quot;waterfall\&quot;, range);&quot;,
-      &quot;summary&quot;: &quot;Compare the saved preview with the native Excel-file evidence. The same simple fixture is not suitable for interpreting every chart type.&quot;
+      &quot;summary&quot;: &quot;See the rendered preview and whether this chart type was written to the Excel file.&quot;
     },
     {
       &quot;id&quot;: &quot;chart-line3D&quot;,
@@ -33258,7 +33258,7 @@
       },
       &quot;image&quot;: &quot;files/chart-line3D.png&quot;,
       &quot;code&quot;: &quot;sheet.charts.add(\&quot;line3D\&quot;, range);&quot;,
-      &quot;summary&quot;: &quot;Compare the saved preview with the native Excel-file evidence. The same simple fixture is not suitable for interpreting every chart type.&quot;
+      &quot;summary&quot;: &quot;See the rendered preview and whether this chart type was written to the Excel file.&quot;
     },
     {
       &quot;id&quot;: &quot;chart-pie3D&quot;,
@@ -33277,7 +33277,7 @@
       },
       &quot;image&quot;: &quot;files/chart-pie3D.png&quot;,
       &quot;code&quot;: &quot;sheet.charts.add(\&quot;pie3D\&quot;, range);&quot;,
-      &quot;summary&quot;: &quot;Compare the saved preview with the native Excel-file evidence. The same simple fixture is not suitable for interpreting every chart type.&quot;
+      &quot;summary&quot;: &quot;See the rendered preview and whether this chart type was written to the Excel file.&quot;
     },
     {
       &quot;id&quot;: &quot;chart-area3D&quot;,
@@ -33296,7 +33296,7 @@
       },
       &quot;image&quot;: &quot;files/chart-area3D.png&quot;,
       &quot;code&quot;: &quot;sheet.charts.add(\&quot;area3D\&quot;, range);&quot;,
-      &quot;summary&quot;: &quot;Compare the saved preview with the native Excel-file evidence. The same simple fixture is not suitable for interpreting every chart type.&quot;
+      &quot;summary&quot;: &quot;See the rendered preview and whether this chart type was written to the Excel file.&quot;
     },
     {
       &quot;id&quot;: &quot;chart-bar3D&quot;,
@@ -33315,7 +33315,7 @@
       },
       &quot;image&quot;: &quot;files/chart-bar3D.png&quot;,
       &quot;code&quot;: &quot;sheet.charts.add(\&quot;bar3D\&quot;, range);&quot;,
-      &quot;summary&quot;: &quot;Compare the saved preview with the native Excel-file evidence. The same simple fixture is not suitable for interpreting every chart type.&quot;
+      &quot;summary&quot;: &quot;See the rendered preview and whether this chart type was written to the Excel file.&quot;
     },
     {
       &quot;id&quot;: &quot;chart-funnel&quot;,
@@ -33332,7 +33332,7 @@
       },
       &quot;image&quot;: &quot;files/chart-funnel.png&quot;,
       &quot;code&quot;: &quot;sheet.charts.add(\&quot;funnel\&quot;, range);&quot;,
-      &quot;summary&quot;: &quot;Compare the saved preview with the native Excel-file evidence. The same simple fixture is not suitable for interpreting every chart type.&quot;
+      &quot;summary&quot;: &quot;See the rendered preview and whether this chart type was written to the Excel file.&quot;
     },
     {
       &quot;id&quot;: &quot;chart-histogram&quot;,
@@ -33349,7 +33349,7 @@
       },
       &quot;image&quot;: &quot;files/chart-histogram.png&quot;,
       &quot;code&quot;: &quot;sheet.charts.add(\&quot;histogram\&quot;, range);&quot;,
-      &quot;summary&quot;: &quot;Compare the saved preview with the native Excel-file evidence. The same simple fixture is not suitable for interpreting every chart type.&quot;
+      &quot;summary&quot;: &quot;See the rendered preview and whether this chart type was written to the Excel file.&quot;
     },
     {
       &quot;id&quot;: &quot;chart-boxWhisker&quot;,
@@ -33366,7 +33366,7 @@
       },
       &quot;image&quot;: null,
       &quot;code&quot;: &quot;sheet.charts.add(\&quot;boxWhisker\&quot;, range);&quot;,
-      &quot;summary&quot;: &quot;Compare the saved preview with the native Excel-file evidence. The same simple fixture is not suitable for interpreting every chart type.&quot;
+      &quot;summary&quot;: &quot;See the rendered preview and whether this chart type was written to the Excel file.&quot;
     },
     {
       &quot;id&quot;: &quot;chart-stock&quot;,
@@ -33385,7 +33385,7 @@
       },
       &quot;image&quot;: &quot;files/chart-stock.png&quot;,
       &quot;code&quot;: &quot;sheet.charts.add(\&quot;stock\&quot;, range);&quot;,
-      &quot;summary&quot;: &quot;Compare the saved preview with the native Excel-file evidence. The same simple fixture is not suitable for interpreting every chart type.&quot;
+      &quot;summary&quot;: &quot;See the rendered preview and whether this chart type was written to the Excel file.&quot;
     },
     {
       &quot;id&quot;: &quot;chart-surface3D&quot;,
@@ -33404,7 +33404,7 @@
       },
       &quot;image&quot;: &quot;files/chart-surface3D.png&quot;,
       &quot;code&quot;: &quot;sheet.charts.add(\&quot;surface3D\&quot;, range);&quot;,
-      &quot;summary&quot;: &quot;Compare the saved preview with the native Excel-file evidence. The same simple fixture is not suitable for interpreting every chart type.&quot;
+      &quot;summary&quot;: &quot;See the rendered preview and whether this chart type was written to the Excel file.&quot;
     },
     {
       &quot;id&quot;: &quot;chart-ofPie&quot;,
@@ -33423,7 +33423,7 @@
       },
       &quot;image&quot;: &quot;files/chart-ofPie.png&quot;,
       &quot;code&quot;: &quot;sheet.charts.add(\&quot;ofPie\&quot;, range);&quot;,
-      &quot;summary&quot;: &quot;Compare the saved preview with the native Excel-file evidence. The same simple fixture is not suitable for interpreting every chart type.&quot;
+      &quot;summary&quot;: &quot;See the rendered preview and whether this chart type was written to the Excel file.&quot;
     },
     {
       &quot;id&quot;: &quot;chart-surface&quot;,
@@ -33442,7 +33442,7 @@
       },
       &quot;image&quot;: &quot;files/chart-surface.png&quot;,
       &quot;code&quot;: &quot;sheet.charts.add(\&quot;surface\&quot;, range);&quot;,
-      &quot;summary&quot;: &quot;Compare the saved preview with the native Excel-file evidence. The same simple fixture is not suitable for interpreting every chart type.&quot;
+      &quot;summary&quot;: &quot;See the rendered preview and whether this chart type was written to the Excel file.&quot;
     },
     {
       &quot;id&quot;: &quot;chart-pareto&quot;,
@@ -33459,7 +33459,7 @@
       },
       &quot;image&quot;: &quot;files/chart-pareto.png&quot;,
       &quot;code&quot;: &quot;sheet.charts.add(\&quot;pareto\&quot;, range);&quot;,
-      &quot;summary&quot;: &quot;Compare the saved preview with the native Excel-file evidence. The same simple fixture is not suitable for interpreting every chart type.&quot;
+      &quot;summary&quot;: &quot;See the rendered preview and whether this chart type was written to the Excel file.&quot;
     },
     {
       &quot;id&quot;: &quot;chart-combo&quot;,
@@ -33476,7 +33476,7 @@
       },
       &quot;image&quot;: &quot;files/chart-combo.png&quot;,
       &quot;code&quot;: &quot;sheet.charts.add(\&quot;combo\&quot;, range);&quot;,
-      &quot;summary&quot;: &quot;Compare the saved preview with the native Excel-file evidence. The same simple fixture is not suitable for interpreting every chart type.&quot;
+      &quot;summary&quot;: &quot;See the rendered preview and whether this chart type was written to the Excel file.&quot;
     },
     {
       &quot;id&quot;: &quot;chart-area&quot;,
@@ -33495,7 +33495,7 @@
       },
       &quot;image&quot;: &quot;files/chart-area.png&quot;,
       &quot;code&quot;: &quot;sheet.charts.add(\&quot;area\&quot;, range);&quot;,
-      &quot;summary&quot;: &quot;Compare the saved preview with the native Excel-file evidence. The same simple fixture is not suitable for interpreting every chart type.&quot;
+      &quot;summary&quot;: &quot;See the rendered preview and whether this chart type was written to the Excel file.&quot;
     }
   ],
   &quot;shapes&quot;: [

@@ -197,7 +197,7 @@
       &quot;supply&quot;: &quot;A sheet name, followed by whichever cells and formatting to populate.&quot;,
       &quot;returns&quot;: &quot;A worksheet object for subsequent range, table and chart operations.&quot;,
       &quot;agent&quot;: &quot;Choose where the new work belongs and link it to the existing model if needed.&quot;,
-      &quot;detail&quot;: &quot;Adding a tab does not automatically populate it. The Fee lab example was deliberately created as an illustrative schedule alongside the six original sheets.&quot;,
+      &quot;detail&quot;: &quot;Adding a tab creates an empty sheet. The Fee lab example then writes a schedule alongside the six existing sheets.&quot;,
       &quot;examples&quot;: [
         &quot;op:import-add-sheet&quot;,
         &quot;op:add-linked-build&quot;
@@ -1263,7 +1263,7 @@
         }
       },
       &quot;checkHelpers&quot;: &quot;const cell=(sheet,address)=&gt;({address,value:sheet.getRange(address).values[0][0],formula:sheet.getRange(address).formulas[0][0]});\nconst grid=(sheet,address)=&gt;({address,values:sheet.getRange(address).values,formulas:sheet.getRange(address).formulas});\nconst labRead=()=&gt;({margin:cell(lab,&#x27;C4&#x27;),growth:cell(lab,&#x27;C5&#x27;),quarters:grid(lab,&#x27;B9:F12&#x27;),annual:cell(lab,&#x27;C15&#x27;)});\nconst inspect=async (book,args)=&gt;{const r=await book.inspect(args);return {ndjson:r.ndjson,recordCount:r.recordCount,truncated:r.truncated,metadata:r.metadata};};\nconst names=async book=&gt;await inspect(book,{kind:&#x27;sheet&#x27;,include:&#x27;id,name&#x27;,maxChars:5000});\n&quot;,
-      &quot;note&quot;: &quot;The agent chooses the assumptions, financial logic and cell references. These illustrative quarters are not investment forecasts.&quot;,
+      &quot;note&quot;: &quot;The example sets the assumptions, financial logic and cell references explicitly.&quot;,
       &quot;image&quot;: &quot;&quot;,
       &quot;links&quot;: [
         [
@@ -1637,7 +1637,7 @@
         }
       },
       &quot;checkHelpers&quot;: &quot;const cell=(sheet,address)=&gt;({address,value:sheet.getRange(address).values[0][0],formula:sheet.getRange(address).formulas[0][0]});\nconst grid=(sheet,address)=&gt;({address,values:sheet.getRange(address).values,formulas:sheet.getRange(address).formulas});\nconst labRead=()=&gt;({margin:cell(lab,&#x27;C4&#x27;),growth:cell(lab,&#x27;C5&#x27;),quarters:grid(lab,&#x27;B9:F12&#x27;),annual:cell(lab,&#x27;C15&#x27;)});\nconst inspect=async (book,args)=&gt;{const r=await book.inspect(args);return {ndjson:r.ndjson,recordCount:r.recordCount,truncated:r.truncated,metadata:r.metadata};};\nconst names=async book=&gt;await inspect(book,{kind:&#x27;sheet&#x27;,include:&#x27;id,name&#x27;,maxChars:5000});\n&quot;,
-      &quot;note&quot;: &quot;Clearing cells is different from deleting an entire row or tab. A zero total does not prove a model is healthy.&quot;,
+      &quot;note&quot;: &quot;Clearing contents leaves the cells in place; deleting a row or tab changes the workbook structure.&quot;,
       &quot;image&quot;: &quot;&quot;,
       &quot;links&quot;: [
         [
@@ -3011,7 +3011,7 @@
         }
       },
       &quot;checkHelpers&quot;: &quot;const cell=(sheet,address)=&gt;({address,value:sheet.getRange(address).values[0][0],formula:sheet.getRange(address).formulas[0][0]});\nconst grid=(sheet,address)=&gt;({address,values:sheet.getRange(address).values,formulas:sheet.getRange(address).formulas});\nconst labRead=()=&gt;({margin:cell(lab,&#x27;C4&#x27;),growth:cell(lab,&#x27;C5&#x27;),quarters:grid(lab,&#x27;B9:F12&#x27;),annual:cell(lab,&#x27;C15&#x27;)});\nconst inspect=async (book,args)=&gt;{const r=await book.inspect(args);return {ndjson:r.ndjson,recordCount:r.recordCount,truncated:r.truncated,metadata:r.metadata};};\nconst names=async book=&gt;await inspect(book,{kind:&#x27;sheet&#x27;,include:&#x27;id,name&#x27;,maxChars:5000});\n&quot;,
-      &quot;note&quot;: &quot;The guide explicitly says to check for overlaps because the API does not reject them. Acceptance in memory does not establish that this is a valid Excel file.&quot;,
+      &quot;note&quot;: &quot;The API accepts overlapping table ranges. Check their addresses before creating tables to avoid conflicts in Excel.&quot;,
       &quot;image&quot;: &quot;&quot;,
       &quot;links&quot;: [
         [
@@ -3444,7 +3444,7 @@
       &quot;checks&quot;: null,
       &quot;checkCode&quot;: &quot;&quot;,
       &quot;checkHelpers&quot;: &quot;&quot;,
-      &quot;note&quot;: &quot; The messages such as “saved: overview.json” were printed by our recording helper. They are not independent guarantees from Excel. The program runs in Node. No Excel window or connected add-in session is involved in these calls.&quot;,
+      &quot;note&quot;: &quot;The program runs in Node. Messages such as “saved: overview.json” come from the script’s recording helper.&quot;,
       &quot;image&quot;: &quot;&quot;,
       &quot;links&quot;: [
         [
@@ -3518,7 +3518,7 @@
       &quot;label&quot;: &quot;Populated regions · original model&quot;,
       &quot;intent&quot;: &quot;Break a known section into manageable blocks so the agent can inspect the relevant part next.&quot;,
       &quot;finding&quot;: &quot;Within C7:M28 it finds four blocks: headers/AUM, revenue, operating costs/profit, and the PBT-to-EPS bridge. Previews stop at column H even though each region extends to M.&quot;,
-      &quot;inputReadable&quot;: &quot;&lt;p class=\&quot;xio-input-action\&quot;&gt;Identify populated regions and request small previews within a selected part of Summary.&lt;/p&gt;&lt;dl class=\&quot;xio-input-fields\&quot;&gt;&lt;div&gt;&lt;dt&gt;Sheet&lt;/dt&gt;&lt;dd&gt;Summary&lt;/dd&gt;&lt;/div&gt;&lt;div&gt;&lt;dt&gt;Search area&lt;/dt&gt;&lt;dd&gt;C7:M28&lt;/dd&gt;&lt;/div&gt;&lt;div&gt;&lt;dt&gt;Record type&lt;/dt&gt;&lt;dd&gt;Region&lt;/dd&gt;&lt;/div&gt;&lt;div&gt;&lt;dt&gt;Preview caps requested&lt;/dt&gt;&lt;dd&gt;8 rows × 6 columns&lt;/dd&gt;&lt;/div&gt;&lt;div&gt;&lt;dt&gt;Response cap requested&lt;/dt&gt;&lt;dd&gt;10,000 characters&lt;/dd&gt;&lt;/div&gt;&lt;/dl&gt;&lt;p class=\&quot;xio-caption\&quot;&gt;Plain-English reading of the actual input. Requested limits describe the request, not a guarantee of what the library returns.&lt;/p&gt;&quot;,
+      &quot;inputReadable&quot;: &quot;&lt;p class=\&quot;xio-input-action\&quot;&gt;Identify populated regions and request small previews within a selected part of Summary.&lt;/p&gt;&lt;dl class=\&quot;xio-input-fields\&quot;&gt;&lt;div&gt;&lt;dt&gt;Sheet&lt;/dt&gt;&lt;dd&gt;Summary&lt;/dd&gt;&lt;/div&gt;&lt;div&gt;&lt;dt&gt;Search area&lt;/dt&gt;&lt;dd&gt;C7:M28&lt;/dd&gt;&lt;/div&gt;&lt;div&gt;&lt;dt&gt;Record type&lt;/dt&gt;&lt;dd&gt;Region&lt;/dd&gt;&lt;/div&gt;&lt;div&gt;&lt;dt&gt;Preview caps requested&lt;/dt&gt;&lt;dd&gt;8 rows × 6 columns&lt;/dd&gt;&lt;/div&gt;&lt;div&gt;&lt;dt&gt;Response cap requested&lt;/dt&gt;&lt;dd&gt;10,000 characters&lt;/dd&gt;&lt;/div&gt;&lt;/dl&gt;&lt;p class=\&quot;xio-caption\&quot;&gt;Requested limits: compare these with the returned previews below.&lt;/p&gt;&quot;,
       &quot;input&quot;: &quot;return await wb.inspect({\n  kind: \&quot;region\&quot;, sheetId: \&quot;Summary\&quot;, range: \&quot;C7:M28\&quot;,\n  maxChars: 10000, tableMaxRows: 8, tableMaxCols: 6\n});&quot;,
       &quot;outputLabel&quot;: &quot;Library response&quot;,
       &quot;outputReadable&quot;: &quot;&lt;details class=\&quot;record-fold\&quot;&gt;&lt;summary&gt;C22:M28&lt;small&gt;7 × 11 · 77 populated&lt;/small&gt;&lt;/summary&gt;&lt;p class=\&quot;xio-caption\&quot;&gt;Returned preview: C22:H28&lt;/p&gt;&lt;div class=\&quot;xio-grid-scroll\&quot;&gt;&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Cell row&lt;/th&gt;&lt;th&gt;C&lt;/th&gt;&lt;th&gt;D&lt;/th&gt;&lt;th&gt;E&lt;/th&gt;&lt;th&gt;F&lt;/th&gt;&lt;th&gt;G&lt;/th&gt;&lt;th&gt;H&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;22&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;Management-fee PBT, USD m\&quot;&gt;Management-fee PBT, USD m&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;133\&quot;&gt;133&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;280\&quot;&gt;280&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;162.99999999999997\&quot;&gt;162.99999999999997&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;323\&quot;&gt;323&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;129.99999999999994\&quot;&gt;129.99999999999994&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;23&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;Performance / seed PBT, USD m\&quot;&gt;Performance / seed PBT, USD m&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;3.9999999999999964\&quot;&gt;3.9999999999999964&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;60.000000000000007\&quot;&gt;60.000000000000007&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;94\&quot;&gt;94&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;150\&quot;&gt;150&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;16.000000000000007\&quot;&gt;16.000000000000007&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;24&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;Core total PBT, USD m\&quot;&gt;Core total PBT, USD m&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;136.99999999999997\&quot;&gt;136.99999999999997&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;340\&quot;&gt;340&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;257\&quot;&gt;257&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;473\&quot;&gt;473&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;145.99999999999994\&quot;&gt;145.99999999999994&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;25&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;Core tax expense, USD m\&quot;&gt;Core tax expense, USD m&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;-28.999999999999996\&quot;&gt;-28.999999999999996&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;-69\&quot;&gt;-69&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;-53\&quot;&gt;-53&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;-92\&quot;&gt;-92&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;-32.999999999999986\&quot;&gt;-32.999999999999986&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;26&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;Core profit after tax, USD m\&quot;&gt;Core profit after tax, USD m&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;107.99999999999997\&quot;&gt;107.99999999999997&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;271\&quot;&gt;271&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;203.99999999999997\&quot;&gt;203.99999999999997&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;381\&quot;&gt;381&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;112.99999999999994\&quot;&gt;112.99999999999994&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;27&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;Diluted weighted shares, m\&quot;&gt;Diluted weighted shares, m&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;1217\&quot;&gt;1217&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;1207.0554419999999\&quot;&gt;1207.0554419999999&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;1192\&quot;&gt;1192&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;1189.0758450000001\&quot;&gt;1189.0758450000001&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;1168\&quot;&gt;1168&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;28&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;Core diluted EPS, US cents\&quot;&gt;Core diluted EPS, US cents&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;8.8742810188989285\&quot;&gt;8.8742810188989285&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;22.451329953077668\&quot;&gt;22.451329953077668&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;17.114093959731541\&quot;&gt;17.114093959731541&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;32.041690326322289\&quot;&gt;32.041690326322289&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;9.6746575342465704\&quot;&gt;9.6746575342465704&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;/details&gt;&lt;details class=\&quot;record-fold\&quot;&gt;&lt;summary&gt;C13:M17&lt;small&gt;5 × 11 · 55 populated&lt;/small&gt;&lt;/summary&gt;&lt;p class=\&quot;xio-caption\&quot;&gt;Returned preview: C13:H17&lt;/p&gt;&lt;div class=\&quot;xio-grid-scroll\&quot;&gt;&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Cell row&lt;/th&gt;&lt;th&gt;C&lt;/th&gt;&lt;th&gt;D&lt;/th&gt;&lt;th&gt;E&lt;/th&gt;&lt;th&gt;F&lt;/th&gt;&lt;th&gt;G&lt;/th&gt;&lt;th&gt;H&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;13&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;Net management fees, USD m\&quot;&gt;Net management fees, USD m&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;460\&quot;&gt;460&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;963\&quot;&gt;963&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;551\&quot;&gt;551&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;1097\&quot;&gt;1097&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;516.99999999999989\&quot;&gt;516.99999999999989&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;14&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;Performance fees, USD m\&quot;&gt;Performance fees, USD m&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;32\&quot;&gt;32&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;180\&quot;&gt;180&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;170\&quot;&gt;170&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;310\&quot;&gt;310&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;67\&quot;&gt;67&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;15&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;Seed gains, USD m\&quot;&gt;Seed gains, USD m&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;19\&quot;&gt;19&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;48\&quot;&gt;48&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;39\&quot;&gt;39&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;50\&quot;&gt;50&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;19\&quot;&gt;19&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;Rental / other income, USD m\&quot;&gt;Rental / other income, USD m&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;2\&quot;&gt;2&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;5\&quot;&gt;5&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;1\&quot;&gt;1&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;2\&quot;&gt;2&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;1\&quot;&gt;1&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;17&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;Core net revenue, USD m\&quot;&gt;Core net revenue, USD m&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;513\&quot;&gt;513&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;1196\&quot;&gt;1196&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;761\&quot;&gt;761&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;1459\&quot;&gt;1459&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;604\&quot;&gt;604&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;/details&gt;&lt;details class=\&quot;record-fold\&quot;&gt;&lt;summary&gt;C7:M11&lt;small&gt;5 × 11 · 53 populated&lt;/small&gt;&lt;/summary&gt;&lt;p class=\&quot;xio-caption\&quot;&gt;Returned preview: C7:H11&lt;/p&gt;&lt;div class=\&quot;xio-grid-scroll\&quot;&gt;&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Cell row&lt;/th&gt;&lt;th&gt;C&lt;/th&gt;&lt;th&gt;D&lt;/th&gt;&lt;th&gt;E&lt;/th&gt;&lt;th&gt;F&lt;/th&gt;&lt;th&gt;G&lt;/th&gt;&lt;th&gt;H&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;7&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;None\&quot;&gt;—&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;H1:23\&quot;&gt;H1:23&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;FY:23\&quot;&gt;FY:23&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;H1:24\&quot;&gt;H1:24&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;FY:24\&quot;&gt;FY:24&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;H1:25\&quot;&gt;H1:25&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;8&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;None\&quot;&gt;—&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;Actual\&quot;&gt;Actual&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;Actual\&quot;&gt;Actual&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;Actual\&quot;&gt;Actual&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;Actual\&quot;&gt;Actual&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;Actual\&quot;&gt;Actual&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;9&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;Closing AUM, USD bn\&quot;&gt;Closing AUM, USD bn&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;151.69999999999999\&quot;&gt;151.69999999999999&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;167.49999999999997\&quot;&gt;167.49999999999997&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;178.20000000000002\&quot;&gt;178.20000000000002&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;168.60000000000002\&quot;&gt;168.60000000000002&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;193.3\&quot;&gt;193.3&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;10&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;Net flows, USD bn\&quot;&gt;Net flows, USD bn&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;2.6\&quot;&gt;2.6&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;3\&quot;&gt;3&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;0.89999999999999991\&quot;&gt;0.89999999999999991&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;-3.3\&quot;&gt;-3.3&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;17.600000000000001\&quot;&gt;17.600000000000001&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;11&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;Implied net fee margin, annual bp\&quot;&gt;Implied net fee margin, annual bp&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;62.970568104038328\&quot;&gt;62.970568104038328&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;62.838499184339312\&quot;&gt;62.838499184339312&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;63.233395495624734\&quot;&gt;63.233395495624734&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;62.969075123771269\&quot;&gt;62.969075123771269&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;58.492433884881883\&quot;&gt;58.492433884881883&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;/details&gt;&lt;details class=\&quot;record-fold\&quot;&gt;&lt;summary&gt;C19:M20&lt;small&gt;2 × 11 · 22 populated&lt;/small&gt;&lt;/summary&gt;&lt;p class=\&quot;xio-caption\&quot;&gt;Returned preview: C19:H20&lt;/p&gt;&lt;div class=\&quot;xio-grid-scroll\&quot;&gt;&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Cell row&lt;/th&gt;&lt;th&gt;C&lt;/th&gt;&lt;th&gt;D&lt;/th&gt;&lt;th&gt;E&lt;/th&gt;&lt;th&gt;F&lt;/th&gt;&lt;th&gt;G&lt;/th&gt;&lt;th&gt;H&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;19&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;Core operating costs, USD m\&quot;&gt;Core operating costs, USD m&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;-370\&quot;&gt;-370&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;-834\&quot;&gt;-834&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;-487\&quot;&gt;-487&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;-960.00000000000011\&quot;&gt;-960.00000000000011&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;-449\&quot;&gt;-449&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;20&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;Core operating profit, USD m\&quot;&gt;Core operating profit, USD m&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;142.99999999999997\&quot;&gt;142.99999999999997&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;362.00000000000006\&quot;&gt;362.00000000000006&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;274\&quot;&gt;274&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;498.99999999999994\&quot;&gt;498.99999999999994&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;154.99999999999997\&quot;&gt;154.99999999999997&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;/details&gt;&quot;,
@@ -3858,7 +3858,7 @@
       &quot;checks&quot;: null,
       &quot;checkCode&quot;: &quot;&quot;,
       &quot;checkHelpers&quot;: &quot;&quot;,
-      &quot;note&quot;: &quot;Rendering returns an image blob. The script saves its bytes and assembles the filename/size report shown here. The file name and byte count are printed by our wrapper after saving the blob. They are not the image itself. The screenshot shows the current values. A plausible-looking image does not establish that every formula recalculates correctly.&quot;,
+      &quot;note&quot;: &quot;Rendering returns an image blob. The script saves it, then reports the filename and size. The image shows the workbook’s current values.&quot;,
       &quot;image&quot;: &quot;files/common-work/man-group-run/summary-before.png&quot;,
       &quot;links&quot;: [
         [
@@ -4382,7 +4382,7 @@
       &quot;checks&quot;: null,
       &quot;checkCode&quot;: &quot;&quot;,
       &quot;checkHelpers&quot;: &quot;&quot;,
-      &quot;note&quot;: &quot;The save returns no report. The script records the filename and size; separate file-reading checks supply the comparison in the readable display. The workbook still has the broader shared-formula import limitation described above. This export is a demonstration copy, not a claimed complete repair. Verification compared formula text and literal cells, cached numbers within 1e-8 absolute / 1e-10 relative tolerance, sheet order and annotation count. Native Excel was not opened for this run.&quot;,
+      &quot;note&quot;: &quot;Saving returns no report; the script adds the filename, size and file comparisons. Shared-formula import gaps remain in this copy. Checks compare formula text, literal cells, sheet order, annotation count and cached numbers using 1e-8 absolute / 1e-10 relative tolerance.&quot;,
       &quot;image&quot;: &quot;&quot;,
       &quot;links&quot;: [
         [
@@ -4443,7 +4443,7 @@
       &quot;checkCode&quot;: &quot;&quot;,
       &quot;checkReadable&quot;: &quot;&quot;,
       &quot;checkHelpers&quot;: &quot;&quot;,
-      &quot;note&quot;: &quot;Size of the returned NDJSON text: 642 characters; approximately 248 tokens using o200k_base. This is not a billing count or the size of the whole outer tool response. NDJSON means one JSON record per line.&quot;,
+      &quot;note&quot;: &quot;Returned NDJSON: 642 characters · approximately 248 tokens.&quot;,
       &quot;image&quot;: &quot;&quot;,
       &quot;links&quot;: [
         [
@@ -4493,7 +4493,7 @@
       &quot;checkCode&quot;: &quot;&quot;,
       &quot;checkReadable&quot;: &quot;&quot;,
       &quot;checkHelpers&quot;: &quot;&quot;,
-      &quot;note&quot;: &quot;Size of the returned NDJSON text: 7,024 characters; approximately 2,261 tokens using o200k_base. This is not a billing count or the size of the whole outer tool response. NDJSON means one JSON record per line.&quot;,
+      &quot;note&quot;: &quot;Returned NDJSON: 7,024 characters · approximately 2,261 tokens.&quot;,
       &quot;image&quot;: &quot;&quot;,
       &quot;links&quot;: [
         [
@@ -4543,7 +4543,7 @@
       &quot;checkCode&quot;: &quot;&quot;,
       &quot;checkReadable&quot;: &quot;&quot;,
       &quot;checkHelpers&quot;: &quot;&quot;,
-      &quot;note&quot;: &quot;Size of the returned NDJSON text: 70,074 characters; approximately 22,430 tokens using o200k_base. This is not a billing count or the size of the whole outer tool response. NDJSON means one JSON record per line.&quot;,
+      &quot;note&quot;: &quot;Returned NDJSON: 70,074 characters · approximately 22,430 tokens.&quot;,
       &quot;image&quot;: &quot;&quot;,
       &quot;links&quot;: [
         [
@@ -4591,7 +4591,7 @@
       &quot;checkCode&quot;: &quot;&quot;,
       &quot;checkReadable&quot;: &quot;&quot;,
       &quot;checkHelpers&quot;: &quot;&quot;,
-      &quot;note&quot;: &quot;Size of the returned NDJSON text: 24,242 characters; approximately 9,533 tokens using o200k_base. This is not a billing count or the size of the whole outer tool response. NDJSON means one JSON record per line.&quot;,
+      &quot;note&quot;: &quot;Returned NDJSON: 24,242 characters · approximately 9,533 tokens.&quot;,
       &quot;image&quot;: &quot;&quot;,
       &quot;links&quot;: [
         [
@@ -4639,7 +4639,7 @@
       &quot;checkCode&quot;: &quot;&quot;,
       &quot;checkReadable&quot;: &quot;&quot;,
       &quot;checkHelpers&quot;: &quot;&quot;,
-      &quot;note&quot;: &quot;Size of the returned NDJSON text: 191 characters; approximately 57 tokens using o200k_base. This is not a billing count or the size of the whole outer tool response. NDJSON means one JSON record per line.&quot;,
+      &quot;note&quot;: &quot;Returned NDJSON: 191 characters · approximately 57 tokens.&quot;,
       &quot;image&quot;: &quot;&quot;,
       &quot;links&quot;: [
         [
@@ -4687,7 +4687,7 @@
       &quot;checkCode&quot;: &quot;&quot;,
       &quot;checkReadable&quot;: &quot;&quot;,
       &quot;checkHelpers&quot;: &quot;&quot;,
-      &quot;note&quot;: &quot;Size of the returned NDJSON text: 1,707 characters; approximately 559 tokens using o200k_base. This is not a billing count or the size of the whole outer tool response. NDJSON means one JSON record per line.&quot;,
+      &quot;note&quot;: &quot;Returned NDJSON: 1,707 characters · approximately 559 tokens.&quot;,
       &quot;image&quot;: &quot;&quot;,
       &quot;links&quot;: [
         [
@@ -4735,7 +4735,7 @@
       &quot;checkCode&quot;: &quot;&quot;,
       &quot;checkReadable&quot;: &quot;&quot;,
       &quot;checkHelpers&quot;: &quot;&quot;,
-      &quot;note&quot;: &quot;Size of the returned NDJSON text: 3,075 characters; approximately 1,101 tokens using o200k_base. This is not a billing count or the size of the whole outer tool response. NDJSON means one JSON record per line.&quot;,
+      &quot;note&quot;: &quot;Returned NDJSON: 3,075 characters · approximately 1,101 tokens.&quot;,
       &quot;image&quot;: &quot;&quot;,
       &quot;links&quot;: [
         [
@@ -4783,7 +4783,7 @@
       &quot;checkCode&quot;: &quot;&quot;,
       &quot;checkReadable&quot;: &quot;&quot;,
       &quot;checkHelpers&quot;: &quot;&quot;,
-      &quot;note&quot;: &quot;Size of the returned NDJSON text: 4,729 characters; approximately 1,145 tokens using o200k_base. This is not a billing count or the size of the whole outer tool response. NDJSON means one JSON record per line.&quot;,
+      &quot;note&quot;: &quot;Returned NDJSON: 4,729 characters · approximately 1,145 tokens.&quot;,
       &quot;image&quot;: &quot;&quot;,
       &quot;links&quot;: [
         [

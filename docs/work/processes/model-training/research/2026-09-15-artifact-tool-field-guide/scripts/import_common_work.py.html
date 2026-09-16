@@ -5,6 +5,7 @@ This imports saved evidence; it does not execute any workbook code.
 &quot;&quot;&quot;
 import hashlib
 import json
+import re
 import shutil
 import sys
 from html.parser import HTMLParser
@@ -71,6 +72,34 @@ def main(source):
         ex[&#x27;links&#x27;] = [[label,preserve(path)] for label,path in ex[&#x27;links&#x27;]]
         if ex[&#x27;image&#x27;]:
             ex[&#x27;image&#x27;] = preserve(ex[&#x27;image&#x27;])
+    # Local guide copy; keep the captured input/output unchanged.
+    notes = {&#x27;op:add-linked-build&#x27;: &#x27;The example sets the assumptions, financial logic and cell references &#x27;
+                            &#x27;explicitly.&#x27;,
+     &#x27;op:clear-formulas&#x27;: &#x27;Clearing contents leaves the cells in place; deleting a row or tab changes &#x27;
+                          &#x27;the workbook structure.&#x27;,
+     &#x27;op:overlap-table&#x27;: &#x27;The API accepts overlapping table ranges. Check their addresses before &#x27;
+                         &#x27;creating tables to avoid conflicts in Excel.&#x27;,
+     &#x27;old:runner&#x27;: &#x27;The program runs in Node. Messages such as “saved: overview.json” come from the &#x27;
+                   &#x27;script’s recording helper.&#x27;,
+     &#x27;old:render&#x27;: &#x27;Rendering returns an image blob. The script saves it, then reports the filename &#x27;
+                   &#x27;and size. The image shows the workbook’s current values.&#x27;,
+     &#x27;old:export&#x27;: &#x27;Saving returns no report; the script adds the filename, size and file comparisons. &#x27;
+                   &#x27;Shared-formula import gaps remain in this copy. Checks compare formula text, &#x27;
+                   &#x27;literal cells, sheet order, annotation count and cached numbers using 1e-8 &#x27;
+                   &#x27;absolute / 1e-10 relative tolerance.&#x27;,
+     &#x27;old:ranges&#x27;: &#x27;Values and formulas come from separate native reads. The script pairs them; the &#x27;
+                   &#x27;readable view adds metric and period labels from the workbook and rounds the &#x27;
+                   &#x27;numbers. Tree and Raw keep the full captured precision.&#x27;,
+     &#x27;lab:search-pattern&#x27;: &#x27;The pattern searches across all tabs. The response reports when the match &#x27;
+                           &#x27;limit is reached; matching cells still need interpretation.&#x27;}
+    for key, note in notes.items():
+        data[&quot;examples&quot;][key][&quot;note&quot;] = note
+    for ex in data[&quot;examples&quot;].values():
+        ex[&quot;note&quot;] = re.sub(r&quot;Size of the returned NDJSON text: (.*?) characters; approximately (.*?) tokens using o200k_base\. This is not a billing count or the size of the whole outer tool response\. NDJSON means one JSON record per line\.&quot;, r&quot;Returned NDJSON: \1 characters · approximately \2 tokens.&quot;, ex[&quot;note&quot;])
+        ex[&quot;inputReadable&quot;] = ex[&quot;inputReadable&quot;].replace(&quot;Plain-English reading of the actual input. Requested limits describe the request, not a guarantee of what the library returns.&quot;, &quot;Requested limits: compare these with the returned previews below.&quot;)
+    for op in data[&quot;operations&quot;]:
+        if op[&quot;id&quot;] == &quot;sheet&quot;:
+            op[&quot;detail&quot;] = &quot;Adding a tab creates an empty sheet. The Fee lab example then writes a schedule alongside the six existing sheets.&quot;
     for path in (&#x27;operations-run/man-group-operations.xlsx&#x27;,&#x27;operations-run/new-fee-workbook.xlsx&#x27;,&#x27;operations-run/independent-verification.json&#x27;):
         preserve(path)
     data[&#x27;provenance&#x27;] = {&#x27;sourceUrl&#x27;:SOURCE_URL,&#x27;sourceVersion&#x27;:7,&#x27;packageVersion&#x27;:&#x27;2.8.59&#x27;,&#x27;evidenceDate&#x27;:&#x27;2026-09-15&#x27;,&#x27;integrationDate&#x27;:&#x27;2026-09-16&#x27;,&#x27;sourceHtmlSha256&#x27;:hashlib.sha256(page.read_bytes()).hexdigest(),&#x27;actions&#x27;:len(data[&#x27;operations&#x27;]),&#x27;uniqueExamples&#x27;:len(data[&#x27;examples&#x27;]),&#x27;exampleAssignments&#x27;:sum(len(x[&#x27;examples&#x27;]) for x in data[&#x27;operations&#x27;])}
