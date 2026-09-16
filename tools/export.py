@@ -52,6 +52,12 @@ def export_html(raw, rel):
     # Some captured HTML files are paste fixtures, not publications.
     if not main:
         return public_urls(raw)
+    # Internal publication metadata stays in the Hub edition.
+    for panel in main.select('.pk-page-details, .version-history-top, #version-history, .version-rounds'):
+        panel.decompose()
+    for controls in main.select('.reader-controls'):
+        if not controls.find(True):
+            controls.decompose()
     styles = '\n'.join(str(s) for s in soup.head.find_all('style'))
     title = soup.title.get_text() if soup.title else Path(rel).name
     # Preserve the local reading interactions, not the private Hub services.
