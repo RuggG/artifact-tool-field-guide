@@ -1,0 +1,90 @@
+{
+  "url": "https://ruggg.github.io/artifact-tool-field-guide/",
+  "authenticated": false,
+  "files": [
+    {
+      "path": "index.html",
+      "status": 200,
+      "bytes": 798,
+      "matches_local": true
+    },
+    {
+      "path": "assets/public.js",
+      "status": 200,
+      "bytes": 1647,
+      "matches_local": true
+    },
+    {
+      "path": "assets/documents.json",
+      "status": 200,
+      "bytes": 141041,
+      "matches_local": true
+    },
+    {
+      "path": "work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/field-guide.html",
+      "status": 200,
+      "bytes": 5695740,
+      "matches_local": true
+    },
+    {
+      "path": "work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/files/inspection/source.xlsx",
+      "status": 200,
+      "bytes": 131508,
+      "matches_local": true
+    },
+    {
+      "path": "work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/files/common-work/operations-run/man-group-operations.xlsx",
+      "status": 200,
+      "bytes": 111215,
+      "matches_local": true
+    },
+    {
+      "path": "work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/files/common-work/operations-run/new-fee-workbook.xlsx",
+      "status": 200,
+      "bytes": 3652,
+      "matches_local": true
+    },
+    {
+      "path": "work/processes/model-training/research/2026-09-15-artifact-tool-field-guide/data/inspection-checks.json.html",
+      "status": 200,
+      "bytes": 105300,
+      "matches_local": true
+    },
+    {
+      "path": "work/processes/model-training/research/2026-09-15-artifact-tool-reference/README.md.html",
+      "status": 200,
+      "bytes": 642268,
+      "matches_local": true
+    },
+    {
+      "path": "work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/sources/skill/SKILL.md.html",
+      "status": 200,
+      "bytes": 73742,
+      "matches_local": true
+    },
+    {
+      "path": "work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/sources/skill/style_guidelines.md.html",
+      "status": 200,
+      "bytes": 12374,
+      "matches_local": true
+    },
+    {
+      "path": "work/processes/model-training/research/2026-09-15-artifact-tool-reference/files/sources/skill/SKILL.md",
+      "status": 200,
+      "bytes": 64729,
+      "matches_local": true
+    },
+    {
+      "path": "skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html",
+      "status": 200,
+      "bytes": 879605,
+      "matches_local": true
+    },
+    {
+      "path": "skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/operations-run/man-group-operations.xlsx",
+      "status": 200,
+      "bytes": 131,
+      "matches_local": true
+    }
+  ]
+}
