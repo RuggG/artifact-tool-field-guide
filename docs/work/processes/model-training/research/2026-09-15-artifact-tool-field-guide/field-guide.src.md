@@ -6,8 +6,9 @@ subtitle: Explore the workbook engine through real inputs, readable objects and 
 primary_author: RG
 agent_assistance:
   - Codex — experiments, interactive design and verification
-docver: 7
+docver: 8
 history:
+  - v8 2026-09-16 — Simplified the introduction and organised inspection and reading examples by purpose
   - v7 2026-09-16 — Added the main skill and all 15 satellite documents, with token counts and a full-text Markdown reader
   - v6 2026-09-16 — Added 38 reading comparisons, values and formulas paired by cell, whole-tab and all-tab reads, and full-width results
   - v5 2026-09-16 — Made actual response records the default read, separated metadata, added all-sheet coverage and scrolling family navigation
@@ -25,21 +26,17 @@ tags:
   - Developer reference
 ---
 
-**Artifact Tool turns code into a workbook, calculated results, pictures and Excel files. Each step has its own contract.** Start with [Common work](#common-work) for practical jobs on an existing model, or follow [one small workbook](#walkthrough) from creation to export. The [full action families](#families) show the wider possibilities; [Best practices](#best-practices) explains how to turn those capabilities into a useful workbook. [Satellite documents](#satellite-documents) lets you read the main skill and its supporting guidance in full.
+**Artifact Tool turns code into a workbook, calculated results, pictures and Excel files.** Start with [Common work](#common-work) for practical jobs on an existing model, or follow [one small workbook](#walkthrough) from creation to export. The [full action families](#families) show the wider possibilities; [Best practices](#best-practices) explains how to turn those capabilities into a useful workbook. [Satellite documents](#satellite-documents) lets you read the main skill and its supporting guidance in full.
 
-The examples are **recorded executions of version 2.8.59**: the practical section reuses the supplied Man Group model and an illustrative fee lab; the broader reference uses synthetic fixtures. These are tool demonstrations, not company forecasts. Controls select saved examples and views of their evidence. They do not run the workbook engine in your browser.
+The practical examples use a [Man Group forecasting model](https://hub.lynott.co/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html#ref-map) to show the tool’s inputs, outputs and behaviour.
 
 ## Start with the work you will do most often {#common-work} {toc=Common work}
 
 *A practical selection: open a model, understand it, change it, check it and save a usable result.*
 
-**23 actions in six groups, with all 48 original examples retained.** This section brings the [Man Group walkthrough](https://hub.lynott.co/skills/system/modelling/research/2026-09-15-excel-tool-walkthrough/walkthrough.html#ref-map) into this guide. It now adds **47 inspection comparisons and 38 reading comparisons** on the same unchanged workbook. Start with **Inspect and locate** for an existing file; use **Open and save → Create a workbook** for a fresh build.
+Start with **Inspect and locate** for an existing file; use **Open and save → Create a workbook** for a fresh build.
 
-For an ordinary edit, the sequence is **import → inspect → read the relevant cells → change values or formulas → check calculations and a rendered preview → export, save and reopen**. The agent decides which cells matter and what constitutes a correct result. A successful call alone does not settle those questions.
-
-The explorer keeps three things distinct: **executed input**, **the captured return or script output**, and **agent-written checks**. Some early examples combine calls and checks in one script; their output is labelled accordingly. “No returned report” can still mean that the workbook changed. Each example belongs to its recorded state; selecting another example does not continue a live editing session.
-
-**An address is not proof that its cells were returned.** In Inspect and locate, compare the requested scope, the areas described by the response, and the values actually included. A coverage map makes the gaps visible. Change `kind`, scope or response allowance to compare saved executions; the complete record payload remains available in Readable, Tree and Raw.
+For an ordinary edit: **import → inspect → read the relevant cells → change values or formulas → check calculations and a rendered preview → export, save and reopen**.
 
 ::: wide
 ```component common-work-browser
@@ -50,7 +47,7 @@ data: data/common-work.json
 
 ### Read the cells you actually want — One cell, a whole tab or every tab {#reading-choices}
 
-**Read and calculate → Read values and formulas** now has two choices: which cells to read, and what to get back. Choose **Values only** for their contents, **Formulas only** for their calculation rules, or **Value and formula together per cell** to see both beside an address. The last layout is assembled by the script from two ordinary reads. The exact code and unaltered captured output are available beside every example.
+**Read and calculate → Read values and formulas** has two choices: which cells to read, and what to get back. Choose **Values only** for their contents, **Formulas only** for their calculation rules, or **Value and formula together per cell** to see both beside an address. The last layout is assembled by the script from two ordinary reads. The exact code and unaltered captured output are available beside every example.
 
 A range is simply the cells you name, such as `K13:M20`. Getting that range creates a way for the code to refer to those cells; it does not add cells or content. Reading it returns all eight rows and three columns, including the blank row 18. A one-cell read is the same idea on a smaller area. The example using `getCell(12, 10)` reads the same K13 cell using numbers that start at zero.
 
@@ -122,9 +119,10 @@ Sources and reproduction: [all 47 captured calls and responses](files/inspection
 | --- | --- | --- |
 | Package quick start, “High-Value + Common” | 14 headings | Broad API topics, excluding its closing runnable example |
 | Spreadsheet skill's quick start | 15 headings | A related but different grouping: Notes and Merging cells have headings; Sparklines appears elsewhere |
-| This practical selection | 23 actions in six groups | The other guide's chosen jobs, retained here with their examples |
-| Saved demonstrations behind the selection | 48 unique examples | 51 action-to-example links, because some examples support more than one action |
-| Added inspection comparisons | 47 fresh read-only calls | Variations of inspection, cell search and direct reading on one unchanged workbook; not 47 new operations |
+| This practical selection | 23 actions in six groups | Common jobs, from opening a model to checking and saving edits |
+| Supporting example collection | 48 examples | Includes overlapping demonstrations; the explorer groups them by purpose |
+| Inspection comparisons | 47 read-only calls | Variations of inspection, cell search and direct reading on one unchanged workbook; not 47 new operations |
+| Reading comparisons | 38 read-only calls | Values, formulas and combined reads for different cell selections |
 | Full action explorer below | 15 families, 191 examples | API calls, structured operations and guided workflows across the wider library |
 
 **21 of the 23 practical actions use API features named in the package's common section.** This is a feature-level correspondence, not a claim that the quick start gives every argument or validates every example. Detailed inspection modes are also explained earlier in that document. The two remaining entries are **the script runner**, which executes the program outside the library, and **explicit recalculation**, a library control documented elsewhere. Neither is thereby unimportant or discouraged.

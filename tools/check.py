@@ -70,13 +70,12 @@ def browser(base):
         ops=p.locator('#af-common-jump option').evaluate_all('els=>els.map(e=>e.value)')
         for op in ops:
             sel=p.locator('#af-common-jump');reveal(sel);sel.select_option(op)
-            earlier=p.locator('.ix-earlier')
-            if earlier.count():earlier.evaluate('(e)=>e.open=true')
             examples=p.locator('#af-common-example option').evaluate_all('els=>els.map(e=>e.value)')
             for example in examples:
                 sel=p.locator('#af-common-example');reveal(sel);sel.select_option(example);capture_links();states.append('common:'+op+':'+example)
-            for view in ['raw','tree','readable']:
-                loc=p.locator('[data-cw-view="'+view+'"]');reveal(loc);loc.click();capture_links()
+                if example!='explore':
+                    for view in ['raw','tree','readable']:
+                        loc=p.locator('[data-cw-view="'+view+'"]');reveal(loc);loc.click();capture_links()
         # Exercise declared states in the original component manifest.
         visit(GUIDE)
         inventory=p.locator('#pagekit-component-inventory').evaluate('(e)=>JSON.parse(e.textContent)')
