@@ -2,23 +2,15 @@
 
 An independent, interactive guide to Artifact Tool for Excel: action families, recorded inputs and outputs, formula reference, spreadsheet skills and working practices.
 
-**[Open the public guide](https://ruggg.github.io/artifact-tool-field-guide/)**
+**[Open the public guide](https://ruggg.github.io/openai-excel-engine/)**
 
 The complete guide, companion walkthrough, captured examples, supporting documentation and downloadable workbooks are served together. No Lynott Hub account is required. The controls explore saved executions; they do not run the workbook engine in the browser.
 
-## Publication
+## This repository keeps old links working
 
-GitHub Pages serves `docs/` from the `main` branch. `.nojekyll` preserves source files and paths as-is. The public edition keeps the original guide content and presentation while replacing Hub-specific navigation and services with standalone navigation. Markdown and source files have readable HTML views and raw/download links.
+The guide is now published from [RuggG/openai-excel-engine](https://github.com/RuggG/openai-excel-engine). Make future content and export changes there.
 
-## Refresh the saved edition
-
-Install `requirements.txt`, then run:
-
-```sh
-python tools/export.py --hub-root /path/to/lynott-hub --extra-root /path/to/other/source-checkout
-```
-
-The exporter reads source files without modifying the Hub. Run the public-site validation before committing and publishing refreshed files.
+This repository redirects the old homepage and full guide address to the new homepage, preserving selected examples and sections. Its supporting files remain available for previously shared document and download links.
 
 ## Provenance
 
